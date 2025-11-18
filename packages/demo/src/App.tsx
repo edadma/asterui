@@ -66,7 +66,12 @@ function App() {
       {/* Top Navbar - Full Width */}
       <Navbar
         className="shadow-lg border-b border-base-content/10"
-        start={<span className="text-xl font-semibold">PetalUI Demo</span>}
+        start={
+          <div className="flex items-center gap-3">
+            <img src="/petalui/logo.png" alt="PetalUI" className="w-8 h-8" />
+            <span className="text-xl font-semibold">PetalUI Components</span>
+          </div>
+        }
         end={<ThemeSwitcher />}
       />
 
