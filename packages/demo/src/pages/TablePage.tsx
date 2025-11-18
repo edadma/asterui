@@ -1,5 +1,5 @@
-import { Table, Button } from 'petalui'
-import type { ColumnType } from 'petalui'
+import { Table, Button } from '@edadma/petalui'
+import type { ColumnType } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 
 interface User {
@@ -83,8 +83,8 @@ export function TablePage() {
         title="Default Pagination"
         description="Tables have pagination enabled by default with 10 rows per page."
         code={`import React from 'react'
-import { Table, Button } from 'petalui'
-import type { ColumnType } from 'petalui'
+import { Table, Button } from '@edadma/petalui'
+import type { ColumnType } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -139,8 +139,8 @@ export default App`}
         title="Disable Pagination"
         description="Set pagination to false to show all rows without pagination."
         code={`import React from 'react'
-import { Table } from 'petalui'
-import type { ColumnType } from 'petalui'
+import { Table } from '@edadma/petalui'
+import type { ColumnType } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -171,8 +171,8 @@ export default App`}
         title="Zebra Stripes"
         description="Add alternating row colors with the striped prop."
         code={`import React from 'react'
-import { Table } from 'petalui'
-import type { ColumnType } from 'petalui'
+import { Table } from '@edadma/petalui'
+import type { ColumnType } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -203,8 +203,8 @@ export default App`}
         title="Size and Border"
         description="Control table size and add borders."
         code={`import React from 'react'
-import { Table } from 'petalui'
-import type { ColumnType } from 'petalui'
+import { Table } from '@edadma/petalui'
+import type { ColumnType } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -235,8 +235,8 @@ export default App`}
         title="Pinned Rows"
         description="Keep header rows visible while scrolling."
         code={`import React from 'react'
-import { Table } from 'petalui'
-import type { ColumnType } from 'petalui'
+import { Table } from '@edadma/petalui'
+import type { ColumnType } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -267,8 +267,8 @@ export default App`}
         title="Extra Small"
         description="Compact table for dense information display."
         code={`import React from 'react'
-import { Table } from 'petalui'
-import type { ColumnType } from 'petalui'
+import { Table } from '@edadma/petalui'
+import type { ColumnType } from '@edadma/petalui'
 
 interface User {
   id: string

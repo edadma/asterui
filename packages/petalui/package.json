@@ -1,5 +1,5 @@
 {
-  "name": "petalui",
+  "name": "@edadma/petalui",
   "version": "0.0.1",
   "description": "React UI component library with DaisyUI",
   "type": "module",

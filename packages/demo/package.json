@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "petalui": "workspace:*",
+    "@edadma/petalui": "workspace:*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-syntax-highlighter": "^16.1.0"

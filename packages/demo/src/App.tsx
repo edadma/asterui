@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Drawer, Navbar } from 'petalui'
+import { Drawer, Navbar } from '@edadma/petalui'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { BadgePage } from './pages/BadgePage'
 import { ButtonPage } from './pages/ButtonPage'

@@ -10,7 +10,7 @@ importers:
 
   packages/demo:
     dependencies:
-      petalui:
+      '@edadma/petalui':
         specifier: workspace:*
         version: link:../petalui
       react:

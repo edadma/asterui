@@ -1,4 +1,4 @@
-import { Badge, Button } from 'petalui'
+import { Badge, Button } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 
 export function BadgePage() {
@@ -15,7 +15,7 @@ export function BadgePage() {
         title="Basic"
         description="Display a count badge on an element."
         code={`import React from 'react'
-import { Badge, Button } from 'petalui'
+import { Badge, Button } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap">
@@ -50,7 +50,7 @@ export default App`}
         title="Show Zero"
         description="Use showZero to display badge when count is 0."
         code={`import React from 'react'
-import { Badge, Button } from 'petalui'
+import { Badge, Button } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap">
@@ -79,7 +79,7 @@ export default App`}
         title="Dot Badge"
         description="Show a simple dot indicator without a count."
         code={`import React from 'react'
-import { Badge, Button } from 'petalui'
+import { Badge, Button } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap">
@@ -108,7 +108,7 @@ export default App`}
         title="Badge Types"
         description="Different badge colors for various purposes."
         code={`import React from 'react'
-import { Badge, Button } from 'petalui'
+import { Badge, Button } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap">
@@ -161,7 +161,7 @@ export default App`}
         title="Standalone"
         description="Use badge standalone without wrapping children."
         code={`import React from 'react'
-import { Badge } from 'petalui'
+import { Badge } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-2 flex-wrap">

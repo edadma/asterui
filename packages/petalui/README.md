@@ -5,17 +5,17 @@ A React component library built with DaisyUI and Tailwind CSS.
 ## Installation
 
 ```bash
-npm install petalui
+npm install @edadma/petalui
 # or
-pnpm add petalui
+pnpm add @edadma/petalui
 # or
-yarn add petalui
+yarn add @edadma/petalui
 ```
 
 ## Usage
 
 ```tsx
-import { Button, Badge, Table } from 'petalui'
+import { Button, Badge, Table } from '@edadma/petalui'
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
 
 ## Demo
 
-View live examples and documentation at [https://edadma.github.io/petalui](https://edadma.github.io/petalui)
+View live examples and documentation at [https://edadma.github.io/@edadma/petalui](https://edadma.github.io/@edadma/petalui)
 
 ## Requirements
 

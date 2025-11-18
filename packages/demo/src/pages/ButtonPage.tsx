@@ -1,4 +1,4 @@
-import { Button } from 'petalui'
+import { Button } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 
 export function ButtonPage() {
@@ -15,7 +15,7 @@ export function ButtonPage() {
         title="Types"
         description="Use the type prop to set the button style."
         code={`import React from 'react'
-import { Button } from 'petalui'
+import { Button } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 flex-wrap">
@@ -40,7 +40,7 @@ export default App`}
         title="Sizes"
         description="Buttons come in four sizes: xs, sm, md (default), and lg."
         code={`import React from 'react'
-import { Button } from 'petalui'
+import { Button } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 items-center flex-wrap">
@@ -63,7 +63,7 @@ export default App`}
         title="States"
         description="Buttons support disabled state through the standard disabled attribute."
         code={`import React from 'react'
-import { Button } from 'petalui'
+import { Button } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 flex-wrap">
@@ -86,7 +86,7 @@ export default App`}
         title="Combinations"
         description="Combine type and size props to create different button variations."
         code={`import React from 'react'
-import { Button } from 'petalui'
+import { Button } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 flex-wrap">

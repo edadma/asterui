@@ -4,23 +4,23 @@ A React component library built with DaisyUI and Tailwind CSS.
 
 ## Demo
 
-View the live demo at: [https://edadma.github.io/petalui](https://edadma.github.io/petalui)
+View the live demo at: [https://edadma.github.io/@edadma/petalui](https://edadma.github.io/@edadma/petalui)
 
 ## Installation
 
 ```bash
-npm install petalui
+npm install @edadma/petalui
 # or
-pnpm add petalui
+pnpm add @edadma/petalui
 # or
-yarn add petalui
+yarn add @edadma/petalui
 ```
 
 ## Usage
 
 ```tsx
-import { Button, Badge, Table } from 'petalui'
-import 'petalui/styles.css'
+import { Button, Badge, Table } from '@edadma/petalui'
+import '@edadma/petalui/styles.css'
 
 function App() {
   return (
@@ -46,7 +46,7 @@ function App() {
 
 This is a pnpm monorepo with two packages:
 
-- `packages/petalui` - The component library
+- `packages/@edadma/petalui` - The component library
 - `packages/demo` - Demo application
 
 ### Setup
@@ -68,7 +68,7 @@ pnpm build
 ### Publishing
 
 ```bash
-cd packages/petalui
+cd packages/@edadma/petalui
 pnpm publish
 ```
 

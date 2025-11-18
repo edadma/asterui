@@ -7,6 +7,6 @@
     "build": "pnpm -r build",
     "dev": "pnpm --filter demo dev",
     "test": "pnpm -r test",
-    "publish": "pnpm --filter petalui publish --access public"
+    "publish": "pnpm --filter @edadma/petalui publish --access public"
   }
 }
