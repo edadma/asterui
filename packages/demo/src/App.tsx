@@ -17,6 +17,7 @@ import { SelectPage } from './pages/SelectPage'
 import { StatPage } from './pages/StatPage'
 import { TablePage } from './pages/TablePage'
 import { TextareaPage } from './pages/TextareaPage'
+import { TimelinePage } from './pages/TimelinePage'
 import { TogglePage } from './pages/TogglePage'
 
 function AppContent() {
@@ -89,6 +90,9 @@ function AppContent() {
               <Menu.Item active={isActive('/table')} onClick={() => navigate('/table')}>
                 Table
               </Menu.Item>
+              <Menu.Item active={isActive('/timeline')} onClick={() => navigate('/timeline')}>
+                Timeline
+              </Menu.Item>
 
               <Menu.Title>Navigation</Menu.Title>
               <Menu.Item active={isActive('/drawer')} onClick={() => navigate('/drawer')}>
@@ -130,6 +134,7 @@ function AppContent() {
               <Route path="/stat" element={<StatPage />} />
               <Route path="/table" element={<TablePage />} />
               <Route path="/textarea" element={<TextareaPage />} />
+              <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/toggle" element={<TogglePage />} />
             </Routes>
           </div>

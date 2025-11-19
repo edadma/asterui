@@ -46,5 +46,8 @@ export type { TableProps, ColumnType, PaginationConfig } from './components/Tabl
 export { Textarea } from './components/Textarea'
 export type { TextareaProps } from './components/Textarea'
 
+export { Timeline } from './components/Timeline'
+export type { TimelineProps, TimelineItemProps, TimelineStartProps, TimelineMiddleProps, TimelineEndProps } from './components/Timeline'
+
 export { Toggle } from './components/Toggle'
 export type { ToggleProps } from './components/Toggle'
