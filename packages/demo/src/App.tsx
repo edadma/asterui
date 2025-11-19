@@ -24,6 +24,7 @@ import { RadioPage } from './pages/RadioPage'
 import { SelectPage } from './pages/SelectPage'
 import { StatPage } from './pages/StatPage'
 import { TablePage } from './pages/TablePage'
+import { TabsPage } from './pages/TabsPage'
 import { TextareaPage } from './pages/TextareaPage'
 import { TimelinePage } from './pages/TimelinePage'
 import { TogglePage } from './pages/TogglePage'
@@ -114,6 +115,9 @@ function AppContent() {
               <Menu.Item active={isActive('/table')} onClick={() => navigate('/table')}>
                 Table
               </Menu.Item>
+              <Menu.Item active={isActive('/tabs')} onClick={() => navigate('/tabs')}>
+                Tabs
+              </Menu.Item>
               <Menu.Item active={isActive('/timeline')} onClick={() => navigate('/timeline')}>
                 Timeline
               </Menu.Item>
@@ -177,6 +181,7 @@ function AppContent() {
               <Route path="/select" element={<SelectPage />} />
               <Route path="/stat" element={<StatPage />} />
               <Route path="/table" element={<TablePage />} />
+              <Route path="/tabs" element={<TabsPage />} />
               <Route path="/textarea" element={<TextareaPage />} />
               <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/toggle" element={<TogglePage />} />

@@ -67,6 +67,9 @@ export type { StatsProps, StatProps, StatTitleProps, StatValueProps, StatDescPro
 export { Table } from './components/Table'
 export type { TableProps, ColumnType, PaginationConfig } from './components/Table'
 
+export { Tabs } from './components/Tabs'
+export type { TabsProps, TabProps } from './components/Tabs'
+
 export { Textarea } from './components/Textarea'
 export type { TextareaProps } from './components/Textarea'
 
