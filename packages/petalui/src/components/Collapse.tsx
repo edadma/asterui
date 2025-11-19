@@ -2,6 +2,7 @@ import React, { createContext, useContext, useId, useState } from 'react'
 
 export interface CollapseProps {
   children: React.ReactNode
+  title?: React.ReactNode
   open?: boolean
   defaultOpen?: boolean
   onChange?: (open: boolean) => void
@@ -29,6 +30,7 @@ const CollapseContext = createContext<CollapseContextValue | null>(null)
 
 function CollapseRoot({
   children,
+  title,
   open,
   defaultOpen = false,
   onChange,
@@ -64,6 +66,27 @@ function CollapseRoot({
     .filter(Boolean)
     .join(' ')
 
+  // If title prop is provided, render with automatic structure
+  if (title !== undefined) {
+    return (
+      <div className={classes}>
+        <input
+          type="checkbox"
+          id={checkboxId}
+          className="peer"
+          checked={isOpen}
+          onChange={toggle}
+          style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+        />
+        <label htmlFor={checkboxId} className="collapse-title text-xl font-medium">
+          {title}
+        </label>
+        <div className="collapse-content">{children}</div>
+      </div>
+    )
+  }
+
+  // Otherwise, use compound component pattern with Context
   return (
     <CollapseContext.Provider value={{ isOpen, toggle, checkboxId }}>
       <div className={classes}>

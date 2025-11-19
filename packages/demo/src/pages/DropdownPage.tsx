@@ -78,6 +78,26 @@ const dropdownItemApi: ApiProperty[] = [
     default: 'false',
   },
   {
+    property: 'disabled',
+    description: 'Whether item is disabled',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    property: 'danger',
+    description: 'Whether item represents a destructive action',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    property: 'className',
+    description: 'Additional CSS classes',
+    type: 'string',
+  },
+]
+
+const dropdownDividerApi: ApiProperty[] = [
+  {
     property: 'className',
     description: 'Additional CSS classes',
     type: 'string',
@@ -497,6 +517,129 @@ export default App`}
             </Dropdown.Menu>
           </Dropdown>
         </ExampleSection>
+
+        <ExampleSection
+          title="With Dividers"
+          description="Separate menu sections with dividers."
+          code={`import React from 'react'
+import { Dropdown, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Dropdown>
+    <Dropdown.Trigger>
+      <Button>User Menu</Button>
+    </Dropdown.Trigger>
+    <Dropdown.Menu>
+      <Dropdown.Item>Profile</Dropdown.Item>
+      <Dropdown.Item>Settings</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item>Help</Dropdown.Item>
+      <Dropdown.Item>Documentation</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item danger>Logout</Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+)
+
+export default App`}
+        >
+          <Dropdown>
+            <Dropdown.Trigger>
+              <Button>User Menu</Button>
+            </Dropdown.Trigger>
+            <Dropdown.Menu>
+              <Dropdown.Item>Profile</Dropdown.Item>
+              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item>Help</Dropdown.Item>
+              <Dropdown.Item>Documentation</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item danger>Logout</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </ExampleSection>
+
+        <ExampleSection
+          title="Disabled Items"
+          description="Prevent interaction with disabled items."
+          code={`import React from 'react'
+import { Dropdown, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Dropdown>
+    <Dropdown.Trigger>
+      <Button type="secondary">File Menu</Button>
+    </Dropdown.Trigger>
+    <Dropdown.Menu>
+      <Dropdown.Item onClick={() => alert('New')}>New</Dropdown.Item>
+      <Dropdown.Item onClick={() => alert('Open')}>Open</Dropdown.Item>
+      <Dropdown.Item disabled onClick={() => alert('Save')}>
+        Save (Disabled)
+      </Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item onClick={() => alert('Export')}>Export</Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+)
+
+export default App`}
+        >
+          <Dropdown>
+            <Dropdown.Trigger>
+              <Button type="secondary">File Menu</Button>
+            </Dropdown.Trigger>
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={() => alert('New')}>New</Dropdown.Item>
+              <Dropdown.Item onClick={() => alert('Open')}>Open</Dropdown.Item>
+              <Dropdown.Item disabled onClick={() => alert('Save')}>
+                Save (Disabled)
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={() => alert('Export')}>Export</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </ExampleSection>
+
+        <ExampleSection
+          title="Danger Actions"
+          description="Highlight destructive actions with danger styling."
+          code={`import React from 'react'
+import { Dropdown, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Dropdown>
+    <Dropdown.Trigger>
+      <Button type="ghost">Item Actions</Button>
+    </Dropdown.Trigger>
+    <Dropdown.Menu>
+      <Dropdown.Item onClick={() => alert('Edit')}>Edit</Dropdown.Item>
+      <Dropdown.Item onClick={() => alert('Duplicate')}>Duplicate</Dropdown.Item>
+      <Dropdown.Item onClick={() => alert('Archive')}>Archive</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item danger onClick={() => alert('Delete')}>
+        Delete
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+)
+
+export default App`}
+        >
+          <Dropdown>
+            <Dropdown.Trigger>
+              <Button type="ghost">Item Actions</Button>
+            </Dropdown.Trigger>
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={() => alert('Edit')}>Edit</Dropdown.Item>
+              <Dropdown.Item onClick={() => alert('Duplicate')}>Duplicate</Dropdown.Item>
+              <Dropdown.Item onClick={() => alert('Archive')}>Archive</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item danger onClick={() => alert('Delete')}>
+                Delete
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </ExampleSection>
       </div>
 
       <div className="mt-12">
@@ -517,6 +660,11 @@ export default App`}
       <div className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Dropdown.Item API</h2>
         <ApiTable data={dropdownItemApi} />
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-2xl font-bold mb-4">Dropdown.Divider API</h2>
+        <ApiTable data={dropdownDividerApi} />
       </div>
     </div>
   )

@@ -9,6 +9,7 @@ import { ButtonPage } from './pages/ButtonPage'
 import { CardPage } from './pages/CardPage'
 import { CheckboxPage } from './pages/CheckboxPage'
 import { CollapsePage } from './pages/CollapsePage'
+import { DividerPage } from './pages/DividerPage'
 import { DrawerPage } from './pages/DrawerPage'
 import { DropdownPage } from './pages/DropdownPage'
 import { FieldsetPage } from './pages/FieldsetPage'
@@ -132,6 +133,9 @@ function AppContent() {
               </Menu.Item>
 
               <Menu.Title>Layout</Menu.Title>
+              <Menu.Item active={isActive('/divider')} onClick={() => navigate('/divider')}>
+                Divider
+              </Menu.Item>
               <Menu.Item active={isActive('/drawer')} onClick={() => navigate('/drawer')}>
                 Drawer
               </Menu.Item>
@@ -192,6 +196,7 @@ function AppContent() {
               <Route path="/card" element={<CardPage />} />
               <Route path="/checkbox" element={<CheckboxPage />} />
               <Route path="/collapse" element={<CollapsePage />} />
+              <Route path="/divider" element={<DividerPage />} />
               <Route path="/drawer" element={<DrawerPage />} />
               <Route path="/dropdown" element={<DropdownPage />} />
               <Route path="/fieldset" element={<FieldsetPage />} />

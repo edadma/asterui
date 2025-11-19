@@ -22,6 +22,9 @@ export type { CardProps } from './components/Card'
 export { Collapse } from './components/Collapse'
 export type { CollapseProps, CollapseTitleProps, CollapseContentProps } from './components/Collapse'
 
+export { Divider } from './components/Divider'
+export type { DividerProps } from './components/Divider'
+
 export { Drawer } from './components/Drawer'
 export type { DrawerProps } from './components/Drawer'
 
@@ -41,7 +44,7 @@ export { Hero } from './components/Hero'
 export type { HeroProps, HeroContentProps, HeroOverlayProps } from './components/Hero'
 
 export { Dropdown } from './components/Dropdown'
-export type { DropdownProps, DropdownTriggerProps, DropdownMenuProps, DropdownItemProps } from './components/Dropdown'
+export type { DropdownProps, DropdownTriggerProps, DropdownMenuProps, DropdownItemProps, DropdownDividerProps } from './components/Dropdown'
 
 export { Input } from './components/Input'
 export type { InputProps } from './components/Input'

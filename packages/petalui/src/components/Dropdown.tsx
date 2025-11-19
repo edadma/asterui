@@ -29,6 +29,12 @@ export interface DropdownItemProps {
   children: React.ReactNode
   onClick?: () => void
   active?: boolean
+  disabled?: boolean
+  danger?: boolean
+  className?: string
+}
+
+export interface DropdownDividerProps {
   className?: string
 }
 
@@ -97,12 +103,36 @@ function DropdownMenu({ children, className = '' }: DropdownMenuProps) {
   )
 }
 
-function DropdownItem({ children, onClick, active = false, className = '' }: DropdownItemProps) {
+function DropdownItem({
+  children,
+  onClick,
+  active = false,
+  disabled = false,
+  danger = false,
+  className = '',
+}: DropdownItemProps) {
+  const itemClasses = [active && 'active', disabled && 'disabled', className].filter(Boolean).join(' ')
+
+  const handleClick = () => {
+    if (!disabled && onClick) {
+      onClick()
+    }
+  }
+
   return (
-    <li className={className}>
-      <a className={active ? 'active' : ''} onClick={onClick}>
+    <li className={itemClasses}>
+      <a className={danger ? 'text-error' : ''} onClick={handleClick}>
         {children}
       </a>
+    </li>
+  )
+}
+
+function DropdownDivider({ className = '' }: DropdownDividerProps) {
+  const classes = ['border-base-content/10', className].filter(Boolean).join(' ')
+  return (
+    <li className="my-1">
+      <hr className={classes} />
     </li>
   )
 }
@@ -111,4 +141,5 @@ export const Dropdown = Object.assign(DropdownRoot, {
   Trigger: DropdownTrigger,
   Menu: DropdownMenu,
   Item: DropdownItem,
+  Divider: DropdownDivider,
 })

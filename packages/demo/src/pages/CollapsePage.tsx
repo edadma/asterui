@@ -6,7 +6,12 @@ import type { ApiProperty } from '../components/ApiTable'
 const collapseApi: ApiProperty[] = [
   {
     property: 'children',
-    description: 'Collapse.Title and Collapse.Content components',
+    description: 'Content to display (or Collapse.Title and Collapse.Content components)',
+    type: 'React.ReactNode',
+  },
+  {
+    property: 'title',
+    description: 'Title/header (renders automatically with content as children)',
     type: 'React.ReactNode',
   },
   {
@@ -74,8 +79,27 @@ export function CollapsePage() {
 
       <div className="columns-1 lg:columns-2 gap-x-4">
         <ExampleSection
-          title="Basic Collapse"
-          description="Click to expand and collapse content."
+          title="Simple API"
+          description="Use title prop for cleaner syntax."
+          code={`import React from 'react'
+import { Collapse } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Collapse title="Click to expand">
+    <p>This is the hidden content that appears when expanded.</p>
+  </Collapse>
+)
+
+export default App`}
+        >
+          <Collapse title="Click to expand">
+            <p>This is the hidden content that appears when expanded.</p>
+          </Collapse>
+        </ExampleSection>
+
+        <ExampleSection
+          title="Compound Components"
+          description="Use Title and Content for more control."
           code={`import React from 'react'
 import { Collapse } from '@edadma/petalui'
 
@@ -105,21 +129,15 @@ export default App`}
 import { Collapse } from '@edadma/petalui'
 
 const App: React.FC = () => (
-  <Collapse defaultOpen>
-    <Collapse.Title>Already expanded</Collapse.Title>
-    <Collapse.Content>
-      <p>This content is visible by default.</p>
-    </Collapse.Content>
+  <Collapse title="Already expanded" defaultOpen>
+    <p>This content is visible by default.</p>
   </Collapse>
 )
 
 export default App`}
         >
-          <Collapse defaultOpen>
-            <Collapse.Title>Already expanded</Collapse.Title>
-            <Collapse.Content>
-              <p>This content is visible by default.</p>
-            </Collapse.Content>
+          <Collapse title="Already expanded" defaultOpen>
+            <p>This content is visible by default.</p>
           </Collapse>
         </ExampleSection>
 
@@ -130,21 +148,15 @@ export default App`}
 import { Collapse } from '@edadma/petalui'
 
 const App: React.FC = () => (
-  <Collapse icon="arrow">
-    <Collapse.Title>Click me</Collapse.Title>
-    <Collapse.Content>
-      <p>Content with arrow indicator.</p>
-    </Collapse.Content>
+  <Collapse title="Click me" icon="arrow">
+    <p>Content with arrow indicator.</p>
   </Collapse>
 )
 
 export default App`}
         >
-          <Collapse icon="arrow">
-            <Collapse.Title>Click me</Collapse.Title>
-            <Collapse.Content>
-              <p>Content with arrow indicator.</p>
-            </Collapse.Content>
+          <Collapse title="Click me" icon="arrow">
+            <p>Content with arrow indicator.</p>
           </Collapse>
         </ExampleSection>
 
