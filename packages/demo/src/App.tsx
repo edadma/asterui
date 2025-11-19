@@ -12,6 +12,7 @@ import { InputPage } from './pages/InputPage'
 import { LoadingPage } from './pages/LoadingPage'
 import { MenuPage } from './pages/MenuPage'
 import { TablePage } from './pages/TablePage'
+import { TextareaPage } from './pages/TextareaPage'
 import { TogglePage } from './pages/TogglePage'
 
 function AppContent() {
@@ -57,6 +58,9 @@ function AppContent() {
               </Menu.Item>
               <Menu.Item active={isActive('/input')} onClick={() => navigate('/input')}>
                 Input
+              </Menu.Item>
+              <Menu.Item active={isActive('/textarea')} onClick={() => navigate('/textarea')}>
+                Textarea
               </Menu.Item>
               <Menu.Item active={isActive('/toggle')} onClick={() => navigate('/toggle')}>
                 Toggle
@@ -105,6 +109,7 @@ function AppContent() {
               <Route path="/loading" element={<LoadingPage />} />
               <Route path="/menu" element={<MenuPage />} />
               <Route path="/table" element={<TablePage />} />
+              <Route path="/textarea" element={<TextareaPage />} />
               <Route path="/toggle" element={<TogglePage />} />
             </Routes>
           </div>

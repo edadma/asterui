@@ -34,5 +34,8 @@ export type { NavbarProps } from './components/Navbar'
 export { Table } from './components/Table'
 export type { TableProps, ColumnType, PaginationConfig } from './components/Table'
 
+export { Textarea } from './components/Textarea'
+export type { TextareaProps } from './components/Textarea'
+
 export { Toggle } from './components/Toggle'
 export type { ToggleProps } from './components/Toggle'
