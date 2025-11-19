@@ -2,8 +2,10 @@ import React from 'react'
 
 export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   type?: 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error' | 'neutral' | 'ghost' | 'link'
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   outline?: boolean
+  dash?: boolean
+  soft?: boolean
   active?: boolean
   loading?: boolean
   shape?: 'square' | 'circle' | 'wide' | 'block'
@@ -15,6 +17,8 @@ export const Button: React.FC<ButtonProps> = ({
   type,
   size = 'md',
   outline = false,
+  dash = false,
+  soft = false,
   active = false,
   loading = false,
   shape,
@@ -40,6 +44,7 @@ export const Button: React.FC<ButtonProps> = ({
     sm: 'btn-sm',
     md: '',
     lg: 'btn-lg',
+    xl: 'btn-xl',
   }
 
   const shapeClasses = {
@@ -54,6 +59,8 @@ export const Button: React.FC<ButtonProps> = ({
     type && typeClasses[type],
     sizeClasses[size],
     outline && 'btn-outline',
+    dash && 'btn-dash',
+    soft && 'btn-soft',
     active && 'btn-active',
     shape && shapeClasses[shape],
     noAnimation && 'no-animation',

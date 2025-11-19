@@ -13,12 +13,24 @@ const buttonApi: ApiProperty[] = [
   {
     property: 'size',
     description: 'Button size',
-    type: "'xs' | 'sm' | 'md' | 'lg'",
+    type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
     default: "'md'",
   },
   {
     property: 'outline',
     description: 'Outline style variant',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    property: 'dash',
+    description: 'Dashed border variant',
+    type: 'boolean',
+    default: 'false',
+  },
+  {
+    property: 'soft',
+    description: 'Muted color background variant',
     type: 'boolean',
     default: 'false',
   },
@@ -143,7 +155,7 @@ export default App`}
 
       <ExampleSection
         title="Sizes"
-        description="Four sizes: xs, sm, md (default), and lg."
+        description="Five sizes: xs, sm, md (default), lg, and xl."
         code={`import React from 'react'
 import { Button } from '@edadma/petalui'
 
@@ -153,6 +165,7 @@ const App: React.FC = () => (
     <Button size="sm">Small</Button>
     <Button size="md">Medium</Button>
     <Button size="lg">Large</Button>
+    <Button size="xl">XL</Button>
   </div>
 )
 
@@ -162,6 +175,7 @@ export default App`}
         <Button size="sm">Small</Button>
         <Button size="md">Medium</Button>
         <Button size="lg">Large</Button>
+        <Button size="xl">XL</Button>
       </ExampleSection>
 
       <ExampleSection
@@ -183,6 +197,52 @@ export default App`}
         <Button type="primary" outline>Primary</Button>
         <Button type="secondary" outline>Secondary</Button>
         <Button type="accent" outline>Accent</Button>
+      </ExampleSection>
+
+      <ExampleSection
+        title="Dashed Border"
+        description="Buttons with dashed border styling."
+        code={`import React from 'react'
+import { Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <div className="flex gap-2 flex-wrap">
+    <Button type="primary" dash>Primary</Button>
+    <Button type="secondary" dash>Secondary</Button>
+    <Button type="accent" dash>Accent</Button>
+  </div>
+)
+
+export default App`}
+      >
+        <Button type="primary" dash>Primary</Button>
+        <Button type="secondary" dash>Secondary</Button>
+        <Button type="accent" dash>Accent</Button>
+      </ExampleSection>
+
+      <ExampleSection
+        title="Soft Colors"
+        description="Muted color backgrounds for subtle emphasis."
+        code={`import React from 'react'
+import { Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <div className="flex gap-2 flex-wrap">
+    <Button type="primary" soft>Primary</Button>
+    <Button type="secondary" soft>Secondary</Button>
+    <Button type="accent" soft>Accent</Button>
+    <Button type="success" soft>Success</Button>
+    <Button type="warning" soft>Warning</Button>
+  </div>
+)
+
+export default App`}
+      >
+        <Button type="primary" soft>Primary</Button>
+        <Button type="secondary" soft>Secondary</Button>
+        <Button type="accent" soft>Accent</Button>
+        <Button type="success" soft>Success</Button>
+        <Button type="warning" soft>Warning</Button>
       </ExampleSection>
 
       <ExampleSection

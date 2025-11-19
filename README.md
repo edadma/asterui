@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="PetalUI Logo" width="200">
+</p>
+
 # PetalUI
 
 A React component library built with DaisyUI and Tailwind CSS.

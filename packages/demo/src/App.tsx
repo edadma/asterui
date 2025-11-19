@@ -4,18 +4,21 @@ import type { MenuGroup } from '@edadma/petalui'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { BadgePage } from './pages/BadgePage'
 import { ButtonPage } from './pages/ButtonPage'
+import { CardPage } from './pages/CardPage'
 import { DrawerPage } from './pages/DrawerPage'
-import { SpinPage } from './pages/SpinPage'
+import { DropdownPage } from './pages/DropdownPage'
+import { LoadingPage } from './pages/LoadingPage'
+import { MenuPage } from './pages/MenuPage'
 import { TablePage } from './pages/TablePage'
 
-type Page = 'badge' | 'button' | 'drawer' | 'spin' | 'table'
+type Page = 'badge' | 'button' | 'card' | 'drawer' | 'dropdown' | 'loading' | 'menu' | 'table'
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('button')
 
   const menuGroups: MenuGroup[] = [
     {
-      title: 'General',
+      title: 'Actions',
       items: [
         {
           key: 'button',
@@ -23,27 +26,11 @@ function App() {
           active: currentPage === 'button',
           onClick: () => setCurrentPage('button'),
         },
-      ],
-    },
-    {
-      title: 'Feedback',
-      items: [
         {
-          key: 'spin',
-          label: 'Spin',
-          active: currentPage === 'spin',
-          onClick: () => setCurrentPage('spin'),
-        },
-      ],
-    },
-    {
-      title: 'Navigation',
-      items: [
-        {
-          key: 'drawer',
-          label: 'Drawer',
-          active: currentPage === 'drawer',
-          onClick: () => setCurrentPage('drawer'),
+          key: 'dropdown',
+          label: 'Dropdown',
+          active: currentPage === 'dropdown',
+          onClick: () => setCurrentPage('dropdown'),
         },
       ],
     },
@@ -57,10 +44,44 @@ function App() {
           onClick: () => setCurrentPage('badge'),
         },
         {
+          key: 'card',
+          label: 'Card',
+          active: currentPage === 'card',
+          onClick: () => setCurrentPage('card'),
+        },
+        {
           key: 'table',
           label: 'Table',
           active: currentPage === 'table',
           onClick: () => setCurrentPage('table'),
+        },
+      ],
+    },
+    {
+      title: 'Navigation',
+      items: [
+        {
+          key: 'drawer',
+          label: 'Drawer',
+          active: currentPage === 'drawer',
+          onClick: () => setCurrentPage('drawer'),
+        },
+        {
+          key: 'menu',
+          label: 'Menu',
+          active: currentPage === 'menu',
+          onClick: () => setCurrentPage('menu'),
+        },
+      ],
+    },
+    {
+      title: 'Feedback',
+      items: [
+        {
+          key: 'loading',
+          label: 'Loading',
+          active: currentPage === 'loading',
+          onClick: () => setCurrentPage('loading'),
         },
       ],
     },
@@ -94,8 +115,11 @@ function App() {
           <div className="max-w-[1920px] mx-auto">
             {currentPage === 'badge' && <BadgePage />}
             {currentPage === 'button' && <ButtonPage />}
+            {currentPage === 'card' && <CardPage />}
             {currentPage === 'drawer' && <DrawerPage />}
-            {currentPage === 'spin' && <SpinPage />}
+            {currentPage === 'dropdown' && <DropdownPage />}
+            {currentPage === 'loading' && <LoadingPage />}
+            {currentPage === 'menu' && <MenuPage />}
             {currentPage === 'table' && <TablePage />}
           </div>
         </main>

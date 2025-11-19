@@ -1,6 +1,6 @@
 import React from 'react'
 
-export interface SpinProps {
+export interface LoadingProps {
   size?: 'xs' | 'sm' | 'md' | 'lg'
   type?: 'spinner' | 'dots' | 'ring' | 'ball' | 'bars' | 'infinity'
   className?: string
@@ -9,7 +9,7 @@ export interface SpinProps {
   tip?: string
 }
 
-export const Spin: React.FC<SpinProps> = ({
+export const Loading: React.FC<LoadingProps> = ({
   size = 'md',
   type = 'spinner',
   className = '',

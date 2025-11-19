@@ -8,6 +8,7 @@ interface ExampleSectionProps {
   children: React.ReactNode
   code?: string
   language?: string
+  noColumnBreak?: boolean
 }
 
 export function ExampleSection({
@@ -15,7 +16,8 @@ export function ExampleSection({
   description,
   children,
   code,
-  language = 'tsx'
+  language = 'tsx',
+  noColumnBreak = false
 }: ExampleSectionProps) {
   const [showCode, setShowCode] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -41,8 +43,8 @@ export function ExampleSection({
                       document.documentElement.getAttribute('data-theme') === 'dim'
 
   return (
-    <div className="border border-base-content/10 rounded-lg overflow-hidden break-inside-avoid mb-4">
-      <div className="p-4 bg-base-100">
+    <div className={`border border-base-content/10 rounded-lg break-inside-avoid mb-4 ${noColumnBreak ? 'inline-block w-full' : ''}`}>
+      <div className="p-4 bg-base-100 overflow-visible">
         <div className="flex items-start justify-between mb-4">
           <div>
             <h3 className="text-lg font-semibold">{title}</h3>
