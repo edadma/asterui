@@ -43,10 +43,10 @@ function AppContent() {
   const isActive = (path: string) => location.pathname === path
 
   return (
-    <div className="min-h-screen bg-base-200 flex flex-col">
-      {/* Top Navbar - Full Width */}
+    <div className="h-screen bg-base-200 flex flex-col">
+      {/* Fixed Navbar */}
       <Navbar
-        className="shadow-lg border-b border-base-content/10"
+        className="shadow-lg border-b border-base-content/10 flex-shrink-0"
         start={
           <div className="flex items-center gap-3">
             <img src="/petalui/logo.png" alt="PetalUI" className="w-8 h-8" />
@@ -57,9 +57,9 @@ function AppContent() {
       />
 
       {/* Content Area with Sidebar */}
-      <div className="flex flex-1">
-        {/* Fixed Sidebar */}
-        <aside className="w-44 bg-base-100 border-r border-base-content/10 overflow-y-auto">
+      <div className="flex flex-1 overflow-hidden">
+        {/* Scrollable Sidebar */}
+        <aside className="w-44 bg-base-100 border-r border-base-content/10 overflow-y-auto flex-shrink-0">
           <div className="p-4">
             <Menu>
               <Menu.Title>Actions</Menu.Title>
@@ -179,9 +179,9 @@ function AppContent() {
           </div>
         </aside>
 
-        {/* Main Content */}
-        <main className="flex-1 p-6 overflow-y-auto">
-          <div className="max-w-[1920px] mx-auto">
+        {/* Scrollable Main Content */}
+        <main className="flex-1 overflow-y-auto">
+          <div className="max-w-[1920px] mx-auto p-6">
             <Routes>
               <Route path="/" element={<ButtonPage />} />
               <Route path="/alert" element={<AlertPage />} />
