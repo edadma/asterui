@@ -106,9 +106,6 @@ function AppContent() {
               <Menu.Item active={isActive('/card')} onClick={() => navigate('/card')}>
                 Card
               </Menu.Item>
-              <Menu.Item active={isActive('/hero')} onClick={() => navigate('/hero')}>
-                Hero
-              </Menu.Item>
               <Menu.Item active={isActive('/stat')} onClick={() => navigate('/stat')}>
                 Stats
               </Menu.Item>
@@ -119,10 +116,15 @@ function AppContent() {
                 Timeline
               </Menu.Item>
 
-              <Menu.Title>Navigation</Menu.Title>
+              <Menu.Title>Layout</Menu.Title>
               <Menu.Item active={isActive('/drawer')} onClick={() => navigate('/drawer')}>
                 Drawer
               </Menu.Item>
+              <Menu.Item active={isActive('/hero')} onClick={() => navigate('/hero')}>
+                Hero
+              </Menu.Item>
+
+              <Menu.Title>Navigation</Menu.Title>
               <Menu.Item active={isActive('/menu')} onClick={() => navigate('/menu')}>
                 Menu
               </Menu.Item>

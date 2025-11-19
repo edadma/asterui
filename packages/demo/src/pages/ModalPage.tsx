@@ -78,6 +78,46 @@ const modalBackdropApi: ApiProperty[] = [
   },
 ]
 
+const modalFuncApi: ApiProperty[] = [
+  {
+    property: 'title',
+    description: 'Modal title',
+    type: 'React.ReactNode',
+  },
+  {
+    property: 'content',
+    description: 'Modal content',
+    type: 'React.ReactNode',
+  },
+  {
+    property: 'onOk',
+    description: 'Callback when OK button is clicked (can be async)',
+    type: '() => void | Promise<void>',
+  },
+  {
+    property: 'onCancel',
+    description: 'Callback when cancel button is clicked',
+    type: '() => void',
+  },
+  {
+    property: 'okText',
+    description: 'Text for OK button',
+    type: 'string',
+    default: "'OK'",
+  },
+  {
+    property: 'cancelText',
+    description: 'Text for cancel button',
+    type: 'string',
+    default: "'Cancel'",
+  },
+  {
+    property: 'type',
+    description: 'Modal type (sets alert styling)',
+    type: "'info' | 'success' | 'warning' | 'error'",
+  },
+]
+
 export function ModalPage() {
   const [basicOpen, setBasicOpen] = useState(false)
   const [backdropOpen, setBackdropOpen] = useState(false)
@@ -412,6 +452,215 @@ export default App`}
             <Modal.Backdrop onClick={() => setFormOpen(false)} />
           </Modal>
         </ExampleSection>
+
+        <ExampleSection
+          title="Modal.confirm()"
+          description="Confirmation dialog with OK and Cancel buttons."
+          code={`import React from 'react'
+import { Modal, Button } from '@edadma/petalui'
+
+const App: React.FC = () => {
+  const handleDelete = () => {
+    Modal.confirm({
+      title: 'Are you sure?',
+      content: 'This action cannot be undone.',
+      onOk: () => {
+        console.log('Deleted')
+      },
+      onCancel: () => {
+        console.log('Cancelled')
+      },
+    })
+  }
+
+  return <Button onClick={handleDelete}>Delete</Button>
+}
+
+export default App`}
+        >
+          <Button
+            onClick={() => {
+              Modal.confirm({
+                title: 'Are you sure?',
+                content: 'This action cannot be undone.',
+                onOk: () => {
+                  console.log('Deleted')
+                },
+                onCancel: () => {
+                  console.log('Cancelled')
+                },
+              })
+            }}
+          >
+            Delete Item
+          </Button>
+        </ExampleSection>
+
+        <ExampleSection
+          title="Modal.info()"
+          description="Informational modal with info styling."
+          code={`import React from 'react'
+import { Modal, Button } from '@edadma/petalui'
+
+const App: React.FC = () => {
+  const showInfo = () => {
+    Modal.info({
+      title: 'Information',
+      content: 'This is an informational message.',
+      okText: 'Got it',
+    })
+  }
+
+  return <Button onClick={showInfo}>Show Info</Button>
+}
+
+export default App`}
+        >
+          <Button
+            onClick={() => {
+              Modal.info({
+                title: 'Information',
+                content: 'This is an informational message.',
+                okText: 'Got it',
+              })
+            }}
+          >
+            Show Info
+          </Button>
+        </ExampleSection>
+
+        <ExampleSection
+          title="Modal.success()"
+          description="Success modal with success styling."
+          code={`import React from 'react'
+import { Modal, Button } from '@edadma/petalui'
+
+const App: React.FC = () => {
+  const showSuccess = () => {
+    Modal.success({
+      title: 'Success!',
+      content: 'Your changes have been saved.',
+    })
+  }
+
+  return <Button onClick={showSuccess}>Save</Button>
+}
+
+export default App`}
+        >
+          <Button
+            onClick={() => {
+              Modal.success({
+                title: 'Success!',
+                content: 'Your changes have been saved.',
+              })
+            }}
+          >
+            Save Changes
+          </Button>
+        </ExampleSection>
+
+        <ExampleSection
+          title="Modal.warning()"
+          description="Warning modal with warning styling."
+          code={`import React from 'react'
+import { Modal, Button } from '@edadma/petalui'
+
+const App: React.FC = () => {
+  const showWarning = () => {
+    Modal.warning({
+      title: 'Warning',
+      content: 'Your session is about to expire.',
+    })
+  }
+
+  return <Button onClick={showWarning}>Show Warning</Button>
+}
+
+export default App`}
+        >
+          <Button
+            onClick={() => {
+              Modal.warning({
+                title: 'Warning',
+                content: 'Your session is about to expire.',
+              })
+            }}
+          >
+            Show Warning
+          </Button>
+        </ExampleSection>
+
+        <ExampleSection
+          title="Modal.error()"
+          description="Error modal with error styling."
+          code={`import React from 'react'
+import { Modal, Button } from '@edadma/petalui'
+
+const App: React.FC = () => {
+  const showError = () => {
+    Modal.error({
+      title: 'Error',
+      content: 'Failed to process your request.',
+    })
+  }
+
+  return <Button onClick={showError}>Trigger Error</Button>
+}
+
+export default App`}
+        >
+          <Button
+            onClick={() => {
+              Modal.error({
+                title: 'Error',
+                content: 'Failed to process your request.',
+              })
+            }}
+          >
+            Trigger Error
+          </Button>
+        </ExampleSection>
+
+        <ExampleSection
+          title="Async Operations"
+          description="Handle async operations with loading state."
+          code={`import React from 'react'
+import { Modal, Button } from '@edadma/petalui'
+
+const App: React.FC = () => {
+  const handleSubmit = () => {
+    Modal.confirm({
+      title: 'Submit Form',
+      content: 'Are you ready to submit?',
+      onOk: async () => {
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 2000))
+        console.log('Submitted')
+      },
+    })
+  }
+
+  return <Button onClick={handleSubmit}>Submit</Button>
+}
+
+export default App`}
+        >
+          <Button
+            onClick={() => {
+              Modal.confirm({
+                title: 'Submit Form',
+                content: 'Are you ready to submit?',
+                onOk: async () => {
+                  await new Promise((resolve) => setTimeout(resolve, 2000))
+                  console.log('Submitted')
+                },
+              })
+            }}
+          >
+            Submit with Loading
+          </Button>
+        </ExampleSection>
       </div>
 
       <div className="mt-12">
@@ -427,6 +676,13 @@ export default App`}
         <h2 className="text-2xl font-bold mb-4 mt-8">Modal.Backdrop API</h2>
         <ApiTable data={modalBackdropApi} />
 
+        <h2 className="text-2xl font-bold mb-4 mt-8">Static Methods API</h2>
+        <p className="mb-4 text-base-content/70">
+          All static methods (Modal.confirm, Modal.info, Modal.success, Modal.warning, Modal.error) accept the
+          following configuration:
+        </p>
+        <ApiTable data={modalFuncApi} />
+
         <div className="alert alert-info mt-8">
           <div>
             <strong>Usage Tips:</strong>
@@ -435,6 +691,12 @@ export default App`}
               <li>Add Modal.Backdrop to enable click-outside-to-close</li>
               <li>Use responsive classes like "modal-bottom sm:modal-middle"</li>
               <li>Customize size with Tailwind width utilities on Modal.Box</li>
+              <li>
+                Static methods return an object with <code>destroy()</code> for manual cleanup
+              </li>
+              <li>
+                Use <code>async</code> functions in <code>onOk</code> for loading state during operations
+              </li>
             </ul>
           </div>
         </div>
