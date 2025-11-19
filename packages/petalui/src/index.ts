@@ -37,6 +37,9 @@ export type { NavbarProps } from './components/Navbar'
 export { Select } from './components/Select'
 export type { SelectProps } from './components/Select'
 
+export { Stats } from './components/Stat'
+export type { StatsProps, StatProps, StatTitleProps, StatValueProps, StatDescProps, StatFigureProps, StatActionsProps } from './components/Stat'
+
 export { Table } from './components/Table'
 export type { TableProps, ColumnType, PaginationConfig } from './components/Table'
 
