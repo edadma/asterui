@@ -107,7 +107,7 @@ export function GridPage() {
 import { Row, Col } from '@edadma/petalui'
 
 const App: React.FC = () => (
-  <Row>
+  <Row gutter={[4, 4]}>
     <Col span={24}>col-24</Col>
     <Col span={12}>col-12</Col>
     <Col span={12}>col-12</Col>
@@ -119,7 +119,7 @@ const App: React.FC = () => (
 
 export default App`}
         >
-          <Row gutter={4}>
+          <Row gutter={[4, 4]}>
             <Col span={24}>
               <DemoBox>col-24</DemoBox>
             </Col>

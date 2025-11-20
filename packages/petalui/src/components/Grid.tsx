@@ -229,7 +229,7 @@ const XXL_COL_SPAN_CLASSES: Record<number, string> = {
 }
 
 export function Row({ children, gutter = 0, justify, align, className = '' }: RowProps) {
-  const [gutterX, gutterY] = Array.isArray(gutter) ? gutter : [gutter, gutter]
+  const [gutterX, gutterY] = Array.isArray(gutter) ? gutter : [gutter, 0]
 
   const justifyClasses: Record<string, string> = {
     start: 'justify-items-start',
