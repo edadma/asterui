@@ -91,6 +91,9 @@ export type { ProgressProps } from './components/Progress'
 export { Radio } from './components/Radio'
 export type { RadioProps, RadioGroupProps } from './components/Radio'
 
+export { Range } from './components/Range'
+export type { RangeProps } from './components/Range'
+
 export { Rating } from './components/Rating'
 export type { RatingProps, RatingItemProps } from './components/Rating'
 

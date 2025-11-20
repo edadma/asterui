@@ -134,7 +134,15 @@ function FormItem({
           childProps.onChange = (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.checked)
         } else {
           childProps.value = value || ''
-          childProps.onChange = (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value)
+          childProps.onChange = (eventOrValue: any) => {
+            // Handle components that pass value directly (e.g., Range, Rating)
+            // vs components that pass event object (e.g., Input, Select)
+            if (eventOrValue && eventOrValue.target !== undefined) {
+              onChange(eventOrValue.target.value)
+            } else {
+              onChange(eventOrValue)
+            }
+          }
         }
 
         // Apply size if specified at form level
