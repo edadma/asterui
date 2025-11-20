@@ -27,6 +27,7 @@ import { LoadingPage } from './pages/LoadingPage'
 import { MenuPage } from './pages/MenuPage'
 import { ModalPage } from './pages/ModalPage'
 import { NavbarPage } from './pages/NavbarPage'
+import { NotificationPage } from './pages/NotificationPage'
 import { ProgressPage } from './pages/ProgressPage'
 import { RadioPage } from './pages/RadioPage'
 import { RatingPage } from './pages/RatingPage'
@@ -185,6 +186,9 @@ function AppContent() {
               <Menu.Item active={isActive('/modal')} onClick={() => navigate('/modal')}>
                 Modal
               </Menu.Item>
+              <Menu.Item active={isActive('/notification')} onClick={() => navigate('/notification')}>
+                Notification
+              </Menu.Item>
               <Menu.Item active={isActive('/progress')} onClick={() => navigate('/progress')}>
                 Progress
               </Menu.Item>
@@ -226,6 +230,7 @@ function AppContent() {
               <Route path="/menu" element={<MenuPage />} />
               <Route path="/modal" element={<ModalPage />} />
               <Route path="/navbar" element={<NavbarPage />} />
+              <Route path="/notification" element={<NotificationPage />} />
               <Route path="/progress" element={<ProgressPage />} />
               <Route path="/radio" element={<RadioPage />} />
               <Route path="/rating" element={<RatingPage />} />

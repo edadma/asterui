@@ -76,6 +76,9 @@ export type { ModalProps, ModalFuncProps } from './components/Modal'
 export { Navbar } from './components/Navbar'
 export type { NavbarProps } from './components/Navbar'
 
+export { notification } from './components/Notification'
+export type { NotificationConfig, NotificationType, NotificationPlacement } from './components/Notification'
+
 export { Progress } from './components/Progress'
 export type { ProgressProps } from './components/Progress'
 
