@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from
 import { Menu, Navbar } from '@edadma/petalui'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { AlertPage } from './pages/AlertPage'
+import { AutocompletePage } from './pages/AutocompletePage'
 import { AvatarPage } from './pages/AvatarPage'
 import { BadgePage } from './pages/BadgePage'
 import { BreadcrumbsPage } from './pages/BreadcrumbsPage'
@@ -80,6 +81,9 @@ function AppContent() {
               </Menu.Item>
 
               <Menu.Title>Data Entry</Menu.Title>
+              <Menu.Item active={isActive('/autocomplete')} onClick={() => navigate('/autocomplete')}>
+                Autocomplete
+              </Menu.Item>
               <Menu.Item active={isActive('/checkbox')} onClick={() => navigate('/checkbox')}>
                 Checkbox
               </Menu.Item>
@@ -221,6 +225,7 @@ function AppContent() {
             <Routes>
               <Route path="/" element={<Navigate to="/button" replace />} />
               <Route path="/alert" element={<AlertPage />} />
+              <Route path="/autocomplete" element={<AutocompletePage />} />
               <Route path="/avatar" element={<AvatarPage />} />
               <Route path="/badge" element={<BadgePage />} />
               <Route path="/breadcrumbs" element={<BreadcrumbsPage />} />

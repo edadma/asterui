@@ -1,6 +1,9 @@
 export { Alert } from './components/Alert'
 export type { AlertProps } from './components/Alert'
 
+export { Autocomplete } from './components/Autocomplete'
+export type { AutocompleteProps, AutocompleteOption } from './components/Autocomplete'
+
 export { Avatar, AvatarGroup } from './components/Avatar'
 export type { AvatarProps, AvatarGroupProps } from './components/Avatar'
 
