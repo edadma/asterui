@@ -75,25 +75,54 @@ function App() {
 
 ### Actions
 - **Button** - Buttons with multiple types, sizes, and variants
-- **Dropdown** - Composable dropdown menu with trigger and items
+- **Dropdown** - Composable dropdown menu with trigger, items, and dividers
 
 ### Data Entry
 - **Checkbox** - Checkboxes with sizes, colors, and indeterminate state
+- **Fieldset** - Fieldset container with legend
+- **FileInput** - File input with sizes and colors
 - **Form** - Form component with React Hook Form integration and validation
 - **Input** - Text inputs with multiple types, sizes, and colors
+- **Label** - Form labels with required indicator and floating labels
+- **Radio** - Radio buttons with group support
+- **Rating** - Star rating component
+- **Select** - Select dropdown with sizes and colors
+- **Textarea** - Multiline text input
+- **Toggle** - Toggle switches with sizes and colors
 
 ### Data Display
-- **Badge** - Notification badges with count and dot indicators
+- **Avatar** - User avatars with sizes, shapes, and group support
+- **Badge** - Notification badges with colors and variants
 - **Card** - Composable card component with body, title, actions, and figure
-- **Table** - Feature-rich data table with pagination
+- **Collapse** - Collapsible content panels
+- **List** - Vertical list layout with customizable rows
+- **Stats** - Statistics display with figures and actions
+- **Steps** - Step progress indicator
+- **Table** - Feature-rich data table with sorting and pagination
+- **Timeline** - Timeline component for displaying chronological events
+
+### Layout
+- **Divider** - Horizontal and vertical dividers with optional text
+- **Drawer** - Sidebar drawer with multiple placements
+- **Footer** - Footer component with title sections
+- **Grid** - Powerful 24-column grid system with Row and Col components
+- **Hero** - Hero section with overlay and content wrapping
+- **Join** - Join multiple elements together seamlessly
 
 ### Navigation
-- **Drawer** - Sidebar navigation drawer
-- **Menu** - Vertical menu component for navigation
-- **Navbar** - Navigation bar component
+- **Breadcrumbs** - Breadcrumb navigation trail
+- **Link** - Link component with hover and focus states
+- **Menu** - Vertical menu component with titles and items
+- **Navbar** - Navigation bar with start, center, and end sections
+- **Tabs** - Tab navigation with multiple variants
 
 ### Feedback
-- **Loading** - Loading spinners with overlay support
+- **Alert** - Alert messages with multiple types and dismissible option
+- **Loading** - Loading spinners with sizes and overlay support
+- **Modal** - Modal dialogs with imperative API
+- **Notification** - Toast notifications with auto-dismiss and stacking
+- **Progress** - Progress bars with colors and indeterminate state
+- **Tooltip** - Tooltips with multiple placements
 
 ## Demo
 
