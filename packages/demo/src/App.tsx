@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 import { Menu, Navbar } from '@edadma/petalui'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { AlertPage } from './pages/AlertPage'
@@ -203,7 +203,7 @@ function AppContent() {
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-[1920px] mx-auto p-6">
             <Routes>
-              <Route path="/" element={<ButtonPage />} />
+              <Route path="/" element={<Navigate to="/button" replace />} />
               <Route path="/alert" element={<AlertPage />} />
               <Route path="/avatar" element={<AvatarPage />} />
               <Route path="/badge" element={<BadgePage />} />
