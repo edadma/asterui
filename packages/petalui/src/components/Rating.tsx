@@ -66,7 +66,7 @@ function RatingRoot({
   )
 }
 
-function RatingItem({ value, mask = 'star', color = 'bg-orange-400', hidden = false, className = '' }: RatingItemProps) {
+function RatingItem({ value, mask = 'star', color = 'bg-warning', hidden = false, className = '' }: RatingItemProps) {
   const context = useContext(RatingContext)
   if (!context) {
     throw new Error('Rating.Item must be used within Rating')
