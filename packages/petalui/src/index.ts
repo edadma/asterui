@@ -19,6 +19,9 @@ export type { ButtonProps } from './components/Button'
 export { Checkbox } from './components/Checkbox'
 export type { CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './components/Checkbox'
 
+export { CalendarOld } from './components/CalendarOld'
+export type { CalendarOldProps, CalendarOldEvent } from './components/CalendarOld'
+
 export { Card } from './components/Card'
 export type { CardProps } from './components/Card'
 
