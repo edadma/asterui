@@ -5,7 +5,7 @@ import { AlertPage } from './pages/AlertPage'
 import { AutocompletePage } from './pages/AutocompletePage'
 import { AvatarPage } from './pages/AvatarPage'
 import { BadgePage } from './pages/BadgePage'
-import { BreadcrumbsPage } from './pages/BreadcrumbsPage'
+import { BreadcrumbPage } from './pages/BreadcrumbPage'
 import { ButtonPage } from './pages/ButtonPage'
 import { CardPage } from './pages/CardPage'
 import { CheckboxPage } from './pages/CheckboxPage'
@@ -31,6 +31,7 @@ import { MenuPage } from './pages/MenuPage'
 import { ModalPage } from './pages/ModalPage'
 import { NavbarPage } from './pages/NavbarPage'
 import { NotificationPage } from './pages/NotificationPage'
+import { PaginationPage } from './pages/PaginationPage'
 import { ProgressPage } from './pages/ProgressPage'
 import { RadioPage } from './pages/RadioPage'
 import { RangePage } from './pages/RangePage'
@@ -146,6 +147,9 @@ function AppContent() {
               <Menu.Item active={isActive('/list')} onClick={() => navigate('/list')}>
                 List
               </Menu.Item>
+              <Menu.Item active={isActive('/pagination')} onClick={() => navigate('/pagination')}>
+                Pagination
+              </Menu.Item>
               <Menu.Item active={isActive('/stat')} onClick={() => navigate('/stat')}>
                 Stats
               </Menu.Item>
@@ -228,7 +232,7 @@ function AppContent() {
               <Route path="/autocomplete" element={<AutocompletePage />} />
               <Route path="/avatar" element={<AvatarPage />} />
               <Route path="/badge" element={<BadgePage />} />
-              <Route path="/breadcrumbs" element={<BreadcrumbsPage />} />
+              <Route path="/breadcrumbs" element={<BreadcrumbPage />} />
               <Route path="/button" element={<ButtonPage />} />
               <Route path="/card" element={<CardPage />} />
               <Route path="/checkbox" element={<CheckboxPage />} />
@@ -254,6 +258,7 @@ function AppContent() {
               <Route path="/modal" element={<ModalPage />} />
               <Route path="/navbar" element={<NavbarPage />} />
               <Route path="/notification" element={<NotificationPage />} />
+              <Route path="/pagination" element={<PaginationPage />} />
               <Route path="/progress" element={<ProgressPage />} />
               <Route path="/radio" element={<RadioPage />} />
               <Route path="/range" element={<RangePage />} />

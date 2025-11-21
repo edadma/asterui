@@ -1,18 +1,18 @@
 import React from 'react'
 
-export interface BreadcrumbsProps {
+export interface BreadcrumbProps {
   children: React.ReactNode
   className?: string
 }
 
-export interface BreadcrumbsItemProps {
+export interface BreadcrumbItemProps {
   children: React.ReactNode
   href?: string
   onClick?: () => void
   className?: string
 }
 
-function BreadcrumbsRoot({ children, className = '' }: BreadcrumbsProps) {
+function BreadcrumbRoot({ children, className = '' }: BreadcrumbProps) {
   return (
     <div className={`breadcrumbs text-sm ${className}`}>
       <ul>{children}</ul>
@@ -20,7 +20,7 @@ function BreadcrumbsRoot({ children, className = '' }: BreadcrumbsProps) {
   )
 }
 
-function BreadcrumbsItem({ children, href, onClick, className = '' }: BreadcrumbsItemProps) {
+function BreadcrumbItem({ children, href, onClick, className = '' }: BreadcrumbItemProps) {
   if (href || onClick) {
     return (
       <li className={className}>
@@ -34,6 +34,6 @@ function BreadcrumbsItem({ children, href, onClick, className = '' }: Breadcrumb
   return <li className={className}>{children}</li>
 }
 
-export const Breadcrumbs = Object.assign(BreadcrumbsRoot, {
-  Item: BreadcrumbsItem,
+export const Breadcrumb = Object.assign(BreadcrumbRoot, {
+  Item: BreadcrumbItem,
 })

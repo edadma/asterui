@@ -10,8 +10,8 @@ export type { AvatarProps, AvatarGroupProps } from './components/Avatar'
 export { Badge } from './components/Badge'
 export type { BadgeProps } from './components/Badge'
 
-export { Breadcrumbs } from './components/Breadcrumbs'
-export type { BreadcrumbsProps, BreadcrumbsItemProps } from './components/Breadcrumbs'
+export { Breadcrumb } from './components/Breadcrumb'
+export type { BreadcrumbProps, BreadcrumbItemProps } from './components/Breadcrumb'
 
 export { Button } from './components/Button'
 export type { ButtonProps } from './components/Button'
@@ -90,6 +90,9 @@ export type { NavbarProps } from './components/Navbar'
 
 export { notification } from './components/Notification'
 export type { NotificationConfig, NotificationType, NotificationPlacement } from './components/Notification'
+
+export { Pagination } from './components/Pagination'
+export type { PaginationProps } from './components/Pagination'
 
 export { Progress } from './components/Progress'
 export type { ProgressProps } from './components/Progress'
