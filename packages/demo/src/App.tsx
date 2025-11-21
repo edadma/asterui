@@ -45,6 +45,7 @@ import { StepsPage } from './pages/StepsPage'
 import { TablePage } from './pages/TablePage'
 import { TabsPage } from './pages/TabsPage'
 import { TextareaPage } from './pages/TextareaPage'
+import { ThemeControllerPage } from './pages/ThemeControllerPage'
 import { TimePickerPage } from './pages/TimePickerPage'
 import { TimelinePage } from './pages/TimelinePage'
 import { TogglePage } from './pages/TogglePage'
@@ -82,6 +83,9 @@ function AppContent() {
               </Menu.Item>
               <Menu.Item active={isActive('/dropdown')} onClick={() => navigate('/dropdown')}>
                 Dropdown
+              </Menu.Item>
+              <Menu.Item active={isActive('/theme-controller')} onClick={() => navigate('/theme-controller')}>
+                Theme Controller
               </Menu.Item>
 
               <Menu.Title>Data Entry</Menu.Title>
@@ -284,6 +288,7 @@ function AppContent() {
               <Route path="/table" element={<TablePage />} />
               <Route path="/tabs" element={<TabsPage />} />
               <Route path="/textarea" element={<TextareaPage />} />
+              <Route path="/theme-controller" element={<ThemeControllerPage />} />
               <Route path="/timepicker" element={<TimePickerPage />} />
               <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/toggle" element={<TogglePage />} />

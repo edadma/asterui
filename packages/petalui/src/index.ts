@@ -133,6 +133,9 @@ export type { TabsProps, TabPanelProps } from './components/Tabs'
 export { Textarea } from './components/Textarea'
 export type { TextareaProps } from './components/Textarea'
 
+export { ThemeController } from './components/ThemeController'
+export type { ThemeControllerSwapProps, ThemeControllerDropdownProps } from './components/ThemeController'
+
 export { TimePicker } from './components/TimePicker'
 export type { TimePickerProps } from './components/TimePicker'
 
