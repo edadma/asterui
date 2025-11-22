@@ -33,6 +33,9 @@ const THEMES = [
   'dim',
   'nord',
   'sunset',
+  'caramellatte',
+  'abyss',
+  'silk',
 ]
 
 function App() {
@@ -48,7 +51,7 @@ function App() {
         <div className="max-w-2xl space-y-6">
           <h1 className="text-5xl font-bold">Theme Showcase</h1>
           <p className="text-lg">
-            Use the theme dropdown in the navbar to test all 32 daisyUI themes.
+            Use the theme dropdown in the navbar to test all 35 daisyUI themes.
             Watch the colors change instantly!
           </p>
 
