@@ -27,7 +27,14 @@ function ThemeControllerSwap({
     if (defaultTheme) {
       return defaultTheme === darkTheme
     }
-    return currentTheme === darkTheme
+    if (currentTheme) {
+      return currentTheme === darkTheme
+    }
+    // Detect system theme preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return true
+    }
+    return false
   })
 
   useEffect(() => {
@@ -37,8 +44,14 @@ function ThemeControllerSwap({
       document.documentElement.setAttribute('data-theme', defaultTheme)
     } else if (currentTheme) {
       setIsDark(currentTheme === darkTheme)
+    } else {
+      // Apply system theme preference
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      const initialTheme = prefersDark ? darkTheme : lightTheme
+      setIsDark(prefersDark)
+      document.documentElement.setAttribute('data-theme', initialTheme)
     }
-  }, [defaultTheme, darkTheme])
+  }, [defaultTheme, darkTheme, lightTheme])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked
@@ -83,7 +96,16 @@ function ThemeControllerDropdown({
   onChange,
   className = '',
 }: ThemeControllerDropdownProps) {
-  const [selectedTheme, setSelectedTheme] = useState(defaultTheme || themes[0] || 'light')
+  const [selectedTheme, setSelectedTheme] = useState(() => {
+    if (defaultTheme) return defaultTheme
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    if (currentTheme && themes.includes(currentTheme)) return currentTheme
+    // Detect system theme preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return themes.find(t => t === 'dark') || themes[0] || 'light'
+    }
+    return themes.find(t => t === 'light') || themes[0] || 'light'
+  })
 
   useEffect(() => {
     const currentTheme = document.documentElement.getAttribute('data-theme')
@@ -93,8 +115,13 @@ function ThemeControllerDropdown({
     } else if (currentTheme && themes.includes(currentTheme)) {
       setSelectedTheme(currentTheme)
     } else if (!currentTheme && themes.length > 0) {
-      setSelectedTheme(themes[0])
-      document.documentElement.setAttribute('data-theme', themes[0])
+      // Apply system theme preference
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      const initialTheme = prefersDark
+        ? themes.find(t => t === 'dark') || themes[0]
+        : themes.find(t => t === 'light') || themes[0]
+      setSelectedTheme(initialTheme)
+      document.documentElement.setAttribute('data-theme', initialTheme)
     }
   }, [defaultTheme, themes])
 
