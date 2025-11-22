@@ -5,6 +5,7 @@ export interface HeroProps {
   overlay?: boolean
   overlayClassName?: string
   contentClassName?: string
+  wrapperClassName?: string
   className?: string
   style?: React.CSSProperties
 }
@@ -14,6 +15,7 @@ export function Hero({
   overlay = false,
   overlayClassName = '',
   contentClassName = '',
+  wrapperClassName,
   className = '',
   style,
 }: HeroProps) {
@@ -24,7 +26,9 @@ export function Hero({
   return (
     <div className={classes} style={style}>
       {overlay && <div className={overlayClasses} />}
-      <div className={contentClasses}>{children}</div>
+      <div className={contentClasses}>
+        {wrapperClassName ? <div className={wrapperClassName}>{children}</div> : children}
+      </div>
     </div>
   )
 }

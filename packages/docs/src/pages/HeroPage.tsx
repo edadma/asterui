@@ -26,6 +26,11 @@ const heroApi: ApiProperty[] = [
     type: 'string',
   },
   {
+    property: 'wrapperClassName',
+    description: 'Optional inner wrapper for constraining content width (e.g., "max-w-2xl space-y-6")',
+    type: 'string',
+  },
+  {
     property: 'className',
     description: 'Additional CSS classes',
     type: 'string',
