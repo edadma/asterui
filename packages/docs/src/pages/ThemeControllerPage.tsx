@@ -17,7 +17,7 @@ const swapApi: ApiProperty[] = [
     default: "'dark'",
   },
   {
-    property: 'defaultTheme',
+    property: 'initialTheme',
     description: 'Initial theme',
     type: 'string',
   },
@@ -40,7 +40,7 @@ const dropdownApi: ApiProperty[] = [
     type: 'string[]',
   },
   {
-    property: 'defaultTheme',
+    property: 'initialTheme',
     description: 'Initial theme',
     type: 'string',
   },
@@ -200,7 +200,7 @@ import { ThemeController } from '@edadma/petalui'
 const App: React.FC = () => (
   <ThemeController.Dropdown
     themes={['light', 'dark', 'synthwave', 'retro', 'cyberpunk']}
-    defaultTheme="synthwave"
+    initialTheme="synthwave"
   />
 )
 
@@ -209,7 +209,7 @@ export default App`}
         >
           <ThemeController.Dropdown
             themes={['light', 'dark', 'synthwave', 'retro', 'cyberpunk']}
-            defaultTheme="synthwave"
+            initialTheme="synthwave"
           />
         </ExampleSection>
 

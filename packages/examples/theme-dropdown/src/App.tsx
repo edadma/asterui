@@ -44,7 +44,7 @@ function App() {
       <Navbar
         className="bg-base-100 shadow-lg"
         start={<a className="text-xl font-bold">Theme Dropdown Test</a>}
-        end={<ThemeController.Dropdown themes={THEMES} defaultTheme="light" />}
+        end={<ThemeController.Dropdown themes={THEMES} />}
       />
 
       <Hero className="min-h-[calc(100vh-4rem)] bg-base-200" contentClassName="text-center">

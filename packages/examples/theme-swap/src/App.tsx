@@ -6,7 +6,7 @@ function App() {
       <Navbar
         className="bg-base-100 shadow-lg"
         start={<a className="text-xl font-bold">Theme Swap Test</a>}
-        end={<ThemeController.Swap lightTheme="light" darkTheme="dark" defaultTheme="light" />}
+        end={<ThemeController.Swap lightTheme="light" darkTheme="dark" />}
       />
 
       <Hero className="min-h-[calc(100vh-4rem)] bg-base-200" contentClassName="text-center">

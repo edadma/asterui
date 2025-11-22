@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react'
 export interface ThemeControllerSwapProps {
   lightTheme?: string
   darkTheme?: string
-  defaultTheme?: string
+  initialTheme?: string
   onChange?: (theme: string) => void
   className?: string
 }
 
 export interface ThemeControllerDropdownProps {
   themes: string[]
-  defaultTheme?: string
+  initialTheme?: string
   onChange?: (theme: string) => void
   className?: string
 }
@@ -18,14 +18,14 @@ export interface ThemeControllerDropdownProps {
 function ThemeControllerSwap({
   lightTheme = 'light',
   darkTheme = 'dark',
-  defaultTheme,
+  initialTheme,
   onChange,
   className = '',
 }: ThemeControllerSwapProps) {
   const [isDark, setIsDark] = useState(() => {
     const currentTheme = document.documentElement.getAttribute('data-theme')
-    if (defaultTheme) {
-      return defaultTheme === darkTheme
+    if (initialTheme) {
+      return initialTheme === darkTheme
     }
     if (currentTheme) {
       return currentTheme === darkTheme
@@ -39,19 +39,19 @@ function ThemeControllerSwap({
 
   useEffect(() => {
     const currentTheme = document.documentElement.getAttribute('data-theme')
-    if (defaultTheme) {
-      setIsDark(defaultTheme === darkTheme)
-      document.documentElement.setAttribute('data-theme', defaultTheme)
+    if (initialTheme) {
+      setIsDark(initialTheme === darkTheme)
+      document.documentElement.setAttribute('data-theme', initialTheme)
     } else if (currentTheme) {
       setIsDark(currentTheme === darkTheme)
     } else {
       // Apply system theme preference
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      const initialTheme = prefersDark ? darkTheme : lightTheme
+      const theme = prefersDark ? darkTheme : lightTheme
       setIsDark(prefersDark)
-      document.documentElement.setAttribute('data-theme', initialTheme)
+      document.documentElement.setAttribute('data-theme', theme)
     }
-  }, [defaultTheme, darkTheme, lightTheme])
+  }, [initialTheme, darkTheme, lightTheme])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked
@@ -92,12 +92,12 @@ function ThemeControllerSwap({
 
 function ThemeControllerDropdown({
   themes,
-  defaultTheme,
+  initialTheme,
   onChange,
   className = '',
 }: ThemeControllerDropdownProps) {
   const [selectedTheme, setSelectedTheme] = useState(() => {
-    if (defaultTheme) return defaultTheme
+    if (initialTheme) return initialTheme
     const currentTheme = document.documentElement.getAttribute('data-theme')
     if (currentTheme && themes.includes(currentTheme)) return currentTheme
     // Detect system theme preference
@@ -109,21 +109,21 @@ function ThemeControllerDropdown({
 
   useEffect(() => {
     const currentTheme = document.documentElement.getAttribute('data-theme')
-    if (defaultTheme) {
-      setSelectedTheme(defaultTheme)
-      document.documentElement.setAttribute('data-theme', defaultTheme)
+    if (initialTheme) {
+      setSelectedTheme(initialTheme)
+      document.documentElement.setAttribute('data-theme', initialTheme)
     } else if (currentTheme && themes.includes(currentTheme)) {
       setSelectedTheme(currentTheme)
     } else if (!currentTheme && themes.length > 0) {
       // Apply system theme preference
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      const initialTheme = prefersDark
+      const theme = prefersDark
         ? themes.find(t => t === 'dark') || themes[0]
         : themes.find(t => t === 'light') || themes[0]
-      setSelectedTheme(initialTheme)
-      document.documentElement.setAttribute('data-theme', initialTheme)
+      setSelectedTheme(theme)
+      document.documentElement.setAttribute('data-theme', theme)
     }
-  }, [defaultTheme, themes])
+  }, [initialTheme, themes])
 
   const handleThemeChange = (theme: string) => {
     setSelectedTheme(theme)
