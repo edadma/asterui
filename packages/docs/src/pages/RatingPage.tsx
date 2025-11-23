@@ -1,4 +1,4 @@
-import { Rating, Space } from '@edadma/petalui'
+import { Rating, Space, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -86,7 +86,7 @@ export function RatingPage() {
         <p className="text-base-content/70">Star ratings for user feedback and reviews.</p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Rating"
           description="Simple 5-star rating."
@@ -362,7 +362,7 @@ export default App`}
             <Rating.Item value={5} mask="star-2" color="bg-success" />
           </Rating>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

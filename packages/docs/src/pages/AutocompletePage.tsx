@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Autocomplete, Form, Button, Modal, Space } from '@edadma/petalui'
+import { Autocomplete, Form, Button, Modal, Space, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -135,7 +135,7 @@ export function AutocompletePage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Autocomplete"
           description="Simple autocomplete with string array options."
@@ -545,7 +545,7 @@ export default App`}
             )}
           </div>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

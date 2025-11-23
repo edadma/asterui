@@ -1,4 +1,4 @@
-import { Navbar, Button, Dropdown, Badge, Space } from '@edadma/petalui'
+import { Navbar, Button, Dropdown, Badge, Space, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -41,7 +41,7 @@ export function NavbarPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Navbar"
           description="Simple navbar with title."
@@ -362,7 +362,7 @@ export default App`}
             </div>
           </Navbar>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

@@ -1,4 +1,4 @@
-import { Footer } from '@edadma/petalui'
+import { Footer, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -44,7 +44,7 @@ export function FooterPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Footer"
           description="Simple footer with navigation sections."
@@ -225,7 +225,7 @@ export default App`}
             </nav>
           </Footer>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

@@ -1,4 +1,4 @@
-import { Tooltip, Button } from '@edadma/petalui'
+import { Tooltip, Button, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -48,12 +48,12 @@ export function TooltipPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Tooltip"
           description="Hover over the button to see tooltip."
           code={`import React from 'react'
-import { Tooltip, Button } from '@edadma/petalui'
+import { Tooltip, Button, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Tooltip tip="Hello there!">
@@ -72,7 +72,7 @@ export default App`}
           title="Positions"
           description="Four placement options."
           code={`import React from 'react'
-import { Tooltip, Button } from '@edadma/petalui'
+import { Tooltip, Button, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -113,7 +113,7 @@ export default App`}
           title="Colors"
           description="Colored tooltip variants."
           code={`import React from 'react'
-import { Tooltip, Button } from '@edadma/petalui'
+import { Tooltip, Button, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex flex-wrap gap-4">
@@ -167,7 +167,7 @@ export default App`}
             </Tooltip>
           </div>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

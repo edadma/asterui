@@ -1,4 +1,4 @@
-import { Tabs, Input, Button } from '@edadma/petalui'
+import { Tabs, Input, Button, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -75,12 +75,12 @@ export function TabsPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Usage"
           description="Simple tabs - content switching is handled automatically."
           code={`import React from 'react'
-import { Tabs } from '@edadma/petalui'
+import { Tabs, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Tabs>
@@ -115,7 +115,7 @@ export default App`}
           title="Settings Page"
           description="Complete settings page with forms."
           code={`import React from 'react'
-import { Tabs, Input, Button } from '@edadma/petalui'
+import { Tabs, Input, Button, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Tabs defaultActiveKey="account" variant="border">
@@ -188,7 +188,7 @@ export default App`}
           title="Boxed Variant"
           description="Tabs with enclosed box styling."
           code={`import React from 'react'
-import { Tabs } from '@edadma/petalui'
+import { Tabs, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Tabs variant="box">
@@ -223,7 +223,7 @@ export default App`}
           title="Lifted Variant"
           description="Tabs with 3D lifted appearance."
           code={`import React from 'react'
-import { Tabs } from '@edadma/petalui'
+import { Tabs, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Tabs variant="lift">
@@ -258,7 +258,7 @@ export default App`}
           title="Different Sizes"
           description="Tabs in various sizes."
           code={`import React from 'react'
-import { Tabs } from '@edadma/petalui'
+import { Tabs, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="space-y-4">
@@ -307,7 +307,7 @@ export default App`}
           title="Disabled Tab"
           description="Disable specific tabs."
           code={`import React from 'react'
-import { Tabs } from '@edadma/petalui'
+import { Tabs, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Tabs>
@@ -337,7 +337,7 @@ export default App`}
             </Tabs.Panel>
           </Tabs>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

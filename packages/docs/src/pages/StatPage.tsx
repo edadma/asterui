@@ -1,4 +1,4 @@
-import { Stats, Button } from '@edadma/petalui'
+import { Stats, Button, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -65,7 +65,7 @@ export function StatPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Stat"
           description="Simple stat with title and value."
@@ -316,7 +316,7 @@ export default App`}
           title="With Actions"
           description="Adding buttons using actions prop."
           code={`import React from 'react'
-import { Stats, Button } from '@edadma/petalui'
+import { Stats, Button, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Stats className="shadow">
@@ -346,7 +346,7 @@ export default App`}
             />
           </Stats>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

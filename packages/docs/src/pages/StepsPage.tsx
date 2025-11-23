@@ -1,4 +1,4 @@
-import { Steps } from '@edadma/petalui'
+import { Steps, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -53,12 +53,12 @@ export function StepsPage() {
         <p className="text-base-content/70">Visual progress indicator showing sequential steps.</p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Steps"
           description="Horizontal step progression."
           code={`import React from 'react'
-import { Steps } from '@edadma/petalui'
+import { Steps, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Steps>
@@ -83,7 +83,7 @@ export default App`}
           title="Vertical Steps"
           description="Steps in vertical orientation."
           code={`import React from 'react'
-import { Steps } from '@edadma/petalui'
+import { Steps, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Steps vertical>
@@ -108,7 +108,7 @@ export default App`}
           title="Different Colors"
           description="Steps with various semantic colors."
           code={`import React from 'react'
-import { Steps } from '@edadma/petalui'
+import { Steps, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Steps>
@@ -133,7 +133,7 @@ export default App`}
           title="Custom Content"
           description="Custom indicators using dataContent."
           code={`import React from 'react'
-import { Steps } from '@edadma/petalui'
+import { Steps, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Steps>
@@ -162,7 +162,7 @@ export default App`}
           title="Responsive Layout"
           description="Vertical on mobile, horizontal on desktop."
           code={`import React from 'react'
-import { Steps } from '@edadma/petalui'
+import { Steps, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Steps className="steps-vertical lg:steps-horizontal">
@@ -182,7 +182,7 @@ export default App`}
             <Steps.Step>Receive Product</Steps.Step>
           </Steps>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

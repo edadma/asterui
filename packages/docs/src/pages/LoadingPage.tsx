@@ -1,4 +1,4 @@
-import { Loading } from '@edadma/petalui'
+import { Loading, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -49,7 +49,7 @@ export function LoadingPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
         title="Types"
         description="Different spinner animations to choose from."
@@ -166,7 +166,7 @@ export default App`}
         <Loading spinning={false} tip="Not spinning" />
         <Loading spinning={true} tip="Spinning" />
       </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

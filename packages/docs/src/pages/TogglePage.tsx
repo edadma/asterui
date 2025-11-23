@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Toggle, Form, Button, Modal, Space } from '@edadma/petalui'
+import { Toggle, Form, Button, Modal, Space, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -56,12 +56,12 @@ export function TogglePage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Toggle"
           description="Simple toggle with label."
           code={`import React from 'react'
-import { Toggle } from '@edadma/petalui'
+import { Toggle, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex items-center gap-2">
@@ -82,7 +82,7 @@ export default App`}
           title="Checked"
           description="Toggle in checked state."
           code={`import React from 'react'
-import { Toggle } from '@edadma/petalui'
+import { Toggle, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex items-center gap-2">
@@ -103,7 +103,7 @@ export default App`}
           title="Sizes"
           description="Five sizes: xs, sm, md, lg, and xl."
           code={`import React from 'react'
-import { Toggle } from '@edadma/petalui'
+import { Toggle, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <div className="flex items-center gap-4">
@@ -130,7 +130,7 @@ export default App`}
           title="Colors"
           description="Color variants for different themes."
           code={`import React from 'react'
-import { Toggle, Space } from '@edadma/petalui'
+import { Toggle, Space, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -203,7 +203,7 @@ export default App`}
           title="Disabled State"
           description="Non-interactive disabled toggle."
           code={`import React from 'react'
-import { Toggle, Space } from '@edadma/petalui'
+import { Toggle, Space, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -236,7 +236,7 @@ export default App`}
           title="In Form"
           description="Toggle working with Form validation."
           code={`import React from 'react'
-import { Form, Toggle, Button } from '@edadma/petalui'
+import { Form, Toggle, Button, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => {
   const handleSubmit = (values: any) => {
@@ -298,7 +298,7 @@ export default App`}
             </Form.Item>
           </Form>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

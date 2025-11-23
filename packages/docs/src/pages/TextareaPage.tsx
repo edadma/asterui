@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Textarea, Form, Button, Modal, Space } from '@edadma/petalui'
+import { Textarea, Form, Button, Modal, Space, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -68,12 +68,12 @@ export function TextareaPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Textarea"
           description="Simple textarea with placeholder."
           code={`import React from 'react'
-import { Textarea } from '@edadma/petalui'
+import { Textarea, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Textarea placeholder="Type your message here" />
@@ -88,7 +88,7 @@ export default App`}
           title="With Rows"
           description="Control height with rows attribute."
           code={`import React from 'react'
-import { Textarea } from '@edadma/petalui'
+import { Textarea, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Textarea rows={6} placeholder="Tall textarea" />
@@ -103,7 +103,7 @@ export default App`}
           title="Sizes"
           description="Five sizes: xs, sm, md, lg, and xl."
           code={`import React from 'react'
-import { Textarea, Space } from '@edadma/petalui'
+import { Textarea, Space, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -130,7 +130,7 @@ export default App`}
           title="Colors"
           description="Color variants for different states."
           code={`import React from 'react'
-import { Textarea, Space } from '@edadma/petalui'
+import { Textarea, Space, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -161,7 +161,7 @@ export default App`}
           title="Ghost Variant"
           description="Transparent background style."
           code={`import React from 'react'
-import { Textarea } from '@edadma/petalui'
+import { Textarea, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Textarea ghost placeholder="Ghost textarea" />
@@ -176,7 +176,7 @@ export default App`}
           title="Disabled State"
           description="Non-interactive disabled textarea."
           code={`import React from 'react'
-import { Textarea } from '@edadma/petalui'
+import { Textarea, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => (
   <Textarea disabled placeholder="Disabled textarea" />
@@ -191,7 +191,7 @@ export default App`}
           title="In Form"
           description="Textarea with form validation."
           code={`import React from 'react'
-import { Form, Textarea, Button } from '@edadma/petalui'
+import { Form, Textarea, Button, Masonry } from '@edadma/petalui'
 
 const App: React.FC = () => {
   const handleSubmit = (values: any) => {
@@ -243,7 +243,7 @@ export default App`}
             </Form.Item>
           </Form>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

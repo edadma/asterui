@@ -1,4 +1,4 @@
-import { Progress } from '@edadma/petalui'
+import { Progress, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -37,7 +37,7 @@ export function ProgressPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Progress"
           description="Simple progress bar with value."
@@ -167,7 +167,7 @@ export default App`}
             <Progress type="primary" value={75} className="w-full" />
           </div>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

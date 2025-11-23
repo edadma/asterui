@@ -1,4 +1,4 @@
-import { Alert, Button, Space } from '@edadma/petalui'
+import { Alert, Button, Space, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -55,7 +55,7 @@ export function AlertPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Alert"
           description="Simple alert with icon and text."
@@ -385,7 +385,7 @@ export default App`}
             </Alert>
           </Space>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

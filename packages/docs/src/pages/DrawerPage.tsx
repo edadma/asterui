@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Drawer, Button } from '@edadma/petalui'
+import { Drawer, Button, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -57,7 +57,7 @@ export function DrawerPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic"
           description="A basic drawer that slides in from the left."
@@ -176,7 +176,7 @@ export default App`}
             </div>
           </Drawer>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

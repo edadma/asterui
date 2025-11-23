@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Table, Button, Tag } from '@edadma/petalui'
+import { Table, Button, Tag, Masonry } from '@edadma/petalui'
 import type { ColumnType } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
@@ -256,13 +256,13 @@ export function TablePage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Table"
           description="Simple table with default pagination (10 rows per page)."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -296,7 +296,7 @@ export default App`}
           description="Use render functions for badges, buttons, and custom content."
           code={`import React from 'react'
 import { Table, Badge, Button } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -345,7 +345,7 @@ export default App`}
           description="Zebra striping for better readability."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -380,7 +380,7 @@ export default App`}
           description="Add borders for a more defined look."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -415,7 +415,7 @@ export default App`}
           description="Extra small size for dense data display."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -457,7 +457,7 @@ export default App`}
           description="Larger cells for better readability."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -492,7 +492,7 @@ export default App`}
           description="Control text alignment per column."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -535,7 +535,7 @@ export default App`}
           description="Set specific widths for columns."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -578,7 +578,7 @@ export default App`}
           description="Show loading spinner while data is being fetched."
           code={`import React, { useState } from 'react'
 import { Table, Button } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -626,7 +626,7 @@ export default App`}
           description="Table automatically handles empty data."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -655,7 +655,7 @@ export default App`}
           description="Handle row clicks with onRow callback."
           code={`import React, { useState } from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -718,7 +718,7 @@ export default App`}
           description="Disable row hover highlighting."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -758,7 +758,7 @@ export default App`}
           description="Control pagination page size."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -797,7 +797,7 @@ export default App`}
           description="Keep header visible while scrolling (don't use bordered prop)."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -847,7 +847,7 @@ export default App`}
           description="Click column headers to sort data in ascending or descending order."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -890,7 +890,7 @@ export default App`}
           description="Add filter dropdowns to columns for data filtering."
           code={`import React from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType, FilterConfig } from '@edadma/petalui'
+import type { ColumnType, FilterConfig  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -975,7 +975,7 @@ export default App`}
           description="Enable row selection with checkboxes."
           code={`import React, { useState } from 'react'
 import { Table } from '@edadma/petalui'
-import type { ColumnType, RowSelection } from '@edadma/petalui'
+import type { ColumnType, RowSelection  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -1046,7 +1046,7 @@ export default App`}
           description="Pin columns to left or right while scrolling horizontally. Requires explicit widths."
           code={`import React from 'react'
 import { Table, Badge } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface Transaction {
   id: string
@@ -1163,7 +1163,7 @@ export default App`}
           description="Combining sorting, filtering, and selection together."
           code={`import React from 'react'
 import { Table, Badge, Button } from '@edadma/petalui'
-import type { ColumnType } from '@edadma/petalui'
+import type { ColumnType  } from '@edadma/petalui'
 
 interface User {
   id: string
@@ -1230,7 +1230,7 @@ export default App`}
             pagination={{ pageSize: 5 }}
           />
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

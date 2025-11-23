@@ -1,4 +1,4 @@
-import { Timeline } from '@edadma/petalui'
+import { Timeline, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -100,12 +100,12 @@ export function TimelinePage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Timeline"
           description="Simple timeline with alternating content."
           code={`import React from 'react'
-import { Timeline } from '@edadma/petalui'
+import { Timeline, Masonry } from '@edadma/petalui'
 
 const CheckIcon = () => (
   <svg
@@ -151,7 +151,7 @@ export default App`}
           title="Vertical Timeline"
           description="Stack items vertically."
           code={`import React from 'react'
-import { Timeline } from '@edadma/petalui'
+import { Timeline, Masonry } from '@edadma/petalui'
 
 const CheckIcon = () => (
   <svg
@@ -258,7 +258,7 @@ export default App`}
           title="Compact Timeline"
           description="All content on one side."
           code={`import React from 'react'
-import { Timeline } from '@edadma/petalui'
+import { Timeline, Masonry } from '@edadma/petalui'
 
 const CheckIcon = () => (
   <svg
@@ -345,7 +345,7 @@ export default App`}
             />
           </Timeline>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

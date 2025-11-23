@@ -1,4 +1,4 @@
-import { Join, Button, Input, Select } from '@edadma/petalui'
+import { Join, Button, Input, Select, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -30,7 +30,7 @@ export function JoinPage() {
         <p className="text-base-content/70">Group elements together with shared borders.</p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Join"
           description="Group buttons together horizontally."
@@ -176,7 +176,7 @@ export default App`}
             <Button className="rounded-r-full">Button</Button>
           </Join>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>

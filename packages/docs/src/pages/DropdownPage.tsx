@@ -1,4 +1,4 @@
-import { Dropdown, Button, notification } from '@edadma/petalui'
+import { Dropdown, Button, notification, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -114,7 +114,7 @@ export function DropdownPage() {
         </p>
       </div>
 
-      <div className="columns-1 lg:columns-2 gap-x-4">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Basic Dropdown"
           description="Simple dropdown with menu items."
@@ -640,7 +640,7 @@ export default App`}
             </Dropdown.Menu>
           </Dropdown>
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">API</h2>
