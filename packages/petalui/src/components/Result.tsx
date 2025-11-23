@@ -99,7 +99,7 @@ export const Result: React.FC<ResultProps> = ({
 
   return (
     <div
-      className={`flex flex-col items-center justify-center text-center p-8 ${className}`}
+      className={`w-full flex flex-col items-center justify-center text-center p-8 ${className}`}
       style={style}
     >
       {displayIcon && <div className="mb-6">{displayIcon}</div>}
