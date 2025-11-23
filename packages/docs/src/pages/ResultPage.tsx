@@ -1,4 +1,4 @@
-import { Result, Button, Space } from '@edadma/petalui'
+import { Result, Button, Space, Masonry } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -57,7 +57,7 @@ export default function ResultPage() {
         </p>
       </div>
 
-      <div className="space-y-6">
+      <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Success Result"
           code={`<Result
@@ -184,7 +184,7 @@ export default function ResultPage() {
             extra={<Button color="primary">Refresh Page</Button>}
           />
         </ExampleSection>
-      </div>
+      </Masonry>
 
       <div>
         <h2 className="text-2xl font-bold mb-4">API</h2>
