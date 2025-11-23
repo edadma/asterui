@@ -39,12 +39,14 @@ import { NavbarPage } from './pages/NavbarPage'
 import { NotificationPage } from './pages/NotificationPage'
 import { PaginationPage } from './pages/PaginationPage'
 import { PopconfirmPage } from './pages/PopconfirmPage'
+import PopoverPage from './pages/PopoverPage'
 import { ProgressPage } from './pages/ProgressPage'
 import { QRCodePage } from './pages/QRCodePage'
 import { RadioPage } from './pages/RadioPage'
 import { RadialProgressPage } from './pages/RadialProgressPage'
 import { RangePage } from './pages/RangePage'
 import { RatingPage } from './pages/RatingPage'
+import ResultPage from './pages/ResultPage'
 import { SelectPage } from './pages/SelectPage'
 import { SkeletonPage } from './pages/SkeletonPage'
 import { SpacePage } from './pages/SpacePage'
@@ -59,6 +61,7 @@ import { TimelinePage } from './pages/TimelinePage'
 import { TogglePage } from './pages/TogglePage'
 import { TooltipPage } from './pages/TooltipPage'
 import { TypographyPage } from './pages/TypographyPage'
+import UploadPage from './pages/UploadPage'
 
 const THEMES = [
   'light',
@@ -186,6 +189,9 @@ function AppContent() {
               <Menu.Item active={isActive('/toggle')} onClick={() => navigate('/toggle')}>
                 Toggle
               </Menu.Item>
+              <Menu.Item active={isActive('/upload')} onClick={() => navigate('/upload')}>
+                Upload
+              </Menu.Item>
 
               <Menu.Title>Data Display</Menu.Title>
               <Menu.Item active={isActive('/avatar')} onClick={() => navigate('/avatar')}>
@@ -302,11 +308,17 @@ function AppContent() {
               <Menu.Item active={isActive('/popconfirm')} onClick={() => navigate('/popconfirm')}>
                 Popconfirm
               </Menu.Item>
+              <Menu.Item active={isActive('/popover')} onClick={() => navigate('/popover')}>
+                Popover
+              </Menu.Item>
               <Menu.Item active={isActive('/progress')} onClick={() => navigate('/progress')}>
                 Progress
               </Menu.Item>
               <Menu.Item active={isActive('/radial-progress')} onClick={() => navigate('/radial-progress')}>
                 Radial Progress
+              </Menu.Item>
+              <Menu.Item active={isActive('/result')} onClick={() => navigate('/result')}>
+                Result
               </Menu.Item>
               <Menu.Item active={isActive('/skeleton')} onClick={() => navigate('/skeleton')}>
                 Skeleton
@@ -361,12 +373,14 @@ function AppContent() {
               <Route path="/notification" element={<NotificationPage />} />
               <Route path="/pagination" element={<PaginationPage />} />
               <Route path="/popconfirm" element={<PopconfirmPage />} />
+              <Route path="/popover" element={<PopoverPage />} />
               <Route path="/progress" element={<ProgressPage />} />
               <Route path="/qrcode" element={<QRCodePage />} />
               <Route path="/radio" element={<RadioPage />} />
               <Route path="/radial-progress" element={<RadialProgressPage />} />
               <Route path="/range" element={<RangePage />} />
               <Route path="/rating" element={<RatingPage />} />
+              <Route path="/result" element={<ResultPage />} />
               <Route path="/select" element={<SelectPage />} />
               <Route path="/skeleton" element={<SkeletonPage />} />
               <Route path="/space" element={<SpacePage />} />
@@ -382,6 +396,7 @@ function AppContent() {
               <Route path="/toggle" element={<TogglePage />} />
               <Route path="/tooltip" element={<TooltipPage />} />
               <Route path="/typography" element={<TypographyPage />} />
+              <Route path="/upload" element={<UploadPage />} />
             </Routes>
           </div>
         </main>

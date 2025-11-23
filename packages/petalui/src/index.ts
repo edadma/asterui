@@ -115,6 +115,9 @@ export type { PaginationProps } from './components/Pagination'
 export { Popconfirm } from './components/Popconfirm'
 export type { PopconfirmProps } from './components/Popconfirm'
 
+export { Popover } from './components/Popover'
+export type { PopoverProps, PopoverPlacement, PopoverTrigger } from './components/Popover'
+
 export { Progress } from './components/Progress'
 export type { ProgressProps } from './components/Progress'
 
@@ -132,6 +135,9 @@ export type { RangeProps } from './components/Range'
 
 export { Rating } from './components/Rating'
 export type { RatingProps, RatingItemProps } from './components/Rating'
+
+export { Result } from './components/Result'
+export type { ResultProps, ResultStatus } from './components/Result'
 
 export { Select } from './components/Select'
 export type { SelectProps } from './components/Select'
@@ -185,3 +191,6 @@ export type {
   TypographySize,
   TitleLevel,
 } from './components/Typography'
+
+export { Upload } from './components/Upload'
+export type { UploadProps, UploadFile } from './components/Upload'
