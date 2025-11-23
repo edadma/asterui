@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Table, Button, Badge } from '@edadma/petalui'
+import { Table, Button, Tag } from '@edadma/petalui'
 import type { ColumnType } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
@@ -231,7 +231,7 @@ export function TablePage() {
       dataIndex: 'status',
       align: 'center',
       render: (value: string) => (
-        <Badge type={value === 'active' ? 'success' : 'ghost'} content={value} size="sm" />
+        <Tag color={value === 'active' ? 'success' : 'ghost'} size="sm">{value}</Tag>
       ),
     },
     {
@@ -317,7 +317,7 @@ const columns: ColumnType<User>[] = [
     title: 'Status',
     dataIndex: 'status',
     render: (value: string) => (
-      <Badge type={value === 'active' ? 'success' : 'ghost'} content={value} />
+      <Tag color={value === 'active' ? 'success' : 'ghost'}>{value}</Tag>
     ),
   },
   {
@@ -1142,11 +1142,12 @@ export default App`}
                   width: 120,
                   fixed: 'right',
                   render: (value: string) => (
-                    <Badge
-                      type={value === 'active' ? 'success' : 'ghost'}
-                      content={value}
+                    <Tag
+                      color={value === 'active' ? 'success' : 'ghost'}
                       size="sm"
-                    />
+                    >
+                      {value}
+                    </Tag>
                   ),
                 },
               ]}
@@ -1191,7 +1192,7 @@ const columns: ColumnType<User>[] = [
     dataIndex: 'status',
     align: 'center',
     render: (value: string) => (
-      <Badge type={value === 'active' ? 'success' : 'ghost'} content={value} size="sm" />
+      <Tag color={value === 'active' ? 'success' : 'ghost'} size="sm">{value}</Tag>
     ),
   },
   {

@@ -1,36 +1,144 @@
 import React from 'react'
 
-export interface AvatarGroupProps {
-  children: React.ReactNode
-  className?: string
-}
+export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type AvatarShape = 'circle' | 'square'
+export type AvatarStatus = 'online' | 'offline'
 
 export interface AvatarProps {
-  children: React.ReactNode
+  src?: string
+  alt?: string
+  icon?: React.ReactNode
+  children?: React.ReactNode
+  size?: AvatarSize
+  shape?: AvatarShape
+  status?: AvatarStatus
   className?: string
+  style?: React.CSSProperties
+  // Legacy props for backwards compatibility
   online?: boolean
   offline?: boolean
   placeholder?: boolean
 }
 
-function AvatarGroupRoot({ children, className = '' }: AvatarGroupProps) {
-  return <div className={`avatar-group -space-x-6 rtl:space-x-reverse ${className}`}>{children}</div>
+export interface AvatarGroupProps {
+  children: React.ReactNode
+  max?: number
+  size?: AvatarSize
+  className?: string
+  style?: React.CSSProperties
 }
 
-function AvatarRoot({ children, className = '', online = false, offline = false, placeholder = false }: AvatarProps) {
-  const classes = [
+function AvatarRoot({
+  src,
+  alt = 'avatar',
+  icon,
+  children,
+  size = 'md',
+  shape = 'circle',
+  status,
+  className = '',
+  style,
+  // Legacy props
+  online,
+  offline,
+  placeholder,
+}: AvatarProps) {
+  const sizeClasses: Record<AvatarSize, string> = {
+    xs: 'w-8',
+    sm: 'w-12',
+    md: 'w-16',
+    lg: 'w-20',
+    xl: 'w-24',
+  }
+
+  const shapeClasses: Record<AvatarShape, string> = {
+    circle: 'rounded-full',
+    square: 'rounded',
+  }
+
+  // Handle legacy boolean props
+  const resolvedStatus = status || (online ? 'online' : offline ? 'offline' : undefined)
+  const isPlaceholder = placeholder || (!src && (icon || children))
+
+  const avatarClasses = [
     'avatar',
-    online && 'online',
-    offline && 'offline',
-    placeholder && 'placeholder',
+    resolvedStatus === 'online' && 'avatar-online',
+    resolvedStatus === 'offline' && 'avatar-offline',
+    isPlaceholder && 'avatar-placeholder',
     className,
   ]
     .filter(Boolean)
     .join(' ')
 
-  return <div className={classes}>{children}</div>
+  const innerClasses = [sizeClasses[size], shapeClasses[shape]].filter(Boolean).join(' ')
+
+  // Image avatar
+  if (src) {
+    return (
+      <div className={avatarClasses} style={style}>
+        <div className={innerClasses}>
+          <img src={src} alt={alt} />
+        </div>
+      </div>
+    )
+  }
+
+  // Icon or text avatar (placeholder)
+  const content = icon || children
+
+  if (content) {
+    return (
+      <div className={avatarClasses} style={style}>
+        <div className={innerClasses}>
+          <div className="bg-neutral text-neutral-content flex items-center justify-center w-full h-full">
+            {content}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Empty avatar
+  return (
+    <div className={avatarClasses} style={style}>
+      <div className={innerClasses}>
+        <div className="bg-neutral-focus text-neutral-content w-full h-full" />
+      </div>
+    </div>
+  )
 }
 
-export const AvatarGroup = AvatarGroupRoot
+function AvatarGroup({ children, max, size, className = '', style }: AvatarGroupProps) {
+  const avatars = React.Children.toArray(children)
+  const displayAvatars = max ? avatars.slice(0, max) : avatars
+  const remainingCount = max && avatars.length > max ? avatars.length - max : 0
 
-export const Avatar = AvatarRoot
+  const sizeClasses: Record<AvatarSize, string> = {
+    xs: 'w-8',
+    sm: 'w-12',
+    md: 'w-16',
+    lg: 'w-20',
+    xl: 'w-24',
+  }
+
+  return (
+    <div className={`avatar-group -space-x-6 rtl:space-x-reverse ${className}`} style={style}>
+      {displayAvatars}
+      {remainingCount > 0 && (
+        <div className="avatar placeholder">
+          <div className={`bg-neutral text-neutral-content rounded-full ${size ? sizeClasses[size] : 'w-12'}`}>
+            <span>+{remainingCount}</span>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export const Avatar = Object.assign(AvatarRoot, {
+  Group: AvatarGroup,
+})
+
+export { AvatarGroup }
+
+export default Avatar

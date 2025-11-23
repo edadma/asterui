@@ -1,4 +1,4 @@
-import { Card, Button, Badge, Space } from '@edadma/petalui'
+import { Card, Button, Tag, Space } from '@edadma/petalui'
 import { ExampleSection } from '../components/ExampleSection'
 import { ApiTable } from '../components/ApiTable'
 import type { ApiProperty } from '../components/ApiTable'
@@ -299,7 +299,7 @@ const App: React.FC = () => (
     title={
       <>
         New Product
-        <Badge type="primary" content="NEW" size="sm" />
+        <Tag color="primary" size="sm">NEW</Tag>
       </>
     }
     actions={<Button type="primary">Learn More</Button>}
@@ -316,7 +316,7 @@ export default App`}
             title={
               <>
                 New Product
-                <Badge type="primary" content="NEW" size="sm" />
+                <Tag color="primary" size="sm">NEW</Tag>
               </>
             }
             actions={<Button type="primary">Learn More</Button>}

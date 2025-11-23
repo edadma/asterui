@@ -5,6 +5,8 @@ import { AutocompletePage } from './pages/AutocompletePage'
 import { AvatarPage } from './pages/AvatarPage'
 import { BadgePage } from './pages/BadgePage'
 import { BreadcrumbPage } from './pages/BreadcrumbPage'
+import { IndicatorPage } from './pages/IndicatorPage'
+import { TagPage } from './pages/TagPage'
 import { ButtonPage } from './pages/ButtonPage'
 import { CardPage } from './pages/CardPage'
 import { CarouselPage } from './pages/CarouselPage'
@@ -12,6 +14,7 @@ import { ChatPage } from './pages/ChatPage'
 import { CheckboxPage } from './pages/CheckboxPage'
 import { CollapsePage } from './pages/CollapsePage'
 import { DatePickerPage } from './pages/DatePickerPage'
+import { DescriptionsPage } from './pages/DescriptionsPage'
 import { DividerPage } from './pages/DividerPage'
 import { DrawerPage } from './pages/DrawerPage'
 import { DropdownPage } from './pages/DropdownPage'
@@ -29,6 +32,7 @@ import { LabelPage } from './pages/LabelPage'
 import { LinkPage } from './pages/LinkPage'
 import { ListPage } from './pages/ListPage'
 import { LoadingPage } from './pages/LoadingPage'
+import { MasonryPage } from './pages/MasonryPage'
 import { MenuPage } from './pages/MenuPage'
 import { ModalPage } from './pages/ModalPage'
 import { NavbarPage } from './pages/NavbarPage'
@@ -36,6 +40,7 @@ import { NotificationPage } from './pages/NotificationPage'
 import { PaginationPage } from './pages/PaginationPage'
 import { PopconfirmPage } from './pages/PopconfirmPage'
 import { ProgressPage } from './pages/ProgressPage'
+import { QRCodePage } from './pages/QRCodePage'
 import { RadioPage } from './pages/RadioPage'
 import { RadialProgressPage } from './pages/RadialProgressPage'
 import { RangePage } from './pages/RangePage'
@@ -53,6 +58,7 @@ import { TimePickerPage } from './pages/TimePickerPage'
 import { TimelinePage } from './pages/TimelinePage'
 import { TogglePage } from './pages/TogglePage'
 import { TooltipPage } from './pages/TooltipPage'
+import { TypographyPage } from './pages/TypographyPage'
 
 const THEMES = [
   'light',
@@ -118,6 +124,11 @@ function AppContent() {
         <aside className="w-44 bg-base-100 border-r border-base-content/10 overflow-y-auto flex-shrink-0">
           <div className="p-4">
             <Menu>
+              <Menu.Title>General</Menu.Title>
+              <Menu.Item active={isActive('/typography')} onClick={() => navigate('/typography')}>
+                Typography
+              </Menu.Item>
+
               <Menu.Title>Actions</Menu.Title>
               <Menu.Item active={isActive('/button')} onClick={() => navigate('/button')}>
                 Button
@@ -195,6 +206,9 @@ function AppContent() {
               <Menu.Item active={isActive('/collapse')} onClick={() => navigate('/collapse')}>
                 Collapse
               </Menu.Item>
+              <Menu.Item active={isActive('/descriptions')} onClick={() => navigate('/descriptions')}>
+                Descriptions
+              </Menu.Item>
               <Menu.Item active={isActive('/empty')} onClick={() => navigate('/empty')}>
                 Empty
               </Menu.Item>
@@ -207,6 +221,9 @@ function AppContent() {
               <Menu.Item active={isActive('/pagination')} onClick={() => navigate('/pagination')}>
                 Pagination
               </Menu.Item>
+              <Menu.Item active={isActive('/qrcode')} onClick={() => navigate('/qrcode')}>
+                QR Code
+              </Menu.Item>
               <Menu.Item active={isActive('/stat')} onClick={() => navigate('/stat')}>
                 Stats
               </Menu.Item>
@@ -215,6 +232,9 @@ function AppContent() {
               </Menu.Item>
               <Menu.Item active={isActive('/table')} onClick={() => navigate('/table')}>
                 Table
+              </Menu.Item>
+              <Menu.Item active={isActive('/tag')} onClick={() => navigate('/tag')}>
+                Tag
               </Menu.Item>
               <Menu.Item active={isActive('/timeline')} onClick={() => navigate('/timeline')}>
                 Timeline
@@ -236,8 +256,14 @@ function AppContent() {
               <Menu.Item active={isActive('/hero')} onClick={() => navigate('/hero')}>
                 Hero
               </Menu.Item>
+              <Menu.Item active={isActive('/indicator')} onClick={() => navigate('/indicator')}>
+                Indicator
+              </Menu.Item>
               <Menu.Item active={isActive('/join')} onClick={() => navigate('/join')}>
                 Join
+              </Menu.Item>
+              <Menu.Item active={isActive('/masonry')} onClick={() => navigate('/masonry')}>
+                Masonry
               </Menu.Item>
               <Menu.Item active={isActive('/space')} onClick={() => navigate('/space')}>
                 Space
@@ -309,6 +335,7 @@ function AppContent() {
               <Route path="/checkbox" element={<CheckboxPage />} />
               <Route path="/collapse" element={<CollapsePage />} />
               <Route path="/datepicker" element={<DatePickerPage />} />
+              <Route path="/descriptions" element={<DescriptionsPage />} />
               <Route path="/divider" element={<DividerPage />} />
               <Route path="/drawer" element={<DrawerPage />} />
               <Route path="/dropdown" element={<DropdownPage />} />
@@ -319,6 +346,7 @@ function AppContent() {
               <Route path="/form" element={<FormPage />} />
               <Route path="/grid" element={<GridPage />} />
               <Route path="/hero" element={<HeroPage />} />
+              <Route path="/indicator" element={<IndicatorPage />} />
               <Route path="/image" element={<ImagePage />} />
               <Route path="/input" element={<InputPage />} />
               <Route path="/join" element={<JoinPage />} />
@@ -326,6 +354,7 @@ function AppContent() {
               <Route path="/link" element={<LinkPage />} />
               <Route path="/list" element={<ListPage />} />
               <Route path="/loading" element={<LoadingPage />} />
+              <Route path="/masonry" element={<MasonryPage />} />
               <Route path="/menu" element={<MenuPage />} />
               <Route path="/modal" element={<ModalPage />} />
               <Route path="/navbar" element={<NavbarPage />} />
@@ -333,6 +362,7 @@ function AppContent() {
               <Route path="/pagination" element={<PaginationPage />} />
               <Route path="/popconfirm" element={<PopconfirmPage />} />
               <Route path="/progress" element={<ProgressPage />} />
+              <Route path="/qrcode" element={<QRCodePage />} />
               <Route path="/radio" element={<RadioPage />} />
               <Route path="/radial-progress" element={<RadialProgressPage />} />
               <Route path="/range" element={<RangePage />} />
@@ -344,12 +374,14 @@ function AppContent() {
               <Route path="/steps" element={<StepsPage />} />
               <Route path="/table" element={<TablePage />} />
               <Route path="/tabs" element={<TabsPage />} />
+              <Route path="/tag" element={<TagPage />} />
               <Route path="/textarea" element={<TextareaPage />} />
               <Route path="/theme-controller" element={<ThemeControllerPage />} />
               <Route path="/timepicker" element={<TimePickerPage />} />
               <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/toggle" element={<TogglePage />} />
               <Route path="/tooltip" element={<TooltipPage />} />
+              <Route path="/typography" element={<TypographyPage />} />
             </Routes>
           </div>
         </main>

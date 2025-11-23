@@ -5,10 +5,10 @@ export { Autocomplete } from './components/Autocomplete'
 export type { AutocompleteProps, AutocompleteOption } from './components/Autocomplete'
 
 export { Avatar, AvatarGroup } from './components/Avatar'
-export type { AvatarProps, AvatarGroupProps } from './components/Avatar'
+export type { AvatarProps, AvatarGroupProps, AvatarSize, AvatarShape, AvatarStatus } from './components/Avatar'
 
 export { Badge } from './components/Badge'
-export type { BadgeProps } from './components/Badge'
+export type { BadgeProps, BadgePosition, BadgeStatus } from './components/Badge'
 
 export { Breadcrumb } from './components/Breadcrumb'
 export type { BreadcrumbProps, BreadcrumbItemProps } from './components/Breadcrumb'
@@ -26,7 +26,7 @@ export { CalendarOld } from './components/CalendarOld'
 export type { CalendarOldProps, CalendarOldEvent } from './components/CalendarOld'
 
 export { Card } from './components/Card'
-export type { CardProps } from './components/Card'
+export type { CardProps, CardGridProps } from './components/Card'
 
 export { Carousel } from './components/Carousel'
 export type { CarouselProps, CarouselItemProps } from './components/Carousel'
@@ -36,6 +36,9 @@ export type { CollapseProps, CollapseTitleProps, CollapseContentProps } from './
 
 export { DatePicker } from './components/DatePicker'
 export type { DatePickerProps } from './components/DatePicker'
+
+export { Descriptions } from './components/Descriptions'
+export type { DescriptionsProps, DescriptionsItemProps, DescriptionsSize, DescriptionsLayout } from './components/Descriptions'
 
 export { Divider } from './components/Divider'
 export type { DividerProps } from './components/Divider'
@@ -64,6 +67,9 @@ export type { HeroProps } from './components/Hero'
 export { Image } from './components/Image'
 export type { ImageProps } from './components/Image'
 
+export { Indicator } from './components/Indicator'
+export type { IndicatorProps, IndicatorPosition } from './components/Indicator'
+
 export { Dropdown } from './components/Dropdown'
 export type { DropdownProps, DropdownTriggerProps, DropdownMenuProps, DropdownItemProps, DropdownDividerProps } from './components/Dropdown'
 
@@ -88,6 +94,9 @@ export type { ListProps, ListRowProps } from './components/List'
 export { Loading } from './components/Loading'
 export type { LoadingProps } from './components/Loading'
 
+export { Masonry } from './components/Masonry'
+export type { MasonryProps } from './components/Masonry'
+
 export { Menu } from './components/Menu'
 export type { MenuProps, MenuItemProps, MenuTitleProps } from './components/Menu'
 
@@ -108,6 +117,9 @@ export type { PopconfirmProps } from './components/Popconfirm'
 
 export { Progress } from './components/Progress'
 export type { ProgressProps } from './components/Progress'
+
+export { QRCode } from './components/QRCode'
+export type { QRCodeProps, QRCodeErrorLevel, QRCodeType, QRCodeStatus } from './components/QRCode'
 
 export { Radio } from './components/Radio'
 export type { RadioProps, RadioGroupProps } from './components/Radio'
@@ -145,6 +157,9 @@ export type { TabsProps, TabPanelProps } from './components/Tabs'
 export { Textarea } from './components/Textarea'
 export type { TextareaProps } from './components/Textarea'
 
+export { Tag, CheckableTag } from './components/Tag'
+export type { TagProps, CheckableTagProps } from './components/Tag'
+
 export { ThemeController } from './components/ThemeController'
 export type { ThemeControllerSwapProps, ThemeControllerDropdownProps } from './components/ThemeController'
 
@@ -159,3 +174,14 @@ export type { ToggleProps } from './components/Toggle'
 
 export { Tooltip } from './components/Tooltip'
 export type { TooltipProps } from './components/Tooltip'
+
+export { Typography } from './components/Typography'
+export type {
+  TypographyProps,
+  TitleProps,
+  ParagraphProps,
+  TextProps,
+  TypographyLinkProps,
+  TypographySize,
+  TitleLevel,
+} from './components/Typography'
