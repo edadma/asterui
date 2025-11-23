@@ -151,9 +151,16 @@ export default function UploadPage() {
       <div className="space-y-6">
         <ExampleSection
           title="Basic Usage"
-          code={`<Upload>
-  <Button>Click to Upload</Button>
-</Upload>`}
+          code={`import React from 'react'
+import { Upload, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Upload>
+    <Button>Click to Upload</Button>
+  </Upload>
+)
+
+export default App`}
         >
           <Upload>
             <Button>Click to Upload</Button>
@@ -162,7 +169,12 @@ export default function UploadPage() {
 
         <ExampleSection
           title="Default Drag and Drop"
-          code={`<Upload />`}
+          code={`import React from 'react'
+import { Upload } from '@edadma/petalui'
+
+const App: React.FC = () => <Upload />
+
+export default App`}
         >
           <Upload />
         </ExampleSection>
@@ -170,9 +182,16 @@ export default function UploadPage() {
         <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
           <ExampleSection
             title="Multiple Files"
-            code={`<Upload multiple>
-  <Button>Upload Multiple Files</Button>
-</Upload>`}
+            code={`import React from 'react'
+import { Upload, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Upload multiple>
+    <Button>Upload Multiple Files</Button>
+  </Upload>
+)
+
+export default App`}
           >
             <Upload multiple>
               <Button>Upload Multiple Files</Button>
@@ -181,9 +200,16 @@ export default function UploadPage() {
 
           <ExampleSection
             title="Accept Specific Types"
-            code={`<Upload accept="image/*">
-  <Button>Upload Images Only</Button>
-</Upload>`}
+            code={`import React from 'react'
+import { Upload, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Upload accept="image/*">
+    <Button>Upload Images Only</Button>
+  </Upload>
+)
+
+export default App`}
           >
             <Upload accept="image/*">
               <Button>Upload Images Only</Button>
@@ -192,9 +218,16 @@ export default function UploadPage() {
 
           <ExampleSection
             title="Max Count"
-            code={`<Upload maxCount={3}>
-  <Button>Upload (Max 3 Files)</Button>
-</Upload>`}
+            code={`import React from 'react'
+import { Upload, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Upload maxCount={3}>
+    <Button>Upload (Max 3 Files)</Button>
+  </Upload>
+)
+
+export default App`}
           >
             <Upload maxCount={3}>
               <Button>Upload (Max 3 Files)</Button>
@@ -203,9 +236,16 @@ export default function UploadPage() {
 
           <ExampleSection
             title="Max Size"
-            code={`<Upload maxSize={1024 * 1024}>
-  <Button>Upload (Max 1MB)</Button>
-</Upload>`}
+            code={`import React from 'react'
+import { Upload, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Upload maxSize={1024 * 1024}>
+    <Button>Upload (Max 1MB)</Button>
+  </Upload>
+)
+
+export default App`}
           >
             <Upload maxSize={1024 * 1024}>
               <Button>Upload (Max 1MB)</Button>
@@ -215,9 +255,16 @@ export default function UploadPage() {
 
         <ExampleSection
           title="Picture List"
-          code={`<Upload listType="picture" multiple>
-  <Button>Upload Pictures</Button>
-</Upload>`}
+          code={`import React from 'react'
+import { Upload, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Upload listType="picture" multiple>
+    <Button>Upload Pictures</Button>
+  </Upload>
+)
+
+export default App`}
         >
           <Upload listType="picture" multiple>
             <Button>Upload Pictures</Button>
@@ -226,21 +273,36 @@ export default function UploadPage() {
 
         <ExampleSection
           title="Picture Card List"
-          code={`<Upload listType="picture-card" multiple />`}
+          code={`import React from 'react'
+import { Upload } from '@edadma/petalui'
+
+const App: React.FC = () => <Upload listType="picture-card" multiple />
+
+export default App`}
         >
           <Upload listType="picture-card" multiple />
         </ExampleSection>
 
         <ExampleSection
           title="Controlled Mode"
-          code={`const [fileList, setFileList] = useState<UploadFile[]>([])
+          code={`import React, { useState } from 'react'
+import { Upload, Button } from '@edadma/petalui'
+import type { UploadFile } from '@edadma/petalui'
 
-<Upload
-  fileList={fileList}
-  onChange={(info) => setFileList(info.fileList)}
->
-  <Button>Upload</Button>
-</Upload>`}
+const App: React.FC = () => {
+  const [fileList, setFileList] = useState<UploadFile[]>([])
+
+  return (
+    <Upload
+      fileList={fileList}
+      onChange={(info) => setFileList(info.fileList)}
+    >
+      <Button>Upload</Button>
+    </Upload>
+  )
+}
+
+export default App`}
         >
           <Upload
             fileList={fileList}
@@ -252,14 +314,28 @@ export default function UploadPage() {
 
         <ExampleSection
           title="Custom Request"
-          code={`<Upload
-  customRequest={({ file, onProgress, onSuccess, onError }) => {
-    // Custom upload logic
-    setTimeout(() => onSuccess({ url: '...' }), 1000)
-  }}
->
-  <Button>Custom Upload</Button>
-</Upload>`}
+          code={`import React from 'react'
+import { Upload, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Upload
+    customRequest={({ file, onProgress, onSuccess }) => {
+      let progress = 0
+      const interval = setInterval(() => {
+        progress += 10
+        onProgress(progress)
+        if (progress >= 100) {
+          clearInterval(interval)
+          onSuccess({ url: '/uploads/' + file.name })
+        }
+      }, 100)
+    }}
+  >
+    <Button>Custom Upload</Button>
+  </Upload>
+)
+
+export default App`}
         >
           <Upload
             customRequest={({ file, onProgress, onSuccess }) => {
@@ -281,9 +357,16 @@ export default function UploadPage() {
 
         <ExampleSection
           title="Disabled"
-          code={`<Upload disabled>
-  <Button disabled>Upload Disabled</Button>
-</Upload>`}
+          code={`import React from 'react'
+import { Upload, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Upload disabled>
+    <Button disabled>Upload Disabled</Button>
+  </Upload>
+)
+
+export default App`}
         >
           <Upload disabled>
             <Button disabled>Upload Disabled</Button>

@@ -60,17 +60,24 @@ export default function ResultPage() {
       <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
         <ExampleSection
           title="Success Result"
-          code={`<Result
-  status="success"
-  title="Payment Successful"
-  subTitle="Your order has been confirmed..."
-  extra={
-    <Space>
-      <Button color="primary">View Order</Button>
-      <Button>Continue Shopping</Button>
-    </Space>
-  }
-/>`}
+          code={`import React from 'react'
+import { Result, Button, Space } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Result
+    status="success"
+    title="Payment Successful"
+    subTitle="Your order has been confirmed and will be shipped within 2 business days."
+    extra={
+      <Space>
+        <Button color="primary">View Order</Button>
+        <Button>Continue Shopping</Button>
+      </Space>
+    }
+  />
+)
+
+export default App`}
         >
           <Result
             status="success"
@@ -87,12 +94,19 @@ export default function ResultPage() {
 
         <ExampleSection
           title="Error Result"
-          code={`<Result
-  status="error"
-  title="Submission Failed"
-  subTitle="Please check your information..."
-  extra={<Button color="error">Try Again</Button>}
-/>`}
+          code={`import React from 'react'
+import { Result, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Result
+    status="error"
+    title="Submission Failed"
+    subTitle="Please check your information and try again."
+    extra={<Button color="error">Try Again</Button>}
+  />
+)
+
+export default App`}
         >
           <Result
             status="error"
@@ -104,11 +118,18 @@ export default function ResultPage() {
 
         <ExampleSection
           title="Info Result"
-          code={`<Result
-  status="info"
-  title="Verification Required"
-  subTitle="Please check your email..."
-/>`}
+          code={`import React from 'react'
+import { Result } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Result
+    status="info"
+    title="Verification Required"
+    subTitle="Please check your email to verify your account."
+  />
+)
+
+export default App`}
         >
           <Result
             status="info"
@@ -119,12 +140,19 @@ export default function ResultPage() {
 
         <ExampleSection
           title="Warning Result"
-          code={`<Result
-  status="warning"
-  title="Account Suspended"
-  subTitle="Your account has been suspended..."
-  extra={<Button color="warning">Contact Support</Button>}
-/>`}
+          code={`import React from 'react'
+import { Result, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Result
+    status="warning"
+    title="Account Suspended"
+    subTitle="Your account has been suspended due to unusual activity."
+    extra={<Button color="warning">Contact Support</Button>}
+  />
+)
+
+export default App`}
         >
           <Result
             status="warning"
@@ -136,12 +164,19 @@ export default function ResultPage() {
 
         <ExampleSection
           title="404 Page Not Found"
-          code={`<Result
-  status="404"
-  title="Page Not Found"
-  subTitle="The page you are looking for..."
-  extra={<Button color="primary">Back Home</Button>}
-/>`}
+          code={`import React from 'react'
+import { Result, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Result
+    status="404"
+    title="Page Not Found"
+    subTitle="The page you are looking for does not exist."
+    extra={<Button color="primary">Back Home</Button>}
+  />
+)
+
+export default App`}
         >
           <Result
             status="404"
@@ -153,12 +188,19 @@ export default function ResultPage() {
 
         <ExampleSection
           title="403 Forbidden"
-          code={`<Result
-  status="403"
-  title="Access Denied"
-  subTitle="You don't have permission..."
-  extra={<Button>Request Access</Button>}
-/>`}
+          code={`import React from 'react'
+import { Result, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Result
+    status="403"
+    title="Access Denied"
+    subTitle="You don't have permission to access this resource."
+    extra={<Button>Request Access</Button>}
+  />
+)
+
+export default App`}
         >
           <Result
             status="403"
@@ -170,12 +212,19 @@ export default function ResultPage() {
 
         <ExampleSection
           title="500 Server Error"
-          code={`<Result
-  status="500"
-  title="Server Error"
-  subTitle="Something went wrong..."
-  extra={<Button color="primary">Refresh Page</Button>}
-/>`}
+          code={`import React from 'react'
+import { Result, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Result
+    status="500"
+    title="Server Error"
+    subTitle="Something went wrong on our end. Please try again later."
+    extra={<Button color="primary">Refresh Page</Button>}
+  />
+)
+
+export default App`}
         >
           <Result
             status="500"

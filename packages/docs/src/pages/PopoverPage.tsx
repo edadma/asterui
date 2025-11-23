@@ -66,9 +66,16 @@ export default function PopoverPage() {
       <div className="space-y-6">
         <ExampleSection
           title="Basic Usage"
-          code={`<Popover content="This is a simple popover">
-  <Button>Hover me</Button>
-</Popover>`}
+          code={`import React from 'react'
+import { Popover, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Popover content="This is a simple popover">
+    <Button>Hover me</Button>
+  </Popover>
+)
+
+export default App`}
         >
           <Popover content="This is a simple popover">
             <Button>Hover me</Button>
@@ -77,12 +84,19 @@ export default function PopoverPage() {
 
         <ExampleSection
           title="With Title"
-          code={`<Popover
-  title="User Information"
-  content="Additional details..."
->
-  <Button>Hover me</Button>
-</Popover>`}
+          code={`import React from 'react'
+import { Popover, Button } from '@edadma/petalui'
+
+const App: React.FC = () => (
+  <Popover
+    title="User Information"
+    content="Additional details about the user and their account settings."
+  >
+    <Button>Hover me</Button>
+  </Popover>
+)
+
+export default App`}
         >
           <Popover
             title="User Information"
@@ -94,17 +108,24 @@ export default function PopoverPage() {
 
         <ExampleSection
           title="Trigger Types"
-          code={`<Popover trigger="hover" content="...">
-  <Button>Hover</Button>
-</Popover>
+          code={`import React from 'react'
+import { Popover, Button } from '@edadma/petalui'
 
-<Popover trigger="click" content="...">
-  <Button>Click</Button>
-</Popover>
+const App: React.FC = () => (
+  <div className="flex gap-4">
+    <Popover trigger="hover" content="Triggered by hovering">
+      <Button>Hover</Button>
+    </Popover>
+    <Popover trigger="click" content="Triggered by clicking">
+      <Button>Click</Button>
+    </Popover>
+    <Popover trigger="focus" content="Triggered by focusing">
+      <Button>Focus</Button>
+    </Popover>
+  </div>
+)
 
-<Popover trigger="focus" content="...">
-  <Button>Focus</Button>
-</Popover>`}
+export default App`}
         >
           <div className="flex gap-4">
             <Popover trigger="hover" content="Triggered by hovering">
@@ -122,17 +143,24 @@ export default function PopoverPage() {
         <Masonry columns={{ xs: 1, lg: 2 }} gap={4}>
           <ExampleSection
             title="Placement - Top"
-            code={`<Popover placement="top" content="...">
-  <Button>Top</Button>
-</Popover>
+            code={`import React from 'react'
+import { Popover, Button } from '@edadma/petalui'
 
-<Popover placement="topLeft" content="...">
-  <Button>Top Left</Button>
-</Popover>
+const App: React.FC = () => (
+  <div className="flex gap-4 justify-center">
+    <Popover placement="top" content="Top placement">
+      <Button>Top</Button>
+    </Popover>
+    <Popover placement="topLeft" content="Top left placement">
+      <Button>Top Left</Button>
+    </Popover>
+    <Popover placement="topRight" content="Top right placement">
+      <Button>Top Right</Button>
+    </Popover>
+  </div>
+)
 
-<Popover placement="topRight" content="...">
-  <Button>Top Right</Button>
-</Popover>`}
+export default App`}
           >
             <div className="flex gap-4 justify-center">
               <Popover placement="top" content="Top placement">
@@ -149,17 +177,24 @@ export default function PopoverPage() {
 
           <ExampleSection
             title="Placement - Bottom"
-            code={`<Popover placement="bottom" content="...">
-  <Button>Bottom</Button>
-</Popover>
+            code={`import React from 'react'
+import { Popover, Button } from '@edadma/petalui'
 
-<Popover placement="bottomLeft" content="...">
-  <Button>Bottom Left</Button>
-</Popover>
+const App: React.FC = () => (
+  <div className="flex gap-4 justify-center">
+    <Popover placement="bottom" content="Bottom placement">
+      <Button>Bottom</Button>
+    </Popover>
+    <Popover placement="bottomLeft" content="Bottom left placement">
+      <Button>Bottom Left</Button>
+    </Popover>
+    <Popover placement="bottomRight" content="Bottom right placement">
+      <Button>Bottom Right</Button>
+    </Popover>
+  </div>
+)
 
-<Popover placement="bottomRight" content="...">
-  <Button>Bottom Right</Button>
-</Popover>`}
+export default App`}
           >
             <div className="flex gap-4 justify-center">
               <Popover placement="bottom" content="Bottom placement">
@@ -176,17 +211,24 @@ export default function PopoverPage() {
 
           <ExampleSection
             title="Placement - Left"
-            code={`<Popover placement="left" content="...">
-  <Button>Left</Button>
-</Popover>
+            code={`import React from 'react'
+import { Popover, Button } from '@edadma/petalui'
 
-<Popover placement="leftTop" content="...">
-  <Button>Left Top</Button>
-</Popover>
+const App: React.FC = () => (
+  <div className="flex gap-4 justify-center">
+    <Popover placement="left" content="Left placement">
+      <Button>Left</Button>
+    </Popover>
+    <Popover placement="leftTop" content="Left top placement">
+      <Button>Left Top</Button>
+    </Popover>
+    <Popover placement="leftBottom" content="Left bottom placement">
+      <Button>Left Bottom</Button>
+    </Popover>
+  </div>
+)
 
-<Popover placement="leftBottom" content="...">
-  <Button>Left Bottom</Button>
-</Popover>`}
+export default App`}
           >
             <div className="flex gap-4 justify-center">
               <Popover placement="left" content="Left placement">
@@ -203,17 +245,24 @@ export default function PopoverPage() {
 
           <ExampleSection
             title="Placement - Right"
-            code={`<Popover placement="right" content="...">
-  <Button>Right</Button>
-</Popover>
+            code={`import React from 'react'
+import { Popover, Button } from '@edadma/petalui'
 
-<Popover placement="rightTop" content="...">
-  <Button>Right Top</Button>
-</Popover>
+const App: React.FC = () => (
+  <div className="flex gap-4 justify-center">
+    <Popover placement="right" content="Right placement">
+      <Button>Right</Button>
+    </Popover>
+    <Popover placement="rightTop" content="Right top placement">
+      <Button>Right Top</Button>
+    </Popover>
+    <Popover placement="rightBottom" content="Right bottom placement">
+      <Button>Right Bottom</Button>
+    </Popover>
+  </div>
+)
 
-<Popover placement="rightBottom" content="...">
-  <Button>Right Bottom</Button>
-</Popover>`}
+export default App`}
           >
             <div className="flex gap-4 justify-center">
               <Popover placement="right" content="Right placement">
