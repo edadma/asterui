@@ -31,6 +31,12 @@ const formApi: ApiProperty[] = [
     description: 'Form instance from Form.useForm()',
     type: 'FormInstance',
   },
+  {
+    property: 'noValidate',
+    description: 'Disable HTML5 validation (use only react-hook-form validation)',
+    type: 'boolean',
+    default: 'true',
+  },
 ]
 
 const formItemApi: ApiProperty[] = [
@@ -772,6 +778,7 @@ export default App`}
           <div>
             <strong>Usage Tips:</strong>
             <ul className="list-disc list-inside mt-2">
+              <li>HTML5 validation is disabled by default - only react-hook-form validation runs</li>
               <li>Use type validators ('email', 'url', 'number') for common validation patterns</li>
               <li>Form.useForm() provides programmatic control over form state</li>
               <li>Form.List enables dynamic add/remove functionality for array fields</li>
