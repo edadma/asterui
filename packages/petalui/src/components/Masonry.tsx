@@ -44,39 +44,111 @@ export const Masonry: React.FC<MasonryProps> = ({
     return gapMap[gap] || 'gap-4'
   }
 
-  // Map column values to Tailwind classes
-  const getColumnClass = (count: number, prefix = '') => {
-    const columnMap: Record<number, string> = {
-      1: `${prefix}columns-1`,
-      2: `${prefix}columns-2`,
-      3: `${prefix}columns-3`,
-      4: `${prefix}columns-4`,
-      5: `${prefix}columns-5`,
-      6: `${prefix}columns-6`,
-      7: `${prefix}columns-7`,
-      8: `${prefix}columns-8`,
-      9: `${prefix}columns-9`,
-      10: `${prefix}columns-10`,
-      11: `${prefix}columns-11`,
-      12: `${prefix}columns-12`,
-    }
-    return columnMap[count] || `${prefix}columns-3`
+  // Static column class mappings for Tailwind JIT
+  const baseColumnMap: Record<number, string> = {
+    1: 'columns-1',
+    2: 'columns-2',
+    3: 'columns-3',
+    4: 'columns-4',
+    5: 'columns-5',
+    6: 'columns-6',
+    7: 'columns-7',
+    8: 'columns-8',
+    9: 'columns-9',
+    10: 'columns-10',
+    11: 'columns-11',
+    12: 'columns-12',
+  }
+
+  const smColumnMap: Record<number, string> = {
+    1: 'sm:columns-1',
+    2: 'sm:columns-2',
+    3: 'sm:columns-3',
+    4: 'sm:columns-4',
+    5: 'sm:columns-5',
+    6: 'sm:columns-6',
+    7: 'sm:columns-7',
+    8: 'sm:columns-8',
+    9: 'sm:columns-9',
+    10: 'sm:columns-10',
+    11: 'sm:columns-11',
+    12: 'sm:columns-12',
+  }
+
+  const mdColumnMap: Record<number, string> = {
+    1: 'md:columns-1',
+    2: 'md:columns-2',
+    3: 'md:columns-3',
+    4: 'md:columns-4',
+    5: 'md:columns-5',
+    6: 'md:columns-6',
+    7: 'md:columns-7',
+    8: 'md:columns-8',
+    9: 'md:columns-9',
+    10: 'md:columns-10',
+    11: 'md:columns-11',
+    12: 'md:columns-12',
+  }
+
+  const lgColumnMap: Record<number, string> = {
+    1: 'lg:columns-1',
+    2: 'lg:columns-2',
+    3: 'lg:columns-3',
+    4: 'lg:columns-4',
+    5: 'lg:columns-5',
+    6: 'lg:columns-6',
+    7: 'lg:columns-7',
+    8: 'lg:columns-8',
+    9: 'lg:columns-9',
+    10: 'lg:columns-10',
+    11: 'lg:columns-11',
+    12: 'lg:columns-12',
+  }
+
+  const xlColumnMap: Record<number, string> = {
+    1: 'xl:columns-1',
+    2: 'xl:columns-2',
+    3: 'xl:columns-3',
+    4: 'xl:columns-4',
+    5: 'xl:columns-5',
+    6: 'xl:columns-6',
+    7: 'xl:columns-7',
+    8: 'xl:columns-8',
+    9: 'xl:columns-9',
+    10: 'xl:columns-10',
+    11: 'xl:columns-11',
+    12: 'xl:columns-12',
+  }
+
+  const xl2ColumnMap: Record<number, string> = {
+    1: '2xl:columns-1',
+    2: '2xl:columns-2',
+    3: '2xl:columns-3',
+    4: '2xl:columns-4',
+    5: '2xl:columns-5',
+    6: '2xl:columns-6',
+    7: '2xl:columns-7',
+    8: '2xl:columns-8',
+    9: '2xl:columns-9',
+    10: '2xl:columns-10',
+    11: '2xl:columns-11',
+    12: '2xl:columns-12',
   }
 
   // Convert columns to Tailwind classes
   const getColumnClasses = () => {
     if (typeof columns === 'number') {
-      return getColumnClass(columns)
+      return baseColumnMap[columns] || 'columns-3'
     }
 
     // Handle responsive columns object
     const classes: string[] = []
-    if (columns.xs !== undefined) classes.push(getColumnClass(columns.xs))
-    if (columns.sm !== undefined) classes.push(getColumnClass(columns.sm, 'sm:'))
-    if (columns.md !== undefined) classes.push(getColumnClass(columns.md, 'md:'))
-    if (columns.lg !== undefined) classes.push(getColumnClass(columns.lg, 'lg:'))
-    if (columns.xl !== undefined) classes.push(getColumnClass(columns.xl, 'xl:'))
-    if (columns['2xl'] !== undefined) classes.push(getColumnClass(columns['2xl'], '2xl:'))
+    if (columns.xs !== undefined) classes.push(baseColumnMap[columns.xs] || 'columns-3')
+    if (columns.sm !== undefined) classes.push(smColumnMap[columns.sm] || 'sm:columns-3')
+    if (columns.md !== undefined) classes.push(mdColumnMap[columns.md] || 'md:columns-3')
+    if (columns.lg !== undefined) classes.push(lgColumnMap[columns.lg] || 'lg:columns-3')
+    if (columns.xl !== undefined) classes.push(xlColumnMap[columns.xl] || 'xl:columns-3')
+    if (columns['2xl'] !== undefined) classes.push(xl2ColumnMap[columns['2xl']] || '2xl:columns-3')
 
     return classes.join(' ')
   }
