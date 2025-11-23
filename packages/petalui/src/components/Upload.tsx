@@ -57,6 +57,7 @@ export const Upload: React.FC<UploadProps> = ({
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const uidCounter = useRef(0)
+  const dragCounter = useRef(0)
 
   const fileList = controlledFileList !== undefined ? controlledFileList : internalFileList
 
@@ -206,6 +207,7 @@ export const Upload: React.FC<UploadProps> = ({
     e.preventDefault()
     e.stopPropagation()
     if (!disabled) {
+      dragCounter.current++
       setIsDragging(true)
     }
   }
@@ -213,7 +215,12 @@ export const Upload: React.FC<UploadProps> = ({
   const handleDragLeave = (e: DragEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    setIsDragging(false)
+    if (!disabled) {
+      dragCounter.current--
+      if (dragCounter.current === 0) {
+        setIsDragging(false)
+      }
+    }
   }
 
   const handleDragOver = (e: DragEvent) => {
@@ -224,6 +231,7 @@ export const Upload: React.FC<UploadProps> = ({
   const handleDrop = (e: DragEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    dragCounter.current = 0
     setIsDragging(false)
 
     if (disabled) return
