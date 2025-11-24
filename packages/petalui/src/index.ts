@@ -34,6 +34,9 @@ export type { CarouselProps, CarouselItemProps } from './components/Carousel'
 export { Collapse } from './components/Collapse'
 export type { CollapseProps, CollapseTitleProps, CollapseContentProps } from './components/Collapse'
 
+export { Container } from './components/Container'
+export type { ContainerProps } from './components/Container'
+
 export { DatePicker } from './components/DatePicker'
 export type { DatePickerProps } from './components/DatePicker'
 
@@ -115,6 +118,9 @@ export type { NotificationConfig, NotificationType, NotificationPlacement } from
 export { Pagination } from './components/Pagination'
 export type { PaginationProps } from './components/Pagination'
 
+export { PageLayout } from './components/PageLayout'
+export type { PageLayoutProps } from './components/PageLayout'
+
 export { Popconfirm } from './components/Popconfirm'
 export type { PopconfirmProps } from './components/Popconfirm'
 
@@ -150,6 +156,9 @@ export type { SkeletonProps } from './components/Skeleton'
 
 export { Space } from './components/Space'
 export type { SpaceProps } from './components/Space'
+
+export { Stack } from './components/Stack'
+export type { StackProps } from './components/Stack'
 
 export { Stats } from './components/Stat'
 export type { StatsProps, StatProps } from './components/Stat'
