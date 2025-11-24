@@ -33,6 +33,7 @@ import { InputPage } from './pages/InputPage'
 import InputNumberPage from './pages/InputNumberPage'
 import { JoinPage } from './pages/JoinPage'
 import { LabelPage } from './pages/LabelPage'
+import { LayoutPage } from './pages/LayoutPage'
 import { LinkPage } from './pages/LinkPage'
 import { ListPage } from './pages/ListPage'
 import { LoadingPage } from './pages/LoadingPage'
@@ -285,6 +286,9 @@ function AppContent() {
               <Menu.Item active={isActive('/join')} onClick={() => navigate('/join')}>
                 Join
               </Menu.Item>
+              <Menu.Item active={isActive('/layout')} onClick={() => navigate('/layout')}>
+                Layout
+              </Menu.Item>
               <Menu.Item active={isActive('/masonry')} onClick={() => navigate('/masonry')}>
                 Masonry
               </Menu.Item>
@@ -383,6 +387,7 @@ function AppContent() {
               <Route path="/input-number" element={<InputNumberPage />} />
               <Route path="/join" element={<JoinPage />} />
               <Route path="/label" element={<LabelPage />} />
+              <Route path="/layout" element={<LayoutPage />} />
               <Route path="/link" element={<LinkPage />} />
               <Route path="/list" element={<ListPage />} />
               <Route path="/loading" element={<LoadingPage />} />

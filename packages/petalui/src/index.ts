@@ -97,6 +97,9 @@ export type { JoinProps } from './components/Join'
 export { Label } from './components/Label'
 export type { LabelProps, FloatingLabelProps } from './components/Label'
 
+export { Layout, useSiderContext } from './components/Layout'
+export type { LayoutProps, LayoutHeaderProps, LayoutFooterProps, LayoutContentProps, LayoutSiderProps } from './components/Layout'
+
 export { Link } from './components/Link'
 export type { LinkProps } from './components/Link'
 
@@ -110,7 +113,7 @@ export { Masonry } from './components/Masonry'
 export type { MasonryProps } from './components/Masonry'
 
 export { Menu } from './components/Menu'
-export type { MenuProps, MenuItemProps, MenuTitleProps } from './components/Menu'
+export type { MenuProps, MenuItemProps, MenuSubMenuProps, MenuTitleProps, MenuDividerProps, MenuMode } from './components/Menu'
 
 export { Modal } from './components/Modal'
 export type { ModalProps, ModalFuncProps } from './components/Modal'
