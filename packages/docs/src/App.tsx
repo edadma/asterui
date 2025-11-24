@@ -11,6 +11,7 @@ import { TagPage } from './pages/TagPage'
 import { ButtonPage } from './pages/ButtonPage'
 import { CardPage } from './pages/CardPage'
 import { CarouselPage } from './pages/CarouselPage'
+import { CascaderPage } from './pages/CascaderPage'
 import { ChatPage } from './pages/ChatPage'
 import { CheckboxPage } from './pages/CheckboxPage'
 import { ColorPickerPage } from './pages/ColorPickerPage'
@@ -153,6 +154,9 @@ function AppContent() {
               <Menu.Title>Data Entry</Menu.Title>
               <Menu.Item active={isActive('/autocomplete')} onClick={() => navigate('/autocomplete')}>
                 Autocomplete
+              </Menu.Item>
+              <Menu.Item active={isActive('/cascader')} onClick={() => navigate('/cascader')}>
+                Cascader
               </Menu.Item>
               <Menu.Item active={isActive('/checkbox')} onClick={() => navigate('/checkbox')}>
                 Checkbox
@@ -356,6 +360,7 @@ function AppContent() {
               <Route path="/button" element={<ButtonPage />} />
               <Route path="/card" element={<CardPage />} />
               <Route path="/carousel" element={<CarouselPage />} />
+              <Route path="/cascader" element={<CascaderPage />} />
               <Route path="/chat" element={<ChatPage />} />
               <Route path="/checkbox" element={<CheckboxPage />} />
               <Route path="/colorpicker" element={<ColorPickerPage />} />

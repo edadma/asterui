@@ -31,6 +31,9 @@ export type { CalendarOldProps, CalendarOldEvent } from './components/CalendarOl
 export { Card } from './components/Card'
 export type { CardProps, CardGridProps } from './components/Card'
 
+export { Cascader } from './components/Cascader'
+export type { CascaderProps, CascaderOption } from './components/Cascader'
+
 export { Carousel } from './components/Carousel'
 export type { CarouselProps, CarouselItemProps } from './components/Carousel'
 

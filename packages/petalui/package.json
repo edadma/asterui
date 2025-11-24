@@ -1,6 +1,6 @@
 {
   "name": "@edadma/petalui",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "description": "React UI component library with DaisyUI",
   "type": "module",
   "main": "./dist/index.js",

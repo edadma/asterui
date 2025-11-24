@@ -100,12 +100,15 @@ function App() {
 
 ### Data Entry
 - **Autocomplete** - Search and select with keyboard navigation and filtering
+- **Cascader** - Hierarchical selection from cascading dropdown columns
 - **Checkbox** - Checkboxes with sizes, colors, and indeterminate state
+- **ColorPicker** - Color selection with picker panel and preset swatches
 - **DatePicker** - Interactive calendar date picker with custom formatting
 - **Fieldset** - Fieldset container with legend
 - **FileInput** - File input with sizes and colors
 - **Form** - Form component with React Hook Form integration and validation
 - **Input** - Text inputs with multiple types, sizes, and colors
+- **InputNumber** - Numeric input with increment/decrement controls
 - **Label** - Form labels with required indicator and floating labels
 - **Radio** - Radio buttons with group support
 - **Range** - Range slider with min, max, and step support
@@ -114,6 +117,7 @@ function App() {
 - **Textarea** - Multiline text input
 - **TimePicker** - Time input with hour and minute selection
 - **Toggle** - Toggle switches with sizes and colors
+- **Upload** - File upload with drag-and-drop support
 
 ### Data Display
 - **Avatar** - User avatars with sizes, shapes, status indicators, and group support
@@ -126,11 +130,15 @@ function App() {
 - **Empty** - Empty state placeholder with custom images and actions
 - **Image** - Image component with fallback and preview support
 - **List** - Vertical list layout with customizable rows
+- **Pagination** - Page navigation with customizable size and range
+- **QRCode** - QR code generator with customizable size and colors
 - **Skeleton** - Loading placeholder with animated shimmer effect
 - **Stats** - Statistics display with figures and actions
 - **Steps** - Step progress indicator
 - **Table** - Feature-rich data table with sorting and pagination
+- **Tag** - Tag labels with colors and closable option
 - **Timeline** - Timeline component for displaying chronological events
+- **Typography** - Text components with various styles and sizes
 
 ### Layout
 - **Divider** - Horizontal and vertical dividers with optional text
