@@ -161,6 +161,9 @@ function AppContent() {
               <Menu.Item active={isActive('/dropdown')} onClick={() => navigate('/dropdown')}>
                 Dropdown
               </Menu.Item>
+              <Menu.Item active={isActive('/float-button')} onClick={() => navigate('/float-button')}>
+                FloatButton
+              </Menu.Item>
               <Menu.Item active={isActive('/theme-controller')} onClick={() => navigate('/theme-controller')}>
                 Theme Controller
               </Menu.Item>
@@ -350,9 +353,6 @@ function AppContent() {
               <Menu.Title>Feedback</Menu.Title>
               <Menu.Item active={isActive('/alert')} onClick={() => navigate('/alert')}>
                 Alert
-              </Menu.Item>
-              <Menu.Item active={isActive('/float-button')} onClick={() => navigate('/float-button')}>
-                FloatButton
               </Menu.Item>
               <Menu.Item active={isActive('/loading')} onClick={() => navigate('/loading')}>
                 Loading

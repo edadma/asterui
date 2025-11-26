@@ -16,12 +16,12 @@ This documentation site provides live examples and API documentation for all Pet
 Browse 80+ components organized by category:
 
 - **General**: Typography
-- **Actions**: Button, Dropdown, ThemeController
+- **Actions**: Button, Dropdown, FloatButton, ThemeController
 - **Data Entry**: Autocomplete, Cascader, Checkbox, ColorPicker, DatePicker, Fieldset, FileInput, Form, Input, InputNumber, Label, Mention, Radio, Range, Rating, Select, Textarea, TimePicker, Toggle, Transfer, TreeSelect, Upload
 - **Data Display**: Avatar, Badge, Card, Carousel, Chart, Chat, Collapse, Descriptions, Empty, Image, List, Pagination, QRCode, Stats, Steps, Table, Tag, Timeline, Tree
 - **Layout**: Affix, Divider, Drawer, Footer, Grid, Hero, Indicator, Join, Layout, Masonry, Space, Splitter
 - **Navigation**: Breadcrumb, Link, Menu, Navbar, Tabs
-- **Feedback**: Alert, FloatButton, Loading, Modal, Notification, Popconfirm, Popover, Progress, RadialProgress, Result, Skeleton, Tooltip
+- **Feedback**: Alert, Loading, Modal, Notification, Popconfirm, Popover, Progress, RadialProgress, Result, Skeleton, Tooltip
 - **Mockup**: Browser, CodeMockup, Phone, Window
 
 ## Development

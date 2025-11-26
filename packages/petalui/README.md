@@ -79,6 +79,7 @@ function App() {
 ### Actions
 - **Button** - Buttons with multiple types, sizes, and variants
 - **Dropdown** - Composable dropdown menu with trigger, items, and dividers
+- **FloatButton** - Floating action button with BackTop variant
 - **ThemeController** - Theme switcher with swap and dropdown modes
 
 ### Data Entry
@@ -149,7 +150,6 @@ function App() {
 
 ### Feedback
 - **Alert** - Alert messages with multiple types and dismissible option
-- **FloatButton** - Floating action button with BackTop variant
 - **Loading** - Loading spinners with sizes and overlay support
 - **Modal** - Modal dialogs with imperative API
 - **Notification** - Toast notifications with auto-dismiss and stacking
