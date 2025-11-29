@@ -133,7 +133,7 @@ function AppContent() {
           <div className="flex items-center gap-3">
             <img src="/petalui/logo.png" alt="PetalUI" className="w-8 h-8" />
             <span className="text-xl font-semibold">PetalUI Components</span>
-            <Tag color="ghost">v0.8.2</Tag>
+            <Tag color="ghost">v0.8.3</Tag>
           </div>
         }
         end={
