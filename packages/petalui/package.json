@@ -2,6 +2,14 @@
   "name": "@edadma/petalui",
   "version": "0.8.1",
   "description": "React UI component library with DaisyUI",
+  "homepage": "https://petalui.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edadma/petalui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edadma/petalui/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -47,8 +55,15 @@
     "react",
     "components",
     "ui",
+    "ui-components",
+    "component-library",
     "daisyui",
-    "tailwind"
+    "tailwind",
+    "tailwindcss",
+    "typescript",
+    "react-components",
+    "design-system",
+    "frontend"
   ],
   "license": "ISC",
   "dependencies": {
