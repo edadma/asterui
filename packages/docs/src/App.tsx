@@ -37,7 +37,6 @@ import InputNumberPage from './pages/InputNumberPage'
 import { JoinPage } from './pages/JoinPage'
 import { LabelPage } from './pages/LabelPage'
 import { LayoutPage } from './pages/LayoutPage'
-import { LinkPage } from './pages/LinkPage'
 import { ListPage } from './pages/ListPage'
 import { LoadingPage } from './pages/LoadingPage'
 import { MasonryPage } from './pages/MasonryPage'
@@ -46,7 +45,7 @@ import { MenuPage } from './pages/MenuPage'
 import { PhonePage } from './pages/PhonePage'
 import { BrowserPage } from './pages/BrowserPage'
 import { WindowPage } from './pages/WindowPage'
-import { CodeMockupPage } from './pages/CodeMockupPage'
+import { CodePage } from './pages/CodePage'
 import { ModalPage } from './pages/ModalPage'
 import { NavbarPage } from './pages/NavbarPage'
 import { NotificationPage } from './pages/NotificationPage'
@@ -133,7 +132,7 @@ function AppContent() {
           <div className="flex items-center gap-3">
             <img src="/petalui/logo.png" alt="PetalUI" className="w-8 h-8" />
             <span className="text-xl font-semibold">PetalUI Components</span>
-            <Tag color="ghost">v0.8.3</Tag>
+            <Tag color="ghost">v0.9.0</Tag>
           </div>
         }
         end={
@@ -343,9 +342,6 @@ function AppContent() {
               <Menu.Item active={isActive('/breadcrumbs')} onClick={() => navigate('/breadcrumbs')}>
                 Breadcrumbs
               </Menu.Item>
-              <Menu.Item active={isActive('/link')} onClick={() => navigate('/link')}>
-                Link
-              </Menu.Item>
               <Menu.Item active={isActive('/menu')} onClick={() => navigate('/menu')}>
                 Menu
               </Menu.Item>
@@ -395,8 +391,8 @@ function AppContent() {
               <Menu.Item active={isActive('/browser')} onClick={() => navigate('/browser')}>
                 Browser
               </Menu.Item>
-              <Menu.Item active={isActive('/code-mockup')} onClick={() => navigate('/code-mockup')}>
-                CodeMockup
+              <Menu.Item active={isActive('/code')} onClick={() => navigate('/code')}>
+                Code
               </Menu.Item>
               <Menu.Item active={isActive('/phone')} onClick={() => navigate('/phone')}>
                 Phone
@@ -448,7 +444,6 @@ function AppContent() {
               <Route path="/join" element={<JoinPage />} />
               <Route path="/label" element={<LabelPage />} />
               <Route path="/layout" element={<LayoutPage />} />
-              <Route path="/link" element={<LinkPage />} />
               <Route path="/list" element={<ListPage />} />
               <Route path="/loading" element={<LoadingPage />} />
               <Route path="/masonry" element={<MasonryPage />} />
@@ -488,7 +483,7 @@ function AppContent() {
               <Route path="/tree-select" element={<TreeSelectPage />} />
               <Route path="/upload" element={<UploadPage />} />
               <Route path="/browser" element={<BrowserPage />} />
-              <Route path="/code-mockup" element={<CodeMockupPage />} />
+              <Route path="/code" element={<CodePage />} />
               <Route path="/phone" element={<PhonePage />} />
               <Route path="/window" element={<WindowPage />} />
             </Routes>

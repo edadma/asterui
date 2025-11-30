@@ -28,9 +28,6 @@ export type { ChatProps } from './components/Chat'
 export { ColorPicker } from './components/ColorPicker'
 export type { ColorPickerProps } from './components/ColorPicker'
 
-export { CalendarOld } from './components/CalendarOld'
-export type { CalendarOldProps, CalendarOldEvent } from './components/CalendarOld'
-
 export { Card } from './components/Card'
 export type { CardProps, CardGridProps } from './components/Card'
 
@@ -48,6 +45,12 @@ export type { CollapseProps, CollapseTitleProps, CollapseContentProps } from './
 
 export { Container } from './components/Container'
 export type { ContainerProps } from './components/Container'
+
+export { ContextMenu } from './components/ContextMenu'
+export type { ContextMenuProps, ContextMenuItem } from './components/ContextMenu'
+
+export { Countdown } from './components/Countdown'
+export type { CountdownProps } from './components/Countdown'
 
 export { DatePicker } from './components/DatePicker'
 export type { DatePickerProps } from './components/DatePicker'
@@ -109,9 +112,6 @@ export type { LabelProps, FloatingLabelProps } from './components/Label'
 export { Layout, useSiderContext } from './components/Layout'
 export type { LayoutProps, LayoutHeaderProps, LayoutFooterProps, LayoutContentProps, LayoutSiderProps } from './components/Layout'
 
-export { Link } from './components/Link'
-export type { LinkProps } from './components/Link'
-
 export { List } from './components/List'
 export type { ListProps, ListRowProps } from './components/List'
 
@@ -130,8 +130,8 @@ export type { MenuProps, MenuItemProps, MenuSubMenuProps, MenuTitleProps, MenuDi
 export { Browser } from './components/Browser'
 export type { BrowserProps } from './components/Browser'
 
-export { CodeMockup } from './components/CodeMockup'
-export type { CodeMockupProps, CodeMockupLineProps } from './components/CodeMockup'
+export { Code } from './components/Code'
+export type { CodeProps, CodeLineProps } from './components/Code'
 
 export { Phone } from './components/Phone'
 export type { PhoneProps } from './components/Phone'
@@ -147,6 +147,9 @@ export type { NavbarProps } from './components/Navbar'
 
 export { notification } from './components/Notification'
 export type { NotificationConfig, NotificationType, NotificationPlacement } from './components/Notification'
+
+export { OTPInput } from './components/OTPInput'
+export type { OTPInputProps, OTPInputRef } from './components/OTPInput'
 
 export { Pagination } from './components/Pagination'
 export type { PaginationProps } from './components/Pagination'
