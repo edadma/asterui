@@ -33,8 +33,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Install site dependencies
+        run: npm ci --prefix packages/site
+
       - name: Build packages
         run: pnpm -r build
+
+      - name: Build site
+        run: npm --prefix packages/site run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
