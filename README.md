@@ -4,7 +4,7 @@
 
 # BloomUI
 
-A comprehensive React component library built with DaisyUI and Tailwind CSS.
+A comprehensive React component library built with [DaisyUI](https://daisyui.com) and [Tailwind CSS](https://tailwindcss.com).
 
 ## Demo
 
@@ -213,6 +213,7 @@ This is a pnpm monorepo with the following packages:
 
 - `packages/bloomui` - The component library
 - `packages/site` - Documentation website (bloomui.io)
+- `packages/examples` - Example apps for testing components
 
 ### Setup
 
