@@ -12,7 +12,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'React component library built on DaisyUI v5 with enterprise-level developer convenience' } = Astro.props;
+const { title, description = 'BloomUI - Free open source React component library built on DaisyUI v5 and Tailwind CSS v4' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, 'https://bloomui.io');
 const ogImage = 'https://bloomui.io/logo.png';
 ---
@@ -24,7 +24,7 @@ const ogImage = 'https://bloomui.io/logo.png';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="keywords" content="React, components, UI library, DaisyUI, Tailwind CSS, TypeScript, component library" />
+    <meta name="keywords" content="BloomUI, React components, DaisyUI v5, Tailwind CSS v4, TypeScript, UI library, open source, component library" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
