@@ -4,7 +4,7 @@ export default {
   content: [
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
-    '../../bloomui/src/**/*.{js,ts,jsx,tsx}',
+    '../../asterui/src/**/*.{js,ts,jsx,tsx}',
   ],
   plugins: [daisyui],
   daisyui: {

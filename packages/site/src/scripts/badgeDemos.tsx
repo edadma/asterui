@@ -1,10 +1,10 @@
-import { createRoot } from 'react-dom/client';
-import React from 'react';
-import { Badge, Button, Avatar, Space } from '@edadma/bloomui';
+import { createRoot } from 'react-dom/client'
+import React from 'react'
+import { Badge, Button, Avatar, Space } from 'asterui'
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
-  'basic': (
+  basic: (
     <div className="flex gap-6 flex-wrap">
       <Badge count={5}>
         <Button>Messages</Button>
@@ -17,7 +17,7 @@ const demos: Record<string, React.ReactNode> = {
       </Badge>
     </div>
   ),
-  'overflow': (
+  overflow: (
     <div className="flex gap-6 flex-wrap items-center">
       <Badge count={99}>
         <Avatar size="lg">U</Avatar>
@@ -30,7 +30,7 @@ const demos: Record<string, React.ReactNode> = {
       </Badge>
     </div>
   ),
-  'position': (
+  position: (
     <div className="flex gap-6 flex-wrap">
       <Badge count={5} position="top-start">
         <Avatar size="lg">TL</Avatar>
@@ -49,7 +49,7 @@ const demos: Record<string, React.ReactNode> = {
       </Badge>
     </div>
   ),
-  'status': (
+  status: (
     <Space direction="vertical" size="sm">
       <Badge status="success" text="Success" />
       <Badge status="processing" text="Processing" />
@@ -58,7 +58,7 @@ const demos: Record<string, React.ReactNode> = {
       <Badge status="default" text="Default" />
     </Space>
   ),
-  'ribbon': (
+  ribbon: (
     <div className="flex gap-6 flex-wrap">
       <Badge ribbon="Recommended">
         <div className="card bg-base-200 w-48 p-4">
@@ -74,7 +74,7 @@ const demos: Record<string, React.ReactNode> = {
       </Badge>
     </div>
   ),
-  'dot': (
+  dot: (
     <div className="flex gap-6 flex-wrap">
       <Badge dot type="error">
         <Button>Notifications</Button>
@@ -87,7 +87,7 @@ const demos: Record<string, React.ReactNode> = {
       </Badge>
     </div>
   ),
-  'colors': (
+  colors: (
     <Space direction="horizontal" size="sm" wrap>
       <Badge count={5} />
       <Badge count={5} type="primary" />
@@ -99,7 +99,7 @@ const demos: Record<string, React.ReactNode> = {
       <Badge count={5} type="error" />
     </Space>
   ),
-  'sizes': (
+  sizes: (
     <Space direction="horizontal" size="sm" align="center">
       <Badge count={5} type="primary" size="xs" />
       <Badge count={5} type="primary" size="sm" />
@@ -117,7 +117,7 @@ const demos: Record<string, React.ReactNode> = {
       </Badge>
     </Space>
   ),
-  'outline': (
+  outline: (
     <Space direction="horizontal" size="sm" wrap>
       <Badge count={5} type="primary" outline />
       <Badge count={5} type="secondary" outline />
@@ -126,28 +126,29 @@ const demos: Record<string, React.ReactNode> = {
       <Badge count={5} type="success" outline />
     </Space>
   ),
-};
+}
 
 // Mount React demos
-document.querySelectorAll('.demo-container').forEach(container => {
-  const exampleId = container.getAttribute('data-example');
+document.querySelectorAll('.demo-container').forEach((container) => {
+  const exampleId = container.getAttribute('data-example')
   if (exampleId && demos[exampleId]) {
-    const root = createRoot(container as HTMLElement);
-    root.render(demos[exampleId]);
+    const root = createRoot(container as HTMLElement)
+    root.render(demos[exampleId])
   }
-});
+})
 
 // Copy button functionality
-document.querySelectorAll('.copy-btn').forEach(btn => {
+document.querySelectorAll('.copy-btn').forEach((btn) => {
   btn.addEventListener('click', async () => {
-    const code = btn.getAttribute('data-code');
+    const code = btn.getAttribute('data-code')
     if (code) {
-      await navigator.clipboard.writeText(code);
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+      await navigator.clipboard.writeText(code)
+      const originalHTML = btn.innerHTML
+      btn.innerHTML =
+        '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>'
       setTimeout(() => {
-        btn.innerHTML = originalHTML;
-      }, 2000);
+        btn.innerHTML = originalHTML
+      }, 2000)
     }
-  });
-});
+  })
+})

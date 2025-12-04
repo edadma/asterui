@@ -86,7 +86,7 @@ const examples = [
     title: 'Basic Autocomplete',
     description: 'Simple autocomplete with string array options.',
     code: `import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const countries = [
   'United States',
@@ -111,7 +111,7 @@ export default App`,
     title: 'With Object Options',
     description: 'Autocomplete with value/label object options.',
     code: `import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const fruits = [
   { value: 'apple', label: 'Apple' },
@@ -134,7 +134,7 @@ export default App`,
     title: 'Controlled',
     description: 'Controlled autocomplete with state management.',
     code: `import React, { useState } from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const countries = [
   'United States',
@@ -168,7 +168,7 @@ export default App`,
     title: 'No Custom Values',
     description: 'Autocomplete that only allows selection from options.',
     code: `import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const languages = [
   'JavaScript',
@@ -193,7 +193,7 @@ export default App`,
     title: 'Custom Filter',
     description: 'Autocomplete with custom filtering logic (starts with).',
     code: `import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const countries = [
   'United States',
@@ -219,7 +219,7 @@ export default App`,
     title: 'Different Sizes',
     description: 'Autocomplete in various sizes.',
     code: `import React from 'react'
-import { Autocomplete, Space } from '@edadma/bloomui'
+import { Autocomplete, Space } from 'asterui'
 
 const options = ['Option 1', 'Option 2', 'Option 3']
 
@@ -239,7 +239,7 @@ export default App`,
     title: 'Disabled',
     description: 'Disabled autocomplete.',
     code: `import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const App: React.FC = () => (
   <Autocomplete
@@ -256,7 +256,7 @@ export default App`,
     title: 'Custom Not Found Content',
     description: 'Autocomplete with custom message when no results.',
     code: `import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const App: React.FC = () => (
   <Autocomplete
@@ -273,7 +273,7 @@ export default App`,
     title: 'Email Domain Autocomplete',
     description: 'Practical example with email domain suggestions.',
     code: `import React, { useState } from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const App: React.FC = () => {
   const [email, setEmail] = useState('')
@@ -301,7 +301,7 @@ export default App`,
     title: 'In Form',
     description: 'Autocomplete integrated with Form component.',
     code: `import React from 'react'
-import { Autocomplete, Form, Button, Modal } from '@edadma/bloomui'
+import { Autocomplete, Form, Button, Modal } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values: { country: string }) => {
@@ -339,7 +339,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Autocomplete - BloomUI">
+<Layout title="Autocomplete - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -360,7 +360,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Autocomplete } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Autocomplete } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

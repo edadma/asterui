@@ -2,7 +2,7 @@
 
 Chat message bubbles for displaying conversations with avatars and metadata.
 
-**Import:** `import { Chat } from '@edadma/bloomui'`
+**Import:** `import { Chat } from 'asterui'`
 
 ## Examples
 
@@ -12,7 +12,7 @@ Simple chat bubbles with different positions.
 
 ```tsx
 import React from 'react'
-import { Chat } from '@edadma/bloomui'
+import { Chat } from 'asterui'
 
 const App: React.FC = () => (
   <div>
@@ -30,7 +30,7 @@ Chat bubbles with user avatars.
 
 ```tsx
 import React from 'react'
-import { Chat } from '@edadma/bloomui'
+import { Chat } from 'asterui'
 
 const App: React.FC = () => (
   <div>
@@ -58,7 +58,7 @@ Chat bubbles with name and timestamp headers.
 
 ```tsx
 import React from 'react'
-import { Chat } from '@edadma/bloomui'
+import { Chat } from 'asterui'
 
 const App: React.FC = () => (
   <div>
@@ -86,7 +86,7 @@ Chat bubbles with different color variants.
 
 ```tsx
 import React from 'react'
-import { Chat } from '@edadma/bloomui'
+import { Chat } from 'asterui'
 
 const App: React.FC = () => (
   <div>
@@ -106,7 +106,7 @@ Chat bubbles with delivery status footer.
 
 ```tsx
 import React from 'react'
-import { Chat } from '@edadma/bloomui'
+import { Chat } from 'asterui'
 
 const App: React.FC = () => (
   <div>

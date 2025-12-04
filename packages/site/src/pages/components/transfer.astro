@@ -26,7 +26,7 @@ const examples = [
     title: 'Basic Transfer',
     description: 'Move items between two columns.',
     code: `import React, { useState } from 'react'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState(['item-3', 'item-5'])
@@ -54,7 +54,7 @@ export default App`,
     title: 'With Search',
     description: 'Filter items with search input.',
     code: `import React, { useState } from 'react'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState([])
@@ -82,7 +82,7 @@ export default App`,
     title: 'Custom Render',
     description: 'Custom item rendering with title and description.',
     code: `import React, { useState } from 'react'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState([])
@@ -115,7 +115,7 @@ export default App`,
     title: 'Disabled Items',
     description: 'Some items can be disabled.',
     code: `import React, { useState } from 'react'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState([])
@@ -144,7 +144,7 @@ export default App`,
     title: 'Custom Titles',
     description: 'Customize column headers.',
     code: `import React, { useState } from 'react'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState([])
@@ -171,7 +171,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Transfer - BloomUI">
+<Layout title="Transfer - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -188,7 +188,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Transfer } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Transfer } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

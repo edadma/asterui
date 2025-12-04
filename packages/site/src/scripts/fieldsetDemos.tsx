@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Fieldset, Input, Space } from '@edadma/bloomui';
+import { Fieldset, Input, Space } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {

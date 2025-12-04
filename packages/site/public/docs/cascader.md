@@ -1,6 +1,6 @@
 # Cascader
 
-**Import:** `import { Cascader } from '@edadma/bloomui'`
+**Import:** `import { Cascader } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple hierarchical selection.
 
 ```tsx
 import React from 'react'
-import { Cascader } from '@edadma/bloomui'
+import { Cascader } from 'asterui'
 
 const options = [
   {
@@ -50,7 +50,7 @@ Expand sub-menus on hover.
 
 ```tsx
 import React from 'react'
-import { Cascader } from '@edadma/bloomui'
+import { Cascader } from 'asterui'
 
 const options = [
   {
@@ -90,7 +90,7 @@ Different cascader sizes.
 
 ```tsx
 import React from 'react'
-import { Cascader, Space } from '@edadma/bloomui'
+import { Cascader, Space } from 'asterui'
 
 const options = [
   { value: 'opt1', label: 'Option 1' },
@@ -115,7 +115,7 @@ Disabled cascader state.
 
 ```tsx
 import React from 'react'
-import { Cascader } from '@edadma/bloomui'
+import { Cascader } from 'asterui'
 
 const options = [
   { value: 'opt1', label: 'Option 1' },

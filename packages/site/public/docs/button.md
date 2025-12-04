@@ -1,6 +1,6 @@
 # Button
 
-**Import:** `import { Button } from '@edadma/bloomui'`
+**Import:** `import { Button } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Primary brand colors for common actions.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
@@ -30,7 +30,7 @@ Semantic colors for different states and feedback.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
@@ -50,7 +50,7 @@ Ghost and link variants for subtle actions.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
@@ -69,7 +69,7 @@ Five sizes: xs, sm, md (default), lg, and xl.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm" align="center">
@@ -90,7 +90,7 @@ Outline variant with transparent background.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
@@ -109,7 +109,7 @@ Buttons with dashed border styling.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
@@ -128,7 +128,7 @@ Muted color backgrounds for subtle emphasis.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
@@ -149,7 +149,7 @@ Active, loading, and disabled states.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
@@ -169,7 +169,7 @@ Square and circle shapes for icon buttons.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -192,7 +192,7 @@ Extra wide buttons for emphasis.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -210,7 +210,7 @@ Full width buttons.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" className="w-full">
@@ -228,7 +228,7 @@ Loading spinner with different colors.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
@@ -247,7 +247,7 @@ Buttons that navigate to URLs. Renders as anchor element when href is provided.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
@@ -272,7 +272,7 @@ Buttons with icons alongside text for visual context.
 
 ```tsx
 import React from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 import { ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -301,7 +301,7 @@ Button with htmlType=
 
 ```tsx
 import React from 'react'
-import { Button, Form, Input, Space, Modal } from '@edadma/bloomui'
+import { Button, Form, Input, Space, Modal } from 'asterui'
 
 const App: React.FC = () => {
   const handleFinish = (values: { email: string }) => {
@@ -316,7 +316,7 @@ Buttons with onClick handlers and state management.
 
 ```tsx
 import React, { useState } from 'react'
-import { Button, Space } from '@edadma/bloomui'
+import { Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [count, setCount] = useState(0)

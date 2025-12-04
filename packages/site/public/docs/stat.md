@@ -2,7 +2,7 @@
 
 Display statistics and data in organized blocks for dashboards and analytics.
 
-**Import:** `import { Stats } from '@edadma/bloomui'`
+**Import:** `import { Stats } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Display statistics and data in organized blocks for dashboards and analytics.
 
 ```tsx
 import React from 'react'
-import { Stats } from '@edadma/bloomui'
+import { Stats } from 'asterui'
 
 const App: React.FC = () => (
   <Stats className="shadow">
@@ -25,7 +25,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Stats } from '@edadma/bloomui'
+import { Stats } from 'asterui'
 
 const App: React.FC = () => (
   <Stats className="shadow">
@@ -44,7 +44,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Stats } from '@edadma/bloomui'
+import { Stats } from 'asterui'
 
 const App: React.FC = () => (
   <Stats className="shadow">
@@ -73,7 +73,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Stats } from '@edadma/bloomui'
+import { Stats } from 'asterui'
 
 const App: React.FC = () => (
   <Stats className="shadow">
@@ -127,7 +127,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Stats } from '@edadma/bloomui'
+import { Stats } from 'asterui'
 
 const App: React.FC = () => (
   <Stats className="shadow">
@@ -151,7 +151,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Stats } from '@edadma/bloomui'
+import { Stats } from 'asterui'
 
 const App: React.FC = () => (
   <Stats vertical className="shadow">
@@ -180,7 +180,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Stats, Button } from '@edadma/bloomui'
+import { Stats, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Stats className="shadow">

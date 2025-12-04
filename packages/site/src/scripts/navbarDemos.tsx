@@ -1,13 +1,13 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
-import { Navbar, Button, Dropdown } from '@edadma/bloomui';
+import { Navbar, Button, Dropdown } from 'asterui';
 import { ChevronDownIcon, Bars3Icon } from '@heroicons/react/24/outline';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
   'basic': (
     <Navbar
-      start={<a className="text-xl font-bold">BloomUI</a>}
+      start={<a className="text-xl font-bold">AsterUI</a>}
       end={
         <>
           <Button type="ghost">Home</Button>
@@ -19,7 +19,7 @@ const demos: Record<string, React.ReactNode> = {
   ),
   'with-menu': (
     <Navbar
-      start={<a className="text-xl font-bold">BloomUI</a>}
+      start={<a className="text-xl font-bold">AsterUI</a>}
       end={
         <>
           <Button type="ghost">Home</Button>
@@ -45,7 +45,7 @@ const demos: Record<string, React.ReactNode> = {
   'centered': (
     <Navbar
       start={<Button type="ghost" shape="circle">☰</Button>}
-      center={<a className="text-xl font-bold">BloomUI</a>}
+      center={<a className="text-xl font-bold">AsterUI</a>}
       end={<Button type="ghost" shape="circle">⚙</Button>}
     />
   ),
@@ -66,7 +66,7 @@ const demos: Record<string, React.ReactNode> = {
               <Dropdown.Item>Contact</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <a className="text-xl font-bold ml-2">BloomUI</a>
+          <a className="text-xl font-bold ml-2">AsterUI</a>
         </>
       }
       end={

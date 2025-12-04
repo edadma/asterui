@@ -2,7 +2,7 @@
 
 Visual progress indicator showing sequential steps.
 
-**Import:** `import { Steps } from '@edadma/bloomui'`
+**Import:** `import { Steps } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Visual progress indicator showing sequential steps.
 
 ```tsx
 import React from 'react'
-import { Steps } from '@edadma/bloomui'
+import { Steps } from 'asterui'
 
 const App: React.FC = () => (
   <Steps>
@@ -28,7 +28,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Steps } from '@edadma/bloomui'
+import { Steps } from 'asterui'
 
 const App: React.FC = () => (
   <Steps vertical>
@@ -46,7 +46,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Steps } from '@edadma/bloomui'
+import { Steps } from 'asterui'
 
 const App: React.FC = () => (
   <Steps>
@@ -64,7 +64,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Steps } from '@edadma/bloomui'
+import { Steps } from 'asterui'
 
 const App: React.FC = () => (
   <Steps>
@@ -82,7 +82,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Steps } from '@edadma/bloomui'
+import { Steps } from 'asterui'
 
 const App: React.FC = () => (
   <Steps className="steps-vertical lg:steps-horizontal">

@@ -27,7 +27,7 @@ const examples = [
     title: 'Basic Rating',
     description: 'Simple 5-star rating.',
     code: `import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={3}>
@@ -46,7 +46,7 @@ export default App`,
     title: 'With Hidden Clear',
     description: 'Hidden first item allows clearing rating.',
     code: `import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={0}>
@@ -66,7 +66,7 @@ export default App`,
     title: 'Different Sizes',
     description: 'Rating in various sizes.',
     code: `import React from 'react'
-import { Rating, Space } from '@edadma/bloomui'
+import { Rating, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -108,7 +108,7 @@ export default App`,
     title: 'Heart Shape',
     description: 'Rating with heart icons.',
     code: `import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={4}>
@@ -127,7 +127,7 @@ export default App`,
     title: 'Custom Colors',
     description: 'Different colors for each rating level.',
     code: `import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={3}>
@@ -146,7 +146,7 @@ export default App`,
     title: 'Read-Only',
     description: 'Display rating without interaction.',
     code: `import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating value={4} readOnly>
@@ -165,7 +165,7 @@ export default App`,
     title: 'Controlled Rating',
     description: 'Control rating value externally.',
     code: `import React, { useState } from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => {
   const [rating, setRating] = useState(0)
@@ -192,7 +192,7 @@ export default App`,
     title: 'Alternative Star',
     description: 'Different star style.',
     code: `import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={3}>
@@ -209,7 +209,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Rating - BloomUI">
+<Layout title="Rating - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -226,7 +226,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Rating } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Rating } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

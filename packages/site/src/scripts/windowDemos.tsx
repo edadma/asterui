@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Window, Code } from '@edadma/bloomui'
+import { Window, Code } from 'asterui'
 
 const demos: Record<string, React.ReactNode> = {
   basic: (
@@ -11,14 +11,14 @@ const demos: Record<string, React.ReactNode> = {
   'with-code': (
     <Window>
       <Code className="bg-base-300">
-        <Code.Line>npm install @edadma/bloomui</Code.Line>
+        <Code.Line>npm install asterui</Code.Line>
       </Code>
     </Window>
   ),
   'multi-line': (
     <Window>
       <Code className="bg-base-300">
-        <Code.Line>import {'{ Button }'} from '@edadma/bloomui'</Code.Line>
+        <Code.Line>import {'{ Button }'} from 'asterui'</Code.Line>
         <Code.Line></Code.Line>
         <Code.Line>function App() {'{'}</Code.Line>
         <Code.Line>  return {'<Button>Click me</Button>'}</Code.Line>
@@ -29,7 +29,7 @@ const demos: Record<string, React.ReactNode> = {
   'with-prefix': (
     <Window>
       <Code className="bg-base-300">
-        <Code.Line prefix="$">npm install @edadma/bloomui</Code.Line>
+        <Code.Line prefix="$">npm install asterui</Code.Line>
         <Code.Line prefix="$">npm run dev</Code.Line>
         <Code.Line prefix=">">Server running on http://localhost:3000</Code.Line>
       </Code>

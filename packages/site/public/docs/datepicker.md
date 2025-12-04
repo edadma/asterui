@@ -1,6 +1,6 @@
 # DatePicker
 
-**Import:** `import { DatePicker } from '@edadma/bloomui'`
+**Import:** `import { DatePicker } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple date selection.
 
 ```tsx
 import React from 'react'
-import { DatePicker } from '@edadma/bloomui'
+import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
   <DatePicker placeholder="Select date" />
@@ -25,7 +25,7 @@ Date picker with time selection.
 
 ```tsx
 import React from 'react'
-import { DatePicker } from '@edadma/bloomui'
+import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
   <DatePicker showTime placeholder="Select date and time" />
@@ -40,7 +40,7 @@ Select a date range.
 
 ```tsx
 import React from 'react'
-import { DatePicker } from '@edadma/bloomui'
+import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
   <DatePicker range placeholder={['Start date', 'End date']} />
@@ -55,7 +55,7 @@ Different picker types for various granularities.
 
 ```tsx
 import React from 'react'
-import { DatePicker, Space } from '@edadma/bloomui'
+import { DatePicker, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -75,7 +75,7 @@ Disable specific dates (e.g., past dates).
 
 ```tsx
 import React from 'react'
-import { DatePicker } from '@edadma/bloomui'
+import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
   <DatePicker
@@ -93,7 +93,7 @@ Different input sizes.
 
 ```tsx
 import React from 'react'
-import { DatePicker, Space } from '@edadma/bloomui'
+import { DatePicker, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">

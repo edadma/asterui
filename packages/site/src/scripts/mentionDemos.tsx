@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
-import { Mention, Space } from '@edadma/bloomui';
+import { Mention, Space } from 'asterui';
 
 const users = [
   { value: 'john', label: 'John Doe' },

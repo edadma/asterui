@@ -29,7 +29,7 @@ const examples = [
     title: 'Basic OTP Input',
     description: 'Simple 6-digit OTP input.',
     code: `import React, { useState } from 'react'
-import { OTPInput } from '@edadma/bloomui'
+import { OTPInput } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState('')
@@ -50,7 +50,7 @@ export default App`,
     title: 'Four Digit',
     description: 'Custom length OTP input.',
     code: `import React, { useState } from 'react'
-import { OTPInput } from '@edadma/bloomui'
+import { OTPInput } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState('')
@@ -71,7 +71,7 @@ export default App`,
     title: 'Sizes',
     description: 'Different size variants.',
     code: `import React from 'react'
-import { OTPInput, Space } from '@edadma/bloomui'
+import { OTPInput, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="lg">
@@ -89,7 +89,7 @@ export default App`,
     title: 'Masked Input',
     description: 'Hide entered values with dots.',
     code: `import React, { useState } from 'react'
-import { OTPInput } from '@edadma/bloomui'
+import { OTPInput } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState('')
@@ -110,7 +110,7 @@ export default App`,
     title: 'Alphanumeric',
     description: 'Accept both letters and numbers.',
     code: `import React, { useState } from 'react'
-import { OTPInput } from '@edadma/bloomui'
+import { OTPInput } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState('')
@@ -132,7 +132,7 @@ export default App`,
     title: 'Error State',
     description: 'Show error styling for invalid input.',
     code: `import React, { useState } from 'react'
-import { OTPInput } from '@edadma/bloomui'
+import { OTPInput } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState('123')
@@ -154,7 +154,7 @@ export default App`,
     title: 'Disabled State',
     description: 'Non-interactive disabled input.',
     code: `import React from 'react'
-import { OTPInput } from '@edadma/bloomui'
+import { OTPInput } from 'asterui'
 
 const App: React.FC = () => (
   <OTPInput
@@ -168,7 +168,7 @@ export default App`,
 ];
 ---
 
-<Layout title="OTPInput - BloomUI">
+<Layout title="OTPInput - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -185,7 +185,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { OTPInput } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { OTPInput } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

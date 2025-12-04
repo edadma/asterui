@@ -29,7 +29,7 @@ const examples = [
     title: 'Basic Checkbox',
     description: 'Simple checkbox with label.',
     code: `import React from 'react'
-import { Checkbox } from '@edadma/bloomui'
+import { Checkbox } from 'asterui'
 
 const App: React.FC = () => (
   <label className="flex items-center gap-2 cursor-pointer">
@@ -45,7 +45,7 @@ export default App`,
     title: 'Colors',
     description: 'Checkboxes with different color variants.',
     code: `import React from 'react'
-import { Checkbox, Space } from '@edadma/bloomui'
+import { Checkbox, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -75,7 +75,7 @@ export default App`,
     title: 'Sizes',
     description: 'Different checkbox sizes.',
     code: `import React from 'react'
-import { Checkbox, Space } from '@edadma/bloomui'
+import { Checkbox, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md" align="center">
@@ -105,7 +105,7 @@ export default App`,
     title: 'Disabled',
     description: 'Disabled checkbox states.',
     code: `import React from 'react'
-import { Checkbox, Space } from '@edadma/bloomui'
+import { Checkbox, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md">
@@ -127,7 +127,7 @@ export default App`,
     title: 'Indeterminate',
     description: 'Checkbox with indeterminate state for partial selection.',
     code: `import React, { useState } from 'react'
-import { Checkbox, Space } from '@edadma/bloomui'
+import { Checkbox, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [items, setItems] = useState([true, false, true])
@@ -176,7 +176,7 @@ export default App`,
     title: 'Checkbox Group',
     description: 'Group of checkboxes with shared state.',
     code: `import React from 'react'
-import { Checkbox } from '@edadma/bloomui'
+import { Checkbox } from 'asterui'
 
 const options = [
   { label: 'Apple', value: 'apple' },
@@ -198,7 +198,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Checkbox - BloomUI">
+<Layout title="Checkbox - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -219,7 +219,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Checkbox } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Checkbox } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

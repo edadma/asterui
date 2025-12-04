@@ -1,8 +1,8 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Flex, Button, Badge, Card, Typography } from '@edadma/bloomui';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { Flex, Button, Badge, Card, Typography } from 'asterui'
 
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph } = Typography
 
 const demos: Record<string, React.ReactNode> = {
   basic: (
@@ -146,12 +146,12 @@ const demos: Record<string, React.ReactNode> = {
       </Flex>
     </Flex>
   ),
-};
+}
 
 document.querySelectorAll('.demo-container').forEach((container) => {
-  const example = container.getAttribute('data-example');
+  const example = container.getAttribute('data-example')
   if (example && demos[example]) {
-    const root = createRoot(container);
-    root.render(<>{demos[example]}</>);
+    const root = createRoot(container)
+    root.render(<>{demos[example]}</>)
   }
-});
+})

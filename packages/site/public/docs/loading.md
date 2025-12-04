@@ -1,6 +1,6 @@
 # Loading
 
-**Import:** `import { Loading } from '@edadma/bloomui'`
+**Import:** `import { Loading } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Default loading spinner.
 
 ```tsx
 import React from 'react'
-import { Loading } from '@edadma/bloomui'
+import { Loading } from 'asterui'
 
 const App: React.FC = () => (
   <Loading />
@@ -25,7 +25,7 @@ Different animation types for loading indicators.
 
 ```tsx
 import React from 'react'
-import { Loading, Space } from '@edadma/bloomui'
+import { Loading, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md" align="center" wrap>
@@ -47,7 +47,7 @@ Control loading indicator size.
 
 ```tsx
 import React from 'react'
-import { Loading, Space } from '@edadma/bloomui'
+import { Loading, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md" align="center">
@@ -67,7 +67,7 @@ Different color variants for loading indicators.
 
 ```tsx
 import React from 'react'
-import { Loading, Space } from '@edadma/bloomui'
+import { Loading, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md" align="center" wrap>

@@ -28,7 +28,7 @@ const examples = [
     title: 'Basic Horizontal Splitter',
     description: 'Drag the divider to resize the panels.',
     code: `import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-64 border border-base-300 rounded-lg overflow-hidden">
@@ -60,7 +60,7 @@ export default App`,
     title: 'Vertical Splitter',
     description: 'Split panels vertically.',
     code: `import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-64 border border-base-300 rounded-lg overflow-hidden">
@@ -86,7 +86,7 @@ export default App`,
     title: 'Controlled Sizes',
     description: 'Control panel sizes programmatically.',
     code: `import React, { useState } from 'react'
-import { Splitter, Button, Space } from '@edadma/bloomui'
+import { Splitter, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [sizes, setSizes] = useState([30, 70])
@@ -123,7 +123,7 @@ export default App`,
     title: 'Multiple Panels',
     description: 'Split into more than two panels.',
     code: `import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
@@ -148,7 +148,7 @@ export default App`,
     title: 'With Min/Max Sizes',
     description: 'Constrain panel sizes with min and max values.',
     code: `import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
@@ -174,7 +174,7 @@ export default App`,
     title: 'Nested Splitters',
     description: 'Combine horizontal and vertical splitters.',
     code: `import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-72 border border-base-300 rounded-lg overflow-hidden">
@@ -209,7 +209,7 @@ export default App`,
     title: 'Custom Gutter Size',
     description: 'Adjust the gutter (divider) size.',
     code: `import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
@@ -235,7 +235,7 @@ export default App`,
     title: 'IDE-Style Layout',
     description: 'Complex layout similar to an IDE.',
     code: `import React from 'react'
-import { Splitter, Menu } from '@edadma/bloomui'
+import { Splitter, Menu } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-80 border border-base-300 rounded-lg overflow-hidden">
@@ -282,7 +282,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Splitter - BloomUI">
+<Layout title="Splitter - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -299,7 +299,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Splitter } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Splitter } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

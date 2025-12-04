@@ -2,7 +2,7 @@
 
 Animated loading placeholders for content.
 
-**Import:** `import { Skeleton } from '@edadma/bloomui'`
+**Import:** `import { Skeleton } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Animated loading placeholders for content.
 
 ```tsx
 import React from 'react'
-import { Skeleton, Space } from '@edadma/bloomui'
+import { Skeleton, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -28,7 +28,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Skeleton } from '@edadma/bloomui'
+import { Skeleton } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -45,7 +45,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Skeleton, Space } from '@edadma/bloomui'
+import { Skeleton, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -65,7 +65,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Skeleton } from '@edadma/bloomui'
+import { Skeleton } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -82,7 +82,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Skeleton, Space } from '@edadma/bloomui'
+import { Skeleton, Space } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -101,7 +101,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Skeleton } from '@edadma/bloomui'
+import { Skeleton } from 'asterui'
 
 const App: React.FC = () => (
   <div className="card bg-base-100 border border-base-300">
@@ -122,7 +122,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Skeleton, Space } from '@edadma/bloomui'
+import { Skeleton, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -145,7 +145,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Skeleton } from '@edadma/bloomui'
+import { Skeleton } from 'asterui'
 
 const App: React.FC = () => (
   <div className="space-y-6">

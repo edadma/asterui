@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Carousel, Card, Button } from '@edadma/bloomui';
+import { Carousel, Card, Button } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {

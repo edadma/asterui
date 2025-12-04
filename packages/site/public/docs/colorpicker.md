@@ -1,6 +1,6 @@
 # ColorPicker
 
-**Import:** `import { ColorPicker } from '@edadma/bloomui'`
+**Import:** `import { ColorPicker } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple color picker.
 
 ```tsx
 import React from 'react'
-import { ColorPicker } from '@edadma/bloomui'
+import { ColorPicker } from 'asterui'
 
 const App: React.FC = () => (
   <ColorPicker defaultValue="#6366f1" />
@@ -25,7 +25,7 @@ Color picker showing the color value.
 
 ```tsx
 import React from 'react'
-import { ColorPicker } from '@edadma/bloomui'
+import { ColorPicker } from 'asterui'
 
 const App: React.FC = () => (
   <ColorPicker defaultValue="#10b981" showText />
@@ -40,7 +40,7 @@ Color picker with preset color options.
 
 ```tsx
 import React from 'react'
-import { ColorPicker } from '@edadma/bloomui'
+import { ColorPicker } from 'asterui'
 
 const presets = [
   '#f43f5e', '#ec4899', '#d946ef', '#a855f7',
@@ -61,7 +61,7 @@ Different color picker sizes.
 
 ```tsx
 import React from 'react'
-import { ColorPicker, Space } from '@edadma/bloomui'
+import { ColorPicker, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md" align="center">
@@ -80,7 +80,7 @@ Controlled color picker with state.
 
 ```tsx
 import React, { useState } from 'react'
-import { ColorPicker, Space } from '@edadma/bloomui'
+import { ColorPicker, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [color, setColor] = useState('#6366f1')

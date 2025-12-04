@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Alert, Button, Space } from '@edadma/bloomui';
+import { Alert, Button, Space } from 'asterui';
 import {
   InformationCircleIcon,
   CheckCircleIcon,

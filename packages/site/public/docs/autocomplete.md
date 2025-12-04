@@ -1,6 +1,6 @@
 # Autocomplete
 
-**Import:** `import { Autocomplete } from '@edadma/bloomui'`
+**Import:** `import { Autocomplete } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple autocomplete with string array options.
 
 ```tsx
 import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const countries = [
   'United States',
@@ -37,7 +37,7 @@ Autocomplete with value/label object options.
 
 ```tsx
 import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const fruits = [
   { value: 'apple', label: 'Apple' },
@@ -62,7 +62,7 @@ Controlled autocomplete with state management.
 
 ```tsx
 import React, { useState } from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const countries = [
   'United States',
@@ -98,7 +98,7 @@ Autocomplete that only allows selection from options.
 
 ```tsx
 import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const languages = [
   'JavaScript',
@@ -125,7 +125,7 @@ Autocomplete with custom filtering logic (starts with).
 
 ```tsx
 import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const countries = [
   'United States',
@@ -153,7 +153,7 @@ Autocomplete in various sizes.
 
 ```tsx
 import React from 'react'
-import { Autocomplete, Space } from '@edadma/bloomui'
+import { Autocomplete, Space } from 'asterui'
 
 const options = ['Option 1', 'Option 2', 'Option 3']
 
@@ -175,7 +175,7 @@ Disabled autocomplete.
 
 ```tsx
 import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const App: React.FC = () => (
   <Autocomplete
@@ -194,7 +194,7 @@ Autocomplete with custom message when no results.
 
 ```tsx
 import React from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const App: React.FC = () => (
   <Autocomplete
@@ -213,7 +213,7 @@ Practical example with email domain suggestions.
 
 ```tsx
 import React, { useState } from 'react'
-import { Autocomplete } from '@edadma/bloomui'
+import { Autocomplete } from 'asterui'
 
 const App: React.FC = () => {
   const [email, setEmail] = useState('')
@@ -243,7 +243,7 @@ Autocomplete integrated with Form component.
 
 ```tsx
 import React from 'react'
-import { Autocomplete, Form, Button, Modal } from '@edadma/bloomui'
+import { Autocomplete, Form, Button, Modal } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values: { country: string }) => {

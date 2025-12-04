@@ -1,6 +1,6 @@
 # Fieldset
 
-**Import:** `import { Fieldset } from '@edadma/bloomui'`
+**Import:** `import { Fieldset } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple fieldset with legend.
 
 ```tsx
 import React from 'react'
-import { Fieldset } from '@edadma/bloomui'
+import { Fieldset } from 'asterui'
 
 const App: React.FC = () => (
   <Fieldset>
@@ -30,7 +30,7 @@ Fieldset containing form inputs.
 
 ```tsx
 import React from 'react'
-import { Fieldset, Input, Space } from '@edadma/bloomui'
+import { Fieldset, Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Fieldset>
@@ -61,7 +61,7 @@ All form controls within are disabled.
 
 ```tsx
 import React from 'react'
-import { Fieldset, Input, Space } from '@edadma/bloomui'
+import { Fieldset, Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Fieldset disabled>

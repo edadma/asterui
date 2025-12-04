@@ -2,7 +2,7 @@
 
 Components for switching between daisyUI themes.
 
-**Import:** `import { ThemeController } from '@edadma/bloomui'`
+**Import:** `import { ThemeController } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Components for switching between daisyUI themes.
 
 ```tsx
 import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Swap />
@@ -23,7 +23,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Swap
@@ -39,7 +39,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Swap
@@ -57,7 +57,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Dropdown
@@ -94,7 +94,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Dropdown
@@ -110,7 +110,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Dropdown

@@ -35,7 +35,7 @@ const examples = [
     title: 'Show Above Breakpoint',
     description: 'Show content only at medium screens and above.',
     code: `import React from 'react'
-import { Show, Button } from '@edadma/bloomui'
+import { Show, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Show above="md">
@@ -50,7 +50,7 @@ export default App`,
     title: 'Hide Below Breakpoint',
     description: 'Hide content on small screens.',
     code: `import React from 'react'
-import { Hide, Navbar } from '@edadma/bloomui'
+import { Hide, Navbar } from 'asterui'
 
 const App: React.FC = () => (
   <Hide below="md">
@@ -65,7 +65,7 @@ export default App`,
     title: 'Show At Specific Breakpoints',
     description: 'Show content only at specific breakpoints.',
     code: `import React from 'react'
-import { Show, Alert } from '@edadma/bloomui'
+import { Show, Alert } from 'asterui'
 
 const App: React.FC = () => (
   <>
@@ -85,7 +85,7 @@ export default App`,
     title: 'Show Between Breakpoints',
     description: 'Show content within a range of breakpoints.',
     code: `import React from 'react'
-import { Show, Card } from '@edadma/bloomui'
+import { Show, Card } from 'asterui'
 
 const App: React.FC = () => (
   <Show between={['sm', 'lg']}>
@@ -102,7 +102,7 @@ export default App`,
     title: 'Responsive Layout',
     description: 'Build different layouts for mobile and desktop.',
     code: `import React from 'react'
-import { Show, Hide, Menu, Button, Flex } from '@edadma/bloomui'
+import { Show, Hide, Menu, Button, Flex } from 'asterui'
 
 const App: React.FC = () => (
   <Flex justify="between" align="center" className="p-4 bg-base-200">
@@ -131,7 +131,7 @@ export default App`,
     title: 'useBreakpoint Hook',
     description: 'Access breakpoint info programmatically.',
     code: `import React from 'react'
-import { useBreakpoint, Card, Typography } from '@edadma/bloomui'
+import { useBreakpoint, Card, Typography } from 'asterui'
 
 const { Text } = Typography
 
@@ -153,7 +153,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Responsive - BloomUI">
+<Layout title="Responsive - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -170,14 +170,14 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code={`import { Show, Hide, useBreakpoint } from '@edadma/bloomui'
-import type { Breakpoint } from '@edadma/bloomui'`} lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code={`import { Show, Hide, useBreakpoint } from 'asterui'
+import type { Breakpoint } from 'asterui'`} lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Breakpoints</h2>
-      <p class="text-base-content/70 mb-4">BloomUI uses the same breakpoints as Tailwind CSS:</p>
+      <p class="text-base-content/70 mb-4">AsterUI uses the same breakpoints as Tailwind CSS:</p>
       <ApiTable title="Breakpoint Values" data={breakpointsTable} />
     </section>
 

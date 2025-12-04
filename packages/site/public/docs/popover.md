@@ -2,7 +2,7 @@
 
 A card that displays additional information when triggered.
 
-**Import:** `import { Popover } from '@edadma/bloomui'`
+**Import:** `import { Popover } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ A card that displays additional information when triggered.
 
 ```tsx
 import React from 'react'
-import { Popover, Button } from '@edadma/bloomui'
+import { Popover, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Popover content="This is a simple popover">
@@ -25,7 +25,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popover, Button } from '@edadma/bloomui'
+import { Popover, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Popover
@@ -43,7 +43,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popover, Button } from '@edadma/bloomui'
+import { Popover, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -66,7 +66,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popover, Button } from '@edadma/bloomui'
+import { Popover, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 justify-center">
@@ -89,7 +89,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popover, Button } from '@edadma/bloomui'
+import { Popover, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 justify-center">
@@ -112,7 +112,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popover, Button } from '@edadma/bloomui'
+import { Popover, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 justify-center">
@@ -135,7 +135,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popover, Button } from '@edadma/bloomui'
+import { Popover, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 justify-center">

@@ -42,7 +42,7 @@ const examples = [
     title: 'Basic Affix',
     description: 'Element becomes fixed when scrolled past its position.',
     code: `import React from 'react'
-import { Affix, Button } from '@edadma/bloomui'
+import { Affix, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Affix offsetTop={80}>
@@ -57,7 +57,7 @@ export default App`,
     title: 'With Callback',
     description: 'Get notified when affix state changes.',
     code: `import React, { useState } from 'react'
-import { Affix, Button } from '@edadma/bloomui'
+import { Affix, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [affixed, setAffixed] = useState(false)
@@ -78,7 +78,7 @@ export default App`,
     title: 'Affix to Bottom',
     description: 'Fix element to bottom of viewport.',
     code: `import React from 'react'
-import { Affix, Button } from '@edadma/bloomui'
+import { Affix, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Affix offsetBottom={20}>
@@ -93,7 +93,7 @@ export default App`,
     title: 'Custom Target',
     description: 'Affix within a scrollable container.',
     code: `import React from 'react'
-import { Affix } from '@edadma/bloomui'
+import { Affix } from 'asterui'
 
 const App: React.FC = () => (
   <div id="scroll-container" className="h-64 overflow-auto">
@@ -111,7 +111,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Affix - BloomUI">
+<Layout title="Affix - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -132,7 +132,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Affix } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Affix } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

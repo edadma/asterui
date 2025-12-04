@@ -30,7 +30,7 @@ const examples = [
     title: 'Basic Form',
     description: 'Simple login form with username and password fields.',
     code: `import React from 'react'
-import { Form, Input, Button } from '@edadma/bloomui'
+import { Form, Input, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleFinish = (values: any) => {
@@ -61,7 +61,7 @@ export default App`,
     title: 'Form Validation',
     description: 'Form with validation rules for required fields and email pattern.',
     code: `import React from 'react'
-import { Form, Input, Button } from '@edadma/bloomui'
+import { Form, Input, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleFinish = (values: any) => {
@@ -110,7 +110,7 @@ export default App`,
     title: 'Form Layouts',
     description: 'Different form layouts: horizontal, vertical, and inline.',
     code: `import React, { useState } from 'react'
-import { Form, Input, Button, Radio, Space } from '@edadma/bloomui'
+import { Form, Input, Button, Radio, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [layout, setLayout] = useState<'horizontal' | 'vertical' | 'inline'>('vertical')
@@ -150,7 +150,7 @@ export default App`,
     title: 'Initial Values',
     description: 'Form with pre-populated initial values.',
     code: `import React from 'react'
-import { Form, Input, Button } from '@edadma/bloomui'
+import { Form, Input, Button } from 'asterui'
 
 const App: React.FC = () => {
   const initialValues = {
@@ -188,7 +188,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Form - BloomUI">
+<Layout title="Form - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -209,7 +209,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Form } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Form } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

@@ -2,7 +2,7 @@
 
 Flexible box layout component for building responsive layouts.
 
-**Import:** `import { Flex } from '@edadma/bloomui'`
+**Import:** `import { Flex } from 'asterui'`
 
 ## Examples
 
@@ -12,7 +12,7 @@ Default horizontal flex layout.
 
 ```tsx
 import React from 'react'
-import { Flex, Button } from '@edadma/bloomui'
+import { Flex, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Flex gap="sm">
@@ -31,7 +31,7 @@ Control flex direction with the direction prop.
 
 ```tsx
 import React from 'react'
-import { Flex, Button } from '@edadma/bloomui'
+import { Flex, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Flex direction="column" gap="sm">
@@ -50,7 +50,7 @@ Distribute items along the main axis.
 
 ```tsx
 import React from 'react'
-import { Flex, Button } from '@edadma/bloomui'
+import { Flex, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Flex direction="column" gap="md">
@@ -82,7 +82,7 @@ Align items along the cross axis.
 
 ```tsx
 import React from 'react'
-import { Flex, Button } from '@edadma/bloomui'
+import { Flex, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Flex gap="md">
@@ -110,7 +110,7 @@ Control spacing between items.
 
 ```tsx
 import React from 'react'
-import { Flex, Badge } from '@edadma/bloomui'
+import { Flex, Badge } from 'asterui'
 
 const App: React.FC = () => (
   <Flex direction="column" gap="lg">
@@ -146,7 +146,7 @@ Allow items to wrap to the next line.
 
 ```tsx
 import React from 'react'
-import { Flex, Badge } from '@edadma/bloomui'
+import { Flex, Badge } from 'asterui'
 
 const App: React.FC = () => (
   <Flex wrap gap="sm">
@@ -170,7 +170,7 @@ Center content both horizontally and vertically.
 
 ```tsx
 import React from 'react'
-import { Flex, Card, Typography } from '@edadma/bloomui'
+import { Flex, Card, Typography } from 'asterui'
 
 const { Title, Paragraph } = Typography
 
@@ -197,7 +197,7 @@ Use minHeight="screen" for full viewport layouts like login pages.
 
 ```tsx
 import React from 'react'
-import { Flex, Card, Button, Typography } from '@edadma/bloomui'
+import { Flex, Card, Button, Typography } from 'asterui'
 
 const { Title } = Typography
 
@@ -226,7 +226,7 @@ Combine flex containers for complex layouts.
 
 ```tsx
 import React from 'react'
-import { Flex, Button } from '@edadma/bloomui'
+import { Flex, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Flex direction="column" gap="md">

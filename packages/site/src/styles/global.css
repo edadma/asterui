@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
-@source "../../node_modules/@edadma/bloomui/dist";
+@source "../../node_modules/asterui/dist";
 
 /* Shiki dual theme - Dark mode (default) */
 .astro-code,

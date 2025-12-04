@@ -2,7 +2,7 @@
 
 Navigate through pages of data.
 
-**Import:** `import { Pagination } from '@edadma/bloomui'`
+**Import:** `import { Pagination } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Navigate through pages of data.
 
 ```tsx
 import React, { useState } from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => {
   const [current, setCurrent] = useState(1)
@@ -31,7 +31,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => {
   const [current, setCurrent] = useState(1)
@@ -58,7 +58,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination total={250} showTotal />
@@ -71,7 +71,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination
@@ -89,7 +89,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination total={500} showQuickJumper />
@@ -102,7 +102,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => {
   const [current, setCurrent] = useState(1)
@@ -128,7 +128,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination total={100} simple />
@@ -141,7 +141,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <div className="space-y-4">
@@ -159,7 +159,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination total={100} disabled />

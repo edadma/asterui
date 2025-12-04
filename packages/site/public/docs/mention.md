@@ -1,6 +1,6 @@
 # Mention
 
-**Import:** `import { Mention } from '@edadma/bloomui'`
+**Import:** `import { Mention } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple mention input with @ trigger.
 
 ```tsx
 import React, { useState } from 'react'
-import { Mention } from '@edadma/bloomui'
+import { Mention } from 'asterui'
 
 const users = [
   { value: 'john', label: 'John Doe' },
@@ -46,7 +46,7 @@ Using # prefix for hashtag mentions.
 
 ```tsx
 import React, { useState } from 'react'
-import { Mention } from '@edadma/bloomui'
+import { Mention } from 'asterui'
 
 const tags = [
   { value: 'react', label: 'React' },
@@ -83,7 +83,7 @@ Using multiple mention components with different prefixes.
 
 ```tsx
 import React, { useState } from 'react'
-import { Mention, Space } from '@edadma/bloomui'
+import { Mention, Space } from 'asterui'
 
 const users = [
   { value: 'john', label: 'John Doe' },

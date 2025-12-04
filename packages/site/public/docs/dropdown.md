@@ -1,6 +1,6 @@
 # Dropdown
 
-**Import:** `import { Dropdown } from '@edadma/bloomui'`
+**Import:** `import { Dropdown } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple dropdown menu with items.
 
 ```tsx
 import React from 'react'
-import { Dropdown, Button } from '@edadma/bloomui'
+import { Dropdown, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Dropdown>
@@ -34,7 +34,7 @@ Dropdown menu can be positioned in different directions.
 
 ```tsx
 import React from 'react'
-import { Dropdown, Button, Space } from '@edadma/bloomui'
+import { Dropdown, Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm" wrap>
@@ -93,7 +93,7 @@ Dropdown opens on hover instead of click.
 
 ```tsx
 import React from 'react'
-import { Dropdown, Button } from '@edadma/bloomui'
+import { Dropdown, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Dropdown hover>
@@ -118,7 +118,7 @@ Menu items with icons for better visual context.
 
 ```tsx
 import React from 'react'
-import { Dropdown, Button } from '@edadma/bloomui'
+import { Dropdown, Button } from 'asterui'
 import { PencilIcon, DocumentDuplicateIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (

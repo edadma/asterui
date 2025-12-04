@@ -1,6 +1,6 @@
 # Code
 
-**Import:** `import { Code } from '@edadma/bloomui'`
+**Import:** `import { Code } from 'asterui'`
 
 ## Examples
 
@@ -10,11 +10,11 @@ Simple code mockup with command prefix.
 
 ```tsx
 import React from 'react'
-import { Code } from '@edadma/bloomui'
+import { Code } from 'asterui'
 
 const App: React.FC = () => (
   <Code>
-    <Code.Line prefix="$">npm install @edadma/bloomui</Code.Line>
+    <Code.Line prefix="$">npm install asterui</Code.Line>
   </Code>
 )
 
@@ -27,11 +27,11 @@ Code block with multiple lines and different prefixes.
 
 ```tsx
 import React from 'react'
-import { Code } from '@edadma/bloomui'
+import { Code } from 'asterui'
 
 const App: React.FC = () => (
   <Code>
-    <Code.Line prefix="$">npm install @edadma/bloomui</Code.Line>
+    <Code.Line prefix="$">npm install asterui</Code.Line>
     <Code.Line prefix=">">installing dependencies...</Code.Line>
     <Code.Line prefix=">">added 42 packages</Code.Line>
     <Code.Line prefix="$">npm run dev</Code.Line>
@@ -47,12 +47,12 @@ Code block with line number prefixes.
 
 ```tsx
 import React from 'react'
-import { Code } from '@edadma/bloomui'
+import { Code } from 'asterui'
 
 const App: React.FC = () => (
   <Code>
     <Code.Line prefix="1">import React from 'react'</Code.Line>
-    <Code.Line prefix="2">import {'{ Button }'} from '@edadma/bloomui'</Code.Line>
+    <Code.Line prefix="2">import {'{ Button }'} from 'asterui'</Code.Line>
     <Code.Line prefix="3"></Code.Line>
     <Code.Line prefix="4">export default function App() {'{'}</Code.Line>
     <Code.Line prefix="5">  return &lt;Button&gt;Click me&lt;/Button&gt;</Code.Line>
@@ -69,7 +69,7 @@ Code block with highlighted lines for emphasis.
 
 ```tsx
 import React from 'react'
-import { Code } from '@edadma/bloomui'
+import { Code } from 'asterui'
 
 const App: React.FC = () => (
   <Code>

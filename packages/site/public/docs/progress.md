@@ -2,7 +2,7 @@
 
 Display task completion or time passage with progress bars.
 
-**Import:** `import { Progress } from '@edadma/bloomui'`
+**Import:** `import { Progress } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Display task completion or time passage with progress bars.
 
 ```tsx
 import React from 'react'
-import { Progress } from '@edadma/bloomui'
+import { Progress } from 'asterui'
 
 const App: React.FC = () => (
   <Progress value={70} className="w-56" />
@@ -23,7 +23,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Progress } from '@edadma/bloomui'
+import { Progress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="space-y-4">
@@ -41,7 +41,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Progress } from '@edadma/bloomui'
+import { Progress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="space-y-4">
@@ -59,7 +59,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Progress } from '@edadma/bloomui'
+import { Progress } from 'asterui'
 
 const App: React.FC = () => (
   <Progress className="w-56" />
@@ -72,7 +72,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Progress } from '@edadma/bloomui'
+import { Progress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="space-y-4">
@@ -89,7 +89,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Progress } from '@edadma/bloomui'
+import { Progress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="space-y-2">

@@ -1,6 +1,6 @@
 # Navbar
 
-**Import:** `import { Navbar } from '@edadma/bloomui'`
+**Import:** `import { Navbar } from 'asterui'`
 
 ## Examples
 
@@ -10,11 +10,11 @@ Simple navbar with title and navigation buttons.
 
 ```tsx
 import React from 'react'
-import { Navbar, Button } from '@edadma/bloomui'
+import { Navbar, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Navbar
-    start={<a className="text-xl font-bold">BloomUI</a>}
+    start={<a className="text-xl font-bold">AsterUI</a>}
     end={
       <>
         <Button type="ghost">Home</Button>
@@ -34,12 +34,12 @@ Navbar with a dropdown menu for additional options.
 
 ```tsx
 import React from 'react'
-import { Navbar, Button, Dropdown } from '@edadma/bloomui'
+import { Navbar, Button, Dropdown } from 'asterui'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
   <Navbar
-    start={<a className="text-xl font-bold">BloomUI</a>}
+    start={<a className="text-xl font-bold">AsterUI</a>}
     end={
       <>
         <Button type="ghost">Home</Button>
@@ -72,12 +72,12 @@ Navbar with content in all three sections for balanced layout.
 
 ```tsx
 import React from 'react'
-import { Navbar, Button } from '@edadma/bloomui'
+import { Navbar, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Navbar
     start={<Button type="ghost" shape="circle">☰</Button>}
-    center={<a className="text-xl font-bold">BloomUI</a>}
+    center={<a className="text-xl font-bold">AsterUI</a>}
     end={<Button type="ghost" shape="circle">⚙</Button>}
   />
 )
@@ -91,7 +91,7 @@ Navbar that adapts to mobile with a menu icon and dropdown.
 
 ```tsx
 import React from 'react'
-import { Navbar, Button, Dropdown } from '@edadma/bloomui'
+import { Navbar, Button, Dropdown } from 'asterui'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -111,7 +111,7 @@ const App: React.FC = () => (
             <Dropdown.Item>Contact</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <a className="text-xl font-bold ml-2">BloomUI</a>
+        <a className="text-xl font-bold ml-2">AsterUI</a>
       </>
     }
     end={

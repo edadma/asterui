@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
-import { Card, Button, Space } from '@edadma/bloomui';
+import { Card, Button, Space } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {

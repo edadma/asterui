@@ -2,7 +2,7 @@
 
 Labels for categorizing, marking, and organizing content.
 
-**Import:** `import { Tag } from '@edadma/bloomui'`
+**Import:** `import { Tag } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Labels for categorizing, marking, and organizing content.
 
 ```tsx
 import React from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-2 flex-wrap">
@@ -32,7 +32,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState(['Tag 1', 'Tag 2', 'Tag 3'])
@@ -64,7 +64,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-2 items-center flex-wrap">
@@ -82,7 +82,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-2 flex-wrap">
@@ -101,7 +101,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { CheckableTag } from '@edadma/bloomui'
+import { CheckableTag } from 'asterui'
 
 const App: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>(['React'])

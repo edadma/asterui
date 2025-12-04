@@ -31,7 +31,7 @@ const features = [
 
 const prereqCommand = `npm install -D tailwindcss @tailwindcss/vite daisyui`;
 
-const installCommand = `npm install @edadma/bloomui`;
+const installCommand = `npm install asterui`;
 
 const viteConfigCode = `import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -43,9 +43,9 @@ export default defineConfig({
 
 const cssConfigCode = `@import "tailwindcss";
 @plugin "daisyui";
-@source "../node_modules/@edadma/bloomui";`;
+@source "../node_modules/asterui";`;
 
-const usageExample = `import { Form, Input, Checkbox, Button, Modal, Card, Space, Flex, Typography } from '@edadma/bloomui'
+const usageExample = `import { Form, Input, Checkbox, Button, Modal, Card, Space, Flex, Typography } from 'asterui'
 
 const { Link, Paragraph } = Typography
 
@@ -99,10 +99,10 @@ export default function App() {
 
 ---
 
-<Layout title="BloomUI - React Components for DaisyUI">
+<Layout title="AsterUI - React Components for DaisyUI">
   <article itemscope itemtype="https://schema.org/SoftwareApplication">
     <section class="text-center py-16">
-      <h1 class="text-5xl font-bold mb-4" itemprop="name">BloomUI</h1>
+      <h1 class="text-5xl font-bold mb-4" itemprop="name">AsterUI</h1>
       <p class="text-xl text-base-content/70 max-w-2xl mx-auto" itemprop="description">
         React component library built on <a href="https://daisyui.com" class="link">DaisyUI v5</a> with enterprise-level developer convenience.
         Production-ready, test-friendly, and fully typed.
@@ -114,7 +114,7 @@ export default function App() {
     </section>
 
     <section class="py-12">
-      <h2 class="text-3xl font-bold text-center mb-8">Why BloomUI?</h2>
+      <h2 class="text-3xl font-bold text-center mb-8">Why AsterUI?</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map(feature => (
           <div class="card bg-base-200">
@@ -139,7 +139,7 @@ export default function App() {
               Prerequisites
             </h3>
             <p class="text-base-content/70 mb-4">
-              BloomUI requires <a href="https://tailwindcss.com" class="link">Tailwind CSS v4</a> and <a href="https://daisyui.com" class="link">DaisyUI v5</a> to be configured in your project.
+              AsterUI requires <a href="https://tailwindcss.com" class="link">Tailwind CSS v4</a> and <a href="https://daisyui.com" class="link">DaisyUI v5</a> to be configured in your project.
             </p>
             <div class="relative border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
               <button class="copy-btn absolute top-2 right-2 btn btn-xs btn-ghost z-10" data-code={prereqCommand}>
@@ -198,17 +198,17 @@ export default function App() {
               </div>
             </div>
             <p class="text-sm text-base-content/60 mt-2">
-              The <code class="bg-base-300 px-1 rounded">@source</code> directive tells Tailwind to scan BloomUI for classes.
+              The <code class="bg-base-300 px-1 rounded">@source</code> directive tells Tailwind to scan AsterUI for classes.
             </p>
           </div>
         </div>
 
-        <!-- Step 4: Install BloomUI -->
+        <!-- Step 4: Install AsterUI -->
         <div class="card bg-base-200">
           <div class="card-body">
             <h3 class="card-title">
               <span class="badge badge-primary mr-2">4</span>
-              Install BloomUI
+              Install AsterUI
             </h3>
             <div class="relative border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
               <button class="copy-btn absolute top-2 right-2 btn btn-xs btn-ghost z-10" data-code={installCommand}>
@@ -246,7 +246,7 @@ export default function App() {
 
     <section class="py-8">
       <p class="text-center text-base-content/60 text-sm">
-        <a href="https://bloomui.io/llms.txt" class="link">Plain text documentation index</a>
+        <a href="https://asterui.com/llms.txt" class="link">Plain text documentation index</a>
       </p>
     </section>
   </article>

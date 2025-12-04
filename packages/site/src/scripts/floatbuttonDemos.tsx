@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
-import { FloatButton } from '@edadma/bloomui';
+import { FloatButton } from 'asterui';
 import { PlusIcon, QuestionMarkCircleIcon, ChatBubbleLeftRightIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 
 // Demo components for each example

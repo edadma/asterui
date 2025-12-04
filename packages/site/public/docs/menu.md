@@ -1,6 +1,6 @@
 # Menu
 
-**Import:** `import { Menu } from '@edadma/bloomui'`
+**Import:** `import { Menu } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple vertical menu with items.
 
 ```tsx
 import React from 'react'
-import { Menu } from '@edadma/bloomui'
+import { Menu } from 'asterui'
 
 const App: React.FC = () => (
   <Menu>
@@ -30,7 +30,7 @@ Menu displayed horizontally.
 
 ```tsx
 import React from 'react'
-import { Menu } from '@edadma/bloomui'
+import { Menu } from 'asterui'
 
 const App: React.FC = () => (
   <Menu mode="horizontal">
@@ -50,7 +50,7 @@ Menu items with icons for better visual context.
 
 ```tsx
 import React from 'react'
-import { Menu } from '@edadma/bloomui'
+import { Menu } from 'asterui'
 import { HomeIcon, FolderIcon, UsersIcon, CogIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -83,7 +83,7 @@ Menu with nested submenus.
 
 ```tsx
 import React from 'react'
-import { Menu } from '@edadma/bloomui'
+import { Menu } from 'asterui'
 
 const App: React.FC = () => (
   <Menu>
@@ -114,7 +114,7 @@ Menu in different sizes.
 
 ```tsx
 import React from 'react'
-import { Menu, Space } from '@edadma/bloomui'
+import { Menu, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="lg" wrap>

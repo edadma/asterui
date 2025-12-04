@@ -9,7 +9,7 @@ import {
   Space,
   Flex,
   Typography,
-} from '@edadma/bloomui'
+} from 'asterui'
 
 const { Link, Paragraph } = Typography
 

@@ -1,6 +1,6 @@
 # Image
 
-**Import:** `import { Image } from '@edadma/bloomui'`
+**Import:** `import { Image } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple image display with src and alt props.
 
 ```tsx
 import React from 'react'
-import { Image } from '@edadma/bloomui'
+import { Image } from 'asterui'
 
 const App: React.FC = () => (
   <Image
@@ -30,7 +30,7 @@ Images with various dimensions.
 
 ```tsx
 import React from 'react'
-import { Image, Space } from '@edadma/bloomui'
+import { Image, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md" align="center">
@@ -64,7 +64,7 @@ Click image to preview in full size.
 
 ```tsx
 import React from 'react'
-import { Image } from '@edadma/bloomui'
+import { Image } from 'asterui'
 
 const App: React.FC = () => (
   <Image
@@ -85,7 +85,7 @@ Display fallback image when source fails to load.
 
 ```tsx
 import React from 'react'
-import { Image, Space } from '@edadma/bloomui'
+import { Image, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md">

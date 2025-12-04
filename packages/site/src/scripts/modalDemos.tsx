@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
-import { Modal, Button, Space } from '@edadma/bloomui';
+import { Modal, Button, Space } from 'asterui';
 
 // Stateful demo components
 const BasicDemo: React.FC = () => {

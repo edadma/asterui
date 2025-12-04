@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Collapse, Button, Space } from '@edadma/bloomui';
+import { Collapse, Button, Space } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
@@ -8,18 +8,18 @@ const demos: Record<string, React.ReactNode> = {
       items={[
         {
           key: '1',
-          label: 'What is BloomUI?',
-          children: 'BloomUI is a React component library built on DaisyUI and Tailwind CSS.',
+          label: 'What is AsterUI?',
+          children: 'AsterUI is a React component library built on DaisyUI and Tailwind CSS.',
         },
         {
           key: '2',
           label: 'How do I install it?',
-          children: 'Run npm install @edadma/bloomui to get started.',
+          children: 'Run npm install asterui to get started.',
         },
         {
           key: '3',
           label: 'Is it free?',
-          children: 'Yes, BloomUI is open source and free to use.',
+          children: 'Yes, AsterUI is open source and free to use.',
         },
       ]}
       defaultActiveKey={['1']}

@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
-import { ColorPicker, Space } from '@edadma/bloomui';
+import { ColorPicker, Space } from 'asterui';
 
 const presets = [
   '#f43f5e', '#ec4899', '#d946ef', '#a855f7',

@@ -16,7 +16,7 @@ const examples = [
     title: 'Basic Masonry',
     description: 'Simple masonry grid with varying height items.',
     code: `import React from 'react'
-import { Masonry } from '@edadma/bloomui'
+import { Masonry } from 'asterui'
 
 const App: React.FC = () => (
   <Masonry columns={3} gap={16}>
@@ -48,7 +48,7 @@ export default App`,
     title: 'Responsive Columns',
     description: 'Responsive column count at different breakpoints.',
     code: `import React from 'react'
-import { Masonry } from '@edadma/bloomui'
+import { Masonry } from 'asterui'
 
 const App: React.FC = () => (
   <Masonry columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} gap={16}>
@@ -86,7 +86,7 @@ export default App`,
     title: 'Custom Gap',
     description: 'Different gap sizes between items.',
     code: `import React from 'react'
-import { Masonry } from '@edadma/bloomui'
+import { Masonry } from 'asterui'
 
 const App: React.FC = () => (
   <Masonry columns={3} gap={32}>
@@ -116,7 +116,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Masonry - BloomUI">
+<Layout title="Masonry - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -137,7 +137,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Masonry } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Masonry } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

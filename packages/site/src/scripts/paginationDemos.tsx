@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { useState } from 'react';
-import { Pagination } from '@edadma/bloomui';
+import { Pagination } from 'asterui';
 
 // Basic Pagination
 function BasicDemo() {

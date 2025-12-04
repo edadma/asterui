@@ -31,7 +31,7 @@ const examples = [
     title: 'Basic Upload',
     description: 'Simple file upload with button trigger.',
     code: `import React from 'react'
-import { Upload, Button } from '@edadma/bloomui'
+import { Upload, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Upload>
@@ -46,7 +46,7 @@ export default App`,
     title: 'Drag and Drop',
     description: 'Drag files to the upload area.',
     code: `import React from 'react'
-import { Upload } from '@edadma/bloomui'
+import { Upload } from 'asterui'
 
 const App: React.FC = () => (
   <Upload.Dragger>
@@ -63,7 +63,7 @@ export default App`,
     title: 'Picture Card',
     description: 'Display uploaded images as cards.',
     code: `import React, { useState } from 'react'
-import { Upload } from '@edadma/bloomui'
+import { Upload } from 'asterui'
 
 const App: React.FC = () => {
   const [fileList, setFileList] = useState([
@@ -98,7 +98,7 @@ export default App`,
     title: 'Controlled Upload',
     description: 'Control file list with state and custom request.',
     code: `import React, { useState } from 'react'
-import { Upload, Button } from '@edadma/bloomui'
+import { Upload, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [fileList, setFileList] = useState([])
@@ -132,7 +132,7 @@ export default App`,
     title: 'Max File Size',
     description: 'Limit file size with validation.',
     code: `import React from 'react'
-import { Upload, Button } from '@edadma/bloomui'
+import { Upload, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Upload maxSize={1024 * 1024 * 5}>
@@ -147,7 +147,7 @@ export default App`,
     title: 'Accept File Types',
     description: 'Restrict file types that can be uploaded.',
     code: `import React from 'react'
-import { Upload, Button } from '@edadma/bloomui'
+import { Upload, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Upload accept="image/*">
@@ -162,7 +162,7 @@ export default App`,
     title: 'In Form',
     description: 'Upload integrated with Form component.',
     code: `import React from 'react'
-import { Upload, Form, Button } from '@edadma/bloomui'
+import { Upload, Form, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values) => {
@@ -207,7 +207,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Upload - BloomUI">
+<Layout title="Upload - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -224,7 +224,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Upload } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Upload } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

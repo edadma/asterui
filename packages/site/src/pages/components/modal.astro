@@ -22,7 +22,7 @@ const examples = [
     title: 'Basic Modal',
     description: 'Simple modal with open/close functionality.',
     code: `import React, { useState } from 'react'
-import { Modal, Button } from '@edadma/bloomui'
+import { Modal, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -51,7 +51,7 @@ export default App`,
     title: 'With Footer',
     description: 'Modal with custom footer buttons.',
     code: `import React, { useState } from 'react'
-import { Modal, Button, Space } from '@edadma/bloomui'
+import { Modal, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -92,7 +92,7 @@ export default App`,
     title: 'Centered Modal',
     description: 'Vertically centered modal.',
     code: `import React, { useState } from 'react'
-import { Modal, Button } from '@edadma/bloomui'
+import { Modal, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -121,7 +121,7 @@ export default App`,
     title: 'Modal Sizes',
     description: 'Different modal widths.',
     code: `import React, { useState } from 'react'
-import { Modal, Button, Space } from '@edadma/bloomui'
+import { Modal, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -162,7 +162,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Modal - BloomUI">
+<Layout title="Modal - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -183,7 +183,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Modal } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Modal } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

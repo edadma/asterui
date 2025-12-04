@@ -1,6 +1,6 @@
 # Notification
 
-**Import:** `import { Notification } from '@edadma/bloomui'`
+**Import:** `import { Notification } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Different notification types with simple messages.
 
 ```tsx
 import React from 'react'
-import { notification, Button, Space } from '@edadma/bloomui'
+import { notification, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   return (
@@ -72,7 +72,7 @@ Show notifications in different corner positions.
 
 ```tsx
 import React from 'react'
-import { notification, Button, Space } from '@edadma/bloomui'
+import { notification, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   return (
@@ -137,7 +137,7 @@ Control how long notifications stay visible.
 
 ```tsx
 import React from 'react'
-import { notification, Button, Space } from '@edadma/bloomui'
+import { notification, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   return (

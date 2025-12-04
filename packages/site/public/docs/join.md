@@ -1,6 +1,6 @@
 # Join
 
-**Import:** `import { Join } from '@edadma/bloomui'`
+**Import:** `import { Join } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Basic horizontal join with buttons.
 
 ```tsx
 import React from 'react'
-import { Join, Button } from '@edadma/bloomui'
+import { Join, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Join>
@@ -29,7 +29,7 @@ Vertically joined elements.
 
 ```tsx
 import React from 'react'
-import { Join, Button } from '@edadma/bloomui'
+import { Join, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Join direction="vertical">
@@ -48,7 +48,7 @@ Join input with button for search or forms.
 
 ```tsx
 import React from 'react'
-import { Join, Input, Button } from '@edadma/bloomui'
+import { Join, Input, Button } from 'asterui'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -69,7 +69,7 @@ Create segmented controls with joined radio buttons.
 
 ```tsx
 import React from 'react'
-import { Join, Radio } from '@edadma/bloomui'
+import { Join, Radio } from 'asterui'
 
 const App: React.FC = () => (
   <Join>

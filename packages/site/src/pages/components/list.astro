@@ -67,7 +67,7 @@ const examples = [
     title: 'Basic List',
     description: 'Simple list with items.',
     code: `import React from 'react'
-import { List } from '@edadma/bloomui'
+import { List } from 'asterui'
 
 const data = [
   'Racing car sprints past',
@@ -90,7 +90,7 @@ export default App`,
     title: 'With Avatar',
     description: 'List items with avatars and descriptions.',
     code: `import React from 'react'
-import { List, Avatar } from '@edadma/bloomui'
+import { List, Avatar } from 'asterui'
 
 const data = [
   {
@@ -134,7 +134,7 @@ export default App`,
     title: 'Loading State',
     description: 'List in loading state with skeleton.',
     code: `import React from 'react'
-import { List } from '@edadma/bloomui'
+import { List } from 'asterui'
 
 const App: React.FC = () => (
   <List
@@ -151,7 +151,7 @@ export default App`,
     title: 'With Pagination',
     description: 'List with pagination controls.',
     code: `import React, { useState } from 'react'
-import { List } from '@edadma/bloomui'
+import { List } from 'asterui'
 
 const allData = Array.from({ length: 23 }, (_, i) => \`Item \${i + 1}\`)
 
@@ -181,7 +181,7 @@ export default App`,
 ];
 ---
 
-<Layout title="List - BloomUI">
+<Layout title="List - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -202,7 +202,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { List } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { List } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

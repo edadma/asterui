@@ -5,7 +5,7 @@ Page layout component for common page structures with header, content, and foote
 ## Import
 
 ```tsx
-import { PageLayout } from '@edadma/bloomui'
+import { PageLayout } from 'asterui'
 ```
 
 ## Basic Usage

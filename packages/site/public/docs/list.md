@@ -1,6 +1,6 @@
 # List
 
-**Import:** `import { List } from '@edadma/bloomui'`
+**Import:** `import { List } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple list with items.
 
 ```tsx
 import React from 'react'
-import { List } from '@edadma/bloomui'
+import { List } from 'asterui'
 
 const data = [
   'Racing car sprints past',
@@ -35,7 +35,7 @@ List items with avatars and descriptions.
 
 ```tsx
 import React from 'react'
-import { List, Avatar } from '@edadma/bloomui'
+import { List, Avatar } from 'asterui'
 
 const data = [
   {
@@ -81,7 +81,7 @@ List in loading state with skeleton.
 
 ```tsx
 import React from 'react'
-import { List } from '@edadma/bloomui'
+import { List } from 'asterui'
 
 const App: React.FC = () => (
   <List
@@ -100,7 +100,7 @@ List with pagination controls.
 
 ```tsx
 import React, { useState } from 'react'
-import { List } from '@edadma/bloomui'
+import { List } from 'asterui'
 
 const allData = Array.from({ length: 23 }, (_, i) => \
 ```

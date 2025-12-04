@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Space, Button, Badge, Card } from '@edadma/bloomui';
+import { Space, Button, Badge, Card } from 'asterui';
 
 const demos: Record<string, React.ReactNode> = {
   horizontal: (

@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
-import { Menu, Space } from '@edadma/bloomui';
+import { Menu, Space } from 'asterui';
 import { HomeIcon, FolderIcon, UsersIcon, CogIcon } from '@heroicons/react/24/outline';
 
 // Demo components for each example

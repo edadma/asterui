@@ -11,7 +11,7 @@ from pathlib import Path
 COMPONENTS_DIR = Path(__file__).parent.parent / "src" / "pages" / "components"
 DOCS_DIR = Path(__file__).parent.parent / "public" / "docs"
 LLMS_FILE = Path(__file__).parent.parent / "public" / "llms.txt"
-BASE_URL = "https://bloomui.io"
+BASE_URL = "https://asterui.com"
 
 # Component categorization
 CATEGORIES = {
@@ -255,8 +255,8 @@ def generate_llms_txt(component_map: dict[str, str]) -> str:
         "",
         f"- Website: {BASE_URL}",
         f"- Components: {BASE_URL}/components",
-        "- GitHub: https://github.com/edadma/bloomui",
-        "- npm: https://www.npmjs.com/package/@edadma/bloomui",
+        "- GitHub: https://github.com/edadma/asterui",
+        "- npm: https://www.npmjs.com/package/asterui",
         "",
     ])
 

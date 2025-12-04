@@ -1,10 +1,10 @@
-# BloomUI
+# AsterUI
 
 A comprehensive React component library built with [DaisyUI](https://daisyui.com) and [Tailwind CSS](https://tailwindcss.com).
 
 ## Prerequisites
 
-BloomUI requires Tailwind CSS v4 and DaisyUI v5 to be configured in your project.
+AsterUI requires Tailwind CSS v4 and DaisyUI v5 to be configured in your project.
 
 Install Tailwind and DaisyUI:
 
@@ -29,25 +29,25 @@ Configure your CSS file (e.g., `src/index.css`):
 ```css
 @import "tailwindcss";
 @plugin "daisyui";
-@source "../node_modules/@edadma/bloomui";
+@source "../node_modules/asterui";
 ```
 
-The `@source` directive tells Tailwind to scan the BloomUI package for classes to include in your build.
+The `@source` directive tells Tailwind to scan the AsterUI package for classes to include in your build.
 
 ## Installation
 
 ```bash
-npm install bloomui
+npm install asterui
 # or
-pnpm add bloomui
+pnpm add asterui
 # or
-yarn add bloomui
+yarn add asterui
 ```
 
 ## Usage
 
 ```tsx
-import { Form, Input, Checkbox, Button, Modal, Card, Space, Flex, Typography } from '@edadma/bloomui'
+import { Form, Input, Checkbox, Button, Modal, Card, Space, Flex, Typography } from 'asterui'
 
 const { Link, Paragraph } = Typography
 
@@ -201,7 +201,7 @@ export default function App() {
 
 ## Demo
 
-View live examples and documentation at [https://bloomui.io](https://bloomui.io)
+View live examples and documentation at [https://asterui.com](https://asterui.com)
 
 ## Requirements
 

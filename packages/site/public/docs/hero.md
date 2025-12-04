@@ -1,6 +1,6 @@
 # Hero
 
-**Import:** `import { Hero } from '@edadma/bloomui'`
+**Import:** `import { Hero } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple hero section with title and subtitle.
 
 ```tsx
 import React from 'react'
-import { Hero } from '@edadma/bloomui'
+import { Hero } from 'asterui'
 
 const App: React.FC = () => (
   <Hero>
@@ -36,7 +36,7 @@ Hero section with a call-to-action button.
 
 ```tsx
 import React from 'react'
-import { Hero, Button } from '@edadma/bloomui'
+import { Hero, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Hero>
@@ -62,7 +62,7 @@ Hero with side image or figure element.
 
 ```tsx
 import React from 'react'
-import { Hero, Button } from '@edadma/bloomui'
+import { Hero, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Hero>
@@ -94,7 +94,7 @@ Hero with background image and overlay effect.
 
 ```tsx
 import React from 'react'
-import { Hero, Button } from '@edadma/bloomui'
+import { Hero, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Hero

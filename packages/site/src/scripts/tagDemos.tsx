@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Tag, CheckableTag } from '@edadma/bloomui';
+import { Tag, CheckableTag } from 'asterui';
 
 const DocumentIcon = () => (
   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">

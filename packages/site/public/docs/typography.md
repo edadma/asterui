@@ -2,7 +2,7 @@
 
 Semantic text components for titles, paragraphs, and text formatting.
 
-**Import:** `import { Typography } from '@edadma/bloomui'`
+**Import:** `import { Typography } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Semantic text components for titles, paragraphs, and text formatting.
 
 ```tsx
 import React from 'react'
-import { Typography } from '@edadma/bloomui'
+import { Typography } from 'asterui'
 
 const { Title } = Typography
 
@@ -31,7 +31,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Typography, Space } from '@edadma/bloomui'
+import { Typography, Space } from 'asterui'
 
 const { Text } = Typography
 
@@ -53,7 +53,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Typography, Space } from '@edadma/bloomui'
+import { Typography, Space } from 'asterui'
 
 const { Text } = Typography
 
@@ -76,7 +76,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Typography } from '@edadma/bloomui'
+import { Typography } from 'asterui'
 
 const { Paragraph } = Typography
 
@@ -98,7 +98,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Typography } from '@edadma/bloomui'
+import { Typography } from 'asterui'
 
 const { Paragraph } = Typography
 

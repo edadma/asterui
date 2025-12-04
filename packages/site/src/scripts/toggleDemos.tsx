@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Toggle, Form, Button, Space } from '@edadma/bloomui'
+import { Toggle, Form, Button, Space } from 'asterui'
 
 const demos: Record<string, React.ReactNode> = {
   basic: <Toggle />,

@@ -34,7 +34,7 @@ const examples = [
     title: 'Basic Tree',
     description: 'Simple tree with expandable nodes.',
     code: `import React from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const treeData = [
   {
@@ -69,7 +69,7 @@ export default App`,
     title: 'Checkable',
     description: 'Tree with checkbox selection.',
     code: `import React, { useState } from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const App: React.FC = () => {
   const [checkedKeys, setCheckedKeys] = useState([])
@@ -95,7 +95,7 @@ export default App`,
     title: 'Selectable',
     description: 'Tree with node selection.',
     code: `import React, { useState } from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const App: React.FC = () => {
   const [selectedKeys, setSelectedKeys] = useState([])
@@ -121,7 +121,7 @@ export default App`,
     title: 'Multiple Selection',
     description: 'Allow selecting multiple nodes.',
     code: `import React, { useState } from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const App: React.FC = () => {
   const [selectedKeys, setSelectedKeys] = useState([])
@@ -145,7 +145,7 @@ export default App`,
     title: 'Show Line',
     description: 'Display connecting lines between nodes.',
     code: `import React from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const fileTreeData = [
   {
@@ -180,7 +180,7 @@ export default App`,
     title: 'Show Icon',
     description: 'Display custom icons for nodes.',
     code: `import React from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const App: React.FC = () => (
   <Tree
@@ -195,7 +195,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Tree - BloomUI">
+<Layout title="Tree - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -212,7 +212,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Tree } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Tree } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

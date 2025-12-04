@@ -1,10 +1,10 @@
-# BloomUI
+# AsterUI
 
 > React component library built on DaisyUI v5 with enterprise-level developer convenience
 
 ## Overview
 
-BloomUI provides 80+ production-ready React components with:
+AsterUI provides 80+ production-ready React components with:
 - Familiar, intuitive API patterns (Form.Item, Table columns, etc.)
 - DaisyUI v5 styling and theming
 - Full TypeScript support
@@ -14,127 +14,127 @@ BloomUI provides 80+ production-ready React components with:
 ## Installation
 
 ```bash
-npm install @edadma/bloomui
+npm install asterui
 ```
 
 ## Component Documentation
 
 ### Actions
 
-- [Button](https://bloomui.io/docs/button.md)
-- [Dropdown](https://bloomui.io/docs/dropdown.md)
-- [FloatButton](https://bloomui.io/docs/floatbutton.md)
-- [Modal](https://bloomui.io/docs/modal.md)
-- [ThemeController](https://bloomui.io/docs/themecontroller.md)
+- [Button](https://asterui.com/docs/button.md)
+- [Dropdown](https://asterui.com/docs/dropdown.md)
+- [FloatButton](https://asterui.com/docs/floatbutton.md)
+- [Modal](https://asterui.com/docs/modal.md)
+- [ThemeController](https://asterui.com/docs/themecontroller.md)
 
 ### General
 
-- [Typography](https://bloomui.io/docs/typography.md)
+- [Typography](https://asterui.com/docs/typography.md)
 
 ### Layout
 
-- [Affix](https://bloomui.io/docs/affix.md)
-- [Container](https://bloomui.io/docs/container.md)
-- [Divider](https://bloomui.io/docs/divider.md)
-- [Fieldset](https://bloomui.io/docs/fieldset.md)
-- [Flex](https://bloomui.io/docs/flex.md)
-- [Footer](https://bloomui.io/docs/footer.md)
-- [Grid](https://bloomui.io/docs/grid.md)
-- [Hero](https://bloomui.io/docs/hero.md)
-- [Join](https://bloomui.io/docs/join.md)
-- [Layout](https://bloomui.io/docs/layout.md)
-- [Masonry](https://bloomui.io/docs/masonry.md)
-- [PageLayout](https://bloomui.io/docs/pagelayout.md)
-- [Space](https://bloomui.io/docs/space.md)
-- [Splitter](https://bloomui.io/docs/splitter.md)
-- [Stack](https://bloomui.io/docs/stack.md)
+- [Affix](https://asterui.com/docs/affix.md)
+- [Container](https://asterui.com/docs/container.md)
+- [Divider](https://asterui.com/docs/divider.md)
+- [Fieldset](https://asterui.com/docs/fieldset.md)
+- [Flex](https://asterui.com/docs/flex.md)
+- [Footer](https://asterui.com/docs/footer.md)
+- [Grid](https://asterui.com/docs/grid.md)
+- [Hero](https://asterui.com/docs/hero.md)
+- [Join](https://asterui.com/docs/join.md)
+- [Layout](https://asterui.com/docs/layout.md)
+- [Masonry](https://asterui.com/docs/masonry.md)
+- [PageLayout](https://asterui.com/docs/pagelayout.md)
+- [Space](https://asterui.com/docs/space.md)
+- [Splitter](https://asterui.com/docs/splitter.md)
+- [Stack](https://asterui.com/docs/stack.md)
 
 ### Responsive
 
-- [Responsive Utilities](https://bloomui.io/docs/responsive.md) - Show, Hide components and useBreakpoint hook for responsive layouts
+- [Responsive Utilities](https://asterui.com/docs/responsive.md) - Show, Hide components and useBreakpoint hook for responsive layouts
 
 ### Navigation
 
-- [Breadcrumb](https://bloomui.io/docs/breadcrumb.md)
-- [ContextMenu](https://bloomui.io/docs/contextmenu.md)
-- [Menu](https://bloomui.io/docs/menu.md)
-- [Navbar](https://bloomui.io/docs/navbar.md)
-- [Pagination](https://bloomui.io/docs/pagination.md)
-- [Steps](https://bloomui.io/docs/steps.md)
-- [Tabs](https://bloomui.io/docs/tabs.md)
+- [Breadcrumb](https://asterui.com/docs/breadcrumb.md)
+- [ContextMenu](https://asterui.com/docs/contextmenu.md)
+- [Menu](https://asterui.com/docs/menu.md)
+- [Navbar](https://asterui.com/docs/navbar.md)
+- [Pagination](https://asterui.com/docs/pagination.md)
+- [Steps](https://asterui.com/docs/steps.md)
+- [Tabs](https://asterui.com/docs/tabs.md)
 
 ### Data Entry
 
-- [Autocomplete](https://bloomui.io/docs/autocomplete.md)
-- [Cascader](https://bloomui.io/docs/cascader.md)
-- [Checkbox](https://bloomui.io/docs/checkbox.md)
-- [ColorPicker](https://bloomui.io/docs/colorpicker.md)
-- [DatePicker](https://bloomui.io/docs/datepicker.md)
-- [FileInput](https://bloomui.io/docs/fileinput.md)
-- [Form](https://bloomui.io/docs/form.md)
-- [Input](https://bloomui.io/docs/input.md)
-- [InputNumber](https://bloomui.io/docs/inputnumber.md)
-- [Label](https://bloomui.io/docs/label.md)
-- [Mention](https://bloomui.io/docs/mention.md)
-- [OTPInput](https://bloomui.io/docs/otpinput.md)
-- [Radio](https://bloomui.io/docs/radio.md)
-- [Range](https://bloomui.io/docs/range.md)
-- [Rating](https://bloomui.io/docs/rating.md)
-- [Select](https://bloomui.io/docs/select.md)
-- [Textarea](https://bloomui.io/docs/textarea.md)
-- [TimePicker](https://bloomui.io/docs/timepicker.md)
-- [Toggle](https://bloomui.io/docs/toggle.md)
-- [Transfer](https://bloomui.io/docs/transfer.md)
-- [TreeSelect](https://bloomui.io/docs/treeselect.md)
-- [Upload](https://bloomui.io/docs/upload.md)
+- [Autocomplete](https://asterui.com/docs/autocomplete.md)
+- [Cascader](https://asterui.com/docs/cascader.md)
+- [Checkbox](https://asterui.com/docs/checkbox.md)
+- [ColorPicker](https://asterui.com/docs/colorpicker.md)
+- [DatePicker](https://asterui.com/docs/datepicker.md)
+- [FileInput](https://asterui.com/docs/fileinput.md)
+- [Form](https://asterui.com/docs/form.md)
+- [Input](https://asterui.com/docs/input.md)
+- [InputNumber](https://asterui.com/docs/inputnumber.md)
+- [Label](https://asterui.com/docs/label.md)
+- [Mention](https://asterui.com/docs/mention.md)
+- [OTPInput](https://asterui.com/docs/otpinput.md)
+- [Radio](https://asterui.com/docs/radio.md)
+- [Range](https://asterui.com/docs/range.md)
+- [Rating](https://asterui.com/docs/rating.md)
+- [Select](https://asterui.com/docs/select.md)
+- [Textarea](https://asterui.com/docs/textarea.md)
+- [TimePicker](https://asterui.com/docs/timepicker.md)
+- [Toggle](https://asterui.com/docs/toggle.md)
+- [Transfer](https://asterui.com/docs/transfer.md)
+- [TreeSelect](https://asterui.com/docs/treeselect.md)
+- [Upload](https://asterui.com/docs/upload.md)
 
 ### Data Display
 
-- [Avatar](https://bloomui.io/docs/avatar.md)
-- [Badge](https://bloomui.io/docs/badge.md)
-- [Card](https://bloomui.io/docs/card.md)
-- [Carousel](https://bloomui.io/docs/carousel.md)
-- [Chart](https://bloomui.io/docs/chart.md)
-- [Chat](https://bloomui.io/docs/chat.md)
-- [Collapse](https://bloomui.io/docs/collapse.md)
-- [Countdown](https://bloomui.io/docs/countdown.md)
-- [Descriptions](https://bloomui.io/docs/descriptions.md)
-- [Empty](https://bloomui.io/docs/empty.md)
-- [Image](https://bloomui.io/docs/image.md)
-- [Indicator](https://bloomui.io/docs/indicator.md)
-- [List](https://bloomui.io/docs/list.md)
-- [Popover](https://bloomui.io/docs/popover.md)
-- [QRCode](https://bloomui.io/docs/qrcode.md)
-- [Stat](https://bloomui.io/docs/stat.md)
-- [Table](https://bloomui.io/docs/table.md)
-- [Tag](https://bloomui.io/docs/tag.md)
-- [Timeline](https://bloomui.io/docs/timeline.md)
-- [Tooltip](https://bloomui.io/docs/tooltip.md)
-- [Tree](https://bloomui.io/docs/tree.md)
+- [Avatar](https://asterui.com/docs/avatar.md)
+- [Badge](https://asterui.com/docs/badge.md)
+- [Card](https://asterui.com/docs/card.md)
+- [Carousel](https://asterui.com/docs/carousel.md)
+- [Chart](https://asterui.com/docs/chart.md)
+- [Chat](https://asterui.com/docs/chat.md)
+- [Collapse](https://asterui.com/docs/collapse.md)
+- [Countdown](https://asterui.com/docs/countdown.md)
+- [Descriptions](https://asterui.com/docs/descriptions.md)
+- [Empty](https://asterui.com/docs/empty.md)
+- [Image](https://asterui.com/docs/image.md)
+- [Indicator](https://asterui.com/docs/indicator.md)
+- [List](https://asterui.com/docs/list.md)
+- [Popover](https://asterui.com/docs/popover.md)
+- [QRCode](https://asterui.com/docs/qrcode.md)
+- [Stat](https://asterui.com/docs/stat.md)
+- [Table](https://asterui.com/docs/table.md)
+- [Tag](https://asterui.com/docs/tag.md)
+- [Timeline](https://asterui.com/docs/timeline.md)
+- [Tooltip](https://asterui.com/docs/tooltip.md)
+- [Tree](https://asterui.com/docs/tree.md)
 
 ### Feedback
 
-- [Alert](https://bloomui.io/docs/alert.md)
-- [Drawer](https://bloomui.io/docs/drawer.md)
-- [Loading](https://bloomui.io/docs/loading.md)
-- [Notification](https://bloomui.io/docs/notification.md)
-- [Popconfirm](https://bloomui.io/docs/popconfirm.md)
-- [Progress](https://bloomui.io/docs/progress.md)
-- [RadialProgress](https://bloomui.io/docs/radialprogress.md)
-- [Result](https://bloomui.io/docs/result.md)
-- [Skeleton](https://bloomui.io/docs/skeleton.md)
+- [Alert](https://asterui.com/docs/alert.md)
+- [Drawer](https://asterui.com/docs/drawer.md)
+- [Loading](https://asterui.com/docs/loading.md)
+- [Notification](https://asterui.com/docs/notification.md)
+- [Popconfirm](https://asterui.com/docs/popconfirm.md)
+- [Progress](https://asterui.com/docs/progress.md)
+- [RadialProgress](https://asterui.com/docs/radialprogress.md)
+- [Result](https://asterui.com/docs/result.md)
+- [Skeleton](https://asterui.com/docs/skeleton.md)
 
 ### Mockups
 
-- [Browser](https://bloomui.io/docs/browser.md)
-- [Code](https://bloomui.io/docs/code.md)
-- [Phone](https://bloomui.io/docs/phone.md)
-- [Window](https://bloomui.io/docs/window.md)
+- [Browser](https://asterui.com/docs/browser.md)
+- [Code](https://asterui.com/docs/code.md)
+- [Phone](https://asterui.com/docs/phone.md)
+- [Window](https://asterui.com/docs/window.md)
 
 ## Quick Start
 
 ```tsx
-import { Form, Input, Button, Table, Checkbox } from '@edadma/bloomui';
+import { Form, Input, Button, Table, Checkbox } from 'asterui';
 
 // Form example
 <Form onFinish={handleSubmit}>
@@ -202,7 +202,7 @@ All components include:
 
 ```tsx
 import { render, screen } from '@testing-library/react';
-import { Button, Modal } from '@edadma/bloomui';
+import { Button, Modal } from 'asterui';
 
 screen.getByRole('button', { name: 'Submit' });
 screen.getByTestId('form-item-email');
@@ -211,7 +211,7 @@ expect(screen.getByRole('dialog')).toHaveAttribute('data-state', 'open');
 
 ## Links
 
-- Website: https://bloomui.io
-- Components: https://bloomui.io/components
-- GitHub: https://github.com/edadma/bloomui
-- npm: https://www.npmjs.com/package/@edadma/bloomui
+- Website: https://asterui.com
+- Components: https://asterui.com/components
+- GitHub: https://github.com/edadma/asterui
+- npm: https://www.npmjs.com/package/asterui

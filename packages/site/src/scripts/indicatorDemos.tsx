@@ -1,10 +1,10 @@
-import { createRoot } from 'react-dom/client';
-import React from 'react';
-import { Indicator, Button, Avatar } from '@edadma/bloomui';
+import { createRoot } from 'react-dom/client'
+import React from 'react'
+import { Indicator, Button, Avatar } from 'asterui'
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
-  'basic': (
+  basic: (
     <div className="flex gap-6 flex-wrap items-center">
       <Indicator>
         <Indicator.Item />
@@ -16,47 +16,65 @@ const demos: Record<string, React.ReactNode> = {
       </Indicator>
     </div>
   ),
-  'positions': (
+  positions: (
     <div className="grid grid-cols-3 gap-4">
       <Indicator>
         <Indicator.Item position="top-start" />
-        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">TL</div>
+        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">
+          TL
+        </div>
       </Indicator>
       <Indicator>
         <Indicator.Item position="top-center" />
-        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">TC</div>
+        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">
+          TC
+        </div>
       </Indicator>
       <Indicator>
         <Indicator.Item position="top-end" />
-        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">TR</div>
+        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">
+          TR
+        </div>
       </Indicator>
       <Indicator>
         <Indicator.Item position="middle-start" />
-        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">ML</div>
+        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">
+          ML
+        </div>
       </Indicator>
       <Indicator>
         <Indicator.Item position="middle-center" />
-        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">MC</div>
+        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">
+          MC
+        </div>
       </Indicator>
       <Indicator>
         <Indicator.Item position="middle-end" />
-        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">MR</div>
+        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">
+          MR
+        </div>
       </Indicator>
       <Indicator>
         <Indicator.Item position="bottom-start" />
-        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">BL</div>
+        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">
+          BL
+        </div>
       </Indicator>
       <Indicator>
         <Indicator.Item position="bottom-center" />
-        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">BC</div>
+        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">
+          BC
+        </div>
       </Indicator>
       <Indicator>
         <Indicator.Item position="bottom-end" />
-        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">BR</div>
+        <div className="w-16 h-16 bg-base-300 rounded flex items-center justify-center text-xs">
+          BR
+        </div>
       </Indicator>
     </div>
   ),
-  'badge': (
+  badge: (
     <div className="flex gap-6 flex-wrap items-center">
       <Indicator>
         <Indicator.Item>5</Indicator.Item>
@@ -88,28 +106,29 @@ const demos: Record<string, React.ReactNode> = {
       </Indicator>
     </div>
   ),
-};
+}
 
 // Mount React demos
-document.querySelectorAll('.demo-container').forEach(container => {
-  const exampleId = container.getAttribute('data-example');
+document.querySelectorAll('.demo-container').forEach((container) => {
+  const exampleId = container.getAttribute('data-example')
   if (exampleId && demos[exampleId]) {
-    const root = createRoot(container as HTMLElement);
-    root.render(demos[exampleId]);
+    const root = createRoot(container as HTMLElement)
+    root.render(demos[exampleId])
   }
-});
+})
 
 // Copy button functionality
-document.querySelectorAll('.copy-btn').forEach(btn => {
+document.querySelectorAll('.copy-btn').forEach((btn) => {
   btn.addEventListener('click', async () => {
-    const code = btn.getAttribute('data-code');
+    const code = btn.getAttribute('data-code')
     if (code) {
-      await navigator.clipboard.writeText(code);
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+      await navigator.clipboard.writeText(code)
+      const originalHTML = btn.innerHTML
+      btn.innerHTML =
+        '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>'
       setTimeout(() => {
-        btn.innerHTML = originalHTML;
-      }, 2000);
+        btn.innerHTML = originalHTML
+      }, 2000)
     }
-  });
-});
+  })
+})

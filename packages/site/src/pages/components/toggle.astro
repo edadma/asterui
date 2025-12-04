@@ -19,7 +19,7 @@ const examples = [
     title: 'Basic Toggle',
     description: 'Simple toggle switch.',
     code: `import React from 'react'
-import { Toggle } from '@edadma/bloomui'
+import { Toggle } from 'asterui'
 
 const App: React.FC = () => (
   <Toggle />
@@ -32,7 +32,7 @@ export default App`,
     title: 'Sizes',
     description: 'Four sizes available for toggles.',
     code: `import React from 'react'
-import { Toggle, Space } from '@edadma/bloomui'
+import { Toggle, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -50,7 +50,7 @@ export default App`,
     title: 'Colors',
     description: 'Color variants for different contexts.',
     code: `import React from 'react'
-import { Toggle, Space } from '@edadma/bloomui'
+import { Toggle, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -71,7 +71,7 @@ export default App`,
     title: 'Disabled',
     description: 'Non-interactive disabled toggles.',
     code: `import React from 'react'
-import { Toggle, Space } from '@edadma/bloomui'
+import { Toggle, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -87,7 +87,7 @@ export default App`,
     title: 'Controlled',
     description: 'Toggle with controlled state.',
     code: `import React, { useState } from 'react'
-import { Toggle } from '@edadma/bloomui'
+import { Toggle } from 'asterui'
 
 const App: React.FC = () => {
   const [checked, setChecked] = useState(false)
@@ -111,7 +111,7 @@ export default App`,
     title: 'In Form',
     description: 'Toggle integrated with Form component using valuePropName.',
     code: `import React from 'react'
-import { Form, Toggle, Button } from '@edadma/bloomui'
+import { Form, Toggle, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values) => {
@@ -150,7 +150,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Toggle - BloomUI">
+<Layout title="Toggle - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -167,7 +167,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Toggle } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Toggle } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

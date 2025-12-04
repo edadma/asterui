@@ -1,6 +1,6 @@
-# BloomUI Website
+# AsterUI Website
 
-Documentation and component catalog for [BloomUI](https://github.com/edadma/bloomui).
+Documentation and component catalog for [AsterUI](https://github.com/edadma/asterui).
 
 Built with [Astro](https://astro.build/) for AI-readable, server-rendered documentation.
 
@@ -15,4 +15,4 @@ npm run dev
 
 Automatically deploys to GitHub Pages on push to `main`.
 
-Live at [bloomui.io](https://bloomui.io)
+Live at [asterui.com](https://asterui.com)

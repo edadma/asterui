@@ -1,6 +1,6 @@
 # Checkbox
 
-**Import:** `import { Checkbox } from '@edadma/bloomui'`
+**Import:** `import { Checkbox } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple checkbox with label.
 
 ```tsx
 import React from 'react'
-import { Checkbox } from '@edadma/bloomui'
+import { Checkbox } from 'asterui'
 
 const App: React.FC = () => (
   <label className="flex items-center gap-2 cursor-pointer">
@@ -28,7 +28,7 @@ Checkboxes with different color variants.
 
 ```tsx
 import React from 'react'
-import { Checkbox, Space } from '@edadma/bloomui'
+import { Checkbox, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -60,7 +60,7 @@ Different checkbox sizes.
 
 ```tsx
 import React from 'react'
-import { Checkbox, Space } from '@edadma/bloomui'
+import { Checkbox, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md" align="center">
@@ -92,7 +92,7 @@ Disabled checkbox states.
 
 ```tsx
 import React from 'react'
-import { Checkbox, Space } from '@edadma/bloomui'
+import { Checkbox, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md">
@@ -116,7 +116,7 @@ Checkbox with indeterminate state for partial selection.
 
 ```tsx
 import React, { useState } from 'react'
-import { Checkbox, Space } from '@edadma/bloomui'
+import { Checkbox, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [items, setItems] = useState([true, false, true])
@@ -167,7 +167,7 @@ Group of checkboxes with shared state.
 
 ```tsx
 import React from 'react'
-import { Checkbox } from '@edadma/bloomui'
+import { Checkbox } from 'asterui'
 
 const options = [
   { label: 'Apple', value: 'apple' },

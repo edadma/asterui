@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { RadialProgress } from '@edadma/bloomui';
+import { RadialProgress } from 'asterui';
 
 const demos: Record<string, React.ReactNode> = {
   'basic': (

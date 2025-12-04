@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Loading, Space } from '@edadma/bloomui';
+import { Loading, Space } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {

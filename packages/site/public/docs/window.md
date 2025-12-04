@@ -2,7 +2,7 @@
 
 OS-style window mockup component for showcasing code or content.
 
-**Import:** `import { Window } from '@edadma/bloomui'`
+**Import:** `import { Window } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ OS-style window mockup component for showcasing code or content.
 
 ```tsx
 import React from 'react'
-import { Window } from '@edadma/bloomui'
+import { Window } from 'asterui'
 
 const App: React.FC = () => (
   <Window>
@@ -25,12 +25,12 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Window, Code } from '@edadma/bloomui'
+import { Window, Code } from 'asterui'
 
 const App: React.FC = () => (
   <Window>
     <Code className="bg-base-300">
-      <Code.Line>npm install @edadma/bloomui</Code.Line>
+      <Code.Line>npm install asterui</Code.Line>
     </Code>
   </Window>
 )
@@ -42,12 +42,12 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Window, Code } from '@edadma/bloomui'
+import { Window, Code } from 'asterui'
 
 const App: React.FC = () => (
   <Window>
     <Code className="bg-base-300">
-      <Code.Line>import { Button } from '@edadma/bloomui'</Code.Line>
+      <Code.Line>import { Button } from 'asterui'</Code.Line>
       <Code.Line></Code.Line>
       <Code.Line>function App() {'{'}</Code.Line>
       <Code.Line>  return {'<Button>Click me</Button>'}</Code.Line>
@@ -63,12 +63,12 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Window, Code } from '@edadma/bloomui'
+import { Window, Code } from 'asterui'
 
 const App: React.FC = () => (
   <Window>
     <Code className="bg-base-300">
-      <Code.Line prefix="$">npm install @edadma/bloomui</Code.Line>
+      <Code.Line prefix="$">npm install asterui</Code.Line>
       <Code.Line prefix="$">npm run dev</Code.Line>
       <Code.Line prefix=">">Server running on http://localhost:3000</Code.Line>
     </Code>
@@ -82,7 +82,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Window, Code } from '@edadma/bloomui'
+import { Window, Code } from 'asterui'
 
 const App: React.FC = () => (
   <Window className="bg-neutral">
@@ -100,7 +100,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Window } from '@edadma/bloomui'
+import { Window } from 'asterui'
 
 const App: React.FC = () => (
   <Window contentClassName="p-4">

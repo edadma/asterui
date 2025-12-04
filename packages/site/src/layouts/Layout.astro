@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { siNpm, siGithub } from 'simple-icons';
 
-const pkgPath = path.join(process.cwd(), 'node_modules/@edadma/bloomui/package.json');
+const pkgPath = path.join(process.cwd(), 'node_modules/asterui/package.json');
 const { version } = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
 
 interface Props {
@@ -12,9 +12,9 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'BloomUI - Free open source React component library built on DaisyUI v5 and Tailwind CSS v4' } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, 'https://bloomui.io');
-const ogImage = 'https://bloomui.io/logo.png';
+const { title, description = 'AsterUI - Free open source React component library built on DaisyUI v5 and Tailwind CSS v4' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, 'https://asterui.com');
+const ogImage = 'https://asterui.com/logo.png';
 ---
 
 <!doctype html>
@@ -24,7 +24,7 @@ const ogImage = 'https://bloomui.io/logo.png';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="keywords" content="BloomUI, React components, DaisyUI v5, Tailwind CSS v4, TypeScript, UI library, open source, component library" />
+    <meta name="keywords" content="AsterUI, React components, DaisyUI v5, Tailwind CSS v4, TypeScript, UI library, open source, component library" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
@@ -33,7 +33,7 @@ const ogImage = 'https://bloomui.io/logo.png';
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="BloomUI" />
+    <meta property="og:site_name" content="AsterUI" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImage} />
 
@@ -48,12 +48,12 @@ const ogImage = 'https://bloomui.io/logo.png';
       {
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
-        "name": "BloomUI",
+        "name": "AsterUI",
         "description": "React component library built on DaisyUI v5 with enterprise-level developer convenience",
         "programmingLanguage": ["TypeScript", "React"],
         "runtimePlatform": "Node.js",
-        "codeRepository": "https://github.com/edadma/bloomui",
-        "url": "https://bloomui.io"
+        "codeRepository": "https://github.com/edadma/asterui",
+        "url": "https://asterui.com"
       }
     </script>
 
@@ -64,19 +64,19 @@ const ogImage = 'https://bloomui.io/logo.png';
     <header class="navbar bg-base-200 border-b border-base-300 px-4">
       <div class="navbar-start">
         <a href="/" class="btn btn-ghost text-xl gap-2">
-          <img src="/logo.png" alt="BloomUI" class="h-8 w-8" />
-          BloomUI
+          <img src="/logo.png" alt="AsterUI" class="h-8 w-8" />
+          AsterUI
         </a>
         <span class="badge badge-ghost">v{version}</span>
       </div>
       <div class="navbar-end">
         <nav class="flex gap-2 items-center">
-          <a href="https://www.npmjs.com/package/@edadma/bloomui" class="btn btn-ghost btn-square" aria-label="npm">
+          <a href="https://www.npmjs.com/package/asterui" class="btn btn-ghost btn-square" aria-label="npm">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
               <path d={siNpm.path}/>
             </svg>
           </a>
-          <a href="https://github.com/edadma/bloomui" class="btn btn-ghost btn-square" aria-label="GitHub">
+          <a href="https://github.com/edadma/asterui" class="btn btn-ghost btn-square" aria-label="GitHub">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
               <path d={siGithub.path}/>
             </svg>
@@ -125,7 +125,7 @@ const ogImage = 'https://bloomui.io/logo.png';
     </script>
     
     <footer class="footer footer-center p-4 bg-base-200 text-base-content border-t border-base-300">
-      <p>BloomUI — React components with professional DX, DaisyUI style</p>
+      <p>AsterUI — React components with professional DX, DaisyUI style</p>
     </footer>
   </body>
 </html>

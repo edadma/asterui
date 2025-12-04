@@ -53,7 +53,7 @@ const examples = [
     title: 'Basic Image',
     description: 'Simple image display with src and alt props.',
     code: `import React from 'react'
-import { Image } from '@edadma/bloomui'
+import { Image } from 'asterui'
 
 const App: React.FC = () => (
   <Image
@@ -71,7 +71,7 @@ export default App`,
     title: 'Different Sizes',
     description: 'Images with various dimensions.',
     code: `import React from 'react'
-import { Image, Space } from '@edadma/bloomui'
+import { Image, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md" align="center">
@@ -103,7 +103,7 @@ export default App`,
     title: 'Image Preview',
     description: 'Click image to preview in full size.',
     code: `import React from 'react'
-import { Image } from '@edadma/bloomui'
+import { Image } from 'asterui'
 
 const App: React.FC = () => (
   <Image
@@ -122,7 +122,7 @@ export default App`,
     title: 'Fallback Image',
     description: 'Display fallback image when source fails to load.',
     code: `import React from 'react'
-import { Image, Space } from '@edadma/bloomui'
+import { Image, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="md">
@@ -141,7 +141,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Image - BloomUI">
+<Layout title="Image - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -162,7 +162,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Image } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Image } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

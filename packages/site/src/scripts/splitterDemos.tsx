@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Splitter, Button, Space, Menu } from '@edadma/bloomui';
+import React, { useState } from 'react'
+import { createRoot } from 'react-dom/client'
+import { Splitter, Button, Space, Menu } from 'asterui'
 
 const demos: Record<string, React.ReactNode> = {
   basic: (
@@ -9,17 +9,13 @@ const demos: Record<string, React.ReactNode> = {
         <Splitter.Panel>
           <div className="p-4 bg-base-200 h-full">
             <h3 className="font-semibold">Left Panel</h3>
-            <p className="text-sm text-base-content/70 mt-2">
-              Drag the divider to resize.
-            </p>
+            <p className="text-sm text-base-content/70 mt-2">Drag the divider to resize.</p>
           </div>
         </Splitter.Panel>
         <Splitter.Panel>
           <div className="p-4 h-full">
             <h3 className="font-semibold">Right Panel</h3>
-            <p className="text-sm text-base-content/70 mt-2">
-              Content on the right side.
-            </p>
+            <p className="text-sm text-base-content/70 mt-2">Content on the right side.</p>
           </div>
         </Splitter.Panel>
       </Splitter>
@@ -114,9 +110,7 @@ const demos: Record<string, React.ReactNode> = {
       <Splitter defaultSizes={[20, 80]}>
         <Splitter.Panel minSize={150}>
           <div className="h-full bg-base-200">
-            <div className="p-2 border-b border-base-300 font-semibold text-sm">
-              Explorer
-            </div>
+            <div className="p-2 border-b border-base-300 font-semibold text-sm">Explorer</div>
             <Menu>
               <Menu.Item>src/</Menu.Item>
               <Menu.Item>components/</Menu.Item>
@@ -138,9 +132,7 @@ const demos: Record<string, React.ReactNode> = {
             </Splitter.Panel>
             <Splitter.Panel>
               <div className="h-full bg-base-300 p-2">
-                <div className="text-xs font-mono text-base-content/70">
-                  $ npm run build
-                </div>
+                <div className="text-xs font-mono text-base-content/70">$ npm run build</div>
               </div>
             </Splitter.Panel>
           </Splitter>
@@ -148,10 +140,10 @@ const demos: Record<string, React.ReactNode> = {
       </Splitter>
     </div>
   ),
-};
+}
 
 function ControlledDemo() {
-  const [sizes, setSizes] = useState([30, 70]);
+  const [sizes, setSizes] = useState([30, 70])
 
   return (
     <div>
@@ -177,22 +169,22 @@ function ControlledDemo() {
         </Splitter>
       </div>
     </div>
-  );
+  )
 }
 
 const statefulDemos: Record<string, React.FC> = {
   controlled: ControlledDemo,
-};
+}
 
 document.querySelectorAll('.demo-container').forEach((container) => {
-  const example = container.getAttribute('data-example');
+  const example = container.getAttribute('data-example')
   if (example) {
-    const root = createRoot(container);
-    const StatefulComponent = statefulDemos[example];
+    const root = createRoot(container)
+    const StatefulComponent = statefulDemos[example]
     if (StatefulComponent) {
-      root.render(<StatefulComponent />);
+      root.render(<StatefulComponent />)
     } else if (demos[example]) {
-      root.render(<>{demos[example]}</>);
+      root.render(<>{demos[example]}</>)
     }
   }
-});
+})

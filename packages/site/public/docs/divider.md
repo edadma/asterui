@@ -1,6 +1,6 @@
 # Divider
 
-**Import:** `import { Divider } from '@edadma/bloomui'`
+**Import:** `import { Divider } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple horizontal divider.
 
 ```tsx
 import React from 'react'
-import { Divider } from '@edadma/bloomui'
+import { Divider } from 'asterui'
 
 const App: React.FC = () => (
   <div>
@@ -29,7 +29,7 @@ Divider with text label.
 
 ```tsx
 import React from 'react'
-import { Divider } from '@edadma/bloomui'
+import { Divider } from 'asterui'
 
 const App: React.FC = () => (
   <div>
@@ -48,7 +48,7 @@ Position text on the left, center, or right.
 
 ```tsx
 import React from 'react'
-import { Divider, Space } from '@edadma/bloomui'
+import { Divider, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md" className="w-full">
@@ -67,7 +67,7 @@ Divider with dashed line style.
 
 ```tsx
 import React from 'react'
-import { Divider, Space } from '@edadma/bloomui'
+import { Divider, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md" className="w-full">
@@ -85,7 +85,7 @@ Vertical divider for inline content.
 
 ```tsx
 import React from 'react'
-import { Divider } from '@edadma/bloomui'
+import { Divider } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex items-center">

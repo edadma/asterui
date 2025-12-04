@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Steps } from '@edadma/bloomui';
+import { Steps } from 'asterui';
 
 const demos: Record<string, React.ReactNode> = {
   basic: (

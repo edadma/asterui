@@ -1,6 +1,6 @@
 # Footer
 
-**Import:** `import { Footer } from '@edadma/bloomui'`
+**Import:** `import { Footer } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple footer with links.
 
 ```tsx
 import React from 'react'
-import { Footer } from '@edadma/bloomui'
+import { Footer } from 'asterui'
 
 const App: React.FC = () => (
   <Footer>
@@ -32,7 +32,7 @@ Footer with titled sections.
 
 ```tsx
 import React from 'react'
-import { Footer } from '@edadma/bloomui'
+import { Footer } from 'asterui'
 
 const App: React.FC = () => (
   <Footer>
@@ -66,7 +66,7 @@ Footer with centered content.
 
 ```tsx
 import React from 'react'
-import { Footer } from '@edadma/bloomui'
+import { Footer } from 'asterui'
 
 const App: React.FC = () => (
   <Footer center>

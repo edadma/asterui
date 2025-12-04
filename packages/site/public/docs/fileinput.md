@@ -1,6 +1,6 @@
 # FileInput
 
-**Import:** `import { FileInput } from '@edadma/bloomui'`
+**Import:** `import { FileInput } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple file input.
 
 ```tsx
 import React from 'react'
-import { FileInput } from '@edadma/bloomui'
+import { FileInput } from 'asterui'
 
 const App: React.FC = () => (
   <FileInput />
@@ -25,7 +25,7 @@ File input that accepts only specific file types.
 
 ```tsx
 import React from 'react'
-import { FileInput, Space } from '@edadma/bloomui'
+import { FileInput, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md">
@@ -53,7 +53,7 @@ Allow selecting multiple files.
 
 ```tsx
 import React from 'react'
-import { FileInput } from '@edadma/bloomui'
+import { FileInput } from 'asterui'
 
 const App: React.FC = () => (
   <FileInput multiple />
@@ -68,7 +68,7 @@ Different file input sizes.
 
 ```tsx
 import React from 'react'
-import { FileInput, Space } from '@edadma/bloomui'
+import { FileInput, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md">
@@ -88,7 +88,7 @@ Different color variants.
 
 ```tsx
 import React from 'react'
-import { FileInput, Space } from '@edadma/bloomui'
+import { FileInput, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md">
@@ -110,7 +110,7 @@ Bordered and ghost styles.
 
 ```tsx
 import React from 'react'
-import { FileInput, Space } from '@edadma/bloomui'
+import { FileInput, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md">

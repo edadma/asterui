@@ -2,7 +2,7 @@
 
 Dropdown tree selection for hierarchical data.
 
-**Import:** `import { TreeSelect } from '@edadma/bloomui'`
+**Import:** `import { TreeSelect } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Dropdown tree selection for hierarchical data.
 
 ```tsx
 import React, { useState } from 'react'
-import { TreeSelect } from '@edadma/bloomui'
+import { TreeSelect } from 'asterui'
 
 const treeData = [
   {
@@ -57,7 +57,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { TreeSelect } from '@edadma/bloomui'
+import { TreeSelect } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState([])
@@ -81,7 +81,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { TreeSelect } from '@edadma/bloomui'
+import { TreeSelect } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState([])
@@ -105,7 +105,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { TreeSelect } from '@edadma/bloomui'
+import { TreeSelect } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(undefined)
@@ -129,7 +129,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { TreeSelect, Form, Button } from '@edadma/bloomui'
+import { TreeSelect, Form, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values) => {

@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Cascader, Space } from '@edadma/bloomui';
+import { Cascader, Space } from 'asterui';
 
 const locationOptions = [
   {

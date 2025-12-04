@@ -1,16 +1,16 @@
-import { createRoot } from 'react-dom/client';
-import React, { useState } from 'react';
-import { Checkbox, Space } from '@edadma/bloomui';
+import { createRoot } from 'react-dom/client'
+import React, { useState } from 'react'
+import { Checkbox, Space } from 'asterui'
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
-  'basic': (
+  basic: (
     <label className="flex items-center gap-2 cursor-pointer">
       <Checkbox />
       <span>Accept terms and conditions</span>
     </label>
   ),
-  'colors': (
+  colors: (
     <Space direction="vertical" size="sm">
       <label className="flex items-center gap-2 cursor-pointer">
         <Checkbox color="primary" defaultChecked />
@@ -30,7 +30,7 @@ const demos: Record<string, React.ReactNode> = {
       </label>
     </Space>
   ),
-  'sizes': (
+  sizes: (
     <Space direction="horizontal" size="md" align="center">
       <label className="flex items-center gap-2 cursor-pointer">
         <Checkbox size="xs" defaultChecked />
@@ -50,7 +50,7 @@ const demos: Record<string, React.ReactNode> = {
       </label>
     </Space>
   ),
-  'disabled': (
+  disabled: (
     <Space direction="horizontal" size="md">
       <label className="flex items-center gap-2 cursor-not-allowed opacity-50">
         <Checkbox disabled />
@@ -62,7 +62,7 @@ const demos: Record<string, React.ReactNode> = {
       </label>
     </Space>
   ),
-  'group': (
+  group: (
     <Checkbox.Group
       options={[
         { label: 'Apple', value: 'apple' },
@@ -74,26 +74,22 @@ const demos: Record<string, React.ReactNode> = {
       onChange={(values) => console.log('Selected:', values)}
     />
   ),
-};
+}
 
 // Stateful demo components
 const IndeterminateDemo: React.FC = () => {
-  const [items, setItems] = useState([true, false, true]);
-  const allChecked = items.every(Boolean);
-  const someChecked = items.some(Boolean) && !allChecked;
+  const [items, setItems] = useState([true, false, true])
+  const allChecked = items.every(Boolean)
+  const someChecked = items.some(Boolean) && !allChecked
 
   const handleSelectAll = () => {
-    setItems(allChecked ? [false, false, false] : [true, true, true]);
-  };
+    setItems(allChecked ? [false, false, false] : [true, true, true])
+  }
 
   return (
     <Space direction="vertical" size="sm">
       <label className="flex items-center gap-2 cursor-pointer font-medium">
-        <Checkbox
-          checked={allChecked}
-          indeterminate={someChecked}
-          onChange={handleSelectAll}
-        />
+        <Checkbox checked={allChecked} indeterminate={someChecked} onChange={handleSelectAll} />
         <span>Select All</span>
       </label>
       <div className="ml-6">
@@ -103,9 +99,9 @@ const IndeterminateDemo: React.FC = () => {
               <Checkbox
                 checked={items[i]}
                 onChange={() => {
-                  const newItems = [...items];
-                  newItems[i] = !newItems[i];
-                  setItems(newItems);
+                  const newItems = [...items]
+                  newItems[i] = !newItems[i]
+                  setItems(newItems)
                 }}
               />
               <span>{item}</span>
@@ -114,38 +110,39 @@ const IndeterminateDemo: React.FC = () => {
         </Space>
       </div>
     </Space>
-  );
-};
+  )
+}
 
 const statefulDemos: Record<string, React.FC> = {
-  'indeterminate': IndeterminateDemo,
-};
+  indeterminate: IndeterminateDemo,
+}
 
 // Mount React demos
-document.querySelectorAll('.demo-container').forEach(container => {
-  const exampleId = container.getAttribute('data-example');
+document.querySelectorAll('.demo-container').forEach((container) => {
+  const exampleId = container.getAttribute('data-example')
   if (exampleId) {
-    const root = createRoot(container as HTMLElement);
+    const root = createRoot(container as HTMLElement)
     if (demos[exampleId]) {
-      root.render(demos[exampleId]);
+      root.render(demos[exampleId])
     } else if (statefulDemos[exampleId]) {
-      const Component = statefulDemos[exampleId];
-      root.render(<Component />);
+      const Component = statefulDemos[exampleId]
+      root.render(<Component />)
     }
   }
-});
+})
 
 // Copy button functionality
-document.querySelectorAll('.copy-btn').forEach(btn => {
+document.querySelectorAll('.copy-btn').forEach((btn) => {
   btn.addEventListener('click', async () => {
-    const code = btn.getAttribute('data-code');
+    const code = btn.getAttribute('data-code')
     if (code) {
-      await navigator.clipboard.writeText(code);
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+      await navigator.clipboard.writeText(code)
+      const originalHTML = btn.innerHTML
+      btn.innerHTML =
+        '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>'
       setTimeout(() => {
-        btn.innerHTML = originalHTML;
-      }, 2000);
+        btn.innerHTML = originalHTML
+      }, 2000)
     }
-  });
-});
+  })
+})

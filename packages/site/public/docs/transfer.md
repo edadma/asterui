@@ -2,7 +2,7 @@
 
 Two-column transfer component for moving items between lists.
 
-**Import:** `import { Transfer } from '@edadma/bloomui'`
+**Import:** `import { Transfer } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Two-column transfer component for moving items between lists.
 
 ```tsx
 import React, { useState } from 'react'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState(['item-3', 'item-5'])
@@ -38,7 +38,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState([])
@@ -66,7 +66,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState([])
@@ -99,7 +99,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 const App: React.FC = () => {
   const [targetKeys, setTargetKeys] = useState([])

@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
-import { Image, Space } from '@edadma/bloomui';
+import { Image, Space } from 'asterui';
 
 const imgSrc = 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp';
 

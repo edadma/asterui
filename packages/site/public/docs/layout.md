@@ -1,6 +1,6 @@
 # Layout
 
-**Import:** `import { Layout } from '@edadma/bloomui'`
+**Import:** `import { Layout } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple header, content, and footer layout.
 
 ```tsx
 import React from 'react'
-import { Layout } from '@edadma/bloomui'
+import { Layout } from 'asterui'
 
 const App: React.FC = () => (
   <Layout className="min-h-screen">
@@ -38,7 +38,7 @@ Layout with side navigation on the left.
 
 ```tsx
 import React from 'react'
-import { Layout } from '@edadma/bloomui'
+import { Layout } from 'asterui'
 
 const App: React.FC = () => (
   <Layout className="min-h-screen">
@@ -75,7 +75,7 @@ Layout with sidebar positioned on the right side.
 
 ```tsx
 import React from 'react'
-import { Layout } from '@edadma/bloomui'
+import { Layout } from 'asterui'
 
 const App: React.FC = () => (
   <Layout className="min-h-screen">
@@ -112,7 +112,7 @@ Responsive layout with collapsible sidebar.
 
 ```tsx
 import React, { useState } from 'react'
-import { Layout, Button } from '@edadma/bloomui'
+import { Layout, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false)

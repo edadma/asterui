@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Table, Button, Tag } from '@edadma/bloomui';
-import type { ColumnType } from '@edadma/bloomui';
+import { Table, Button, Tag } from 'asterui';
+import type { ColumnType } from 'asterui';
 
 interface User {
   id: string;

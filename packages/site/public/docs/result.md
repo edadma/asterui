@@ -2,7 +2,7 @@
 
 Display result pages for success, error, or informational states.
 
-**Import:** `import { Result } from '@edadma/bloomui'`
+**Import:** `import { Result } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Display result pages for success, error, or informational states.
 
 ```tsx
 import React from 'react'
-import { Result, Button, Space } from '@edadma/bloomui'
+import { Result, Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Result
@@ -33,7 +33,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Result, Button } from '@edadma/bloomui'
+import { Result, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Result
@@ -51,7 +51,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Result } from '@edadma/bloomui'
+import { Result } from 'asterui'
 
 const App: React.FC = () => (
   <Result
@@ -68,7 +68,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Result, Button } from '@edadma/bloomui'
+import { Result, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Result
@@ -86,7 +86,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Result, Button } from '@edadma/bloomui'
+import { Result, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Result
@@ -104,7 +104,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Result, Button } from '@edadma/bloomui'
+import { Result, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Result
@@ -122,7 +122,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Result, Button } from '@edadma/bloomui'
+import { Result, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Result

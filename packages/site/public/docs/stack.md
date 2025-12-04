@@ -5,7 +5,7 @@ Flexbox-based layout component for arranging elements with consistent spacing.
 ## Import
 
 ```tsx
-import { Stack } from '@edadma/bloomui'
+import { Stack } from 'asterui'
 ```
 
 ## Basic Usage

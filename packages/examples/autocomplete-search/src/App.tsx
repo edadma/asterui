@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Navbar, Hero, ThemeController, Autocomplete, Card, Space } from '@edadma/bloomui'
+import { Navbar, Hero, ThemeController, Autocomplete, Card, Space } from 'asterui'
 
 const THEMES = [
   'light',
@@ -63,7 +63,9 @@ function App() {
     fetch('https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags,cca2')
       .then((res) => res.json())
       .then((data) => {
-        setCountries(data.sort((a: Country, b: Country) => a.name.common.localeCompare(b.name.common)))
+        setCountries(
+          data.sort((a: Country, b: Country) => a.name.common.localeCompare(b.name.common))
+        )
         setLoading(false)
       })
       .catch((err) => {
@@ -85,46 +87,59 @@ function App() {
         end={<ThemeController.Dropdown themes={THEMES} />}
       />
 
-      <Hero className="bg-base-200 !min-h-[calc(100vh-4rem)]" contentClassName="text-center" wrapperClassName="max-w-2xl">
+      <Hero
+        className="bg-base-200 !min-h-[calc(100vh-4rem)]"
+        contentClassName="text-center"
+        wrapperClassName="max-w-2xl"
+      >
         <Space size="lg">
           <h1 className="text-5xl font-bold">Country Search</h1>
           <p className="text-lg">
-            Search and explore countries using the RESTCountries API with real-time autocomplete filtering.
+            Search and explore countries using the RESTCountries API with real-time autocomplete
+            filtering.
           </p>
 
           <div className="w-full max-w-md mx-auto">
-          <label className="label">
-            <span className="label-text">Search for a country</span>
-          </label>
-          {loading ? (
-            <div className="skeleton h-12 w-full"></div>
-          ) : (
-            <Autocomplete
-              options={countries.map((c) => c.name.common)}
-              placeholder="Type to search countries..."
-              onChange={handleCountrySelect}
-              className="w-full"
-            />
-          )}
-        </div>
-
-        {selectedCountry && (
-          <Card className="shadow-xl max-w-md mx-auto" title={selectedCountry.name.common}>
-            <div className="flex items-start gap-4">
-              <img
-                src={selectedCountry.flags.svg}
-                alt={selectedCountry.flags.alt || `Flag of ${selectedCountry.name.common}`}
-                className="w-24 h-16 object-cover rounded"
+            <label className="label">
+              <span className="label-text">Search for a country</span>
+            </label>
+            {loading ? (
+              <div className="skeleton h-12 w-full"></div>
+            ) : (
+              <Autocomplete
+                options={countries.map((c) => c.name.common)}
+                placeholder="Type to search countries..."
+                onChange={handleCountrySelect}
+                className="w-full"
               />
-              <div className="text-left">
-                <p><strong>Official Name:</strong> {selectedCountry.name.official}</p>
-                <p><strong>Capital:</strong> {selectedCountry.capital?.[0] || 'N/A'}</p>
-                <p><strong>Region:</strong> {selectedCountry.region}</p>
-                <p><strong>Population:</strong> {selectedCountry.population.toLocaleString()}</p>
+            )}
+          </div>
+
+          {selectedCountry && (
+            <Card className="shadow-xl max-w-md mx-auto" title={selectedCountry.name.common}>
+              <div className="flex items-start gap-4">
+                <img
+                  src={selectedCountry.flags.svg}
+                  alt={selectedCountry.flags.alt || `Flag of ${selectedCountry.name.common}`}
+                  className="w-24 h-16 object-cover rounded"
+                />
+                <div className="text-left">
+                  <p>
+                    <strong>Official Name:</strong> {selectedCountry.name.official}
+                  </p>
+                  <p>
+                    <strong>Capital:</strong> {selectedCountry.capital?.[0] || 'N/A'}
+                  </p>
+                  <p>
+                    <strong>Region:</strong> {selectedCountry.region}
+                  </p>
+                  <p>
+                    <strong>Population:</strong> {selectedCountry.population.toLocaleString()}
+                  </p>
+                </div>
               </div>
-            </div>
-          </Card>
-        )}
+            </Card>
+          )}
 
           {!selectedCountry && !loading && (
             <div className="text-base-content/60">

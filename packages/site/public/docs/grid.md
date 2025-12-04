@@ -1,6 +1,6 @@
 # Grid
 
-**Import:** `import { Grid } from '@edadma/bloomui'`
+**Import:** `import { Grid } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Basic 24-column grid system.
 
 ```tsx
 import React from 'react'
-import { Row, Col } from '@edadma/bloomui'
+import { Row, Col } from 'asterui'
 
 const App: React.FC = () => (
   <Row>
@@ -46,7 +46,7 @@ Add spacing between columns with the gutter prop.
 
 ```tsx
 import React from 'react'
-import { Row, Col } from '@edadma/bloomui'
+import { Row, Col } from 'asterui'
 
 const App: React.FC = () => (
   <Row gutter={16}>
@@ -82,7 +82,7 @@ Offset columns using the offset prop.
 
 ```tsx
 import React from 'react'
-import { Row, Col, Space } from '@edadma/bloomui'
+import { Row, Col, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md" className="w-full">
@@ -122,7 +122,7 @@ Different column spans at different breakpoints.
 
 ```tsx
 import React from 'react'
-import { Row, Col } from '@edadma/bloomui'
+import { Row, Col } from 'asterui'
 
 const App: React.FC = () => (
   <Row gutter={16}>

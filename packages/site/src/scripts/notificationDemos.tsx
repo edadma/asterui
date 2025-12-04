@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
-import { notification, Button, Space } from '@edadma/bloomui';
+import { notification, Button, Space } from 'asterui';
 
 // Demo components for each example
 const BasicDemo: React.FC = () => {

@@ -1,13 +1,13 @@
-import { createRoot } from 'react-dom/client';
-import { Popover, Button } from '@edadma/bloomui';
+import { createRoot } from 'react-dom/client'
+import { Popover, Button } from 'asterui'
 
 const demos: Record<string, React.ReactNode> = {
-  'basic': (
+  basic: (
     <Popover content="This is a simple popover">
       <Button>Hover me</Button>
     </Popover>
   ),
-  'title': (
+  title: (
     <Popover
       title="User Information"
       content="Additional details about the user and their account settings."
@@ -15,7 +15,7 @@ const demos: Record<string, React.ReactNode> = {
       <Button>Hover me</Button>
     </Popover>
   ),
-  'triggers': (
+  triggers: (
     <div className="flex gap-4">
       <Popover trigger="hover" content="Triggered by hovering">
         <Button>Hover</Button>
@@ -80,13 +80,13 @@ const demos: Record<string, React.ReactNode> = {
       </Popover>
     </div>
   ),
-};
+}
 
 // Mount demos
-document.querySelectorAll('.demo-container').forEach(container => {
-  const exampleId = container.getAttribute('data-example');
+document.querySelectorAll('.demo-container').forEach((container) => {
+  const exampleId = container.getAttribute('data-example')
   if (exampleId && demos[exampleId]) {
-    const root = createRoot(container as HTMLElement);
-    root.render(demos[exampleId]);
+    const root = createRoot(container as HTMLElement)
+    root.render(demos[exampleId])
   }
-});
+})

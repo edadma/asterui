@@ -1,4 +1,4 @@
-import { Navbar, Hero, ThemeController, Button, Badge, Card, Space } from '@edadma/bloomui'
+import { Navbar, Hero, ThemeController, Button, Badge, Card, Space } from 'asterui'
 
 const THEMES = [
   'light',
@@ -47,7 +47,11 @@ function App() {
         end={<ThemeController.Dropdown themes={THEMES} />}
       />
 
-      <Hero className="bg-base-200 !min-h-[calc(100vh-4rem)]" contentClassName="text-center" wrapperClassName="max-w-2xl">
+      <Hero
+        className="bg-base-200 !min-h-[calc(100vh-4rem)]"
+        contentClassName="text-center"
+        wrapperClassName="max-w-2xl"
+      >
         <Space size="lg">
           <h1 className="text-5xl font-bold">Theme Showcase</h1>
           <p className="text-lg">
@@ -56,25 +60,25 @@ function App() {
           </p>
 
           <div className="flex flex-wrap gap-2 justify-center">
-          <Button type="primary">Primary</Button>
-          <Button type="secondary">Secondary</Button>
-          <Button type="accent">Accent</Button>
-          <Button type="neutral">Neutral</Button>
-          <Button type="info">Info</Button>
-          <Button type="success">Success</Button>
-          <Button type="warning">Warning</Button>
-          <Button type="error">Error</Button>
-        </div>
+            <Button type="primary">Primary</Button>
+            <Button type="secondary">Secondary</Button>
+            <Button type="accent">Accent</Button>
+            <Button type="neutral">Neutral</Button>
+            <Button type="info">Info</Button>
+            <Button type="success">Success</Button>
+            <Button type="warning">Warning</Button>
+            <Button type="error">Error</Button>
+          </div>
 
-        <div className="flex flex-wrap gap-2 justify-center">
-          <Badge type="primary">Primary</Badge>
-          <Badge type="secondary">Secondary</Badge>
-          <Badge type="accent">Accent</Badge>
-          <Badge type="info">Info</Badge>
-          <Badge type="success">Success</Badge>
-          <Badge type="warning">Warning</Badge>
-          <Badge type="error">Error</Badge>
-        </div>
+          <div className="flex flex-wrap gap-2 justify-center">
+            <Badge type="primary">Primary</Badge>
+            <Badge type="secondary">Secondary</Badge>
+            <Badge type="accent">Accent</Badge>
+            <Badge type="info">Info</Badge>
+            <Badge type="success">Success</Badge>
+            <Badge type="warning">Warning</Badge>
+            <Badge type="error">Error</Badge>
+          </div>
 
           <Card className="shadow-xl" title="Theme Colors">
             <p>This card demonstrates base-100 background with themed text and borders.</p>

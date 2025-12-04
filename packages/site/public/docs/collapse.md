@@ -1,6 +1,6 @@
 # Collapse
 
-**Import:** `import { Collapse } from '@edadma/bloomui'`
+**Import:** `import { Collapse } from 'asterui'`
 
 ## Examples
 
@@ -10,23 +10,23 @@ Simple collapsible panels.
 
 ```tsx
 import React from 'react'
-import { Collapse } from '@edadma/bloomui'
+import { Collapse } from 'asterui'
 
 const items = [
   {
     key: '1',
-    label: 'What is BloomUI?',
-    children: 'BloomUI is a React component library built on DaisyUI and Tailwind CSS.',
+    label: 'What is AsterUI?',
+    children: 'AsterUI is a React component library built on DaisyUI and Tailwind CSS.',
   },
   {
     key: '2',
     label: 'How do I install it?',
-    children: 'Run npm install @edadma/bloomui to get started.',
+    children: 'Run npm install asterui to get started.',
   },
   {
     key: '3',
     label: 'Is it free?',
-    children: 'Yes, BloomUI is open source and free to use.',
+    children: 'Yes, AsterUI is open source and free to use.',
   },
 ]
 
@@ -43,7 +43,7 @@ Only one panel can be open at a time.
 
 ```tsx
 import React from 'react'
-import { Collapse } from '@edadma/bloomui'
+import { Collapse } from 'asterui'
 
 const items = [
   {
@@ -76,7 +76,7 @@ Collapse without borders.
 
 ```tsx
 import React from 'react'
-import { Collapse } from '@edadma/bloomui'
+import { Collapse } from 'asterui'
 
 const items = [
   {
@@ -104,7 +104,7 @@ Collapse with rich nested content.
 
 ```tsx
 import React from 'react'
-import { Collapse, Button, Space } from '@edadma/bloomui'
+import { Collapse, Button, Space } from 'asterui'
 
 const items = [
   {

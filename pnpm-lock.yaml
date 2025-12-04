@@ -8,7 +8,7 @@ importers:
 
   .: {}
 
-  packages/bloomui:
+  packages/asterui:
     dependencies:
       qrcode:
         specifier: ^1.5.4
@@ -59,9 +59,9 @@ importers:
 
   packages/examples/autocomplete-search:
     dependencies:
-      '@edadma/bloomui':
+      asterui:
         specifier: workspace:*
-        version: link:../../bloomui
+        version: link:../../asterui
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -96,9 +96,9 @@ importers:
 
   packages/examples/comprehensive-form:
     dependencies:
-      '@edadma/bloomui':
+      asterui:
         specifier: workspace:*
-        version: link:../../bloomui
+        version: link:../../asterui
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -136,9 +136,9 @@ importers:
 
   packages/examples/form-validation:
     dependencies:
-      '@edadma/bloomui':
+      asterui:
         specifier: workspace:*
-        version: link:../../bloomui
+        version: link:../../asterui
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -176,9 +176,9 @@ importers:
 
   packages/examples/job-application:
     dependencies:
-      '@edadma/bloomui':
+      asterui:
         specifier: workspace:*
-        version: link:../../bloomui
+        version: link:../../asterui
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -216,9 +216,9 @@ importers:
 
   packages/examples/login-form:
     dependencies:
-      '@edadma/bloomui':
+      asterui:
         specifier: workspace:*
-        version: link:../../bloomui
+        version: link:../../asterui
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -256,9 +256,9 @@ importers:
 
   packages/examples/theme-dropdown:
     dependencies:
-      '@edadma/bloomui':
+      asterui:
         specifier: workspace:*
-        version: link:../../bloomui
+        version: link:../../asterui
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -293,9 +293,9 @@ importers:
 
   packages/examples/theme-swap:
     dependencies:
-      '@edadma/bloomui':
+      asterui:
         specifier: workspace:*
-        version: link:../../bloomui
+        version: link:../../asterui
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -336,15 +336,15 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.2.0
         version: 3.6.0
-      '@edadma/bloomui':
-        specifier: workspace:*
-        version: link:../bloomui
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.0)
       '@tailwindcss/vite':
         specifier: ^4.0.0
         version: 4.1.17(vite@6.4.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2))
+      asterui:
+        specifier: workspace:*
+        version: link:../asterui
       astro:
         specifier: ^5.9.0
         version: 5.16.3(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.53.2)(typescript@5.9.3)

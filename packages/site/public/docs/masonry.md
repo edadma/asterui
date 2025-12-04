@@ -1,6 +1,6 @@
 # Masonry
 
-**Import:** `import { Masonry } from '@edadma/bloomui'`
+**Import:** `import { Masonry } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple masonry grid with varying height items.
 
 ```tsx
 import React from 'react'
-import { Masonry } from '@edadma/bloomui'
+import { Masonry } from 'asterui'
 
 const App: React.FC = () => (
   <Masonry columns={3} gap={16}>
@@ -44,7 +44,7 @@ Responsive column count at different breakpoints.
 
 ```tsx
 import React from 'react'
-import { Masonry } from '@edadma/bloomui'
+import { Masonry } from 'asterui'
 
 const App: React.FC = () => (
   <Masonry columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} gap={16}>
@@ -84,7 +84,7 @@ Different gap sizes between items.
 
 ```tsx
 import React from 'react'
-import { Masonry } from '@edadma/bloomui'
+import { Masonry } from 'asterui'
 
 const App: React.FC = () => (
   <Masonry columns={3} gap={32}>

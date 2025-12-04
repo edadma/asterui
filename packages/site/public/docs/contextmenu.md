@@ -5,7 +5,7 @@ Right-click context menu component for displaying contextual actions.
 ## Import
 
 ```tsx
-import { ContextMenu } from '@edadma/bloomui'
+import { ContextMenu } from 'asterui'
 ```
 
 ## Basic Usage

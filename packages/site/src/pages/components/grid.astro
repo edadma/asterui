@@ -28,7 +28,7 @@ const examples = [
     title: 'Basic Grid',
     description: 'Basic 24-column grid system.',
     code: `import React from 'react'
-import { Row, Col } from '@edadma/bloomui'
+import { Row, Col } from 'asterui'
 
 const App: React.FC = () => (
   <Row>
@@ -62,7 +62,7 @@ export default App`,
     title: 'Grid Gutter',
     description: 'Add spacing between columns with the gutter prop.',
     code: `import React from 'react'
-import { Row, Col } from '@edadma/bloomui'
+import { Row, Col } from 'asterui'
 
 const App: React.FC = () => (
   <Row gutter={16}>
@@ -96,7 +96,7 @@ export default App`,
     title: 'Column Offset',
     description: 'Offset columns using the offset prop.',
     code: `import React from 'react'
-import { Row, Col, Space } from '@edadma/bloomui'
+import { Row, Col, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md" className="w-full">
@@ -134,7 +134,7 @@ export default App`,
     title: 'Responsive Columns',
     description: 'Different column spans at different breakpoints.',
     code: `import React from 'react'
-import { Row, Col } from '@edadma/bloomui'
+import { Row, Col } from 'asterui'
 
 const App: React.FC = () => (
   <Row gutter={16}>
@@ -166,7 +166,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Grid - BloomUI">
+<Layout title="Grid - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -187,7 +187,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Row, Col } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Row, Col } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

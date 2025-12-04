@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { OTPInput, Space } from '@edadma/bloomui'
+import { OTPInput, Space } from 'asterui'
 
 const BasicDemo = () => {
   const [value, setValue] = useState('')

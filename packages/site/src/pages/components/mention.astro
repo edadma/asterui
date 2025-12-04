@@ -54,7 +54,7 @@ const examples = [
     title: 'Basic Mention',
     description: 'Simple mention input with @ trigger.',
     code: `import React, { useState } from 'react'
-import { Mention } from '@edadma/bloomui'
+import { Mention } from 'asterui'
 
 const users = [
   { value: 'john', label: 'John Doe' },
@@ -88,7 +88,7 @@ export default App`,
     title: 'Custom Prefix',
     description: 'Using # prefix for hashtag mentions.',
     code: `import React, { useState } from 'react'
-import { Mention } from '@edadma/bloomui'
+import { Mention } from 'asterui'
 
 const tags = [
   { value: 'react', label: 'React' },
@@ -123,7 +123,7 @@ export default App`,
     title: 'Multiple Triggers',
     description: 'Using multiple mention components with different prefixes.',
     code: `import React, { useState } from 'react'
-import { Mention, Space } from '@edadma/bloomui'
+import { Mention, Space } from 'asterui'
 
 const users = [
   { value: 'john', label: 'John Doe' },
@@ -181,7 +181,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Mention - BloomUI">
+<Layout title="Mention - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -202,7 +202,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Mention } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Mention } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

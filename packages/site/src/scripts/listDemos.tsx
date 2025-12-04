@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
-import { List, Avatar } from '@edadma/bloomui';
+import { List, Avatar } from 'asterui';
 
 const basicData = [
   'Racing car sprints past',

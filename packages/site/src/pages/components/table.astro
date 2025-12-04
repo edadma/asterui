@@ -46,8 +46,8 @@ const examples = [
     title: 'Basic Table',
     description: 'Simple table with default pagination.',
     code: `import React from 'react'
-import { Table } from '@edadma/bloomui'
-import type { ColumnType } from '@edadma/bloomui'
+import { Table } from 'asterui'
+import type { ColumnType } from 'asterui'
 
 interface User {
   id: string
@@ -78,8 +78,8 @@ export default App`,
     title: 'Custom Rendering',
     description: 'Use render functions for badges, buttons, and custom content.',
     code: `import React from 'react'
-import { Table, Tag, Button } from '@edadma/bloomui'
-import type { ColumnType } from '@edadma/bloomui'
+import { Table, Tag, Button } from 'asterui'
+import type { ColumnType } from 'asterui'
 
 interface User {
   id: string
@@ -120,7 +120,7 @@ export default App`,
     title: 'Striped Rows',
     description: 'Zebra striping for better readability.',
     code: `import React from 'react'
-import { Table } from '@edadma/bloomui'
+import { Table } from 'asterui'
 
 const App: React.FC = () => (
   <Table columns={columns} dataSource={data} striped pagination={false} />
@@ -133,7 +133,7 @@ export default App`,
     title: 'Bordered Table',
     description: 'Add borders for a more defined look.',
     code: `import React from 'react'
-import { Table } from '@edadma/bloomui'
+import { Table } from 'asterui'
 
 const App: React.FC = () => (
   <Table columns={columns} dataSource={data} bordered pagination={false} />
@@ -146,8 +146,8 @@ export default App`,
     title: 'Column Sorting',
     description: 'Click column headers to sort data.',
     code: `import React from 'react'
-import { Table } from '@edadma/bloomui'
-import type { ColumnType } from '@edadma/bloomui'
+import { Table } from 'asterui'
+import type { ColumnType } from 'asterui'
 
 interface User {
   id: string
@@ -173,8 +173,8 @@ export default App`,
     title: 'Column Filtering',
     description: 'Add filter dropdowns to columns.',
     code: `import React from 'react'
-import { Table } from '@edadma/bloomui'
-import type { ColumnType } from '@edadma/bloomui'
+import { Table } from 'asterui'
+import type { ColumnType } from 'asterui'
 
 const columns: ColumnType<User>[] = [
   { key: 'name', title: 'Name', dataIndex: 'name' },
@@ -212,8 +212,8 @@ export default App`,
     title: 'Row Selection',
     description: 'Enable row selection with checkboxes.',
     code: `import React, { useState } from 'react'
-import { Table } from '@edadma/bloomui'
-import type { ColumnType, RowSelection } from '@edadma/bloomui'
+import { Table } from 'asterui'
+import type { ColumnType, RowSelection } from 'asterui'
 
 const App: React.FC = () => {
   const [selectedKeys, setSelectedKeys] = useState<React.Key[]>([])
@@ -246,7 +246,7 @@ export default App`,
     title: 'Loading State',
     description: 'Show loading spinner while fetching data.',
     code: `import React from 'react'
-import { Table } from '@edadma/bloomui'
+import { Table } from 'asterui'
 
 const App: React.FC = () => (
   <Table columns={columns} dataSource={[]} loading pagination={false} />
@@ -259,7 +259,7 @@ export default App`,
     title: 'Compact Size',
     description: 'Extra small size for dense data.',
     code: `import React from 'react'
-import { Table } from '@edadma/bloomui'
+import { Table } from 'asterui'
 
 const App: React.FC = () => (
   <Table columns={columns} dataSource={data} size="xs" pagination={false} />
@@ -272,7 +272,7 @@ export default App`,
     title: 'Pinned Header',
     description: 'Keep header visible while scrolling.',
     code: `import React from 'react'
-import { Table } from '@edadma/bloomui'
+import { Table } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-48 overflow-auto">
@@ -285,7 +285,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Table - BloomUI">
+<Layout title="Table - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -302,7 +302,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Table } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Table } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

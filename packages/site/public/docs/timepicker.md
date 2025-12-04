@@ -2,7 +2,7 @@
 
 Select time with an interactive picker interface.
 
-**Import:** `import { TimePicker } from '@edadma/bloomui'`
+**Import:** `import { TimePicker } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Select time with an interactive picker interface.
 
 ```tsx
 import React from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => (
   <TimePicker placeholder="Select time" />
@@ -23,7 +23,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => (
   <TimePicker format="12" placeholder="Select time" />
@@ -36,7 +36,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => (
   <TimePicker showSeconds placeholder="Select time" />
@@ -49,7 +49,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => {
   const [time, setTime] = useState<Date | null>(null)
@@ -71,7 +71,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { TimePicker, Space } from '@edadma/bloomui'
+import { TimePicker, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -89,7 +89,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { TimePicker, Form, Button } from '@edadma/bloomui'
+import { TimePicker, Form, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values) => {
@@ -132,7 +132,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => {
   const [startTime, setStartTime] = useState<Date | null>(null)

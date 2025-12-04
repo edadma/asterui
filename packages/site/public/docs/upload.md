@@ -2,7 +2,7 @@
 
 File upload component with drag-and-drop support.
 
-**Import:** `import { Upload } from '@edadma/bloomui'`
+**Import:** `import { Upload } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ File upload component with drag-and-drop support.
 
 ```tsx
 import React from 'react'
-import { Upload, Button } from '@edadma/bloomui'
+import { Upload, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Upload>
@@ -25,7 +25,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Upload } from '@edadma/bloomui'
+import { Upload } from 'asterui'
 
 const App: React.FC = () => (
   <Upload.Dragger>
@@ -42,7 +42,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Upload } from '@edadma/bloomui'
+import { Upload } from 'asterui'
 
 const App: React.FC = () => {
   const [fileList, setFileList] = useState([
@@ -77,7 +77,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Upload, Button } from '@edadma/bloomui'
+import { Upload, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [fileList, setFileList] = useState([])
@@ -111,7 +111,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Upload, Form, Button } from '@edadma/bloomui'
+import { Upload, Form, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values) => {

@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { DatePicker, Space } from '@edadma/bloomui';
+import { DatePicker, Space } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {

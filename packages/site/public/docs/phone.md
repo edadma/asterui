@@ -2,7 +2,7 @@
 
 Display content in an iPhone-style phone frame mockup.
 
-**Import:** `import { Phone } from '@edadma/bloomui'`
+**Import:** `import { Phone } from 'asterui'`
 
 ## Examples
 

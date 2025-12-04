@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
-import { Dropdown, Button, Space } from '@edadma/bloomui';
+import { Dropdown, Button, Space } from 'asterui';
 import { PencilIcon, DocumentDuplicateIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 // Demo components for each example

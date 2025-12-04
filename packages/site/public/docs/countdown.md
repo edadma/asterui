@@ -5,7 +5,7 @@ Countdown timer component for displaying time remaining until a target date.
 ## Import
 
 ```tsx
-import { Countdown } from '@edadma/bloomui'
+import { Countdown } from 'asterui'
 ```
 
 ## Basic Usage

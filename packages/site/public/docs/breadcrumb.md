@@ -1,6 +1,6 @@
 # Breadcrumb
 
-**Import:** `import { Breadcrumb } from '@edadma/bloomui'`
+**Import:** `import { Breadcrumb } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple breadcrumb navigation.
 
 ```tsx
 import React from 'react'
-import { Breadcrumb } from '@edadma/bloomui'
+import { Breadcrumb } from 'asterui'
 
 const App: React.FC = () => (
   <Breadcrumb>
@@ -29,7 +29,7 @@ Breadcrumb with icons.
 
 ```tsx
 import React from 'react'
-import { Breadcrumb } from '@edadma/bloomui'
+import { Breadcrumb } from 'asterui'
 import { FolderIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -58,7 +58,7 @@ Breadcrumb with overflow scrolling.
 
 ```tsx
 import React from 'react'
-import { Breadcrumb } from '@edadma/bloomui'
+import { Breadcrumb } from 'asterui'
 
 const App: React.FC = () => (
   <Breadcrumb className="max-w-xs">

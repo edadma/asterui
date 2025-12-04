@@ -1,6 +1,6 @@
 # Container
 
-**Import:** `import { Container } from '@edadma/bloomui'`
+**Import:** `import { Container } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Centered container with max-width.
 
 ```tsx
 import React from 'react'
-import { Container } from '@edadma/bloomui'
+import { Container } from 'asterui'
 
 const App: React.FC = () => (
   <Container>
@@ -29,7 +29,7 @@ Different max-width sizes.
 
 ```tsx
 import React from 'react'
-import { Container, Space } from '@edadma/bloomui'
+import { Container, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md">
@@ -65,7 +65,7 @@ Container without horizontal padding.
 
 ```tsx
 import React from 'react'
-import { Container } from '@edadma/bloomui'
+import { Container } from 'asterui'
 
 const App: React.FC = () => (
   <Container padding={false}>
@@ -84,7 +84,7 @@ Container used for page content layout.
 
 ```tsx
 import React from 'react'
-import { Container, Space } from '@edadma/bloomui'
+import { Container, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Container size="lg">

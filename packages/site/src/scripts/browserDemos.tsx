@@ -1,17 +1,15 @@
-import { createRoot } from 'react-dom/client';
-import React from 'react';
-import { Browser } from '@edadma/bloomui';
+import { createRoot } from 'react-dom/client'
+import React from 'react'
+import { Browser } from 'asterui'
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
-  'basic': (
+  basic: (
     <Browser url="https://daisyui.com" className="w-full">
-      <div className="grid place-content-center h-40 bg-base-200">
-        Hello!
-      </div>
+      <div className="grid place-content-center h-40 bg-base-200">Hello!</div>
     </Browser>
   ),
-  'preview': (
+  preview: (
     <Browser url="https://mysite.com" className="w-full">
       <div className="bg-base-100">
         <div className="bg-primary text-primary-content p-4">
@@ -24,14 +22,14 @@ const demos: Record<string, React.ReactNode> = {
       </div>
     </Browser>
   ),
-  'gradient': (
+  gradient: (
     <Browser url="https://app.example.com" className="w-full">
       <div className="bg-gradient-to-br from-purple-500 to-pink-500 h-48 grid place-content-center">
         <span className="text-white text-2xl font-bold">Gradient</span>
       </div>
     </Browser>
   ),
-  'dashboard': (
+  dashboard: (
     <Browser url="https://dashboard.example.com" className="w-full">
       <div className="bg-base-100 p-4 h-56">
         <div className="flex gap-4 mb-4">
@@ -48,28 +46,29 @@ const demos: Record<string, React.ReactNode> = {
       </div>
     </Browser>
   ),
-};
+}
 
 // Mount React demos
-document.querySelectorAll('.demo-container').forEach(container => {
-  const exampleId = container.getAttribute('data-example');
+document.querySelectorAll('.demo-container').forEach((container) => {
+  const exampleId = container.getAttribute('data-example')
   if (exampleId && demos[exampleId]) {
-    const root = createRoot(container as HTMLElement);
-    root.render(demos[exampleId]);
+    const root = createRoot(container as HTMLElement)
+    root.render(demos[exampleId])
   }
-});
+})
 
 // Copy button functionality
-document.querySelectorAll('.copy-btn').forEach(btn => {
+document.querySelectorAll('.copy-btn').forEach((btn) => {
   btn.addEventListener('click', async () => {
-    const code = btn.getAttribute('data-code');
+    const code = btn.getAttribute('data-code')
     if (code) {
-      await navigator.clipboard.writeText(code);
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+      await navigator.clipboard.writeText(code)
+      const originalHTML = btn.innerHTML
+      btn.innerHTML =
+        '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>'
       setTimeout(() => {
-        btn.innerHTML = originalHTML;
-      }, 2000);
+        btn.innerHTML = originalHTML
+      }, 2000)
     }
-  });
-});
+  })
+})

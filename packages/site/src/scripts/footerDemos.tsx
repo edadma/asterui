@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Footer } from '@edadma/bloomui';
+import { Footer } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {

@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Popconfirm, Button, notification } from '@edadma/bloomui';
+import { Popconfirm, Button, notification } from 'asterui';
 
 const handleDelete = () => {
   notification.success({

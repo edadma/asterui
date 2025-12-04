@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Chat } from '@edadma/bloomui'
+import { Chat } from 'asterui'
 
 const BasicDemo = () => (
   <div>

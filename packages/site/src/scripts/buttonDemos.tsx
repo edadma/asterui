@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
-import { Button, Space, Input, Form, Modal } from '@edadma/bloomui';
+import { Button, Space, Input, Form, Modal } from 'asterui';
 import { XMarkIcon, ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 // Demo components for each example

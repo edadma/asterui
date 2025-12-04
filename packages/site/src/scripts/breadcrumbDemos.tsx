@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Breadcrumb } from '@edadma/bloomui';
+import { Breadcrumb } from 'asterui';
 import { FolderIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 
 // Demo components for each example

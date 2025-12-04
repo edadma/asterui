@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Tooltip, Button, Space } from '@edadma/bloomui'
+import { Tooltip, Button, Space } from 'asterui'
 
 const demos: Record<string, React.ReactNode> = {
   basic: (

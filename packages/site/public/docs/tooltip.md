@@ -2,7 +2,7 @@
 
 Display additional information on hover.
 
-**Import:** `import { Tooltip } from '@edadma/bloomui'`
+**Import:** `import { Tooltip } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Display additional information on hover.
 
 ```tsx
 import React from 'react'
-import { Tooltip, Button } from '@edadma/bloomui'
+import { Tooltip, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Tooltip tip="This is a tooltip">
@@ -25,7 +25,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tooltip, Button } from '@edadma/bloomui'
+import { Tooltip, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex flex-wrap gap-4 justify-center py-8">
@@ -51,7 +51,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tooltip, Button, Space } from '@edadma/bloomui'
+import { Tooltip, Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space wrap>
@@ -86,7 +86,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tooltip, Button } from '@edadma/bloomui'
+import { Tooltip, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Tooltip tip="Always visible" open>

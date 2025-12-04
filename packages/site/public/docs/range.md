@@ -2,7 +2,7 @@
 
 Select numeric values using an interactive slider.
 
-**Import:** `import { Range } from '@edadma/bloomui'`
+**Import:** `import { Range } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Select numeric values using an interactive slider.
 
 ```tsx
 import React from 'react'
-import { Range } from '@edadma/bloomui'
+import { Range } from 'asterui'
 
 const App: React.FC = () => (
   <Range />
@@ -23,7 +23,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Range } from '@edadma/bloomui'
+import { Range } from 'asterui'
 
 const App: React.FC = () => (
   <Range showValue />
@@ -36,7 +36,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Range } from '@edadma/bloomui'
+import { Range } from 'asterui'
 
 const App: React.FC = () => (
   <Range showSteps step={10} />
@@ -49,7 +49,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Range } from '@edadma/bloomui'
+import { Range } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(50)
@@ -69,7 +69,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Range } from '@edadma/bloomui'
+import { Range } from 'asterui'
 
 const App: React.FC = () => (
   <Range min={0} max={10} step={0.5} defaultValue={5} showValue />
@@ -82,7 +82,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Range, Space } from '@edadma/bloomui'
+import { Range, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -103,7 +103,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Range, Space } from '@edadma/bloomui'
+import { Range, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="lg">
@@ -121,7 +121,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Range } from '@edadma/bloomui'
+import { Range } from 'asterui'
 
 const App: React.FC = () => (
   <Range disabled defaultValue={60} />
@@ -134,7 +134,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Range } from '@edadma/bloomui'
+import { Range } from 'asterui'
 
 const App: React.FC = () => {
   const [volume, setVolume] = useState(50)
@@ -166,7 +166,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Range, Form, Button } from '@edadma/bloomui'
+import { Range, Form, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values) => {

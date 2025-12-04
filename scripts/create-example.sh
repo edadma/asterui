@@ -34,7 +34,7 @@ cat > "$APP_DIR/package.json" << 'EOF'
     "preview": "vite preview"
   },
   "dependencies": {
-    "@edadma/bloomui": "workspace:*",
+    "asterui": "workspace:*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -97,7 +97,7 @@ export default {
   content: [
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
-    '../../bloomui/src/**/*.{js,ts,jsx,tsx}',
+    '../../asterui/src/**/*.{js,ts,jsx,tsx}',
   ],
   plugins: [daisyui],
   daisyui: {
@@ -155,7 +155,7 @@ EOF
 
 # Create src/App.tsx
 cat > "$APP_DIR/src/App.tsx" << EOF
-import { Navbar, ThemeController } from '@edadma/bloomui'
+import { Navbar, ThemeController } from 'asterui'
 
 function App() {
   return (

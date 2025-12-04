@@ -1,6 +1,6 @@
 # Card
 
-**Import:** `import { Card } from '@edadma/bloomui'`
+**Import:** `import { Card } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple card with title and content.
 
 ```tsx
 import React from 'react'
-import { Card } from '@edadma/bloomui'
+import { Card } from 'asterui'
 
 const App: React.FC = () => (
   <Card title="Card Title" className="w-96">
@@ -27,7 +27,7 @@ Card with a cover image at the top.
 
 ```tsx
 import React from 'react'
-import { Card } from '@edadma/bloomui'
+import { Card } from 'asterui'
 
 const App: React.FC = () => (
   <Card
@@ -48,7 +48,7 @@ Card with action buttons.
 
 ```tsx
 import React from 'react'
-import { Card, Button } from '@edadma/bloomui'
+import { Card, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Card
@@ -74,7 +74,7 @@ Card with a border.
 
 ```tsx
 import React from 'react'
-import { Card } from '@edadma/bloomui'
+import { Card } from 'asterui'
 
 const App: React.FC = () => (
   <Card title="Bordered Card" className="w-96" bordered>
@@ -91,7 +91,7 @@ Cards in different sizes.
 
 ```tsx
 import React from 'react'
-import { Card, Space } from '@edadma/bloomui'
+import { Card, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm" className="w-96">
@@ -116,7 +116,7 @@ Horizontal card with image on the side.
 
 ```tsx
 import React from 'react'
-import { Card, Button } from '@edadma/bloomui'
+import { Card, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Card
@@ -145,7 +145,7 @@ Card with image as full background overlay.
 
 ```tsx
 import React from 'react'
-import { Card, Button } from '@edadma/bloomui'
+import { Card, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Card
@@ -168,7 +168,7 @@ Card with custom background colors using className.
 
 ```tsx
 import React from 'react'
-import { Card, Space } from '@edadma/bloomui'
+import { Card, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm" className="w-96">
@@ -190,7 +190,7 @@ Different action button alignments.
 
 ```tsx
 import React from 'react'
-import { Card, Button, Space } from '@edadma/bloomui'
+import { Card, Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm" className="w-96">

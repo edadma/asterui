@@ -2,7 +2,7 @@
 
 This action cannot be undone. Are you sure you want to continue?
 
-**Import:** `import { Popconfirm } from '@edadma/bloomui'`
+**Import:** `import { Popconfirm } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ This action cannot be undone. Are you sure you want to continue?
 
 ```tsx
 import React from 'react'
-import { Popconfirm, Button } from '@edadma/bloomui'
+import { Popconfirm, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Popconfirm
@@ -28,7 +28,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popconfirm, Button } from '@edadma/bloomui'
+import { Popconfirm, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Popconfirm
@@ -47,7 +47,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popconfirm, Button } from '@edadma/bloomui'
+import { Popconfirm, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -73,7 +73,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popconfirm, Button } from '@edadma/bloomui'
+import { Popconfirm, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Popconfirm
@@ -94,7 +94,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popconfirm, Button, notification } from '@edadma/bloomui'
+import { Popconfirm, Button, notification } from 'asterui'
 
 const App: React.FC = () => {
   const handleAsyncDelete = () => {
@@ -124,7 +124,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popconfirm, Button } from '@edadma/bloomui'
+import { Popconfirm, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -150,7 +150,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popconfirm, Button } from '@edadma/bloomui'
+import { Popconfirm, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Popconfirm
@@ -169,7 +169,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Popconfirm, Button } from '@edadma/bloomui'
+import { Popconfirm, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Popconfirm

@@ -66,7 +66,7 @@ const examples = [
     title: 'Basic Input Number',
     description: 'Simple number input with increment/decrement controls.',
     code: `import React, { useState } from 'react'
-import { InputNumber } from '@edadma/bloomui'
+import { InputNumber } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(0)
@@ -83,7 +83,7 @@ export default App`,
     title: 'Min/Max Limits',
     description: 'Number input with minimum and maximum value constraints.',
     code: `import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(5)
@@ -110,7 +110,7 @@ export default App`,
     title: 'Custom Step',
     description: 'Number input with custom increment/decrement step value.',
     code: `import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(0)
@@ -136,7 +136,7 @@ export default App`,
     title: 'Decimal Precision',
     description: 'Number input with decimal precision control.',
     code: `import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(0)
@@ -163,7 +163,7 @@ export default App`,
     title: 'Sizes',
     description: 'Four sizes: xs, sm, md (default), and lg.',
     code: `import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value1, setValue1] = useState(0)
@@ -188,7 +188,7 @@ export default App`,
     title: 'Without Controls',
     description: 'Number input without increment/decrement buttons.',
     code: `import React, { useState } from 'react'
-import { InputNumber } from '@edadma/bloomui'
+import { InputNumber } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(0)
@@ -209,7 +209,7 @@ export default App`,
     title: 'Disabled',
     description: 'Disabled input number state.',
     code: `import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(42)
@@ -227,7 +227,7 @@ export default App`,
 ];
 ---
 
-<Layout title="InputNumber - BloomUI">
+<Layout title="InputNumber - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -248,7 +248,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { InputNumber } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { InputNumber } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

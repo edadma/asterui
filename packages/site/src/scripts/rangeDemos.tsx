@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Range, Space, Form, Button } from '@edadma/bloomui';
+import { Range, Space, Form, Button } from 'asterui';
 
 const demos: Record<string, React.ReactNode> = {
   basic: <Range />,

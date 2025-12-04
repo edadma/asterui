@@ -28,7 +28,7 @@ const examples = [
     title: 'Basic Tags',
     description: 'Simple tags with preset colors.',
     code: `import React from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-2 flex-wrap">
@@ -50,7 +50,7 @@ export default App`,
     title: 'Closable Tags',
     description: 'Tags that can be closed by the user.',
     code: `import React, { useState } from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState(['Tag 1', 'Tag 2', 'Tag 3'])
@@ -82,7 +82,7 @@ export default App`,
     title: 'Tags with Icons',
     description: 'Add icons to tags for better visual communication.',
     code: `import React from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -103,7 +103,7 @@ export default App`,
     title: 'Tag Sizes',
     description: 'Four sizes available for tags.',
     code: `import React from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-2 items-center flex-wrap">
@@ -121,7 +121,7 @@ export default App`,
     title: 'Custom Colors',
     description: 'Use custom hex colors for unique styling.',
     code: `import React from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-2 flex-wrap">
@@ -140,7 +140,7 @@ export default App`,
     title: 'Checkable Tags',
     description: 'Tags that can be toggled on and off.',
     code: `import React, { useState } from 'react'
-import { CheckableTag } from '@edadma/bloomui'
+import { CheckableTag } from 'asterui'
 
 const App: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>(['React'])
@@ -176,7 +176,7 @@ export default App`,
     title: 'Checkable Tags with Icons',
     description: 'Add icons to checkable tags.',
     code: `import React, { useState } from 'react'
-import { CheckableTag } from '@edadma/bloomui'
+import { CheckableTag } from 'asterui'
 import { HeartIcon, StarIcon, BookmarkIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => {
@@ -218,7 +218,7 @@ export default App`,
     title: 'Use Cases',
     description: 'Practical examples of tag usage.',
     code: `import React from 'react'
-import { Tag } from '@edadma/bloomui'
+import { Tag } from 'asterui'
 
 const App: React.FC = () => (
   <div className="space-y-4">
@@ -245,7 +245,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Tag - BloomUI">
+<Layout title="Tag - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -266,7 +266,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Tag, CheckableTag } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Tag, CheckableTag } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

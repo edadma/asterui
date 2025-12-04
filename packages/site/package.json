@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.2.0",
-    "@edadma/bloomui": "workspace:*",
+    "asterui": "workspace:*",
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.9.0",

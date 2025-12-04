@@ -1,6 +1,6 @@
 # Alert
 
-**Import:** `import { Alert } from '@edadma/bloomui'`
+**Import:** `import { Alert } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple alert with icon and text.
 
 ```tsx
 import React from 'react'
-import { Alert } from '@edadma/bloomui'
+import { Alert } from 'asterui'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -29,7 +29,7 @@ Different color variants for context.
 
 ```tsx
 import React from 'react'
-import { Alert, Space } from '@edadma/bloomui'
+import { Alert, Space } from 'asterui'
 import {
   InformationCircleIcon,
   CheckCircleIcon,
@@ -70,7 +70,7 @@ Alert with dismissal or action button.
 
 ```tsx
 import React from 'react'
-import { Alert, Button } from '@edadma/bloomui'
+import { Alert, Button } from 'asterui'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -92,7 +92,7 @@ Alert with outline variant.
 
 ```tsx
 import React from 'react'
-import { Alert, Space } from '@edadma/bloomui'
+import { Alert, Space } from 'asterui'
 import { InformationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (

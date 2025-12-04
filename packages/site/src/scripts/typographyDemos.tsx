@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Typography, Space } from '@edadma/bloomui'
+import { Typography, Space } from 'asterui'
 
 const { Title, Paragraph, Text, Link } = Typography
 

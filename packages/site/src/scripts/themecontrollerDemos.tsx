@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ThemeController } from '@edadma/bloomui';
+import { ThemeController } from 'asterui';
 
 const demos: Record<string, React.ReactNode> = {
   swap: <ThemeController.Swap />,

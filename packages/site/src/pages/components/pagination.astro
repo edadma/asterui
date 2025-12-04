@@ -27,7 +27,7 @@ const examples = [
     title: 'Basic Pagination',
     description: 'Simple pagination with page numbers.',
     code: `import React, { useState } from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => {
   const [current, setCurrent] = useState(1)
@@ -48,7 +48,7 @@ export default App`,
     title: 'With Size Changer',
     description: 'Allow users to change page size.',
     code: `import React, { useState } from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => {
   const [current, setCurrent] = useState(1)
@@ -75,7 +75,7 @@ export default App`,
     title: 'Show Total',
     description: 'Display total count of items.',
     code: `import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination total={250} showTotal />
@@ -88,7 +88,7 @@ export default App`,
     title: 'Custom Total',
     description: 'Custom rendering of total count.',
     code: `import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination
@@ -106,7 +106,7 @@ export default App`,
     title: 'Quick Jumper',
     description: 'Allow users to jump to a specific page.',
     code: `import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination total={500} showQuickJumper />
@@ -119,7 +119,7 @@ export default App`,
     title: 'All Features',
     description: 'Pagination with all features enabled.',
     code: `import React, { useState } from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => {
   const [current, setCurrent] = useState(1)
@@ -145,7 +145,7 @@ export default App`,
     title: 'Simple Mode',
     description: 'Minimal pagination with only prev/next controls.',
     code: `import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination total={100} simple />
@@ -158,7 +158,7 @@ export default App`,
     title: 'Sizes',
     description: 'Different sizes for pagination controls.',
     code: `import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <div className="space-y-4">
@@ -176,7 +176,7 @@ export default App`,
     title: 'Disabled',
     description: 'Disabled state for pagination.',
     code: `import React from 'react'
-import { Pagination } from '@edadma/bloomui'
+import { Pagination } from 'asterui'
 
 const App: React.FC = () => (
   <Pagination total={100} disabled />
@@ -187,7 +187,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Pagination - BloomUI">
+<Layout title="Pagination - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -208,7 +208,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Pagination } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Pagination } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

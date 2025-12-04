@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { TreeSelect, Form, Button } from '@edadma/bloomui'
+import { TreeSelect, Form, Button } from 'asterui'
 
 interface TreeNode {
   key: string

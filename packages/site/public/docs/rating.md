@@ -2,7 +2,7 @@
 
 Star ratings for user feedback and reviews.
 
-**Import:** `import { Rating } from '@edadma/bloomui'`
+**Import:** `import { Rating } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Star ratings for user feedback and reviews.
 
 ```tsx
 import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={3}>
@@ -29,7 +29,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={0}>
@@ -49,7 +49,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Rating, Space } from '@edadma/bloomui'
+import { Rating, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -91,7 +91,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={4}>
@@ -110,7 +110,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={3}>
@@ -129,7 +129,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating value={4} readOnly>
@@ -148,7 +148,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => {
   const [rating, setRating] = useState(0)
@@ -175,7 +175,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Rating } from '@edadma/bloomui'
+import { Rating } from 'asterui'
 
 const App: React.FC = () => (
   <Rating defaultValue={3}>

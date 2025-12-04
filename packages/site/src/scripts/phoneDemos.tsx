@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Phone, Button } from '@edadma/bloomui';
+import { Phone, Button } from 'asterui';
 
 const demos: Record<string, React.ReactNode> = {
   'basic': (

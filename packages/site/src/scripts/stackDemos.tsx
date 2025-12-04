@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Stack, Button, Card } from '@edadma/bloomui'
+import { Stack, Button, Card } from 'asterui'
 
 const VerticalDemo = () => (
   <Stack>

@@ -1,6 +1,6 @@
 # Input
 
-**Import:** `import { Input } from '@edadma/bloomui'`
+**Import:** `import { Input } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple text input field.
 
 ```tsx
 import React from 'react'
-import { Input } from '@edadma/bloomui'
+import { Input } from 'asterui'
 
 const App: React.FC = () => (
   <Input placeholder="Enter text..." />
@@ -25,7 +25,7 @@ Five sizes: xs, sm, md (default), lg, and xl.
 
 ```tsx
 import React from 'react'
-import { Input, Space } from '@edadma/bloomui'
+import { Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -46,7 +46,7 @@ Different color variants for visual emphasis.
 
 ```tsx
 import React from 'react'
-import { Input, Space } from '@edadma/bloomui'
+import { Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -69,7 +69,7 @@ Different HTML input types.
 
 ```tsx
 import React from 'react'
-import { Input, Space } from '@edadma/bloomui'
+import { Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -92,7 +92,7 @@ Bordered and ghost styles.
 
 ```tsx
 import React from 'react'
-import { Input, Space } from '@edadma/bloomui'
+import { Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -111,7 +111,7 @@ Formatted input with masking pattern.
 
 ```tsx
 import React from 'react'
-import { Input, Space } from '@edadma/bloomui'
+import { Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -131,7 +131,7 @@ Input with controlled state.
 
 ```tsx
 import React, { useState } from 'react'
-import { Input, Space } from '@edadma/bloomui'
+import { Input, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState('')
@@ -159,7 +159,7 @@ Disabled input state.
 
 ```tsx
 import React from 'react'
-import { Input, Space } from '@edadma/bloomui'
+import { Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">

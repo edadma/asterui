@@ -1,4 +1,4 @@
-import { Navbar, Hero, ThemeController, Space } from '@edadma/bloomui'
+import { Navbar, Hero, ThemeController, Space } from 'asterui'
 
 function App() {
   return (

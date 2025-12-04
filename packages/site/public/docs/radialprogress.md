@@ -2,7 +2,7 @@
 
 Circular progress indicator with customizable appearance.
 
-**Import:** `import { RadialProgress } from '@edadma/bloomui'`
+**Import:** `import { RadialProgress } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Circular progress indicator with customizable appearance.
 
 ```tsx
 import React from 'react'
-import { RadialProgress } from '@edadma/bloomui'
+import { RadialProgress } from 'asterui'
 
 const App: React.FC = () => (
   <RadialProgress value={70} />
@@ -23,7 +23,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { RadialProgress } from '@edadma/bloomui'
+import { RadialProgress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -42,7 +42,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { RadialProgress } from '@edadma/bloomui'
+import { RadialProgress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -63,7 +63,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { RadialProgress } from '@edadma/bloomui'
+import { RadialProgress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 items-center">
@@ -81,7 +81,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { RadialProgress } from '@edadma/bloomui'
+import { RadialProgress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -99,7 +99,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { RadialProgress } from '@edadma/bloomui'
+import { RadialProgress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -127,7 +127,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { RadialProgress } from '@edadma/bloomui'
+import { RadialProgress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">
@@ -144,7 +144,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { RadialProgress } from '@edadma/bloomui'
+import { RadialProgress } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4">

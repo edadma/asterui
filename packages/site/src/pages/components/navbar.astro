@@ -37,11 +37,11 @@ const examples = [
     title: 'Basic Navbar',
     description: 'Simple navbar with title and navigation buttons.',
     code: `import React from 'react'
-import { Navbar, Button } from '@edadma/bloomui'
+import { Navbar, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Navbar
-    start={<a className="text-xl font-bold">BloomUI</a>}
+    start={<a className="text-xl font-bold">AsterUI</a>}
     end={
       <>
         <Button type="ghost">Home</Button>
@@ -59,12 +59,12 @@ export default App`,
     title: 'With Dropdown Menu',
     description: 'Navbar with a dropdown menu for additional options.',
     code: `import React from 'react'
-import { Navbar, Button, Dropdown } from '@edadma/bloomui'
+import { Navbar, Button, Dropdown } from 'asterui'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
   <Navbar
-    start={<a className="text-xl font-bold">BloomUI</a>}
+    start={<a className="text-xl font-bold">AsterUI</a>}
     end={
       <>
         <Button type="ghost">Home</Button>
@@ -95,12 +95,12 @@ export default App`,
     title: 'Centered Content',
     description: 'Navbar with content in all three sections for balanced layout.',
     code: `import React from 'react'
-import { Navbar, Button } from '@edadma/bloomui'
+import { Navbar, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Navbar
     start={<Button type="ghost" shape="circle">☰</Button>}
-    center={<a className="text-xl font-bold">BloomUI</a>}
+    center={<a className="text-xl font-bold">AsterUI</a>}
     end={<Button type="ghost" shape="circle">⚙</Button>}
   />
 )
@@ -112,7 +112,7 @@ export default App`,
     title: 'Responsive with Mobile Menu',
     description: 'Navbar that adapts to mobile with a menu icon and dropdown.',
     code: `import React from 'react'
-import { Navbar, Button, Dropdown } from '@edadma/bloomui'
+import { Navbar, Button, Dropdown } from 'asterui'
 import { Bars3Icon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -132,7 +132,7 @@ const App: React.FC = () => (
             <Dropdown.Item>Contact</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <a className="text-xl font-bold ml-2">BloomUI</a>
+        <a className="text-xl font-bold ml-2">AsterUI</a>
       </>
     }
     end={
@@ -154,7 +154,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Navbar - BloomUI">
+<Layout title="Navbar - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -175,7 +175,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Navbar } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Navbar } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

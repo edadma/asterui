@@ -8,7 +8,7 @@
     "url": "git+https://github.com/edadma/asterui.git"
   },
   "bugs": {
-    "url": "https://github.com/edadma/bloomui/issues"
+    "url": "https://github.com/edadma/asterui/issues"
   },
   "type": "module",
   "main": "./dist/index.js",

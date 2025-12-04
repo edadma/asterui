@@ -1,6 +1,6 @@
 # Avatar
 
-**Import:** `import { Avatar } from '@edadma/bloomui'`
+**Import:** `import { Avatar } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple avatar with image using the src prop.
 
 ```tsx
 import React from 'react'
-import { Avatar } from '@edadma/bloomui'
+import { Avatar } from 'asterui'
 
 const App: React.FC = () => (
   <Avatar
@@ -28,7 +28,7 @@ Control avatar size with the size prop.
 
 ```tsx
 import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm" align="center">
@@ -49,7 +49,7 @@ Circle or square avatars.
 
 ```tsx
 import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm">
@@ -67,7 +67,7 @@ Show online or offline presence.
 
 ```tsx
 import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm">
@@ -85,7 +85,7 @@ Display initials or text.
 
 ```tsx
 import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm" align="center">
@@ -110,7 +110,7 @@ Display icons instead of images.
 
 ```tsx
 import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 import { UserIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -129,7 +129,7 @@ Group multiple avatars with overlap.
 
 ```tsx
 import React from 'react'
-import { Avatar } from '@edadma/bloomui'
+import { Avatar } from 'asterui'
 
 const App: React.FC = () => (
   <Avatar.Group>
@@ -149,7 +149,7 @@ Show overflow count when exceeding max.
 
 ```tsx
 import React from 'react'
-import { Avatar } from '@edadma/bloomui'
+import { Avatar } from 'asterui'
 
 const App: React.FC = () => (
   <Avatar.Group max={3}>

@@ -1,6 +1,6 @@
 # Drawer
 
-**Import:** `import { Drawer } from '@edadma/bloomui'`
+**Import:** `import { Drawer } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple drawer from the right side.
 
 ```tsx
 import React, { useState } from 'react'
-import { Drawer, Button } from '@edadma/bloomui'
+import { Drawer, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -40,7 +40,7 @@ Drawer can slide in from any direction.
 
 ```tsx
 import React, { useState } from 'react'
-import { Drawer, Button, Space } from '@edadma/bloomui'
+import { Drawer, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [placement, setPlacement] = useState<'left' | 'right' | 'top' | 'bottom'>('right')
@@ -72,7 +72,7 @@ Drawer with action buttons in footer.
 
 ```tsx
 import React, { useState } from 'react'
-import { Drawer, Button, Space } from '@edadma/bloomui'
+import { Drawer, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -110,7 +110,7 @@ Drawer with custom width.
 
 ```tsx
 import React, { useState } from 'react'
-import { Drawer, Button } from '@edadma/bloomui'
+import { Drawer, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)

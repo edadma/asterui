@@ -21,11 +21,11 @@ const examples = [
     title: 'Basic Code Block',
     description: 'Simple code mockup with command prefix.',
     code: `import React from 'react'
-import { Code } from '@edadma/bloomui'
+import { Code } from 'asterui'
 
 const App: React.FC = () => (
   <Code>
-    <Code.Line prefix="$">npm install @edadma/bloomui</Code.Line>
+    <Code.Line prefix="$">npm install asterui</Code.Line>
   </Code>
 )
 
@@ -36,11 +36,11 @@ export default App`,
     title: 'Multiple Lines',
     description: 'Code block with multiple lines and different prefixes.',
     code: `import React from 'react'
-import { Code } from '@edadma/bloomui'
+import { Code } from 'asterui'
 
 const App: React.FC = () => (
   <Code>
-    <Code.Line prefix="$">npm install @edadma/bloomui</Code.Line>
+    <Code.Line prefix="$">npm install asterui</Code.Line>
     <Code.Line prefix=">">installing dependencies...</Code.Line>
     <Code.Line prefix=">">added 42 packages</Code.Line>
     <Code.Line prefix="$">npm run dev</Code.Line>
@@ -54,12 +54,12 @@ export default App`,
     title: 'Line Numbers',
     description: 'Code block with line number prefixes.',
     code: `import React from 'react'
-import { Code } from '@edadma/bloomui'
+import { Code } from 'asterui'
 
 const App: React.FC = () => (
   <Code>
     <Code.Line prefix="1">import React from 'react'</Code.Line>
-    <Code.Line prefix="2">import {'{ Button }'} from '@edadma/bloomui'</Code.Line>
+    <Code.Line prefix="2">import {'{ Button }'} from 'asterui'</Code.Line>
     <Code.Line prefix="3"></Code.Line>
     <Code.Line prefix="4">export default function App() {'{'}</Code.Line>
     <Code.Line prefix="5">  return &lt;Button&gt;Click me&lt;/Button&gt;</Code.Line>
@@ -74,7 +74,7 @@ export default App`,
     title: 'Highlighted Lines',
     description: 'Code block with highlighted lines for emphasis.',
     code: `import React from 'react'
-import { Code } from '@edadma/bloomui'
+import { Code } from 'asterui'
 
 const App: React.FC = () => (
   <Code>
@@ -91,7 +91,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Code - BloomUI">
+<Layout title="Code - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -112,7 +112,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Code } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Code } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

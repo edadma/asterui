@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Timeline } from '@edadma/bloomui';
+import { Timeline } from 'asterui';
 
 const CheckIcon = () => (
   <svg

@@ -1,6 +1,6 @@
 # Indicator
 
-**Import:** `import { Indicator } from '@edadma/bloomui'`
+**Import:** `import { Indicator } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple indicator badge on elements.
 
 ```tsx
 import React from 'react'
-import { Indicator } from '@edadma/bloomui'
+import { Indicator } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap items-center">
@@ -34,7 +34,7 @@ Place indicators at any of the 9 positions.
 
 ```tsx
 import React from 'react'
-import { Indicator } from '@edadma/bloomui'
+import { Indicator } from 'asterui'
 
 const App: React.FC = () => (
   <div className="grid grid-cols-3 gap-4">
@@ -86,7 +86,7 @@ Display numbers or text in the indicator badge.
 
 ```tsx
 import React from 'react'
-import { Indicator, Avatar } from '@edadma/bloomui'
+import { Indicator, Avatar } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap items-center">
@@ -114,7 +114,7 @@ Add indicators to buttons for notifications.
 
 ```tsx
 import React from 'react'
-import { Indicator, Button } from '@edadma/bloomui'
+import { Indicator, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 flex-wrap">

@@ -2,7 +2,7 @@
 
 Binary switch control for on/off states.
 
-**Import:** `import { Toggle } from '@edadma/bloomui'`
+**Import:** `import { Toggle } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Binary switch control for on/off states.
 
 ```tsx
 import React from 'react'
-import { Toggle } from '@edadma/bloomui'
+import { Toggle } from 'asterui'
 
 const App: React.FC = () => (
   <Toggle />
@@ -23,7 +23,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Toggle, Space } from '@edadma/bloomui'
+import { Toggle, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -41,7 +41,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Toggle, Space } from '@edadma/bloomui'
+import { Toggle, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -62,7 +62,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Toggle } from '@edadma/bloomui'
+import { Toggle } from 'asterui'
 
 const App: React.FC = () => {
   const [checked, setChecked] = useState(false)
@@ -86,7 +86,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Form, Toggle, Button } from '@edadma/bloomui'
+import { Form, Toggle, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values) => {

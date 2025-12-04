@@ -1,16 +1,16 @@
 import { createRoot } from 'react-dom/client';
-import { Code } from '@edadma/bloomui';
+import { Code } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
   'basic': (
     <Code>
-      <Code.Line prefix="$">npm install @edadma/bloomui</Code.Line>
+      <Code.Line prefix="$">npm install asterui</Code.Line>
     </Code>
   ),
   'multiline': (
     <Code>
-      <Code.Line prefix="$">npm install @edadma/bloomui</Code.Line>
+      <Code.Line prefix="$">npm install asterui</Code.Line>
       <Code.Line prefix=">">installing dependencies...</Code.Line>
       <Code.Line prefix=">">added 42 packages</Code.Line>
       <Code.Line prefix="$">npm run dev</Code.Line>
@@ -19,7 +19,7 @@ const demos: Record<string, React.ReactNode> = {
   'line-numbers': (
     <Code>
       <Code.Line prefix="1">import React from 'react'</Code.Line>
-      <Code.Line prefix="2">import {'{ Button }'} from '@edadma/bloomui'</Code.Line>
+      <Code.Line prefix="2">import {'{ Button }'} from 'asterui'</Code.Line>
       <Code.Line prefix="3"></Code.Line>
       <Code.Line prefix="4">export default function App() {'{'}</Code.Line>
       <Code.Line prefix="5">  return &lt;Button&gt;Click me&lt;/Button&gt;</Code.Line>

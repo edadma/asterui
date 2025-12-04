@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
-import { Affix, Button } from '@edadma/bloomui';
+import { Affix, Button } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {

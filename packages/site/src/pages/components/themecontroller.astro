@@ -24,7 +24,7 @@ const examples = [
     title: 'Swap (Sun/Moon)',
     description: 'Toggle between light and dark themes with animated icons.',
     code: `import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Swap />
@@ -37,7 +37,7 @@ export default App`,
     title: 'Custom Themes',
     description: 'Use custom theme names for light and dark modes.',
     code: `import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Swap
@@ -53,7 +53,7 @@ export default App`,
     title: 'With onChange Callback',
     description: 'Handle theme changes with a callback.',
     code: `import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Swap
@@ -71,7 +71,7 @@ export default App`,
     title: 'Dropdown (Multiple Themes)',
     description: 'Select from multiple themes using a dropdown menu.',
     code: `import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Dropdown
@@ -108,7 +108,7 @@ export default App`,
     title: 'Dropdown with Default Theme',
     description: 'Set an initial theme for the dropdown.',
     code: `import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Dropdown
@@ -124,7 +124,7 @@ export default App`,
     title: 'Dropdown with onChange',
     description: 'Handle theme selection changes.',
     code: `import React from 'react'
-import { ThemeController } from '@edadma/bloomui'
+import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Dropdown
@@ -141,7 +141,7 @@ export default App`,
 ];
 ---
 
-<Layout title="ThemeController - BloomUI">
+<Layout title="ThemeController - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -158,7 +158,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { ThemeController } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { ThemeController } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

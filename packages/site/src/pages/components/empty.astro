@@ -16,7 +16,7 @@ const examples = [
     title: 'Basic Empty',
     description: 'Simple empty state with default image.',
     code: `import React from 'react'
-import { Empty } from '@edadma/bloomui'
+import { Empty } from 'asterui'
 
 const App: React.FC = () => (
   <Empty />
@@ -29,7 +29,7 @@ export default App`,
     title: 'Custom Description',
     description: 'Empty state with custom description text.',
     code: `import React from 'react'
-import { Empty } from '@edadma/bloomui'
+import { Empty } from 'asterui'
 
 const App: React.FC = () => (
   <Empty description="No data available" />
@@ -42,7 +42,7 @@ export default App`,
     title: 'Custom Image',
     description: 'Empty state with custom image or icon.',
     code: `import React from 'react'
-import { Empty } from '@edadma/bloomui'
+import { Empty } from 'asterui'
 
 const App: React.FC = () => (
   <Empty
@@ -62,7 +62,7 @@ export default App`,
     title: 'With Action Button',
     description: 'Empty state with action button.',
     code: `import React from 'react'
-import { Empty, Button } from '@edadma/bloomui'
+import { Empty, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Empty description="No items in your cart">
@@ -75,7 +75,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Empty - BloomUI">
+<Layout title="Empty - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -96,7 +96,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Empty } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Empty } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

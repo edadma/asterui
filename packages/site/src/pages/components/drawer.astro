@@ -23,7 +23,7 @@ const examples = [
     title: 'Basic Drawer',
     description: 'Simple drawer from the right side.',
     code: `import React, { useState } from 'react'
-import { Drawer, Button } from '@edadma/bloomui'
+import { Drawer, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -51,7 +51,7 @@ export default App`,
     title: 'Placement',
     description: 'Drawer can slide in from any direction.',
     code: `import React, { useState } from 'react'
-import { Drawer, Button, Space } from '@edadma/bloomui'
+import { Drawer, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [placement, setPlacement] = useState<'left' | 'right' | 'top' | 'bottom'>('right')
@@ -89,7 +89,7 @@ export default App`,
     title: 'With Footer',
     description: 'Drawer with action buttons in footer.',
     code: `import React, { useState } from 'react'
-import { Drawer, Button, Space } from '@edadma/bloomui'
+import { Drawer, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -125,7 +125,7 @@ export default App`,
     title: 'Custom Size',
     description: 'Drawer with custom width.',
     code: `import React, { useState } from 'react'
-import { Drawer, Button } from '@edadma/bloomui'
+import { Drawer, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -152,7 +152,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Drawer - BloomUI">
+<Layout title="Drawer - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -173,7 +173,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Drawer } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Drawer } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

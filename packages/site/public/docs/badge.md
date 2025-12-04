@@ -1,6 +1,6 @@
 # Badge
 
-**Import:** `import { Badge } from '@edadma/bloomui'`
+**Import:** `import { Badge } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Display count badges on elements.
 
 ```tsx
 import React from 'react'
-import { Badge, Button } from '@edadma/bloomui'
+import { Badge, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap">
@@ -35,7 +35,7 @@ Show count+ when exceeding the overflow threshold.
 
 ```tsx
 import React from 'react'
-import { Badge, Avatar } from '@edadma/bloomui'
+import { Badge, Avatar } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap items-center">
@@ -60,7 +60,7 @@ Position badges at any of the 9 corners.
 
 ```tsx
 import React from 'react'
-import { Badge, Avatar } from '@edadma/bloomui'
+import { Badge, Avatar } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap">
@@ -91,7 +91,7 @@ Status indicators with optional text labels.
 
 ```tsx
 import React from 'react'
-import { Badge, Space } from '@edadma/bloomui'
+import { Badge, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -112,7 +112,7 @@ Decorative ribbon-style badges.
 
 ```tsx
 import React from 'react'
-import { Badge } from '@edadma/bloomui'
+import { Badge } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap">
@@ -140,7 +140,7 @@ Small circular indicators for presence or status.
 
 ```tsx
 import React from 'react'
-import { Badge, Button } from '@edadma/bloomui'
+import { Badge, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-6 flex-wrap">
@@ -165,7 +165,7 @@ Standalone count badges with different colors.
 
 ```tsx
 import React from 'react'
-import { Badge, Space } from '@edadma/bloomui'
+import { Badge, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm" wrap>
@@ -189,7 +189,7 @@ Four sizes available for badges.
 
 ```tsx
 import React from 'react'
-import { Badge, Space } from '@edadma/bloomui'
+import { Badge, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm" align="center">
@@ -209,7 +209,7 @@ Display badge even when count is 0.
 
 ```tsx
 import React from 'react'
-import { Badge, Button, Space } from '@edadma/bloomui'
+import { Badge, Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="lg">
@@ -231,7 +231,7 @@ Subtle outline style for count badges.
 
 ```tsx
 import React from 'react'
-import { Badge, Space } from '@edadma/bloomui'
+import { Badge, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm" wrap>

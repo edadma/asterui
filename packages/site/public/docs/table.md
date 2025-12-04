@@ -2,7 +2,7 @@
 
 Feature-rich table component for displaying tabular data.
 
-**Import:** `import { Table } from '@edadma/bloomui'`
+**Import:** `import { Table } from 'asterui'`
 
 ## Examples
 
@@ -10,8 +10,8 @@ Feature-rich table component for displaying tabular data.
 
 ```tsx
 import React from 'react'
-import { Table } from '@edadma/bloomui'
-import type { ColumnType } from '@edadma/bloomui'
+import { Table } from 'asterui'
+import type { ColumnType } from 'asterui'
 
 interface User {
   id: string
@@ -42,8 +42,8 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Table, Tag, Button } from '@edadma/bloomui'
-import type { ColumnType } from '@edadma/bloomui'
+import { Table, Tag, Button } from 'asterui'
+import type { ColumnType } from 'asterui'
 
 interface User {
   id: string
@@ -84,8 +84,8 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Table } from '@edadma/bloomui'
-import type { ColumnType } from '@edadma/bloomui'
+import { Table } from 'asterui'
+import type { ColumnType } from 'asterui'
 
 interface User {
   id: string
@@ -111,8 +111,8 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Table } from '@edadma/bloomui'
-import type { ColumnType } from '@edadma/bloomui'
+import { Table } from 'asterui'
+import type { ColumnType } from 'asterui'
 
 interface User {
   id: string
@@ -157,8 +157,8 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Table } from '@edadma/bloomui'
-import type { ColumnType, RowSelection } from '@edadma/bloomui'
+import { Table } from 'asterui'
+import type { ColumnType, RowSelection } from 'asterui'
 
 const App: React.FC = () => {
   const [selectedKeys, setSelectedKeys] = useState<React.Key[]>([])

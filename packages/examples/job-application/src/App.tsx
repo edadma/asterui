@@ -1,6 +1,17 @@
 import { useState } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
-import { Navbar, ThemeController, Form, Input, Button, Card, Checkbox, Space, Row, Col } from '@edadma/bloomui'
+import {
+  Navbar,
+  ThemeController,
+  Form,
+  Input,
+  Button,
+  Card,
+  Checkbox,
+  Space,
+  Row,
+  Col,
+} from 'asterui'
 
 interface WorkExperience {
   company: string
@@ -153,7 +164,18 @@ function App() {
                         />
                       ))}
 
-                      <Button onClick={() => add({ company: '', position: '', startDate: '', currentlyWorking: false, description: '' })} className="w-full">
+                      <Button
+                        onClick={() =>
+                          add({
+                            company: '',
+                            position: '',
+                            startDate: '',
+                            currentlyWorking: false,
+                            description: '',
+                          })
+                        }
+                        className="w-full"
+                      >
                         Add Work Experience
                       </Button>
                     </>
@@ -169,10 +191,7 @@ function App() {
                   {(fields, { add, remove }) => (
                     <>
                       {fields.map((field: any, index) => (
-                        <Space
-                          key={field.id}
-                          className="border border-base-300 rounded-lg p-4"
-                        >
+                        <Space key={field.id} className="border border-base-300 rounded-lg p-4">
                           <div className="flex justify-between items-center">
                             <h3 className="font-semibold">Education {index + 1}</h3>
                             {fields.length > 1 && (
@@ -242,7 +261,12 @@ function App() {
                         </Space>
                       ))}
 
-                      <Button onClick={() => add({ school: '', degree: '', field: '', graduationYear: '' })} className="w-full">
+                      <Button
+                        onClick={() =>
+                          add({ school: '', degree: '', field: '', graduationYear: '' })
+                        }
+                        className="w-full"
+                      >
                         Add Education
                       </Button>
                     </>
@@ -256,7 +280,23 @@ function App() {
                 <p className="text-sm text-base-content/70">Select all that apply</p>
 
                 <Row cols={120} gutter={16}>
-                  {['JavaScript', 'TypeScript', 'React', 'Node.js', 'Python', 'Java', 'SQL', 'Git', 'Docker', 'Kubernetes', 'AWS', 'GraphQL', 'MongoDB', 'Redis', 'Go'].map((skill) => (
+                  {[
+                    'JavaScript',
+                    'TypeScript',
+                    'React',
+                    'Node.js',
+                    'Python',
+                    'Java',
+                    'SQL',
+                    'Git',
+                    'Docker',
+                    'Kubernetes',
+                    'AWS',
+                    'GraphQL',
+                    'MongoDB',
+                    'Redis',
+                    'Go',
+                  ].map((skill) => (
                     <Col key={skill} xs={60} md={24}>
                       <Form.Item name="skills" valuePropName="checked">
                         <label className="flex items-center gap-2 cursor-pointer">
@@ -277,10 +317,7 @@ function App() {
                   {(fields, { add, remove }) => (
                     <>
                       {fields.map((field: any, index) => (
-                        <Space
-                          key={field.id}
-                          className="border border-base-300 rounded-lg p-4"
-                        >
+                        <Space key={field.id} className="border border-base-300 rounded-lg p-4">
                           <div className="flex justify-between items-center">
                             <h3 className="font-semibold">Reference {index + 1}</h3>
                             <Button size="sm" onClick={() => remove(index)} type="error">
@@ -347,7 +384,12 @@ function App() {
                         </Space>
                       ))}
 
-                      <Button onClick={() => add({ name: '', company: '', position: '', email: '', phone: '' })} className="w-full">
+                      <Button
+                        onClick={() =>
+                          add({ name: '', company: '', position: '', email: '', phone: '' })
+                        }
+                        className="w-full"
+                      >
                         Add Reference
                       </Button>
                     </>
@@ -356,7 +398,13 @@ function App() {
               </Space>
 
               <div className="form-control mt-8">
-                <Button type="primary" htmlType="submit" loading={isSubmitting} className="w-full" size="lg">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  loading={isSubmitting}
+                  className="w-full"
+                  size="lg"
+                >
                   {isSubmitting ? 'Submitting...' : 'Submit Application'}
                 </Button>
               </div>

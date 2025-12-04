@@ -1,6 +1,6 @@
 # Form
 
-**Import:** `import { Form } from '@edadma/bloomui'`
+**Import:** `import { Form } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple login form with username and password fields.
 
 ```tsx
 import React from 'react'
-import { Form, Input, Button } from '@edadma/bloomui'
+import { Form, Input, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleFinish = (values: any) => {
@@ -43,7 +43,7 @@ Form with validation rules. Rules can be a single object or an array of rules.
 
 ```tsx
 import React from 'react'
-import { Form, Input, Button } from '@edadma/bloomui'
+import { Form, Input, Button } from 'asterui'
 
 const App: React.FC = () => {
   return (
@@ -84,7 +84,7 @@ Use `valuePropName="checked"` for checkboxes and toggles. Use `inline` for auto-
 
 ```tsx
 import React from 'react'
-import { Form, Input, Checkbox, Button } from '@edadma/bloomui'
+import { Form, Input, Checkbox, Button } from 'asterui'
 
 const App: React.FC = () => {
   return (
@@ -112,7 +112,7 @@ Different form layouts: horizontal, vertical, and inline.
 
 ```tsx
 import React, { useState } from 'react'
-import { Form, Input, Button, Radio, Space } from '@edadma/bloomui'
+import { Form, Input, Button, Radio, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [layout, setLayout] = useState<'horizontal' | 'vertical' | 'inline'>('vertical')
@@ -154,7 +154,7 @@ Form with pre-populated initial values.
 
 ```tsx
 import React from 'react'
-import { Form, Input, Button } from '@edadma/bloomui'
+import { Form, Input, Button } from 'asterui'
 
 const App: React.FC = () => {
   const initialValues = {

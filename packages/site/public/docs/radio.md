@@ -2,7 +2,7 @@
 
 Radio buttons for selecting one option from a set.
 
-**Import:** `import { Radio } from '@edadma/bloomui'`
+**Import:** `import { Radio } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Radio buttons for selecting one option from a set.
 
 ```tsx
 import React from 'react'
-import { Radio, Space } from '@edadma/bloomui'
+import { Radio, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Radio.Group defaultValue="1">
@@ -38,7 +38,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Radio } from '@edadma/bloomui'
+import { Radio } from 'asterui'
 
 const App: React.FC = () => (
   <Radio.Group defaultValue="apple">
@@ -66,7 +66,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Radio, Space } from '@edadma/bloomui'
+import { Radio, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="sm">
@@ -100,7 +100,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Radio } from '@edadma/bloomui'
+import { Radio } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex flex-wrap gap-4">
@@ -121,7 +121,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Radio, Space } from '@edadma/bloomui'
+import { Radio, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="sm">
@@ -143,7 +143,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Radio, Form, Button, Space } from '@edadma/bloomui'
+import { Radio, Form, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values: { plan?: string }) => {

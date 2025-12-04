@@ -2,7 +2,7 @@
 
 Create resizable split panes with draggable dividers.
 
-**Import:** `import { Splitter } from '@edadma/bloomui'`
+**Import:** `import { Splitter } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Create resizable split panes with draggable dividers.
 
 ```tsx
 import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-64 border border-base-300 rounded-lg overflow-hidden">
@@ -42,7 +42,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-64 border border-base-300 rounded-lg overflow-hidden">
@@ -68,7 +68,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Splitter, Button, Space } from '@edadma/bloomui'
+import { Splitter, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [sizes, setSizes] = useState([30, 70])
@@ -105,7 +105,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
@@ -130,7 +130,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
@@ -156,7 +156,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-72 border border-base-300 rounded-lg overflow-hidden">
@@ -191,7 +191,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Splitter } from '@edadma/bloomui'
+import { Splitter } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
@@ -217,7 +217,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Splitter, Menu } from '@edadma/bloomui'
+import { Splitter, Menu } from 'asterui'
 
 const App: React.FC = () => (
   <div className="h-80 border border-base-300 rounded-lg overflow-hidden">

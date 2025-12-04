@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Textarea, Form, Button, Modal, Space } from '@edadma/bloomui';
+import { Textarea, Form, Button, Modal, Space } from 'asterui';
 
 const demos: Record<string, React.ReactNode> = {
   basic: <Textarea placeholder="Type your message here" />,

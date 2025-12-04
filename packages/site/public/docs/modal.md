@@ -1,6 +1,6 @@
 # Modal
 
-**Import:** `import { Modal } from '@edadma/bloomui'`
+**Import:** `import { Modal } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple modal with open/close functionality.
 
 ```tsx
 import React, { useState } from 'react'
-import { Modal, Button } from '@edadma/bloomui'
+import { Modal, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -41,7 +41,7 @@ Modal with custom footer buttons.
 
 ```tsx
 import React, { useState } from 'react'
-import { Modal, Button, Space } from '@edadma/bloomui'
+import { Modal, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -84,7 +84,7 @@ Vertically centered modal.
 
 ```tsx
 import React, { useState } from 'react'
-import { Modal, Button } from '@edadma/bloomui'
+import { Modal, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
@@ -115,7 +115,7 @@ Different modal widths.
 
 ```tsx
 import React, { useState } from 'react'
-import { Modal, Button, Space } from '@edadma/bloomui'
+import { Modal, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)

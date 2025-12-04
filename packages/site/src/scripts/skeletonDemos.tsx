@@ -1,6 +1,6 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Skeleton, Space } from '@edadma/bloomui';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { Skeleton, Space } from 'asterui'
 
 const demos: Record<string, React.ReactNode> = {
   basic: (
@@ -85,12 +85,12 @@ const demos: Record<string, React.ReactNode> = {
       </div>
     </div>
   ),
-};
+}
 
 document.querySelectorAll('.demo-container').forEach((container) => {
-  const example = container.getAttribute('data-example');
+  const example = container.getAttribute('data-example')
   if (example && demos[example]) {
-    const root = createRoot(container);
-    root.render(<>{demos[example]}</>);
+    const root = createRoot(container)
+    root.render(<>{demos[example]}</>)
   }
-});
+})

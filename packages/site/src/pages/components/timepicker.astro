@@ -21,7 +21,7 @@ const examples = [
     title: 'Basic TimePicker',
     description: 'Simple time picker with default 24-hour format.',
     code: `import React from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => (
   <TimePicker placeholder="Select time" />
@@ -34,7 +34,7 @@ export default App`,
     title: '12-Hour Format',
     description: 'Time picker with 12-hour format and AM/PM selection.',
     code: `import React from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => (
   <TimePicker format="12" placeholder="Select time" />
@@ -47,7 +47,7 @@ export default App`,
     title: 'With Seconds',
     description: 'Time picker that includes seconds selection.',
     code: `import React from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => (
   <TimePicker showSeconds placeholder="Select time" />
@@ -60,7 +60,7 @@ export default App`,
     title: 'Controlled',
     description: 'Controlled time picker with state management.',
     code: `import React, { useState } from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => {
   const [time, setTime] = useState<Date | null>(null)
@@ -82,7 +82,7 @@ export default App`,
     title: 'Different Sizes',
     description: 'Time picker in various sizes.',
     code: `import React from 'react'
-import { TimePicker, Space } from '@edadma/bloomui'
+import { TimePicker, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -100,7 +100,7 @@ export default App`,
     title: 'Disabled',
     description: 'Disabled time picker.',
     code: `import React from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => (
   <TimePicker disabled placeholder="Disabled" />
@@ -113,7 +113,7 @@ export default App`,
     title: 'In Form',
     description: 'TimePicker integrated with Form component.',
     code: `import React from 'react'
-import { TimePicker, Form, Button } from '@edadma/bloomui'
+import { TimePicker, Form, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values) => {
@@ -156,7 +156,7 @@ export default App`,
     title: 'Time Range Selection',
     description: 'Two time pickers for selecting a time range.',
     code: `import React, { useState } from 'react'
-import { TimePicker } from '@edadma/bloomui'
+import { TimePicker } from 'asterui'
 
 const App: React.FC = () => {
   const [startTime, setStartTime] = useState<Date | null>(null)
@@ -193,7 +193,7 @@ export default App`,
 ];
 ---
 
-<Layout title="TimePicker - BloomUI">
+<Layout title="TimePicker - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -210,7 +210,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { TimePicker } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { TimePicker } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

@@ -1,6 +1,6 @@
 # FloatButton
 
-**Import:** `import { FloatButton } from '@edadma/bloomui'`
+**Import:** `import { FloatButton } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple floating action button.
 
 ```tsx
 import React from 'react'
-import { FloatButton } from '@edadma/bloomui'
+import { FloatButton } from 'asterui'
 import { PlusIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -29,7 +29,7 @@ Float button with tooltip on hover.
 
 ```tsx
 import React from 'react'
-import { FloatButton } from '@edadma/bloomui'
+import { FloatButton } from 'asterui'
 import { PlusIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -50,7 +50,7 @@ Group of float buttons that expand on click.
 
 ```tsx
 import React from 'react'
-import { FloatButton } from '@edadma/bloomui'
+import { FloatButton } from 'asterui'
 import { QuestionMarkCircleIcon, ChatBubbleLeftRightIcon, ArrowPathIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -82,7 +82,7 @@ Scroll to top button that appears after scrolling down.
 
 ```tsx
 import React from 'react'
-import { FloatButton } from '@edadma/bloomui'
+import { FloatButton } from 'asterui'
 
 const App: React.FC = () => (
   <FloatButton.BackTop

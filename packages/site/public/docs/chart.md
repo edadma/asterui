@@ -2,7 +2,7 @@
 
 Data visualization with ApexCharts integration.
 
-**Import:** `import { Chart } from '@edadma/bloomui'`
+**Import:** `import { Chart } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Data visualization with ApexCharts integration.
 
 ```tsx
 import React from 'react'
-import { Chart } from '@edadma/bloomui'
+import { Chart } from 'asterui'
 
 const App: React.FC = () => (
   <Chart
@@ -37,7 +37,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Chart } from '@edadma/bloomui'
+import { Chart } from 'asterui'
 
 const App: React.FC = () => (
   <Chart
@@ -71,7 +71,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Chart } from '@edadma/bloomui'
+import { Chart } from 'asterui'
 
 const App: React.FC = () => (
   <Chart
@@ -103,7 +103,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Chart } from '@edadma/bloomui'
+import { Chart } from 'asterui'
 
 const App: React.FC = () => (
   <Chart
@@ -126,7 +126,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Chart } from '@edadma/bloomui'
+import { Chart } from 'asterui'
 
 const App: React.FC = () => (
   <Chart
@@ -162,7 +162,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Chart } from '@edadma/bloomui'
+import { Chart } from 'asterui'
 
 const App: React.FC = () => (
   <Chart
@@ -203,7 +203,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Chart } from '@edadma/bloomui'
+import { Chart } from 'asterui'
 
 const App: React.FC = () => (
   <Chart

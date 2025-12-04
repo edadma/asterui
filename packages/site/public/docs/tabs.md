@@ -2,7 +2,7 @@
 
 Organize content into separate views where only one view is visible at a time.
 
-**Import:** `import { Tabs } from '@edadma/bloomui'`
+**Import:** `import { Tabs } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Organize content into separate views where only one view is visible at a time.
 
 ```tsx
 import React from 'react'
-import { Tabs } from '@edadma/bloomui'
+import { Tabs } from 'asterui'
 
 const App: React.FC = () => (
   <Tabs>
@@ -33,7 +33,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tabs, Input, Button } from '@edadma/bloomui'
+import { Tabs, Input, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Tabs defaultActiveKey="account" variant="border">
@@ -69,7 +69,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tabs } from '@edadma/bloomui'
+import { Tabs } from 'asterui'
 
 const App: React.FC = () => (
   <Tabs variant="box">
@@ -92,7 +92,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tabs } from '@edadma/bloomui'
+import { Tabs } from 'asterui'
 
 const App: React.FC = () => (
   <Tabs variant="lift">
@@ -115,7 +115,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tabs } from '@edadma/bloomui'
+import { Tabs } from 'asterui'
 
 const App: React.FC = () => (
   <div className="space-y-4">
@@ -145,7 +145,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tabs } from '@edadma/bloomui'
+import { Tabs } from 'asterui'
 
 const App: React.FC = () => (
   <Tabs>

@@ -26,7 +26,7 @@ const examples = [
     title: 'Basic Usage',
     description: 'Use Radio.Group to manage radio selection.',
     code: `import React from 'react'
-import { Radio, Space } from '@edadma/bloomui'
+import { Radio, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Radio.Group defaultValue="1">
@@ -54,7 +54,7 @@ export default App`,
     title: 'Horizontal Layout',
     description: 'Radio buttons in a horizontal row.',
     code: `import React from 'react'
-import { Radio } from '@edadma/bloomui'
+import { Radio } from 'asterui'
 
 const App: React.FC = () => (
   <Radio.Group defaultValue="apple">
@@ -82,7 +82,7 @@ export default App`,
     title: 'Different Sizes',
     description: 'Radio buttons in various sizes.',
     code: `import React from 'react'
-import { Radio, Space } from '@edadma/bloomui'
+import { Radio, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="sm">
@@ -112,7 +112,7 @@ export default App`,
     title: 'Colors',
     description: 'Colored radio button variants.',
     code: `import React from 'react'
-import { Radio } from '@edadma/bloomui'
+import { Radio } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex flex-wrap gap-4">
@@ -133,7 +133,7 @@ export default App`,
     title: 'Disabled State',
     description: 'Disabled radio buttons.',
     code: `import React from 'react'
-import { Radio, Space } from '@edadma/bloomui'
+import { Radio, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="sm">
@@ -155,7 +155,7 @@ export default App`,
     title: 'In Form',
     description: 'Radio group in a form with validation.',
     code: `import React from 'react'
-import { Radio, Form, Button, Space } from '@edadma/bloomui'
+import { Radio, Form, Button, Space } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values: { plan?: string }) => {
@@ -198,7 +198,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Radio - BloomUI">
+<Layout title="Radio - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -215,7 +215,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Radio } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Radio } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

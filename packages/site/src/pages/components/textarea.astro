@@ -20,7 +20,7 @@ const examples = [
     title: 'Basic Textarea',
     description: 'Simple textarea with placeholder.',
     code: `import React from 'react'
-import { Textarea } from '@edadma/bloomui'
+import { Textarea } from 'asterui'
 
 const App: React.FC = () => (
   <Textarea placeholder="Type your message here" />
@@ -33,7 +33,7 @@ export default App`,
     title: 'With Rows',
     description: 'Control height with rows attribute.',
     code: `import React from 'react'
-import { Textarea } from '@edadma/bloomui'
+import { Textarea } from 'asterui'
 
 const App: React.FC = () => (
   <Textarea rows={6} placeholder="Tall textarea" />
@@ -46,7 +46,7 @@ export default App`,
     title: 'Sizes',
     description: 'Five sizes: xs, sm, md, lg, and xl.',
     code: `import React from 'react'
-import { Textarea, Space } from '@edadma/bloomui'
+import { Textarea, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -65,7 +65,7 @@ export default App`,
     title: 'Colors',
     description: 'Color variants for different states.',
     code: `import React from 'react'
-import { Textarea, Space } from '@edadma/bloomui'
+import { Textarea, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -86,7 +86,7 @@ export default App`,
     title: 'Ghost Variant',
     description: 'Transparent background style.',
     code: `import React from 'react'
-import { Textarea } from '@edadma/bloomui'
+import { Textarea } from 'asterui'
 
 const App: React.FC = () => (
   <Textarea ghost placeholder="Ghost textarea" />
@@ -99,7 +99,7 @@ export default App`,
     title: 'Disabled State',
     description: 'Non-interactive disabled textarea.',
     code: `import React from 'react'
-import { Textarea } from '@edadma/bloomui'
+import { Textarea } from 'asterui'
 
 const App: React.FC = () => (
   <Textarea disabled placeholder="Disabled textarea" />
@@ -112,7 +112,7 @@ export default App`,
     title: 'In Form',
     description: 'Textarea with form validation.',
     code: `import React from 'react'
-import { Form, Textarea, Button } from '@edadma/bloomui'
+import { Form, Textarea, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values: any) => {
@@ -147,7 +147,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Textarea - BloomUI">
+<Layout title="Textarea - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -164,7 +164,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Textarea } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Textarea } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

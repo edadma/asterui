@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Chart } from '@edadma/bloomui'
+import { Chart } from 'asterui'
 
 const demos: Record<string, React.ReactNode> = {
   line: (

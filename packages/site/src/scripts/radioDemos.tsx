@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { useState } from 'react';
-import { Radio, Space, Form, Modal } from '@edadma/bloomui';
+import { Radio, Space, Form, Modal } from 'asterui';
 
 // Static demos
 const staticDemos: Record<string, React.ReactNode> = {

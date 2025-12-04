@@ -1,6 +1,6 @@
 # InputNumber
 
-**Import:** `import { InputNumber } from '@edadma/bloomui'`
+**Import:** `import { InputNumber } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple number input with increment/decrement controls.
 
 ```tsx
 import React, { useState } from 'react'
-import { InputNumber } from '@edadma/bloomui'
+import { InputNumber } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(0)
@@ -29,7 +29,7 @@ Number input with minimum and maximum value constraints.
 
 ```tsx
 import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(5)
@@ -58,7 +58,7 @@ Number input with custom increment/decrement step value.
 
 ```tsx
 import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(0)
@@ -86,7 +86,7 @@ Number input with decimal precision control.
 
 ```tsx
 import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(0)
@@ -115,7 +115,7 @@ Four sizes: xs, sm, md (default), and lg.
 
 ```tsx
 import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value1, setValue1] = useState(0)
@@ -142,7 +142,7 @@ Number input without increment/decrement buttons.
 
 ```tsx
 import React, { useState } from 'react'
-import { InputNumber } from '@edadma/bloomui'
+import { InputNumber } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(0)
@@ -165,7 +165,7 @@ Disabled input number state.
 
 ```tsx
 import React, { useState } from 'react'
-import { InputNumber, Space } from '@edadma/bloomui'
+import { InputNumber, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [value, setValue] = useState(42)

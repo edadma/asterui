@@ -2,7 +2,7 @@
 
 Multi-line text input component for longer text content.
 
-**Import:** `import { Textarea } from '@edadma/bloomui'`
+**Import:** `import { Textarea } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Multi-line text input component for longer text content.
 
 ```tsx
 import React from 'react'
-import { Textarea } from '@edadma/bloomui'
+import { Textarea } from 'asterui'
 
 const App: React.FC = () => (
   <Textarea placeholder="Type your message here" />
@@ -23,7 +23,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Textarea } from '@edadma/bloomui'
+import { Textarea } from 'asterui'
 
 const App: React.FC = () => (
   <Textarea rows={6} placeholder="Tall textarea" />
@@ -36,7 +36,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Textarea, Space } from '@edadma/bloomui'
+import { Textarea, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -55,7 +55,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Textarea, Space } from '@edadma/bloomui'
+import { Textarea, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -76,7 +76,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Form, Textarea, Button } from '@edadma/bloomui'
+import { Form, Textarea, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values: any) => {

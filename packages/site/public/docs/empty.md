@@ -2,7 +2,7 @@
 
 No data available
 
-**Import:** `import { Empty } from '@edadma/bloomui'`
+**Import:** `import { Empty } from 'asterui'`
 
 ## Examples
 
@@ -12,7 +12,7 @@ Simple empty state with default image.
 
 ```tsx
 import React from 'react'
-import { Empty } from '@edadma/bloomui'
+import { Empty } from 'asterui'
 
 const App: React.FC = () => (
   <Empty />
@@ -27,7 +27,7 @@ Empty state with custom description text.
 
 ```tsx
 import React from 'react'
-import { Empty } from '@edadma/bloomui'
+import { Empty } from 'asterui'
 
 const App: React.FC = () => (
   <Empty description="No data available" />
@@ -42,7 +42,7 @@ Empty state with custom image or icon.
 
 ```tsx
 import React from 'react'
-import { Empty } from '@edadma/bloomui'
+import { Empty } from 'asterui'
 
 const App: React.FC = () => (
   <Empty
@@ -64,7 +64,7 @@ Empty state with action button.
 
 ```tsx
 import React from 'react'
-import { Empty, Button } from '@edadma/bloomui'
+import { Empty, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Empty description="No items in your cart">

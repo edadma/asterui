@@ -2,7 +2,7 @@
 
 Display events in chronological order with alternating or vertical layouts.
 
-**Import:** `import { Timeline } from '@edadma/bloomui'`
+**Import:** `import { Timeline } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Display events in chronological order with alternating or vertical layouts.
 
 ```tsx
 import React from 'react'
-import { Timeline } from '@edadma/bloomui'
+import { Timeline } from 'asterui'
 
 const CheckIcon = () => (
   <svg
@@ -51,7 +51,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Timeline } from '@edadma/bloomui'
+import { Timeline } from 'asterui'
 
 const CheckIcon = () => (
   <svg
@@ -98,7 +98,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Timeline } from '@edadma/bloomui'
+import { Timeline } from 'asterui'
 
 const CheckIcon = () => (
   <svg

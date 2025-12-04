@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { PageLayout, Space, Card } from '@edadma/bloomui'
+import { PageLayout, Space, Card } from 'asterui'
 
 const BasicDemo = () => (
   <PageLayout minHeight="auto" padding="md">

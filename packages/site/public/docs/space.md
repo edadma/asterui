@@ -2,7 +2,7 @@
 
 Set consistent spacing between components.
 
-**Import:** `import { Space } from '@edadma/bloomui'`
+**Import:** `import { Space } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Set consistent spacing between components.
 
 ```tsx
 import React from 'react'
-import { Space, Button } from '@edadma/bloomui'
+import { Space, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
@@ -27,7 +27,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Space, Button } from '@edadma/bloomui'
+import { Space, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical">
@@ -44,7 +44,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Space, Badge } from '@edadma/bloomui'
+import { Space, Badge } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical">
@@ -82,7 +82,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Space, Button } from '@edadma/bloomui'
+import { Space, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Space align="center">
@@ -99,7 +99,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Space, Badge } from '@edadma/bloomui'
+import { Space, Badge } from 'asterui'
 
 const App: React.FC = () => (
   <Space wrap>
@@ -121,7 +121,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Space, Card, Button } from '@edadma/bloomui'
+import { Space, Card, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical">

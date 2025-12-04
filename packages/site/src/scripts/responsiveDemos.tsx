@@ -1,22 +1,30 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Show, Hide, useBreakpoint, Button, Flex, Alert, Card, Typography } from '@edadma/bloomui';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { Show, Hide, useBreakpoint, Button, Flex, Alert, Card, Typography } from 'asterui'
 
-const { Text } = Typography;
+const { Text } = Typography
 
 function BreakpointDemo() {
-  const { breakpoint, width, isAbove, isBelow } = useBreakpoint();
+  const { breakpoint, width, isAbove, isBelow } = useBreakpoint()
 
   return (
     <Card className="bg-base-200">
       <Flex direction="column" gap="xs">
-        <Text>Breakpoint: <strong>{breakpoint}</strong></Text>
-        <Text>Width: <strong>{width}px</strong></Text>
-        <Text>Is desktop (lg+): <strong>{isAbove('lg') ? 'Yes' : 'No'}</strong></Text>
-        <Text>Is mobile (&lt;md): <strong>{isBelow('md') ? 'Yes' : 'No'}</strong></Text>
+        <Text>
+          Breakpoint: <strong>{breakpoint}</strong>
+        </Text>
+        <Text>
+          Width: <strong>{width}px</strong>
+        </Text>
+        <Text>
+          Is desktop (lg+): <strong>{isAbove('lg') ? 'Yes' : 'No'}</strong>
+        </Text>
+        <Text>
+          Is mobile (&lt;md): <strong>{isBelow('md') ? 'Yes' : 'No'}</strong>
+        </Text>
       </Flex>
     </Card>
-  );
+  )
 }
 
 const demos: Record<string, React.ReactNode> = {
@@ -58,23 +66,31 @@ const demos: Record<string, React.ReactNode> = {
       <div className="font-bold">Logo</div>
       <Show above="md">
         <Flex gap="md">
-          <Button type="ghost" size="sm">Home</Button>
-          <Button type="ghost" size="sm">About</Button>
-          <Button type="ghost" size="sm">Contact</Button>
+          <Button type="ghost" size="sm">
+            Home
+          </Button>
+          <Button type="ghost" size="sm">
+            About
+          </Button>
+          <Button type="ghost" size="sm">
+            Contact
+          </Button>
         </Flex>
       </Show>
       <Hide above="md">
-        <Button type="ghost" size="sm">Menu</Button>
+        <Button type="ghost" size="sm">
+          Menu
+        </Button>
       </Hide>
     </Flex>
   ),
   'use-breakpoint': <BreakpointDemo />,
-};
+}
 
 document.querySelectorAll('.demo-container').forEach((container) => {
-  const example = container.getAttribute('data-example');
+  const example = container.getAttribute('data-example')
   if (example && demos[example]) {
-    const root = createRoot(container);
-    root.render(<>{demos[example]}</>);
+    const root = createRoot(container)
+    root.render(<>{demos[example]}</>)
   }
-});
+})

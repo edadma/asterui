@@ -1,6 +1,6 @@
 # Affix
 
-**Import:** `import { Affix } from '@edadma/bloomui'`
+**Import:** `import { Affix } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Element becomes fixed when scrolled past its position.
 
 ```tsx
 import React from 'react'
-import { Affix, Button } from '@edadma/bloomui'
+import { Affix, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Affix offsetTop={80}>
@@ -27,7 +27,7 @@ Get notified when affix state changes.
 
 ```tsx
 import React, { useState } from 'react'
-import { Affix, Button } from '@edadma/bloomui'
+import { Affix, Button } from 'asterui'
 
 const App: React.FC = () => {
   const [affixed, setAffixed] = useState(false)
@@ -50,7 +50,7 @@ Fix element to bottom of viewport.
 
 ```tsx
 import React from 'react'
-import { Affix, Button } from '@edadma/bloomui'
+import { Affix, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Affix offsetBottom={20}>
@@ -67,7 +67,7 @@ Affix within a scrollable container.
 
 ```tsx
 import React from 'react'
-import { Affix } from '@edadma/bloomui'
+import { Affix } from 'asterui'
 
 const App: React.FC = () => (
   <div id="scroll-container" className="h-64 overflow-auto">

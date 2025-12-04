@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { Countdown, Space } from '@edadma/bloomui'
+import { Countdown, Space } from 'asterui'
 
 const BasicDemo = () => {
   const target = Date.now() + 60 * 60 * 1000

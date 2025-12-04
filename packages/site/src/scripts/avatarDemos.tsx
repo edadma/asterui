@@ -1,15 +1,13 @@
-import { createRoot } from 'react-dom/client';
-import { Avatar, Space } from '@edadma/bloomui';
-import { UserIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { createRoot } from 'react-dom/client'
+import { Avatar, Space } from 'asterui'
+import { UserIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 
-const imgSrc = 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp';
+const imgSrc = 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
-  'basic': (
-    <Avatar src={imgSrc} alt="User avatar" />
-  ),
-  'sizes': (
+  basic: <Avatar src={imgSrc} alt="User avatar" />,
+  sizes: (
     <Space direction="horizontal" size="sm" align="center">
       <Avatar size="xs" src={imgSrc} />
       <Avatar size="sm" src={imgSrc} />
@@ -18,19 +16,19 @@ const demos: Record<string, React.ReactNode> = {
       <Avatar size="xl" src={imgSrc} />
     </Space>
   ),
-  'shapes': (
+  shapes: (
     <Space direction="horizontal" size="sm">
       <Avatar shape="circle" src={imgSrc} />
       <Avatar shape="square" src={imgSrc} />
     </Space>
   ),
-  'status': (
+  status: (
     <Space direction="horizontal" size="sm">
       <Avatar status="online" src={imgSrc} />
       <Avatar status="offline" src={imgSrc} />
     </Space>
   ),
-  'text': (
+  text: (
     <Space direction="horizontal" size="sm" align="center">
       <Avatar size="xl">
         <span className="text-3xl">AI</span>
@@ -43,13 +41,13 @@ const demos: Record<string, React.ReactNode> = {
       </Avatar>
     </Space>
   ),
-  'icon': (
+  icon: (
     <Space direction="horizontal" size="sm">
       <Avatar icon={<UserIcon className="h-8 w-8" />} />
       <Avatar size="lg" icon={<UserCircleIcon className="h-10 w-10" />} />
     </Space>
   ),
-  'group': (
+  group: (
     <Avatar.Group>
       <Avatar size="sm" src={imgSrc} />
       <Avatar size="sm" src={imgSrc} />
@@ -67,28 +65,29 @@ const demos: Record<string, React.ReactNode> = {
       <Avatar size="sm" src={imgSrc} />
     </Avatar.Group>
   ),
-};
+}
 
 // Mount React demos
-document.querySelectorAll('.demo-container').forEach(container => {
-  const exampleId = container.getAttribute('data-example');
+document.querySelectorAll('.demo-container').forEach((container) => {
+  const exampleId = container.getAttribute('data-example')
   if (exampleId && demos[exampleId]) {
-    const root = createRoot(container as HTMLElement);
-    root.render(demos[exampleId]);
+    const root = createRoot(container as HTMLElement)
+    root.render(demos[exampleId])
   }
-});
+})
 
 // Copy button functionality
-document.querySelectorAll('.copy-btn').forEach(btn => {
+document.querySelectorAll('.copy-btn').forEach((btn) => {
   btn.addEventListener('click', async () => {
-    const code = btn.getAttribute('data-code');
+    const code = btn.getAttribute('data-code')
     if (code) {
-      await navigator.clipboard.writeText(code);
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+      await navigator.clipboard.writeText(code)
+      const originalHTML = btn.innerHTML
+      btn.innerHTML =
+        '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>'
       setTimeout(() => {
-        btn.innerHTML = originalHTML;
-      }, 2000);
+        btn.innerHTML = originalHTML
+      }, 2000)
     }
-  });
-});
+  })
+})

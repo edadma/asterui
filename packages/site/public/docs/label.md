@@ -1,6 +1,6 @@
 # Label
 
-**Import:** `import { Label } from '@edadma/bloomui'`
+**Import:** `import { Label } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple label component for form fields.
 
 ```tsx
 import React from 'react'
-import { Label, Input, Space } from '@edadma/bloomui'
+import { Label, Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md">
@@ -34,7 +34,7 @@ Label with required indicator using custom styling.
 
 ```tsx
 import React from 'react'
-import { Label, Input, Space } from '@edadma/bloomui'
+import { Label, Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md">
@@ -62,7 +62,7 @@ Label that floats above the input when focused or filled.
 
 ```tsx
 import React, { useState } from 'react'
-import { Label, Space } from '@edadma/bloomui'
+import { Label, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [name, setName] = useState('')
@@ -98,7 +98,7 @@ Label combined with helper text for additional context.
 
 ```tsx
 import React from 'react'
-import { Label, Input, Space } from '@edadma/bloomui'
+import { Label, Input, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md">

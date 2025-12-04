@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Transfer } from '@edadma/bloomui'
+import { Transfer } from 'asterui'
 
 interface TransferItem {
   key: string
@@ -48,7 +48,11 @@ function CustomRenderTransfer() {
   const data: TransferItem[] = [
     { key: '1', title: 'React', description: 'A JavaScript library for building user interfaces' },
     { key: '2', title: 'Vue', description: 'The Progressive JavaScript Framework' },
-    { key: '3', title: 'Angular', description: 'Platform for building mobile and desktop web apps' },
+    {
+      key: '3',
+      title: 'Angular',
+      description: 'Platform for building mobile and desktop web apps',
+    },
     { key: '4', title: 'Svelte', description: 'Cybernetically enhanced web apps' },
     { key: '5', title: 'Solid', description: 'Simple and performant reactivity' },
   ]

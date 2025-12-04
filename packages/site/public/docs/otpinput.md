@@ -5,7 +5,7 @@ One-time password input component for verification codes.
 ## Import
 
 ```tsx
-import { OTPInput } from '@edadma/bloomui'
+import { OTPInput } from 'asterui'
 ```
 
 ## Basic Usage

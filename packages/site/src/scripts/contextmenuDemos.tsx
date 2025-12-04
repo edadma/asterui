@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { ContextMenu } from '@edadma/bloomui'
+import { ContextMenu } from 'asterui'
 
 const BasicDemo = () => {
   const items = [

@@ -1,6 +1,6 @@
 # Browser
 
-**Import:** `import { Browser } from '@edadma/bloomui'`
+**Import:** `import { Browser } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Browser window with URL bar.
 
 ```tsx
 import React from 'react'
-import { Browser } from '@edadma/bloomui'
+import { Browser } from 'asterui'
 
 const App: React.FC = () => (
   <Browser url="https://daisyui.com" className="w-full">
@@ -29,7 +29,7 @@ Preview a website layout.
 
 ```tsx
 import React from 'react'
-import { Browser } from '@edadma/bloomui'
+import { Browser } from 'asterui'
 
 const App: React.FC = () => (
   <Browser url="https://mysite.com" className="w-full">
@@ -54,7 +54,7 @@ Custom background color.
 
 ```tsx
 import React from 'react'
-import { Browser } from '@edadma/bloomui'
+import { Browser } from 'asterui'
 
 const App: React.FC = () => (
   <Browser url="https://app.example.com" className="w-full">
@@ -73,7 +73,7 @@ Mock up a dashboard UI.
 
 ```tsx
 import React from 'react'
-import { Browser } from '@edadma/bloomui'
+import { Browser } from 'asterui'
 
 const App: React.FC = () => (
   <Browser url="https://dashboard.example.com" className="w-full">

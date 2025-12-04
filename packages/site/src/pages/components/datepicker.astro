@@ -24,7 +24,7 @@ const examples = [
     title: 'Basic DatePicker',
     description: 'Simple date selection.',
     code: `import React from 'react'
-import { DatePicker } from '@edadma/bloomui'
+import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
   <DatePicker placeholder="Select date" />
@@ -37,7 +37,7 @@ export default App`,
     title: 'With Time Selection',
     description: 'Date picker with time selection.',
     code: `import React from 'react'
-import { DatePicker } from '@edadma/bloomui'
+import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
   <DatePicker showTime placeholder="Select date and time" />
@@ -50,7 +50,7 @@ export default App`,
     title: 'Date Range',
     description: 'Select a date range.',
     code: `import React from 'react'
-import { DatePicker } from '@edadma/bloomui'
+import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
   <DatePicker range placeholder={['Start date', 'End date']} />
@@ -63,7 +63,7 @@ export default App`,
     title: 'Picker Types',
     description: 'Different picker types for various granularities.',
     code: `import React from 'react'
-import { DatePicker, Space } from '@edadma/bloomui'
+import { DatePicker, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -81,7 +81,7 @@ export default App`,
     title: 'Disabled Dates',
     description: 'Disable specific dates (e.g., past dates).',
     code: `import React from 'react'
-import { DatePicker } from '@edadma/bloomui'
+import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
   <DatePicker
@@ -97,7 +97,7 @@ export default App`,
     title: 'Sizes',
     description: 'Different input sizes.',
     code: `import React from 'react'
-import { DatePicker, Space } from '@edadma/bloomui'
+import { DatePicker, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
@@ -113,7 +113,7 @@ export default App`,
 ];
 ---
 
-<Layout title="DatePicker - BloomUI">
+<Layout title="DatePicker - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -134,7 +134,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { DatePicker } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { DatePicker } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

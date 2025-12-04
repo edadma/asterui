@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Descriptions } from '@edadma/bloomui';
+import { Descriptions } from 'asterui';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
@@ -17,7 +17,7 @@ const demos: Record<string, React.ReactNode> = {
   'bordered': (
     <Descriptions
       items={[
-        { label: 'Product', children: 'BloomUI Pro' },
+        { label: 'Product', children: 'AsterUI Pro' },
         { label: 'Price', children: '$99.00' },
         { label: 'Quantity', children: '2' },
         { label: 'Total', children: '$198.00' },

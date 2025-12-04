@@ -1,6 +1,6 @@
 # Carousel
 
-**Import:** `import { Carousel } from '@edadma/bloomui'`
+**Import:** `import { Carousel } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Simple carousel with navigation controls.
 
 ```tsx
 import React from 'react'
-import { Carousel } from '@edadma/bloomui'
+import { Carousel } from 'asterui'
 
 const App: React.FC = () => (
   <Carousel className="w-full max-w-md">
@@ -35,7 +35,7 @@ Carousel with automatic slide advancement.
 
 ```tsx
 import React from 'react'
-import { Carousel } from '@edadma/bloomui'
+import { Carousel } from 'asterui'
 
 const App: React.FC = () => (
   <Carousel autoplay interval={2000} className="w-full max-w-md">
@@ -66,7 +66,7 @@ Carousel with vertical orientation.
 
 ```tsx
 import React from 'react'
-import { Carousel } from '@edadma/bloomui'
+import { Carousel } from 'asterui'
 
 const App: React.FC = () => (
   <Carousel vertical className="h-64 w-full max-w-md">
@@ -91,7 +91,7 @@ Carousel with custom slide content.
 
 ```tsx
 import React from 'react'
-import { Carousel, Card, Button } from '@edadma/bloomui'
+import { Carousel, Card, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Carousel className="w-full max-w-md">

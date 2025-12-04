@@ -2,7 +2,7 @@
 
 Generate QR codes with customizable appearance, icons, and status states.
 
-**Import:** `import { QRCode } from '@edadma/bloomui'`
+**Import:** `import { QRCode } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Generate QR codes with customizable appearance, icons, and status states.
 
 ```tsx
 import React from 'react'
-import { QRCode } from '@edadma/bloomui'
+import { QRCode } from 'asterui'
 
 const App: React.FC = () => (
   <QRCode value="https://github.com" />
@@ -23,7 +23,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { QRCode } from '@edadma/bloomui'
+import { QRCode } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 items-center flex-wrap">
@@ -41,7 +41,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { QRCode } from '@edadma/bloomui'
+import { QRCode } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 flex-wrap">
@@ -70,7 +70,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { QRCode } from '@edadma/bloomui'
+import { QRCode } from 'asterui'
 
 const App: React.FC = () => (
   <QRCode
@@ -87,7 +87,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { QRCode } from '@edadma/bloomui'
+import { QRCode } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 flex-wrap">
@@ -117,7 +117,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { QRCode } from '@edadma/bloomui'
+import { QRCode } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex gap-4 flex-wrap">
@@ -133,7 +133,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { QRCode } from '@edadma/bloomui'
+import { QRCode } from 'asterui'
 
 const App: React.FC = () => (
   <QRCode
@@ -149,7 +149,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { QRCode } from '@edadma/bloomui'
+import { QRCode } from 'asterui'
 
 const App: React.FC = () => {
   const [status, setStatus] = useState<'active' | 'loading' | 'expired'>('expired')
@@ -175,7 +175,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { QRCode, Input } from '@edadma/bloomui'
+import { QRCode, Input } from 'asterui'
 
 const App: React.FC = () => {
   const [text, setText] = useState('https://github.com')

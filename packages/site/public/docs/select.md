@@ -2,7 +2,7 @@
 
 Dropdown select component for choosing from a list of options.
 
-**Import:** `import { Select } from '@edadma/bloomui'`
+**Import:** `import { Select } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Dropdown select component for choosing from a list of options.
 
 ```tsx
 import React from 'react'
-import { Select } from '@edadma/bloomui'
+import { Select } from 'asterui'
 
 const App: React.FC = () => (
   <Select>
@@ -29,7 +29,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Select } from '@edadma/bloomui'
+import { Select } from 'asterui'
 
 const App: React.FC = () => (
   <Select defaultValue="orange">
@@ -47,7 +47,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Select, Space } from '@edadma/bloomui'
+import { Select, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -76,7 +76,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Select, Space } from '@edadma/bloomui'
+import { Select, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space size="xs">
@@ -111,7 +111,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Select } from '@edadma/bloomui'
+import { Select } from 'asterui'
 
 const App: React.FC = () => (
   <Select ghost>
@@ -128,7 +128,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Select } from '@edadma/bloomui'
+import { Select } from 'asterui'
 
 const App: React.FC = () => (
   <Select disabled>
@@ -143,7 +143,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Form, Select, Button } from '@edadma/bloomui'
+import { Form, Select, Button } from 'asterui'
 
 const App: React.FC = () => {
   const handleSubmit = (values: any) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Upload, Button, Form } from '@edadma/bloomui'
+import { Upload, Button, Form } from 'asterui'
 
 interface UploadFile {
   uid: string

@@ -88,7 +88,7 @@ const examples = [
     title: 'Basic Avatar',
     description: 'Simple avatar with image using the src prop.',
     code: `import React from 'react'
-import { Avatar } from '@edadma/bloomui'
+import { Avatar } from 'asterui'
 
 const App: React.FC = () => (
   <Avatar
@@ -104,7 +104,7 @@ export default App`,
     title: 'Sizes',
     description: 'Control avatar size with the size prop.',
     code: `import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm" align="center">
@@ -123,7 +123,7 @@ export default App`,
     title: 'Shapes',
     description: 'Circle or square avatars.',
     code: `import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm">
@@ -139,7 +139,7 @@ export default App`,
     title: 'Status Indicators',
     description: 'Show online or offline presence.',
     code: `import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm">
@@ -155,7 +155,7 @@ export default App`,
     title: 'Text Avatars',
     description: 'Display initials or text.',
     code: `import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm" align="center">
@@ -178,7 +178,7 @@ export default App`,
     title: 'Icon Avatars',
     description: 'Display icons instead of images.',
     code: `import React from 'react'
-import { Avatar, Space } from '@edadma/bloomui'
+import { Avatar, Space } from 'asterui'
 import { UserIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
@@ -195,7 +195,7 @@ export default App`,
     title: 'Avatar Group',
     description: 'Group multiple avatars with overlap.',
     code: `import React from 'react'
-import { Avatar } from '@edadma/bloomui'
+import { Avatar } from 'asterui'
 
 const App: React.FC = () => (
   <Avatar.Group>
@@ -213,7 +213,7 @@ export default App`,
     title: 'Avatar Group with Max Count',
     description: 'Show overflow count when exceeding max.',
     code: `import React from 'react'
-import { Avatar } from '@edadma/bloomui'
+import { Avatar } from 'asterui'
 
 const App: React.FC = () => (
   <Avatar.Group max={3}>
@@ -231,7 +231,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Avatar - BloomUI">
+<Layout title="Avatar - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <!-- Header -->
     <div class="mb-8">
@@ -252,7 +252,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Avatar } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Avatar } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

@@ -21,7 +21,7 @@ const examples = [
     title: 'Basic Countdown',
     description: 'Simple countdown timer.',
     code: `import React from 'react'
-import { Countdown } from '@edadma/bloomui'
+import { Countdown } from 'asterui'
 
 const App: React.FC = () => {
   // 1 hour from now
@@ -37,7 +37,7 @@ export default App`,
     title: 'With Days',
     description: 'Include days in the countdown.',
     code: `import React from 'react'
-import { Countdown } from '@edadma/bloomui'
+import { Countdown } from 'asterui'
 
 const App: React.FC = () => {
   // 3 days from now
@@ -53,7 +53,7 @@ export default App`,
     title: 'Sizes',
     description: 'Different size variants.',
     code: `import React from 'react'
-import { Countdown, Space } from '@edadma/bloomui'
+import { Countdown, Space } from 'asterui'
 
 const App: React.FC = () => {
   const target = Date.now() + 60 * 60 * 1000
@@ -75,7 +75,7 @@ export default App`,
     title: 'With Labels',
     description: 'Show labels under each unit.',
     code: `import React from 'react'
-import { Countdown } from '@edadma/bloomui'
+import { Countdown } from 'asterui'
 
 const App: React.FC = () => {
   const target = Date.now() + 2 * 24 * 60 * 60 * 1000
@@ -96,7 +96,7 @@ export default App`,
     title: 'Boxed Style',
     description: 'Each unit in a styled box.',
     code: `import React from 'react'
-import { Countdown } from '@edadma/bloomui'
+import { Countdown } from 'asterui'
 
 const App: React.FC = () => {
   const target = Date.now() + 24 * 60 * 60 * 1000
@@ -118,7 +118,7 @@ export default App`,
     title: 'With Callbacks',
     description: 'Handle finish and change events.',
     code: `import React from 'react'
-import { Countdown } from '@edadma/bloomui'
+import { Countdown } from 'asterui'
 
 const App: React.FC = () => {
   // 10 seconds from now
@@ -139,7 +139,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Countdown - BloomUI">
+<Layout title="Countdown - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -156,7 +156,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Countdown } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Countdown } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

@@ -1,18 +1,18 @@
 <p align="center">
-  <img src="logo.png" alt="BloomUI Logo" width="200">
+  <img src="logo.png" alt="AsterUI Logo" width="200">
 </p>
 
-# BloomUI
+# AsterUI
 
 A comprehensive React component library built with [DaisyUI](https://daisyui.com) and [Tailwind CSS](https://tailwindcss.com).
 
 ## Demo
 
-View the documentation at: [https://bloomui.io](https://bloomui.io)
+View the documentation at: [https://asterui.com](https://asterui.com)
 
 ## Prerequisites
 
-BloomUI requires Tailwind CSS v4 and DaisyUI v5 to be configured in your project.
+AsterUI requires Tailwind CSS v4 and DaisyUI v5 to be configured in your project.
 
 Install Tailwind and DaisyUI:
 
@@ -37,25 +37,25 @@ Configure your CSS file (e.g., `src/index.css`):
 ```css
 @import "tailwindcss";
 @plugin "daisyui";
-@source "../node_modules/@edadma/bloomui";
+@source "../node_modules/asterui";
 ```
 
-The `@source` directive tells Tailwind to scan the BloomUI package for classes to include in your build.
+The `@source` directive tells Tailwind to scan the AsterUI package for classes to include in your build.
 
 ## Installation
 
 ```bash
-npm install bloomui
+npm install asterui
 # or
-pnpm add bloomui
+pnpm add asterui
 # or
-yarn add bloomui
+yarn add asterui
 ```
 
 ## Usage
 
 ```tsx
-import { Form, Input, Checkbox, Button, Modal, Card, Space, Flex, Typography } from '@edadma/bloomui'
+import { Form, Input, Checkbox, Button, Modal, Card, Space, Flex, Typography } from 'asterui'
 
 const { Link, Paragraph } = Typography
 
@@ -211,8 +211,8 @@ export default function App() {
 
 This is a pnpm monorepo with the following packages:
 
-- `packages/bloomui` - The component library
-- `packages/site` - Documentation website (bloomui.io)
+- `packages/asterui` - The component library
+- `packages/site` - Documentation website (asterui.com)
 - `packages/examples` - Example apps for testing components
 
 ### Setup
@@ -234,7 +234,7 @@ pnpm build
 ### Publishing
 
 ```bash
-cd packages/bloomui
+cd packages/asterui
 pnpm publish
 ```
 

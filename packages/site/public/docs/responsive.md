@@ -2,11 +2,11 @@
 
 Components and hooks for building responsive layouts based on screen size.
 
-**Import:** `import { Show, Hide, useBreakpoint } from '@edadma/bloomui'`
+**Import:** `import { Show, Hide, useBreakpoint } from 'asterui'`
 
 ## Breakpoints
 
-BloomUI uses Tailwind CSS breakpoints:
+AsterUI uses Tailwind CSS breakpoints:
 
 | Breakpoint | Min Width |
 |------------|-----------|
@@ -25,7 +25,7 @@ Show content only at medium screens and above.
 
 ```tsx
 import React from 'react'
-import { Show, Button } from '@edadma/bloomui'
+import { Show, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Show above="md">
@@ -42,7 +42,7 @@ Hide content on small screens.
 
 ```tsx
 import React from 'react'
-import { Hide, Navbar } from '@edadma/bloomui'
+import { Hide, Navbar } from 'asterui'
 
 const App: React.FC = () => (
   <Hide below="md">
@@ -59,7 +59,7 @@ Show content only at specific breakpoints.
 
 ```tsx
 import React from 'react'
-import { Show, Alert } from '@edadma/bloomui'
+import { Show, Alert } from 'asterui'
 
 const App: React.FC = () => (
   <>
@@ -81,7 +81,7 @@ Show content within a range of breakpoints.
 
 ```tsx
 import React from 'react'
-import { Show, Card } from '@edadma/bloomui'
+import { Show, Card } from 'asterui'
 
 const App: React.FC = () => (
   <Show between={['sm', 'lg']}>
@@ -100,7 +100,7 @@ Build different layouts for mobile and desktop.
 
 ```tsx
 import React from 'react'
-import { Show, Hide, Button, Flex } from '@edadma/bloomui'
+import { Show, Hide, Button, Flex } from 'asterui'
 
 const App: React.FC = () => (
   <Flex justify="between" align="center" className="p-4 bg-base-200">
@@ -131,7 +131,7 @@ Access breakpoint info programmatically.
 
 ```tsx
 import React from 'react'
-import { useBreakpoint, Card, Typography } from '@edadma/bloomui'
+import { useBreakpoint, Card, Typography } from 'asterui'
 
 const { Text } = Typography
 

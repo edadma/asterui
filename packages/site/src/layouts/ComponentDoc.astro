@@ -29,7 +29,7 @@ interface Props {
 const { name, description, category, props, subComponents, methods } = Astro.props;
 ---
 
-<Layout title={`${name} - BloomUI`} description={description}>
+<Layout title={`${name} - AsterUI`} description={description}>
   <article itemscope itemtype="https://schema.org/TechArticle">
     <header class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -45,7 +45,7 @@ const { name, description, category, props, subComponents, methods } = Astro.pro
       <p class="text-lg text-base-content/70 mt-2" itemprop="description">{description}</p>
 
       <div class="mt-4">
-        <a href={`https://github.com/edadma/bloomui/blob/main/packages/bloomui/src/components/${name.split('.')[0]}.tsx`} class="btn btn-outline btn-sm" target="_blank" rel="noopener">
+        <a href={`https://github.com/edadma/asterui/blob/main/packages/asterui/src/components/${name.split('.')[0]}.tsx`} class="btn btn-outline btn-sm" target="_blank" rel="noopener">
           View Source
         </a>
       </div>
@@ -55,7 +55,7 @@ const { name, description, category, props, subComponents, methods } = Astro.pro
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="bg-base-200 rounded-lg p-4">
-        <pre><code>{`import { ${name.split('.')[0]} } from '@edadma/bloomui';`}</code></pre>
+        <pre><code>{`import { ${name.split('.')[0]} } from 'asterui';`}</code></pre>
       </div>
     </section>
 
@@ -158,7 +158,7 @@ const { name, description, category, props, subComponents, methods } = Astro.pro
       <div class="bg-base-200 rounded-lg p-4">
         <pre><code>{`// Example test
 import { render, screen } from '@testing-library/react';
-import { ${name.split('.')[0]} } from '@edadma/bloomui';
+import { ${name.split('.')[0]} } from 'asterui';
 
 screen.getByRole('...');  // Use appropriate ARIA role
 screen.getByTestId('...');  // Use data-testid`}</code></pre>

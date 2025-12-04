@@ -18,7 +18,7 @@ const examples = [
     title: 'Basic Tooltip',
     description: 'Simple tooltip that appears on hover.',
     code: `import React from 'react'
-import { Tooltip, Button } from '@edadma/bloomui'
+import { Tooltip, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Tooltip tip="This is a tooltip">
@@ -33,7 +33,7 @@ export default App`,
     title: 'Positions',
     description: 'Tooltips can appear in different positions.',
     code: `import React from 'react'
-import { Tooltip, Button } from '@edadma/bloomui'
+import { Tooltip, Button } from 'asterui'
 
 const App: React.FC = () => (
   <div className="flex flex-wrap gap-4 justify-center py-8">
@@ -59,7 +59,7 @@ export default App`,
     title: 'Colors',
     description: 'Color variants for different contexts.',
     code: `import React from 'react'
-import { Tooltip, Button, Space } from '@edadma/bloomui'
+import { Tooltip, Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space wrap>
@@ -94,7 +94,7 @@ export default App`,
     title: 'Always Open',
     description: 'Force the tooltip to stay visible.',
     code: `import React from 'react'
-import { Tooltip, Button } from '@edadma/bloomui'
+import { Tooltip, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Tooltip tip="Always visible" open>
@@ -107,7 +107,7 @@ export default App`,
 ];
 ---
 
-<Layout title="Tooltip - BloomUI">
+<Layout title="Tooltip - AsterUI">
   <div class="max-w-screen-xl mx-auto">
     <div class="mb-8">
       <nav class="text-sm breadcrumbs mb-4">
@@ -124,7 +124,7 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Tooltip } from '@edadma/bloomui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code="import { Tooltip } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 

@@ -1,12 +1,12 @@
-import { createRoot } from 'react-dom/client';
-import React, { useState } from 'react';
-import { Form, Input, Button, Radio, Space } from '@edadma/bloomui';
+import { createRoot } from 'react-dom/client'
+import React, { useState } from 'react'
+import { Form, Input, Button, Radio, Space } from 'asterui'
 
 // Stateful demo components
 const BasicDemo: React.FC = () => {
   const handleFinish = (values: any) => {
-    console.log('Form values:', values);
-  };
+    console.log('Form values:', values)
+  }
 
   return (
     <Form onFinish={handleFinish}>
@@ -22,17 +22,17 @@ const BasicDemo: React.FC = () => {
         </Button>
       </Form.Item>
     </Form>
-  );
-};
+  )
+}
 
 const ValidationDemo: React.FC = () => {
   const handleFinish = (values: any) => {
-    console.log('Success:', values);
-  };
+    console.log('Success:', values)
+  }
 
   const handleFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
+    console.log('Failed:', errorInfo)
+  }
 
   return (
     <Form onFinish={handleFinish} onFinishFailed={handleFinishFailed}>
@@ -41,7 +41,7 @@ const ValidationDemo: React.FC = () => {
         label="Email"
         rules={[
           { required: true, message: 'Please enter your email' },
-          { type: 'email', message: 'Please enter a valid email' }
+          { type: 'email', message: 'Please enter a valid email' },
         ]}
       >
         <Input placeholder="name@example.com" />
@@ -51,7 +51,7 @@ const ValidationDemo: React.FC = () => {
         label="Password"
         rules={[
           { required: true, message: 'Please enter your password' },
-          { min: 6, message: 'Password must be at least 6 characters' }
+          { min: 6, message: 'Password must be at least 6 characters' },
         ]}
       >
         <Input type="password" placeholder="Enter password" />
@@ -62,18 +62,15 @@ const ValidationDemo: React.FC = () => {
         </Button>
       </Form.Item>
     </Form>
-  );
-};
+  )
+}
 
 const LayoutsDemo: React.FC = () => {
-  const [layout, setLayout] = useState<'horizontal' | 'vertical' | 'inline'>('vertical');
+  const [layout, setLayout] = useState<'horizontal' | 'vertical' | 'inline'>('vertical')
 
   return (
     <Space direction="vertical" size="lg" className="w-full">
-      <Radio.Group
-        value={layout}
-        onChange={(e) => setLayout(e.target.value as typeof layout)}
-      >
+      <Radio.Group value={layout} onChange={(e) => setLayout(e.target.value as typeof layout)}>
         <Radio value="vertical">Vertical</Radio>
         <Radio value="horizontal">Horizontal</Radio>
         <Radio value="inline">Inline</Radio>
@@ -93,19 +90,19 @@ const LayoutsDemo: React.FC = () => {
         </Form.Item>
       </Form>
     </Space>
-  );
-};
+  )
+}
 
 const InitialValuesDemo: React.FC = () => {
   const initialValues = {
     username: 'john_doe',
     email: 'john@example.com',
-    bio: 'Software developer'
-  };
+    bio: 'Software developer',
+  }
 
   const handleFinish = (values: any) => {
-    console.log('Updated values:', values);
-  };
+    console.log('Updated values:', values)
+  }
 
   return (
     <Form initialValues={initialValues} onFinish={handleFinish}>
@@ -124,37 +121,38 @@ const InitialValuesDemo: React.FC = () => {
         </Button>
       </Form.Item>
     </Form>
-  );
-};
+  )
+}
 
 const statefulDemos: Record<string, React.FC> = {
-  'basic': BasicDemo,
-  'validation': ValidationDemo,
-  'layouts': LayoutsDemo,
+  basic: BasicDemo,
+  validation: ValidationDemo,
+  layouts: LayoutsDemo,
   'initial-values': InitialValuesDemo,
-};
+}
 
 // Mount React demos
-document.querySelectorAll('.demo-container').forEach(container => {
-  const exampleId = container.getAttribute('data-example');
+document.querySelectorAll('.demo-container').forEach((container) => {
+  const exampleId = container.getAttribute('data-example')
   if (exampleId && statefulDemos[exampleId]) {
-    const root = createRoot(container as HTMLElement);
-    const Component = statefulDemos[exampleId];
-    root.render(<Component />);
+    const root = createRoot(container as HTMLElement)
+    const Component = statefulDemos[exampleId]
+    root.render(<Component />)
   }
-});
+})
 
 // Copy button functionality
-document.querySelectorAll('.copy-btn').forEach(btn => {
+document.querySelectorAll('.copy-btn').forEach((btn) => {
   btn.addEventListener('click', async () => {
-    const code = btn.getAttribute('data-code');
+    const code = btn.getAttribute('data-code')
     if (code) {
-      await navigator.clipboard.writeText(code);
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+      await navigator.clipboard.writeText(code)
+      const originalHTML = btn.innerHTML
+      btn.innerHTML =
+        '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>'
       setTimeout(() => {
-        btn.innerHTML = originalHTML;
-      }, 2000);
+        btn.innerHTML = originalHTML
+      }, 2000)
     }
-  });
-});
+  })
+})

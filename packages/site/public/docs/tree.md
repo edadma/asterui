@@ -2,7 +2,7 @@
 
 Hierarchical tree structure for displaying nested data.
 
-**Import:** `import { Tree } from '@edadma/bloomui'`
+**Import:** `import { Tree } from 'asterui'`
 
 ## Examples
 
@@ -10,7 +10,7 @@ Hierarchical tree structure for displaying nested data.
 
 ```tsx
 import React from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const treeData = [
   {
@@ -45,7 +45,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const App: React.FC = () => {
   const [checkedKeys, setCheckedKeys] = useState([])
@@ -71,7 +71,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const App: React.FC = () => {
   const [selectedKeys, setSelectedKeys] = useState([])
@@ -97,7 +97,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Tree } from '@edadma/bloomui'
+import { Tree } from 'asterui'
 
 const fileTreeData = [
   {

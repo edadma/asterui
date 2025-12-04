@@ -23,7 +23,7 @@ import {
   Row,
   Col,
   Divider,
-} from '@edadma/bloomui'
+} from 'asterui'
 
 interface ComprehensiveFormData {
   // Text inputs
@@ -174,10 +174,7 @@ function App() {
                       min: { value: 20, message: 'Bio must be at least 20 characters' },
                     }}
                   >
-                    <Textarea
-                      placeholder="Tell us about yourself..."
-                      rows={4}
-                    />
+                    <Textarea placeholder="Tell us about yourself..." rows={4} />
                   </Form.Item>
                 </div>
 
@@ -254,15 +251,8 @@ function App() {
                     </Col>
 
                     <Col xs={24} md={12}>
-                      <Form.Item
-                        name="city"
-                        label="City"
-                        rules={{ required: 'City is required' }}
-                      >
-                        <Autocomplete
-                          options={cityOptions}
-                          placeholder="Search for a city..."
-                        />
+                      <Form.Item name="city" label="City" rules={{ required: 'City is required' }}>
+                        <Autocomplete options={cityOptions} placeholder="Search for a city..." />
                       </Form.Item>
                     </Col>
                   </Row>
