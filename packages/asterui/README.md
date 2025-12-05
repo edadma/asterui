@@ -102,7 +102,7 @@ export default function App() {
 
 ## Components
 
-80+ components including forms, data display, navigation, feedback, and layout. See the full list at [asterui.com/components](https://asterui.com/components).
+90+ components including forms, data display, navigation, feedback, and layout. See the full list at [asterui.com/components](https://asterui.com/components).
 
 ## Requirements
 
