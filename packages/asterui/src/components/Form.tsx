@@ -291,7 +291,6 @@ function FormItem({
         if (error) {
           childProps.color = 'error'
           childProps['aria-invalid'] = true
-          childProps.className = `${(children as React.ReactElement<any>)?.props?.className || ''} validator`.trim()
         }
 
         const enhancedChild = isValidElement(children)
