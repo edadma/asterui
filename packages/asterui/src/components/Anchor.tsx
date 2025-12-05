@@ -1,0 +1,260 @@
+import React, { useState, useEffect, useCallback, createContext, useContext } from 'react'
+
+export interface AnchorLinkItem {
+  /** Target element id (without #) */
+  href: string
+  /** Link title */
+  title: React.ReactNode
+  /** Nested links */
+  children?: AnchorLinkItem[]
+}
+
+export interface AnchorProps {
+  /** Anchor links */
+  items?: AnchorLinkItem[]
+  /** Layout direction */
+  direction?: 'horizontal' | 'vertical'
+  /** Offset from top when calculating scroll position */
+  offsetTop?: number
+  /** Target scroll container (default: window) */
+  getContainer?: () => HTMLElement | Window
+  /** Callback when active link changes */
+  onChange?: (activeLink: string) => void
+  /** Callback when link is clicked */
+  onClick?: (e: React.MouseEvent, link: { href: string; title: React.ReactNode }) => void
+  /** Currently active link (controlled) */
+  activeLink?: string
+  /** Custom class name */
+  className?: string
+  /** Children (alternative to items prop) */
+  children?: React.ReactNode
+}
+
+export interface AnchorLinkProps {
+  /** Target element id (without #) */
+  href: string
+  /** Link title */
+  title: React.ReactNode
+  /** Nested links */
+  children?: React.ReactNode
+  /** Custom class name */
+  className?: string
+}
+
+interface AnchorContextValue {
+  activeLink: string
+  direction: 'horizontal' | 'vertical'
+  offsetTop: number
+  registerLink: (href: string) => void
+  unregisterLink: (href: string) => void
+  handleClick: (e: React.MouseEvent, href: string, title: React.ReactNode) => void
+}
+
+const AnchorContext = createContext<AnchorContextValue | null>(null)
+
+const useAnchorContext = () => {
+  const context = useContext(AnchorContext)
+  if (!context) {
+    throw new Error('Anchor.Link must be used within an Anchor')
+  }
+  return context
+}
+
+const AnchorLink: React.FC<AnchorLinkProps> = ({
+  href,
+  title,
+  children,
+  className = '',
+}) => {
+  const { activeLink, direction, registerLink, unregisterLink, handleClick } = useAnchorContext()
+
+  useEffect(() => {
+    registerLink(href)
+    return () => unregisterLink(href)
+  }, [href, registerLink, unregisterLink])
+
+  const isActive = activeLink === href
+  const isVertical = direction === 'vertical'
+
+  return (
+    <div className={isVertical ? '' : 'inline-block'}>
+      <a
+        href={`#${href}`}
+        onClick={(e) => handleClick(e, href, title)}
+        className={`
+          block text-sm transition-colors
+          ${isVertical ? 'py-1 pl-3 border-l-2' : 'px-3 py-1 border-b-2'}
+          ${isActive
+            ? 'text-primary border-primary font-medium'
+            : 'text-base-content/70 border-transparent hover:text-base-content hover:border-base-content/30'
+          }
+          ${className}
+        `.trim()}
+      >
+        {title}
+      </a>
+      {children && (
+        <div className={isVertical ? 'pl-3' : 'inline-flex'}>
+          {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
+const AnchorComponent: React.FC<AnchorProps> = ({
+  items,
+  direction = 'vertical',
+  offsetTop = 0,
+  getContainer,
+  onChange,
+  onClick,
+  activeLink: controlledActiveLink,
+  className = '',
+  children,
+}) => {
+  const [internalActiveLink, setInternalActiveLink] = useState('')
+  const [links, setLinks] = useState<string[]>([])
+
+  const isControlled = controlledActiveLink !== undefined
+  const activeLink = isControlled ? controlledActiveLink : internalActiveLink
+
+  const registerLink = useCallback((href: string) => {
+    setLinks((prev) => (prev.includes(href) ? prev : [...prev, href]))
+  }, [])
+
+  const unregisterLink = useCallback((href: string) => {
+    setLinks((prev) => prev.filter((link) => link !== href))
+  }, [])
+
+  const scrollToTarget = useCallback((href: string) => {
+    const target = document.getElementById(href)
+    if (target) {
+      const container = getContainer?.() ?? window
+      const targetTop = target.getBoundingClientRect().top
+      const containerTop = container === window
+        ? 0
+        : (container as HTMLElement).getBoundingClientRect().top
+      const scrollTop = container === window
+        ? window.scrollY
+        : (container as HTMLElement).scrollTop
+
+      const top = targetTop - containerTop + scrollTop - offsetTop
+
+      if (container === window) {
+        window.scrollTo({ top, behavior: 'smooth' })
+      } else {
+        (container as HTMLElement).scrollTo({ top, behavior: 'smooth' })
+      }
+    }
+  }, [getContainer, offsetTop])
+
+  const handleClick = useCallback((
+    e: React.MouseEvent,
+    href: string,
+    title: React.ReactNode
+  ) => {
+    e.preventDefault()
+    onClick?.(e, { href, title })
+    scrollToTarget(href)
+
+    if (!isControlled) {
+      setInternalActiveLink(href)
+    }
+    onChange?.(href)
+  }, [onClick, scrollToTarget, isControlled, onChange])
+
+  // Scroll spy
+  useEffect(() => {
+    if (links.length === 0) return
+
+    const container = getContainer?.() ?? window
+
+    const handleScroll = () => {
+      const scrollTop = container === window
+        ? window.scrollY
+        : (container as HTMLElement).scrollTop
+
+      let currentActive = ''
+      let minDistance = Infinity
+
+      for (const href of links) {
+        const element = document.getElementById(href)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          const containerTop = container === window
+            ? 0
+            : (container as HTMLElement).getBoundingClientRect().top
+          const distance = rect.top - containerTop - offsetTop
+
+          // Find the element closest to the top (but still below the offset)
+          if (distance <= 10 && Math.abs(distance) < minDistance) {
+            minDistance = Math.abs(distance)
+            currentActive = href
+          } else if (distance > 10 && !currentActive) {
+            // If no element is at the top yet, use the first visible one
+            currentActive = href
+          }
+        }
+      }
+
+      // If we scrolled past all elements, use the last one
+      if (!currentActive && links.length > 0) {
+        const lastHref = links[links.length - 1]
+        const lastElement = document.getElementById(lastHref)
+        if (lastElement) {
+          const rect = lastElement.getBoundingClientRect()
+          if (rect.bottom < window.innerHeight) {
+            currentActive = lastHref
+          }
+        }
+      }
+
+      if (currentActive && currentActive !== activeLink) {
+        if (!isControlled) {
+          setInternalActiveLink(currentActive)
+        }
+        onChange?.(currentActive)
+      }
+    }
+
+    container.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll() // Initial check
+
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [links, getContainer, offsetTop, activeLink, isControlled, onChange])
+
+  const contextValue: AnchorContextValue = {
+    activeLink,
+    direction,
+    offsetTop,
+    registerLink,
+    unregisterLink,
+    handleClick,
+  }
+
+  const renderItems = (linkItems: AnchorLinkItem[]): React.ReactNode => {
+    return linkItems.map((item) => (
+      <AnchorLink key={item.href} href={item.href} title={item.title}>
+        {item.children && renderItems(item.children)}
+      </AnchorLink>
+    ))
+  }
+
+  return (
+    <AnchorContext.Provider value={contextValue}>
+      <nav
+        className={`
+          ${direction === 'horizontal' ? 'flex items-center' : 'flex flex-col'}
+          ${className}
+        `.trim()}
+      >
+        {items ? renderItems(items) : children}
+      </nav>
+    </AnchorContext.Provider>
+  )
+}
+
+export const Anchor = Object.assign(AnchorComponent, {
+  Link: AnchorLink,
+})

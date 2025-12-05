@@ -1,6 +1,9 @@
 export { Affix } from './components/Affix'
 export type { AffixProps } from './components/Affix'
 
+export { Anchor } from './components/Anchor'
+export type { AnchorProps, AnchorLinkProps, AnchorLinkItem } from './components/Anchor'
+
 export { Alert } from './components/Alert'
 export type { AlertProps } from './components/Alert'
 
