@@ -116,19 +116,24 @@ export default App`,
   {
     id: 'callback',
     title: 'With Callback',
-    description: 'Show a notification when countdown finishes.',
-    code: `import React from 'react'
+    description: 'Show a notification and auto-restart when countdown finishes.',
+    code: `import React, { useState } from 'react'
 import { Countdown, notification } from 'asterui'
 
 const App: React.FC = () => {
-  // 20 seconds from now
-  const target = Date.now() + 20 * 1000
+  const [target, setTarget] = useState(() => Date.now() + 20 * 1000)
+
+  const handleFinish = () => {
+    notification.success({ message: 'Countdown finished!' })
+    setTarget(Date.now() + 20 * 1000) // Restart
+  }
 
   return (
     <Countdown
+      key={target}
       value={target}
       format="MM:SS"
-      onFinish={() => notification.success({ message: 'Countdown finished!' })}
+      onFinish={handleFinish}
     />
   )
 }

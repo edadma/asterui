@@ -49,12 +49,19 @@ const BoxedDemo = () => {
 }
 
 const CallbackDemo = () => {
-  const target = Date.now() + 20 * 1000 // 20 seconds
+  const [target, setTarget] = React.useState(() => Date.now() + 20 * 1000)
+
+  const handleFinish = () => {
+    notification.success({ message: 'Countdown finished!' })
+    setTarget(Date.now() + 20 * 1000) // Restart
+  }
+
   return (
     <Countdown
+      key={target}
       value={target}
       format="MM:SS"
-      onFinish={() => notification.success({ message: 'Countdown finished!' })}
+      onFinish={handleFinish}
     />
   )
 }
