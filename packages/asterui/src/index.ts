@@ -109,6 +109,9 @@ export type { InputNumberProps } from './components/InputNumber'
 export { Join } from './components/Join'
 export type { JoinProps } from './components/Join'
 
+export { Kbd } from './components/Kbd'
+export type { KbdProps } from './components/Kbd'
+
 export { Label } from './components/Label'
 export type { LabelProps, FloatingLabelProps } from './components/Label'
 

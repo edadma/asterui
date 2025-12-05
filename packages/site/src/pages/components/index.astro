@@ -10,7 +10,7 @@ const docPages = new Set([
   'card', 'carousel', 'cascader', 'chart', 'chat', 'checkbox', 'code',
   'collapse', 'colorpicker', 'container', 'contextmenu', 'countdown', 'datepicker', 'descriptions', 'divider', 'drawer',
   'dropdown', 'empty', 'fieldset', 'fileinput', 'flex', 'floatbutton', 'footer', 'form', 'grid',
-  'hero', 'image', 'indicator', 'input', 'inputnumber', 'join', 'label', 'layout',
+  'hero', 'image', 'indicator', 'input', 'inputnumber', 'join', 'kbd', 'label', 'layout',
   'list', 'loading', 'masonry', 'mention', 'menu', 'modal', 'navbar', 'notification',
   'otpinput', 'pagelayout', 'pagination', 'phone', 'popconfirm', 'popover', 'progress', 'qrcode', 'radialprogress',
   'radio', 'range', 'rating', 'responsive', 'result', 'segmented', 'select', 'skeleton', 'space',
@@ -34,6 +34,7 @@ const componentCategories = [
   {
     name: 'General',
     components: [
+      { name: 'Kbd', slug: 'kbd', description: 'Display keyboard keys and shortcuts', props: ['size', 'children'] },
       { name: 'Typography', slug: 'typography', description: 'Text display with Title, Text, Paragraph, and Link subcomponents', props: ['level', 'type', 'copyable', 'ellipsis', 'mark', 'code'] },
     ]
   },
