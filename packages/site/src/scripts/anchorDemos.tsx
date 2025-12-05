@@ -1,19 +1,22 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Anchor } from 'asterui';
+import { Anchor, Flex } from 'asterui';
 import { CheckIconSvg } from './icons';
 
-// Basic demo with scrollable content
+// Basic vertical demo
 const BasicDemo: React.FC = () => {
-  const items = [
-    { href: 'demo-section-1', title: 'Section 1' },
-    { href: 'demo-section-2', title: 'Section 2' },
-    { href: 'demo-section-3', title: 'Section 3' },
-  ];
+  const getContainer = () => document.getElementById('basic-scroll-container') as HTMLElement;
 
   return (
-    <div className="flex gap-4">
-      <Anchor items={items} className="shrink-0" />
+    <Flex gap="md">
+      <Anchor
+        items={[
+          { href: 'demo-section-1', title: 'Section 1' },
+          { href: 'demo-section-2', title: 'Section 2' },
+          { href: 'demo-section-3', title: 'Section 3' },
+        ]}
+        getContainer={getContainer}
+      />
       <div className="flex-1 h-48 overflow-y-auto border border-base-300 rounded p-2" id="basic-scroll-container">
         <section id="demo-section-1" className="h-32 mb-2 p-3 bg-base-200 rounded">
           <h3 className="font-bold">Section 1</h3>
@@ -28,57 +31,96 @@ const BasicDemo: React.FC = () => {
           <p className="text-sm text-base-content/70">Content for section 3</p>
         </section>
       </div>
-    </div>
+    </Flex>
   );
 };
 
 // Horizontal demo
 const HorizontalDemo: React.FC = () => {
-  const items = [
-    { href: 'intro', title: 'Introduction' },
-    { href: 'features', title: 'Features' },
-    { href: 'pricing', title: 'Pricing' },
-    { href: 'faq', title: 'FAQ' },
-  ];
+  const getContainer = () => document.getElementById('horizontal-scroll-container') as HTMLElement;
 
-  return <Anchor items={items} direction="horizontal" />;
+  return (
+    <div>
+      <Anchor
+        direction="horizontal"
+        items={[
+          { href: 'h-intro', title: 'Introduction' },
+          { href: 'h-features', title: 'Features' },
+          { href: 'h-pricing', title: 'Pricing' },
+          { href: 'h-faq', title: 'FAQ' },
+        ]}
+        getContainer={getContainer}
+      />
+      <div className="h-32 overflow-y-auto border border-base-300 rounded p-2 mt-2" id="horizontal-scroll-container">
+        <section id="h-intro" className="h-24 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Introduction</h3>
+          <p className="text-sm text-base-content/70">Welcome to our product</p>
+        </section>
+        <section id="h-features" className="h-24 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Features</h3>
+          <p className="text-sm text-base-content/70">Amazing features</p>
+        </section>
+        <section id="h-pricing" className="h-24 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Pricing</h3>
+          <p className="text-sm text-base-content/70">Affordable plans</p>
+        </section>
+        <section id="h-faq" className="h-24 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">FAQ</h3>
+          <p className="text-sm text-base-content/70">Common questions</p>
+        </section>
+      </div>
+    </div>
+  );
 };
 
 // Nested demo
 const NestedDemo: React.FC = () => {
-  const items = [
-    {
-      href: 'getting-started',
-      title: 'Getting Started',
-      children: [
-        { href: 'installation', title: 'Installation' },
-        { href: 'configuration', title: 'Configuration' },
-      ],
-    },
-    {
-      href: 'components',
-      title: 'Components',
-      children: [
-        { href: 'buttons', title: 'Buttons' },
-        { href: 'forms', title: 'Forms' },
-      ],
-    },
-  ];
+  const getContainer = () => document.getElementById('nested-scroll-container') as HTMLElement;
 
-  return <Anchor items={items} />;
-};
-
-// Compound components demo
-const CompoundDemo: React.FC = () => {
   return (
-    <Anchor>
-      <Anchor.Link href="overview" title="Overview" />
-      <Anchor.Link href="api" title="API Reference">
-        <Anchor.Link href="props" title="Props" />
-        <Anchor.Link href="methods" title="Methods" />
-      </Anchor.Link>
-      <Anchor.Link href="examples" title="Examples" />
-    </Anchor>
+    <Flex gap="md">
+      <Anchor
+        items={[
+          {
+            href: 'n-getting-started',
+            title: 'Getting Started',
+            children: [
+              { href: 'n-installation', title: 'Installation' },
+              { href: 'n-configuration', title: 'Configuration' },
+            ],
+          },
+          {
+            href: 'n-components',
+            title: 'Components',
+            children: [
+              { href: 'n-buttons', title: 'Buttons' },
+              { href: 'n-forms', title: 'Forms' },
+            ],
+          },
+        ]}
+        getContainer={getContainer}
+      />
+      <div className="flex-1 h-48 overflow-y-auto border border-base-300 rounded p-2" id="nested-scroll-container">
+        <section id="n-getting-started" className="h-20 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Getting Started</h3>
+        </section>
+        <section id="n-installation" className="h-20 mb-2 p-3 bg-base-200 rounded ml-4">
+          <h4 className="font-semibold text-sm">Installation</h4>
+        </section>
+        <section id="n-configuration" className="h-20 mb-2 p-3 bg-base-200 rounded ml-4">
+          <h4 className="font-semibold text-sm">Configuration</h4>
+        </section>
+        <section id="n-components" className="h-20 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Components</h3>
+        </section>
+        <section id="n-buttons" className="h-20 mb-2 p-3 bg-base-200 rounded ml-4">
+          <h4 className="font-semibold text-sm">Buttons</h4>
+        </section>
+        <section id="n-forms" className="h-20 p-3 bg-base-200 rounded ml-4">
+          <h4 className="font-semibold text-sm">Forms</h4>
+        </section>
+      </div>
+    </Flex>
   );
 };
 
@@ -86,7 +128,6 @@ const demos: Record<string, React.ReactNode> = {
   'basic': <BasicDemo />,
   'horizontal': <HorizontalDemo />,
   'nested': <NestedDemo />,
-  'compound': <CompoundDemo />,
 };
 
 // Mount React demos

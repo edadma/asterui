@@ -61,6 +61,9 @@ export type { DatePickerProps } from './components/DatePicker'
 export { Descriptions } from './components/Descriptions'
 export type { DescriptionsProps, DescriptionsItemProps, DescriptionsSize, DescriptionsLayout } from './components/Descriptions'
 
+export { Diff } from './components/Diff'
+export type { DiffProps } from './components/Diff'
+
 export { Divider } from './components/Divider'
 export type { DividerProps } from './components/Divider'
 

@@ -8,7 +8,7 @@ const siteBase = import.meta.env.DEV ? '' : 'https://asterui.com';
 const docPages = new Set([
   'affix', 'alert', 'anchor', 'autocomplete', 'avatar', 'badge', 'breadcrumb', 'browser', 'button',
   'card', 'carousel', 'cascader', 'chart', 'chat', 'checkbox', 'code',
-  'collapse', 'colorpicker', 'container', 'contextmenu', 'countdown', 'datepicker', 'descriptions', 'divider', 'drawer',
+  'collapse', 'colorpicker', 'container', 'contextmenu', 'countdown', 'datepicker', 'descriptions', 'diff', 'divider', 'drawer',
   'dropdown', 'empty', 'fieldset', 'fileinput', 'flex', 'floatbutton', 'footer', 'form', 'grid',
   'hero', 'image', 'indicator', 'input', 'inputnumber', 'join', 'kbd', 'label', 'layout',
   'list', 'loading', 'masonry', 'mention', 'menu', 'modal', 'navbar', 'notification',
@@ -69,7 +69,7 @@ const componentCategories = [
   {
     name: 'Navigation',
     components: [
-      { name: 'Anchor', slug: 'anchor', description: 'Navigate to page sections with scroll spy', props: ['items', 'direction', 'offsetTop', 'onChange', 'activeLink'] },
+      { name: 'Anchor', slug: 'anchor', description: 'Navigate to page sections with scroll spy', props: ['items', 'direction', 'offsetTop', 'getContainer', 'onChange', 'activeLink'] },
       { name: 'Breadcrumb', slug: 'breadcrumb', description: 'Navigation breadcrumb trail', props: ['children', 'className'] },
       { name: 'ContextMenu', slug: 'contextmenu', description: 'Right-click context menu with submenus', props: ['items', 'onSelect', 'disabled', 'children'] },
       { name: 'Menu', slug: 'menu', description: 'Navigation menu with nested items and multiple modes', props: ['items', 'mode', 'selectedKeys', 'openKeys', 'onClick', 'theme'] },
@@ -119,6 +119,7 @@ const componentCategories = [
       { name: 'Collapse', slug: 'collapse', description: 'Collapsible content panels (accordion)', props: ['items', 'activeKey', 'onChange', 'accordion', 'bordered'] },
       { name: 'Countdown', slug: 'countdown', description: 'Countdown timer with customizable format', props: ['value', 'format', 'onFinish', 'onChange', 'size', 'showLabels', 'boxed'] },
       { name: 'Descriptions', slug: 'descriptions', description: 'Key-value display list', props: ['items', 'title', 'column', 'bordered', 'layout', 'size'] },
+      { name: 'Diff', slug: 'diff', description: 'Side-by-side comparison with interactive resizer', props: ['item1', 'item2', 'aspect', 'className'] },
       { name: 'Empty', slug: 'empty', description: 'Empty state placeholder', props: ['description', 'image', 'imageStyle'] },
       { name: 'Image', slug: 'image', description: 'Image display with preview', props: ['src', 'alt', 'width', 'height', 'preview', 'fallback'] },
       { name: 'Indicator', slug: 'indicator', description: 'Visual indicator badge overlay', props: ['children', 'value', 'position'] },

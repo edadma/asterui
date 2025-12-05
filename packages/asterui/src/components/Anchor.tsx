@@ -10,7 +10,7 @@ export interface AnchorLinkItem {
 }
 
 export interface AnchorProps {
-  /** Anchor links */
+  /** Anchor links (alternative to Anchor.Link children) */
   items?: AnchorLinkItem[]
   /** Layout direction */
   direction?: 'horizontal' | 'vertical'
@@ -26,7 +26,7 @@ export interface AnchorProps {
   activeLink?: string
   /** Custom class name */
   className?: string
-  /** Children (alternative to items prop) */
+  /** Anchor.Link children */
   children?: React.ReactNode
 }
 
@@ -171,42 +171,39 @@ const AnchorComponent: React.FC<AnchorProps> = ({
     const container = getContainer?.() ?? window
 
     const handleScroll = () => {
-      const scrollTop = container === window
-        ? window.scrollY
-        : (container as HTMLElement).scrollTop
-
       let currentActive = ''
-      let minDistance = Infinity
+      const containerEl = container === window ? document.documentElement : container as HTMLElement
+      const containerTop = container === window
+        ? 0
+        : containerEl.getBoundingClientRect().top
 
-      for (const href of links) {
-        const element = document.getElementById(href)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          const containerTop = container === window
-            ? 0
-            : (container as HTMLElement).getBoundingClientRect().top
-          const distance = rect.top - containerTop - offsetTop
+      // Check if scrolled to near the bottom
+      const scrollTop = container === window ? window.scrollY : containerEl.scrollTop
+      const scrollHeight = containerEl.scrollHeight
+      const clientHeight = container === window ? window.innerHeight : containerEl.clientHeight
+      const isNearBottom = scrollTop + clientHeight >= scrollHeight - 10
 
-          // Find the element closest to the top (but still below the offset)
-          if (distance <= 10 && Math.abs(distance) < minDistance) {
-            minDistance = Math.abs(distance)
-            currentActive = href
-          } else if (distance > 10 && !currentActive) {
-            // If no element is at the top yet, use the first visible one
-            currentActive = href
+      // If near bottom, use the last link
+      if (isNearBottom && links.length > 0) {
+        currentActive = links[links.length - 1]
+      } else {
+        // Find the last element that has scrolled past the top (standard scroll spy behavior)
+        for (const href of links) {
+          const element = document.getElementById(href)
+          if (element) {
+            const rect = element.getBoundingClientRect()
+            const distance = rect.top - containerTop - offsetTop
+
+            // If element's top is at or above the threshold, it's the current section
+            if (distance <= 10) {
+              currentActive = href
+            }
           }
         }
-      }
 
-      // If we scrolled past all elements, use the last one
-      if (!currentActive && links.length > 0) {
-        const lastHref = links[links.length - 1]
-        const lastElement = document.getElementById(lastHref)
-        if (lastElement) {
-          const rect = lastElement.getBoundingClientRect()
-          if (rect.bottom < window.innerHeight) {
-            currentActive = lastHref
-          }
+        // If nothing matched, use the first link
+        if (!currentActive && links.length > 0) {
+          currentActive = links[0]
         }
       }
 

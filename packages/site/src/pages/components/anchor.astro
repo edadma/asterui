@@ -14,12 +14,6 @@ const anchorApi = [
   { property: 'children', description: 'Anchor.Link children (alternative to items)', type: 'React.ReactNode', default: '-' },
 ];
 
-const linkApi = [
-  { property: 'href', description: 'Target element id (without #)', type: 'string', default: '-' },
-  { property: 'title', description: 'Link title', type: 'React.ReactNode', default: '-' },
-  { property: 'children', description: 'Nested Anchor.Link elements', type: 'React.ReactNode', default: '-' },
-];
-
 const linkItemApi = [
   { property: 'href', description: 'Target element id (without #)', type: 'string', default: '-' },
   { property: 'title', description: 'Link title', type: 'React.ReactNode', default: '-' },
@@ -31,33 +25,36 @@ const examples = [
     id: 'basic',
     title: 'Basic',
     description: 'Vertical anchor navigation with scroll spy.',
-    code: `import { Anchor } from 'asterui'
-
-const items = [
-  { href: 'section-1', title: 'Section 1' },
-  { href: 'section-2', title: 'Section 2' },
-  { href: 'section-3', title: 'Section 3' },
-]
+    code: `import { Anchor, Flex } from 'asterui'
 
 export default function App() {
+  const getContainer = () => document.getElementById('scroll-container') as HTMLElement
+
   return (
-    <div className="flex gap-8">
-      <Anchor items={items} />
-      <div className="flex-1">
-        <section id="section-1" className="h-64 mb-4 p-4 bg-base-200 rounded">
-          <h2 className="text-xl font-bold">Section 1</h2>
-          <p>Content for section 1</p>
+    <Flex gap="md">
+      <Anchor
+        items={[
+          { href: 'section-1', title: 'Section 1' },
+          { href: 'section-2', title: 'Section 2' },
+          { href: 'section-3', title: 'Section 3' },
+        ]}
+        getContainer={getContainer}
+      />
+      <div id="scroll-container" className="flex-1 h-48 overflow-y-auto border rounded p-2">
+        <section id="section-1" className="h-32 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Section 1</h3>
+          <p className="text-sm">Scroll to see active link change</p>
         </section>
-        <section id="section-2" className="h-64 mb-4 p-4 bg-base-200 rounded">
-          <h2 className="text-xl font-bold">Section 2</h2>
-          <p>Content for section 2</p>
+        <section id="section-2" className="h-32 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Section 2</h3>
+          <p className="text-sm">Content for section 2</p>
         </section>
-        <section id="section-3" className="h-64 p-4 bg-base-200 rounded">
-          <h2 className="text-xl font-bold">Section 3</h2>
-          <p>Content for section 3</p>
+        <section id="section-3" className="h-32 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Section 3</h3>
+          <p className="text-sm">Content for section 3</p>
         </section>
       </div>
-    </div>
+    </Flex>
   )
 }`,
   },
@@ -67,62 +64,96 @@ export default function App() {
     description: 'Horizontal layout for top navigation.',
     code: `import { Anchor } from 'asterui'
 
-const items = [
-  { href: 'intro', title: 'Introduction' },
-  { href: 'features', title: 'Features' },
-  { href: 'pricing', title: 'Pricing' },
-  { href: 'faq', title: 'FAQ' },
-]
-
 export default function App() {
-  return <Anchor items={items} direction="horizontal" />
+  const getContainer = () => document.getElementById('scroll-container') as HTMLElement
+
+  return (
+    <div>
+      <Anchor
+        direction="horizontal"
+        items={[
+          { href: 'intro', title: 'Introduction' },
+          { href: 'features', title: 'Features' },
+          { href: 'pricing', title: 'Pricing' },
+          { href: 'faq', title: 'FAQ' },
+        ]}
+        getContainer={getContainer}
+      />
+      <div id="scroll-container" className="h-32 overflow-y-auto border rounded p-2 mt-2">
+        <section id="intro" className="h-24 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Introduction</h3>
+          <p className="text-sm">Welcome to our product</p>
+        </section>
+        <section id="features" className="h-24 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Features</h3>
+          <p className="text-sm">Amazing features</p>
+        </section>
+        <section id="pricing" className="h-24 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Pricing</h3>
+          <p className="text-sm">Affordable plans</p>
+        </section>
+        <section id="faq" className="h-24 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">FAQ</h3>
+          <p className="text-sm">Common questions</p>
+        </section>
+      </div>
+    </div>
+  )
 }`,
   },
   {
     id: 'nested',
     title: 'Nested Links',
     description: 'Hierarchical navigation with nested links.',
-    code: `import { Anchor } from 'asterui'
-
-const items = [
-  {
-    href: 'getting-started',
-    title: 'Getting Started',
-    children: [
-      { href: 'installation', title: 'Installation' },
-      { href: 'configuration', title: 'Configuration' },
-    ],
-  },
-  {
-    href: 'components',
-    title: 'Components',
-    children: [
-      { href: 'buttons', title: 'Buttons' },
-      { href: 'forms', title: 'Forms' },
-    ],
-  },
-]
+    code: `import { Anchor, Flex } from 'asterui'
 
 export default function App() {
-  return <Anchor items={items} />
-}`,
-  },
-  {
-    id: 'compound',
-    title: 'Compound Components',
-    description: 'Use Anchor.Link for more control.',
-    code: `import { Anchor } from 'asterui'
+  const getContainer = () => document.getElementById('scroll-container') as HTMLElement
 
-export default function App() {
   return (
-    <Anchor>
-      <Anchor.Link href="overview" title="Overview" />
-      <Anchor.Link href="api" title="API Reference">
-        <Anchor.Link href="props" title="Props" />
-        <Anchor.Link href="methods" title="Methods" />
-      </Anchor.Link>
-      <Anchor.Link href="examples" title="Examples" />
-    </Anchor>
+    <Flex gap="md">
+      <Anchor
+        items={[
+          {
+            href: 'getting-started',
+            title: 'Getting Started',
+            children: [
+              { href: 'installation', title: 'Installation' },
+              { href: 'configuration', title: 'Configuration' },
+            ],
+          },
+          {
+            href: 'components',
+            title: 'Components',
+            children: [
+              { href: 'buttons', title: 'Buttons' },
+              { href: 'forms', title: 'Forms' },
+            ],
+          },
+        ]}
+        getContainer={getContainer}
+      />
+      <div id="scroll-container" className="flex-1 h-48 overflow-y-auto border rounded p-2">
+        <section id="getting-started" className="h-20 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Getting Started</h3>
+        </section>
+        <section id="installation" className="h-20 mb-2 p-3 bg-base-200 rounded ml-4">
+          <h4 className="font-semibold text-sm">Installation</h4>
+        </section>
+        <section id="configuration" className="h-20 mb-2 p-3 bg-base-200 rounded ml-4">
+          <h4 className="font-semibold text-sm">Configuration</h4>
+        </section>
+        <section id="components" className="h-20 mb-2 p-3 bg-base-200 rounded">
+          <h3 className="font-bold">Components</h3>
+        </section>
+        <section id="buttons" className="h-20 mb-2 p-3 bg-base-200 rounded ml-4">
+          <h4 className="font-semibold text-sm">Buttons</h4>
+        </section>
+        <section id="forms" className="h-20 p-3 bg-base-200 rounded ml-4">
+          <h4 className="font-semibold text-sm">Forms</h4>
+        </section>
+      </div>
+    </Flex>
   )
 }`,
   },
@@ -181,9 +212,6 @@ export default function App() {
     <section class="mb-12">
       <h2 class="text-2xl font-bold mb-6">API</h2>
       <ApiTable title="Anchor" data={anchorApi} />
-      <div class="mt-6">
-        <ApiTable title="Anchor.Link" data={linkApi} />
-      </div>
       <div class="mt-6">
         <ApiTable title="AnchorLinkItem" data={linkItemApi} />
       </div>
