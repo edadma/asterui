@@ -5,9 +5,9 @@ import { Code } from 'astro:components';
 
 const dividerApi = [
   { property: 'children', description: 'Text or content in the divider', type: 'React.ReactNode' },
-  { property: 'type', description: 'Divider orientation', type: "'horizontal' | 'vertical'", default: "'horizontal'" },
-  { property: 'orientation', description: 'Text position for horizontal dividers', type: "'left' | 'center' | 'right'", default: "'center'" },
-  { property: 'dashed', description: 'Dashed line style', type: 'boolean', default: 'false' },
+  { property: 'orientation', description: 'Divider orientation', type: "'horizontal' | 'vertical'", default: "'horizontal'" },
+  { property: 'position', description: 'Text position', type: "'start' | 'center' | 'end'", default: "'center'" },
+  { property: 'type', description: 'Color type', type: "'neutral' | 'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'info' | 'error'" },
   { property: 'className', description: 'Additional CSS classes', type: 'string' },
 ];
 
@@ -47,33 +47,17 @@ const App: React.FC = () => (
 export default App`,
   },
   {
-    id: 'orientation',
-    title: 'Text Orientation',
-    description: 'Position text on the left, center, or right.',
+    id: 'position',
+    title: 'Text Position',
+    description: 'Position text at start, center, or end.',
     code: `import React from 'react'
 import { Divider, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md" className="w-full">
-    <Divider orientation="left">Left</Divider>
-    <Divider orientation="center">Center</Divider>
-    <Divider orientation="right">Right</Divider>
-  </Space>
-)
-
-export default App`,
-  },
-  {
-    id: 'dashed',
-    title: 'Dashed',
-    description: 'Divider with dashed line style.',
-    code: `import React from 'react'
-import { Divider, Space } from 'asterui'
-
-const App: React.FC = () => (
-  <Space direction="vertical" size="md" className="w-full">
-    <Divider dashed />
-    <Divider dashed>Dashed with text</Divider>
+    <Divider position="start">Start</Divider>
+    <Divider position="center">Center</Divider>
+    <Divider position="end">End</Divider>
   </Space>
 )
 
@@ -87,15 +71,30 @@ export default App`,
 import { Divider } from 'asterui'
 
 const App: React.FC = () => (
-  <div className="flex items-center">
+  <div className="flex items-center h-8">
     <span>Home</span>
-    <Divider type="vertical" />
+    <Divider orientation="vertical" />
     <span>Products</span>
-    <Divider type="vertical" />
+    <Divider orientation="vertical" />
     <span>About</span>
-    <Divider type="vertical" />
-    <span>Contact</span>
   </div>
+)
+
+export default App`,
+  },
+  {
+    id: 'colors',
+    title: 'Colors',
+    description: 'Dividers with different color types.',
+    code: `import React from 'react'
+import { Divider, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="vertical" size="md" className="w-full">
+    <Divider type="primary">Primary</Divider>
+    <Divider type="secondary">Secondary</Divider>
+    <Divider type="accent">Accent</Divider>
+  </Space>
 )
 
 export default App`,

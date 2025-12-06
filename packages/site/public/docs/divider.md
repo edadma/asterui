@@ -1,5 +1,7 @@
 # Divider
 
+Visual separator for content sections with optional text labels.
+
 **Import:** `import { Divider } from 'asterui'`
 
 ## Examples
@@ -42,28 +44,9 @@ const App: React.FC = () => (
 export default App
 ```
 
-### Text Orientation
+### Text Position
 
-Position text on the left, center, or right.
-
-```tsx
-import React from 'react'
-import { Divider, Space } from 'asterui'
-
-const App: React.FC = () => (
-  <Space direction="vertical" size="md" className="w-full">
-    <Divider orientation="left">Left</Divider>
-    <Divider orientation="center">Center</Divider>
-    <Divider orientation="right">Right</Divider>
-  </Space>
-)
-
-export default App
-```
-
-### Dashed
-
-Divider with dashed line style.
+Position text at start, center, or end.
 
 ```tsx
 import React from 'react'
@@ -71,8 +54,9 @@ import { Divider, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="md" className="w-full">
-    <Divider dashed />
-    <Divider dashed>Dashed with text</Divider>
+    <Divider position="start">Start</Divider>
+    <Divider position="center">Center</Divider>
+    <Divider position="end">End</Divider>
   </Space>
 )
 
@@ -88,15 +72,32 @@ import React from 'react'
 import { Divider } from 'asterui'
 
 const App: React.FC = () => (
-  <div className="flex items-center">
+  <div className="flex items-center h-8">
     <span>Home</span>
-    <Divider type="vertical" />
+    <Divider orientation="vertical" />
     <span>Products</span>
-    <Divider type="vertical" />
+    <Divider orientation="vertical" />
     <span>About</span>
-    <Divider type="vertical" />
-    <span>Contact</span>
   </div>
+)
+
+export default App
+```
+
+### Colors
+
+Dividers with different color types.
+
+```tsx
+import React from 'react'
+import { Divider, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="vertical" size="md" className="w-full">
+    <Divider type="primary">Primary</Divider>
+    <Divider type="secondary">Secondary</Divider>
+    <Divider type="accent">Accent</Divider>
+  </Space>
 )
 
 export default App
@@ -109,7 +110,7 @@ export default App
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
 | `children` | Text or content in the divider | `React.ReactNode` | `-` |
-| `type` | Divider orientation | `horizontal' \| 'vertical` | `horizontal` |
-| `orientation` | Text position for horizontal dividers | `left' \| 'center' \| 'right` | `center` |
-| `dashed` | Dashed line style | `boolean` | `false` |
+| `orientation` | Divider orientation | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `position` | Text position | `'start' \| 'center' \| 'end'` | `'center'` |
+| `type` | Color type | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'info' \| 'error'` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |

@@ -18,29 +18,28 @@ const demos: Record<string, React.ReactNode> = {
       <p>Section 2 content</p>
     </div>
   ),
-  orientation: (
+  position: (
     <Space direction="vertical" size="md" className="w-full">
-      <Divider orientation="left">Left</Divider>
-      <Divider orientation="center">Center</Divider>
-      <Divider orientation="right">Right</Divider>
-    </Space>
-  ),
-  dashed: (
-    <Space direction="vertical" size="md" className="w-full">
-      <Divider dashed />
-      <Divider dashed>Dashed with text</Divider>
+      <Divider position="start">Start</Divider>
+      <Divider position="center">Center</Divider>
+      <Divider position="end">End</Divider>
     </Space>
   ),
   vertical: (
-    <div className="flex items-center">
+    <div className="flex items-center h-8">
       <span>Home</span>
-      <Divider type="vertical" />
+      <Divider orientation="vertical" />
       <span>Products</span>
-      <Divider type="vertical" />
+      <Divider orientation="vertical" />
       <span>About</span>
-      <Divider type="vertical" />
-      <span>Contact</span>
     </div>
+  ),
+  colors: (
+    <Space direction="vertical" size="md" className="w-full">
+      <Divider type="primary">Primary</Divider>
+      <Divider type="secondary">Secondary</Divider>
+      <Divider type="accent">Accent</Divider>
+    </Space>
   ),
 }
 

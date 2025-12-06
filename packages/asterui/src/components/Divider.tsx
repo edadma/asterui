@@ -34,7 +34,7 @@ export function Divider({
 
   const classes = [
     'divider',
-    orientation === 'vertical' && 'divider-vertical',
+    orientation === 'vertical' && 'divider-horizontal',
     positionClasses[position],
     type && typeClasses[type],
     className,

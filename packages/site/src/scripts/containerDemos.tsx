@@ -6,40 +6,8 @@ import { CheckIconSvg } from './icons'
 const demos: Record<string, React.ReactNode> = {
   'basic': (
     <Container>
-      <div className="bg-base-200 p-4 rounded-lg">
-        Content is centered with a max-width constraint.
-      </div>
-    </Container>
-  ),
-  'sizes': (
-    <Space direction="vertical" size="md">
-      <Container size="sm">
-        <div className="bg-primary/20 p-4 rounded-lg text-center">
-          Small (max-w-screen-sm)
-        </div>
-      </Container>
-      <Container size="md">
-        <div className="bg-secondary/20 p-4 rounded-lg text-center">
-          Medium (max-w-screen-md)
-        </div>
-      </Container>
-      <Container size="lg">
-        <div className="bg-accent/20 p-4 rounded-lg text-center">
-          Large (max-w-screen-lg)
-        </div>
-      </Container>
-      <Container size="xl">
-        <div className="bg-info/20 p-4 rounded-lg text-center">
-          XL (max-w-screen-xl)
-        </div>
-      </Container>
-    </Space>
-  ),
-  'no-padding': (
-    <Container padding={false}>
-      <div className="bg-base-200 p-4">
-        Full-width content without padding.
-      </div>
+      <h1 className="text-xl font-bold">Page Content</h1>
+      <p>Content is centered with max-width constraint.</p>
     </Container>
   ),
   'page-layout': (
@@ -47,10 +15,10 @@ const demos: Record<string, React.ReactNode> = {
       <Space direction="vertical" size="lg">
         <header>
           <h1 className="text-3xl font-bold">Page Title</h1>
-          <p className="text-base-content/70">Page description goes here.</p>
+          <p className="text-base-content/70">Description</p>
         </header>
         <main className="bg-base-200 p-6 rounded-lg">
-          <p>Main content area with consistent max-width.</p>
+          <p>Main content area</p>
         </main>
       </Space>
     </Container>

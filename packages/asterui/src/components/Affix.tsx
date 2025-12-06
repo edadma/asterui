@@ -28,8 +28,16 @@ export const Affix: React.FC<AffixProps> = ({
   const wrapperRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
+  // For custom targets, use CSS sticky positioning
+  const hasCustomTarget = !!target
+
   useEffect(() => {
-    const scrollTarget = target ? target() : window
+    // For custom targets, use CSS sticky - no JS needed for positioning
+    if (hasCustomTarget) {
+      return
+    }
+
+    const scrollTarget = window
 
     const handleScroll = () => {
       if (!wrapperRef.current || !contentRef.current) return
@@ -90,8 +98,25 @@ export const Affix: React.FC<AffixProps> = ({
       scrollTarget.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
     }
-  }, [target, offsetTop, offsetBottom, affixed, onChange])
+  }, [hasCustomTarget, offsetTop, offsetBottom, affixed, onChange])
 
+  // For custom scroll containers, use CSS sticky
+  if (hasCustomTarget) {
+    const stickyStyle: React.CSSProperties = {
+      position: 'sticky',
+      top: offsetTop,
+      bottom: offsetBottom,
+      zIndex: 100,
+    }
+
+    return (
+      <div className={className} style={stickyStyle} {...rest}>
+        {children}
+      </div>
+    )
+  }
+
+  // For window scrolling, use fixed positioning with JS
   return (
     <div ref={wrapperRef} className={className} data-state={affixed ? 'affixed' : 'normal'} {...rest}>
       {affixed && <div style={placeholderStyle} />}
