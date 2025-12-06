@@ -102,23 +102,36 @@ const demos: Record<string, React.ReactNode> = {
     <Space direction="horizontal" wrap size="sm">
       <Button type="primary" href="https://github.com" target="_blank">GitHub</Button>
       <Button type="ghost" href="https://npmjs.com" target="_blank">npm</Button>
-      <Button href="#" type="link">Internal Link</Button>
+      <Button href="/components" type="link">Internal Link</Button>
     </Space>
   ),
   'with-icons': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary">
-        <ArrowUpTrayIcon className="w-4 h-4 mr-2" />
+      <Button type="primary" icon={<ArrowUpTrayIcon className="w-4 h-4" />}>
         Upload
       </Button>
-      <Button type="success">
-        <CheckIcon className="w-4 h-4 mr-2" />
+      <Button type="success" icon={<CheckIcon className="w-4 h-4" />}>
         Save
       </Button>
-      <Button type="error">
+      <Button type="error" icon={<TrashIcon className="w-4 h-4" />} iconPosition="end">
         Delete
-        <TrashIcon className="w-4 h-4 ml-2" />
       </Button>
+    </Space>
+  ),
+  'danger': (
+    <Space direction="horizontal" wrap size="sm">
+      <Button danger>Delete</Button>
+      <Button danger icon={<TrashIcon className="w-4 h-4" />}>
+        Remove Item
+      </Button>
+      <Button danger outline>Cancel Account</Button>
+    </Space>
+  ),
+  'round': (
+    <Space direction="horizontal" wrap size="sm">
+      <Button type="primary" shape="round">Get Started</Button>
+      <Button type="secondary" shape="round">Learn More</Button>
+      <Button type="accent" shape="round">Subscribe</Button>
     </Space>
   ),
 };

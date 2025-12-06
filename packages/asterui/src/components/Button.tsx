@@ -8,8 +8,14 @@ type BaseButtonProps = {
   soft?: boolean
   active?: boolean
   loading?: boolean
-  shape?: 'square' | 'circle' | 'wide' | 'block'
+  shape?: 'square' | 'circle' | 'wide' | 'block' | 'round'
   noAnimation?: boolean
+  /** Icon element to display */
+  icon?: React.ReactNode
+  /** Position of the icon */
+  iconPosition?: 'start' | 'end'
+  /** Applies error/danger styling (shorthand for type="error") */
+  danger?: boolean
 }
 
 type ButtonAsButton = BaseButtonProps &
@@ -37,9 +43,14 @@ export const Button: React.FC<ButtonProps> = ({
   loading = false,
   shape,
   noAnimation = false,
+  icon,
+  iconPosition = 'start',
+  danger = false,
   className = '',
   ...props
 }) => {
+  // danger prop is a shorthand for type="error"
+  const effectiveType = danger ? 'error' : type
   const typeClasses = {
     primary: 'btn-primary',
     secondary: 'btn-secondary',
@@ -66,11 +77,12 @@ export const Button: React.FC<ButtonProps> = ({
     circle: 'btn-circle',
     wide: 'btn-wide',
     block: 'btn-block',
+    round: 'rounded-full',
   }
 
   const classes = [
     'btn',
-    type && typeClasses[type],
+    effectiveType && typeClasses[effectiveType],
     sizeClasses[size],
     outline && 'btn-outline',
     dash && 'btn-dash',
@@ -83,10 +95,22 @@ export const Button: React.FC<ButtonProps> = ({
     .filter(Boolean)
     .join(' ')
 
+  // Determine icon spacing based on whether there's text content
+  const hasChildren = children !== undefined && children !== null && children !== ''
+  const iconSpacing = hasChildren ? (iconPosition === 'start' ? 'mr-2' : 'ml-2') : ''
+
+  const iconElement = icon && (
+    <span className={`inline-flex items-center ${iconSpacing}`} aria-hidden="true">
+      {icon}
+    </span>
+  )
+
   const content = (
     <>
       {loading && <span className="loading loading-spinner" aria-hidden="true"></span>}
+      {!loading && icon && iconPosition === 'start' && iconElement}
       {children}
+      {!loading && icon && iconPosition === 'end' && iconElement}
     </>
   )
 

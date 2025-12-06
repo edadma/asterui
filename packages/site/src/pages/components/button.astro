@@ -49,7 +49,24 @@ const buttonApi = [
   {
     property: 'shape',
     description: 'Button shape',
-    type: "'square' | 'circle' | 'wide' | 'block'",
+    type: "'square' | 'circle' | 'wide' | 'block' | 'round'",
+  },
+  {
+    property: 'icon',
+    description: 'Icon element to display',
+    type: 'ReactNode',
+  },
+  {
+    property: 'iconPosition',
+    description: 'Position of the icon',
+    type: "'start' | 'end'",
+    default: "'start'",
+  },
+  {
+    property: 'danger',
+    description: 'Applies error/danger styling',
+    type: 'boolean',
+    default: 'false',
   },
   {
     property: 'noAnimation',
@@ -331,25 +348,59 @@ export default App`,
   {
     id: 'with-icons',
     title: 'With Icons',
-    description: 'Buttons with icons alongside text for visual context.',
+    description: 'Buttons with icons using the icon prop for automatic spacing.',
     code: `import React from 'react'
 import { Button, Space } from 'asterui'
 import { ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary">
-      <ArrowUpTrayIcon className="w-4 h-4 mr-2" />
+    <Button type="primary" icon={<ArrowUpTrayIcon className="w-4 h-4" />}>
       Upload
     </Button>
-    <Button type="success">
-      <CheckIcon className="w-4 h-4 mr-2" />
+    <Button type="success" icon={<CheckIcon className="w-4 h-4" />}>
       Save
     </Button>
-    <Button type="error">
+    <Button type="error" icon={<TrashIcon className="w-4 h-4" />} iconPosition="end">
       Delete
-      <TrashIcon className="w-4 h-4 ml-2" />
     </Button>
+  </Space>
+)
+
+export default App`,
+  },
+  {
+    id: 'danger',
+    title: 'Danger Button',
+    description: 'Semantic danger styling for destructive actions.',
+    code: `import React from 'react'
+import { Button, Space } from 'asterui'
+import { TrashIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+
+const App: React.FC = () => (
+  <Space direction="horizontal" wrap size="sm">
+    <Button danger>Delete</Button>
+    <Button danger icon={<TrashIcon className="w-4 h-4" />}>
+      Remove Item
+    </Button>
+    <Button danger outline>Cancel Account</Button>
+  </Space>
+)
+
+export default App`,
+  },
+  {
+    id: 'round',
+    title: 'Round Shape',
+    description: 'Pill-shaped buttons with fully rounded ends.',
+    code: `import React from 'react'
+import { Button, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="horizontal" wrap size="sm">
+    <Button type="primary" shape="round">Get Started</Button>
+    <Button type="secondary" shape="round">Learn More</Button>
+    <Button type="accent" shape="round">Subscribe</Button>
   </Space>
 )
 

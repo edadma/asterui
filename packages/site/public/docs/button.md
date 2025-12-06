@@ -268,7 +268,7 @@ export default App
 
 ### With Icons
 
-Buttons with icons alongside text for visual context.
+Buttons with icons using the icon prop for automatic spacing.
 
 ```tsx
 import React from 'react'
@@ -277,18 +277,56 @@ import { ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@heroicons/react/24/outli
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary">
-      <ArrowUpTrayIcon className="w-4 h-4 mr-2" />
+    <Button type="primary" icon={<ArrowUpTrayIcon className="w-4 h-4" />}>
       Upload
     </Button>
-    <Button type="success">
-      <CheckIcon className="w-4 h-4 mr-2" />
+    <Button type="success" icon={<CheckIcon className="w-4 h-4" />}>
       Save
     </Button>
-    <Button type="error">
+    <Button type="error" icon={<TrashIcon className="w-4 h-4" />} iconPosition="end">
       Delete
-      <TrashIcon className="w-4 h-4 ml-2" />
     </Button>
+  </Space>
+)
+
+export default App
+```
+
+### Danger Button
+
+Semantic danger styling for destructive actions.
+
+```tsx
+import React from 'react'
+import { Button, Space } from 'asterui'
+import { TrashIcon } from '@heroicons/react/24/outline'
+
+const App: React.FC = () => (
+  <Space direction="horizontal" wrap size="sm">
+    <Button danger>Delete</Button>
+    <Button danger icon={<TrashIcon className="w-4 h-4" />}>
+      Remove Item
+    </Button>
+    <Button danger outline>Cancel Account</Button>
+  </Space>
+)
+
+export default App
+```
+
+### Round Shape
+
+Pill-shaped buttons with fully rounded ends.
+
+```tsx
+import React from 'react'
+import { Button, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="horizontal" wrap size="sm">
+    <Button type="primary" shape="round">Get Started</Button>
+    <Button type="secondary" shape="round">Learn More</Button>
+    <Button type="accent" shape="round">Subscribe</Button>
   </Space>
 )
 
@@ -349,18 +387,21 @@ export default App
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| `type` | Button color type | `primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral' \| 'ghost' \| 'link` | `undefined` |
-| `size` | Button size | `xs' \| 'sm' \| 'md' \| 'lg' \| 'xl` | `md` |
+| `type` | Button color type | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral' \| 'ghost' \| 'link'` | `undefined` |
+| `size` | Button size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | `outline` | Outline style variant | `boolean` | `false` |
 | `dash` | Dashed border variant | `boolean` | `false` |
 | `soft` | Muted color background variant | `boolean` | `false` |
 | `active` | Active state | `boolean` | `false` |
 | `loading` | Show loading spinner | `boolean` | `false` |
-| `shape` | Button shape | `square' \| 'circle' \| 'wide' \| 'block` | `-` |
+| `shape` | Button shape | `'square' \| 'circle' \| 'wide' \| 'block' \| 'round'` | `-` |
+| `icon` | Icon element to display | `ReactNode` | `-` |
+| `iconPosition` | Position of the icon | `'start' \| 'end'` | `'start'` |
+| `danger` | Applies error/danger styling | `boolean` | `false` |
 | `noAnimation` | Disable click animation | `boolean` | `false` |
 | `disabled` | Disabled state | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
 | `children` | Button content | `ReactNode` | `-` |
 | `href` | URL to navigate to (renders as anchor element) | `string` | `-` |
 | `target` | Where to open the linked URL (when href is set) | `string` | `-` |
-| `htmlType` | HTML button type (only when href is not set) | `button' \| 'submit' \| 'reset` | `button` |
+| `htmlType` | HTML button type (only when href is not set) | `'button' \| 'submit' \| 'reset'` | `'button'` |
