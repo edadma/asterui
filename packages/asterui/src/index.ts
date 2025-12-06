@@ -248,7 +248,7 @@ export { Tag, CheckableTag } from './components/Tag'
 export type { TagProps, CheckableTagProps } from './components/Tag'
 
 export { ThemeController } from './components/ThemeController'
-export type { ThemeControllerSwapProps, ThemeControllerDropdownProps } from './components/ThemeController'
+export type { ThemeControllerSwapProps, ThemeControllerDropdownProps, ThemeControllerToggleProps } from './components/ThemeController'
 
 export { TimePicker } from './components/TimePicker'
 export type { TimePickerProps } from './components/TimePicker'

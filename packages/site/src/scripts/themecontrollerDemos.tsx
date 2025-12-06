@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ThemeController } from 'asterui';
+import { ThemeController, Modal, Space } from 'asterui';
 
 const demos: Record<string, React.ReactNode> = {
   swap: <ThemeController.Swap />,
@@ -8,7 +8,7 @@ const demos: Record<string, React.ReactNode> = {
   'swap-callback': (
     <ThemeController.Swap
       onChange={(theme) => {
-        console.log('Theme changed to:', theme);
+        Modal.info({ title: 'Theme Changed', content: `Theme changed to: ${theme}` });
       }}
     />
   ),
@@ -39,19 +39,28 @@ const demos: Record<string, React.ReactNode> = {
       ]}
     />
   ),
-  'dropdown-initial': (
+  'dropdown-default': (
     <ThemeController.Dropdown
       themes={['light', 'dark', 'synthwave', 'retro', 'cyberpunk']}
-      initialTheme="synthwave"
+      defaultTheme="synthwave"
     />
   ),
   'dropdown-callback': (
     <ThemeController.Dropdown
       themes={['light', 'dark', 'cupcake', 'dracula']}
       onChange={(theme) => {
-        console.log('Selected theme:', theme);
+        Modal.info({ title: 'Theme Selected', content: `Selected theme: ${theme}` });
       }}
     />
+  ),
+  toggle: <ThemeController.Toggle />,
+  'toggle-sizes': (
+    <Space>
+      <ThemeController.Toggle size="xs" />
+      <ThemeController.Toggle size="sm" />
+      <ThemeController.Toggle size="md" />
+      <ThemeController.Toggle size="lg" />
+    </Space>
   ),
 };
 

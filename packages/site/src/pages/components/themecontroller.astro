@@ -6,15 +6,24 @@ import { Code } from 'astro:components';
 const swapApi = [
   { property: 'lightTheme', description: 'Theme name for light mode', type: 'string', default: "'light'" },
   { property: 'darkTheme', description: 'Theme name for dark mode', type: 'string', default: "'dark'" },
-  { property: 'initialTheme', description: 'Initial theme', type: 'string', default: '-' },
+  { property: 'defaultChecked', description: 'Initially checked (dark theme)', type: 'boolean', default: '-' },
   { property: 'onChange', description: 'Callback when theme changes', type: '(theme: string) => void', default: '-' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
 const dropdownApi = [
   { property: 'themes', description: 'Array of available theme names', type: 'string[]', default: '-' },
-  { property: 'initialTheme', description: 'Initial theme', type: 'string', default: '-' },
+  { property: 'defaultTheme', description: 'Initially selected theme', type: 'string', default: '-' },
   { property: 'onChange', description: 'Callback when theme changes', type: '(theme: string) => void', default: '-' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
+];
+
+const toggleApi = [
+  { property: 'lightTheme', description: 'Theme name for light mode', type: 'string', default: "'light'" },
+  { property: 'darkTheme', description: 'Theme name for dark mode', type: 'string', default: "'dark'" },
+  { property: 'defaultChecked', description: 'Initially checked (dark theme)', type: 'boolean', default: '-' },
+  { property: 'onChange', description: 'Callback when theme changes', type: '(theme: string) => void', default: '-' },
+  { property: 'size', description: 'Toggle size', type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'" },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
@@ -53,12 +62,12 @@ export default App`,
     title: 'With onChange Callback',
     description: 'Handle theme changes with a callback.',
     code: `import React from 'react'
-import { ThemeController } from 'asterui'
+import { ThemeController, Modal } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Swap
     onChange={(theme) => {
-      console.log('Theme changed to:', theme)
+      Modal.info({ title: 'Theme Changed', content: \`Theme changed to: \${theme}\` })
       localStorage.setItem('theme', theme)
     }}
   />
@@ -104,16 +113,16 @@ const App: React.FC = () => (
 export default App`,
   },
   {
-    id: 'dropdown-initial',
+    id: 'dropdown-default',
     title: 'Dropdown with Default Theme',
-    description: 'Set an initial theme for the dropdown.',
+    description: 'Set a default selected theme for the dropdown.',
     code: `import React from 'react'
 import { ThemeController } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Dropdown
     themes={['light', 'dark', 'synthwave', 'retro', 'cyberpunk']}
-    initialTheme="synthwave"
+    defaultTheme="synthwave"
   />
 )
 
@@ -124,16 +133,47 @@ export default App`,
     title: 'Dropdown with onChange',
     description: 'Handle theme selection changes.',
     code: `import React from 'react'
-import { ThemeController } from 'asterui'
+import { ThemeController, Modal } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Dropdown
     themes={['light', 'dark', 'cupcake', 'dracula']}
     onChange={(theme) => {
-      console.log('Selected theme:', theme)
+      Modal.info({ title: 'Theme Selected', content: \`Selected theme: \${theme}\` })
       localStorage.setItem('theme', theme)
     }}
   />
+)
+
+export default App`,
+  },
+  {
+    id: 'toggle',
+    title: 'Toggle Switch',
+    description: 'Simple toggle switch for light/dark theme.',
+    code: `import React from 'react'
+import { ThemeController } from 'asterui'
+
+const App: React.FC = () => (
+  <ThemeController.Toggle />
+)
+
+export default App`,
+  },
+  {
+    id: 'toggle-sizes',
+    title: 'Toggle Sizes',
+    description: 'Toggle switches in different sizes.',
+    code: `import React from 'react'
+import { ThemeController, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space>
+    <ThemeController.Toggle size="xs" />
+    <ThemeController.Toggle size="sm" />
+    <ThemeController.Toggle size="md" />
+    <ThemeController.Toggle size="lg" />
+  </Space>
 )
 
 export default App`,
@@ -194,6 +234,9 @@ export default App`,
       <h2 class="text-2xl font-bold mb-6">API</h2>
       <ApiTable title="ThemeController.Swap" data={swapApi} />
       <div class="mt-8">
+        <ApiTable title="ThemeController.Toggle" data={toggleApi} />
+      </div>
+      <div class="mt-8">
         <ApiTable title="ThemeController.Dropdown" data={dropdownApi} />
       </div>
     </section>
@@ -201,10 +244,11 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
       <ul class="list-disc list-inside space-y-2 text-base-content/80">
-        <li>Swap toggle uses checkbox pattern with ARIA labels</li>
-        <li>Dropdown uses native select for accessibility</li>
+        <li>Swap uses checkbox pattern with animated sun/moon icons</li>
+        <li>Toggle uses checkbox with aria-label for screen readers</li>
+        <li>Dropdown uses radio inputs with aria-label for each theme option</li>
         <li>Theme changes are immediately visible across all components</li>
-        <li>Keyboard accessible controls</li>
+        <li>All variants are keyboard accessible</li>
       </ul>
     </section>
   </div>

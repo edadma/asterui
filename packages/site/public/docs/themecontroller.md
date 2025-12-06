@@ -1,6 +1,6 @@
 # Theme Controller
 
-Components for switching between daisyUI themes.
+Components for switching between daisyUI themes. Uses DaisyUI's native `theme-controller` class for CSS-based theme switching.
 
 **Import:** `import { ThemeController } from 'asterui'`
 
@@ -39,13 +39,12 @@ export default App
 
 ```tsx
 import React from 'react'
-import { ThemeController } from 'asterui'
+import { ThemeController, Modal } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Swap
     onChange={(theme) => {
-      console.log('Theme changed to:', theme)
-      localStorage.setItem('theme', theme)
+      Modal.info({ title: 'Theme Changed', content: `Theme changed to: ${theme}` })
     }}
   />
 )
@@ -90,7 +89,7 @@ const App: React.FC = () => (
 export default App
 ```
 
-### Dropdown Initial
+### Dropdown with Default Theme
 
 ```tsx
 import React from 'react'
@@ -99,7 +98,7 @@ import { ThemeController } from 'asterui'
 const App: React.FC = () => (
   <ThemeController.Dropdown
     themes={['light', 'dark', 'synthwave', 'retro', 'cyberpunk']}
-    initialTheme="synthwave"
+    defaultTheme="synthwave"
   />
 )
 
@@ -110,16 +109,46 @@ export default App
 
 ```tsx
 import React from 'react'
-import { ThemeController } from 'asterui'
+import { ThemeController, Modal } from 'asterui'
 
 const App: React.FC = () => (
   <ThemeController.Dropdown
     themes={['light', 'dark', 'cupcake', 'dracula']}
     onChange={(theme) => {
-      console.log('Selected theme:', theme)
-      localStorage.setItem('theme', theme)
+      Modal.info({ title: 'Theme Selected', content: `Selected theme: ${theme}` })
     }}
   />
+)
+
+export default App
+```
+
+### Toggle Switch
+
+```tsx
+import React from 'react'
+import { ThemeController } from 'asterui'
+
+const App: React.FC = () => (
+  <ThemeController.Toggle />
+)
+
+export default App
+```
+
+### Toggle Sizes
+
+```tsx
+import React from 'react'
+import { ThemeController, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space>
+    <ThemeController.Toggle size="xs" />
+    <ThemeController.Toggle size="sm" />
+    <ThemeController.Toggle size="md" />
+    <ThemeController.Toggle size="lg" />
+  </Space>
 )
 
 export default App
@@ -133,8 +162,19 @@ export default App
 |----------|-------------|------|---------|
 | `lightTheme` | Theme name for light mode | `string` | `light` |
 | `darkTheme` | Theme name for dark mode | `string` | `dark` |
-| `initialTheme` | Initial theme | `string` | `-` |
+| `defaultChecked` | Initially checked (dark theme) | `boolean` | `-` |
 | `onChange` | Callback when theme changes | `(theme: string) => void` | `-` |
+| `className` | Additional CSS classes | `string` | `-` |
+
+### Toggle
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `lightTheme` | Theme name for light mode | `string` | `light` |
+| `darkTheme` | Theme name for dark mode | `string` | `dark` |
+| `defaultChecked` | Initially checked (dark theme) | `boolean` | `-` |
+| `onChange` | Callback when theme changes | `(theme: string) => void` | `-` |
+| `size` | Toggle size | `'xs' \| 'sm' \| 'md' \| 'lg'` | `md` |
 | `className` | Additional CSS classes | `string` | `-` |
 
 ### Dropdown
@@ -142,6 +182,24 @@ export default App
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
 | `themes` | Array of available theme names | `string[]` | `-` |
-| `initialTheme` | Initial theme | `string` | `-` |
+| `defaultTheme` | Initially selected theme | `string` | `-` |
 | `onChange` | Callback when theme changes | `(theme: string) => void` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+
+## Note
+
+For themes to work, your project must have DaisyUI configured with the themes you want to use:
+
+```css
+@plugin "daisyui" {
+  themes: all;
+}
+```
+
+Or specify individual themes:
+
+```css
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, synthwave, cyberpunk;
+}
+```

@@ -1,72 +1,69 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useId } from 'react'
 
 export interface ThemeControllerSwapProps {
   lightTheme?: string
   darkTheme?: string
-  initialTheme?: string
   onChange?: (theme: string) => void
   className?: string
 }
 
 export interface ThemeControllerDropdownProps {
   themes: string[]
-  initialTheme?: string
+  defaultTheme?: string
   onChange?: (theme: string) => void
   className?: string
+}
+
+export interface ThemeControllerToggleProps {
+  lightTheme?: string
+  darkTheme?: string
+  onChange?: (theme: string) => void
+  size?: 'xs' | 'sm' | 'md' | 'lg'
+  className?: string
+}
+
+// Get current theme from document
+function getCurrentTheme(): string | null {
+  return document.documentElement.getAttribute('data-theme')
+}
+
+// Set theme on document
+function setTheme(theme: string) {
+  document.documentElement.setAttribute('data-theme', theme)
 }
 
 function ThemeControllerSwap({
   lightTheme = 'light',
   darkTheme = 'dark',
-  initialTheme,
   onChange,
   className = '',
 }: ThemeControllerSwapProps) {
   const [isDark, setIsDark] = useState(() => {
-    const currentTheme = document.documentElement.getAttribute('data-theme')
-    if (initialTheme) {
-      return initialTheme === darkTheme
-    }
-    if (currentTheme) {
-      return currentTheme === darkTheme
-    }
-    // Detect system theme preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return true
-    }
-    return false
+    const current = getCurrentTheme()
+    return current === darkTheme
   })
 
+  // Sync with external theme changes
   useEffect(() => {
-    const currentTheme = document.documentElement.getAttribute('data-theme')
-    if (initialTheme) {
-      setIsDark(initialTheme === darkTheme)
-      document.documentElement.setAttribute('data-theme', initialTheme)
-    } else if (currentTheme) {
-      setIsDark(currentTheme === darkTheme)
-    } else {
-      // Apply system theme preference
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      const theme = prefersDark ? darkTheme : lightTheme
-      setIsDark(prefersDark)
-      document.documentElement.setAttribute('data-theme', theme)
-    }
-  }, [initialTheme, darkTheme, lightTheme])
+    const observer = new MutationObserver(() => {
+      const current = getCurrentTheme()
+      setIsDark(current === darkTheme)
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+    return () => observer.disconnect()
+  }, [darkTheme])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked
-    setIsDark(checked)
-    const newTheme = checked ? darkTheme : lightTheme
-    document.documentElement.setAttribute('data-theme', newTheme)
-    onChange?.(newTheme)
+    const theme = checked ? darkTheme : lightTheme
+    setTheme(theme)
+    onChange?.(theme)
   }
 
   return (
     <label className={`swap swap-rotate ${className}`}>
       <input
         type="checkbox"
-        className="theme-controller"
-        value={darkTheme}
         checked={isDark}
         onChange={handleChange}
       />
@@ -92,42 +89,32 @@ function ThemeControllerSwap({
 
 function ThemeControllerDropdown({
   themes,
-  initialTheme,
+  defaultTheme,
   onChange,
   className = '',
 }: ThemeControllerDropdownProps) {
+  const radioName = useId()
   const [selectedTheme, setSelectedTheme] = useState(() => {
-    if (initialTheme) return initialTheme
-    const currentTheme = document.documentElement.getAttribute('data-theme')
-    if (currentTheme && themes.includes(currentTheme)) return currentTheme
-    // Detect system theme preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return themes.find(t => t === 'dark') || themes[0] || 'light'
-    }
-    return themes.find(t => t === 'light') || themes[0] || 'light'
+    const current = getCurrentTheme()
+    if (current && themes.includes(current)) return current
+    return defaultTheme || themes[0] || 'light'
   })
 
+  // Sync with external theme changes
   useEffect(() => {
-    const currentTheme = document.documentElement.getAttribute('data-theme')
-    if (initialTheme) {
-      setSelectedTheme(initialTheme)
-      document.documentElement.setAttribute('data-theme', initialTheme)
-    } else if (currentTheme && themes.includes(currentTheme)) {
-      setSelectedTheme(currentTheme)
-    } else if (!currentTheme && themes.length > 0) {
-      // Apply system theme preference
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      const theme = prefersDark
-        ? themes.find(t => t === 'dark') || themes[0]
-        : themes.find(t => t === 'light') || themes[0]
-      setSelectedTheme(theme)
-      document.documentElement.setAttribute('data-theme', theme)
-    }
-  }, [initialTheme, themes])
+    const observer = new MutationObserver(() => {
+      const current = getCurrentTheme()
+      if (current && themes.includes(current)) {
+        setSelectedTheme(current)
+      }
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+    return () => observer.disconnect()
+  }, [themes])
 
-  const handleThemeChange = (theme: string) => {
+  const handleChange = (theme: string) => {
     setSelectedTheme(theme)
-    document.documentElement.setAttribute('data-theme', theme)
+    setTheme(theme)
     onChange?.(theme)
   }
 
@@ -147,18 +134,18 @@ function ThemeControllerDropdown({
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content bg-base-300 rounded-box z-[1] w-28 p-2 shadow-2xl max-h-96 overflow-y-auto"
+        className="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-96 overflow-y-auto"
       >
         {themes.map((theme) => (
           <li key={theme}>
             <input
               type="radio"
-              name="theme-dropdown"
-              className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+              name={radioName}
+              className="btn btn-sm btn-block btn-ghost justify-start"
               aria-label={theme}
               value={theme}
               checked={selectedTheme === theme}
-              onChange={() => handleThemeChange(theme)}
+              onChange={() => handleChange(theme)}
             />
           </li>
         ))}
@@ -167,10 +154,58 @@ function ThemeControllerDropdown({
   )
 }
 
+const sizeClasses: Record<string, string> = {
+  xs: 'toggle-xs',
+  sm: 'toggle-sm',
+  md: 'toggle-md',
+  lg: 'toggle-lg',
+}
+
+function ThemeControllerToggle({
+  lightTheme = 'light',
+  darkTheme = 'dark',
+  onChange,
+  size = 'md',
+  className = '',
+}: ThemeControllerToggleProps) {
+  const [isDark, setIsDark] = useState(() => {
+    const current = getCurrentTheme()
+    return current === darkTheme
+  })
+
+  // Sync with external theme changes
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const current = getCurrentTheme()
+      setIsDark(current === darkTheme)
+    })
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+    return () => observer.disconnect()
+  }, [darkTheme])
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const checked = e.target.checked
+    const theme = checked ? darkTheme : lightTheme
+    setTheme(theme)
+    onChange?.(theme)
+  }
+
+  return (
+    <input
+      type="checkbox"
+      className={`toggle ${sizeClasses[size]} ${className}`}
+      checked={isDark}
+      onChange={handleChange}
+      aria-label="Toggle theme"
+    />
+  )
+}
+
 export const ThemeController = Object.assign(
   {},
   {
     Swap: ThemeControllerSwap,
     Dropdown: ThemeControllerDropdown,
+    Toggle: ThemeControllerToggle,
   }
 )
