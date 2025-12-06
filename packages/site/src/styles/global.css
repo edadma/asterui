@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "@vinctus/calendar/dist/index.css";
 @plugin "daisyui";
 @source "../../node_modules/asterui/dist";
 
@@ -31,26 +30,4 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Calendar DaisyUI theme integration - override built-in themes */
-.calendar-daisyui .month-calendar,
-.calendar-daisyui .week-calendar {
-  --calendar-bg-primary: var(--color-base-100);
-  --calendar-bg-secondary: var(--color-base-200);
-  --calendar-bg-hover: var(--color-base-200);
-  --calendar-bg-today: color-mix(in srgb, var(--color-primary) 15%, transparent);
-  --calendar-bg-time-label: var(--color-base-200);
-  --calendar-bg-day-hover: color-mix(in srgb, var(--color-primary) 10%, transparent);
-  --calendar-bg-event-hover: color-mix(in srgb, var(--color-base-content) 10%, transparent);
-  --calendar-border-primary: var(--color-base-300);
-  --calendar-border-secondary: color-mix(in srgb, var(--color-base-content) 10%, transparent);
-  --calendar-text-primary: var(--color-base-content);
-  --calendar-text-secondary: color-mix(in srgb, var(--color-base-content) 70%, transparent);
-  --calendar-text-muted: color-mix(in srgb, var(--color-base-content) 50%, transparent);
-  --calendar-text-time: color-mix(in srgb, var(--color-base-content) 60%, transparent);
-  --calendar-text-event: var(--color-base-content);
-  --calendar-text-future-event: var(--color-base-content);
-  --calendar-accent-primary: var(--color-primary);
-  --calendar-scrollbar-track: var(--color-base-200);
-  --calendar-scrollbar-thumb: color-mix(in srgb, var(--color-base-content) 30%, transparent);
-  --calendar-scrollbar-thumb-hover: color-mix(in srgb, var(--color-base-content) 40%, transparent);
-}
+
