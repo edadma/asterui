@@ -167,7 +167,7 @@ Group of checkboxes with shared state.
 
 ```tsx
 import React from 'react'
-import { Checkbox } from 'asterui'
+import { Checkbox, Modal } from 'asterui'
 
 const options = [
   { label: 'Apple', value: 'apple' },
@@ -180,9 +180,80 @@ const App: React.FC = () => (
   <Checkbox.Group
     options={options}
     defaultValue={['apple', 'orange']}
-    onChange={(values) => console.log('Selected:', values)}
+    onChange={(values) => Modal.info({ title: 'Selected', content: values.join(', ') })}
   />
 )
+
+export default App
+```
+
+### Swap Mode
+
+Use the `swap` prop to toggle between two visual states (icons, text, etc.) instead of showing a checkbox.
+
+```tsx
+import React, { useState } from 'react'
+import { Checkbox, Space } from 'asterui'
+import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
+
+const App: React.FC = () => {
+  const [volume, setVolume] = useState(true)
+
+  return (
+    <Space size="lg">
+      <Checkbox
+        checked={volume}
+        onChange={(e) => setVolume(e.target.checked)}
+        swap={{
+          on: <SpeakerWaveIcon className="w-8 h-8" />,
+          off: <SpeakerXMarkIcon className="w-8 h-8" />,
+        }}
+      />
+      <Checkbox
+        swap={{
+          on: <span className="text-2xl">😀</span>,
+          off: <span className="text-2xl">😴</span>,
+          effect: 'rotate',
+        }}
+      />
+      <Checkbox
+        swap={{
+          on: <span className="text-xl font-bold text-success">ON</span>,
+          off: <span className="text-xl font-bold text-error">OFF</span>,
+          effect: 'flip',
+        }}
+      />
+    </Space>
+  )
+}
+
+export default App
+```
+
+### Swap with Icons
+
+Theme toggle example using swap mode with Heroicons.
+
+```tsx
+import React, { useState } from 'react'
+import { Checkbox } from 'asterui'
+import { SunIcon, MoonIcon } from '@heroicons/react/24/solid'
+
+const App: React.FC = () => {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <Checkbox
+      checked={isDark}
+      onChange={(e) => setIsDark(e.target.checked)}
+      swap={{
+        on: <MoonIcon className="w-8 h-8" />,
+        off: <SunIcon className="w-8 h-8" />,
+        effect: 'rotate',
+      }}
+    />
+  )
+}
 
 export default App
 ```
@@ -198,9 +269,18 @@ export default App
 | `onChange` | Change handler | `(e: ChangeEvent) => void` | `-` |
 | `disabled` | Disable the checkbox | `boolean` | `false` |
 | `indeterminate` | Indeterminate state (partial selection) | `boolean` | `false` |
-| `size` | Checkbox size | `xs' \| 'sm' \| 'md' \| 'lg` | `md` |
-| `color` | Checkbox color | `primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error` | `-` |
+| `size` | Checkbox size | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Checkbox color | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `swap` | Swap mode config (see below) | `CheckboxSwapConfig` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+
+### CheckboxSwapConfig
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `on` | Content shown when checked | `React.ReactNode` | - |
+| `off` | Content shown when unchecked | `React.ReactNode` | - |
+| `effect` | Animation effect | `'rotate' \| 'flip'` | `-` |
 
 ### Checkbox Group
 

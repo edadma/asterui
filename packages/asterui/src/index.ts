@@ -23,7 +23,7 @@ export { Button } from './components/Button'
 export type { ButtonProps } from './components/Button'
 
 export { Checkbox } from './components/Checkbox'
-export type { CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './components/Checkbox'
+export type { CheckboxProps, CheckboxGroupProps, CheckboxOptionType, CheckboxSwapConfig } from './components/Checkbox'
 
 export { Chat } from './components/Chat'
 export type { ChatProps } from './components/Chat'
@@ -63,6 +63,9 @@ export type { DescriptionsProps, DescriptionsItemProps, DescriptionsSize, Descri
 
 export { Diff } from './components/Diff'
 export type { DiffProps } from './components/Diff'
+
+export { Dock } from './components/Dock'
+export type { DockProps, DockItemProps, DockItemConfig } from './components/Dock'
 
 export { Divider } from './components/Divider'
 export type { DividerProps } from './components/Divider'

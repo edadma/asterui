@@ -8,7 +8,7 @@ const siteBase = import.meta.env.DEV ? '' : 'https://asterui.com';
 const docPages = new Set([
   'affix', 'alert', 'anchor', 'autocomplete', 'avatar', 'badge', 'breadcrumb', 'browser', 'button',
   'card', 'carousel', 'cascader', 'chart', 'chat', 'checkbox', 'code',
-  'collapse', 'colorpicker', 'container', 'contextmenu', 'countdown', 'datepicker', 'descriptions', 'diff', 'divider', 'drawer',
+  'collapse', 'colorpicker', 'container', 'contextmenu', 'countdown', 'datepicker', 'descriptions', 'diff', 'divider', 'dock', 'drawer',
   'dropdown', 'empty', 'fieldset', 'fileinput', 'flex', 'floatbutton', 'footer', 'form', 'grid',
   'hero', 'image', 'indicator', 'input', 'inputnumber', 'join', 'kbd', 'label', 'layout',
   'list', 'loading', 'mask', 'masonry', 'mention', 'menu', 'modal', 'navbar', 'notification',
@@ -74,6 +74,7 @@ const componentCategories = [
       { name: 'Anchor', slug: 'anchor', description: 'Navigate to page sections with scroll spy', props: ['items', 'direction', 'offsetTop', 'getContainer', 'onChange', 'activeLink'] },
       { name: 'Breadcrumb', slug: 'breadcrumb', description: 'Navigation breadcrumb trail', props: ['children', 'className'] },
       { name: 'ContextMenu', slug: 'contextmenu', description: 'Right-click context menu with submenus', props: ['items', 'onSelect', 'disabled', 'children'] },
+      { name: 'Dock', slug: 'dock', description: 'Mobile-style bottom navigation bar', props: ['items', 'size', 'activeIndex', 'onChange'] },
       { name: 'Menu', slug: 'menu', description: 'Navigation menu with nested items and multiple modes', props: ['items', 'mode', 'selectedKeys', 'openKeys', 'onClick', 'theme'] },
       { name: 'Navbar', slug: 'navbar', description: 'Top navigation bar with responsive menu', props: ['logo', 'items', 'actions'] },
       { name: 'Pagination', slug: 'pagination', description: 'Page navigation controls', props: ['current', 'total', 'pageSize', 'onChange', 'showSizeChanger', 'showTotal'] },

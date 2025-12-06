@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import React, { useState } from 'react'
-import { Checkbox, Space } from 'asterui'
+import { Checkbox, Space, Modal } from 'asterui'
+import { SunIcon, MoonIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
 import { CheckIconSvg } from './icons'
 
 // Demo components for each example
@@ -72,7 +73,7 @@ const demos: Record<string, React.ReactNode> = {
         { label: 'Mango', value: 'mango' },
       ]}
       defaultValue={['apple', 'orange']}
-      onChange={(values) => console.log('Selected:', values)}
+      onChange={(values) => Modal.info({ title: 'Selected', content: values.join(', ') })}
     />
   ),
 }
@@ -114,8 +115,57 @@ const IndeterminateDemo: React.FC = () => {
   )
 }
 
+const SwapDemo: React.FC = () => {
+  const [volume, setVolume] = useState(true)
+
+  return (
+    <Space size="lg">
+      <Checkbox
+        checked={volume}
+        onChange={(e) => setVolume(e.target.checked)}
+        swap={{
+          on: <SpeakerWaveIcon className="w-8 h-8" />,
+          off: <SpeakerXMarkIcon className="w-8 h-8" />,
+        }}
+      />
+      <Checkbox
+        swap={{
+          on: <span className="text-2xl">😀</span>,
+          off: <span className="text-2xl">😴</span>,
+          effect: 'rotate',
+        }}
+      />
+      <Checkbox
+        swap={{
+          on: <span className="text-xl font-bold text-success">ON</span>,
+          off: <span className="text-xl font-bold text-error">OFF</span>,
+          effect: 'flip',
+        }}
+      />
+    </Space>
+  )
+}
+
+const SwapIconsDemo: React.FC = () => {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <Checkbox
+      checked={isDark}
+      onChange={(e) => setIsDark(e.target.checked)}
+      swap={{
+        on: <MoonIcon className="w-8 h-8" />,
+        off: <SunIcon className="w-8 h-8" />,
+        effect: 'rotate',
+      }}
+    />
+  )
+}
+
 const statefulDemos: Record<string, React.FC> = {
   indeterminate: IndeterminateDemo,
+  swap: SwapDemo,
+  'swap-icons': SwapIconsDemo,
 }
 
 // Mount React demos

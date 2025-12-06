@@ -1,10 +1,21 @@
 import React, { forwardRef, createContext, useContext } from 'react'
 
+export interface CheckboxSwapConfig {
+  /** Content shown when checked */
+  on: React.ReactNode
+  /** Content shown when unchecked */
+  off: React.ReactNode
+  /** Animation effect for the swap transition */
+  effect?: 'rotate' | 'flip'
+}
+
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
   children?: React.ReactNode
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   color?: 'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'warning' | 'info' | 'error'
   indeterminate?: boolean
+  /** Swap mode: toggle between two visual states instead of showing a checkbox */
+  swap?: CheckboxSwapConfig
   className?: string
 }
 
@@ -102,6 +113,7 @@ const CheckboxRoot = forwardRef<HTMLInputElement, CheckboxProps>(
       size,
       color,
       indeterminate = false,
+      swap,
       className = '',
       value,
       checked,
@@ -170,6 +182,34 @@ const CheckboxRoot = forwardRef<HTMLInputElement, CheckboxProps>(
     )
 
     const dataState = indeterminate ? 'indeterminate' : isChecked ? 'checked' : 'unchecked'
+
+    // Swap mode: render as a swap toggle instead of checkbox
+    if (swap) {
+      const swapClasses = [
+        'swap',
+        swap.effect === 'rotate' && 'swap-rotate',
+        swap.effect === 'flip' && 'swap-flip',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')
+
+      return (
+        <label className={swapClasses}>
+          <input
+            ref={ref}
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleChange}
+            disabled={isDisabled}
+            data-state={dataState}
+            {...props}
+          />
+          <div className="swap-on">{swap.on}</div>
+          <div className="swap-off">{swap.off}</div>
+        </label>
+      )
+    }
 
     const checkboxInput = (
       <input
