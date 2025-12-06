@@ -79,6 +79,9 @@ export type { FieldsetProps, FieldsetLegendProps } from './components/Fieldset'
 export { FileInput } from './components/FileInput'
 export type { FileInputProps } from './components/FileInput'
 
+export { Filter } from './components/Filter'
+export type { FilterProps, FilterOption } from './components/Filter'
+
 export { Flex } from './components/Flex'
 export type { FlexProps } from './components/Flex'
 

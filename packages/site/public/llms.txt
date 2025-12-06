@@ -75,6 +75,7 @@ npm install asterui
 - [ColorPicker](https://asterui.com/docs/colorpicker.md)
 - [DatePicker](https://asterui.com/docs/datepicker.md)
 - [FileInput](https://asterui.com/docs/fileinput.md)
+- [Filter](https://asterui.com/docs/filter.md)
 - [Form](https://asterui.com/docs/form.md)
 - [Input](https://asterui.com/docs/input.md)
 - [InputNumber](https://asterui.com/docs/inputnumber.md)
