@@ -433,7 +433,7 @@ function App() {
 
                 <div className="form-control mt-8">
                   <Button
-                    type="primary"
+                    color="primary"
                     htmlType="submit"
                     loading={isSubmitting}
                     className="w-full"

@@ -5,16 +5,16 @@ import { Space, Button, Badge, Card, Divider } from 'asterui';
 const demos: Record<string, React.ReactNode> = {
   horizontal: (
     <Space>
-      <Button type="primary">Button 1</Button>
-      <Button type="secondary">Button 2</Button>
-      <Button type="accent">Button 3</Button>
+      <Button color="primary">Button 1</Button>
+      <Button color="secondary">Button 2</Button>
+      <Button color="accent">Button 3</Button>
     </Space>
   ),
   vertical: (
     <Space direction="vertical">
-      <Button type="primary">Button 1</Button>
-      <Button type="secondary">Button 2</Button>
-      <Button type="accent">Button 3</Button>
+      <Button color="primary">Button 1</Button>
+      <Button color="secondary">Button 2</Button>
+      <Button color="accent">Button 3</Button>
     </Space>
   ),
   sizes: (
@@ -47,13 +47,13 @@ const demos: Record<string, React.ReactNode> = {
   ),
   alignment: (
     <Space align="center">
-      <Button type="primary" size="xs">
+      <Button color="primary" size="xs">
         Small
       </Button>
-      <Button type="secondary" size="md">
+      <Button color="secondary" size="md">
         Medium
       </Button>
-      <Button type="accent" size="lg">
+      <Button color="accent" size="lg">
         Large
       </Button>
     </Space>
@@ -74,10 +74,10 @@ const demos: Record<string, React.ReactNode> = {
     <Space direction="vertical">
       <Card title="Card 1">
         <Space>
-          <Button type="primary" size="sm">
+          <Button color="primary" size="sm">
             Action 1
           </Button>
-          <Button type="secondary" size="sm">
+          <Button color="secondary" size="sm">
             Action 2
           </Button>
         </Space>
@@ -85,10 +85,10 @@ const demos: Record<string, React.ReactNode> = {
 
       <Card title="Card 2">
         <Space>
-          <Button type="primary" size="sm">
+          <Button color="primary" size="sm">
             Action 1
           </Button>
-          <Button type="secondary" size="sm">
+          <Button color="secondary" size="sm">
             Action 2
           </Button>
         </Space>
@@ -97,10 +97,10 @@ const demos: Record<string, React.ReactNode> = {
   ),
   justify: (
     <Space justify="between" className="w-full">
-      <Button type="ghost">Cancel</Button>
+      <Button variant="ghost">Cancel</Button>
       <Space>
-        <Button type="secondary">Save Draft</Button>
-        <Button type="primary">Submit</Button>
+        <Button color="secondary">Save Draft</Button>
+        <Button color="primary">Submit</Button>
       </Space>
     </Space>
   ),

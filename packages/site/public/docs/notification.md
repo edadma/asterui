@@ -16,7 +16,7 @@ const App: React.FC = () => {
   return (
     <Space direction="horizontal" size="sm" wrap>
       <Button
-        type="primary"
+        color="primary"
         onClick={() =>
           notification.success({
             message: 'Success',
@@ -155,7 +155,7 @@ const App: React.FC = () => {
       </Button>
 
       <Button
-        type="primary"
+        color="primary"
         onClick={() =>
           notification.info({
             message: 'Standard Message',

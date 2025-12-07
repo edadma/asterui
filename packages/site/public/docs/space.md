@@ -14,9 +14,9 @@ import { Space, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Space>
-    <Button type="primary">Button 1</Button>
-    <Button type="secondary">Button 2</Button>
-    <Button type="accent">Button 3</Button>
+    <Button color="primary">Button 1</Button>
+    <Button color="secondary">Button 2</Button>
+    <Button color="accent">Button 3</Button>
   </Space>
 )
 
@@ -31,9 +31,9 @@ import { Space, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical">
-    <Button type="primary">Button 1</Button>
-    <Button type="secondary">Button 2</Button>
-    <Button type="accent">Button 3</Button>
+    <Button color="primary">Button 1</Button>
+    <Button color="secondary">Button 2</Button>
+    <Button color="accent">Button 3</Button>
   </Space>
 )
 
@@ -86,9 +86,9 @@ import { Space, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Space align="center">
-    <Button type="primary" size="xs">Small</Button>
-    <Button type="secondary" size="md">Medium</Button>
-    <Button type="accent" size="lg">Large</Button>
+    <Button color="primary" size="xs">Small</Button>
+    <Button color="secondary" size="md">Medium</Button>
+    <Button color="accent" size="lg">Large</Button>
   </Space>
 )
 
@@ -127,15 +127,15 @@ const App: React.FC = () => (
   <Space direction="vertical">
     <Card title="Card 1">
       <Space>
-        <Button type="primary" size="sm">Action 1</Button>
-        <Button type="secondary" size="sm">Action 2</Button>
+        <Button color="primary" size="sm">Action 1</Button>
+        <Button color="secondary" size="sm">Action 2</Button>
       </Space>
     </Card>
 
     <Card title="Card 2">
       <Space>
-        <Button type="primary" size="sm">Action 1</Button>
-        <Button type="secondary" size="sm">Action 2</Button>
+        <Button color="primary" size="sm">Action 1</Button>
+        <Button color="secondary" size="sm">Action 2</Button>
       </Space>
     </Card>
   </Space>
@@ -154,10 +154,10 @@ import { Space, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Space justify="between" className="w-full">
-    <Button type="ghost">Cancel</Button>
+    <Button variant="ghost">Cancel</Button>
     <Space>
-      <Button type="secondary">Save Draft</Button>
-      <Button type="primary">Submit</Button>
+      <Button color="secondary">Save Draft</Button>
+      <Button color="primary">Submit</Button>
     </Space>
   </Space>
 )

@@ -54,7 +54,7 @@ function FormDemo() {
         </Form.Item>
 
         <Form.Item>
-          <Button htmlType="submit" type="primary">
+          <Button htmlType="submit" color="primary">
             Send Message
           </Button>
         </Form.Item>

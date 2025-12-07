@@ -143,7 +143,7 @@ const App: React.FC = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button htmlType="submit" type="primary">
+        <Button htmlType="submit" color="primary">
           Submit
         </Button>
       </Form.Item>

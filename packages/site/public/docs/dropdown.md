@@ -17,7 +17,7 @@ import { Dropdown, Button } from 'asterui'
 const App: React.FC = () => (
   <Dropdown>
     <Dropdown.Trigger>
-      <Button type="primary">Actions</Button>
+      <Button color="primary">Actions</Button>
     </Dropdown.Trigger>
     <Dropdown.Menu>
       <Dropdown.Item>Edit</Dropdown.Item>
@@ -51,7 +51,7 @@ const App: React.FC = () => {
   return (
     <Dropdown items={items}>
       <Dropdown.Trigger>
-        <Button type="primary">Data-Driven</Button>
+        <Button color="primary">Data-Driven</Button>
       </Dropdown.Trigger>
     </Dropdown>
   )

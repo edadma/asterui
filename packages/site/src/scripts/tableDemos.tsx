@@ -54,10 +54,10 @@ const columnsWithRender: ColumnType<User>[] = [
     align: 'right',
     render: () => (
       <div className="flex gap-2 justify-end">
-        <Button size="xs" type="ghost">
+        <Button size="xs" variant="ghost">
           Edit
         </Button>
-        <Button size="xs" type="ghost">
+        <Button size="xs" variant="ghost">
           Delete
         </Button>
       </div>

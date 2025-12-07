@@ -54,7 +54,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 const App: React.FC = () => (
   <Join>
     <Input placeholder="Search..." />
-    <Button type="primary">
+    <Button color="primary">
       <MagnifyingGlassIcon className="w-5 h-5" />
     </Button>
   </Join>

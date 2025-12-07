@@ -30,7 +30,7 @@ function BreakpointDemo() {
 const demos: Record<string, React.ReactNode> = {
   'show-above': (
     <Show above="md">
-      <Button type="primary">Visible on md and larger</Button>
+      <Button color="primary">Visible on md and larger</Button>
     </Show>
   ),
   'hide-below': (
@@ -66,19 +66,19 @@ const demos: Record<string, React.ReactNode> = {
       <div className="font-bold">Logo</div>
       <Show above="md">
         <Flex gap="md">
-          <Button type="ghost" size="sm">
+          <Button variant="ghost" size="sm">
             Home
           </Button>
-          <Button type="ghost" size="sm">
+          <Button variant="ghost" size="sm">
             About
           </Button>
-          <Button type="ghost" size="sm">
+          <Button variant="ghost" size="sm">
             Contact
           </Button>
         </Flex>
       </Show>
       <Hide above="md">
-        <Button type="ghost" size="sm">
+        <Button variant="ghost" size="sm">
           Menu
         </Button>
       </Hide>

@@ -56,7 +56,7 @@ import { Tooltip, Button, Space } from 'asterui'
 const App: React.FC = () => (
   <Space wrap>
     <Tooltip tip="Primary tooltip" color="primary">
-      <Button type="primary">Primary</Button>
+      <Button color="primary">Primary</Button>
     </Tooltip>
     <Tooltip tip="Secondary tooltip" color="secondary">
       <Button color="secondary">Secondary</Button>

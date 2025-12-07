@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Open Modal
       </Button>
       <Modal
@@ -52,7 +52,7 @@ export default function App() {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Open Modal
       </Button>
       <Modal
@@ -91,7 +91,7 @@ export default function App() {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Open Modal
       </Button>
       <Modal
@@ -101,7 +101,7 @@ export default function App() {
         footer={
           <Space direction="horizontal" size="sm">
             <Button onClick={() => setOpen(false)}>Cancel</Button>
-            <Button type="primary" onClick={handleOk}>OK</Button>
+            <Button color="primary" onClick={handleOk}>OK</Button>
           </Space>
         }
       >
@@ -193,7 +193,7 @@ export default function App() {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Centered Modal
       </Button>
       <Modal
@@ -259,7 +259,7 @@ export default function App() {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Responsive Modal
       </Button>
       <Modal

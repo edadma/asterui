@@ -38,7 +38,7 @@ const BasicTourDemo: React.FC = () => {
         <Button ref={profileRef}>Profile</Button>
         <Button ref={settingsRef}>Settings</Button>
       </div>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Start Tour
       </Button>
       <Tour
@@ -72,7 +72,7 @@ const WithoutTargetDemo: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Start Intro
       </Button>
       <Tour
@@ -108,7 +108,7 @@ const WithCoverDemo: React.FC = () => {
 
   return (
     <>
-      <Button ref={buttonRef} type="primary" onClick={() => setOpen(true)}>
+      <Button ref={buttonRef} color="primary" onClick={() => setOpen(true)}>
         View Feature
       </Button>
       <Tour
@@ -149,7 +149,7 @@ const PlacementsDemo: React.FC = () => {
         <Button onClick={() => setPlacementIndex((i) => (i + 1) % 4)}>
           Change Placement
         </Button>
-        <Button type="primary" onClick={() => setOpen(true)}>
+        <Button color="primary" onClick={() => setOpen(true)}>
           Show Tour
         </Button>
       </Space>

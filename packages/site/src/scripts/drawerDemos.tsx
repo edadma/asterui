@@ -9,7 +9,7 @@ const BasicDemo: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Open Drawer
       </Button>
       <Drawer
@@ -57,7 +57,7 @@ const FooterDemo: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Open Drawer
       </Button>
       <Drawer
@@ -67,7 +67,7 @@ const FooterDemo: React.FC = () => {
         footer={
           <Space direction="horizontal" size="sm">
             <Button onClick={() => setOpen(false)}>Cancel</Button>
-            <Button type="primary" onClick={() => setOpen(false)}>
+            <Button color="primary" onClick={() => setOpen(false)}>
               Save
             </Button>
           </Space>
@@ -84,7 +84,7 @@ const CustomWidthDemo: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Large Drawer
       </Button>
       <Drawer

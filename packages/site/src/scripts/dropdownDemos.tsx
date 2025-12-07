@@ -10,7 +10,7 @@ const demos: Record<string, React.ReactNode> = {
   'basic': (
     <Dropdown>
       <Dropdown.Trigger>
-        <Button type="primary">Actions</Button>
+        <Button color="primary">Actions</Button>
       </Dropdown.Trigger>
       <Dropdown.Menu>
         <Dropdown.Item>Edit</Dropdown.Item>
@@ -29,7 +29,7 @@ const demos: Record<string, React.ReactNode> = {
     return (
       <Dropdown items={items}>
         <Dropdown.Trigger>
-          <Button type="primary">Data-Driven</Button>
+          <Button color="primary">Data-Driven</Button>
         </Dropdown.Trigger>
       </Dropdown>
     )
@@ -84,7 +84,7 @@ const demos: Record<string, React.ReactNode> = {
   'hover': (
     <Dropdown hover>
       <Dropdown.Trigger>
-        <Button type="secondary">Hover Me</Button>
+        <Button color="secondary">Hover Me</Button>
       </Dropdown.Trigger>
       <Dropdown.Menu>
         <Dropdown.Item>Dashboard</Dropdown.Item>
@@ -97,7 +97,7 @@ const demos: Record<string, React.ReactNode> = {
   'with-icons': (
     <Dropdown>
       <Dropdown.Trigger>
-        <Button type="primary">Options</Button>
+        <Button color="primary">Options</Button>
       </Dropdown.Trigger>
       <Dropdown.Menu>
         <Dropdown.Item>

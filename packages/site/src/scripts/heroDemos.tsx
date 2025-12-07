@@ -24,7 +24,7 @@ const demos: Record<string, React.ReactNode> = {
           Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
           excepturi exercitationem quasi.
         </p>
-        <Button type="primary">Get Started</Button>
+        <Button color="primary">Get Started</Button>
       </div>
     </Hero>
   ),
@@ -42,7 +42,7 @@ const demos: Record<string, React.ReactNode> = {
           excepturi exercitationem quasi. In deleniti eaque aut repudiandae
           et a id nisi.
         </p>
-        <Button type="primary">Get Started</Button>
+        <Button color="primary">Get Started</Button>
       </div>
     </Hero>
   ),
@@ -61,7 +61,7 @@ const demos: Record<string, React.ReactNode> = {
           excepturi exercitationem quasi. In deleniti eaque aut repudiandae
           et a id nisi.
         </p>
-        <Button type="primary">Get Started</Button>
+        <Button color="primary">Get Started</Button>
       </div>
     </Hero>
   ),

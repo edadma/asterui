@@ -29,7 +29,7 @@ import { Show, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Show above="md">
-    <Button type="primary">Visible on md and larger</Button>
+    <Button color="primary">Visible on md and larger</Button>
   </Show>
 )
 
@@ -109,15 +109,15 @@ const App: React.FC = () => (
     {/* Desktop navigation */}
     <Show above="md">
       <Flex gap="md">
-        <Button type="ghost">Home</Button>
-        <Button type="ghost">About</Button>
-        <Button type="ghost">Contact</Button>
+        <Button variant="ghost">Home</Button>
+        <Button variant="ghost">About</Button>
+        <Button variant="ghost">Contact</Button>
       </Flex>
     </Show>
 
     {/* Mobile menu button */}
     <Hide above="md">
-      <Button type="ghost">Menu</Button>
+      <Button variant="ghost">Menu</Button>
     </Hide>
   </Flex>
 )

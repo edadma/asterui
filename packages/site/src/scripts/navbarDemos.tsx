@@ -9,9 +9,9 @@ const BasicDemo: React.FC = () => (
     start={<Typography.Text strong className="text-xl">AsterUI</Typography.Text>}
     end={
       <Flex gap="sm">
-        <Button type="ghost">Home</Button>
-        <Button type="ghost">About</Button>
-        <Button type="primary">Sign In</Button>
+        <Button variant="ghost">Home</Button>
+        <Button variant="ghost">About</Button>
+        <Button color="primary">Sign In</Button>
       </Flex>
     }
   />
@@ -23,10 +23,10 @@ const WithMenuDemo: React.FC = () => (
     start={<Typography.Text strong className="text-xl">AsterUI</Typography.Text>}
     end={
       <Flex gap="sm">
-        <Button type="ghost">Home</Button>
+        <Button variant="ghost">Home</Button>
         <Dropdown>
           <Dropdown.Trigger>
-            <Button type="ghost">
+            <Button variant="ghost">
               Products
               <ChevronDownIcon className="w-4 h-4 ml-1" />
             </Button>
@@ -37,8 +37,8 @@ const WithMenuDemo: React.FC = () => (
             <Dropdown.Item>Product 3</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Button type="ghost">About</Button>
-        <Button type="primary">Sign In</Button>
+        <Button variant="ghost">About</Button>
+        <Button color="primary">Sign In</Button>
       </Flex>
     }
   />
@@ -50,7 +50,7 @@ const WithMenuIconDemo: React.FC = () => (
     start={
       <Dropdown>
         <Dropdown.Trigger>
-          <Button type="ghost" shape="circle">☰</Button>
+          <Button variant="ghost" shape="circle">☰</Button>
         </Dropdown.Trigger>
         <Dropdown.Menu>
           <Dropdown.Item>Home</Dropdown.Item>
@@ -61,7 +61,7 @@ const WithMenuIconDemo: React.FC = () => (
       </Dropdown>
     }
     center={<Typography.Text strong className="text-xl">AsterUI</Typography.Text>}
-    end={<Button type="primary">Sign In</Button>}
+    end={<Button color="primary">Sign In</Button>}
   />
 )
 
@@ -71,17 +71,17 @@ const ColorDemo: React.FC = () => (
     <Navbar
       color="neutral"
       start={<Typography.Text strong className="text-xl">Neutral</Typography.Text>}
-      end={<Button type="ghost">Action</Button>}
+      end={<Button variant="ghost">Action</Button>}
     />
     <Navbar
       color="primary"
       start={<Typography.Text strong className="text-xl">Primary</Typography.Text>}
-      end={<Button type="ghost">Action</Button>}
+      end={<Button variant="ghost">Action</Button>}
     />
     <Navbar
       color="secondary"
       start={<Typography.Text strong className="text-xl">Secondary</Typography.Text>}
-      end={<Button type="ghost">Action</Button>}
+      end={<Button variant="ghost">Action</Button>}
     />
   </Flex>
 )
@@ -93,8 +93,8 @@ const ShadowDemo: React.FC = () => (
     start={<Typography.Text strong className="text-xl">AsterUI</Typography.Text>}
     end={
       <Flex gap="sm">
-        <Button type="ghost">Home</Button>
-        <Button type="primary">Sign In</Button>
+        <Button variant="ghost">Home</Button>
+        <Button color="primary">Sign In</Button>
       </Flex>
     }
   />
@@ -108,8 +108,8 @@ const RoundedDemo: React.FC = () => (
     start={<Typography.Text strong className="text-xl">AsterUI</Typography.Text>}
     end={
       <Flex gap="sm">
-        <Button type="ghost">Home</Button>
-        <Button type="primary">Sign In</Button>
+        <Button variant="ghost">Home</Button>
+        <Button color="primary">Sign In</Button>
       </Flex>
     }
   />

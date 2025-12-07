@@ -32,7 +32,7 @@ const demos: Record<string, React.ReactNode> = {
         <div className="bg-base-200 rounded-lg p-3 text-sm">Item 3</div>
       </div>
       <div className="p-4 border-t border-base-300">
-        <Button type="primary" size="sm" className="w-full">Action</Button>
+        <Button color="primary" size="sm" className="w-full">Action</Button>
       </div>
     </Phone>
   ),

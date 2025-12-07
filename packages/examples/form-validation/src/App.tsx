@@ -128,7 +128,7 @@ function App() {
               </Form.Item>
 
               <div className="form-control mt-6">
-                <Button type="primary" htmlType="submit" loading={isSubmitting} className="w-full">
+                <Button color="primary" htmlType="submit" loading={isSubmitting} className="w-full">
                   {isSubmitting ? 'Submitting...' : 'Submit'}
                 </Button>
               </div>

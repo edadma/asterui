@@ -9,7 +9,7 @@ const BasicDemo: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Open Modal
       </Button>
       <Modal
@@ -34,7 +34,7 @@ const FooterDemo: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Open Modal
       </Button>
       <Modal
@@ -44,7 +44,7 @@ const FooterDemo: React.FC = () => {
         footer={
           <Space direction="horizontal" size="sm">
             <Button onClick={() => setOpen(false)}>Cancel</Button>
-            <Button type="primary" onClick={handleOk}>
+            <Button color="primary" onClick={handleOk}>
               OK
             </Button>
           </Space>
@@ -61,7 +61,7 @@ const CenteredDemo: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Centered Modal
       </Button>
       <Modal
@@ -152,7 +152,7 @@ const DefaultFooterDemo: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Open Modal
       </Button>
       <Modal
@@ -177,7 +177,7 @@ const ResponsiveDemo: React.FC = () => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
+      <Button color="primary" onClick={() => setOpen(true)}>
         Responsive Modal
       </Button>
       <Modal

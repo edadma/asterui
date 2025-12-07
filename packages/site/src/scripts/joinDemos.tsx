@@ -22,7 +22,7 @@ const demos: Record<string, React.ReactNode> = {
   'with-inputs': (
     <Join>
       <Input placeholder="Search..." />
-      <Button type="primary">
+      <Button color="primary">
         <MagnifyingGlassIcon className="w-5 h-5" />
       </Button>
     </Join>

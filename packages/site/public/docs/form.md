@@ -29,7 +29,7 @@ const App: React.FC = () => {
         <Input type="password" placeholder="Enter password" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button color="primary" htmlType="submit">
           Login
         </Button>
       </Form.Item>
@@ -79,7 +79,7 @@ const App: React.FC = () => {
         <Input type="password" placeholder="Enter password" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">Submit</Button>
+        <Button color="primary" htmlType="submit">Submit</Button>
       </Form.Item>
     </Form>
   )
@@ -115,7 +115,7 @@ const App: React.FC = () => {
         </Form.Item>
         <a href="#" className="link link-primary text-sm">Forgot password?</a>
       </div>
-      <Button type="primary" htmlType="submit" shape="block">Sign In</Button>
+      <Button color="primary" htmlType="submit" shape="block">Sign In</Button>
     </Form>
   )
 }
@@ -160,7 +160,7 @@ const App: React.FC = () => {
           <Input placeholder="Enter email" />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button color="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
@@ -206,7 +206,7 @@ const App: React.FC = () => {
         <Textarea rows={3} />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button color="primary" htmlType="submit">
           Update Profile
         </Button>
       </Form.Item>
@@ -289,7 +289,7 @@ const App: React.FC = () => {
         <Input placeholder="Choose a username" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">Save</Button>
+        <Button color="primary" htmlType="submit">Save</Button>
       </Form.Item>
     </Form>
   )
@@ -342,7 +342,7 @@ const App: React.FC = () => {
         <Input type="password" placeholder="Confirm password" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">Submit</Button>
+        <Button color="primary" htmlType="submit">Submit</Button>
       </Form.Item>
     </Form>
   )
@@ -393,7 +393,7 @@ const App: React.FC = () => {
       <div className="mb-4">
         <Form.ErrorList className="bg-error/10 p-3 rounded-lg" />
       </div>
-      <Button type="primary" htmlType="submit">Submit</Button>
+      <Button color="primary" htmlType="submit">Submit</Button>
     </Form>
   )
 }

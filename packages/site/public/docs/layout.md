@@ -122,7 +122,7 @@ const App: React.FC = () => {
       <Layout.Header className="bg-primary text-primary-content p-4 flex items-center justify-between">
         <div className="text-xl font-bold">Header</div>
         <Button
-          type="ghost"
+          variant="ghost"
           size="sm"
           onClick={() => setCollapsed(!collapsed)}
         >

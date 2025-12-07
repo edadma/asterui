@@ -24,8 +24,8 @@ const demos: Record<string, React.ReactNode> = {
       title="Action Card"
       actions={
         <>
-          <Button type="primary">Accept</Button>
-          <Button type="ghost">Decline</Button>
+          <Button color="primary">Accept</Button>
+          <Button variant="ghost">Decline</Button>
         </>
       }
       className="w-full max-w-96"
@@ -61,7 +61,7 @@ const demos: Record<string, React.ReactNode> = {
           className="w-32 h-full object-cover"
         />
       }
-      actions={<Button type="primary">Buy Now</Button>}
+      actions={<Button color="primary">Buy Now</Button>}
       side
       className="w-full max-w-96"
     >
@@ -72,7 +72,7 @@ const demos: Record<string, React.ReactNode> = {
     <Card
       title="Overlay Card"
       cover={<img src="https://picsum.photos/400/300" alt="Placeholder" />}
-      actions={<Button type="primary">View Details</Button>}
+      actions={<Button color="primary">View Details</Button>}
       imageFull
       className="w-full max-w-96 h-64 text-neutral-content"
     >
@@ -93,7 +93,7 @@ const demos: Record<string, React.ReactNode> = {
     <Space direction="vertical" size="sm" className="w-full max-w-96">
       <Card
         title="Left Actions"
-        actions={<Button type="primary" size="sm">Left</Button>}
+        actions={<Button color="primary" size="sm">Left</Button>}
         actionsJustify="start"
         bordered
       >
@@ -101,7 +101,7 @@ const demos: Record<string, React.ReactNode> = {
       </Card>
       <Card
         title="Center Actions"
-        actions={<Button type="primary" size="sm">Center</Button>}
+        actions={<Button color="primary" size="sm">Center</Button>}
         actionsJustify="center"
         bordered
       >

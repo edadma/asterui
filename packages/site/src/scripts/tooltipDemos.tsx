@@ -27,7 +27,7 @@ const demos: Record<string, React.ReactNode> = {
   colors: (
     <Space wrap>
       <Tooltip tip="Primary tooltip" color="primary">
-        <Button type="primary">Primary</Button>
+        <Button color="primary">Primary</Button>
       </Tooltip>
       <Tooltip tip="Secondary tooltip" color="secondary">
         <Button color="secondary">Secondary</Button>

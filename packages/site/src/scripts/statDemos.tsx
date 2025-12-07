@@ -64,7 +64,7 @@ const demos: Record<string, React.ReactNode> = {
         title="Account balance"
         value="$89,400"
         actions={
-          <Button size="sm" type="primary">
+          <Button size="sm" color="primary">
             Add funds
           </Button>
         }

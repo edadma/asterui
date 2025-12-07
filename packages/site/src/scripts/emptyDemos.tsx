@@ -19,7 +19,7 @@ const demos: Record<string, React.ReactNode> = {
   ),
   'with-action': (
     <Empty description="No items in your cart">
-      <Button type="primary">Start Shopping</Button>
+      <Button color="primary">Start Shopping</Button>
     </Empty>
   ),
 };

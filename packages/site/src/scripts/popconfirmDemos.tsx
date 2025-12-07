@@ -23,7 +23,7 @@ const handleAsyncDelete = () => {
 const demos: Record<string, React.ReactNode> = {
   'basic': (
     <Popconfirm title="Are you sure?" onConfirm={handleDelete}>
-      <Button type="error">Delete</Button>
+      <Button color="error">Delete</Button>
     </Popconfirm>
   ),
   'description': (
@@ -32,7 +32,7 @@ const demos: Record<string, React.ReactNode> = {
       description="This action cannot be undone. Are you sure you want to continue?"
       onConfirm={handleDelete}
     >
-      <Button type="error">Delete</Button>
+      <Button color="error">Delete</Button>
     </Popconfirm>
   ),
   'placements': (
@@ -62,7 +62,7 @@ const demos: Record<string, React.ReactNode> = {
         notification.success({ message: 'Submitted!', description: 'Form submitted successfully.' });
       }}
     >
-      <Button type="primary">Submit</Button>
+      <Button color="primary">Submit</Button>
     </Popconfirm>
   ),
   'async': (
@@ -71,7 +71,7 @@ const demos: Record<string, React.ReactNode> = {
       description="This will take a moment..."
       onConfirm={handleAsyncDelete}
     >
-      <Button type="error">Delete (Async)</Button>
+      <Button color="error">Delete (Async)</Button>
     </Popconfirm>
   ),
   'custom-icon': (
@@ -91,7 +91,7 @@ const demos: Record<string, React.ReactNode> = {
       showCancel={false}
       okText="Got it"
     >
-      <Button type="info">Show Info</Button>
+      <Button color="info">Show Info</Button>
     </Popconfirm>
   ),
   'disabled': (

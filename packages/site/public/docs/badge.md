@@ -18,10 +18,10 @@ const App: React.FC = () => (
       <Button>Messages</Button>
     </Badge>
     <Badge count={99}>
-      <Button type="secondary">Notifications</Button>
+      <Button color="secondary">Notifications</Button>
     </Badge>
     <Badge count={0}>
-      <Button type="accent">No Count</Button>
+      <Button color="accent">No Count</Button>
     </Badge>
   </div>
 )
@@ -148,10 +148,10 @@ const App: React.FC = () => (
       <Button>Notifications</Button>
     </Badge>
     <Badge dot type="success">
-      <Button type="ghost">Online</Button>
+      <Button variant="ghost">Online</Button>
     </Badge>
     <Badge dot type="warning">
-      <Button type="secondary">Pending</Button>
+      <Button color="secondary">Pending</Button>
     </Badge>
   </div>
 )
@@ -217,7 +217,7 @@ const App: React.FC = () => (
       <Button>Messages</Button>
     </Badge>
     <Badge count={0}>
-      <Button type="secondary">Hidden Zero</Button>
+      <Button color="secondary">Hidden Zero</Button>
     </Badge>
   </Space>
 )

@@ -17,7 +17,7 @@ const App: React.FC = () => (
     title="Are you sure?"
     onConfirm={() => console.log('Confirmed')}
   >
-    <Button type="error">Delete</Button>
+    <Button color="error">Delete</Button>
   </Popconfirm>
 )
 
@@ -36,7 +36,7 @@ const App: React.FC = () => (
     description="This action cannot be undone. Are you sure you want to continue?"
     onConfirm={() => console.log('Deleted')}
   >
-    <Button type="error">Delete</Button>
+    <Button color="error">Delete</Button>
   </Popconfirm>
 )
 
@@ -83,7 +83,7 @@ const App: React.FC = () => (
     okType="success"
     cancelType="error"
   >
-    <Button type="primary">Submit</Button>
+    <Button color="primary">Submit</Button>
   </Popconfirm>
 )
 
@@ -112,7 +112,7 @@ const App: React.FC = () => {
       description="This will take a moment..."
       onConfirm={handleAsyncDelete}
     >
-      <Button type="error">Delete (Async)</Button>
+      <Button color="error">Delete (Async)</Button>
     </Popconfirm>
   )
 }
@@ -158,7 +158,7 @@ const App: React.FC = () => (
     showCancel={false}
     okText="Got it"
   >
-    <Button type="info">Show Info</Button>
+    <Button color="info">Show Info</Button>
   </Popconfirm>
 )
 

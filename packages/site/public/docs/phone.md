@@ -49,7 +49,7 @@ Display content in an iPhone-style phone frame mockup.
     <div className="bg-base-200 rounded-lg p-3">Item 2</div>
   </div>
   <div className="p-4 border-t border-base-300">
-    <Button type="primary" className="w-full">Action</Button>
+    <Button color="primary" className="w-full">Action</Button>
   </div>
 </Phone>
 ```

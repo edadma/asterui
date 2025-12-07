@@ -48,7 +48,7 @@ export default function App() {
             </Form.Item>
             <Link size="sm">Forgot password?</Link>
           </Space>
-          <Button type="primary" htmlType="submit" shape="block">
+          <Button color="primary" htmlType="submit" shape="block">
             Sign In
           </Button>
           <Divider>or</Divider>

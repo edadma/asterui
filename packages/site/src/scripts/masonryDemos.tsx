@@ -30,7 +30,7 @@ function DynamicMasonryDemo() {
   return (
     <div>
       <div className="mb-4">
-        <Button type="primary" onClick={addItem}>Add Item</Button>
+        <Button color="primary" onClick={addItem}>Add Item</Button>
       </div>
       <Masonry columns={3} gap={16}>
         {items.map(item => (
@@ -40,7 +40,7 @@ function DynamicMasonryDemo() {
             style={{ background: item.color, padding: '16px', color: 'white', height: item.height }}
           >
             <Button
-              type="ghost"
+              variant="ghost"
               size="sm"
               shape="circle"
               className="absolute top-1 right-1 min-h-0 h-6 w-6 text-white hover:bg-black/20"

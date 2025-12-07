@@ -80,7 +80,7 @@ const demos: Record<string, React.ReactNode> = {
                 <li>Import components</li>
                 <li>Start building</li>
               </ol>
-              <Button type="primary" size="sm">Read Docs</Button>
+              <Button color="primary" size="sm">Read Docs</Button>
             </Space>
           ),
         },

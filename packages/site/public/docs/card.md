@@ -55,8 +55,8 @@ const App: React.FC = () => (
     title="Action Card"
     actions={
       <>
-        <Button type="primary">Accept</Button>
-        <Button type="ghost">Decline</Button>
+        <Button color="primary">Accept</Button>
+        <Button variant="ghost">Decline</Button>
       </>
     }
     className="w-96"
@@ -128,7 +128,7 @@ const App: React.FC = () => (
         className="w-32 h-full object-cover"
       />
     }
-    actions={<Button type="primary">Buy Now</Button>}
+    actions={<Button color="primary">Buy Now</Button>}
     side
     className="w-96"
   >
@@ -151,7 +151,7 @@ const App: React.FC = () => (
   <Card
     title="Overlay Card"
     cover={<img src="https://picsum.photos/400/300" alt="Placeholder" />}
-    actions={<Button type="primary">View Details</Button>}
+    actions={<Button color="primary">View Details</Button>}
     imageFull
     className="w-96 h-64 text-neutral-content"
   >
@@ -196,7 +196,7 @@ const App: React.FC = () => (
   <Space direction="vertical" size="sm" className="w-96">
     <Card
       title="Left Actions"
-      actions={<Button type="primary" size="sm">Left</Button>}
+      actions={<Button color="primary" size="sm">Left</Button>}
       actionsJustify="start"
       bordered
     >
@@ -204,7 +204,7 @@ const App: React.FC = () => (
     </Card>
     <Card
       title="Center Actions"
-      actions={<Button type="primary" size="sm">Center</Button>}
+      actions={<Button color="primary" size="sm">Center</Button>}
       actionsJustify="center"
       bordered
     >

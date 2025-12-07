@@ -56,14 +56,14 @@ function App() {
           </p>
 
           <div className="flex flex-wrap gap-2 justify-center">
-            <Button type="primary">Primary</Button>
-            <Button type="secondary">Secondary</Button>
-            <Button type="accent">Accent</Button>
-            <Button type="neutral">Neutral</Button>
-            <Button type="info">Info</Button>
-            <Button type="success">Success</Button>
-            <Button type="warning">Warning</Button>
-            <Button type="error">Error</Button>
+            <Button color="primary">Primary</Button>
+            <Button color="secondary">Secondary</Button>
+            <Button color="accent">Accent</Button>
+            <Button color="neutral">Neutral</Button>
+            <Button color="info">Info</Button>
+            <Button color="success">Success</Button>
+            <Button color="warning">Warning</Button>
+            <Button color="error">Error</Button>
           </div>
 
           <div className="flex flex-wrap gap-2 justify-center">

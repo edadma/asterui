@@ -98,13 +98,13 @@ const App: React.FC = () => (
     <Carousel.Item>
       <Card title="Feature 1" className="bg-base-200">
         <p>Discover amazing features</p>
-        <Button type="primary" size="sm">Learn More</Button>
+        <Button color="primary" size="sm">Learn More</Button>
       </Card>
     </Carousel.Item>
     <Carousel.Item>
       <Card title="Feature 2" className="bg-base-200">
         <p>Powerful and flexible</p>
-        <Button type="secondary" size="sm">Explore</Button>
+        <Button color="secondary" size="sm">Explore</Button>
       </Card>
     </Carousel.Item>
   </Carousel>

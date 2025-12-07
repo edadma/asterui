@@ -25,7 +25,7 @@ const BasicDemo: React.FC = () => {
         <Input type="password" placeholder="Enter password" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button color="primary" htmlType="submit">
           Login
         </Button>
       </Form.Item>
@@ -57,7 +57,7 @@ const ValidationDemo: React.FC = () => {
         <Input type="password" placeholder="Enter password" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button color="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
@@ -84,7 +84,7 @@ const LayoutsDemo: React.FC = () => {
           <Input placeholder="Enter email" />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button color="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
@@ -112,7 +112,7 @@ const InitialValuesDemo: React.FC = () => {
         <Textarea rows={3} />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button color="primary" htmlType="submit">
           Update Profile
         </Button>
       </Form.Item>
@@ -142,7 +142,7 @@ const TooltipExtraDemo: React.FC = () => {
         <Input placeholder="https://example.com" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">Save</Button>
+        <Button color="primary" htmlType="submit">Save</Button>
       </Form.Item>
     </Form>
   )
@@ -171,7 +171,7 @@ const FeedbackDemo: React.FC = () => {
         <Input type="password" placeholder="Enter password" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">Register</Button>
+        <Button color="primary" htmlType="submit">Register</Button>
       </Form.Item>
     </Form>
   )
@@ -206,7 +206,7 @@ const DependenciesDemo: React.FC = () => {
         <Input type="password" placeholder="Confirm password" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">Submit</Button>
+        <Button color="primary" htmlType="submit">Submit</Button>
       </Form.Item>
     </Form>
   )
@@ -239,7 +239,7 @@ const ValidateTriggerDemo: React.FC = () => {
         <Input placeholder="Only validates on submit" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit">Submit</Button>
+        <Button color="primary" htmlType="submit">Submit</Button>
       </Form.Item>
     </Form>
   )
@@ -261,7 +261,7 @@ const ErrorListDemo: React.FC = () => {
         <Form.ErrorList className="bg-error/10 p-3 rounded-lg" />
       </div>
       <Form.Item>
-        <Button type="primary" htmlType="submit">Submit</Button>
+        <Button color="primary" htmlType="submit">Submit</Button>
       </Form.Item>
     </Form>
   )

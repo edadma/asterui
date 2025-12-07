@@ -6,7 +6,7 @@ import { CheckIconSvg } from './icons'
 // Basic Affix demo
 const BasicDemo: React.FC = () => (
   <Affix offsetTop={80}>
-    <Button type="primary">Affixed Button</Button>
+    <Button color="primary">Affixed Button</Button>
   </Affix>
 );
 
@@ -26,7 +26,7 @@ const CallbackDemo: React.FC = () => {
 // Bottom affix demo
 const BottomDemo: React.FC = () => (
   <Affix offsetBottom={20}>
-    <Button type="secondary">Bottom Affixed</Button>
+    <Button color="secondary">Bottom Affixed</Button>
   </Affix>
 );
 

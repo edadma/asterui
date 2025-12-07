@@ -68,7 +68,7 @@ import { Empty, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Empty description="No items in your cart">
-    <Button type="primary">Start Shopping</Button>
+    <Button color="primary">Start Shopping</Button>
   </Empty>
 )
 

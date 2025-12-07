@@ -14,7 +14,7 @@ import { Affix, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Affix offsetTop={80}>
-    <Button type="primary">Affixed Button</Button>
+    <Button color="primary">Affixed Button</Button>
   </Affix>
 )
 
@@ -54,7 +54,7 @@ import { Affix, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Affix offsetBottom={20}>
-    <Button type="secondary">Bottom Affixed</Button>
+    <Button color="secondary">Bottom Affixed</Button>
   </Affix>
 )
 

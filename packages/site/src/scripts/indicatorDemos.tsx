@@ -99,11 +99,11 @@ const demos: Record<string, React.ReactNode> = {
       </Indicator>
       <Indicator>
         <Indicator.Item>12</Indicator.Item>
-        <Button type="secondary">Notifications</Button>
+        <Button color="secondary">Notifications</Button>
       </Indicator>
       <Indicator>
         <Indicator.Item />
-        <Button type="accent">Inbox</Button>
+        <Button color="accent">Inbox</Button>
       </Indicator>
     </div>
   ),

@@ -7,16 +7,16 @@ const { Title, Paragraph } = Typography
 const demos: Record<string, React.ReactNode> = {
   basic: (
     <Flex gap="sm">
-      <Button type="primary">Button 1</Button>
-      <Button type="secondary">Button 2</Button>
-      <Button type="accent">Button 3</Button>
+      <Button color="primary">Button 1</Button>
+      <Button color="secondary">Button 2</Button>
+      <Button color="accent">Button 3</Button>
     </Flex>
   ),
   direction: (
     <Flex direction="column" gap="sm">
-      <Button type="primary">First</Button>
-      <Button type="secondary">Second</Button>
-      <Button type="accent">Third</Button>
+      <Button color="primary">First</Button>
+      <Button color="secondary">Second</Button>
+      <Button color="accent">Third</Button>
     </Flex>
   ),
   justify: (
@@ -114,7 +114,7 @@ const demos: Record<string, React.ReactNode> = {
       <Card title="Welcome" className="w-64">
         <Flex direction="column" gap="md">
           <Title level={5}>Sign in to continue</Title>
-          <Button type="primary" shape="block">
+          <Button color="primary" shape="block">
             Login
           </Button>
         </Flex>
@@ -124,19 +124,19 @@ const demos: Record<string, React.ReactNode> = {
   nested: (
     <Flex direction="column" gap="md">
       <Flex justify="between" className="bg-base-200 p-4 rounded">
-        <Button type="ghost">Logo</Button>
+        <Button variant="ghost">Logo</Button>
         <Flex gap="sm">
-          <Button type="ghost">Home</Button>
-          <Button type="ghost">About</Button>
-          <Button type="primary">Contact</Button>
+          <Button variant="ghost">Home</Button>
+          <Button variant="ghost">About</Button>
+          <Button color="primary">Contact</Button>
         </Flex>
       </Flex>
       <Flex gap="md" className="p-4">
         <Flex direction="column" gap="sm" flex="1" className="bg-base-200 p-4 rounded">
-          <Button type="ghost" shape="block">
+          <Button variant="ghost" shape="block">
             Sidebar Item 1
           </Button>
-          <Button type="ghost" shape="block">
+          <Button variant="ghost" shape="block">
             Sidebar Item 2
           </Button>
         </Flex>
