@@ -17,15 +17,13 @@ const demos: Record<string, React.ReactNode> = {
     />
   ),
   card: (
-    <Card className="max-w-60 shadow-xl">
-      <figure>
-        <HoverGallery images={productImages} />
-      </figure>
-      <Card.Body>
-        <Card.Title>Product Name</Card.Title>
-        <p>Hover over the image to see more angles</p>
-        <p className="text-lg font-bold">$49.99</p>
-      </Card.Body>
+    <Card
+      className="max-w-60 shadow-xl"
+      title="Product Name"
+      cover={<HoverGallery images={productImages} />}
+    >
+      <p>Hover over the image to see more angles</p>
+      <p className="text-lg font-bold">$49.99</p>
     </Card>
   ),
   'two-images': (

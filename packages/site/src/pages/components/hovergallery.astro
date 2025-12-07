@@ -49,15 +49,13 @@ const images = [
 
 export default function App() {
   return (
-    <Card className="max-w-60 shadow-xl">
-      <figure>
-        <HoverGallery images={images} />
-      </figure>
-      <Card.Body>
-        <Card.Title>Product Name</Card.Title>
-        <p>Hover over the image to see more angles</p>
-        <p className="text-lg font-bold">$49.99</p>
-      </Card.Body>
+    <Card
+      className="max-w-60 shadow-xl"
+      title="Product Name"
+      cover={<HoverGallery images={images} />}
+    >
+      <p>Hover over the image to see more angles</p>
+      <p className="text-lg font-bold">$49.99</p>
     </Card>
   )
 }`,
