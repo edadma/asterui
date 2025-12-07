@@ -1,20 +1,25 @@
 import React from 'react'
 
 type BaseButtonProps = {
-  type?: 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error' | 'neutral' | 'ghost' | 'link'
+  /** Button color */
+  color?: 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error' | 'neutral'
+  /** Button style variant */
+  variant?: 'solid' | 'outline' | 'dash' | 'soft' | 'ghost' | 'link'
+  /** Button size */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-  outline?: boolean
-  dash?: boolean
-  soft?: boolean
+  /** Active/pressed visual state */
   active?: boolean
+  /** Show loading spinner and disable button */
   loading?: boolean
+  /** Button shape */
   shape?: 'square' | 'circle' | 'wide' | 'block' | 'round'
+  /** Disable click animation */
   noAnimation?: boolean
   /** Icon element to display */
   icon?: React.ReactNode
   /** Position of the icon */
   iconPosition?: 'start' | 'end'
-  /** Applies error/danger styling (shorthand for type="error") */
+  /** Applies error/danger styling (shorthand for color="error") */
   danger?: boolean
   /** Toggle button pressed state (sets aria-pressed) */
   pressed?: boolean
@@ -38,11 +43,9 @@ export type ButtonProps = ButtonAsButton | ButtonAsAnchor
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  type,
+  color,
+  variant,
   size = 'md',
-  outline = false,
-  dash = false,
-  soft = false,
   active = false,
   loading = false,
   shape,
@@ -54,9 +57,10 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  // danger prop is a shorthand for type="error"
-  const effectiveType = danger ? 'error' : type
-  const typeClasses = {
+  // danger prop is a shorthand for color="error"
+  const effectiveColor = danger ? 'error' : color
+
+  const colorClasses = {
     primary: 'btn-primary',
     secondary: 'btn-secondary',
     accent: 'btn-accent',
@@ -65,6 +69,13 @@ export const Button: React.FC<ButtonProps> = ({
     warning: 'btn-warning',
     error: 'btn-error',
     neutral: 'btn-neutral',
+  }
+
+  const variantClasses = {
+    solid: '', // default, no extra class needed
+    outline: 'btn-outline',
+    dash: 'btn-dash',
+    soft: 'btn-soft',
     ghost: 'btn-ghost',
     link: 'btn-link',
   }
@@ -87,11 +98,9 @@ export const Button: React.FC<ButtonProps> = ({
 
   const classes = [
     'btn',
-    effectiveType && typeClasses[effectiveType],
+    effectiveColor && colorClasses[effectiveColor],
+    variant && variantClasses[variant],
     sizeClasses[size],
-    outline && 'btn-outline',
-    dash && 'btn-dash',
-    soft && 'btn-soft',
     active && 'btn-active',
     shape && shapeClasses[shape],
     noAnimation && 'no-animation',

@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
-import { Button, Space, Input, Form, Modal } from 'asterui';
+import { Button, Space, Input, Form, notification } from 'asterui';
 import { XMarkIcon, ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { CheckIconSvg } from './icons'
 
@@ -8,25 +8,28 @@ import { CheckIconSvg } from './icons'
 const demos: Record<string, React.ReactNode> = {
   'brand-colors': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary">Primary</Button>
-      <Button type="secondary">Secondary</Button>
-      <Button type="accent">Accent</Button>
-      <Button type="neutral">Neutral</Button>
+      <Button color="primary">Primary</Button>
+      <Button color="secondary">Secondary</Button>
+      <Button color="accent">Accent</Button>
+      <Button color="neutral">Neutral</Button>
     </Space>
   ),
   'state-colors': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="info">Info</Button>
-      <Button type="success">Success</Button>
-      <Button type="warning">Warning</Button>
-      <Button type="error">Error</Button>
+      <Button color="info">Info</Button>
+      <Button color="success">Success</Button>
+      <Button color="warning">Warning</Button>
+      <Button color="error">Error</Button>
     </Space>
   ),
-  'minimal-styles': (
+  'variants': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="ghost">Ghost</Button>
-      <Button type="link">Link</Button>
-      <Button>No Type</Button>
+      <Button color="primary">Solid</Button>
+      <Button color="primary" variant="outline">Outline</Button>
+      <Button color="primary" variant="dash">Dash</Button>
+      <Button color="primary" variant="soft">Soft</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link</Button>
     </Space>
   ),
   'sizes': (
@@ -40,80 +43,82 @@ const demos: Record<string, React.ReactNode> = {
   ),
   'outline': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary" outline>Primary</Button>
-      <Button type="secondary" outline>Secondary</Button>
-      <Button type="accent" outline>Accent</Button>
+      <Button color="primary" variant="outline">Primary</Button>
+      <Button color="secondary" variant="outline">Secondary</Button>
+      <Button color="accent" variant="outline">Accent</Button>
+      <Button color="success" variant="outline">Success</Button>
+      <Button color="error" variant="outline">Error</Button>
     </Space>
   ),
   'dash': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary" dash>Primary</Button>
-      <Button type="secondary" dash>Secondary</Button>
-      <Button type="accent" dash>Accent</Button>
+      <Button color="primary" variant="dash">Primary</Button>
+      <Button color="secondary" variant="dash">Secondary</Button>
+      <Button color="accent" variant="dash">Accent</Button>
     </Space>
   ),
   'soft': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary" soft>Primary</Button>
-      <Button type="secondary" soft>Secondary</Button>
-      <Button type="accent" soft>Accent</Button>
-      <Button type="success" soft>Success</Button>
-      <Button type="warning" soft>Warning</Button>
+      <Button color="primary" variant="soft">Primary</Button>
+      <Button color="secondary" variant="soft">Secondary</Button>
+      <Button color="accent" variant="soft">Accent</Button>
+      <Button color="success" variant="soft">Success</Button>
+      <Button color="warning" variant="soft">Warning</Button>
     </Space>
   ),
   'states': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary">Normal</Button>
-      <Button type="primary" active>Active</Button>
-      <Button type="primary" loading>Loading</Button>
-      <Button type="primary" disabled>Disabled</Button>
+      <Button color="primary">Normal</Button>
+      <Button color="primary" active>Active</Button>
+      <Button color="primary" loading>Loading</Button>
+      <Button color="primary" disabled>Disabled</Button>
     </Space>
   ),
   'shapes': (
     <Space direction="horizontal" wrap size="sm" align="center">
-      <Button type="primary" shape="square">
+      <Button color="primary" shape="square">
         <XMarkIcon className="h-6 w-6" />
       </Button>
-      <Button type="primary" shape="circle">
+      <Button color="primary" shape="circle">
         <XMarkIcon className="h-6 w-6" />
       </Button>
     </Space>
   ),
   'wide': (
     <Space direction="vertical" size="sm">
-      <Button type="primary" shape="wide">Wide Button</Button>
-      <Button type="secondary" shape="wide">Another Wide</Button>
+      <Button color="primary" shape="wide">Wide Button</Button>
+      <Button color="secondary" shape="wide">Another Wide</Button>
     </Space>
   ),
   'block': (
     <Space direction="vertical" className="w-full">
-      <Button type="primary" shape="block">Block Button</Button>
-      <Button type="secondary" shape="block">Another Block</Button>
+      <Button color="primary" shape="block">Block Button</Button>
+      <Button color="secondary" shape="block">Another Block</Button>
     </Space>
   ),
   'loading': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary" loading>Loading</Button>
-      <Button type="success" loading>Processing</Button>
-      <Button type="error" loading>Deleting</Button>
+      <Button color="primary" loading>Loading</Button>
+      <Button color="success" loading>Processing</Button>
+      <Button color="error" loading>Deleting</Button>
     </Space>
   ),
   'link-buttons': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary" href="https://github.com" target="_blank">GitHub</Button>
-      <Button type="ghost" href="https://npmjs.com" target="_blank">npm</Button>
-      <Button href="/components" type="link">Internal Link</Button>
+      <Button color="primary" href="https://github.com" target="_blank">GitHub</Button>
+      <Button variant="ghost" href="https://npmjs.com" target="_blank">npm</Button>
+      <Button href="/components" variant="link">Internal Link</Button>
     </Space>
   ),
   'with-icons': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary" icon={<ArrowUpTrayIcon className="w-4 h-4" />}>
+      <Button color="primary" icon={<ArrowUpTrayIcon className="w-4 h-4" />}>
         Upload
       </Button>
-      <Button type="success" icon={<CheckIcon className="w-4 h-4" />}>
+      <Button color="success" icon={<CheckIcon className="w-4 h-4" />}>
         Save
       </Button>
-      <Button type="error" icon={<TrashIcon className="w-4 h-4" />} iconPosition="end">
+      <Button color="error" icon={<TrashIcon className="w-4 h-4" />} iconPosition="end">
         Delete
       </Button>
     </Space>
@@ -124,14 +129,20 @@ const demos: Record<string, React.ReactNode> = {
       <Button danger icon={<TrashIcon className="w-4 h-4" />}>
         Remove Item
       </Button>
-      <Button danger outline>Cancel Account</Button>
+      <Button danger variant="outline">Cancel Account</Button>
     </Space>
   ),
   'round': (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary" shape="round">Get Started</Button>
-      <Button type="secondary" shape="round">Learn More</Button>
-      <Button type="accent" shape="round">Subscribe</Button>
+      <Button color="primary" shape="round">Get Started</Button>
+      <Button color="secondary" shape="round">Learn More</Button>
+      <Button color="accent" shape="round">Subscribe</Button>
+    </Space>
+  ),
+  'no-animation': (
+    <Space direction="horizontal" wrap size="sm">
+      <Button color="primary">With Animation</Button>
+      <Button color="primary" noAnimation>No Animation</Button>
     </Space>
   ),
 };
@@ -139,10 +150,7 @@ const demos: Record<string, React.ReactNode> = {
 // Stateful demo components
 const FormSubmitDemo: React.FC = () => {
   const handleFinish = (values: { email: string }) => {
-    Modal.success({
-      title: 'Form Submitted',
-      content: `Email: ${values.email}`,
-    });
+    notification.success({ message: 'Submitted!', description: `Email: ${values.email}` });
   };
 
   return (
@@ -152,7 +160,7 @@ const FormSubmitDemo: React.FC = () => {
       </Form.Item>
       <Form.Item>
         <Space direction="horizontal" size="sm">
-          <Button type="primary" htmlType="submit">Submit</Button>
+          <Button color="primary" htmlType="submit">Submit</Button>
           <Button htmlType="reset">Reset</Button>
         </Space>
       </Form.Item>
@@ -172,11 +180,37 @@ const EventHandlingDemo: React.FC = () => {
 
   return (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary" onClick={() => setCount(c => c + 1)}>
+      <Button color="primary" onClick={() => setCount(c => c + 1)}>
         Clicked {count} times
       </Button>
-      <Button type="secondary" onClick={handleAsync} loading={loading}>
+      <Button color="secondary" onClick={handleAsync} loading={loading}>
         {loading ? 'Processing...' : 'Async Action'}
+      </Button>
+    </Space>
+  );
+};
+
+const ToggleButtonDemo: React.FC = () => {
+  const [pressed, setPressed] = useState(false);
+
+  return (
+    <Space direction="horizontal" wrap size="sm">
+      <Button
+        color="primary"
+        pressed={pressed}
+        active={pressed}
+        onClick={() => setPressed(!pressed)}
+      >
+        {pressed ? 'On' : 'Off'}
+      </Button>
+      <Button
+        color="secondary"
+        variant="outline"
+        pressed={pressed}
+        active={pressed}
+        onClick={() => setPressed(!pressed)}
+      >
+        Toggle: {pressed ? 'Active' : 'Inactive'}
       </Button>
     </Space>
   );
@@ -185,6 +219,7 @@ const EventHandlingDemo: React.FC = () => {
 const statefulDemos: Record<string, React.FC> = {
   'form-submit': FormSubmitDemo,
   'event-handling': EventHandlingDemo,
+  'toggle': ToggleButtonDemo,
 };
 
 // Mount React demos

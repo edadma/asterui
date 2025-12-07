@@ -156,9 +156,14 @@ function FormRoot<TFieldValues extends FieldValues = FieldValues>({
     }
   }
 
+  const handleReset = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    form.reset(initialValues as any)
+  }
+
   return (
     <FormContext.Provider value={{ form, layout, labelWidth, size, disabled }}>
-      <form onSubmit={handleSubmit} className={className} noValidate={noValidate} {...props}>
+      <form onSubmit={handleSubmit} onReset={handleReset} className={className} noValidate={noValidate} {...props}>
         {children}
       </form>
     </FormContext.Provider>

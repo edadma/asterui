@@ -4,20 +4,28 @@ import ApiTable from '../../components/ApiTable.astro';
 import { Code } from 'astro:components';
 
 const ratingApi = [
-  { property: 'children', description: 'Rating.Item components', type: 'React.ReactNode', default: '-' },
+  { property: 'children', description: 'Custom Rating.Item components (optional)', type: 'React.ReactNode', default: '-' },
   { property: 'value', description: 'Controlled rating value', type: 'number', default: '-' },
   { property: 'defaultValue', description: 'Default rating value (uncontrolled)', type: 'number', default: '0' },
   { property: 'onChange', description: 'Callback when rating changes', type: '(value: number) => void', default: '-' },
-  { property: 'size', description: 'Rating size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'" },
-  { property: 'readOnly', description: 'Display as read-only (non-interactive)', type: 'boolean', default: 'false' },
+  { property: 'onHoverChange', description: 'Callback when hover value changes', type: '(value: number) => void', default: '-' },
+  { property: 'count', description: 'Number of stars', type: 'number', default: '5' },
+  { property: 'size', description: 'Rating size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: '-' },
+  { property: 'gap', description: 'Space between stars', type: "'none' | 'xs' | 'sm' | 'md' | 'lg'", default: "'md'" },
+  { property: 'color', description: 'Tailwind background color class', type: 'string', default: "'bg-warning'" },
+  { property: 'mask', description: 'Shape of the rating icons', type: "'star' | 'star-2' | 'heart'", default: "'star-2'" },
+  { property: 'allowClear', description: 'Allow clearing rating by clicking same value', type: 'boolean', default: 'true' },
+  { property: 'allowHalf', description: 'Allow half-star selection', type: 'boolean', default: 'false' },
+  { property: 'disabled', description: 'Disabled state (non-interactive)', type: 'boolean', default: 'false' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
 const ratingItemApi = [
   { property: 'value', description: 'Rating value this item represents', type: 'number', default: '-' },
-  { property: 'mask', description: 'Shape of the rating icon', type: "'star' | 'star-2' | 'heart'", default: "'star'" },
+  { property: 'mask', description: 'Shape of the rating icon', type: "'star' | 'star-2' | 'heart'", default: "'star-2'" },
   { property: 'color', description: 'Tailwind background color class', type: 'string', default: "'bg-warning'" },
   { property: 'hidden', description: 'Hidden item for clearing rating', type: 'boolean', default: 'false' },
+  { property: 'half', description: 'Half-star position', type: "'first' | 'second'", default: '-' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
@@ -25,39 +33,22 @@ const examples = [
   {
     id: 'basic',
     title: 'Basic Rating',
-    description: 'Simple 5-star rating.',
+    description: 'Simple 5-star rating with no configuration needed.',
     code: `import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating defaultValue={3}>
-    <Rating.Item value={1} />
-    <Rating.Item value={2} />
-    <Rating.Item value={3} />
-    <Rating.Item value={4} />
-    <Rating.Item value={5} />
-  </Rating>
-)
+const App: React.FC = () => <Rating defaultValue={3} />
 
 export default App`,
   },
   {
     id: 'clearable',
-    title: 'With Hidden Clear',
-    description: 'Hidden first item allows clearing rating.',
+    title: 'Clearable',
+    description: 'Click the same star again to clear the rating.',
     code: `import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating defaultValue={0}>
-    <Rating.Item value={0} hidden />
-    <Rating.Item value={1} />
-    <Rating.Item value={2} />
-    <Rating.Item value={3} />
-    <Rating.Item value={4} />
-    <Rating.Item value={5} />
-  </Rating>
-)
+const App: React.FC = () => <Rating defaultValue={3} allowClear />
 
 export default App`,
   },
@@ -69,35 +60,28 @@ export default App`,
 import { Rating, Space } from 'asterui'
 
 const App: React.FC = () => (
-  <Space>
-    <Rating size="xs" defaultValue={3}>
-      <Rating.Item value={1} />
-      <Rating.Item value={2} />
-      <Rating.Item value={3} />
-      <Rating.Item value={4} />
-      <Rating.Item value={5} />
-    </Rating>
-    <Rating size="sm" defaultValue={3}>
-      <Rating.Item value={1} />
-      <Rating.Item value={2} />
-      <Rating.Item value={3} />
-      <Rating.Item value={4} />
-      <Rating.Item value={5} />
-    </Rating>
-    <Rating size="md" defaultValue={3}>
-      <Rating.Item value={1} />
-      <Rating.Item value={2} />
-      <Rating.Item value={3} />
-      <Rating.Item value={4} />
-      <Rating.Item value={5} />
-    </Rating>
-    <Rating size="lg" defaultValue={3}>
-      <Rating.Item value={1} />
-      <Rating.Item value={2} />
-      <Rating.Item value={3} />
-      <Rating.Item value={4} />
-      <Rating.Item value={5} />
-    </Rating>
+  <Space direction="vertical" size="sm">
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">xs</span><Rating size="xs" defaultValue={3} /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">sm</span><Rating size="sm" defaultValue={3} /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">md</span><Rating size="md" defaultValue={3} /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">lg</span><Rating size="lg" defaultValue={3} /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">xl</span><Rating size="xl" defaultValue={3} /></div>
+  </Space>
+)
+
+export default App`,
+  },
+  {
+    id: 'half',
+    title: 'Half Star',
+    description: 'Allow half-star precision.',
+    code: `import React from 'react'
+import { Rating, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="vertical" size="sm">
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">md</span><Rating defaultValue={2.5} allowHalf /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">lg</span><Rating defaultValue={2.5} allowHalf size="lg" /></div>
   </Space>
 )
 
@@ -110,22 +94,14 @@ export default App`,
     code: `import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating defaultValue={4}>
-    <Rating.Item value={1} mask="heart" color="bg-error" />
-    <Rating.Item value={2} mask="heart" color="bg-error" />
-    <Rating.Item value={3} mask="heart" color="bg-error" />
-    <Rating.Item value={4} mask="heart" color="bg-error" />
-    <Rating.Item value={5} mask="heart" color="bg-error" />
-  </Rating>
-)
+const App: React.FC = () => <Rating defaultValue={4} mask="heart" color="bg-error" />
 
 export default App`,
   },
   {
     id: 'custom-colors',
     title: 'Custom Colors',
-    description: 'Different colors for each rating level.',
+    description: 'Different colors for each rating level using Rating.Item.',
     code: `import React from 'react'
 import { Rating } from 'asterui'
 
@@ -142,21 +118,24 @@ const App: React.FC = () => (
 export default App`,
   },
   {
-    id: 'read-only',
-    title: 'Read-Only',
+    id: 'disabled',
+    title: 'Disabled',
     description: 'Display rating without interaction.',
     code: `import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating value={4} readOnly>
-    <Rating.Item value={1} />
-    <Rating.Item value={2} />
-    <Rating.Item value={3} />
-    <Rating.Item value={4} />
-    <Rating.Item value={5} />
-  </Rating>
-)
+const App: React.FC = () => <Rating value={4} disabled />
+
+export default App`,
+  },
+  {
+    id: 'count',
+    title: 'Custom Count',
+    description: 'Specify a different number of stars.',
+    code: `import React from 'react'
+import { Rating } from 'asterui'
+
+const App: React.FC = () => <Rating defaultValue={7} count={10} />
 
 export default App`,
   },
@@ -172,14 +151,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <Rating value={rating} onChange={setRating}>
-        <Rating.Item value={0} hidden />
-        <Rating.Item value={1} />
-        <Rating.Item value={2} />
-        <Rating.Item value={3} />
-        <Rating.Item value={4} />
-        <Rating.Item value={5} />
-      </Rating>
+      <Rating value={rating} onChange={setRating} />
       <p className="mt-2">Current rating: {rating}</p>
     </div>
   )
@@ -194,15 +166,35 @@ export default App`,
     code: `import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating defaultValue={3}>
-    <Rating.Item value={1} mask="star-2" color="bg-success" />
-    <Rating.Item value={2} mask="star-2" color="bg-success" />
-    <Rating.Item value={3} mask="star-2" color="bg-success" />
-    <Rating.Item value={4} mask="star-2" color="bg-success" />
-    <Rating.Item value={5} mask="star-2" color="bg-success" />
-  </Rating>
-)
+const App: React.FC = () => <Rating defaultValue={3} mask="star" color="bg-success" />
+
+export default App`,
+  },
+  {
+    id: 'form',
+    title: 'Form Integration',
+    description: 'Rating works with Form validation.',
+    code: `import React from 'react'
+import { Rating, Form, notification, Button } from 'asterui'
+
+const App: React.FC = () => {
+  const handleSubmit = (values: { rating?: number }) => {
+    notification.success({ message: 'Submitted!', description: \`Rating: \${values.rating}\` })
+  }
+
+  return (
+    <Form onFinish={handleSubmit} initialValues={{ rating: 3 }}>
+      <Form.Item
+        name="rating"
+        label="Your rating"
+        rules={{ required: 'Please provide a rating' }}
+      >
+        <Rating />
+      </Form.Item>
+      <Button htmlType="submit" color="primary">Submit</Button>
+    </Form>
+  )
+}
 
 export default App`,
   },
@@ -269,10 +261,12 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
       <ul class="list-disc list-inside space-y-2 text-base-content/80">
+        <li>Uses <code class="bg-base-200 px-1 rounded">role="radiogroup"</code> for proper semantics</li>
         <li>Uses radio button pattern for rating selection</li>
+        <li>Each star has an <code class="bg-base-200 px-1 rounded">aria-label</code> describing its value</li>
         <li>Keyboard navigation between rating options</li>
-        <li>Hidden items allow clearing rating to zero</li>
-        <li>Read-only mode prevents interaction while displaying value</li>
+        <li>Hover preview shows visual feedback before selection</li>
+        <li>Disabled state prevents interaction while displaying value</li>
       </ul>
     </section>
   </div>

@@ -12,15 +12,7 @@ Star ratings for user feedback and reviews.
 import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating defaultValue={3}>
-    <Rating.Item value={1} />
-    <Rating.Item value={2} />
-    <Rating.Item value={3} />
-    <Rating.Item value={4} />
-    <Rating.Item value={5} />
-  </Rating>
-)
+const App: React.FC = () => <Rating defaultValue={3} />
 
 export default App
 ```
@@ -31,16 +23,7 @@ export default App
 import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating defaultValue={0}>
-    <Rating.Item value={0} hidden />
-    <Rating.Item value={1} />
-    <Rating.Item value={2} />
-    <Rating.Item value={3} />
-    <Rating.Item value={4} />
-    <Rating.Item value={5} />
-  </Rating>
-)
+const App: React.FC = () => <Rating defaultValue={3} allowClear />
 
 export default App
 ```
@@ -52,35 +35,28 @@ import React from 'react'
 import { Rating, Space } from 'asterui'
 
 const App: React.FC = () => (
-  <Space>
-    <Rating size="xs" defaultValue={3}>
-      <Rating.Item value={1} />
-      <Rating.Item value={2} />
-      <Rating.Item value={3} />
-      <Rating.Item value={4} />
-      <Rating.Item value={5} />
-    </Rating>
-    <Rating size="sm" defaultValue={3}>
-      <Rating.Item value={1} />
-      <Rating.Item value={2} />
-      <Rating.Item value={3} />
-      <Rating.Item value={4} />
-      <Rating.Item value={5} />
-    </Rating>
-    <Rating size="md" defaultValue={3}>
-      <Rating.Item value={1} />
-      <Rating.Item value={2} />
-      <Rating.Item value={3} />
-      <Rating.Item value={4} />
-      <Rating.Item value={5} />
-    </Rating>
-    <Rating size="lg" defaultValue={3}>
-      <Rating.Item value={1} />
-      <Rating.Item value={2} />
-      <Rating.Item value={3} />
-      <Rating.Item value={4} />
-      <Rating.Item value={5} />
-    </Rating>
+  <Space direction="vertical" size="sm">
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">xs</span><Rating size="xs" defaultValue={3} /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">sm</span><Rating size="sm" defaultValue={3} /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">md</span><Rating size="md" defaultValue={3} /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">lg</span><Rating size="lg" defaultValue={3} /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">xl</span><Rating size="xl" defaultValue={3} /></div>
+  </Space>
+)
+
+export default App
+```
+
+### Half Star
+
+```tsx
+import React from 'react'
+import { Rating, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="vertical" size="sm">
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">md</span><Rating defaultValue={2.5} allowHalf /></div>
+    <div className="flex items-center gap-4"><span className="w-8 text-xs opacity-70">lg</span><Rating defaultValue={2.5} allowHalf size="lg" /></div>
   </Space>
 )
 
@@ -93,15 +69,7 @@ export default App
 import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating defaultValue={4}>
-    <Rating.Item value={1} mask="heart" color="bg-error" />
-    <Rating.Item value={2} mask="heart" color="bg-error" />
-    <Rating.Item value={3} mask="heart" color="bg-error" />
-    <Rating.Item value={4} mask="heart" color="bg-error" />
-    <Rating.Item value={5} mask="heart" color="bg-error" />
-  </Rating>
-)
+const App: React.FC = () => <Rating defaultValue={4} mask="heart" color="bg-error" />
 
 export default App
 ```
@@ -125,21 +93,24 @@ const App: React.FC = () => (
 export default App
 ```
 
-### Read Only
+### Disabled
 
 ```tsx
 import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating value={4} readOnly>
-    <Rating.Item value={1} />
-    <Rating.Item value={2} />
-    <Rating.Item value={3} />
-    <Rating.Item value={4} />
-    <Rating.Item value={5} />
-  </Rating>
-)
+const App: React.FC = () => <Rating value={4} disabled />
+
+export default App
+```
+
+### Custom Count
+
+```tsx
+import React from 'react'
+import { Rating } from 'asterui'
+
+const App: React.FC = () => <Rating defaultValue={7} count={10} />
 
 export default App
 ```
@@ -155,14 +126,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <Rating value={rating} onChange={setRating}>
-        <Rating.Item value={0} hidden />
-        <Rating.Item value={1} />
-        <Rating.Item value={2} />
-        <Rating.Item value={3} />
-        <Rating.Item value={4} />
-        <Rating.Item value={5} />
-      </Rating>
+      <Rating value={rating} onChange={setRating} />
       <p className="mt-2">Current rating: {rating}</p>
     </div>
   )
@@ -177,15 +141,35 @@ export default App
 import React from 'react'
 import { Rating } from 'asterui'
 
-const App: React.FC = () => (
-  <Rating defaultValue={3}>
-    <Rating.Item value={1} mask="star-2" color="bg-success" />
-    <Rating.Item value={2} mask="star-2" color="bg-success" />
-    <Rating.Item value={3} mask="star-2" color="bg-success" />
-    <Rating.Item value={4} mask="star-2" color="bg-success" />
-    <Rating.Item value={5} mask="star-2" color="bg-success" />
-  </Rating>
-)
+const App: React.FC = () => <Rating defaultValue={3} mask="star" color="bg-success" />
+
+export default App
+```
+
+### Form
+
+```tsx
+import React from 'react'
+import { Rating, Form, notification, Button } from 'asterui'
+
+const App: React.FC = () => {
+  const handleSubmit = (values: { rating?: number }) => {
+    notification.success({ message: 'Submitted!', description: `Rating: ${values.rating}` })
+  }
+
+  return (
+    <Form onFinish={handleSubmit} initialValues={{ rating: 3 }}>
+      <Form.Item
+        name="rating"
+        label="Your rating"
+        rules={{ required: 'Please provide a rating' }}
+      >
+        <Rating />
+      </Form.Item>
+      <Button htmlType="submit" color="primary">Submit</Button>
+    </Form>
+  )
+}
 
 export default App
 ```
@@ -196,20 +180,28 @@ export default App
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| `children` | Rating.Item components | `React.ReactNode` | `-` |
+| `children` | Custom Rating.Item components (optional) | `React.ReactNode` | `-` |
 | `value` | Controlled rating value | `number` | `-` |
 | `defaultValue` | Default rating value (uncontrolled) | `number` | `0` |
 | `onChange` | Callback when rating changes | `(value: number) => void` | `-` |
-| `size` | Rating size | `xs' \| 'sm' \| 'md' \| 'lg' \| 'xl` | `md` |
-| `readOnly` | Display as read-only (non-interactive) | `boolean` | `false` |
+| `onHoverChange` | Callback when hover value changes | `(value: number) => void` | `-` |
+| `count` | Number of stars | `number` | `5` |
+| `size` | Rating size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
+| `gap` | Space between stars | `'none' \| 'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Tailwind background color class | `string` | `'bg-warning'` |
+| `mask` | Shape of the rating icons | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `allowClear` | Allow clearing rating by clicking same value | `boolean` | `true` |
+| `allowHalf` | Allow half-star selection | `boolean` | `false` |
+| `disabled` | Disabled state (non-interactive) | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
 
-### Rating Item
+### Rating.Item
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
 | `value` | Rating value this item represents | `number` | `-` |
-| `mask` | Shape of the rating icon | `star' \| 'star-2' \| 'heart` | `star` |
-| `color` | Tailwind background color class | `string` | `bg-warning` |
+| `mask` | Shape of the rating icon | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `color` | Tailwind background color class | `string` | `'bg-warning'` |
 | `hidden` | Hidden item for clearing rating | `boolean` | `false` |
+| `half` | Half-star position | `'first' \| 'second'` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |

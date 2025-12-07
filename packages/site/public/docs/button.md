@@ -14,10 +14,10 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary">Primary</Button>
-    <Button type="secondary">Secondary</Button>
-    <Button type="accent">Accent</Button>
-    <Button type="neutral">Neutral</Button>
+    <Button color="primary">Primary</Button>
+    <Button color="secondary">Secondary</Button>
+    <Button color="accent">Accent</Button>
+    <Button color="neutral">Neutral</Button>
   </Space>
 )
 
@@ -34,19 +34,19 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="info">Info</Button>
-    <Button type="success">Success</Button>
-    <Button type="warning">Warning</Button>
-    <Button type="error">Error</Button>
+    <Button color="info">Info</Button>
+    <Button color="success">Success</Button>
+    <Button color="warning">Warning</Button>
+    <Button color="error">Error</Button>
   </Space>
 )
 
 export default App
 ```
 
-### Minimal Styles
+### Variants
 
-Ghost and link variants for subtle actions.
+Different style variants: solid (default), outline, dash, soft, ghost, and link.
 
 ```tsx
 import React from 'react'
@@ -54,9 +54,12 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="ghost">Ghost</Button>
-    <Button type="link">Link</Button>
-    <Button>No Type</Button>
+    <Button color="primary">Solid</Button>
+    <Button color="primary" variant="outline">Outline</Button>
+    <Button color="primary" variant="dash">Dash</Button>
+    <Button color="primary" variant="soft">Soft</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="link">Link</Button>
   </Space>
 )
 
@@ -94,9 +97,11 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary" outline>Primary</Button>
-    <Button type="secondary" outline>Secondary</Button>
-    <Button type="accent" outline>Accent</Button>
+    <Button color="primary" variant="outline">Primary</Button>
+    <Button color="secondary" variant="outline">Secondary</Button>
+    <Button color="accent" variant="outline">Accent</Button>
+    <Button color="success" variant="outline">Success</Button>
+    <Button color="error" variant="outline">Error</Button>
   </Space>
 )
 
@@ -113,9 +118,9 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary" dash>Primary</Button>
-    <Button type="secondary" dash>Secondary</Button>
-    <Button type="accent" dash>Accent</Button>
+    <Button color="primary" variant="dash">Primary</Button>
+    <Button color="secondary" variant="dash">Secondary</Button>
+    <Button color="accent" variant="dash">Accent</Button>
   </Space>
 )
 
@@ -132,11 +137,11 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary" soft>Primary</Button>
-    <Button type="secondary" soft>Secondary</Button>
-    <Button type="accent" soft>Accent</Button>
-    <Button type="success" soft>Success</Button>
-    <Button type="warning" soft>Warning</Button>
+    <Button color="primary" variant="soft">Primary</Button>
+    <Button color="secondary" variant="soft">Secondary</Button>
+    <Button color="accent" variant="soft">Accent</Button>
+    <Button color="success" variant="soft">Success</Button>
+    <Button color="warning" variant="soft">Warning</Button>
   </Space>
 )
 
@@ -153,10 +158,10 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary">Normal</Button>
-    <Button type="primary" active>Active</Button>
-    <Button type="primary" loading>Loading</Button>
-    <Button type="primary" disabled>Disabled</Button>
+    <Button color="primary">Normal</Button>
+    <Button color="primary" active>Active</Button>
+    <Button color="primary" loading>Loading</Button>
+    <Button color="primary" disabled>Disabled</Button>
   </Space>
 )
 
@@ -174,10 +179,10 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm" align="center">
-    <Button type="primary" shape="square">
+    <Button color="primary" shape="square">
       <XMarkIcon className="h-6 w-6" />
     </Button>
-    <Button type="primary" shape="circle">
+    <Button color="primary" shape="circle">
       <XMarkIcon className="h-6 w-6" />
     </Button>
   </Space>
@@ -196,8 +201,8 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
-    <Button type="primary" shape="wide">Wide Button</Button>
-    <Button type="secondary" shape="wide">Another Wide</Button>
+    <Button color="primary" shape="wide">Wide Button</Button>
+    <Button color="secondary" shape="wide">Another Wide</Button>
   </Space>
 )
 
@@ -214,8 +219,8 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" className="w-full">
-    <Button type="primary" shape="block">Block Button</Button>
-    <Button type="secondary" shape="block">Another Block</Button>
+    <Button color="primary" shape="block">Block Button</Button>
+    <Button color="secondary" shape="block">Another Block</Button>
   </Space>
 )
 
@@ -232,9 +237,9 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary" loading>Loading</Button>
-    <Button type="success" loading>Processing</Button>
-    <Button type="error" loading>Deleting</Button>
+    <Button color="primary" loading>Loading</Button>
+    <Button color="success" loading>Processing</Button>
+    <Button color="error" loading>Deleting</Button>
   </Space>
 )
 
@@ -251,13 +256,13 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary" href="https://github.com" target="_blank">
+    <Button color="primary" href="https://github.com" target="_blank">
       GitHub
     </Button>
-    <Button type="ghost" href="https://npmjs.com" target="_blank">
+    <Button variant="ghost" href="https://npmjs.com" target="_blank">
       npm
     </Button>
-    <Button href="/components" type="link">
+    <Button href="/components" variant="link">
       Internal Link
     </Button>
   </Space>
@@ -277,13 +282,13 @@ import { ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@heroicons/react/24/outli
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary" icon={<ArrowUpTrayIcon className="w-4 h-4" />}>
+    <Button color="primary" icon={<ArrowUpTrayIcon className="w-4 h-4" />}>
       Upload
     </Button>
-    <Button type="success" icon={<CheckIcon className="w-4 h-4" />}>
+    <Button color="success" icon={<CheckIcon className="w-4 h-4" />}>
       Save
     </Button>
-    <Button type="error" icon={<TrashIcon className="w-4 h-4" />} iconPosition="end">
+    <Button color="error" icon={<TrashIcon className="w-4 h-4" />} iconPosition="end">
       Delete
     </Button>
   </Space>
@@ -307,7 +312,7 @@ const App: React.FC = () => (
     <Button danger icon={<TrashIcon className="w-4 h-4" />}>
       Remove Item
     </Button>
-    <Button danger outline>Cancel Account</Button>
+    <Button danger variant="outline">Cancel Account</Button>
   </Space>
 )
 
@@ -324,9 +329,64 @@ import { Button, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button type="primary" shape="round">Get Started</Button>
-    <Button type="secondary" shape="round">Learn More</Button>
-    <Button type="accent" shape="round">Subscribe</Button>
+    <Button color="primary" shape="round">Get Started</Button>
+    <Button color="secondary" shape="round">Learn More</Button>
+    <Button color="accent" shape="round">Subscribe</Button>
+  </Space>
+)
+
+export default App
+```
+
+### Toggle Button
+
+Toggle buttons using pressed prop for accessibility.
+
+```tsx
+import React, { useState } from 'react'
+import { Button, Space } from 'asterui'
+
+const App: React.FC = () => {
+  const [pressed, setPressed] = useState(false)
+
+  return (
+    <Space direction="horizontal" wrap size="sm">
+      <Button
+        color="primary"
+        pressed={pressed}
+        active={pressed}
+        onClick={() => setPressed(!pressed)}
+      >
+        {pressed ? 'On' : 'Off'}
+      </Button>
+      <Button
+        color="secondary"
+        variant="outline"
+        pressed={pressed}
+        active={pressed}
+        onClick={() => setPressed(!pressed)}
+      >
+        Toggle: {pressed ? 'Active' : 'Inactive'}
+      </Button>
+    </Space>
+  )
+}
+
+export default App
+```
+
+### No Animation
+
+Disable the click animation effect.
+
+```tsx
+import React from 'react'
+import { Button, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="horizontal" wrap size="sm">
+    <Button color="primary">With Animation</Button>
+    <Button color="primary" noAnimation>No Animation</Button>
   </Space>
 )
 
@@ -335,17 +395,33 @@ export default App
 
 ### Form Submit
 
-Button with htmlType=
+Button with htmlType="submit" inside AsterUI Form component.
 
 ```tsx
 import React from 'react'
-import { Button, Form, Input, Space, Modal } from 'asterui'
+import { Button, Form, Input, Space, notification } from 'asterui'
 
 const App: React.FC = () => {
   const handleFinish = (values: { email: string }) => {
-    Modal.success({
-      title: 'Form Submitted',
-      content: \
+    notification.success({ message: 'Submitted!', description: `Email: ${values.email}` })
+  }
+
+  return (
+    <Form onFinish={handleFinish}>
+      <Form.Item name="email" label="Email" required>
+        <Input type="email" placeholder="you@example.com" />
+      </Form.Item>
+      <Form.Item>
+        <Space direction="horizontal" size="sm">
+          <Button color="primary" htmlType="submit">Submit</Button>
+          <Button htmlType="reset">Reset</Button>
+        </Space>
+      </Form.Item>
+    </Form>
+  )
+}
+
+export default App
 ```
 
 ### Event Handling
@@ -368,10 +444,10 @@ const App: React.FC = () => {
 
   return (
     <Space direction="horizontal" wrap size="sm">
-      <Button type="primary" onClick={() => setCount(c => c + 1)}>
+      <Button color="primary" onClick={() => setCount(c => c + 1)}>
         Clicked {count} times
       </Button>
-      <Button type="secondary" onClick={handleAsync} loading={loading}>
+      <Button color="secondary" onClick={handleAsync} loading={loading}>
         {loading ? 'Processing...' : 'Async Action'}
       </Button>
     </Space>
@@ -387,17 +463,16 @@ export default App
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| `type` | Button color type | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral' \| 'ghost' \| 'link'` | `undefined` |
+| `color` | Button color | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | `-` |
+| `variant` | Button style variant | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link'` | `-` |
 | `size` | Button size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
-| `outline` | Outline style variant | `boolean` | `false` |
-| `dash` | Dashed border variant | `boolean` | `false` |
-| `soft` | Muted color background variant | `boolean` | `false` |
-| `active` | Active state | `boolean` | `false` |
-| `loading` | Show loading spinner | `boolean` | `false` |
+| `active` | Active/pressed visual state | `boolean` | `false` |
+| `loading` | Show loading spinner and disable button | `boolean` | `false` |
 | `shape` | Button shape | `'square' \| 'circle' \| 'wide' \| 'block' \| 'round'` | `-` |
 | `icon` | Icon element to display | `ReactNode` | `-` |
 | `iconPosition` | Position of the icon | `'start' \| 'end'` | `'start'` |
-| `danger` | Applies error/danger styling | `boolean` | `false` |
+| `danger` | Applies error/danger styling (shorthand for color="error") | `boolean` | `false` |
+| `pressed` | Toggle button pressed state (sets aria-pressed) | `boolean` | `-` |
 | `noAnimation` | Disable click animation | `boolean` | `false` |
 | `disabled` | Disabled state | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
