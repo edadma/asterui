@@ -1,15 +1,38 @@
 import React, { createContext, useContext, useState, useCallback, useId } from 'react'
 
 export type MenuMode = 'vertical' | 'horizontal' | 'inline'
+export type MenuSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+
+export interface MenuItem {
+  key: string
+  label: React.ReactNode
+  icon?: React.ReactNode
+  disabled?: boolean
+  children?: MenuItem[]
+  divider?: boolean
+  title?: boolean // For section titles
+}
 
 export interface MenuProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 'onSelect'> {
-  children: React.ReactNode
+  /** Menu items (compound pattern) */
+  children?: React.ReactNode
+  /** Menu items (data-driven pattern) */
+  items?: MenuItem[]
+  /** Menu display mode */
   mode?: MenuMode
+  /** Menu size */
+  size?: MenuSize
+  /** Controlled selected keys */
   selectedKeys?: string[]
+  /** Default selected keys (uncontrolled) */
   defaultSelectedKeys?: string[]
+  /** Controlled open submenu keys */
   openKeys?: string[]
+  /** Default open submenu keys (uncontrolled) */
   defaultOpenKeys?: string[]
+  /** Callback when item is selected */
   onSelect?: (key: string) => void
+  /** Callback when submenu open state changes */
   onOpenChange?: (openKeys: string[]) => void
 }
 
@@ -26,7 +49,10 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLAnchorEleme
 export interface MenuSubMenuProps extends React.HTMLAttributes<HTMLLIElement> {
   children: React.ReactNode
   itemKey: string
-  label: React.ReactNode
+  /** Submenu label */
+  label?: React.ReactNode
+  /** Submenu title (alias for label) */
+  title?: React.ReactNode
   icon?: React.ReactNode
   disabled?: boolean
 }
@@ -55,9 +81,36 @@ function useMenuContext() {
   return context
 }
 
+// Internal component for rendering data-driven menu items
+function renderMenuItem(item: MenuItem, onSelect: (key: string) => void, selectedKeys: string[], openKeys: string[], onToggleOpen: (key: string) => void): React.ReactNode {
+  if (item.divider) {
+    return <MenuDivider key={item.key} />
+  }
+
+  if (item.title) {
+    return <MenuTitle key={item.key}>{item.label}</MenuTitle>
+  }
+
+  if (item.children && item.children.length > 0) {
+    return (
+      <MenuSubMenu key={item.key} itemKey={item.key} label={item.label} icon={item.icon} disabled={item.disabled}>
+        {item.children.map((child) => renderMenuItem(child, onSelect, selectedKeys, openKeys, onToggleOpen))}
+      </MenuSubMenu>
+    )
+  }
+
+  return (
+    <MenuItem key={item.key} itemKey={item.key} icon={item.icon} disabled={item.disabled}>
+      {item.label}
+    </MenuItem>
+  )
+}
+
 function MenuRoot({
   children,
+  items,
   mode = 'vertical',
+  size,
   selectedKeys: controlledSelectedKeys,
   defaultSelectedKeys = [],
   openKeys: controlledOpenKeys,
@@ -98,24 +151,37 @@ function MenuRoot({
   )
 
   const modeClasses: Record<MenuMode, string> = {
-    vertical: '',
+    vertical: 'menu-vertical',
     horizontal: 'menu-horizontal',
-    inline: '',
+    inline: 'menu-vertical',
   }
 
-  const menuClasses = ['menu', modeClasses[mode], className].filter(Boolean).join(' ')
+  const sizeClasses: Record<MenuSize, string> = {
+    xs: 'menu-xs',
+    sm: 'menu-sm',
+    md: 'menu-md',
+    lg: 'menu-lg',
+    xl: 'menu-xl',
+  }
+
+  const menuClasses = ['menu', modeClasses[mode], size && sizeClasses[size], className].filter(Boolean).join(' ')
+
+  const contextValue = {
+    mode,
+    selectedKeys,
+    openKeys,
+    onSelect: handleSelect,
+    onToggleOpen: handleToggleOpen,
+  }
+
+  // Render data-driven items if provided
+  const content = items && items.length > 0
+    ? items.map((item) => renderMenuItem(item, handleSelect, selectedKeys, openKeys, handleToggleOpen))
+    : children
 
   return (
-    <MenuContext.Provider
-      value={{
-        mode,
-        selectedKeys,
-        openKeys,
-        onSelect: handleSelect,
-        onToggleOpen: handleToggleOpen,
-      }}
-    >
-      <ul className={menuClasses} {...rest}>{children}</ul>
+    <MenuContext.Provider value={contextValue}>
+      <ul className={menuClasses} {...rest}>{content}</ul>
     </MenuContext.Provider>
   )
 }
@@ -172,6 +238,7 @@ function MenuSubMenu({
   children,
   itemKey,
   label,
+  title,
   icon,
   disabled = false,
   className = '',
@@ -180,6 +247,9 @@ function MenuSubMenu({
   const context = useMenuContext()
   const isOpen = context.openKeys.includes(itemKey)
   const submenuId = useId()
+
+  // Support both label and title (title as alias for backwards compatibility)
+  const displayLabel = label ?? title
 
   const handleToggle = () => {
     if (disabled) return
@@ -203,7 +273,7 @@ function MenuSubMenu({
             aria-disabled={disabled}
           >
             {icon && <span className="menu-icon">{icon}</span>}
-            {label}
+            {displayLabel}
           </summary>
           <ul id={submenuId} role="menu">
             {children}
@@ -227,7 +297,7 @@ function MenuSubMenu({
           aria-disabled={disabled}
         >
           {icon && <span className="menu-icon">{icon}</span>}
-          {label}
+          {displayLabel}
         </summary>
         <ul id={submenuId} role="menu">
           {children}

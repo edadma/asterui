@@ -1,105 +1,154 @@
 import { createRoot } from 'react-dom/client';
-import React from 'react';
-import { Menu, Space } from 'asterui';
+import React, { useState } from 'react';
+import { Menu, Space, notification } from 'asterui';
 import { HomeIcon, FolderIcon, UsersIcon, CogIcon } from '@heroicons/react/24/outline';
 import { CheckIconSvg } from './icons'
 
-// Demo components for each example
-const demos: Record<string, React.ReactNode> = {
-  'basic': (
-    <Menu>
-      <Menu.Item active>Dashboard</Menu.Item>
-      <Menu.Item>Projects</Menu.Item>
-      <Menu.Item>Team</Menu.Item>
-      <Menu.Item>Settings</Menu.Item>
+// Demo components
+const BasicDemo: React.FC = () => {
+  const [selected, setSelected] = useState('dashboard')
+
+  return (
+    <Menu selectedKeys={[selected]} onSelect={setSelected}>
+      <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+      <Menu.Item itemKey="projects">Projects</Menu.Item>
+      <Menu.Item itemKey="team">Team</Menu.Item>
+      <Menu.Item itemKey="settings">Settings</Menu.Item>
     </Menu>
-  ),
-  'horizontal': (
-    <Menu mode="horizontal">
-      <Menu.Item active>Home</Menu.Item>
-      <Menu.Item>About</Menu.Item>
-      <Menu.Item>Services</Menu.Item>
-      <Menu.Item>Contact</Menu.Item>
+  )
+}
+
+const HorizontalDemo: React.FC = () => {
+  const [selected, setSelected] = useState('home')
+
+  return (
+    <Menu mode="horizontal" selectedKeys={[selected]} onSelect={setSelected}>
+      <Menu.Item itemKey="home">Home</Menu.Item>
+      <Menu.Item itemKey="about">About</Menu.Item>
+      <Menu.Item itemKey="services">Services</Menu.Item>
+      <Menu.Item itemKey="contact">Contact</Menu.Item>
     </Menu>
-  ),
-  'with-icons': (
-    <Menu>
-      <Menu.Item active>
-        <HomeIcon className="w-5 h-5 mr-2" />
+  )
+}
+
+const WithIconsDemo: React.FC = () => {
+  const [selected, setSelected] = useState('dashboard')
+
+  return (
+    <Menu selectedKeys={[selected]} onSelect={setSelected}>
+      <Menu.Item itemKey="dashboard" icon={<HomeIcon className="w-5 h-5" />}>
         Dashboard
       </Menu.Item>
-      <Menu.Item>
-        <FolderIcon className="w-5 h-5 mr-2" />
+      <Menu.Item itemKey="projects" icon={<FolderIcon className="w-5 h-5" />}>
         Projects
       </Menu.Item>
-      <Menu.Item>
-        <UsersIcon className="w-5 h-5 mr-2" />
+      <Menu.Item itemKey="team" icon={<UsersIcon className="w-5 h-5" />}>
         Team
       </Menu.Item>
-      <Menu.Item>
-        <CogIcon className="w-5 h-5 mr-2" />
+      <Menu.Item itemKey="settings" icon={<CogIcon className="w-5 h-5" />}>
         Settings
       </Menu.Item>
     </Menu>
-  ),
-  'submenu': (
-    <Menu>
-      <Menu.Item active>Dashboard</Menu.Item>
-      <Menu.SubMenu title="Projects">
-        <Menu.Item>Active Projects</Menu.Item>
-        <Menu.Item>Archived</Menu.Item>
-        <Menu.Item>Templates</Menu.Item>
+  )
+}
+
+const SubmenuDemo: React.FC = () => {
+  const [selected, setSelected] = useState('dashboard')
+
+  return (
+    <Menu selectedKeys={[selected]} onSelect={setSelected} defaultOpenKeys={['projects']}>
+      <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+      <Menu.SubMenu itemKey="projects" label="Projects">
+        <Menu.Item itemKey="active">Active Projects</Menu.Item>
+        <Menu.Item itemKey="archived">Archived</Menu.Item>
+        <Menu.Item itemKey="templates">Templates</Menu.Item>
       </Menu.SubMenu>
-      <Menu.SubMenu title="Team">
-        <Menu.Item>Members</Menu.Item>
-        <Menu.Item>Roles</Menu.Item>
-        <Menu.Item>Permissions</Menu.Item>
+      <Menu.SubMenu itemKey="team" label="Team">
+        <Menu.Item itemKey="members">Members</Menu.Item>
+        <Menu.Item itemKey="roles">Roles</Menu.Item>
+        <Menu.Item itemKey="permissions">Permissions</Menu.Item>
       </Menu.SubMenu>
       <Menu.Divider />
       <Menu.Title>Admin</Menu.Title>
-      <Menu.Item>Settings</Menu.Item>
-      <Menu.Item>Billing</Menu.Item>
+      <Menu.Item itemKey="admin-settings">Settings</Menu.Item>
+      <Menu.Item itemKey="billing">Billing</Menu.Item>
     </Menu>
-  ),
-  'sizes': (
-    <Space direction="horizontal" size="lg" wrap>
-      <div>
-        <div className="text-sm font-semibold mb-2">Extra Small</div>
-        <Menu size="xs">
-          <Menu.Item active>Dashboard</Menu.Item>
-          <Menu.Item>Projects</Menu.Item>
-          <Menu.Item>Team</Menu.Item>
-        </Menu>
-      </div>
+  )
+}
 
-      <div>
-        <div className="text-sm font-semibold mb-2">Small</div>
-        <Menu size="sm">
-          <Menu.Item active>Dashboard</Menu.Item>
-          <Menu.Item>Projects</Menu.Item>
-          <Menu.Item>Team</Menu.Item>
-        </Menu>
-      </div>
+const SizesDemo: React.FC = () => (
+  <Space direction="horizontal" size="lg" wrap>
+    <div>
+      <div className="text-sm font-semibold mb-2">Extra Small</div>
+      <Menu size="xs" defaultSelectedKeys={['dashboard']}>
+        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+        <Menu.Item itemKey="projects">Projects</Menu.Item>
+        <Menu.Item itemKey="team">Team</Menu.Item>
+      </Menu>
+    </div>
 
-      <div>
-        <div className="text-sm font-semibold mb-2">Medium</div>
-        <Menu size="md">
-          <Menu.Item active>Dashboard</Menu.Item>
-          <Menu.Item>Projects</Menu.Item>
-          <Menu.Item>Team</Menu.Item>
-        </Menu>
-      </div>
+    <div>
+      <div className="text-sm font-semibold mb-2">Small</div>
+      <Menu size="sm" defaultSelectedKeys={['dashboard']}>
+        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+        <Menu.Item itemKey="projects">Projects</Menu.Item>
+        <Menu.Item itemKey="team">Team</Menu.Item>
+      </Menu>
+    </div>
 
-      <div>
-        <div className="text-sm font-semibold mb-2">Large</div>
-        <Menu size="lg">
-          <Menu.Item active>Dashboard</Menu.Item>
-          <Menu.Item>Projects</Menu.Item>
-          <Menu.Item>Team</Menu.Item>
-        </Menu>
-      </div>
-    </Space>
-  ),
+    <div>
+      <div className="text-sm font-semibold mb-2">Medium</div>
+      <Menu size="md" defaultSelectedKeys={['dashboard']}>
+        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+        <Menu.Item itemKey="projects">Projects</Menu.Item>
+        <Menu.Item itemKey="team">Team</Menu.Item>
+      </Menu>
+    </div>
+
+    <div>
+      <div className="text-sm font-semibold mb-2">Large</div>
+      <Menu size="lg" defaultSelectedKeys={['dashboard']}>
+        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+        <Menu.Item itemKey="projects">Projects</Menu.Item>
+        <Menu.Item itemKey="team">Team</Menu.Item>
+      </Menu>
+    </div>
+  </Space>
+)
+
+const DataDrivenDemo: React.FC = () => {
+  const [selected, setSelected] = useState('dashboard')
+
+  const items = [
+    { key: 'dashboard', label: 'Dashboard', icon: <HomeIcon className="w-5 h-5" /> },
+    { key: 'projects', label: 'Projects', icon: <FolderIcon className="w-5 h-5" />, children: [
+      { key: 'active', label: 'Active Projects' },
+      { key: 'archived', label: 'Archived' },
+    ]},
+    { key: 'divider1', divider: true },
+    { key: 'admin', label: 'Admin', title: true },
+    { key: 'settings', label: 'Settings', icon: <CogIcon className="w-5 h-5" /> },
+  ]
+
+  return (
+    <Menu
+      items={items}
+      selectedKeys={[selected]}
+      onSelect={(key) => {
+        setSelected(key)
+        notification.info({ message: `Selected: ${key}` })
+      }}
+    />
+  )
+}
+
+const demos: Record<string, React.FC> = {
+  'basic': BasicDemo,
+  'horizontal': HorizontalDemo,
+  'with-icons': WithIconsDemo,
+  'submenu': SubmenuDemo,
+  'sizes': SizesDemo,
+  'datadriven': DataDrivenDemo,
 };
 
 // Mount React demos
@@ -107,7 +156,8 @@ document.querySelectorAll('.demo-container').forEach(container => {
   const exampleId = container.getAttribute('data-example');
   if (exampleId && demos[exampleId]) {
     const root = createRoot(container as HTMLElement);
-    root.render(demos[exampleId]);
+    const Demo = demos[exampleId];
+    root.render(<Demo />);
   }
 });
 

@@ -4,50 +4,76 @@ import ApiTable from '../../components/ApiTable.astro';
 import { Code } from 'astro:components';
 
 const menuApi = [
-  { property: 'children', description: 'Menu items and submenus', type: 'React.ReactNode' },
-  { property: 'mode', description: 'Menu display mode', type: "'vertical' | 'horizontal'", default: "'vertical'" },
-  { property: 'size', description: 'Menu size', type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'" },
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
+  { property: 'children', description: 'Menu items (compound pattern)', type: 'React.ReactNode', default: '-' },
+  { property: 'items', description: 'Menu items (data-driven pattern)', type: 'MenuItem[]', default: '-' },
+  { property: 'mode', description: 'Menu display mode', type: "'vertical' | 'horizontal' | 'inline'", default: "'vertical'" },
+  { property: 'size', description: 'Menu size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: '-' },
+  { property: 'selectedKeys', description: 'Controlled selected item keys', type: 'string[]', default: '-' },
+  { property: 'defaultSelectedKeys', description: 'Default selected keys (uncontrolled)', type: 'string[]', default: '[]' },
+  { property: 'openKeys', description: 'Controlled open submenu keys', type: 'string[]', default: '-' },
+  { property: 'defaultOpenKeys', description: 'Default open submenu keys (uncontrolled)', type: 'string[]', default: '[]' },
+  { property: 'onSelect', description: 'Callback when item is selected', type: '(key: string) => void', default: '-' },
+  { property: 'onOpenChange', description: 'Callback when submenu open state changes', type: '(openKeys: string[]) => void', default: '-' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
+];
+
+const menuItemConfigApi = [
+  { property: 'key', description: 'Unique identifier', type: 'string', default: '-' },
+  { property: 'label', description: 'Item label', type: 'React.ReactNode', default: '-' },
+  { property: 'icon', description: 'Icon element', type: 'React.ReactNode', default: '-' },
+  { property: 'disabled', description: 'Whether item is disabled', type: 'boolean', default: 'false' },
+  { property: 'children', description: 'Submenu items', type: 'MenuItem[]', default: '-' },
+  { property: 'divider', description: 'Render as divider', type: 'boolean', default: 'false' },
+  { property: 'title', description: 'Render as section title', type: 'boolean', default: 'false' },
 ];
 
 const menuItemApi = [
-  { property: 'children', description: 'Item content', type: 'React.ReactNode' },
-  { property: 'active', description: 'Whether the item is active', type: 'boolean', default: 'false' },
-  { property: 'onClick', description: 'Click handler', type: '() => void' },
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
-];
-
-const menuTitleApi = [
-  { property: 'children', description: 'Title content', type: 'React.ReactNode' },
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
+  { property: 'itemKey', description: 'Unique key for selection', type: 'string', default: '-' },
+  { property: 'children', description: 'Item content', type: 'React.ReactNode', default: '-' },
+  { property: 'icon', description: 'Icon element', type: 'React.ReactNode', default: '-' },
+  { property: 'disabled', description: 'Whether item is disabled', type: 'boolean', default: 'false' },
+  { property: 'onClick', description: 'Click handler', type: '() => void', default: '-' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
 const menuSubMenuApi = [
-  { property: 'title', description: 'Submenu title', type: 'React.ReactNode' },
-  { property: 'children', description: 'Submenu items', type: 'React.ReactNode' },
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
+  { property: 'itemKey', description: 'Unique key for open state', type: 'string', default: '-' },
+  { property: 'label', description: 'Submenu label', type: 'React.ReactNode', default: '-' },
+  { property: 'icon', description: 'Icon element', type: 'React.ReactNode', default: '-' },
+  { property: 'disabled', description: 'Whether submenu is disabled', type: 'boolean', default: 'false' },
+  { property: 'children', description: 'Submenu items', type: 'React.ReactNode', default: '-' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
+];
+
+const menuTitleApi = [
+  { property: 'children', description: 'Title content', type: 'React.ReactNode', default: '-' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
 const menuDividerApi = [
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
 const examples = [
   {
     id: 'basic',
     title: 'Basic Menu',
-    description: 'Simple vertical menu with items.',
-    code: `import React from 'react'
+    description: 'Simple vertical menu with selectable items.',
+    code: `import React, { useState } from 'react'
 import { Menu } from 'asterui'
 
-const App: React.FC = () => (
-  <Menu>
-    <Menu.Item active>Dashboard</Menu.Item>
-    <Menu.Item>Projects</Menu.Item>
-    <Menu.Item>Team</Menu.Item>
-    <Menu.Item>Settings</Menu.Item>
-  </Menu>
-)
+const App: React.FC = () => {
+  const [selected, setSelected] = useState('dashboard')
+
+  return (
+    <Menu selectedKeys={[selected]} onSelect={setSelected}>
+      <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+      <Menu.Item itemKey="projects">Projects</Menu.Item>
+      <Menu.Item itemKey="team">Team</Menu.Item>
+      <Menu.Item itemKey="settings">Settings</Menu.Item>
+    </Menu>
+  )
+}
 
 export default App`,
   },
@@ -55,17 +81,21 @@ export default App`,
     id: 'horizontal',
     title: 'Horizontal Menu',
     description: 'Menu displayed horizontally.',
-    code: `import React from 'react'
+    code: `import React, { useState } from 'react'
 import { Menu } from 'asterui'
 
-const App: React.FC = () => (
-  <Menu mode="horizontal">
-    <Menu.Item active>Home</Menu.Item>
-    <Menu.Item>About</Menu.Item>
-    <Menu.Item>Services</Menu.Item>
-    <Menu.Item>Contact</Menu.Item>
-  </Menu>
-)
+const App: React.FC = () => {
+  const [selected, setSelected] = useState('home')
+
+  return (
+    <Menu mode="horizontal" selectedKeys={[selected]} onSelect={setSelected}>
+      <Menu.Item itemKey="home">Home</Menu.Item>
+      <Menu.Item itemKey="about">About</Menu.Item>
+      <Menu.Item itemKey="services">Services</Menu.Item>
+      <Menu.Item itemKey="contact">Contact</Menu.Item>
+    </Menu>
+  )
+}
 
 export default App`,
   },
@@ -73,30 +103,30 @@ export default App`,
     id: 'with-icons',
     title: 'With Icons',
     description: 'Menu items with icons for better visual context.',
-    code: `import React from 'react'
+    code: `import React, { useState } from 'react'
 import { Menu } from 'asterui'
 import { HomeIcon, FolderIcon, UsersIcon, CogIcon } from '@heroicons/react/24/outline'
 
-const App: React.FC = () => (
-  <Menu>
-    <Menu.Item active>
-      <HomeIcon className="w-5 h-5 mr-2" />
-      Dashboard
-    </Menu.Item>
-    <Menu.Item>
-      <FolderIcon className="w-5 h-5 mr-2" />
-      Projects
-    </Menu.Item>
-    <Menu.Item>
-      <UsersIcon className="w-5 h-5 mr-2" />
-      Team
-    </Menu.Item>
-    <Menu.Item>
-      <CogIcon className="w-5 h-5 mr-2" />
-      Settings
-    </Menu.Item>
-  </Menu>
-)
+const App: React.FC = () => {
+  const [selected, setSelected] = useState('dashboard')
+
+  return (
+    <Menu selectedKeys={[selected]} onSelect={setSelected}>
+      <Menu.Item itemKey="dashboard" icon={<HomeIcon className="w-5 h-5" />}>
+        Dashboard
+      </Menu.Item>
+      <Menu.Item itemKey="projects" icon={<FolderIcon className="w-5 h-5" />}>
+        Projects
+      </Menu.Item>
+      <Menu.Item itemKey="team" icon={<UsersIcon className="w-5 h-5" />}>
+        Team
+      </Menu.Item>
+      <Menu.Item itemKey="settings" icon={<CogIcon className="w-5 h-5" />}>
+        Settings
+      </Menu.Item>
+    </Menu>
+  )
+}
 
 export default App`,
   },
@@ -104,28 +134,32 @@ export default App`,
     id: 'submenu',
     title: 'With Submenu',
     description: 'Menu with nested submenus.',
-    code: `import React from 'react'
+    code: `import React, { useState } from 'react'
 import { Menu } from 'asterui'
 
-const App: React.FC = () => (
-  <Menu>
-    <Menu.Item active>Dashboard</Menu.Item>
-    <Menu.SubMenu title="Projects">
-      <Menu.Item>Active Projects</Menu.Item>
-      <Menu.Item>Archived</Menu.Item>
-      <Menu.Item>Templates</Menu.Item>
-    </Menu.SubMenu>
-    <Menu.SubMenu title="Team">
-      <Menu.Item>Members</Menu.Item>
-      <Menu.Item>Roles</Menu.Item>
-      <Menu.Item>Permissions</Menu.Item>
-    </Menu.SubMenu>
-    <Menu.Divider />
-    <Menu.Title>Admin</Menu.Title>
-    <Menu.Item>Settings</Menu.Item>
-    <Menu.Item>Billing</Menu.Item>
-  </Menu>
-)
+const App: React.FC = () => {
+  const [selected, setSelected] = useState('dashboard')
+
+  return (
+    <Menu selectedKeys={[selected]} onSelect={setSelected} defaultOpenKeys={['projects']}>
+      <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+      <Menu.SubMenu itemKey="projects" label="Projects">
+        <Menu.Item itemKey="active">Active Projects</Menu.Item>
+        <Menu.Item itemKey="archived">Archived</Menu.Item>
+        <Menu.Item itemKey="templates">Templates</Menu.Item>
+      </Menu.SubMenu>
+      <Menu.SubMenu itemKey="team" label="Team">
+        <Menu.Item itemKey="members">Members</Menu.Item>
+        <Menu.Item itemKey="roles">Roles</Menu.Item>
+        <Menu.Item itemKey="permissions">Permissions</Menu.Item>
+      </Menu.SubMenu>
+      <Menu.Divider />
+      <Menu.Title>Admin</Menu.Title>
+      <Menu.Item itemKey="admin-settings">Settings</Menu.Item>
+      <Menu.Item itemKey="billing">Billing</Menu.Item>
+    </Menu>
+  )
+}
 
 export default App`,
   },
@@ -140,41 +174,77 @@ const App: React.FC = () => (
   <Space direction="horizontal" size="lg" wrap>
     <div>
       <div className="text-sm font-semibold mb-2">Extra Small</div>
-      <Menu size="xs">
-        <Menu.Item active>Dashboard</Menu.Item>
-        <Menu.Item>Projects</Menu.Item>
-        <Menu.Item>Team</Menu.Item>
+      <Menu size="xs" defaultSelectedKeys={['dashboard']}>
+        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+        <Menu.Item itemKey="projects">Projects</Menu.Item>
+        <Menu.Item itemKey="team">Team</Menu.Item>
       </Menu>
     </div>
 
     <div>
       <div className="text-sm font-semibold mb-2">Small</div>
-      <Menu size="sm">
-        <Menu.Item active>Dashboard</Menu.Item>
-        <Menu.Item>Projects</Menu.Item>
-        <Menu.Item>Team</Menu.Item>
+      <Menu size="sm" defaultSelectedKeys={['dashboard']}>
+        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+        <Menu.Item itemKey="projects">Projects</Menu.Item>
+        <Menu.Item itemKey="team">Team</Menu.Item>
       </Menu>
     </div>
 
     <div>
       <div className="text-sm font-semibold mb-2">Medium</div>
-      <Menu size="md">
-        <Menu.Item active>Dashboard</Menu.Item>
-        <Menu.Item>Projects</Menu.Item>
-        <Menu.Item>Team</Menu.Item>
+      <Menu size="md" defaultSelectedKeys={['dashboard']}>
+        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+        <Menu.Item itemKey="projects">Projects</Menu.Item>
+        <Menu.Item itemKey="team">Team</Menu.Item>
       </Menu>
     </div>
 
     <div>
       <div className="text-sm font-semibold mb-2">Large</div>
-      <Menu size="lg">
-        <Menu.Item active>Dashboard</Menu.Item>
-        <Menu.Item>Projects</Menu.Item>
-        <Menu.Item>Team</Menu.Item>
+      <Menu size="lg" defaultSelectedKeys={['dashboard']}>
+        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
+        <Menu.Item itemKey="projects">Projects</Menu.Item>
+        <Menu.Item itemKey="team">Team</Menu.Item>
       </Menu>
     </div>
   </Space>
 )
+
+export default App`,
+  },
+  {
+    id: 'datadriven',
+    title: 'Data-Driven Pattern',
+    description: 'Use items prop for data-driven menus.',
+    code: `import React, { useState } from 'react'
+import { Menu, notification } from 'asterui'
+import { HomeIcon, FolderIcon, CogIcon } from '@heroicons/react/24/outline'
+
+const App: React.FC = () => {
+  const [selected, setSelected] = useState('dashboard')
+
+  const items = [
+    { key: 'dashboard', label: 'Dashboard', icon: <HomeIcon className="w-5 h-5" /> },
+    { key: 'projects', label: 'Projects', icon: <FolderIcon className="w-5 h-5" />, children: [
+      { key: 'active', label: 'Active Projects' },
+      { key: 'archived', label: 'Archived' },
+    ]},
+    { key: 'divider1', divider: true },
+    { key: 'admin', label: 'Admin', title: true },
+    { key: 'settings', label: 'Settings', icon: <CogIcon className="w-5 h-5" /> },
+  ]
+
+  return (
+    <Menu
+      items={items}
+      selectedKeys={[selected]}
+      onSelect={(key) => {
+        setSelected(key)
+        notification.info({ message: \`Selected: \${key}\` })
+      }}
+    />
+  )
+}
 
 export default App`,
   },
@@ -245,13 +315,16 @@ export default App`,
       <h2 class="text-2xl font-bold mb-6">API</h2>
       <ApiTable title="Menu" data={menuApi} />
       <div class="mt-8">
-        <ApiTable title="Menu.Item" data={menuItemApi} />
+        <ApiTable title="MenuItem (for items prop)" data={menuItemConfigApi} />
+      </div>
+      <div class="mt-8">
+        <ApiTable title="Menu.Item (compound pattern)" data={menuItemApi} />
+      </div>
+      <div class="mt-8">
+        <ApiTable title="Menu.SubMenu (compound pattern)" data={menuSubMenuApi} />
       </div>
       <div class="mt-8">
         <ApiTable title="Menu.Title" data={menuTitleApi} />
-      </div>
-      <div class="mt-8">
-        <ApiTable title="Menu.SubMenu" data={menuSubMenuApi} />
       </div>
       <div class="mt-8">
         <ApiTable title="Menu.Divider" data={menuDividerApi} />

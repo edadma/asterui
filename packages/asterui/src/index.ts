@@ -146,7 +146,7 @@ export { Mention } from './components/Mention'
 export type { MentionProps, MentionOption } from './components/Mention'
 
 export { Menu } from './components/Menu'
-export type { MenuProps, MenuItemProps, MenuSubMenuProps, MenuTitleProps, MenuDividerProps, MenuMode } from './components/Menu'
+export type { MenuProps, MenuItem, MenuItemProps, MenuSubMenuProps, MenuTitleProps, MenuDividerProps, MenuMode, MenuSize } from './components/Menu'
 
 export { Browser } from './components/Browser'
 export type { BrowserProps } from './components/Browser'
