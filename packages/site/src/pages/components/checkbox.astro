@@ -9,19 +9,19 @@ const checkboxApi = [
   { property: 'onChange', description: 'Change handler', type: '(e: ChangeEvent) => void' },
   { property: 'disabled', description: 'Disable the checkbox', type: 'boolean', default: 'false' },
   { property: 'indeterminate', description: 'Indeterminate state (partial selection)', type: 'boolean', default: 'false' },
-  { property: 'size', description: 'Checkbox size', type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'" },
-  { property: 'color', description: 'Checkbox color', type: "'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error'" },
+  { property: 'size', description: 'Checkbox size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'" },
+  { property: 'color', description: 'Checkbox color', type: "'primary' | 'secondary' | 'accent' | 'neutral' | 'info' | 'success' | 'warning' | 'error'" },
   { property: 'swap', description: 'Swap mode config', type: '{ on: ReactNode, off: ReactNode, effect?: "rotate" | "flip" }' },
   { property: 'className', description: 'Additional CSS classes', type: 'string' },
 ];
 
 const checkboxGroupApi = [
-  { property: 'value', description: 'Selected values', type: 'string[]' },
-  { property: 'defaultValue', description: 'Initial selected values', type: 'string[]' },
-  { property: 'onChange', description: 'Change handler', type: '(values: string[]) => void' },
+  { property: 'value', description: 'Selected values', type: '(string | number)[]' },
+  { property: 'defaultValue', description: 'Initial selected values', type: '(string | number)[]' },
+  { property: 'onChange', description: 'Change handler', type: '(values: (string | number)[]) => void' },
   { property: 'options', description: 'Checkbox options', type: 'CheckboxOption[]' },
   { property: 'disabled', description: 'Disable all checkboxes', type: 'boolean', default: 'false' },
-  { property: 'direction', description: 'Layout direction', type: "'horizontal' | 'vertical'", default: "'horizontal'" },
+  { property: 'direction', description: 'Layout direction', type: "'horizontal' | 'vertical'", default: "'vertical'" },
 ];
 
 const examples = [

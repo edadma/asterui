@@ -32,6 +32,8 @@ export interface CheckboxGroupProps {
   onChange?: (values: (string | number)[]) => void
   disabled?: boolean
   options?: (string | number | CheckboxOptionType)[]
+  /** Layout direction for options */
+  direction?: 'horizontal' | 'vertical'
   className?: string
 }
 
@@ -50,6 +52,7 @@ function CheckboxGroup({
   onChange,
   disabled = false,
   options,
+  direction = 'vertical',
   className = ''
 }: CheckboxGroupProps) {
   const [internalValue, setInternalValue] = React.useState<(string | number)[]>(defaultValue || [])
@@ -74,9 +77,10 @@ function CheckboxGroup({
 
   // If options are provided, render checkboxes automatically
   if (options) {
+    const directionClasses = direction === 'horizontal' ? 'flex flex-row flex-wrap gap-4' : 'flex flex-col'
     return (
       <CheckboxGroupContext.Provider value={contextValue}>
-        <div className={className}>
+        <div className={`${directionClasses} ${className}`.trim()}>
           {options.map((option) => {
             if (typeof option === 'string' || typeof option === 'number') {
               return (

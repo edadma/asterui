@@ -269,8 +269,8 @@ export default App
 | `onChange` | Change handler | `(e: ChangeEvent) => void` | `-` |
 | `disabled` | Disable the checkbox | `boolean` | `false` |
 | `indeterminate` | Indeterminate state (partial selection) | `boolean` | `false` |
-| `size` | Checkbox size | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
-| `color` | Checkbox color | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `size` | Checkbox size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `color` | Checkbox color | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
 | `swap` | Swap mode config (see below) | `CheckboxSwapConfig` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
 
@@ -286,9 +286,9 @@ export default App
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| `value` | Selected values | `string[]` | `-` |
-| `defaultValue` | Initial selected values | `string[]` | `-` |
-| `onChange` | Change handler | `(values: string[]) => void` | `-` |
+| `value` | Selected values | `(string \| number)[]` | `-` |
+| `defaultValue` | Initial selected values | `(string \| number)[]` | `-` |
+| `onChange` | Change handler | `(values: (string \| number)[]) => void` | `-` |
 | `options` | Checkbox options | `CheckboxOption[]` | `-` |
 | `disabled` | Disable all checkboxes | `boolean` | `false` |
-| `direction` | Layout direction | `horizontal' \| 'vertical` | `horizontal` |
+| `direction` | Layout direction | `'horizontal' \| 'vertical'` | `'vertical'` |
