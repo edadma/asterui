@@ -44,7 +44,7 @@ function RadioGroup({ children, value, defaultValue, onChange, name, className =
 
   return (
     <RadioGroupContext.Provider value={{ value: currentValue, onChange: handleChange, name }}>
-      <div className={className}>{children}</div>
+      <div role="radiogroup" className={className}>{children}</div>
     </RadioGroupContext.Provider>
   )
 }

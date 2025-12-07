@@ -142,51 +142,69 @@ export default App
 ### Form
 
 ```tsx
-import React from 'react'
-import { Radio, Form, Button, Space } from 'asterui'
+import React, { useState } from 'react'
+import { Radio, Form, Modal, Space } from 'asterui'
 
 const App: React.FC = () => {
+  const [submittedData, setSubmittedData] = useState<Record<string, unknown> | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const handleSubmit = (values: { plan?: string }) => {
-    console.log(values)
+    setSubmittedData(values)
+    setIsModalOpen(true)
   }
 
   return (
-    <Form onFinish={handleSubmit} initialValues={{ plan: 'basic' }}>
-      <Form.Item
-        name="plan"
-        label="Choose a plan"
-        rules={{ required: 'Please select a plan' }}
+    <>
+      <Form onFinish={handleSubmit} initialValues={{ plan: 'basic' }}>
+        <Form.Item
+          name="plan"
+          label="Choose a plan"
+          rules={{ required: 'Please select a plan' }}
+        >
+          <Radio.Group>
+            <Space size="sm">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <Radio value="basic" />
+                <div>
+                  <div className="font-semibold">Basic</div>
+                  <div className="text-sm opacity-70">$10/month</div>
+                </div>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <Radio value="pro" />
+                <div>
+                  <div className="font-semibold">Pro</div>
+                  <div className="text-sm opacity-70">$20/month</div>
+                </div>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <Radio value="enterprise" />
+                <div>
+                  <div className="font-semibold">Enterprise</div>
+                  <div className="text-sm opacity-70">Contact us</div>
+                </div>
+              </label>
+            </Space>
+          </Radio.Group>
+        </Form.Item>
+        <button type="submit" className="btn btn-primary">Continue</button>
+      </Form>
+
+      <Modal
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        title="Form Submitted"
+        footer={null}
       >
-        <Radio.Group>
-          <Space size="sm">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <Radio value="basic" />
-              <div>
-                <div className="font-semibold">Basic</div>
-                <div className="text-sm opacity-70">$10/month</div>
-              </div>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <Radio value="pro" />
-              <div>
-                <div className="font-semibold">Pro</div>
-                <div className="text-sm opacity-70">$20/month</div>
-              </div>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <Radio value="enterprise" />
-              <div>
-                <div className="font-semibold">Enterprise</div>
-                <div className="text-sm opacity-70">Contact us</div>
-              </div>
-            </label>
-          </Space>
-        </Radio.Group>
-      </Form.Item>
-      <Button type="primary" htmlType="submit">
-        Continue
-      </Button>
-    </Form>
+        <div className="py-4">
+          <p className="mb-4">Form data:</p>
+          <pre className="bg-base-200 p-4 rounded-lg overflow-auto max-h-96">
+            {JSON.stringify(submittedData, null, 2)}
+          </pre>
+        </div>
+      </Modal>
+    </>
   )
 }
 
@@ -202,7 +220,7 @@ export default App
 | `children` | Radio components | `React.ReactNode` | `-` |
 | `value` | Current selected value (controlled) | `string \| number` | `-` |
 | `defaultValue` | Default selected value (uncontrolled) | `string \| number` | `-` |
-| `onChange` | Callback when selection changes | `(value: string \| number) => void` | `-` |
+| `onChange` | Callback when selection changes | `(e: { target: { value: string \| number, name?: string } }) => void` | `-` |
 | `name` | Name for all radio inputs in the group | `string` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
 
@@ -211,7 +229,8 @@ export default App
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
 | `value` | Radio value (required when in Radio.Group) | `string \| number` | `-` |
-| `size` | Radio button size | `xs' \| 'sm' \| 'md' \| 'lg' \| 'xl` | `md` |
-| `color` | Radio button color variant | `neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error` | `-` |
+| `children` | Label content (wraps in label element) | `React.ReactNode` | `-` |
+| `size` | Radio button size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
+| `color` | Radio button color variant | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
 | `disabled` | Disabled state | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |

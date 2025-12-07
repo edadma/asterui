@@ -7,14 +7,15 @@ const radioGroupApi = [
   { property: 'children', description: 'Radio components', type: 'React.ReactNode', default: '-' },
   { property: 'value', description: 'Current selected value (controlled)', type: 'string | number', default: '-' },
   { property: 'defaultValue', description: 'Default selected value (uncontrolled)', type: 'string | number', default: '-' },
-  { property: 'onChange', description: 'Callback when selection changes', type: '(value: string | number) => void', default: '-' },
+  { property: 'onChange', description: 'Callback when selection changes', type: '(e: { target: { value: string | number, name?: string } }) => void', default: '-' },
   { property: 'name', description: 'Name for all radio inputs in the group', type: 'string', default: '-' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
 const radioApi = [
   { property: 'value', description: 'Radio value (required when in Radio.Group)', type: 'string | number', default: '-' },
-  { property: 'size', description: 'Radio button size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'" },
+  { property: 'children', description: 'Label content (wraps in label element)', type: 'React.ReactNode', default: '-' },
+  { property: 'size', description: 'Radio button size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: '-' },
   { property: 'color', description: 'Radio button color variant', type: "'neutral' | 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error'", default: '-' },
   { property: 'disabled', description: 'Disabled state', type: 'boolean', default: 'false' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
@@ -102,6 +103,10 @@ const App: React.FC = () => (
       <Radio size="lg" />
       <span className="text-lg">Large</span>
     </label>
+    <label className="flex items-center gap-2">
+      <Radio size="xl" />
+      <span className="text-xl">Extra Large</span>
+    </label>
   </Space>
 )
 
@@ -154,42 +159,69 @@ export default App`,
     id: 'form',
     title: 'In Form',
     description: 'Radio group in a form with validation.',
-    code: `import React from 'react'
-import { Radio, Form, Button, Space } from 'asterui'
+    code: `import React, { useState } from 'react'
+import { Radio, Form, Modal, Space } from 'asterui'
 
 const App: React.FC = () => {
+  const [submittedData, setSubmittedData] = useState<Record<string, unknown> | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const handleSubmit = (values: { plan?: string }) => {
-    console.log(values)
+    setSubmittedData(values)
+    setIsModalOpen(true)
   }
 
   return (
-    <Form onFinish={handleSubmit} initialValues={{ plan: 'basic' }}>
-      <Form.Item
-        name="plan"
-        label="Choose a plan"
-        rules={{ required: 'Please select a plan' }}
+    <>
+      <Form onFinish={handleSubmit} initialValues={{ plan: 'basic' }}>
+        <Form.Item
+          name="plan"
+          label="Choose a plan"
+          rules={{ required: 'Please select a plan' }}
+        >
+          <Radio.Group>
+            <Space size="sm">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <Radio value="basic" />
+                <div>
+                  <div className="font-semibold">Basic</div>
+                  <div className="text-sm opacity-70">$10/month</div>
+                </div>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <Radio value="pro" />
+                <div>
+                  <div className="font-semibold">Pro</div>
+                  <div className="text-sm opacity-70">$20/month</div>
+                </div>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <Radio value="enterprise" />
+                <div>
+                  <div className="font-semibold">Enterprise</div>
+                  <div className="text-sm opacity-70">Contact us</div>
+                </div>
+              </label>
+            </Space>
+          </Radio.Group>
+        </Form.Item>
+        <button type="submit" className="btn btn-primary">Continue</button>
+      </Form>
+
+      <Modal
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        title="Form Submitted"
+        footer={null}
       >
-        <Radio.Group>
-          <Space size="sm">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <Radio value="basic" />
-              <div>
-                <div className="font-semibold">Basic</div>
-                <div className="text-sm opacity-70">$10/month</div>
-              </div>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <Radio value="pro" />
-              <div>
-                <div className="font-semibold">Pro</div>
-                <div className="text-sm opacity-70">$20/month</div>
-              </div>
-            </label>
-          </Space>
-        </Radio.Group>
-      </Form.Item>
-      <Button type="primary" htmlType="submit">Continue</Button>
-    </Form>
+        <div className="py-4">
+          <p className="mb-4">Form data:</p>
+          <pre className="bg-base-200 p-4 rounded-lg overflow-auto max-h-96">
+            {JSON.stringify(submittedData, null, 2)}
+          </pre>
+        </div>
+      </Modal>
+    </>
   )
 }
 
@@ -258,10 +290,12 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
       <ul class="list-disc list-inside space-y-2 text-base-content/80">
-        <li>Uses native radio inputs for full accessibility support</li>
-        <li>Radio groups are properly associated with <code class="bg-base-200 px-1 rounded">name</code> attribute</li>
+        <li>Uses native <code class="bg-base-200 px-1 rounded">&lt;input type="radio"&gt;</code> elements for full accessibility</li>
+        <li>Radio.Group uses <code class="bg-base-200 px-1 rounded">role="radiogroup"</code> for proper semantics</li>
+        <li>Radio inputs share <code class="bg-base-200 px-1 rounded">name</code> attribute within a group</li>
         <li>Labels are properly connected for click targeting</li>
         <li>Keyboard navigation with arrow keys within groups</li>
+        <li>Disabled state is properly communicated to assistive technologies</li>
       </ul>
     </section>
   </div>
