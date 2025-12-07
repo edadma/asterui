@@ -50,7 +50,6 @@ npm install asterui
 - [PageLayout](https://asterui.com/docs/pagelayout.md)
 - [Space](https://asterui.com/docs/space.md)
 - [Splitter](https://asterui.com/docs/splitter.md)
-- [Stack](https://asterui.com/docs/stack.md)
 
 ### Responsive
 

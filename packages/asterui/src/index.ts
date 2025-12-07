@@ -220,9 +220,6 @@ export type { SpaceProps } from './components/Space'
 export { Splitter } from './components/Splitter'
 export type { SplitterProps, SplitterPanelProps } from './components/Splitter'
 
-export { Stack } from './components/Stack'
-export type { StackProps } from './components/Stack'
-
 export { Stats } from './components/Stat'
 export type { StatsProps, StatProps } from './components/Stat'
 
