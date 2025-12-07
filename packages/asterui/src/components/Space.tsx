@@ -6,6 +6,7 @@ export interface SpaceProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
   wrap?: boolean
+  split?: React.ReactNode
   children: React.ReactNode
 }
 
@@ -40,6 +41,7 @@ export const Space: React.FC<SpaceProps> = ({
   align,
   justify,
   wrap = false,
+  split,
   className = '',
   style,
   children,
@@ -67,5 +69,26 @@ export const Space: React.FC<SpaceProps> = ({
     ...(isNumericSize ? { gap: `${size}px` } : {}),
   }
 
-  return <div className={classes} style={combinedStyle} {...rest}>{children}</div>
+  // If split is provided, interleave separator between children
+  const renderChildren = () => {
+    if (!split) return children
+
+    const childArray = React.Children.toArray(children).filter(Boolean)
+    if (childArray.length <= 1) return children
+
+    const result: React.ReactNode[] = []
+    childArray.forEach((child, index) => {
+      result.push(child)
+      if (index < childArray.length - 1) {
+        result.push(
+          <span key={`split-${index}`} className="flex-shrink-0">
+            {split}
+          </span>
+        )
+      }
+    })
+    return result
+  }
+
+  return <div className={classes} style={combinedStyle} {...rest}>{renderChildren()}</div>
 }

@@ -9,6 +9,7 @@ const spaceApi = [
   { property: 'align', description: 'Alignment of items', type: "'start' | 'end' | 'center' | 'baseline' | 'stretch'", default: '-' },
   { property: 'justify', description: 'Justification of items along main axis', type: "'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'", default: '-' },
   { property: 'wrap', description: 'Whether to wrap items', type: 'boolean', default: 'false' },
+  { property: 'split', description: 'Separator element between children', type: 'React.ReactNode', default: '-' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
@@ -146,6 +147,43 @@ const App: React.FC = () => (
         <Button type="secondary" size="sm">Action 2</Button>
       </Space>
     </Card>
+  </Space>
+)
+
+export default App`,
+  },
+  {
+    id: 'justify',
+    title: 'Justify Content',
+    description: 'Control how items are distributed along the main axis.',
+    code: `import React from 'react'
+import { Space, Button } from 'asterui'
+
+const App: React.FC = () => (
+  <Space justify="between" className="w-full">
+    <Button type="ghost">Cancel</Button>
+    <Space>
+      <Button type="secondary">Save Draft</Button>
+      <Button type="primary">Submit</Button>
+    </Space>
+  </Space>
+)
+
+export default App`,
+  },
+  {
+    id: 'split',
+    title: 'Split Separator',
+    description: 'Insert a separator element between children.',
+    code: `import React from 'react'
+import { Space, Divider } from 'asterui'
+
+const App: React.FC = () => (
+  <Space split={<Divider type="vertical" />}>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
   </Space>
 )
 

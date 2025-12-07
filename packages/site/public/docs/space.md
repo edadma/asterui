@@ -144,6 +144,47 @@ const App: React.FC = () => (
 export default App
 ```
 
+### Justify Content
+
+Control how items are distributed along the main axis.
+
+```tsx
+import React from 'react'
+import { Space, Button } from 'asterui'
+
+const App: React.FC = () => (
+  <Space justify="between" className="w-full">
+    <Button type="ghost">Cancel</Button>
+    <Space>
+      <Button type="secondary">Save Draft</Button>
+      <Button type="primary">Submit</Button>
+    </Space>
+  </Space>
+)
+
+export default App
+```
+
+### Split Separator
+
+Insert a separator element between children.
+
+```tsx
+import React from 'react'
+import { Space, Divider } from 'asterui'
+
+const App: React.FC = () => (
+  <Space split={<Divider type="vertical" />}>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </Space>
+)
+
+export default App
+```
+
 ## API
 
 | Property | Description | Type | Default |
@@ -153,4 +194,5 @@ export default App
 | `align` | Alignment of items | `'start' \| 'end' \| 'center' \| 'baseline' \| 'stretch'` | `-` |
 | `justify` | Justification along main axis | `'start' \| 'end' \| 'center' \| 'between' \| 'around' \| 'evenly'` | `-` |
 | `wrap` | Whether to wrap items | `boolean` | `false` |
+| `split` | Separator element between children | `React.ReactNode` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |

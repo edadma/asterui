@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Space, Button, Badge, Card } from 'asterui';
+import { Space, Button, Badge, Card, Divider } from 'asterui';
 
 const demos: Record<string, React.ReactNode> = {
   horizontal: (
@@ -93,6 +93,23 @@ const demos: Record<string, React.ReactNode> = {
           </Button>
         </Space>
       </Card>
+    </Space>
+  ),
+  justify: (
+    <Space justify="between" className="w-full">
+      <Button type="ghost">Cancel</Button>
+      <Space>
+        <Button type="secondary">Save Draft</Button>
+        <Button type="primary">Submit</Button>
+      </Space>
+    </Space>
+  ),
+  split: (
+    <Space split={<Divider type="vertical" />}>
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
     </Space>
   ),
 };
