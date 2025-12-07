@@ -16,6 +16,8 @@ type BaseButtonProps = {
   iconPosition?: 'start' | 'end'
   /** Applies error/danger styling (shorthand for type="error") */
   danger?: boolean
+  /** Toggle button pressed state (sets aria-pressed) */
+  pressed?: boolean
 }
 
 type ButtonAsButton = BaseButtonProps &
@@ -28,6 +30,8 @@ type ButtonAsAnchor = BaseButtonProps &
   Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'type'> & {
     href: string
     htmlType?: undefined
+    /** Disable the link button */
+    disabled?: boolean
   }
 
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor
@@ -46,6 +50,7 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   iconPosition = 'start',
   danger = false,
+  pressed,
   className = '',
   ...props
 }) => {
@@ -115,9 +120,43 @@ export const Button: React.FC<ButtonProps> = ({
   )
 
   if ('href' in props && props.href !== undefined) {
-    const { href, ...anchorProps } = props as ButtonAsAnchor
+    const { href, disabled, onKeyDown, onClick, ...anchorProps } = props as ButtonAsAnchor & {
+      onKeyDown?: React.KeyboardEventHandler<HTMLAnchorElement>
+      onClick?: React.MouseEventHandler<HTMLAnchorElement>
+    }
+    const isDisabled = disabled || loading
+
+    // Handle Space key for anchor buttons (links only respond to Enter natively)
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLAnchorElement>) => {
+      if (event.key === ' ' && !isDisabled) {
+        event.preventDefault()
+        event.currentTarget.click()
+      }
+      onKeyDown?.(event)
+    }
+
+    // Prevent click when disabled
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+      if (isDisabled) {
+        event.preventDefault()
+        return
+      }
+      onClick?.(event)
+    }
+
     return (
-      <a href={href} className={classes} {...anchorProps}>
+      <a
+        href={isDisabled ? undefined : href}
+        role="button"
+        className={classes}
+        aria-disabled={isDisabled || undefined}
+        aria-busy={loading || undefined}
+        aria-pressed={pressed}
+        tabIndex={isDisabled ? -1 : 0}
+        onKeyDown={handleKeyDown}
+        onClick={handleClick}
+        {...anchorProps}
+      >
         {content}
       </a>
     )
@@ -129,7 +168,8 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       type={buttonType}
       className={classes}
-      aria-busy={loading ? 'true' : undefined}
+      aria-busy={loading || undefined}
+      aria-pressed={pressed}
       disabled={loading || buttonProps.disabled}
       {...buttonProps}
     >
