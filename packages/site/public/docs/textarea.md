@@ -72,37 +72,83 @@ const App: React.FC = () => (
 export default App
 ```
 
-### Form
+### Ghost Variant
 
 ```tsx
 import React from 'react'
-import { Form, Textarea, Button } from 'asterui'
+import { Textarea } from 'asterui'
+
+const App: React.FC = () => (
+  <Textarea ghost placeholder="Ghost textarea" />
+)
+
+export default App
+```
+
+### Disabled State
+
+```tsx
+import React from 'react'
+import { Textarea } from 'asterui'
+
+const App: React.FC = () => (
+  <Textarea disabled placeholder="Disabled textarea" />
+)
+
+export default App
+```
+
+### Form
+
+```tsx
+import React, { useState } from 'react'
+import { Form, Textarea, Button, Modal } from 'asterui'
 
 const App: React.FC = () => {
-  const handleSubmit = (values: any) => {
-    console.log(values)
+  const [submittedData, setSubmittedData] = useState<Record<string, unknown> | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleSubmit = (values: Record<string, unknown>) => {
+    setSubmittedData(values)
+    setIsModalOpen(true)
   }
 
   return (
-    <Form onFinish={handleSubmit}>
-      <Form.Item
-        name="message"
-        label="Message"
-        required
-        rules={{
-          required: 'Please enter a message',
-          min: { value: 10, message: 'Message must be at least 10 characters' },
-        }}
-      >
-        <Textarea rows={4} placeholder="Enter your message here" />
-      </Form.Item>
+    <>
+      <Form onFinish={handleSubmit}>
+        <Form.Item
+          name="message"
+          label="Message"
+          required
+          rules={{
+            required: 'Please enter a message',
+            min: { value: 10, message: 'Message must be at least 10 characters' },
+          }}
+        >
+          <Textarea rows={4} placeholder="Enter your message here" />
+        </Form.Item>
 
-      <Form.Item>
-        <Button htmlType="submit" type="primary">
-          Send Message
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item>
+          <Button htmlType="submit" type="primary">
+            Send Message
+          </Button>
+        </Form.Item>
+      </Form>
+
+      <Modal
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        title="Form Submitted"
+        footer={null}
+      >
+        <div className="py-4">
+          <p className="mb-4">Form data:</p>
+          <pre className="bg-base-200 p-4 rounded-lg overflow-auto max-h-96">
+            {JSON.stringify(submittedData, null, 2)}
+          </pre>
+        </div>
+      </Modal>
+    </>
   )
 }
 
