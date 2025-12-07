@@ -262,6 +262,68 @@ const App: React.FC = () => (
 export default App
 ```
 
+### Collapsible Panels
+
+Panels can be collapsed using arrow buttons on the gutter.
+
+```tsx
+import React from 'react'
+import { Splitter } from 'asterui'
+
+const App: React.FC = () => (
+  <div className="h-64 border border-base-300 rounded-lg overflow-hidden">
+    <Splitter defaultSizes={[25, 75]}>
+      <Splitter.Panel collapsible minSize={100}>
+        <div className="p-4 bg-base-200 h-full">
+          <h3 className="font-semibold">Sidebar</h3>
+          <p className="text-sm text-base-content/70 mt-2">
+            Click the arrow to collapse.
+          </p>
+        </div>
+      </Splitter.Panel>
+      <Splitter.Panel>
+        <div className="p-4 h-full">
+          <h3 className="font-semibold">Main Content</h3>
+          <p className="text-sm text-base-content/70 mt-2">
+            This panel expands when the sidebar collapses.
+          </p>
+        </div>
+      </Splitter.Panel>
+    </Splitter>
+  </div>
+)
+
+export default App
+```
+
+### Non-Resizable Panel
+
+Disable resizing for specific panels.
+
+```tsx
+import React from 'react'
+import { Splitter } from 'asterui'
+
+const App: React.FC = () => (
+  <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
+    <Splitter>
+      <Splitter.Panel resizable={false} defaultSize={30}>
+        <div className="p-4 bg-base-200 h-full">
+          <p className="text-sm">Fixed width (30%)</p>
+        </div>
+      </Splitter.Panel>
+      <Splitter.Panel>
+        <div className="p-4 h-full">
+          <p className="text-sm">Cannot resize - divider is disabled.</p>
+        </div>
+      </Splitter.Panel>
+    </Splitter>
+  </div>
+)
+
+export default App
+```
+
 ## API
 
 ### Splitter
@@ -285,4 +347,9 @@ export default App
 | `size` | Controlled size percentage | `number` | `-` |
 | `minSize` | Minimum size in pixels | `number` | `-` |
 | `maxSize` | Maximum size in pixels | `number` | `-` |
+| `collapsible` | Allow panel to be collapsed | `boolean` | `false` |
+| `collapsed` | Controlled collapsed state | `boolean` | `-` |
+| `defaultCollapsed` | Default collapsed state | `boolean` | `false` |
+| `onCollapse` | Callback when collapse state changes | `(collapsed: boolean) => void` | `-` |
+| `resizable` | Allow panel to be resized | `boolean` | `true` |
 | `className` | Additional CSS classes | `string` | `-` |

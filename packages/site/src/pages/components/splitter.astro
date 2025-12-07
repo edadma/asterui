@@ -19,6 +19,11 @@ const panelApi = [
   { property: 'size', description: 'Controlled size percentage', type: 'number', default: '-' },
   { property: 'minSize', description: 'Minimum size in pixels', type: 'number', default: '-' },
   { property: 'maxSize', description: 'Maximum size in pixels', type: 'number', default: '-' },
+  { property: 'collapsible', description: 'Allow panel to be collapsed', type: 'boolean', default: 'false' },
+  { property: 'collapsed', description: 'Controlled collapsed state', type: 'boolean', default: '-' },
+  { property: 'defaultCollapsed', description: 'Default collapsed state', type: 'boolean', default: 'false' },
+  { property: 'onCollapse', description: 'Callback when collapse state changes', type: '(collapsed: boolean) => void', default: '-' },
+  { property: 'resizable', description: 'Allow panel to be resized', type: 'boolean', default: 'true' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
@@ -272,6 +277,64 @@ const App: React.FC = () => (
             </div>
           </Splitter.Panel>
         </Splitter>
+      </Splitter.Panel>
+    </Splitter>
+  </div>
+)
+
+export default App`,
+  },
+  {
+    id: 'collapsible',
+    title: 'Collapsible Panels',
+    description: 'Panels can be collapsed using arrow buttons on the gutter.',
+    code: `import React from 'react'
+import { Splitter } from 'asterui'
+
+const App: React.FC = () => (
+  <div className="h-64 border border-base-300 rounded-lg overflow-hidden">
+    <Splitter defaultSizes={[25, 75]}>
+      <Splitter.Panel collapsible minSize={100}>
+        <div className="p-4 bg-base-200 h-full">
+          <h3 className="font-semibold">Sidebar</h3>
+          <p className="text-sm text-base-content/70 mt-2">
+            Click the arrow to collapse.
+          </p>
+        </div>
+      </Splitter.Panel>
+      <Splitter.Panel>
+        <div className="p-4 h-full">
+          <h3 className="font-semibold">Main Content</h3>
+          <p className="text-sm text-base-content/70 mt-2">
+            This panel expands when the sidebar collapses.
+          </p>
+        </div>
+      </Splitter.Panel>
+    </Splitter>
+  </div>
+)
+
+export default App`,
+  },
+  {
+    id: 'non-resizable',
+    title: 'Non-Resizable Panel',
+    description: 'Disable resizing for specific panels.',
+    code: `import React from 'react'
+import { Splitter } from 'asterui'
+
+const App: React.FC = () => (
+  <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
+    <Splitter>
+      <Splitter.Panel resizable={false} defaultSize={30}>
+        <div className="p-4 bg-base-200 h-full">
+          <p className="text-sm">Fixed width (30%)</p>
+        </div>
+      </Splitter.Panel>
+      <Splitter.Panel>
+        <div className="p-4 h-full">
+          <p className="text-sm">Cannot resize - divider is disabled.</p>
+        </div>
       </Splitter.Panel>
     </Splitter>
   </div>
