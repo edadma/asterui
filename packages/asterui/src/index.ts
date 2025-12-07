@@ -227,7 +227,7 @@ export { Status } from './components/Status'
 export type { StatusProps, StatusType, StatusSize } from './components/Status'
 
 export { Steps } from './components/Steps'
-export type { StepsProps, StepProps } from './components/Steps'
+export type { StepsProps, StepProps, StepItem, StepsDirection } from './components/Steps'
 
 export { Table } from './components/Table'
 export type { TableProps, ColumnType, PaginationConfig, FilterConfig, RowSelection } from './components/Table'

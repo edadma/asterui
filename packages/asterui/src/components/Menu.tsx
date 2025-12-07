@@ -46,7 +46,7 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLAnchorEleme
   active?: boolean
 }
 
-export interface MenuSubMenuProps extends React.HTMLAttributes<HTMLLIElement> {
+export interface MenuSubMenuProps extends Omit<React.HTMLAttributes<HTMLLIElement>, 'title'> {
   children: React.ReactNode
   itemKey: string
   /** Submenu label */
