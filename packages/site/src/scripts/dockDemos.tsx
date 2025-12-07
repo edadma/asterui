@@ -16,6 +16,7 @@ const BasicDemo: React.FC = () => {
 
   return (
     <Dock
+      className="!relative"
       items={[
         { icon: <HomeIcon className="w-6 h-6" />, label: 'Home' },
         { icon: <MagnifyingGlassIcon className="w-6 h-6" />, label: 'Search' },
@@ -29,29 +30,34 @@ const BasicDemo: React.FC = () => {
 }
 
 const SizesDemo: React.FC = () => {
+  const [activeXs, setActiveXs] = useState(0)
+  const [activeSm, setActiveSm] = useState(0)
+  const [activeMd, setActiveMd] = useState(0)
+  const [activeLg, setActiveLg] = useState(0)
+
   const items = [
-    { icon: <HomeIcon className="w-5 h-5" /> },
-    { icon: <Cog6ToothIcon className="w-5 h-5" /> },
-    { icon: <BellIcon className="w-5 h-5" /> },
+    { icon: <HomeIcon className="w-5 h-5" />, label: 'Home' },
+    { icon: <Cog6ToothIcon className="w-5 h-5" />, label: 'Settings' },
+    { icon: <BellIcon className="w-5 h-5" />, label: 'Alerts' },
   ]
 
   return (
     <Space direction="vertical" size="lg" className="w-full">
       <div>
         <div className="text-xs text-base-content/60 mb-1">xs</div>
-        <Dock size="xs" items={items} activeIndex={0} />
+        <Dock className="!relative" size="xs" items={items} activeIndex={activeXs} onChange={setActiveXs} />
       </div>
       <div>
         <div className="text-xs text-base-content/60 mb-1">sm</div>
-        <Dock size="sm" items={items} activeIndex={0} />
+        <Dock className="!relative" size="sm" items={items} activeIndex={activeSm} onChange={setActiveSm} />
       </div>
       <div>
         <div className="text-xs text-base-content/60 mb-1">md (default)</div>
-        <Dock size="md" items={items} activeIndex={0} />
+        <Dock className="!relative" size="md" items={items} activeIndex={activeMd} onChange={setActiveMd} />
       </div>
       <div>
         <div className="text-xs text-base-content/60 mb-1">lg</div>
-        <Dock size="lg" items={items} activeIndex={0} />
+        <Dock className="!relative" size="lg" items={items} activeIndex={activeLg} onChange={setActiveLg} />
       </div>
     </Space>
   )
@@ -62,6 +68,7 @@ const IconsOnlyDemo: React.FC = () => {
 
   return (
     <Dock
+      className="!relative"
       items={[
         { icon: <HomeIcon className="w-6 h-6" /> },
         { icon: <MagnifyingGlassIcon className="w-6 h-6" /> },
@@ -80,7 +87,7 @@ const CustomStyleDemo: React.FC = () => {
 
   return (
     <Dock
-      className="bg-neutral text-neutral-content"
+      className="!relative bg-neutral text-neutral-content"
       items={[
         { icon: <HomeIcon className="w-6 h-6" />, label: 'Home' },
         { icon: <Cog6ToothIcon className="w-6 h-6" />, label: 'Settings' },
@@ -92,18 +99,22 @@ const CustomStyleDemo: React.FC = () => {
   )
 }
 
-const ChildrenDemo: React.FC = () => (
-  <Dock>
-    <Dock.Item active>
-      <HomeIcon className="w-6 h-6" />
-      <span className="dock-label">Home</span>
-    </Dock.Item>
-    <Dock.Item>
-      <Cog6ToothIcon className="w-6 h-6" />
-      <span className="dock-label">Settings</span>
-    </Dock.Item>
-  </Dock>
-)
+const ChildrenDemo: React.FC = () => {
+  const [active, setActive] = useState(0)
+
+  return (
+    <Dock className="!relative">
+      <Dock.Item active={active === 0} onClick={() => setActive(0)}>
+        <HomeIcon className="w-6 h-6" />
+        <span className="dock-label">Home</span>
+      </Dock.Item>
+      <Dock.Item active={active === 1} onClick={() => setActive(1)}>
+        <Cog6ToothIcon className="w-6 h-6" />
+        <span className="dock-label">Settings</span>
+      </Dock.Item>
+    </Dock>
+  )
+}
 
 const statefulDemos: Record<string, React.FC> = {
   basic: BasicDemo,

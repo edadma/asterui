@@ -20,11 +20,19 @@ const dockItemConfigApi = [
   { property: 'onClick', description: 'Click handler', type: '() => void', default: '-' },
 ];
 
+const dockItemApi = [
+  { property: 'active', description: 'Whether this item is active', type: 'boolean', default: 'false' },
+  { property: 'children', description: 'Item content (icon and optional label)', type: 'React.ReactNode', default: '-' },
+  { property: 'onClick', description: 'Click handler', type: '() => void', default: '-' },
+  { property: 'disabled', description: 'Whether item is disabled', type: 'boolean', default: 'false' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
+];
+
 const examples = [
   {
     id: 'basic',
     title: 'Basic Dock',
-    description: 'Mobile-style bottom navigation with icons and labels.',
+    description: 'Mobile-style bottom navigation with icons and labels. (Shown inline for demo; normally fixed at bottom)',
     code: `import React, { useState } from 'react'
 import { Dock } from 'asterui'
 import { HomeIcon, MagnifyingGlassIcon, HeartIcon, UserIcon } from '@heroicons/react/24/outline'
@@ -51,32 +59,36 @@ export default App`,
   {
     id: 'sizes',
     title: 'Sizes',
-    description: 'Different dock sizes from xs to lg.',
-    code: `import React from 'react'
+    description: 'Different dock sizes from xs to lg. (Shown inline for demo)',
+    code: `import React, { useState } from 'react'
 import { Dock, Space } from 'asterui'
 import { HomeIcon, Cog6ToothIcon, BellIcon } from '@heroicons/react/24/outline'
 
 const items = [
-  { icon: <HomeIcon className="w-5 h-5" /> },
-  { icon: <Cog6ToothIcon className="w-5 h-5" /> },
-  { icon: <BellIcon className="w-5 h-5" /> },
+  { icon: <HomeIcon className="w-5 h-5" />, label: 'Home' },
+  { icon: <Cog6ToothIcon className="w-5 h-5" />, label: 'Settings' },
+  { icon: <BellIcon className="w-5 h-5" />, label: 'Alerts' },
 ]
 
-const App: React.FC = () => (
-  <Space direction="vertical" size="lg" className="w-full">
-    <Dock size="xs" items={items} activeIndex={0} />
-    <Dock size="sm" items={items} activeIndex={0} />
-    <Dock size="md" items={items} activeIndex={0} />
-    <Dock size="lg" items={items} activeIndex={0} />
-  </Space>
-)
+const App: React.FC = () => {
+  const [active, setActive] = useState(0)
+
+  return (
+    <Space direction="vertical" size="lg" className="w-full">
+      <Dock size="xs" items={items} activeIndex={active} onChange={setActive} />
+      <Dock size="sm" items={items} activeIndex={active} onChange={setActive} />
+      <Dock size="md" items={items} activeIndex={active} onChange={setActive} />
+      <Dock size="lg" items={items} activeIndex={active} onChange={setActive} />
+    </Space>
+  )
+}
 
 export default App`,
   },
   {
     id: 'icons-only',
     title: 'Icons Only',
-    description: 'Dock without labels for a minimal look.',
+    description: 'Dock without labels for a minimal look. (Shown inline for demo)',
     code: `import React, { useState } from 'react'
 import { Dock } from 'asterui'
 import { HomeIcon, MagnifyingGlassIcon, PlusCircleIcon, HeartIcon, UserIcon } from '@heroicons/react/24/outline'
@@ -104,7 +116,7 @@ export default App`,
   {
     id: 'custom-style',
     title: 'Custom Styling',
-    description: 'Apply custom colors to the dock.',
+    description: 'Apply custom colors to the dock. (Shown inline for demo)',
     code: `import React, { useState } from 'react'
 import { Dock } from 'asterui'
 import { HomeIcon, Cog6ToothIcon, BellIcon } from '@heroicons/react/24/outline'
@@ -131,23 +143,27 @@ export default App`,
   {
     id: 'children',
     title: 'Using Children',
-    description: 'Use Dock.Item children for more control.',
-    code: `import React from 'react'
+    description: 'Use Dock.Item children for more control. (Shown inline for demo)',
+    code: `import React, { useState } from 'react'
 import { Dock } from 'asterui'
 import { HomeIcon, Cog6ToothIcon } from '@heroicons/react/24/outline'
 
-const App: React.FC = () => (
-  <Dock>
-    <Dock.Item active>
-      <HomeIcon className="w-6 h-6" />
-      <span className="dock-label">Home</span>
-    </Dock.Item>
-    <Dock.Item>
-      <Cog6ToothIcon className="w-6 h-6" />
-      <span className="dock-label">Settings</span>
-    </Dock.Item>
-  </Dock>
-)
+const App: React.FC = () => {
+  const [active, setActive] = useState(0)
+
+  return (
+    <Dock>
+      <Dock.Item active={active === 0} onClick={() => setActive(0)}>
+        <HomeIcon className="w-6 h-6" />
+        <span className="dock-label">Home</span>
+      </Dock.Item>
+      <Dock.Item active={active === 1} onClick={() => setActive(1)}>
+        <Cog6ToothIcon className="w-6 h-6" />
+        <span className="dock-label">Settings</span>
+      </Dock.Item>
+    </Dock>
+  )
+}
 
 export default App`,
   },
@@ -207,7 +223,10 @@ export default App`,
       <h2 class="text-2xl font-bold mb-6">API</h2>
       <ApiTable title="Dock" data={dockApi} />
       <div class="mt-8">
-        <ApiTable title="DockItemConfig" data={dockItemConfigApi} />
+        <ApiTable title="DockItemConfig (for items prop)" data={dockItemConfigApi} />
+      </div>
+      <div class="mt-8">
+        <ApiTable title="Dock.Item (compound pattern)" data={dockItemApi} />
       </div>
     </section>
 
