@@ -57,6 +57,7 @@ npm install asterui
 
 ### Navigation
 
+- [Anchor](https://asterui.com/docs/anchor.md)
 - [Breadcrumb](https://asterui.com/docs/breadcrumb.md)
 - [ContextMenu](https://asterui.com/docs/contextmenu.md)
 - [Dock](https://asterui.com/docs/dock.md)

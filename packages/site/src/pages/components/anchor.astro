@@ -7,10 +7,16 @@ const anchorApi = [
   { property: 'items', description: 'Anchor links configuration', type: 'AnchorLinkItem[]', default: '-' },
   { property: 'direction', description: 'Layout direction', type: "'horizontal' | 'vertical'", default: "'vertical'" },
   { property: 'offsetTop', description: 'Offset from top when calculating scroll position', type: 'number', default: '0' },
+  { property: 'bounds', description: 'Bounding distance of anchor area', type: 'number', default: '5' },
   { property: 'getContainer', description: 'Scroll container (default: window)', type: '() => HTMLElement | Window', default: '-' },
+  { property: 'getCurrentAnchor', description: 'Customize the anchor highlight', type: '(activeLink: string) => string', default: '-' },
   { property: 'activeLink', description: 'Currently active link (controlled)', type: 'string', default: '-' },
   { property: 'onChange', description: 'Callback when active link changes', type: '(activeLink: string) => void', default: '-' },
   { property: 'onClick', description: 'Callback when link is clicked', type: '(e, link) => void', default: '-' },
+  { property: 'affix', description: 'Fix anchor when scrolling', type: 'boolean', default: 'false' },
+  { property: 'affixOffsetTop', description: 'Pixels offset from top when affix is true', type: 'number', default: '0' },
+  { property: 'replace', description: 'Replace history instead of push', type: 'boolean', default: 'false' },
+  { property: 'className', description: 'Custom CSS class', type: 'string', default: '-' },
   { property: 'children', description: 'Anchor.Link children (alternative to items)', type: 'React.ReactNode', default: '-' },
 ];
 
@@ -28,7 +34,7 @@ const examples = [
     code: `import { Anchor, Flex } from 'asterui'
 
 export default function App() {
-  const getContainer = () => document.getElementById('scroll-container') as HTMLElement
+  const getContainer = () => document.getElementById('scroll-container-basic') as HTMLElement
 
   return (
     <Flex gap="md">
@@ -40,7 +46,7 @@ export default function App() {
         ]}
         getContainer={getContainer}
       />
-      <div id="scroll-container" className="flex-1 h-48 overflow-y-auto border rounded p-2">
+      <div id="scroll-container-basic" className="flex-1 h-48 overflow-y-auto border rounded p-2">
         <section id="section-1" className="h-32 mb-2 p-3 bg-base-200 rounded">
           <h3 className="font-bold">Section 1</h3>
           <p className="text-sm">Scroll to see active link change</p>
@@ -65,7 +71,7 @@ export default function App() {
     code: `import { Anchor } from 'asterui'
 
 export default function App() {
-  const getContainer = () => document.getElementById('scroll-container') as HTMLElement
+  const getContainer = () => document.getElementById('scroll-container-horizontal') as HTMLElement
 
   return (
     <div>
@@ -79,7 +85,7 @@ export default function App() {
         ]}
         getContainer={getContainer}
       />
-      <div id="scroll-container" className="h-32 overflow-y-auto border rounded p-2 mt-2">
+      <div id="scroll-container-horizontal" className="h-32 overflow-y-auto border rounded p-2 mt-2">
         <section id="intro" className="h-24 mb-2 p-3 bg-base-200 rounded">
           <h3 className="font-bold">Introduction</h3>
           <p className="text-sm">Welcome to our product</p>
@@ -108,7 +114,7 @@ export default function App() {
     code: `import { Anchor, Flex } from 'asterui'
 
 export default function App() {
-  const getContainer = () => document.getElementById('scroll-container') as HTMLElement
+  const getContainer = () => document.getElementById('scroll-container-nested') as HTMLElement
 
   return (
     <Flex gap="md">
@@ -133,7 +139,7 @@ export default function App() {
         ]}
         getContainer={getContainer}
       />
-      <div id="scroll-container" className="flex-1 h-48 overflow-y-auto border rounded p-2">
+      <div id="scroll-container-nested" className="flex-1 h-48 overflow-y-auto border rounded p-2">
         <section id="getting-started" className="h-20 mb-2 p-3 bg-base-200 rounded">
           <h3 className="font-bold">Getting Started</h3>
         </section>

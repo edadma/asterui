@@ -1,12 +1,12 @@
 # Breadcrumb
 
+Navigation breadcrumb trail showing hierarchical location.
+
 **Import:** `import { Breadcrumb } from 'asterui'`
 
 ## Examples
 
-### Basic Breadcrumb
-
-Simple breadcrumb navigation.
+### Basic (Compound Pattern)
 
 ```tsx
 import React from 'react'
@@ -23,9 +23,27 @@ const App: React.FC = () => (
 export default App
 ```
 
-### With Icons
+### Data-Driven (items prop)
 
-Breadcrumb with icons.
+```tsx
+import React from 'react'
+import { Breadcrumb } from 'asterui'
+
+const App: React.FC = () => (
+  <Breadcrumb
+    items={[
+      { title: 'Home', href: '/' },
+      { title: 'Products', href: '/products' },
+      { title: 'Category', href: '/products/category' },
+      { title: 'Item Details' },
+    ]}
+  />
+)
+
+export default App
+```
+
+### With Icons
 
 ```tsx
 import React from 'react'
@@ -34,16 +52,13 @@ import { FolderIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
   <Breadcrumb>
-    <Breadcrumb.Item href="/">
-      <FolderIcon className="w-4 h-4" />
+    <Breadcrumb.Item href="/" icon={<FolderIcon className="w-4 h-4" />}>
       Home
     </Breadcrumb.Item>
-    <Breadcrumb.Item href="/documents">
-      <FolderIcon className="w-4 h-4" />
+    <Breadcrumb.Item href="/documents" icon={<FolderIcon className="w-4 h-4" />}>
       Documents
     </Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <DocumentTextIcon className="w-4 h-4" />
+    <Breadcrumb.Item icon={<DocumentTextIcon className="w-4 h-4" />}>
       Add Document
     </Breadcrumb.Item>
   </Breadcrumb>
@@ -52,9 +67,32 @@ const App: React.FC = () => (
 export default App
 ```
 
-### Max Width with Scroll
+### Custom Separator
 
-Breadcrumb with overflow scrolling.
+```tsx
+import React from 'react'
+import { Breadcrumb } from 'asterui'
+import { ChevronRightIcon } from '@heroicons/react/24/outline'
+
+const App: React.FC = () => (
+  <div className="space-y-4">
+    <Breadcrumb separator="/">
+      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+      <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+      <Breadcrumb.Item>Details</Breadcrumb.Item>
+    </Breadcrumb>
+    <Breadcrumb separator={<ChevronRightIcon className="w-4 h-4" />}>
+      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+      <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+      <Breadcrumb.Item>Details</Breadcrumb.Item>
+    </Breadcrumb>
+  </div>
+)
+
+export default App
+```
+
+### Max Width with Scroll
 
 ```tsx
 import React from 'react'
@@ -79,14 +117,26 @@ export default App
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| `children` | Breadcrumb.Item components | `React.ReactNode` | `-` |
+| `children` | Breadcrumb.Item components (compound pattern) | `React.ReactNode` | `-` |
+| `items` | Breadcrumb items data (data-driven pattern) | `BreadcrumbItemType[]` | `-` |
+| `separator` | Custom separator between items | `React.ReactNode` | `"/"` |
 | `className` | Additional CSS classes | `string` | `-` |
 
-### Breadcrumb Item
+### BreadcrumbItemType (for items prop)
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `title` | Item title/label | `React.ReactNode` | `-` |
+| `href` | Link URL | `string` | `-` |
+| `onClick` | Click handler | `() => void` | `-` |
+| `className` | Custom CSS class | `string` | `-` |
+
+### Breadcrumb.Item (compound pattern)
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
 | `children` | Item content (text or elements) | `React.ReactNode` | `-` |
 | `href` | Link URL (makes item clickable) | `string` | `-` |
 | `onClick` | Click handler (makes item clickable) | `() => void` | `-` |
+| `icon` | Icon to display before the label | `React.ReactNode` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |

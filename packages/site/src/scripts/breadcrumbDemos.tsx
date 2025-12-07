@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { Breadcrumb } from 'asterui';
-import { FolderIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
+import { FolderIcon, DocumentTextIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { CheckIconSvg } from './icons'
 
 // Demo components for each example
@@ -14,19 +14,40 @@ const demos: Record<string, React.ReactNode> = {
   ),
   'icons': (
     <Breadcrumb>
-      <Breadcrumb.Item href="/">
-        <FolderIcon className="w-4 h-4" />
+      <Breadcrumb.Item href="/" icon={<FolderIcon className="w-4 h-4" />}>
         Home
       </Breadcrumb.Item>
-      <Breadcrumb.Item href="/documents">
-        <FolderIcon className="w-4 h-4" />
+      <Breadcrumb.Item href="/documents" icon={<FolderIcon className="w-4 h-4" />}>
         Documents
       </Breadcrumb.Item>
-      <Breadcrumb.Item>
-        <DocumentTextIcon className="w-4 h-4" />
+      <Breadcrumb.Item icon={<DocumentTextIcon className="w-4 h-4" />}>
         Add Document
       </Breadcrumb.Item>
     </Breadcrumb>
+  ),
+  'separator': (
+    <div className="space-y-4">
+      <Breadcrumb separator="/">
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+        <Breadcrumb.Item>Details</Breadcrumb.Item>
+      </Breadcrumb>
+      <Breadcrumb separator={<ChevronRightIcon className="w-4 h-4" />}>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+        <Breadcrumb.Item>Details</Breadcrumb.Item>
+      </Breadcrumb>
+    </div>
+  ),
+  'items': (
+    <Breadcrumb
+      items={[
+        { title: 'Home', href: '/' },
+        { title: 'Products', href: '/products' },
+        { title: 'Category', href: '/products/category' },
+        { title: 'Item Details' },
+      ]}
+    />
   ),
   'scroll': (
     <Breadcrumb className="max-w-xs">

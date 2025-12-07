@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, createContext, useContext } from 'react'
+import React, { useState, useEffect, useCallback, createContext, useContext, useRef } from 'react'
 
 export interface AnchorLinkItem {
   /** Target element id (without #) */
@@ -16,14 +16,24 @@ export interface AnchorProps {
   direction?: 'horizontal' | 'vertical'
   /** Offset from top when calculating scroll position */
   offsetTop?: number
+  /** Bounding distance of anchor area */
+  bounds?: number
   /** Target scroll container (default: window) */
   getContainer?: () => HTMLElement | Window
+  /** Customize the anchor highlight */
+  getCurrentAnchor?: (activeLink: string) => string
   /** Callback when active link changes */
   onChange?: (activeLink: string) => void
   /** Callback when link is clicked */
   onClick?: (e: React.MouseEvent, link: { href: string; title: React.ReactNode }) => void
   /** Currently active link (controlled) */
   activeLink?: string
+  /** Whether to fix the anchor when scrolling */
+  affix?: boolean
+  /** Pixels to offset from top when affix is true */
+  affixOffsetTop?: number
+  /** Replace history instead of push */
+  replace?: boolean
   /** Custom class name */
   className?: string
   /** Anchor.Link children */
@@ -106,18 +116,27 @@ const AnchorComponent: React.FC<AnchorProps> = ({
   items,
   direction = 'vertical',
   offsetTop = 0,
+  bounds = 5,
   getContainer,
+  getCurrentAnchor,
   onChange,
   onClick,
   activeLink: controlledActiveLink,
+  affix = false,
+  affixOffsetTop = 0,
+  replace = false,
   className = '',
   children,
 }) => {
   const [internalActiveLink, setInternalActiveLink] = useState('')
   const [links, setLinks] = useState<string[]>([])
+  const [isAffixed, setIsAffixed] = useState(false)
+  const anchorRef = useRef<HTMLDivElement>(null)
+  const placeholderRef = useRef<HTMLDivElement>(null)
 
   const isControlled = controlledActiveLink !== undefined
-  const activeLink = isControlled ? controlledActiveLink : internalActiveLink
+  const rawActiveLink = isControlled ? controlledActiveLink : internalActiveLink
+  const activeLink = getCurrentAnchor ? getCurrentAnchor(rawActiveLink) : rawActiveLink
 
   const registerLink = useCallback((href: string) => {
     setLinks((prev) => (prev.includes(href) ? prev : [...prev, href]))
@@ -146,8 +165,15 @@ const AnchorComponent: React.FC<AnchorProps> = ({
       } else {
         (container as HTMLElement).scrollTo({ top, behavior: 'smooth' })
       }
+
+      // Update URL hash
+      if (replace) {
+        window.history.replaceState(null, '', `#${href}`)
+      } else {
+        window.history.pushState(null, '', `#${href}`)
+      }
     }
-  }, [getContainer, offsetTop])
+  }, [getContainer, offsetTop, replace])
 
   const handleClick = useCallback((
     e: React.MouseEvent,
@@ -163,6 +189,33 @@ const AnchorComponent: React.FC<AnchorProps> = ({
     }
     onChange?.(href)
   }, [onClick, scrollToTarget, isControlled, onChange])
+
+  // Affix logic
+  useEffect(() => {
+    if (!affix || !anchorRef.current) return
+
+    const container = getContainer?.() ?? window
+
+    const handleScroll = () => {
+      if (!anchorRef.current || !placeholderRef.current) return
+
+      const placeholderRect = placeholderRef.current.getBoundingClientRect()
+      const containerTop = container === window
+        ? 0
+        : (container as HTMLElement).getBoundingClientRect().top
+
+      const shouldAffix = placeholderRect.top - containerTop <= affixOffsetTop
+
+      if (shouldAffix !== isAffixed) {
+        setIsAffixed(shouldAffix)
+      }
+    }
+
+    container.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [affix, affixOffsetTop, getContainer, isAffixed])
 
   // Scroll spy
   useEffect(() => {
@@ -194,8 +247,8 @@ const AnchorComponent: React.FC<AnchorProps> = ({
             const rect = element.getBoundingClientRect()
             const distance = rect.top - containerTop - offsetTop
 
-            // If element's top is at or above the threshold, it's the current section
-            if (distance <= 10) {
+            // If element's top is within bounds of the threshold, it's the current section
+            if (distance <= bounds) {
               currentActive = href
             }
           }
@@ -207,7 +260,7 @@ const AnchorComponent: React.FC<AnchorProps> = ({
         }
       }
 
-      if (currentActive && currentActive !== activeLink) {
+      if (currentActive && currentActive !== rawActiveLink) {
         if (!isControlled) {
           setInternalActiveLink(currentActive)
         }
@@ -219,7 +272,7 @@ const AnchorComponent: React.FC<AnchorProps> = ({
     handleScroll() // Initial check
 
     return () => container.removeEventListener('scroll', handleScroll)
-  }, [links, getContainer, offsetTop, activeLink, isControlled, onChange])
+  }, [links, getContainer, offsetTop, bounds, rawActiveLink, isControlled, onChange])
 
   const contextValue: AnchorContextValue = {
     activeLink,
@@ -238,16 +291,33 @@ const AnchorComponent: React.FC<AnchorProps> = ({
     ))
   }
 
+  const anchorContent = (
+    <nav
+      ref={anchorRef}
+      className={`
+        ${direction === 'horizontal' ? 'flex items-center' : 'flex flex-col'}
+        ${isAffixed ? 'fixed bg-base-100 shadow-sm z-10' : ''}
+        ${className}
+      `.trim()}
+      style={isAffixed ? { top: affixOffsetTop } : undefined}
+    >
+      {items ? renderItems(items) : children}
+    </nav>
+  )
+
+  if (affix) {
+    return (
+      <AnchorContext.Provider value={contextValue}>
+        <div ref={placeholderRef} style={isAffixed && anchorRef.current ? { height: anchorRef.current.offsetHeight } : undefined}>
+          {anchorContent}
+        </div>
+      </AnchorContext.Provider>
+    )
+  }
+
   return (
     <AnchorContext.Provider value={contextValue}>
-      <nav
-        className={`
-          ${direction === 'horizontal' ? 'flex items-center' : 'flex flex-col'}
-          ${className}
-        `.trim()}
-      >
-        {items ? renderItems(items) : children}
-      </nav>
+      {anchorContent}
     </AnchorContext.Provider>
   )
 }

@@ -4,15 +4,25 @@ import ApiTable from '../../components/ApiTable.astro';
 import { Code } from 'astro:components';
 
 const breadcrumbApi = [
-  { property: 'children', description: 'Breadcrumb.Item components', type: 'React.ReactNode' },
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
+  { property: 'children', description: 'Breadcrumb.Item components (compound pattern)', type: 'React.ReactNode', default: '-' },
+  { property: 'items', description: 'Breadcrumb items data (data-driven pattern)', type: 'BreadcrumbItemType[]', default: '-' },
+  { property: 'separator', description: 'Custom separator between items', type: 'React.ReactNode', default: '"/"' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
+];
+
+const breadcrumbItemTypeApi = [
+  { property: 'title', description: 'Item title/label', type: 'React.ReactNode', default: '-' },
+  { property: 'href', description: 'Link URL', type: 'string', default: '-' },
+  { property: 'onClick', description: 'Click handler', type: '() => void', default: '-' },
+  { property: 'className', description: 'Custom CSS class', type: 'string', default: '-' },
 ];
 
 const breadcrumbItemApi = [
-  { property: 'children', description: 'Item content (text or elements)', type: 'React.ReactNode' },
-  { property: 'href', description: 'Link URL (makes item clickable)', type: 'string' },
-  { property: 'onClick', description: 'Click handler (makes item clickable)', type: '() => void' },
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
+  { property: 'children', description: 'Item content (text or elements)', type: 'React.ReactNode', default: '-' },
+  { property: 'href', description: 'Link URL (makes item clickable)', type: 'string', default: '-' },
+  { property: 'onClick', description: 'Click handler (makes item clickable)', type: '() => void', default: '-' },
+  { property: 'icon', description: 'Icon to display before the label', type: 'React.ReactNode', default: '-' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
 const examples = [
@@ -43,19 +53,61 @@ import { FolderIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
   <Breadcrumb>
-    <Breadcrumb.Item href="/">
-      <FolderIcon className="w-4 h-4" />
+    <Breadcrumb.Item href="/" icon={<FolderIcon className="w-4 h-4" />}>
       Home
     </Breadcrumb.Item>
-    <Breadcrumb.Item href="/documents">
-      <FolderIcon className="w-4 h-4" />
+    <Breadcrumb.Item href="/documents" icon={<FolderIcon className="w-4 h-4" />}>
       Documents
     </Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <DocumentTextIcon className="w-4 h-4" />
+    <Breadcrumb.Item icon={<DocumentTextIcon className="w-4 h-4" />}>
       Add Document
     </Breadcrumb.Item>
   </Breadcrumb>
+)
+
+export default App`,
+  },
+  {
+    id: 'separator',
+    title: 'Custom Separator',
+    description: 'Use a string or React node as separator.',
+    code: `import React from 'react'
+import { Breadcrumb } from 'asterui'
+import { ChevronRightIcon } from '@heroicons/react/24/outline'
+
+const App: React.FC = () => (
+  <div className="space-y-4">
+    <Breadcrumb separator="/">
+      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+      <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+      <Breadcrumb.Item>Details</Breadcrumb.Item>
+    </Breadcrumb>
+    <Breadcrumb separator={<ChevronRightIcon className="w-4 h-4" />}>
+      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+      <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
+      <Breadcrumb.Item>Details</Breadcrumb.Item>
+    </Breadcrumb>
+  </div>
+)
+
+export default App`,
+  },
+  {
+    id: 'items',
+    title: 'Data-Driven',
+    description: 'Use items prop for data-driven breadcrumbs.',
+    code: `import React from 'react'
+import { Breadcrumb } from 'asterui'
+
+const App: React.FC = () => (
+  <Breadcrumb
+    items={[
+      { title: 'Home', href: '/' },
+      { title: 'Products', href: '/products' },
+      { title: 'Category', href: '/products/category' },
+      { title: 'Item Details' },
+    ]}
+  />
 )
 
 export default App`,
@@ -146,7 +198,10 @@ export default App`,
       <h2 class="text-2xl font-bold mb-6">API</h2>
       <ApiTable title="Breadcrumb" data={breadcrumbApi} />
       <div class="mt-8">
-        <ApiTable title="Breadcrumb.Item" data={breadcrumbItemApi} />
+        <ApiTable title="BreadcrumbItemType (for items prop)" data={breadcrumbItemTypeApi} />
+      </div>
+      <div class="mt-8">
+        <ApiTable title="Breadcrumb.Item (compound pattern)" data={breadcrumbItemApi} />
       </div>
     </section>
 
@@ -159,7 +214,7 @@ export default App`,
           <ul class="list-disc list-inside mt-2 space-y-1">
             <li>Omit href/onClick on the last item to show current location</li>
             <li>Use max-width classes to enable horizontal scrolling</li>
-            <li>Add icons by including SVG elements alongside text</li>
+            <li>Add icons using the icon prop on Breadcrumb.Item</li>
           </ul>
         </div>
       </div>
