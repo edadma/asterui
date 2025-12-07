@@ -1,9 +1,11 @@
 import React, { forwardRef, useState, useCallback, useRef, useEffect } from 'react'
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
   type?: 'text' | 'password' | 'email' | 'number' | 'date' | 'datetime-local' | 'week' | 'month' | 'tel' | 'url' | 'search' | 'time'
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   color?: 'neutral' | 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error'
+  /** Validation status */
+  status?: 'error' | 'warning'
   ghost?: boolean
   bordered?: boolean
   className?: string
@@ -11,6 +13,16 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   mask?: string
   /** Placeholder character shown in mask (default: _) */
   maskPlaceholder?: string
+  /** Show clear button when input has value */
+  allowClear?: boolean | { clearIcon?: React.ReactNode }
+  /** Callback when clear button is clicked */
+  onClear?: () => void
+  /** Prefix icon or element */
+  prefix?: React.ReactNode
+  /** Suffix icon or element */
+  suffix?: React.ReactNode
+  /** ID for error message element (for aria-describedby) */
+  errorId?: string
 }
 
 // Helper to apply mask to raw value
@@ -36,11 +48,11 @@ function applyMask(raw: string, mask: string, placeholder: string): string {
 }
 
 // Extract raw value from masked input
-function extractRaw(value: string, mask: string): string {
+function extractRaw(value: string, mask: string, placeholder: string): string {
   let raw = ''
   for (let i = 0; i < value.length && i < mask.length; i++) {
     const maskChar = mask[i]
-    if ((maskChar === '#' || maskChar === 'A' || maskChar === '*') && value[i] !== '_') {
+    if ((maskChar === '#' || maskChar === 'A' || maskChar === '*') && value[i] !== placeholder) {
       raw += value[i]
     }
   }
@@ -65,21 +77,44 @@ function findNextInputPosition(mask: string, fromIndex: number): number {
   return mask.length
 }
 
+// Clear icon component
+const ClearIcon: React.FC<{ onClick: () => void; className?: string }> = ({ onClick, className }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={`flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity ${className || ''}`}
+    aria-label="Clear input"
+    tabIndex={-1}
+  >
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+)
+
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       type = 'text',
       size,
       color,
+      status,
       ghost = false,
       bordered = true,
       className = '',
       mask,
       maskPlaceholder = '_',
+      allowClear,
+      onClear,
+      prefix,
+      suffix,
+      errorId,
       value,
       defaultValue,
       onChange,
       onKeyDown,
+      disabled,
+      required,
       ...props
     },
     ref
@@ -103,12 +138,20 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       error: 'input-error',
     }
 
+    const statusClasses = {
+      error: 'input-error',
+      warning: 'input-warning',
+    }
+
+    // Status takes precedence over color for validation feedback
+    const effectiveColorClass = status ? statusClasses[status] : (color ? colorClasses[color] : '')
+
     const inputClasses = [
       'input',
       !bordered && 'border-0',
       ghost && 'input-ghost',
       size && sizeClasses[size],
-      color && colorClasses[color],
+      effectiveColorClass,
       className,
     ]
       .filter(Boolean)
@@ -121,8 +164,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const getInitialRaw = useCallback(() => {
       if (!mask) return ''
       const initial = (value ?? defaultValue ?? '') as string
-      return extractRaw(initial, mask)
-    }, [mask, value, defaultValue])
+      return extractRaw(initial, mask, maskPlaceholder)
+    }, [mask, value, defaultValue, maskPlaceholder])
 
     const [rawValue, setRawValue] = useState(getInitialRaw)
     const [cursorPos, setCursorPos] = useState<number | null>(null)
@@ -130,9 +173,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     // Sync with controlled value
     useEffect(() => {
       if (mask && value !== undefined) {
-        setRawValue(extractRaw(value as string, mask))
+        setRawValue(extractRaw(value as string, mask, maskPlaceholder))
       }
-    }, [mask, value])
+    }, [mask, value, maskPlaceholder])
 
     // Set cursor position after render
     useEffect(() => {
@@ -153,7 +196,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         const inputValue = input.value
 
         // Extract what the user is trying to type
-        const newRaw = extractRaw(inputValue, mask)
+        const newRaw = extractRaw(inputValue, mask, maskPlaceholder)
 
         // Filter to only valid characters
         let filteredRaw = ''
@@ -245,35 +288,128 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       [mask, maskPlaceholder, rawValue, onChange, onKeyDown]
     )
 
-    // If no mask, render simple input
-    if (!mask) {
-      return (
-        <input
-          ref={ref}
-          type={type}
-          className={inputClasses}
-          value={value}
-          defaultValue={defaultValue}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          {...props}
-        />
-      )
+    // Track internal value for allowClear visibility
+    const [internalValue, setInternalValue] = useState((value ?? defaultValue ?? '') as string)
+
+    // Sync internal value with controlled value
+    useEffect(() => {
+      if (value !== undefined) {
+        setInternalValue(value as string)
+      }
+    }, [value])
+
+    const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+      setInternalValue(e.target.value)
+      onChange?.(e)
+    }, [onChange])
+
+    const handleClear = useCallback(() => {
+      setInternalValue('')
+      setRawValue('')
+      onClear?.()
+      // Create synthetic event for onChange
+      if (onChange && inputRef.current) {
+        const syntheticEvent = {
+          target: { ...inputRef.current, value: '' },
+          currentTarget: { ...inputRef.current, value: '' },
+        } as React.ChangeEvent<HTMLInputElement>
+        onChange(syntheticEvent)
+      }
+    }, [onClear, onChange, inputRef])
+
+    // Determine if we should show clear button
+    const currentValue = mask ? rawValue : internalValue
+    const showClear = allowClear && currentValue && !disabled
+
+    // Get custom clear icon if provided
+    const clearIcon = typeof allowClear === 'object' && allowClear.clearIcon
+      ? allowClear.clearIcon
+      : null
+
+    // Accessibility attributes
+    const ariaProps: Record<string, string | boolean | undefined> = {}
+    if (status === 'error') {
+      ariaProps['aria-invalid'] = true
+    }
+    if (errorId) {
+      ariaProps['aria-describedby'] = errorId
+    }
+    if (required) {
+      ariaProps['aria-required'] = true
     }
 
-    // Render masked input
-    const maskedValue = applyMask(rawValue, mask, maskPlaceholder)
+    // If we have prefix, suffix, or allowClear, wrap in a container
+    const hasAddons = prefix || suffix || allowClear
 
-    return (
+    // Build the input element
+    const renderInput = (inputClassName: string, inputValue?: string, inputOnChange?: typeof onChange) => (
       <input
         ref={inputRef}
-        type="text"
-        className={inputClasses}
-        value={maskedValue}
-        onChange={handleMaskedChange}
-        onKeyDown={handleMaskedKeyDown}
+        type={mask ? 'text' : type}
+        className={inputClassName}
+        value={inputValue ?? value}
+        defaultValue={!inputValue && !value ? defaultValue : undefined}
+        onChange={inputOnChange ?? onChange}
+        onKeyDown={mask ? handleMaskedKeyDown : onKeyDown}
+        disabled={disabled}
+        required={required}
+        {...ariaProps}
         {...props}
       />
+    )
+
+    // If no mask and no addons, render simple input
+    if (!mask && !hasAddons) {
+      return renderInput(inputClasses)
+    }
+
+    // Render masked input without addons
+    if (mask && !hasAddons) {
+      const maskedValue = applyMask(rawValue, mask, maskPlaceholder)
+      return renderInput(inputClasses, maskedValue, handleMaskedChange)
+    }
+
+    // Render with addons (prefix/suffix/clear)
+    const maskedValue = mask ? applyMask(rawValue, mask, maskPlaceholder) : undefined
+
+    return (
+      <div className="relative flex items-center">
+        {prefix && (
+          <span className="absolute left-3 flex items-center text-base-content/70 pointer-events-none z-10">
+            {prefix}
+          </span>
+        )}
+        <input
+          ref={inputRef}
+          type={mask ? 'text' : type}
+          className={[
+            inputClasses,
+            'w-full',
+            prefix && 'pl-10',
+            (suffix || showClear) && 'pr-10',
+          ].filter(Boolean).join(' ')}
+          value={maskedValue ?? (value !== undefined ? value : internalValue)}
+          defaultValue={value === undefined && !mask ? defaultValue : undefined}
+          onChange={mask ? handleMaskedChange : handleChange}
+          onKeyDown={mask ? handleMaskedKeyDown : onKeyDown}
+          disabled={disabled}
+          required={required}
+          {...ariaProps}
+          {...props}
+        />
+        {(suffix || showClear) && (
+          <span className="absolute right-3 flex items-center gap-1 z-10">
+            {showClear && (
+              clearIcon || <ClearIcon onClick={handleClear} />
+            )}
+            {suffix && (
+              <span className="text-base-content/70">
+                {suffix}
+              </span>
+            )}
+          </span>
+        )}
+      </div>
     )
   }
 )

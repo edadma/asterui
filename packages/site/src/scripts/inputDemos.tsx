@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
 import { Input, Space } from 'asterui';
 import { CheckIconSvg } from './icons'
+import { MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
@@ -61,6 +62,25 @@ const demos: Record<string, React.ReactNode> = {
       <Input value="Disabled with value" disabled />
     </Space>
   ),
+  'prefix-suffix': (
+    <Space direction="vertical" size="sm">
+      <Input prefix={<MagnifyingGlassIcon className="w-4 h-4" />} placeholder="Search..." />
+      <Input prefix={<UserIcon className="w-4 h-4" />} placeholder="Username" />
+      <Input suffix="@gmail.com" placeholder="Email" />
+    </Space>
+  ),
+  'status': (
+    <Space direction="vertical" size="sm">
+      <div>
+        <Input status="error" placeholder="Error status" errorId="error-msg" />
+        <p id="error-msg" className="text-error text-sm mt-1">This field is required</p>
+      </div>
+      <div>
+        <Input status="warning" placeholder="Warning status" />
+        <p className="text-warning text-sm mt-1">Please verify this value</p>
+      </div>
+    </Space>
+  ),
 };
 
 // Stateful demo components
@@ -81,8 +101,24 @@ const ControlledDemo: React.FC = () => {
   );
 };
 
+const AllowClearDemo: React.FC = () => {
+  const [value, setValue] = useState('Clear me!');
+
+  return (
+    <Space direction="vertical" size="sm">
+      <Input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        allowClear
+        placeholder="Type then clear..."
+      />
+    </Space>
+  );
+};
+
 const statefulDemos: Record<string, React.FC> = {
   'controlled': ControlledDemo,
+  'allowClear': AllowClearDemo,
 };
 
 // Mount React demos

@@ -14,12 +14,16 @@ const inputApi = [
     property: 'size',
     description: 'Input size',
     type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
-    default: "'md'",
   },
   {
     property: 'color',
     description: 'Input color variant',
     type: "'neutral' | 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error'",
+  },
+  {
+    property: 'status',
+    description: 'Validation status (sets aria-invalid)',
+    type: "'error' | 'warning'",
   },
   {
     property: 'ghost',
@@ -34,6 +38,27 @@ const inputApi = [
     default: 'true',
   },
   {
+    property: 'allowClear',
+    description: 'Show clear button when input has value',
+    type: 'boolean | { clearIcon?: ReactNode }',
+    default: 'false',
+  },
+  {
+    property: 'onClear',
+    description: 'Callback when clear button is clicked',
+    type: '() => void',
+  },
+  {
+    property: 'prefix',
+    description: 'Prefix icon or element',
+    type: 'React.ReactNode',
+  },
+  {
+    property: 'suffix',
+    description: 'Suffix icon or element',
+    type: 'React.ReactNode',
+  },
+  {
     property: 'mask',
     description: 'Input mask pattern. Use # for digits, A for letters, * for alphanumeric',
     type: 'string',
@@ -43,6 +68,11 @@ const inputApi = [
     description: 'Placeholder character shown in mask',
     type: 'string',
     default: "'_'",
+  },
+  {
+    property: 'errorId',
+    description: 'ID of error message element (for aria-describedby)',
+    type: 'string',
   },
   {
     property: 'disabled',
@@ -225,6 +255,70 @@ const App: React.FC = () => (
 
 export default App`,
   },
+  {
+    id: 'allowClear',
+    title: 'Allow Clear',
+    description: 'Input with clear button.',
+    code: `import React, { useState } from 'react'
+import { Input, Space } from 'asterui'
+
+const App: React.FC = () => {
+  const [value, setValue] = useState('Clear me!')
+
+  return (
+    <Space direction="vertical" size="sm">
+      <Input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        allowClear
+        placeholder="Type then clear..."
+      />
+    </Space>
+  )
+}
+
+export default App`,
+  },
+  {
+    id: 'prefix-suffix',
+    title: 'Prefix & Suffix',
+    description: 'Input with prefix and suffix icons.',
+    code: `import React from 'react'
+import { Input, Space } from 'asterui'
+import { MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
+
+const App: React.FC = () => (
+  <Space direction="vertical" size="sm">
+    <Input prefix={<MagnifyingGlassIcon className="w-4 h-4" />} placeholder="Search..." />
+    <Input prefix={<UserIcon className="w-4 h-4" />} placeholder="Username" />
+    <Input suffix="@gmail.com" placeholder="Email" />
+  </Space>
+)
+
+export default App`,
+  },
+  {
+    id: 'status',
+    title: 'Validation Status',
+    description: 'Input with validation status for form feedback.',
+    code: `import React from 'react'
+import { Input, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="vertical" size="sm">
+    <div>
+      <Input status="error" placeholder="Error status" errorId="error-msg" />
+      <p id="error-msg" className="text-error text-sm mt-1">This field is required</p>
+    </div>
+    <div>
+      <Input status="warning" placeholder="Warning status" />
+      <p className="text-warning text-sm mt-1">Please verify this value</p>
+    </div>
+  </Space>
+)
+
+export default App`,
+  },
 ];
 ---
 
@@ -298,9 +392,10 @@ export default App`,
       <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
       <ul class="list-disc list-inside space-y-2 text-base-content/80">
         <li>Uses native <code class="bg-base-200 px-1 rounded">&lt;input&gt;</code> element for proper keyboard support</li>
-        <li>Status colors are supplemented with icons for better accessibility</li>
         <li>Disabled state is properly communicated to assistive technologies</li>
-        <li>Clear button is keyboard accessible and has appropriate ARIA labels</li>
+        <li>Clear button has <code class="bg-base-200 px-1 rounded">aria-label</code> for screen readers</li>
+        <li>Use <code class="bg-base-200 px-1 rounded">status="error"</code> to set <code class="bg-base-200 px-1 rounded">aria-invalid</code> automatically</li>
+        <li>Use <code class="bg-base-200 px-1 rounded">errorId</code> to link input to error message via <code class="bg-base-200 px-1 rounded">aria-describedby</code></li>
         <li>Focus states are clearly visible for keyboard navigation</li>
       </ul>
     </section>
