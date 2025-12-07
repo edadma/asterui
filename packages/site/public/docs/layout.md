@@ -205,6 +205,8 @@ export default App
 | `collapsible` | Whether the sider can be collapsed | `boolean` | `false` |
 | `onCollapse` | Callback when collapse state changes | `(collapsed: boolean) => void` | `-` |
 | `trigger` | Custom trigger element (null to hide) | `React.ReactNode \| null` | `-` |
+| `breakpoint` | Breakpoint for auto-collapse | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | `-` |
+| `onBreakpoint` | Callback when breakpoint is crossed | `(broken: boolean) => void` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
 | `style` | Inline styles | `React.CSSProperties` | `-` |
 

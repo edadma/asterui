@@ -30,6 +30,8 @@ const siderApi = [
   { property: 'collapsible', description: 'Whether the sider can be collapsed', type: 'boolean', default: 'false' },
   { property: 'onCollapse', description: 'Callback when collapse state changes', type: '(collapsed: boolean) => void' },
   { property: 'trigger', description: 'Custom trigger element (null to hide)', type: 'React.ReactNode | null' },
+  { property: 'breakpoint', description: 'Breakpoint for auto-collapse', type: "'sm' | 'md' | 'lg' | 'xl' | '2xl'" },
+  { property: 'onBreakpoint', description: 'Callback when breakpoint is crossed', type: '(broken: boolean) => void' },
   { property: 'className', description: 'Additional CSS classes', type: 'string' },
   { property: 'style', description: 'Inline styles', type: 'React.CSSProperties' },
 ];

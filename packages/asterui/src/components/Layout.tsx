@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback } from 'react'
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react'
 
 export interface LayoutProps {
   children: React.ReactNode
@@ -146,6 +146,14 @@ function LayoutContent({ children, className = '', style }: LayoutContentProps) 
   )
 }
 
+const BREAKPOINT_MAP: Record<string, string> = {
+  sm: '(max-width: 639px)',
+  md: '(max-width: 767px)',
+  lg: '(max-width: 1023px)',
+  xl: '(max-width: 1279px)',
+  '2xl': '(max-width: 1535px)',
+}
+
 function LayoutSider({
   children,
   width = 200,
@@ -155,12 +163,43 @@ function LayoutSider({
   collapsible = false,
   onCollapse,
   trigger,
+  breakpoint,
+  onBreakpoint,
   className = '',
   style,
 }: LayoutSiderProps) {
   const [internalCollapsed, setInternalCollapsed] = useState(defaultCollapsed)
+  const [broken, setBroken] = useState(false)
 
   const collapsed = controlledCollapsed ?? internalCollapsed
+
+  // Handle responsive breakpoint
+  useEffect(() => {
+    if (!breakpoint) return
+
+    const mediaQuery = window.matchMedia(BREAKPOINT_MAP[breakpoint])
+
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      const isBroken = e.matches
+      setBroken(isBroken)
+      onBreakpoint?.(isBroken)
+
+      // Auto-collapse when breakpoint is crossed
+      if (controlledCollapsed === undefined) {
+        setInternalCollapsed(isBroken)
+      }
+      if (isBroken !== broken) {
+        onCollapse?.(isBroken)
+      }
+    }
+
+    // Check initial state
+    handleChange(mediaQuery)
+
+    // Listen for changes
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [breakpoint, onBreakpoint, controlledCollapsed, onCollapse, broken])
 
   const handleCollapse = useCallback(() => {
     const newCollapsed = !collapsed
