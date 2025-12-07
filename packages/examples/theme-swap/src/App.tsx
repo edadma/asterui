@@ -9,16 +9,14 @@ function App() {
         end={<ThemeController.Swap lightTheme="light" darkTheme="dark" />}
       />
 
-      <Hero className="bg-base-200">
-        <Hero.Content className="text-center max-w-md">
-          <Space size="lg">
-            <h1 className="text-5xl font-bold">Welcome!</h1>
-            <p>
-              Use the sun/moon toggle in the navbar to swap between light and dark themes. The entire
-              app will update with smooth transitions.
-            </p>
-          </Space>
-        </Hero.Content>
+      <Hero className="bg-base-200" contentClassName="text-center max-w-md">
+        <Space size="lg">
+          <h1 className="text-5xl font-bold">Welcome!</h1>
+          <p>
+            Use the sun/moon toggle in the navbar to swap between light and dark themes. The entire
+            app will update with smooth transitions.
+          </p>
+        </Space>
       </Hero>
     </>
   )

@@ -87,9 +87,8 @@ function App() {
         end={<ThemeController.Dropdown themes={THEMES} />}
       />
 
-      <Hero className="bg-base-200 !min-h-[calc(100vh-4rem)]">
-        <Hero.Content className="text-center max-w-2xl">
-          <Space size="lg">
+      <Hero className="bg-base-200 !min-h-[calc(100vh-4rem)]" contentClassName="text-center max-w-2xl">
+        <Space size="lg">
           <h1 className="text-5xl font-bold">Country Search</h1>
           <p className="text-lg">
             Search and explore countries using the RESTCountries API with real-time autocomplete
@@ -143,8 +142,7 @@ function App() {
               Select a country from the autocomplete to see details
             </div>
           )}
-          </Space>
-        </Hero.Content>
+        </Space>
       </Hero>
     </>
   )

@@ -47,9 +47,8 @@ function App() {
         end={<ThemeController.Dropdown themes={THEMES} />}
       />
 
-      <Hero className="bg-base-200 !min-h-[calc(100vh-4rem)]">
-        <Hero.Content className="text-center max-w-2xl">
-          <Space size="lg">
+      <Hero className="bg-base-200 !min-h-[calc(100vh-4rem)]" contentClassName="text-center max-w-2xl">
+        <Space size="lg">
           <h1 className="text-5xl font-bold">Theme Showcase</h1>
           <p className="text-lg">
             Use the theme dropdown in the navbar to test all 35 daisyUI themes. Watch the colors
@@ -80,8 +79,7 @@ function App() {
           <Card className="shadow-xl" title="Theme Colors">
             <p>This card demonstrates base-100 background with themed text and borders.</p>
           </Card>
-          </Space>
-        </Hero.Content>
+        </Space>
       </Hero>
     </>
   )

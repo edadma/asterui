@@ -5,18 +5,10 @@ import { Code } from 'astro:components';
 
 const heroApi = [
   { property: 'children', description: 'Hero content', type: 'React.ReactNode' },
+  { property: 'overlay', description: 'Show overlay effect (for background images)', type: 'boolean', default: 'false' },
+  { property: 'contentClassName', description: 'CSS classes for the content wrapper', type: 'string' },
   { property: 'className', description: 'Additional CSS classes', type: 'string' },
   { property: 'style', description: 'Inline styles (useful for background images)', type: 'React.CSSProperties' },
-];
-
-const heroContentApi = [
-  { property: 'children', description: 'Content elements', type: 'React.ReactNode' },
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
-];
-
-const heroOverlayApi = [
-  { property: 'children', description: 'Overlay content', type: 'React.ReactNode' },
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
 ];
 
 const examples = [
@@ -28,17 +20,15 @@ const examples = [
 import { Hero } from 'asterui'
 
 const App: React.FC = () => (
-  <Hero>
-    <Hero.Content className="text-center">
-      <div className="max-w-md">
-        <h1 className="text-5xl font-bold">Hello there</h1>
-        <p className="py-6">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-          et a id nisi.
-        </p>
-      </div>
-    </Hero.Content>
+  <Hero contentClassName="text-center">
+    <div className="max-w-md">
+      <h1 className="text-5xl font-bold">Hello there</h1>
+      <p className="py-6">
+        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+        excepturi exercitationem quasi. In deleniti eaque aut repudiandae
+        et a id nisi.
+      </p>
+    </div>
   </Hero>
 )
 
@@ -52,17 +42,15 @@ export default App`,
 import { Hero, Button } from 'asterui'
 
 const App: React.FC = () => (
-  <Hero>
-    <Hero.Content className="text-center">
-      <div className="max-w-md">
-        <h1 className="text-5xl font-bold">Hello there</h1>
-        <p className="py-6">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi.
-        </p>
-        <Button type="primary">Get Started</Button>
-      </div>
-    </Hero.Content>
+  <Hero contentClassName="text-center">
+    <div className="max-w-md">
+      <h1 className="text-5xl font-bold">Hello there</h1>
+      <p className="py-6">
+        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+        excepturi exercitationem quasi.
+      </p>
+      <Button type="primary">Get Started</Button>
+    </div>
   </Hero>
 )
 
@@ -76,23 +64,21 @@ export default App`,
 import { Hero, Button } from 'asterui'
 
 const App: React.FC = () => (
-  <Hero>
-    <Hero.Content className="flex-col lg:flex-row-reverse">
-      <img
-        src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-        alt="Hero"
-        className="max-w-sm rounded-lg shadow-2xl"
-      />
-      <div>
-        <h1 className="text-5xl font-bold">Box Office News!</h1>
-        <p className="py-6">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-          et a id nisi.
-        </p>
-        <Button type="primary">Get Started</Button>
-      </div>
-    </Hero.Content>
+  <Hero contentClassName="flex-col lg:flex-row-reverse">
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+      alt="Hero"
+      className="max-w-sm rounded-lg shadow-2xl"
+    />
+    <div>
+      <h1 className="text-5xl font-bold">Box Office News!</h1>
+      <p className="py-6">
+        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+        excepturi exercitationem quasi. In deleniti eaque aut repudiandae
+        et a id nisi.
+      </p>
+      <Button type="primary">Get Started</Button>
+    </div>
   </Hero>
 )
 
@@ -107,22 +93,21 @@ import { Hero, Button } from 'asterui'
 
 const App: React.FC = () => (
   <Hero
+    overlay
+    contentClassName="text-center text-neutral-content"
     style={{
       backgroundImage: "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
     }}
   >
-    <Hero.Overlay className="bg-opacity-60" />
-    <Hero.Content className="text-center text-neutral-content">
-      <div className="max-w-md">
-        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-        <p className="mb-5">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-          et a id nisi.
-        </p>
-        <Button type="primary">Get Started</Button>
-      </div>
-    </Hero.Content>
+    <div className="max-w-md">
+      <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+      <p className="mb-5">
+        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+        excepturi exercitationem quasi. In deleniti eaque aut repudiandae
+        et a id nisi.
+      </p>
+      <Button type="primary">Get Started</Button>
+    </div>
   </Hero>
 )
 
@@ -194,12 +179,6 @@ export default App`,
     <section class="mb-12">
       <h2 class="text-2xl font-bold mb-6">API</h2>
       <ApiTable title="Hero" data={heroApi} />
-      <div class="mt-6">
-        <ApiTable title="Hero.Content" data={heroContentApi} />
-      </div>
-      <div class="mt-6">
-        <ApiTable title="Hero.Overlay" data={heroOverlayApi} />
-      </div>
     </section>
 
     <!-- Accessibility -->
