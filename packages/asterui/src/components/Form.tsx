@@ -7,6 +7,7 @@ interface FormContextValue {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   labelWidth?: number
   listName?: string
+  disabled?: boolean
 }
 
 const FormContext = createContext<FormContextValue | undefined>(undefined)
@@ -31,11 +32,15 @@ export interface FormProps<TFieldValues extends FieldValues = FieldValues>
   extends Omit<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit'> {
   form?: UseFormReturn<TFieldValues>
   onFinish?: SubmitHandler<TFieldValues>
+  /** Called when form validation fails */
+  onFinishFailed?: (errorInfo: { values: TFieldValues; errorFields: Array<{ name: string; errors: string[] }> }) => void
   initialValues?: UseFormProps<TFieldValues>['defaultValues']
   layout?: 'vertical' | 'horizontal' | 'inline'
   /** Label width in pixels for horizontal layout (default: 80) */
   labelWidth?: number
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  /** Disable all form fields */
+  disabled?: boolean
   children: React.ReactNode
 }
 
@@ -100,10 +105,12 @@ function useFormContext() {
 function FormRoot<TFieldValues extends FieldValues = FieldValues>({
   form: externalForm,
   onFinish,
+  onFinishFailed,
   initialValues,
   layout = 'vertical',
   labelWidth = 60,
   size,
+  disabled = false,
   children,
   className = '',
   noValidate = true,
@@ -115,15 +122,42 @@ function FormRoot<TFieldValues extends FieldValues = FieldValues>({
 
   const form = externalForm || internalForm
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (onFinish) {
-      form.handleSubmit(onFinish)(e)
+
+    // Trigger validation
+    const isValid = await form.trigger()
+
+    if (isValid) {
+      if (onFinish) {
+        onFinish(form.getValues())
+      }
+    } else {
+      if (onFinishFailed) {
+        const errors = form.formState.errors
+        const errorFields: Array<{ name: string; errors: string[] }> = []
+
+        // Flatten errors into errorFields array
+        const flattenErrors = (obj: any, prefix = '') => {
+          for (const key in obj) {
+            const fullKey = prefix ? `${prefix}.${key}` : key
+            const value = obj[key]
+            if (value?.message) {
+              errorFields.push({ name: fullKey, errors: [value.message as string] })
+            } else if (typeof value === 'object' && value !== null) {
+              flattenErrors(value, fullKey)
+            }
+          }
+        }
+        flattenErrors(errors)
+
+        onFinishFailed({ values: form.getValues(), errorFields })
+      }
     }
   }
 
   return (
-    <FormContext.Provider value={{ form, layout, labelWidth, size }}>
+    <FormContext.Provider value={{ form, layout, labelWidth, size, disabled }}>
       <form onSubmit={handleSubmit} className={className} noValidate={noValidate} {...props}>
         {children}
       </form>
@@ -149,7 +183,7 @@ function FormItem({
   initialValue,
   hidden = false,
 }: FormItemProps) {
-  const { form, size, listName, layout, labelWidth } = useFormContext()
+  const { form, size, listName, layout, labelWidth, disabled: formDisabled } = useFormContext()
   const inputId = useId()
   const errorId = useId()
 
@@ -411,6 +445,11 @@ function FormItem({
           childProps['aria-invalid'] = true
         }
 
+        // Apply form-level disabled state
+        if (formDisabled) {
+          childProps.disabled = true
+        }
+
         const enhancedChild = isValidElement(children)
           ? cloneElement(children as React.ReactElement<any>, childProps)
           : children
@@ -467,7 +506,7 @@ function FormList<TFieldValues extends FieldValues = FieldValues>({
   name,
   children,
 }: FormListProps<TFieldValues>) {
-  const { form, layout, size } = useFormContext()
+  const { form, layout, size, disabled } = useFormContext()
 
   const { fields, append, remove, move } = useFieldArray({
     control: form.control,
@@ -481,7 +520,7 @@ function FormList<TFieldValues extends FieldValues = FieldValues>({
   }))
 
   return (
-    <FormContext.Provider value={{ form, layout, size, listName: name as string }}>
+    <FormContext.Provider value={{ form, layout, size, listName: name as string, disabled }}>
       {children(fieldsWithName as any, {
         add: append,
         remove,
