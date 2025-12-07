@@ -103,6 +103,9 @@ export type { RowProps, ColProps } from './components/Grid'
 export { Hero } from './components/Hero'
 export type { HeroProps } from './components/Hero'
 
+export { HoverGallery } from './components/HoverGallery'
+export type { HoverGalleryProps } from './components/HoverGallery'
+
 export { Image } from './components/Image'
 export type { ImageProps } from './components/Image'
 
