@@ -589,6 +589,9 @@ function DropdownSubMenu({
 }: DropdownSubMenuProps) {
   const [isSubOpen, setIsSubOpen] = useState(false)
   const subMenuRef = useRef<HTMLLIElement>(null)
+  const summaryRef = useRef<HTMLElement>(null)
+  const subMenuListRef = useRef<HTMLUListElement>(null)
+  const subMenuId = useId()
 
   const handleMouseEnter = () => {
     if (!disabled) setIsSubOpen(true)
@@ -596,6 +599,69 @@ function DropdownSubMenu({
 
   const handleMouseLeave = () => {
     setIsSubOpen(false)
+  }
+
+  // Focus first item in submenu
+  const focusFirstItem = () => {
+    setTimeout(() => {
+      const firstItem = subMenuListRef.current?.querySelector('[role="menuitem"]:not([aria-disabled="true"])') as HTMLElement
+      firstItem?.focus()
+    }, 0)
+  }
+
+  // Keyboard handler for summary (submenu trigger)
+  const handleSummaryKeyDown = (event: React.KeyboardEvent) => {
+    if (disabled) return
+
+    switch (event.key) {
+      case 'ArrowRight':
+      case 'Enter':
+      case ' ':
+        event.preventDefault()
+        event.stopPropagation()
+        setIsSubOpen(true)
+        focusFirstItem()
+        break
+      case 'ArrowLeft':
+      case 'Escape':
+        event.preventDefault()
+        event.stopPropagation()
+        setIsSubOpen(false)
+        break
+    }
+  }
+
+  // Keyboard handler for submenu items
+  const handleSubMenuKeyDown = (event: React.KeyboardEvent) => {
+    switch (event.key) {
+      case 'ArrowLeft':
+      case 'Escape':
+        event.preventDefault()
+        event.stopPropagation()
+        setIsSubOpen(false)
+        summaryRef.current?.focus()
+        break
+      case 'ArrowDown':
+        event.preventDefault()
+        event.stopPropagation()
+        const items = subMenuListRef.current?.querySelectorAll('[role="menuitem"]:not([aria-disabled="true"])')
+        if (items) {
+          const currentIndex = Array.from(items).findIndex(item => item === document.activeElement)
+          const nextIndex = (currentIndex + 1) % items.length
+          ;(items[nextIndex] as HTMLElement)?.focus()
+        }
+        break
+      case 'ArrowUp':
+        event.preventDefault()
+        event.stopPropagation()
+        const itemsUp = subMenuListRef.current?.querySelectorAll('[role="menuitem"]:not([aria-disabled="true"])')
+        if (itemsUp) {
+          const currentIndexUp = Array.from(itemsUp).findIndex(item => item === document.activeElement)
+          const prevIndex = (currentIndexUp - 1 + itemsUp.length) % itemsUp.length
+          ;(itemsUp[prevIndex] as HTMLElement)?.focus()
+        }
+        break
+    }
   }
 
   const itemClasses = [disabled && 'disabled', className].filter(Boolean).join(' ')
@@ -611,16 +677,26 @@ function DropdownSubMenu({
     >
       <details open={isSubOpen}>
         <summary
+          ref={summaryRef}
           role="menuitem"
           tabIndex={disabled ? -1 : 0}
           aria-disabled={disabled || undefined}
           aria-haspopup="menu"
           aria-expanded={isSubOpen}
+          aria-controls={subMenuId}
+          onKeyDown={handleSummaryKeyDown}
         >
           {icon && <span className="mr-2 inline-flex items-center">{icon}</span>}
           {title}
         </summary>
-        <ul className="menu bg-base-100 rounded-box z-50 shadow" role="menu">
+        <ul
+          ref={subMenuListRef}
+          id={subMenuId}
+          className="menu bg-base-100 rounded-box z-50 shadow"
+          role="menu"
+          aria-label={typeof title === 'string' ? title : undefined}
+          onKeyDown={handleSubMenuKeyDown}
+        >
           {children}
         </ul>
       </details>
