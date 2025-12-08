@@ -5,16 +5,21 @@ import { Code } from 'astro:components';
 
 const cardApi = [
   { property: 'children', description: 'Card body content', type: 'React.ReactNode' },
-  { property: 'title', description: 'Card title (renders automatically)', type: 'React.ReactNode' },
+  { property: 'title', description: 'Card title', type: 'React.ReactNode' },
+  { property: 'extra', description: 'Content in the top-right corner of the header', type: 'React.ReactNode' },
   { property: 'cover', description: 'Cover image or media element', type: 'React.ReactNode' },
   { property: 'actions', description: 'Action buttons or elements', type: 'React.ReactNode' },
-  { property: 'className', description: 'Additional CSS classes', type: 'string' },
-  { property: 'style', description: 'Inline styles', type: 'React.CSSProperties' },
-  { property: 'size', description: 'Card size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'" },
-  { property: 'bordered', description: 'Add border to card', type: 'boolean', default: 'false' },
+  { property: 'size', description: 'Card size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'" },
+  { property: 'bordered', description: 'Add border and shadow to card', type: 'boolean', default: 'true' },
   { property: 'side', description: 'Place cover beside content (horizontal layout)', type: 'boolean', default: 'false' },
   { property: 'imageFull', description: 'Make cover image a full background overlay', type: 'boolean', default: 'false' },
   { property: 'actionsJustify', description: 'Horizontal alignment of actions', type: "'start' | 'center' | 'end'", default: "'end'" },
+  { property: 'loading', description: 'Show skeleton loading state', type: 'boolean', default: 'false' },
+  { property: 'hoverable', description: 'Enable hover shadow effect', type: 'boolean', default: 'false' },
+  { property: 'avatar', description: 'Avatar element (for inline meta layout)', type: 'React.ReactNode' },
+  { property: 'description', description: 'Description text (for inline meta layout)', type: 'React.ReactNode' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string' },
+  { property: 'style', description: 'Inline styles', type: 'React.CSSProperties' },
 ];
 
 const examples = [
@@ -77,15 +82,15 @@ const App: React.FC = () => (
 export default App`,
   },
   {
-    id: 'bordered',
-    title: 'Bordered Card',
-    description: 'Card with a border.',
+    id: 'unbordered',
+    title: 'Unbordered Card',
+    description: 'Card without border (cards have borders by default).',
     code: `import React from 'react'
 import { Card } from 'asterui'
 
 const App: React.FC = () => (
-  <Card title="Bordered Card" className="w-96" bordered>
-    <p>This card has a border around it.</p>
+  <Card title="Unbordered Card" className="w-96" bordered={false}>
+    <p>This card has no border.</p>
   </Card>
 )
 
@@ -151,10 +156,10 @@ import { Card, Button } from 'asterui'
 const App: React.FC = () => (
   <Card
     title="Overlay Card"
-    cover={<img src="https://picsum.photos/400/300" alt="Placeholder" />}
+    cover={<img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />}
     actions={<Button color="primary">View Details</Button>}
     imageFull
-    className="w-96 h-64 text-neutral-content"
+    className="w-96"
   >
     <p>Text appears over the background image.</p>
   </Card>
@@ -208,6 +213,118 @@ const App: React.FC = () => (
       <p>Actions aligned to the center.</p>
     </Card>
   </Space>
+)
+
+export default App`,
+  },
+  {
+    id: 'extra',
+    title: 'Extra Content',
+    description: 'Card with extra content in the top-right corner.',
+    code: `import React from 'react'
+import { Card } from 'asterui'
+
+const App: React.FC = () => (
+  <Card
+    title="Card Title"
+    extra={<a href="#" className="link link-primary">More</a>}
+    className="w-96"
+  >
+    <p>Card with extra content in the header area.</p>
+  </Card>
+)
+
+export default App`,
+  },
+  {
+    id: 'hoverable',
+    title: 'Hoverable',
+    description: 'Card with hover effect.',
+    code: `import React from 'react'
+import { Card, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space size="sm">
+    <Card title="Hoverable Card" hoverable className="w-64">
+      <p>Hover over this card to see the shadow effect.</p>
+    </Card>
+    <Card title="Normal Card" className="w-64">
+      <p>This card has no hover effect.</p>
+    </Card>
+  </Space>
+)
+
+export default App`,
+  },
+  {
+    id: 'loading',
+    title: 'Loading State',
+    description: 'Card showing skeleton placeholders while loading.',
+    code: `import React, { useState } from 'react'
+import { Card, Button, Space } from 'asterui'
+
+const App: React.FC = () => {
+  const [loading, setLoading] = useState(true)
+
+  return (
+    <Space direction="vertical" size="sm">
+      <Button size="sm" onClick={() => setLoading(!loading)}>
+        Toggle Loading
+      </Button>
+      <Card
+        title="Loading Card"
+        cover={<img src="https://picsum.photos/400/200" alt="Placeholder" />}
+        actions={<Button color="primary">Action</Button>}
+        loading={loading}
+        className="w-96"
+      >
+        <p>Content appears when loading is false.</p>
+      </Card>
+    </Space>
+  )
+}
+
+export default App`,
+  },
+  {
+    id: 'meta',
+    title: 'Card.Meta',
+    description: 'Use Card.Meta for avatar with title and description layout.',
+    code: `import React from 'react'
+import { Card, Avatar } from 'asterui'
+
+const App: React.FC = () => (
+  <Card className="w-96">
+    <Card.Meta
+      avatar={<Avatar src="https://i.pravatar.cc/100" />}
+      title="John Doe"
+      description="Software Engineer at Acme Corp"
+    />
+    <p className="mt-4">
+      This card uses Card.Meta for a structured avatar layout.
+    </p>
+  </Card>
+)
+
+export default App`,
+  },
+  {
+    id: 'avatar-props',
+    title: 'Card with Avatar Props',
+    description: 'Alternative inline avatar layout using Card props directly.',
+    code: `import React from 'react'
+import { Card, Avatar, Button } from 'asterui'
+
+const App: React.FC = () => (
+  <Card
+    avatar={<Avatar src="https://i.pravatar.cc/100" />}
+    title="Jane Smith"
+    description="Product Designer"
+    actions={<Button color="primary" size="sm">Follow</Button>}
+    className="w-96"
+  >
+    <p className="mt-2">Building beautiful user experiences.</p>
+  </Card>
 )
 
 export default App`,
@@ -288,10 +405,10 @@ export default App`,
           <strong>Usage Tips:</strong>
           <ul class="list-disc list-inside mt-2 space-y-1">
             <li>Pass content directly as children</li>
-            <li>Use <code class="bg-base-200 px-1 rounded">title</code> prop for card headings</li>
-            <li>Use <code class="bg-base-200 px-1 rounded">cover</code> prop for images or media</li>
-            <li>Use <code class="bg-base-200 px-1 rounded">actions</code> prop for buttons or action elements</li>
-            <li>Combine with Tailwind utility classes via <code class="bg-base-200 px-1 rounded">className</code> for custom styling</li>
+            <li>Use <code class="bg-base-content/20 px-1 rounded">title</code> prop for card headings</li>
+            <li>Use <code class="bg-base-content/20 px-1 rounded">cover</code> prop for images or media</li>
+            <li>Use <code class="bg-base-content/20 px-1 rounded">actions</code> prop for buttons or action elements</li>
+            <li>Combine with Tailwind utility classes via <code class="bg-base-content/20 px-1 rounded">className</code> for custom styling</li>
           </ul>
         </div>
       </div>

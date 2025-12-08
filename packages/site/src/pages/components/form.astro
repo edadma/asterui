@@ -153,7 +153,7 @@ const App: React.FC = () => {
         name="website"
         label="Website"
         tooltip="Your personal or company website"
-        extra={<span>Include <code className="bg-base-200 px-1 rounded">https://</code></span>}
+        extra={<span>Include <code className="bg-base-content/20 px-1 rounded">https://</code></span>}
         rules={[{ type: 'url' }]}
       >
         <Input placeholder="https://example.com" />
@@ -592,16 +592,16 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Validation Rules</h2>
       <p class="text-base-content/80 mb-4">
-        The <code class="bg-base-200 px-1 rounded">rules</code> prop accepts an array of validation rules:
+        The <code class="bg-base-content/20 px-1 rounded">rules</code> prop accepts an array of validation rules:
       </p>
       <ul class="list-disc list-inside space-y-2 text-base-content/80">
-        <li><code class="bg-base-200 px-1 rounded">required: boolean</code> - Field is required</li>
-        <li><code class="bg-base-200 px-1 rounded">message: string</code> - Error message to display</li>
-        <li><code class="bg-base-200 px-1 rounded">type: 'email' | 'url' | 'number'</code> - Built-in type validation</li>
-        <li><code class="bg-base-200 px-1 rounded">min: number</code> - Minimum length for strings or minimum value for numbers</li>
-        <li><code class="bg-base-200 px-1 rounded">max: number</code> - Maximum length for strings or maximum value for numbers</li>
-        <li><code class="bg-base-200 px-1 rounded">pattern: RegExp</code> - Custom regex pattern validation</li>
-        <li><code class="bg-base-200 px-1 rounded">validate: (value) =&gt; boolean | string | Promise</code> - Custom validation function</li>
+        <li><code class="bg-base-content/20 px-1 rounded">required: boolean</code> - Field is required</li>
+        <li><code class="bg-base-content/20 px-1 rounded">message: string</code> - Error message to display</li>
+        <li><code class="bg-base-content/20 px-1 rounded">type: 'email' | 'url' | 'number'</code> - Built-in type validation</li>
+        <li><code class="bg-base-content/20 px-1 rounded">min: number</code> - Minimum length for strings or minimum value for numbers</li>
+        <li><code class="bg-base-content/20 px-1 rounded">max: number</code> - Maximum length for strings or maximum value for numbers</li>
+        <li><code class="bg-base-content/20 px-1 rounded">pattern: RegExp</code> - Custom regex pattern validation</li>
+        <li><code class="bg-base-content/20 px-1 rounded">validate: (value) =&gt; boolean | string | Promise</code> - Custom validation function</li>
       </ul>
     </section>
 

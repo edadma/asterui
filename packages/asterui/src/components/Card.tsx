@@ -1,8 +1,10 @@
 import React from 'react'
 
 export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
-  children: React.ReactNode
+  children?: React.ReactNode
   title?: React.ReactNode
+  /** Content in the top-right corner of the card header */
+  extra?: React.ReactNode
   cover?: React.ReactNode
   actions?: React.ReactNode
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -14,6 +16,15 @@ export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 't
   hoverable?: boolean
   // Meta props for avatar + description layout
   avatar?: React.ReactNode
+  description?: React.ReactNode
+}
+
+export interface CardMetaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  /** Avatar or icon element */
+  avatar?: React.ReactNode
+  /** Title content */
+  title?: React.ReactNode
+  /** Description content */
   description?: React.ReactNode
 }
 
@@ -38,9 +49,22 @@ function CardGrid({ children, hoverable = false, className = '', style, ...rest 
   )
 }
 
+function CardMeta({ avatar, title, description, className = '', ...rest }: CardMetaProps) {
+  return (
+    <div className={`flex gap-4 ${className}`} {...rest}>
+      {avatar && <div className="flex-shrink-0">{avatar}</div>}
+      <div className="flex-1 min-w-0">
+        {title && <div className="font-medium">{title}</div>}
+        {description && <div className="text-sm opacity-70 mt-1">{description}</div>}
+      </div>
+    </div>
+  )
+}
+
 function CardRoot({
   children,
   title,
+  extra,
   cover,
   actions,
   className = '',
@@ -68,9 +92,10 @@ function CardRoot({
     'card',
     'bg-base-100',
     size && sizeClasses[size],
-    bordered && 'border border-base-content/10 shadow-sm',
+    // Don't add border when imageFull is used (it breaks the overlay effect)
+    bordered && !imageFull && 'border border-base-content/10 shadow-sm',
     side && 'card-side',
-    imageFull && 'image-full',
+    imageFull && 'image-full shadow-sm',
     hoverable && 'transition-shadow hover:shadow-lg cursor-pointer',
     className,
   ]
@@ -125,6 +150,22 @@ function CardRoot({
   // Render with avatar + title + description layout (meta style)
   const hasMetaLayout = avatar || (title && description)
 
+  // Header with title and extra
+  const renderHeader = () => {
+    if (!title && !extra) return null
+
+    if (extra) {
+      return (
+        <div className="flex justify-between items-start gap-4">
+          {title && <h2 className="card-title">{title}</h2>}
+          <div className="flex-shrink-0">{extra}</div>
+        </div>
+      )
+    }
+
+    return title ? <h2 className="card-title">{title}</h2> : null
+  }
+
   return (
     <div className={classes} style={style} {...rest}>
       {cover && <figure>{cover}</figure>}
@@ -134,7 +175,7 @@ function CardRoot({
             <div className="flex gap-4">
               {avatar && <div className="flex-shrink-0">{avatar}</div>}
               <div className="flex-1 min-w-0">
-                {title && <h2 className="card-title">{title}</h2>}
+                {renderHeader()}
                 {description && <p className="text-sm opacity-70 mt-1">{description}</p>}
               </div>
             </div>
@@ -142,7 +183,7 @@ function CardRoot({
           </>
         ) : (
           <>
-            {title && <h2 className="card-title">{title}</h2>}
+            {renderHeader()}
             {children}
           </>
         )}
@@ -154,6 +195,7 @@ function CardRoot({
 
 export const Card = Object.assign(CardRoot, {
   Grid: CardGrid,
+  Meta: CardMeta,
 })
 
 export default Card

@@ -13,12 +13,12 @@ import React from 'react'
 import { Select } from 'asterui'
 
 const App: React.FC = () => (
-  <Select>
-    <option disabled selected>Pick your favorite</option>
-    <option>Apple</option>
-    <option>Orange</option>
-    <option>Banana</option>
-    <option>Grape</option>
+  <Select defaultValue="">
+    <option value="" disabled>Pick your favorite</option>
+    <option value="apple">Apple</option>
+    <option value="orange">Orange</option>
+    <option value="banana">Banana</option>
+    <option value="grape">Grape</option>
   </Select>
 )
 
@@ -114,10 +114,10 @@ import React from 'react'
 import { Select } from 'asterui'
 
 const App: React.FC = () => (
-  <Select ghost>
-    <option disabled selected>Pick one</option>
-    <option>Option 1</option>
-    <option>Option 2</option>
+  <Select ghost defaultValue="">
+    <option value="" disabled>Pick one</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
   </Select>
 )
 
@@ -134,6 +134,82 @@ const App: React.FC = () => (
   <Select disabled>
     <option>Disabled select</option>
   </Select>
+)
+
+export default App
+```
+
+### Status
+
+Validation status for form feedback.
+
+```tsx
+import React from 'react'
+import { Select, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="vertical" size="sm">
+    <Select status="error" defaultValue="">
+      <option value="" disabled>Error state</option>
+      <option value="1">Option 1</option>
+    </Select>
+    <Select status="warning" defaultValue="">
+      <option value="" disabled>Warning state</option>
+      <option value="1">Option 1</option>
+    </Select>
+  </Space>
+)
+
+export default App
+```
+
+### Floating Label
+
+Select with animated floating label.
+
+```tsx
+import React from 'react'
+import { Select, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="vertical" size="md">
+    <Select floatingLabel="Country">
+      <option value="us">United States</option>
+      <option value="ca">Canada</option>
+      <option value="mx">Mexico</option>
+    </Select>
+    <Select floatingLabel="Language">
+      <option value="en">English</option>
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
+    </Select>
+  </Space>
+)
+
+export default App
+```
+
+### Addons
+
+Select with text or elements before/after.
+
+```tsx
+import React from 'react'
+import { Select, Space } from 'asterui'
+
+const App: React.FC = () => (
+  <Space direction="vertical" size="md">
+    <Select addonBefore="Currency">
+      <option value="usd">USD</option>
+      <option value="eur">EUR</option>
+      <option value="gbp">GBP</option>
+    </Select>
+    <Select addonBefore="$" addonAfter=".00">
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </Select>
+  </Space>
 )
 
 export default App
@@ -196,3 +272,21 @@ const App: React.FC = () => {
 
 export default App
 ```
+
+## API
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `size` | Select size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
+| `color` | Select color variant | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `status` | Validation status (takes precedence over color) | `'error' \| 'warning'` | `-` |
+| `ghost` | Ghost variant (transparent background) | `boolean` | `false` |
+| `bordered` | Show border | `boolean` | `true` |
+| `floatingLabel` | Floating label text | `string` | `-` |
+| `addonBefore` | Text/element before select (outside) | `React.ReactNode` | `-` |
+| `addonAfter` | Text/element after select (outside) | `React.ReactNode` | `-` |
+| `disabled` | Disabled state | `boolean` | `false` |
+| `defaultValue` | Default selected value | `string` | `-` |
+| `value` | Controlled value | `string` | `-` |
+| `onChange` | Change event handler | `(e: React.ChangeEvent<HTMLSelectElement>) => void` | `-` |
+| `className` | Additional CSS classes | `string` | `-` |
