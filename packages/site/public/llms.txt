@@ -117,6 +117,7 @@ npm install asterui
 - [Timeline](https://asterui.com/docs/timeline.md)
 - [Tooltip](https://asterui.com/docs/tooltip.md)
 - [Tree](https://asterui.com/docs/tree.md)
+- [Watermark](https://asterui.com/docs/watermark.md)
 
 ### Feedback
 
