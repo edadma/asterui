@@ -189,16 +189,16 @@ function NotificationItem({ notification, onClose }: NotificationItemProps) {
 
   return (
     <div
-      className={`alert ${alertTypeClasses[notification.type!]} shadow-lg cursor-pointer min-w-[300px] max-w-[400px]`}
+      className={`alert ${alertTypeClasses[notification.type!]} shadow-lg cursor-pointer min-w-[300px] max-w-[400px] relative`}
       onClick={handleClick}
     >
-      <div className="flex-1">
+      <div className={notification.closable ? 'pr-8' : ''}>
         {notification.message && <div className="font-bold">{notification.message}</div>}
         {notification.description && <div className="text-sm">{notification.description}</div>}
       </div>
       {notification.closable && (
         <button
-          className="btn btn-sm btn-ghost btn-circle"
+          className="btn btn-xs btn-ghost btn-circle absolute top-2 right-2"
           onClick={(e) => {
             e.stopPropagation()
             onClose()

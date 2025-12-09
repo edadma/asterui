@@ -34,7 +34,7 @@ export interface CodeProps extends React.HTMLAttributes<HTMLDivElement> {
 const extractTextFromChildren = (children: React.ReactNode): string => {
   const lines: string[] = []
   React.Children.forEach(children, (child) => {
-    if (React.isValidElement(child) && child.props?.children) {
+    if (React.isValidElement<{ children?: React.ReactNode }>(child) && child.props?.children) {
       const text = typeof child.props.children === 'string'
         ? child.props.children
         : ''
