@@ -299,6 +299,14 @@ export type {
 export { Upload } from './components/Upload'
 export type { UploadProps, UploadFile } from './components/Upload'
 
+export { Watermark } from './components/Watermark'
+export type {
+  WatermarkProps,
+  WatermarkFontOptions,
+  WatermarkGap,
+  WatermarkOffset,
+} from './components/Watermark'
+
 export { Show, Hide } from './components/Responsive'
 export type { ShowProps, HideProps } from './components/Responsive'
 
