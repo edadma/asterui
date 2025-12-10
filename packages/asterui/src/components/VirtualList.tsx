@@ -88,7 +88,7 @@ export function VirtualList<T>({
               top: 0,
               left: 0,
               width: '100%',
-              height: virtualItem.size,
+              height: virtualItem.size - gap,
               transform: `translateY(${virtualItem.start}px)`,
             }}
           >
