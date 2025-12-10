@@ -1,17 +1,10 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Tree } from 'asterui'
+import type { TreeDataNode } from 'asterui'
 import { FolderIcon, DocumentIcon } from '@heroicons/react/24/solid'
 
-interface TreeNode {
-  key: string
-  title: string
-  children?: TreeNode[]
-  icon?: React.ReactNode
-  disabled?: boolean
-}
-
-const basicTreeData: TreeNode[] = [
+const basicTreeData: TreeDataNode[] = [
   {
     key: '0',
     title: 'Parent Node',
@@ -33,7 +26,7 @@ const basicTreeData: TreeNode[] = [
   },
 ]
 
-const fileTreeData: TreeNode[] = [
+const fileTreeData: TreeDataNode[] = [
   {
     key: 'src',
     title: 'src',
@@ -128,7 +121,7 @@ function ShowLineTree() {
 }
 
 function ShowIconTree() {
-  const treeDataWithIcons: TreeNode[] = [
+  const treeDataWithIcons: TreeDataNode[] = [
     {
       key: 'src',
       title: 'src',
@@ -161,6 +154,74 @@ function ExpandControlledTree() {
   )
 }
 
+function CompoundTree() {
+  return (
+    <Tree defaultExpandedKeys={['parent']}>
+      <Tree.Node key="parent" title="Parent Node">
+        <Tree.Node key="child-1" title="Child Node 1">
+          <Tree.Node key="leaf-1" title="Leaf Node 1" />
+          <Tree.Node key="leaf-2" title="Leaf Node 2" />
+        </Tree.Node>
+        <Tree.Node key="child-2" title="Child Node 2" />
+      </Tree.Node>
+    </Tree>
+  )
+}
+
+function CheckboxColorsTree() {
+  return (
+    <Tree
+      treeData={basicTreeData}
+      checkable
+      checkboxColor="success"
+      checkboxSize="md"
+      defaultExpandedKeys={['0']}
+    />
+  )
+}
+
+function CheckStrictlyTree() {
+  const [checkedKeys, setCheckedKeys] = useState<string[]>([])
+
+  return (
+    <div>
+      <Tree
+        treeData={basicTreeData}
+        checkable
+        checkStrictly
+        checkedKeys={checkedKeys}
+        onCheck={setCheckedKeys}
+        defaultExpandedKeys={['0', '0-0', '0-1']}
+      />
+      <p className="mt-4 text-sm">Checked: {checkedKeys.join(', ') || 'None'}</p>
+    </div>
+  )
+}
+
+function AsyncLoadTree() {
+  const [treeData, setTreeData] = useState<TreeDataNode[]>([
+    { key: '0', title: 'Expand to load' },
+    { key: '1', title: 'Expand to load' },
+  ])
+
+  const loadData = async (node: TreeDataNode) => {
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    setTreeData(prev => {
+      const update = (nodes: TreeDataNode[]): TreeDataNode[] =>
+        nodes.map(n => n.key === node.key
+          ? { ...n, children: [
+              { key: `${n.key}-0`, title: 'Child 1', isLeaf: true },
+              { key: `${n.key}-1`, title: 'Child 2', isLeaf: true },
+            ]}
+          : { ...n, children: n.children ? update(n.children) : undefined }
+        )
+      return update(prev)
+    })
+  }
+
+  return <Tree treeData={treeData} loadData={loadData} />
+}
+
 const statefulDemos: Record<string, React.FC> = {
   basic: BasicTree,
   checkable: CheckableTree,
@@ -169,6 +230,10 @@ const statefulDemos: Record<string, React.FC> = {
   'show-line': ShowLineTree,
   'show-icon': ShowIconTree,
   'expand-controlled': ExpandControlledTree,
+  compound: CompoundTree,
+  'checkbox-colors': CheckboxColorsTree,
+  'check-strictly': CheckStrictlyTree,
+  'async-load': AsyncLoadTree,
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -4,28 +4,59 @@ import ApiTable from '../../components/ApiTable.astro';
 import { Code } from 'astro:components';
 
 const treeApi = [
-  { property: 'treeData', description: 'Tree data structure', type: 'TreeNode[]', default: '[]' },
+  { property: 'treeData', description: 'Tree data structure (alternative to compound pattern)', type: 'TreeDataNode[]', default: '[]' },
+  { property: 'children', description: 'Tree.Node children for compound pattern', type: 'React.ReactNode', default: '-' },
   { property: 'checkable', description: 'Show checkbox for each node', type: 'boolean', default: 'false' },
+  { property: 'checkboxColor', description: 'Checkbox color (DaisyUI)', type: "'primary' | 'secondary' | 'accent' | 'neutral' | 'info' | 'success' | 'warning' | 'error'", default: "'primary'" },
+  { property: 'checkboxSize', description: 'Checkbox size (DaisyUI)', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'sm'" },
   { property: 'checkedKeys', description: 'Controlled checked keys', type: 'string[]', default: '-' },
-  { property: 'onCheck', description: 'Callback when node is checked', type: '(keys: string[]) => void', default: '-' },
-  { property: 'selectable', description: 'Enable node selection', type: 'boolean', default: 'false' },
+  { property: 'defaultCheckedKeys', description: 'Default checked keys', type: 'string[]', default: '[]' },
+  { property: 'checkStrictly', description: 'Decouple parent-child checkbox relationship', type: 'boolean', default: 'false' },
+  { property: 'onCheck', description: 'Callback when node is checked', type: '(keys: string[], info: { node, checked }) => void', default: '-' },
+  { property: 'selectable', description: 'Enable node selection', type: 'boolean', default: 'true' },
   { property: 'selectedKeys', description: 'Controlled selected keys', type: 'string[]', default: '-' },
-  { property: 'onSelect', description: 'Callback when node is selected', type: '(keys: string[]) => void', default: '-' },
+  { property: 'defaultSelectedKeys', description: 'Default selected keys', type: 'string[]', default: '[]' },
+  { property: 'onSelect', description: 'Callback when node is selected', type: '(keys: string[], info: { node, selected }) => void', default: '-' },
   { property: 'multiple', description: 'Allow multiple selection', type: 'boolean', default: 'false' },
   { property: 'expandedKeys', description: 'Controlled expanded keys', type: 'string[]', default: '-' },
   { property: 'defaultExpandedKeys', description: 'Default expanded keys', type: 'string[]', default: '[]' },
-  { property: 'onExpand', description: 'Callback when node is expanded', type: '(keys: string[]) => void', default: '-' },
+  { property: 'defaultExpandAll', description: 'Expand all nodes by default', type: 'boolean', default: 'false' },
+  { property: 'autoExpandParent', description: 'Auto expand parent nodes', type: 'boolean', default: 'true' },
+  { property: 'onExpand', description: 'Callback when node is expanded', type: '(keys: string[], info: { node, expanded }) => void', default: '-' },
   { property: 'showLine', description: 'Show connecting lines', type: 'boolean', default: 'false' },
   { property: 'showIcon', description: 'Show node icons', type: 'boolean', default: 'false' },
+  { property: 'blockNode', description: 'Make nodes fill horizontal space', type: 'boolean', default: 'false' },
+  { property: 'switcherIcon', description: 'Custom expand/collapse icon', type: 'ReactNode | ((expanded: boolean) => ReactNode)', default: '-' },
+  { property: 'titleRender', description: 'Custom title render function', type: '(node: TreeDataNode) => ReactNode', default: '-' },
+  { property: 'filterTreeNode', description: 'Filter function to highlight nodes', type: '(node: TreeDataNode) => boolean', default: '-' },
+  { property: 'loadData', description: 'Async data loading function', type: '(node: TreeDataNode) => Promise<void>', default: '-' },
+  { property: 'onRightClick', description: 'Right click handler', type: '(info: { event, node }) => void', default: '-' },
+  { property: 'fieldNames', description: 'Custom field names for data mapping', type: '{ key?: string; title?: string; children?: string }', default: '-' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
-const treeNodeApi = [
+const treeDataNodeApi = [
   { property: 'key', description: 'Unique identifier', type: 'string', default: '-' },
-  { property: 'title', description: 'Display title', type: 'string', default: '-' },
-  { property: 'children', description: 'Child nodes', type: 'TreeNode[]', default: '-' },
+  { property: 'title', description: 'Display title', type: 'React.ReactNode', default: '-' },
+  { property: 'children', description: 'Child nodes', type: 'TreeDataNode[]', default: '-' },
   { property: 'icon', description: 'Custom icon', type: 'React.ReactNode', default: '-' },
   { property: 'disabled', description: 'Disable the node', type: 'boolean', default: 'false' },
+  { property: 'disableCheckbox', description: 'Disable checkbox for the node', type: 'boolean', default: 'false' },
+  { property: 'selectable', description: 'Whether node can be selected', type: 'boolean', default: 'true' },
+  { property: 'checkable', description: 'Whether node shows checkbox', type: 'boolean', default: 'true' },
+  { property: 'isLeaf', description: 'Force node to be a leaf (no expand icon)', type: 'boolean', default: '-' },
+];
+
+const treeNodeApi = [
+  { property: 'key', description: 'Unique identifier (React key prop)', type: 'string', default: '-' },
+  { property: 'title', description: 'Display title', type: 'React.ReactNode', default: '-' },
+  { property: 'children', description: 'Child Tree.Node elements', type: 'React.ReactNode', default: '-' },
+  { property: 'icon', description: 'Custom icon', type: 'React.ReactNode', default: '-' },
+  { property: 'disabled', description: 'Disable the node', type: 'boolean', default: 'false' },
+  { property: 'disableCheckbox', description: 'Disable checkbox for the node', type: 'boolean', default: 'false' },
+  { property: 'selectable', description: 'Whether node can be selected', type: 'boolean', default: 'true' },
+  { property: 'checkable', description: 'Whether node shows checkbox', type: 'boolean', default: 'true' },
+  { property: 'isLeaf', description: 'Force node to be a leaf (no expand icon)', type: 'boolean', default: '-' },
 ];
 
 const examples = [
@@ -71,8 +102,30 @@ export default App`,
     code: `import React, { useState } from 'react'
 import { Tree } from 'asterui'
 
+const treeData = [
+  {
+    key: '0',
+    title: 'Parent Node',
+    children: [
+      {
+        key: '0-0',
+        title: 'Child Node 1',
+        children: [
+          { key: '0-0-0', title: 'Leaf Node 1' },
+          { key: '0-0-1', title: 'Leaf Node 2' },
+        ],
+      },
+      {
+        key: '0-1',
+        title: 'Child Node 2',
+        children: [{ key: '0-1-0', title: 'Leaf Node 3' }],
+      },
+    ],
+  },
+]
+
 const App: React.FC = () => {
-  const [checkedKeys, setCheckedKeys] = useState([])
+  const [checkedKeys, setCheckedKeys] = useState<string[]>([])
 
   return (
     <div>
@@ -97,8 +150,30 @@ export default App`,
     code: `import React, { useState } from 'react'
 import { Tree } from 'asterui'
 
+const treeData = [
+  {
+    key: '0',
+    title: 'Parent Node',
+    children: [
+      {
+        key: '0-0',
+        title: 'Child Node 1',
+        children: [
+          { key: '0-0-0', title: 'Leaf Node 1' },
+          { key: '0-0-1', title: 'Leaf Node 2' },
+        ],
+      },
+      {
+        key: '0-1',
+        title: 'Child Node 2',
+        children: [{ key: '0-1-0', title: 'Leaf Node 3' }],
+      },
+    ],
+  },
+]
+
 const App: React.FC = () => {
-  const [selectedKeys, setSelectedKeys] = useState([])
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([])
 
   return (
     <div>
@@ -123,8 +198,30 @@ export default App`,
     code: `import React, { useState } from 'react'
 import { Tree } from 'asterui'
 
+const treeData = [
+  {
+    key: '0',
+    title: 'Parent Node',
+    children: [
+      {
+        key: '0-0',
+        title: 'Child Node 1',
+        children: [
+          { key: '0-0-0', title: 'Leaf Node 1' },
+          { key: '0-0-1', title: 'Leaf Node 2' },
+        ],
+      },
+      {
+        key: '0-1',
+        title: 'Child Node 2',
+        children: [{ key: '0-1-0', title: 'Leaf Node 3' }],
+      },
+    ],
+  },
+]
+
 const App: React.FC = () => {
-  const [selectedKeys, setSelectedKeys] = useState([])
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([])
 
   return (
     <Tree
@@ -181,14 +278,146 @@ export default App`,
     description: 'Display custom icons for nodes.',
     code: `import React from 'react'
 import { Tree } from 'asterui'
+import { FolderIcon, DocumentIcon } from '@heroicons/react/24/solid'
+
+const treeData = [
+  {
+    key: 'src',
+    title: 'src',
+    icon: <FolderIcon className="w-4 h-4" />,
+    children: [
+      { key: 'App.tsx', title: 'App.tsx', icon: <DocumentIcon className="w-4 h-4" /> },
+      { key: 'index.tsx', title: 'index.tsx', icon: <DocumentIcon className="w-4 h-4" /> },
+    ],
+  },
+]
 
 const App: React.FC = () => (
   <Tree
-    treeData={iconTreeData}
+    treeData={treeData}
     showIcon
+    defaultExpandedKeys={['src']}
+  />
+)
+
+export default App`,
+  },
+  {
+    id: 'compound',
+    title: 'Compound Pattern',
+    description: 'Use Tree.Node for declarative tree structure.',
+    code: `import React from 'react'
+import { Tree } from 'asterui'
+
+const App: React.FC = () => (
+  <Tree defaultExpandedKeys={['parent']}>
+    <Tree.Node key="parent" title="Parent Node">
+      <Tree.Node key="child-1" title="Child Node 1">
+        <Tree.Node key="leaf-1" title="Leaf Node 1" />
+        <Tree.Node key="leaf-2" title="Leaf Node 2" />
+      </Tree.Node>
+      <Tree.Node key="child-2" title="Child Node 2" />
+    </Tree.Node>
+  </Tree>
+)
+
+export default App`,
+  },
+  {
+    id: 'checkbox-colors',
+    title: 'Checkbox Colors',
+    description: 'Customize checkbox appearance with DaisyUI colors.',
+    code: `import React from 'react'
+import { Tree } from 'asterui'
+
+const treeData = [
+  {
+    key: '0',
+    title: 'Parent Node',
+    children: [
+      { key: '0-0', title: 'Child Node 1' },
+      { key: '0-1', title: 'Child Node 2' },
+    ],
+  },
+]
+
+const App: React.FC = () => (
+  <Tree
+    treeData={treeData}
+    checkable
+    checkboxColor="success"
+    checkboxSize="md"
     defaultExpandedKeys={['0']}
   />
 )
+
+export default App`,
+  },
+  {
+    id: 'check-strictly',
+    title: 'Check Strictly',
+    description: 'Decouple parent-child checkbox relationship.',
+    code: `import React, { useState } from 'react'
+import { Tree } from 'asterui'
+
+const treeData = [
+  {
+    key: '0',
+    title: 'Parent Node',
+    children: [
+      { key: '0-0', title: 'Child Node 1' },
+      { key: '0-1', title: 'Child Node 2' },
+    ],
+  },
+]
+
+const App: React.FC = () => {
+  const [checkedKeys, setCheckedKeys] = useState<string[]>([])
+
+  return (
+    <Tree
+      treeData={treeData}
+      checkable
+      checkStrictly
+      checkedKeys={checkedKeys}
+      onCheck={setCheckedKeys}
+      defaultExpandedKeys={['0']}
+    />
+  )
+}
+
+export default App`,
+  },
+  {
+    id: 'async-load',
+    title: 'Async Loading',
+    description: 'Load child nodes asynchronously on expand.',
+    code: `import React, { useState } from 'react'
+import { Tree, TreeDataNode } from 'asterui'
+
+const App: React.FC = () => {
+  const [treeData, setTreeData] = useState<TreeDataNode[]>([
+    { key: '0', title: 'Expand to load' },
+    { key: '1', title: 'Expand to load' },
+  ])
+
+  const loadData = async (node: TreeDataNode) => {
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    setTreeData(prev => {
+      const update = (nodes: TreeDataNode[]): TreeDataNode[] =>
+        nodes.map(n => n.key === node.key
+          ? { ...n, children: [
+              { key: \`\${n.key}-0\`, title: 'Child 1', isLeaf: true },
+              { key: \`\${n.key}-1\`, title: 'Child 2', isLeaf: true },
+            ]}
+          : { ...n, children: n.children ? update(n.children) : undefined }
+        )
+      return update(prev)
+    })
+  }
+
+  return <Tree treeData={treeData} loadData={loadData} />
+}
 
 export default App`,
   },
@@ -248,17 +477,54 @@ export default App`,
       <h2 class="text-2xl font-bold mb-6">API</h2>
       <ApiTable title="Tree" data={treeApi} />
       <div class="mt-8">
-        <ApiTable title="TreeNode" data={treeNodeApi} />
+        <ApiTable title="TreeDataNode (for treeData prop)" data={treeDataNodeApi} />
+      </div>
+      <div class="mt-8">
+        <ApiTable title="Tree.Node (compound pattern)" data={treeNodeApi} />
       </div>
     </section>
 
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
+      <p class="text-base-content/80 mb-4">The Tree component implements the full WAI-ARIA tree pattern:</p>
+      <ul class="list-disc list-inside space-y-2 text-base-content/80 mb-6">
+        <li><code>role="tree"</code> on container and <code>role="treeitem"</code> on nodes</li>
+        <li><code>aria-expanded</code> indicates node expansion state</li>
+        <li><code>aria-selected</code> indicates selection state</li>
+        <li><code>aria-checked</code> indicates checkbox state (with <code>"mixed"</code> for indeterminate)</li>
+        <li><code>aria-disabled</code> indicates disabled state</li>
+        <li><code>aria-level</code> indicates nesting depth</li>
+      </ul>
+      <h3 class="text-lg font-semibold mb-3">Keyboard Navigation</h3>
+      <div class="overflow-x-auto">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><kbd class="kbd kbd-sm">↓</kbd></td><td>Move focus to next visible node</td></tr>
+            <tr><td><kbd class="kbd kbd-sm">↑</kbd></td><td>Move focus to previous visible node</td></tr>
+            <tr><td><kbd class="kbd kbd-sm">→</kbd></td><td>Expand collapsed node, or move to first child</td></tr>
+            <tr><td><kbd class="kbd kbd-sm">←</kbd></td><td>Collapse expanded node</td></tr>
+            <tr><td><kbd class="kbd kbd-sm">Enter</kbd> / <kbd class="kbd kbd-sm">Space</kbd></td><td>Toggle checkbox, select node, or expand/collapse</td></tr>
+            <tr><td><kbd class="kbd kbd-sm">Home</kbd></td><td>Move focus to first node</td></tr>
+            <tr><td><kbd class="kbd kbd-sm">End</kbd></td><td>Move focus to last visible node</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-4">Testing</h2>
+      <p class="text-base-content/80 mb-4">The component includes data attributes for testing:</p>
       <ul class="list-disc list-inside space-y-2 text-base-content/80">
-        <li>Uses ARIA tree role with treeitem children</li>
-        <li>Arrow key navigation between nodes</li>
-        <li>Enter/Space to expand/collapse or select</li>
-        <li>Expanded state announced by screen readers</li>
+        <li><code>data-testid="tree"</code> on the tree container</li>
+        <li><code>data-testid="tree-node-&#123;key&#125;"</code> on each node</li>
+        <li><code>data-state="selected|expanded|collapsed"</code> indicates node state</li>
+        <li><code>data-key="&#123;key&#125;"</code> provides the node key</li>
       </ul>
     </section>
   </div>
