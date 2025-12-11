@@ -28,10 +28,10 @@ const examples = [
     title: 'Basic Tags',
     description: 'Simple tags with preset colors.',
     code: `import React from 'react'
-import { Tag } from 'asterui'
+import { Tag, Space } from 'asterui'
 
 const App: React.FC = () => (
-  <div className="flex gap-2 flex-wrap">
+  <Space size="sm" wrap>
     <Tag>Default</Tag>
     <Tag color="primary">Primary</Tag>
     <Tag color="secondary">Secondary</Tag>
@@ -40,7 +40,7 @@ const App: React.FC = () => (
     <Tag color="success">Success</Tag>
     <Tag color="warning">Warning</Tag>
     <Tag color="error">Error</Tag>
-  </div>
+  </Space>
 )
 
 export default App`,
@@ -50,7 +50,7 @@ export default App`,
     title: 'Closable Tags',
     description: 'Tags that can be closed by the user.',
     code: `import React, { useState } from 'react'
-import { Tag } from 'asterui'
+import { Tag, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [tags, setTags] = useState(['Tag 1', 'Tag 2', 'Tag 3'])
@@ -60,7 +60,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="flex gap-2 flex-wrap">
+    <Space size="sm" wrap>
       {tags.map((tag) => (
         <Tag
           key={tag}
@@ -71,7 +71,7 @@ const App: React.FC = () => {
           {tag}
         </Tag>
       ))}
-    </div>
+    </Space>
   )
 }
 
@@ -82,18 +82,18 @@ export default App`,
     title: 'Tags with Icons',
     description: 'Add icons to tags for better visual communication.',
     code: `import React from 'react'
-import { Tag } from 'asterui'
+import { Tag, Space } from 'asterui'
 import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => (
-  <div className="flex gap-2 flex-wrap">
+  <Space size="sm" wrap>
     <Tag color="success" icon={<CheckCircleIcon className="w-4 h-4" />}>
       Approved
     </Tag>
     <Tag color="warning" icon={<ExclamationCircleIcon className="w-4 h-4" />}>
       Pending
     </Tag>
-  </div>
+  </Space>
 )
 
 export default App`,
@@ -103,15 +103,15 @@ export default App`,
     title: 'Tag Sizes',
     description: 'Four sizes available for tags.',
     code: `import React from 'react'
-import { Tag } from 'asterui'
+import { Tag, Space } from 'asterui'
 
 const App: React.FC = () => (
-  <div className="flex gap-2 items-center flex-wrap">
+  <Space size="sm" align="center" wrap>
     <Tag color="primary" size="xs">Extra Small</Tag>
     <Tag color="primary" size="sm">Small</Tag>
     <Tag color="primary" size="md">Medium</Tag>
     <Tag color="primary" size="lg">Large</Tag>
-  </div>
+  </Space>
 )
 
 export default App`,
@@ -121,16 +121,16 @@ export default App`,
     title: 'Custom Colors',
     description: 'Use custom hex colors for unique styling.',
     code: `import React from 'react'
-import { Tag } from 'asterui'
+import { Tag, Space } from 'asterui'
 
 const App: React.FC = () => (
-  <div className="flex gap-2 flex-wrap">
+  <Space size="sm" wrap>
     <Tag color="#f50">Red</Tag>
     <Tag color="#2db7f5">Blue</Tag>
     <Tag color="#87d068">Green</Tag>
     <Tag color="#108ee9">Cyan</Tag>
     <Tag color="#f5222d">Crimson</Tag>
-  </div>
+  </Space>
 )
 
 export default App`,
@@ -140,7 +140,7 @@ export default App`,
     title: 'Checkable Tags',
     description: 'Tags that can be toggled on and off.',
     code: `import React, { useState } from 'react'
-import { CheckableTag } from 'asterui'
+import { CheckableTag, Space } from 'asterui'
 
 const App: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>(['React'])
@@ -155,7 +155,7 @@ const App: React.FC = () => {
   const tags = ['React', 'Vue', 'Angular', 'Svelte']
 
   return (
-    <div className="flex gap-2 flex-wrap">
+    <Space size="sm" wrap>
       {tags.map((tag) => (
         <CheckableTag
           key={tag}
@@ -165,7 +165,7 @@ const App: React.FC = () => {
           {tag}
         </CheckableTag>
       ))}
-    </div>
+    </Space>
   )
 }
 
@@ -176,7 +176,7 @@ export default App`,
     title: 'Checkable Tags with Icons',
     description: 'Add icons to checkable tags.',
     code: `import React, { useState } from 'react'
-import { CheckableTag } from 'asterui'
+import { CheckableTag, Space } from 'asterui'
 import { HeartIcon, StarIcon, BookmarkIcon } from '@heroicons/react/24/outline'
 
 const App: React.FC = () => {
@@ -185,7 +185,7 @@ const App: React.FC = () => {
   const [saved, setSaved] = useState(false)
 
   return (
-    <div className="flex gap-2 flex-wrap">
+    <Space size="sm" wrap>
       <CheckableTag
         checked={liked}
         onChange={setLiked}
@@ -207,7 +207,7 @@ const App: React.FC = () => {
       >
         Save
       </CheckableTag>
-    </div>
+    </Space>
   )
 }
 
@@ -218,26 +218,26 @@ export default App`,
     title: 'Use Cases',
     description: 'Practical examples of tag usage.',
     code: `import React from 'react'
-import { Tag } from 'asterui'
+import { Tag, Space } from 'asterui'
 
 const App: React.FC = () => (
-  <div className="space-y-4">
+  <Space direction="vertical" size="md">
     {/* Article tags */}
-    <div>
-      <span className="text-sm text-base-content/70 mr-2">Categories:</span>
+    <Space size="sm" align="center">
+      <span className="text-sm text-base-content/70">Categories:</span>
       <Tag color="primary">React</Tag>
       <Tag color="secondary">TypeScript</Tag>
       <Tag color="accent">UI</Tag>
-    </div>
+    </Space>
 
     {/* Status indicators */}
-    <div>
-      <span className="text-sm text-base-content/70 mr-2">Status:</span>
+    <Space size="sm" align="center">
+      <span className="text-sm text-base-content/70">Status:</span>
       <Tag color="success">Active</Tag>
       <Tag color="warning">Pending</Tag>
       <Tag color="error">Expired</Tag>
-    </div>
-  </div>
+    </Space>
+  </Space>
 )
 
 export default App`,

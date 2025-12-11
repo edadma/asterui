@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Tag, CheckableTag } from 'asterui';
+import { Tag, CheckableTag, Space } from 'asterui';
 import {
   ClipboardDocumentIcon,
   CheckIcon,
@@ -12,7 +12,7 @@ import {
 
 const demos: Record<string, React.ReactNode> = {
   basic: (
-    <div className="flex gap-2 flex-wrap">
+    <Space size="sm" wrap>
       <Tag>Default</Tag>
       <Tag color="primary">Primary</Tag>
       <Tag color="secondary">Secondary</Tag>
@@ -21,10 +21,10 @@ const demos: Record<string, React.ReactNode> = {
       <Tag color="success">Success</Tag>
       <Tag color="warning">Warning</Tag>
       <Tag color="error">Error</Tag>
-    </div>
+    </Space>
   ),
   closable: (
-    <div className="flex gap-2 flex-wrap">
+    <Space size="sm" wrap>
       <Tag closable color="primary">
         Closable
       </Tag>
@@ -34,10 +34,10 @@ const demos: Record<string, React.ReactNode> = {
       <Tag closable color="warning">
         Removable
       </Tag>
-    </div>
+    </Space>
   ),
   icons: (
-    <div className="flex gap-2 flex-wrap">
+    <Space size="sm" wrap>
       <Tag color="primary" icon={<ClipboardDocumentIcon className="w-3 h-3" />}>
         Document
       </Tag>
@@ -47,10 +47,10 @@ const demos: Record<string, React.ReactNode> = {
       <Tag color="error" icon={<XMarkIcon className="w-3 h-3" />}>
         Failed
       </Tag>
-    </div>
+    </Space>
   ),
   sizes: (
-    <div className="flex gap-2 items-center flex-wrap">
+    <Space size="sm" align="center" wrap>
       <Tag color="primary" size="xs">
         Extra Small
       </Tag>
@@ -63,57 +63,57 @@ const demos: Record<string, React.ReactNode> = {
       <Tag color="primary" size="lg">
         Large
       </Tag>
-    </div>
+    </Space>
   ),
   'custom-colors': (
-    <div className="flex gap-2 flex-wrap">
+    <Space size="sm" wrap>
       <Tag color="#f50">Red</Tag>
       <Tag color="#2db7f5">Blue</Tag>
       <Tag color="#87d068">Green</Tag>
       <Tag color="#108ee9">Cyan</Tag>
       <Tag color="#f5222d">Crimson</Tag>
-    </div>
+    </Space>
   ),
   checkable: (
-    <div className="flex gap-2 flex-wrap">
+    <Space size="sm" wrap>
       <CheckableTag checked>React</CheckableTag>
       <CheckableTag>Vue</CheckableTag>
       <CheckableTag>Angular</CheckableTag>
       <CheckableTag>Svelte</CheckableTag>
-    </div>
+    </Space>
   ),
   'checkable-icons': (
-    <div className="flex gap-2 flex-wrap">
+    <Space size="sm" wrap>
       <CheckableTag icon={<AcademicCapIcon className="w-3 h-3" />}>Education</CheckableTag>
       <CheckableTag checked icon={<CurrencyDollarIcon className="w-3 h-3" />}>
         Finance
       </CheckableTag>
       <CheckableTag icon={<FireIcon className="w-3 h-3" />}>Trending</CheckableTag>
-    </div>
+    </Space>
   ),
   'use-cases': (
-    <div className="space-y-4">
-      <div>
-        <div className="text-sm font-semibold mb-2">Categories:</div>
-        <div className="flex gap-2 flex-wrap">
+    <Space direction="vertical" size="md">
+      <Space direction="vertical" size="xs">
+        <span className="text-sm font-semibold">Categories:</span>
+        <Space size="sm" wrap>
           <Tag color="primary">Technology</Tag>
           <Tag color="secondary">Design</Tag>
           <Tag color="accent">Marketing</Tag>
-        </div>
-      </div>
+        </Space>
+      </Space>
 
-      <div>
-        <div className="text-sm font-semibold mb-2">Status:</div>
-        <div className="flex gap-2 flex-wrap">
+      <Space direction="vertical" size="xs">
+        <span className="text-sm font-semibold">Status:</span>
+        <Space size="sm" wrap>
           <Tag color="success">Active</Tag>
           <Tag color="warning">Pending</Tag>
           <Tag color="error">Inactive</Tag>
-        </div>
-      </div>
+        </Space>
+      </Space>
 
-      <div>
-        <div className="text-sm font-semibold mb-2">Skills:</div>
-        <div className="flex gap-2 flex-wrap">
+      <Space direction="vertical" size="xs">
+        <span className="text-sm font-semibold">Skills:</span>
+        <Space size="sm" wrap>
           <Tag closable color="info">
             React
           </Tag>
@@ -123,9 +123,9 @@ const demos: Record<string, React.ReactNode> = {
           <Tag closable color="info">
             Node.js
           </Tag>
-        </div>
-      </div>
-    </div>
+        </Space>
+      </Space>
+    </Space>
   ),
 };
 

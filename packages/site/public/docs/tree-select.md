@@ -365,7 +365,7 @@ Return value as object with label.
 
 ```tsx
 import React, { useState } from 'react'
-import { TreeSelect } from 'asterui'
+import { TreeSelect, Space, Code } from 'asterui'
 import type { LabeledValue } from 'asterui'
 
 const treeData = [
@@ -378,7 +378,7 @@ const App: React.FC = () => {
   const [value, setValue] = useState<LabeledValue | null>(null)
 
   return (
-    <div className="space-y-2">
+    <Space direction="vertical" size="sm">
       <TreeSelect
         treeData={treeData}
         value={value}
@@ -387,10 +387,10 @@ const App: React.FC = () => {
         placeholder="Select an option"
         className="w-80"
       />
-      <pre className="text-xs bg-base-200 p-2 rounded">
+      <Code className="text-xs">
         {JSON.stringify(value, null, 2)}
-      </pre>
-    </div>
+      </Code>
+    </Space>
   )
 }
 
