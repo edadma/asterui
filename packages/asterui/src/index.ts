@@ -145,7 +145,7 @@ export { Layout, useSiderContext } from './components/Layout'
 export type { LayoutProps, LayoutHeaderProps, LayoutFooterProps, LayoutContentProps, LayoutSiderProps } from './components/Layout'
 
 export { List } from './components/List'
-export type { ListProps, ListRowProps } from './components/List'
+export type { ListProps, ListRowProps, ListItemProps, ListItemMetaProps, ListPaginationConfig, ListGridConfig } from './components/List'
 
 export { Loading } from './components/Loading'
 export type { LoadingProps } from './components/Loading'

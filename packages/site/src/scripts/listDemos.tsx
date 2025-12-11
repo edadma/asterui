@@ -1,7 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
 import { List, Avatar } from 'asterui';
-import { CheckIconSvg } from './icons'
 
 const basicData = [
   'Racing car sprints past',
@@ -14,17 +13,17 @@ const avatarData = [
   {
     name: 'Alice Johnson',
     email: 'alice@example.com',
-    avatar: 'https://i.pravatar.cc/150?img=1',
+    avatar: 'https://i.pravatar.cc/150?img=5',
   },
   {
     name: 'Bob Smith',
     email: 'bob@example.com',
-    avatar: 'https://i.pravatar.cc/150?img=2',
+    avatar: 'https://i.pravatar.cc/150?img=12',
   },
   {
     name: 'Carol White',
     email: 'carol@example.com',
-    avatar: 'https://i.pravatar.cc/150?img=3',
+    avatar: 'https://i.pravatar.cc/150?img=9',
   },
 ];
 
@@ -63,13 +62,11 @@ const demos: Record<string, React.ReactNode> = {
       dataSource={avatarData}
       renderItem={(item) => (
         <List.Item>
-          <div className="flex items-center gap-3">
-            <Avatar src={item.avatar} alt={item.name} />
-            <div>
-              <div className="font-semibold">{item.name}</div>
-              <div className="text-sm text-base-content/70">{item.email}</div>
-            </div>
-          </div>
+          <List.Item.Meta
+            avatar={<Avatar src={item.avatar} alt={item.name} />}
+            title={item.name}
+            description={item.email}
+          />
         </List.Item>
       )}
     />
@@ -91,19 +88,4 @@ document.querySelectorAll('.demo-container').forEach(container => {
     const root = createRoot(container as HTMLElement);
     root.render(demos[exampleId]);
   }
-});
-
-// Copy button functionality
-document.querySelectorAll('.copy-btn').forEach(btn => {
-  btn.addEventListener('click', async () => {
-    const code = btn.getAttribute('data-code');
-    if (code) {
-      await navigator.clipboard.writeText(code);
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = CheckIconSvg;
-      setTimeout(() => {
-        btn.innerHTML = originalHTML;
-      }, 2000);
-    }
-  });
 });

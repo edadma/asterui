@@ -4,10 +4,12 @@ import ApiTable from '../../components/ApiTable.astro';
 import { Code } from 'astro:components';
 
 const emptyApi = [
-  { property: 'description', description: 'Text to display in the empty state', type: 'React.ReactNode' },
-  { property: 'image', description: 'Custom image or icon', type: 'React.ReactNode' },
+  { property: 'description', description: 'Text or node to display as description', type: 'React.ReactNode', default: "'No Data'" },
+  { property: 'image', description: 'Custom image or icon; set to null to hide', type: 'React.ReactNode', default: 'Empty.PRESENTED_IMAGE_DEFAULT' },
+  { property: 'imageStyle', description: 'Styling applied to the image container', type: 'React.CSSProperties' },
   { property: 'children', description: 'Extra content like buttons or actions', type: 'React.ReactNode' },
   { property: 'className', description: 'Additional CSS classes', type: 'string' },
+  { property: 'data-testid', description: 'Test ID for the component', type: 'string', default: "'empty'" },
 ];
 
 const examples = [
@@ -68,6 +70,22 @@ const App: React.FC = () => (
   <Empty description="No items in your cart">
     <Button color="primary">Start Shopping</Button>
   </Empty>
+)
+
+export default App`,
+  },
+  {
+    id: 'simple-image',
+    title: 'Simple Image',
+    description: 'Minimal empty state with smaller image.',
+    code: `import React from 'react'
+import { Empty } from 'asterui'
+
+const App: React.FC = () => (
+  <Empty
+    image={Empty.PRESENTED_IMAGE_SIMPLE}
+    description="No results"
+  />
 )
 
 export default App`,

@@ -13,6 +13,7 @@ const imageApi = [
     property: 'alt',
     description: 'Alternative text for the image',
     type: 'string',
+    default: "''",
   },
   {
     property: 'width',
@@ -26,14 +27,29 @@ const imageApi = [
   },
   {
     property: 'preview',
-    description: 'Enable click to preview image',
+    description: 'Enable click to preview image in lightbox',
     type: 'boolean',
-    default: 'false',
+    default: 'true',
   },
   {
     property: 'fallback',
-    description: 'Fallback image URL for broken images',
+    description: 'Fallback image URL when source fails to load',
     type: 'string',
+  },
+  {
+    property: 'placeholder',
+    description: 'Placeholder content shown while loading',
+    type: 'React.ReactNode',
+  },
+  {
+    property: 'onLoad',
+    description: 'Callback when image loads successfully',
+    type: '() => void',
+  },
+  {
+    property: 'onError',
+    description: 'Callback when image fails to load',
+    type: '() => void',
   },
   {
     property: 'className',
@@ -44,6 +60,12 @@ const imageApi = [
     property: 'style',
     description: 'Inline styles',
     type: 'React.CSSProperties',
+  },
+  {
+    property: 'data-testid',
+    description: 'Test ID for the component',
+    type: 'string',
+    default: "'image'",
   },
 ];
 
@@ -57,7 +79,7 @@ import { Image } from 'asterui'
 
 const App: React.FC = () => (
   <Image
-    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+    src="https://picsum.photos/seed/asterui/800/600"
     alt="Landscape"
     width={400}
     height={300}
@@ -76,19 +98,19 @@ import { Image, Space } from 'asterui'
 const App: React.FC = () => (
   <Space direction="horizontal" size="md" align="center">
     <Image
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      src="https://picsum.photos/seed/asterui/800/600"
       alt="Small"
       width={100}
       height={100}
     />
     <Image
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      src="https://picsum.photos/seed/asterui/800/600"
       alt="Medium"
       width={200}
       height={150}
     />
     <Image
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      src="https://picsum.photos/seed/asterui/800/600"
       alt="Large"
       width={300}
       height={200}
@@ -107,7 +129,7 @@ import { Image } from 'asterui'
 
 const App: React.FC = () => (
   <Image
-    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+    src="https://picsum.photos/seed/asterui/800/600"
     alt="Landscape with preview"
     width={400}
     height={300}
@@ -131,7 +153,7 @@ const App: React.FC = () => (
       alt="Broken image"
       width={200}
       height={150}
-      fallback="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      fallback="https://picsum.photos/seed/asterui/800/600"
     />
   </Space>
 )
@@ -212,7 +234,10 @@ export default App`,
       <ul class="list-disc list-inside space-y-2 text-base-content/80">
         <li>Always provide meaningful <code class="bg-base-content/20 px-1 rounded">alt</code> text for screen readers</li>
         <li>Use fallback images to ensure content is always visible</li>
-        <li>Preview functionality is keyboard accessible</li>
+        <li>Preview is keyboard accessible: press Enter or Space to open, Escape to close</li>
+        <li>Previewable images have <code class="bg-base-content/20 px-1 rounded">role="button"</code> with appropriate aria-label</li>
+        <li>Preview modal has <code class="bg-base-content/20 px-1 rounded">role="dialog"</code> and <code class="bg-base-content/20 px-1 rounded">aria-modal="true"</code></li>
+        <li>Error state includes aria-label describing the failure</li>
       </ul>
     </section>
   </div>

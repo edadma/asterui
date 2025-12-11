@@ -3,7 +3,7 @@ import React from 'react';
 import { Image, Space } from 'asterui';
 import { CheckIconSvg } from './icons'
 
-const imgSrc = 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp';
+const imgSrc = 'https://picsum.photos/seed/asterui/800/600';
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {

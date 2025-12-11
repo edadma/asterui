@@ -33,17 +33,62 @@ const listApi = [
   {
     property: 'pagination',
     description: 'Pagination configuration',
-    type: 'PaginationConfig | boolean',
+    type: 'ListPaginationConfig | false',
     default: 'false',
   },
   {
     property: 'grid',
     description: 'Grid layout configuration',
-    type: 'GridConfig',
+    type: 'ListGridConfig',
   },
   {
-    property: 'className',
-    description: 'Additional CSS classes',
+    property: 'bordered',
+    description: 'Show border around list',
+    type: 'boolean',
+    default: 'true',
+  },
+  {
+    property: 'split',
+    description: 'Show divider between items',
+    type: 'boolean',
+    default: 'true',
+  },
+  {
+    property: 'size',
+    description: 'Size variant',
+    type: "'sm' | 'md' | 'lg'",
+    default: "'md'",
+  },
+  {
+    property: 'itemLayout',
+    description: 'Layout direction for items',
+    type: "'horizontal' | 'vertical'",
+    default: "'horizontal'",
+  },
+  {
+    property: 'locale',
+    description: 'Internationalization text',
+    type: '{ emptyText?: React.ReactNode }',
+  },
+  {
+    property: 'loadMore',
+    description: 'Load more content (e.g., button)',
+    type: 'React.ReactNode',
+  },
+  {
+    property: 'rowKey',
+    description: 'Custom key extraction for items',
+    type: 'keyof T | ((item: T) => React.Key)',
+  },
+  {
+    property: 'data-testid',
+    description: 'Test ID for the component',
+    type: 'string',
+    default: "'list'",
+  },
+  {
+    property: 'aria-label',
+    description: 'Accessible label for the list',
     type: 'string',
   },
 ];
@@ -55,9 +100,37 @@ const listItemApi = [
     type: 'React.ReactNode',
   },
   {
+    property: 'actions',
+    description: 'Action buttons displayed on the right',
+    type: 'React.ReactNode[]',
+  },
+  {
+    property: 'extra',
+    description: 'Extra content on the right side',
+    type: 'React.ReactNode',
+  },
+  {
     property: 'className',
     description: 'Additional CSS classes',
     type: 'string',
+  },
+];
+
+const listItemMetaApi = [
+  {
+    property: 'avatar',
+    description: 'Avatar or icon element',
+    type: 'React.ReactNode',
+  },
+  {
+    property: 'title',
+    description: 'Title content',
+    type: 'React.ReactNode',
+  },
+  {
+    property: 'description',
+    description: 'Description content',
+    type: 'React.ReactNode',
   },
 ];
 
@@ -96,17 +169,17 @@ const data = [
   {
     name: 'Alice Johnson',
     email: 'alice@example.com',
-    avatar: 'https://i.pravatar.cc/150?img=1',
+    avatar: 'https://i.pravatar.cc/150?img=5',
   },
   {
     name: 'Bob Smith',
     email: 'bob@example.com',
-    avatar: 'https://i.pravatar.cc/150?img=2',
+    avatar: 'https://i.pravatar.cc/150?img=12',
   },
   {
     name: 'Carol White',
     email: 'carol@example.com',
-    avatar: 'https://i.pravatar.cc/150?img=3',
+    avatar: 'https://i.pravatar.cc/150?img=9',
   },
 ]
 
@@ -115,13 +188,11 @@ const App: React.FC = () => (
     dataSource={data}
     renderItem={(item) => (
       <List.Item>
-        <div className="flex items-center gap-3">
-          <Avatar src={item.avatar} alt={item.name} />
-          <div>
-            <div className="font-semibold">{item.name}</div>
-            <div className="text-sm text-base-content/70">{item.email}</div>
-          </div>
-        </div>
+        <List.Item.Meta
+          avatar={<Avatar src={item.avatar} alt={item.name} />}
+          title={item.name}
+          description={item.email}
+        />
       </List.Item>
     )}
   />
@@ -246,6 +317,9 @@ export default App`,
       <ApiTable title="List" data={listApi} />
       <div class="mt-8">
         <ApiTable title="List.Item" data={listItemApi} />
+      </div>
+      <div class="mt-8">
+        <ApiTable title="List.Item.Meta" data={listItemMetaApi} />
       </div>
     </section>
 
