@@ -6,281 +6,178 @@ import { Code } from 'astro:components';
 const tableApi = [
   { property: 'columns', description: 'Table column configuration', type: 'ColumnType<T>[]', default: '-' },
   { property: 'dataSource', description: 'Data to display in table', type: 'T[]', default: '-' },
-  { property: 'rowKey', description: 'Unique key for each row', type: "string | ((record: T) => string)", default: "'id'" },
+  { property: 'rowKey', description: 'Unique key for each row', type: "keyof T | ((record: T) => string)", default: "'id'" },
   { property: 'loading', description: 'Loading state', type: 'boolean', default: 'false' },
-  { property: 'size', description: 'Table size', type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'" },
+  { property: 'size', description: 'Table size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'" },
   { property: 'bordered', description: 'Add border around table', type: 'boolean', default: 'false' },
   { property: 'hoverable', description: 'Highlight row on hover', type: 'boolean', default: 'true' },
   { property: 'striped', description: 'Alternating row colors (zebra stripes)', type: 'boolean', default: 'false' },
   { property: 'pinRows', description: 'Pin header rows while scrolling', type: 'boolean', default: 'false' },
   { property: 'pinCols', description: 'Pin columns while scrolling', type: 'boolean', default: 'false' },
   { property: 'pagination', description: 'Pagination configuration or false to disable', type: 'false | PaginationConfig', default: '{ pageSize: 10 }' },
+  { property: 'rowSelection', description: 'Row selection configuration', type: 'RowSelection<T>', default: '-' },
+  { property: 'expandable', description: 'Expandable row configuration', type: 'ExpandableConfig<T>', default: '-' },
+  { property: 'scroll', description: 'Scroll configuration for fixed dimensions', type: 'ScrollConfig', default: '-' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
   { property: 'onRow', description: 'Row event handlers', type: '(record: T, index: number) => HTMLAttributes', default: '-' },
-  { property: 'rowSelection', description: 'Row selection configuration', type: 'RowSelection<T>', default: '-' },
+  { property: 'onChange', description: 'Unified callback for pagination, sorting, and filtering', type: '(pagination, filters, sorter, extra) => void', default: '-' },
+  { property: 'onSortChange', description: 'Callback when sort changes', type: '(sorter: SorterResult<T>) => void', default: '-' },
+  { property: 'onFilterChange', description: 'Callback when filter changes', type: '(filters: Record<string, ...>) => void', default: '-' },
+  { property: 'locale', description: 'Localization config for empty text, filter labels', type: '{ emptyText?, filterConfirm?, filterReset?, selectAll? }', default: '-' },
+  { property: 'data-testid', description: 'Test ID for the component', type: 'string', default: "'table'" },
+  { property: 'aria-label', description: 'Accessible label for the table', type: 'string', default: '-' },
 ];
 
 const columnTypeApi = [
   { property: 'key', description: 'Unique key for column', type: 'string', default: '-' },
-  { property: 'title', description: 'Column header title', type: 'string', default: '-' },
-  { property: 'dataIndex', description: 'Field name in data record', type: 'string', default: '-' },
-  { property: 'render', description: 'Custom render function for cell content', type: '(value: any, record: T, index: number) => ReactNode', default: '-' },
+  { property: 'title', description: 'Column header title', type: 'ReactNode', default: '-' },
+  { property: 'dataIndex', description: 'Field name in data record', type: 'keyof T', default: '-' },
+  { property: 'render', description: 'Custom render function for cell content', type: '(value, record, index) => ReactNode', default: '-' },
   { property: 'width', description: 'Column width', type: 'string | number', default: '-' },
-  { property: 'align', description: 'Text alignment', type: "'left' | 'center' | 'right'", default: '-' },
+  { property: 'align', description: 'Text alignment', type: "'left' | 'center' | 'right'", default: "'left'" },
   { property: 'fixed', description: 'Fix column to left or right', type: "'left' | 'right'", default: '-' },
   { property: 'sorter', description: 'Enable sorting or custom sort function', type: 'boolean | ((a: T, b: T) => number)', default: '-' },
+  { property: 'sortOrder', description: 'Controlled sort order', type: "'ascend' | 'descend' | null", default: '-' },
+  { property: 'defaultSortOrder', description: 'Default sort order', type: "'ascend' | 'descend'", default: '-' },
   { property: 'filters', description: 'Filter dropdown configuration', type: 'FilterConfig[]', default: '-' },
-  { property: 'onFilter', description: 'Filter function to determine if record matches filter', type: '(value: string | number | boolean, record: T) => boolean', default: '-' },
+  { property: 'filteredValue', description: 'Controlled filtered values', type: '(string | number | boolean)[]', default: '-' },
+  { property: 'defaultFilteredValue', description: 'Default filtered values', type: '(string | number | boolean)[]', default: '-' },
+  { property: 'onFilter', description: 'Filter function', type: '(value, record) => boolean', default: '-' },
+  { property: 'ellipsis', description: 'Truncate text with ellipsis', type: 'boolean', default: 'false' },
+  { property: 'hidden', description: 'Hide column', type: 'boolean', default: 'false' },
 ];
 
 const rowSelectionApi = [
   { property: 'type', description: 'Selection type', type: "'checkbox' | 'radio'", default: "'checkbox'" },
   { property: 'selectedRowKeys', description: 'Controlled selected row keys', type: 'React.Key[]', default: '-' },
-  { property: 'onChange', description: 'Callback when selection changes', type: '(selectedRowKeys: React.Key[], selectedRows: T[]) => void', default: '-' },
-  { property: 'getCheckboxProps', description: 'Function to customize checkbox props', type: '(record: T) => { disabled?: boolean; [key: string]: any }', default: '-' },
+  { property: 'onChange', description: 'Callback when selection changes', type: '(selectedRowKeys, selectedRows) => void', default: '-' },
+  { property: 'getCheckboxProps', description: 'Function to customize checkbox props', type: '(record) => { disabled?, name? }', default: '-' },
+];
+
+const expandableApi = [
+  { property: 'expandedRowRender', description: 'Render function for expanded content', type: '(record, index, expanded) => ReactNode', default: '-' },
+  { property: 'expandedRowKeys', description: 'Controlled expanded row keys', type: 'React.Key[]', default: '-' },
+  { property: 'defaultExpandedRowKeys', description: 'Default expanded row keys', type: 'React.Key[]', default: '-' },
+  { property: 'rowExpandable', description: 'Function to determine if row is expandable', type: '(record) => boolean', default: '-' },
+  { property: 'onExpand', description: 'Callback when expand state changes', type: '(expanded, record) => void', default: '-' },
+  { property: 'onExpandedRowsChange', description: 'Callback when expanded keys change', type: '(expandedKeys) => void', default: '-' },
+  { property: 'expandRowByClick', description: 'Expand row on row click', type: 'boolean', default: 'false' },
+  { property: 'expandIcon', description: 'Custom expand icon', type: '(props) => ReactNode', default: '-' },
+];
+
+const paginationApi = [
+  { property: 'current', description: 'Current page number', type: 'number', default: '1' },
+  { property: 'pageSize', description: 'Number of items per page', type: 'number', default: '10' },
+  { property: 'total', description: 'Total number of items (for server-side pagination)', type: 'number', default: '-' },
+  { property: 'showSizeChanger', description: 'Show page size dropdown', type: 'boolean', default: 'false' },
+  { property: 'showQuickJumper', description: 'Show quick page jumper input', type: 'boolean', default: 'false' },
+  { property: 'showTotal', description: 'Function to render total text', type: '(total, range) => ReactNode', default: '-' },
+  { property: 'pageSizeOptions', description: 'Page size options', type: 'number[]', default: '[10, 20, 50, 100]' },
+  { property: 'position', description: 'Pagination position', type: "'topLeft' | 'topCenter' | 'topRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight'", default: "'bottomRight'" },
+  { property: 'onChange', description: 'Callback when page changes', type: '(page, pageSize) => void', default: '-' },
+  { property: 'onShowSizeChange', description: 'Callback when page size changes', type: '(current, size) => void', default: '-' },
 ];
 
 const examples = [
   {
     id: 'basic',
     title: 'Basic Table',
-    description: 'Simple table with default pagination.',
-    code: `import React from 'react'
-import { Table } from 'asterui'
-import type { ColumnType } from 'asterui'
-
-interface User {
-  id: string
-  name: string
-  email: string
-  role: string
-}
-
-const columns: ColumnType<User>[] = [
-  { key: 'name', title: 'Name', dataIndex: 'name' },
-  { key: 'email', title: 'Email', dataIndex: 'email' },
-  { key: 'role', title: 'Role', dataIndex: 'role' },
-]
-
-const data: User[] = [
-  { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin' },
-  { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
-]
-
-const App: React.FC = () => (
-  <Table columns={columns} dataSource={data} />
-)
-
-export default App`,
+    description: 'Simple table with data.',
   },
   {
     id: 'custom-render',
     title: 'Custom Rendering',
-    description: 'Use render functions for badges, buttons, and custom content.',
-    code: `import React from 'react'
-import { Table, Tag, Button } from 'asterui'
-import type { ColumnType } from 'asterui'
-
-interface User {
-  id: string
-  name: string
-  email: string
-  status: 'active' | 'inactive'
-}
-
-const columns: ColumnType<User>[] = [
-  { key: 'name', title: 'Name', dataIndex: 'name' },
-  {
-    key: 'status',
-    title: 'Status',
-    dataIndex: 'status',
-    render: (value: string) => (
-      <Tag color={value === 'active' ? 'success' : 'ghost'}>{value}</Tag>
-    ),
-  },
-  {
-    key: 'actions',
-    title: 'Actions',
-    render: () => (
-      <div className="flex gap-2">
-        <Button size="xs">Edit</Button>
-      </div>
-    ),
-  },
-]
-
-const App: React.FC = () => (
-  <Table columns={columns} dataSource={data} pagination={false} />
-)
-
-export default App`,
+    description: 'Use render functions for tags, buttons, and custom content.',
   },
   {
     id: 'striped',
     title: 'Striped Rows',
     description: 'Zebra striping for better readability.',
-    code: `import React from 'react'
-import { Table } from 'asterui'
-
-const App: React.FC = () => (
-  <Table columns={columns} dataSource={data} striped pagination={false} />
-)
-
-export default App`,
   },
   {
     id: 'bordered',
     title: 'Bordered Table',
     description: 'Add borders for a more defined look.',
-    code: `import React from 'react'
-import { Table } from 'asterui'
-
-const App: React.FC = () => (
-  <Table columns={columns} dataSource={data} bordered pagination={false} />
-)
-
-export default App`,
-  },
-  {
-    id: 'sorting',
-    title: 'Column Sorting',
-    description: 'Click column headers to sort data.',
-    code: `import React from 'react'
-import { Table } from 'asterui'
-import type { ColumnType } from 'asterui'
-
-interface User {
-  id: string
-  name: string
-  age: number
-  email: string
-}
-
-const columns: ColumnType<User>[] = [
-  { key: 'name', title: 'Name', dataIndex: 'name', sorter: true },
-  { key: 'age', title: 'Age', dataIndex: 'age', sorter: true },
-  { key: 'email', title: 'Email', dataIndex: 'email', sorter: true },
-]
-
-const App: React.FC = () => (
-  <Table columns={columns} dataSource={data} pagination={false} />
-)
-
-export default App`,
-  },
-  {
-    id: 'filtering',
-    title: 'Column Filtering',
-    description: 'Add filter dropdowns to columns.',
-    code: `import React from 'react'
-import { Table } from 'asterui'
-import type { ColumnType } from 'asterui'
-
-const columns: ColumnType<User>[] = [
-  { key: 'name', title: 'Name', dataIndex: 'name' },
-  {
-    key: 'role',
-    title: 'Role',
-    dataIndex: 'role',
-    filters: [
-      { text: 'Admin', value: 'Admin' },
-      { text: 'User', value: 'User' },
-      { text: 'Editor', value: 'Editor' },
-    ],
-    onFilter: (value, record) => record.role === value,
-  },
-  {
-    key: 'status',
-    title: 'Status',
-    dataIndex: 'status',
-    filters: [
-      { text: 'Active', value: 'active' },
-      { text: 'Inactive', value: 'inactive' },
-    ],
-    onFilter: (value, record) => record.status === value,
-  },
-]
-
-const App: React.FC = () => (
-  <Table columns={columns} dataSource={data} pagination={false} />
-)
-
-export default App`,
-  },
-  {
-    id: 'selection',
-    title: 'Row Selection',
-    description: 'Enable row selection with checkboxes.',
-    code: `import React, { useState } from 'react'
-import { Table } from 'asterui'
-import type { ColumnType, RowSelection } from 'asterui'
-
-const App: React.FC = () => {
-  const [selectedKeys, setSelectedKeys] = useState<React.Key[]>([])
-
-  const rowSelection: RowSelection<User> = {
-    selectedRowKeys: selectedKeys,
-    onChange: (keys, rows) => {
-      setSelectedKeys(keys)
-      console.log('Selected:', keys, rows)
-    },
-  }
-
-  return (
-    <div className="space-y-4">
-      <div className="text-sm">Selected: {selectedKeys.join(', ') || 'None'}</div>
-      <Table
-        columns={columns}
-        dataSource={data}
-        rowSelection={rowSelection}
-        pagination={false}
-      />
-    </div>
-  )
-}
-
-export default App`,
-  },
-  {
-    id: 'loading',
-    title: 'Loading State',
-    description: 'Show loading spinner while fetching data.',
-    code: `import React from 'react'
-import { Table } from 'asterui'
-
-const App: React.FC = () => (
-  <Table columns={columns} dataSource={[]} loading pagination={false} />
-)
-
-export default App`,
   },
   {
     id: 'size-xs',
     title: 'Compact Size',
     description: 'Extra small size for dense data.',
-    code: `import React from 'react'
-import { Table } from 'asterui'
-
-const App: React.FC = () => (
-  <Table columns={columns} dataSource={data} size="xs" pagination={false} />
-)
-
-export default App`,
+  },
+  {
+    id: 'size-xl',
+    title: 'Extra Large Size',
+    description: 'Extra large size for emphasis.',
+  },
+  {
+    id: 'empty',
+    title: 'Empty State',
+    description: 'Customizable empty state message.',
+  },
+  {
+    id: 'loading',
+    title: 'Loading State',
+    description: 'Show loading spinner while fetching data.',
+  },
+  {
+    id: 'pagination',
+    title: 'Basic Pagination',
+    description: 'Paginate large datasets.',
+  },
+  {
+    id: 'pagination-features',
+    title: 'Advanced Pagination',
+    description: 'Page size changer, quick jumper, and total display.',
   },
   {
     id: 'pinned',
     title: 'Pinned Header',
     description: 'Keep header visible while scrolling.',
-    code: `import React from 'react'
-import { Table } from 'asterui'
-
-const App: React.FC = () => (
-  <div className="h-48 overflow-auto">
-    <Table columns={columns} dataSource={data} pinRows />
-  </div>
-)
-
-export default App`,
+  },
+  {
+    id: 'sorting',
+    title: 'Column Sorting',
+    description: 'Click column headers to sort data.',
+  },
+  {
+    id: 'controlled-sort',
+    title: 'Controlled Sorting',
+    description: 'Externally control sort state.',
+  },
+  {
+    id: 'filtering',
+    title: 'Column Filtering',
+    description: 'Add filter dropdowns to columns.',
+  },
+  {
+    id: 'selection',
+    title: 'Checkbox Selection',
+    description: 'Enable row selection with checkboxes.',
+  },
+  {
+    id: 'radio-selection',
+    title: 'Radio Selection',
+    description: 'Single row selection with radio buttons.',
+  },
+  {
+    id: 'expandable',
+    title: 'Expandable Rows',
+    description: 'Expand rows to show additional content.',
+  },
+  {
+    id: 'ellipsis',
+    title: 'Text Ellipsis',
+    description: 'Truncate long text with ellipsis.',
+  },
+  {
+    id: 'scroll',
+    title: 'Scroll Configuration',
+    description: 'Set max width and height with scrolling.',
+  },
+  {
+    id: 'complete',
+    title: 'Complete Example',
+    description: 'Table with multiple features combined.',
   },
 ];
 ---
@@ -302,7 +199,8 @@ export default App`,
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Import</h2>
       <div class="border border-base-300 rounded-lg overflow-hidden [&_pre]:!m-0 [&_pre]:!rounded-none">
-        <Code code="import { Table } from 'asterui'" lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+        <Code code={`import { Table } from 'asterui'
+import type { ColumnType, RowSelection, ExpandableConfig, PaginationConfig } from 'asterui'`} lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
       </div>
     </section>
 
@@ -314,20 +212,7 @@ export default App`,
           <div class="p-4 bg-base-100 rounded-t-lg">
             <h3 class="text-lg font-semibold mb-1">{example.title}</h3>
             <p class="text-sm text-base-content/70 mb-4">{example.description}</p>
-            <div class="demo-container" data-example={example.id}></div>
-          </div>
-          <div class="border-t border-base-300 flex justify-center bg-base-200 rounded-b-lg">
-            <div class="tooltip tooltip-top" data-tip="Show code">
-              <button class="toggle-code btn btn-ghost btn-sm font-mono">&lt;&#8201;&gt;</button>
-            </div>
-          </div>
-          <div class="code-panel relative" aria-hidden="true">
-            <button class="copy-btn absolute top-2 right-2 btn btn-xs btn-ghost z-10" data-code={example.code}>
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-            </button>
-            <div class="[&_pre]:!p-4 [&_pre]:!rounded-none [&_pre]:!m-0 text-sm">
-              <Code code={example.code} lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
-            </div>
+            <div class="demo-container overflow-x-auto" data-example={example.id}></div>
           </div>
         </div>
       ))}
@@ -343,15 +228,49 @@ export default App`,
       <div class="mt-8">
         <ApiTable title="RowSelection" data={rowSelectionApi} />
       </div>
+      <div class="mt-8">
+        <ApiTable title="ExpandableConfig" data={expandableApi} />
+      </div>
+      <div class="mt-8">
+        <ApiTable title="PaginationConfig" data={paginationApi} />
+      </div>
     </section>
 
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
       <ul class="list-disc list-inside space-y-2 text-base-content/80">
-        <li>Uses semantic <code class="bg-base-content/20 px-1 rounded">&lt;table&gt;</code> elements</li>
-        <li>Column headers properly associated with cells</li>
-        <li>Row selection uses accessible checkbox inputs</li>
-        <li>Sort and filter controls are keyboard accessible</li>
+        <li>Uses semantic <code class="bg-base-content/20 px-1 rounded">&lt;table&gt;</code> with <code class="bg-base-content/20 px-1 rounded">role="grid"</code></li>
+        <li>Column headers include <code class="bg-base-content/20 px-1 rounded">role="columnheader"</code> and <code class="bg-base-content/20 px-1 rounded">aria-sort</code> for sortable columns</li>
+        <li>Row selection checkboxes have proper <code class="bg-base-content/20 px-1 rounded">aria-label</code></li>
+        <li>Sort controls are keyboard accessible (Enter/Space to toggle)</li>
+        <li>Filter dropdowns support Escape key to close</li>
+        <li>Pagination buttons include <code class="bg-base-content/20 px-1 rounded">aria-label</code> and <code class="bg-base-content/20 px-1 rounded">aria-current</code></li>
+        <li>Expand/collapse buttons include <code class="bg-base-content/20 px-1 rounded">aria-expanded</code></li>
+        <li>Indeterminate checkbox state for partial selection</li>
+      </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-4">Testing</h2>
+      <p class="text-base-content/80 mb-4">The component exposes <code class="bg-base-content/20 px-1 rounded">data-testid</code> attributes:</p>
+      <ul class="list-disc list-inside space-y-1 text-base-content/80 text-sm">
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}'}</code> - Root wrapper</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-table'}</code> - Table element</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-header-{columnKey}'}</code> - Column headers</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-row-{index}'}</code> - Table rows</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-row-{index}-{columnKey}'}</code> - Table cells</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-row-{index}-select'}</code> - Row selection checkbox</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-row-{index}-expanded'}</code> - Expanded row content</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-select-all'}</code> - Select all checkbox</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-pagination'}</code> - Pagination container</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-prev'}</code>, <code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-next'}</code> - Pagination buttons</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-{columnKey}-filter-button'}</code> - Filter button</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-empty'}</code> - Empty state</li>
+        <li><code class="bg-base-content/20 px-1 rounded">{'{baseTestId}-loading'}</code> - Loading state</li>
+      </ul>
+      <p class="text-base-content/80 mt-4">Data attributes:</p>
+      <ul class="list-disc list-inside space-y-1 text-base-content/80 text-sm">
+        <li><code class="bg-base-content/20 px-1 rounded">data-state="selected"</code> - On selected rows</li>
       </ul>
     </section>
   </div>
@@ -364,31 +283,4 @@ export default App`,
 
 <script>
   import '../../scripts/tableDemos.tsx';
-  document.querySelectorAll('.toggle-code').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const card = btn.closest('.example-card');
-      if (card) {
-        card.classList.toggle('open');
-        const panel = card.querySelector('.code-panel');
-        const tooltip = btn.closest('.tooltip');
-        if (card.classList.contains('open')) {
-          panel?.setAttribute('aria-hidden', 'false');
-          tooltip?.setAttribute('data-tip', 'Hide code');
-        } else {
-          panel?.setAttribute('aria-hidden', 'true');
-          tooltip?.setAttribute('data-tip', 'Show code');
-        }
-      }
-    });
-  });
-  document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const code = btn.getAttribute('data-code');
-      if (code) {
-        await navigator.clipboard.writeText(code);
-        btn.classList.add('btn-success');
-        setTimeout(() => btn.classList.remove('btn-success'), 1000);
-      }
-    });
-  });
 </script>

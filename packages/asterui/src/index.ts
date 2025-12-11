@@ -247,7 +247,18 @@ export { Steps } from './components/Steps'
 export type { StepsProps, StepProps, StepItem, StepsDirection } from './components/Steps'
 
 export { Table } from './components/Table'
-export type { TableProps, ColumnType, PaginationConfig, FilterConfig, RowSelection } from './components/Table'
+export type {
+  TableProps,
+  TableSize,
+  ColumnType,
+  PaginationConfig,
+  FilterConfig,
+  RowSelection,
+  ExpandableConfig,
+  ScrollConfig,
+  SorterResult,
+  TableChangeExtra,
+} from './components/Table'
 
 export { Tabs } from './components/Tabs'
 export type { TabsProps, TabPanelProps, TabItem, TabsVariant, TabsSize, TabsPosition } from './components/Tabs'
@@ -268,7 +279,7 @@ export { TimePicker } from './components/TimePicker'
 export type { TimePickerProps } from './components/TimePicker'
 
 export { Timeline } from './components/Timeline'
-export type { TimelineProps, TimelineItemProps } from './components/Timeline'
+export type { TimelineProps, TimelineItemProps, TimelineItemConfig, TimelineMode, TimelineColor } from './components/Timeline'
 
 export { Toggle } from './components/Toggle'
 export type { ToggleProps } from './components/Toggle'

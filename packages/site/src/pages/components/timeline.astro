@@ -4,11 +4,18 @@ import ApiTable from '../../components/ApiTable.astro';
 import { Code } from 'astro:components';
 
 const timelineApi = [
-  { property: 'children', description: 'Timeline items', type: 'React.ReactNode', default: '-' },
+  { property: 'children', description: 'Timeline items (compound pattern)', type: 'React.ReactNode', default: '-' },
+  { property: 'items', description: 'Timeline items (declarative API)', type: 'TimelineItemConfig[]', default: '-' },
   { property: 'vertical', description: 'Vertical layout orientation', type: 'boolean', default: 'false' },
   { property: 'horizontal', description: 'Horizontal layout (default)', type: 'boolean', default: 'false' },
   { property: 'compact', description: 'All items on one side', type: 'boolean', default: 'false' },
   { property: 'snapIcon', description: 'Snap icon to start instead of center', type: 'boolean', default: 'false' },
+  { property: 'mode', description: 'Item distribution layout', type: "'start' | 'alternate' | 'end'", default: "'alternate'" },
+  { property: 'reverse', description: 'Reverse item order', type: 'boolean', default: 'false' },
+  { property: 'pending', description: 'Show pending/loading indicator at end', type: 'React.ReactNode', default: '-' },
+  { property: 'pendingIcon', description: 'Custom icon for pending item', type: 'React.ReactNode', default: '-' },
+  { property: 'data-testid', description: 'Test ID for the component', type: 'string', default: "'timeline'" },
+  { property: 'aria-label', description: 'Accessible label for the timeline', type: 'string', default: '-' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
@@ -18,6 +25,21 @@ const timelineItemApi = [
   { property: 'icon', description: 'Central icon or marker', type: 'React.ReactNode', default: '-' },
   { property: 'startBox', description: 'Wrap start content in timeline-box', type: 'boolean', default: 'false' },
   { property: 'endBox', description: 'Wrap end content in timeline-box', type: 'boolean', default: 'false' },
+  { property: 'color', description: 'Color of the timeline dot/connector', type: "'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error' | 'neutral'", default: '-' },
+  { property: 'loading', description: 'Show loading spinner instead of icon', type: 'boolean', default: 'false' },
+  { property: 'data-testid', description: 'Test ID for this item', type: 'string', default: '-' },
+  { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
+];
+
+const timelineItemConfigApi = [
+  { property: 'key', description: 'Unique key for the item', type: 'React.Key', default: '-' },
+  { property: 'start', description: 'Content at start position', type: 'React.ReactNode', default: '-' },
+  { property: 'end', description: 'Content at end position', type: 'React.ReactNode', default: '-' },
+  { property: 'icon', description: 'Central icon or marker', type: 'React.ReactNode', default: '-' },
+  { property: 'startBox', description: 'Wrap start content in timeline-box', type: 'boolean', default: 'false' },
+  { property: 'endBox', description: 'Wrap end content in timeline-box', type: 'boolean', default: 'false' },
+  { property: 'color', description: 'Color of the timeline dot/connector', type: 'TimelineColor', default: '-' },
+  { property: 'loading', description: 'Show loading spinner', type: 'boolean', default: 'false' },
   { property: 'className', description: 'Additional CSS classes', type: 'string', default: '-' },
 ];
 
@@ -26,148 +48,147 @@ const examples = [
     id: 'basic',
     title: 'Basic Timeline',
     description: 'Simple timeline with alternating content.',
-    code: `import React from 'react'
-import { Timeline } from 'asterui'
-
-const CheckIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    className="w-5 h-5"
-  >
-    <path
-      fillRule="evenodd"
-      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-      clipRule="evenodd"
-    />
-  </svg>
-)
-
-const App: React.FC = () => (
-  <Timeline>
-    <Timeline.Item
-      start="1984"
-      icon={<CheckIcon />}
-      end="First Macintosh computer"
-      endBox
-    />
-    <Timeline.Item
-      start="iMac"
-      icon={<CheckIcon />}
-      end="1998"
-      startBox
-    />
-  </Timeline>
-)
-
-export default App`,
+    code: `<Timeline>
+  <Timeline.Item start="1984" icon={<CheckIcon />} end="First Macintosh computer" endBox />
+  <Timeline.Item start="iMac" icon={<CheckIcon />} end="1998" startBox />
+</Timeline>`,
   },
   {
     id: 'vertical',
     title: 'Vertical Timeline',
     description: 'Stack items vertically.',
-    code: `import React from 'react'
-import { Timeline } from 'asterui'
-
-const CheckIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    className="text-primary w-5 h-5"
-  >
-    <path
-      fillRule="evenodd"
-      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-      clipRule="evenodd"
-    />
-  </svg>
-)
-
-const App: React.FC = () => (
-  <Timeline vertical>
-    <Timeline.Item
-      start="2015"
-      icon={<CheckIcon />}
-      end="Apple Watch"
-      endBox
-    />
-    <Timeline.Item
-      start="2017"
-      icon={<CheckIcon />}
-      end="iPhone X"
-      endBox
-    />
-    <Timeline.Item
-      start="2020"
-      icon={<CheckIcon />}
-      end="Apple Silicon M1"
-      endBox
-    />
-  </Timeline>
-)
-
-export default App`,
+    code: `<Timeline vertical>
+  <Timeline.Item start="2015" icon={<CheckIcon />} end="Apple Watch" endBox />
+  <Timeline.Item start="2017" icon={<CheckIcon />} end="iPhone X" endBox />
+  <Timeline.Item start="2020" icon={<CheckIcon />} end="Apple Silicon M1" endBox />
+</Timeline>`,
+  },
+  {
+    id: 'horizontal',
+    title: 'Horizontal Timeline',
+    description: 'Display items horizontally.',
+    code: `<Timeline horizontal>
+  <Timeline.Item start="Step 1" icon={<CheckIcon />} end="Planning" endBox />
+  <Timeline.Item start="Step 2" icon={<CheckIcon />} end="Development" endBox />
+  <Timeline.Item start="Step 3" icon={<ClockIcon />} end="Testing" endBox />
+  <Timeline.Item start="Step 4" icon={<ClockIcon />} end="Launch" endBox />
+</Timeline>`,
   },
   {
     id: 'compact',
     title: 'Compact Timeline',
     description: 'All content on one side.',
-    code: `import React from 'react'
-import { Timeline } from 'asterui'
+    code: `<Timeline vertical compact>
+  <Timeline.Item
+    icon={<CheckIcon />}
+    end={
+      <div>
+        <time>1984</time>
+        <div className="text-lg font-black">First Macintosh computer</div>
+      </div>
+    }
+    endBox
+  />
+  <Timeline.Item
+    icon={<CheckIcon />}
+    end={
+      <div>
+        <time>1998</time>
+        <div className="text-lg font-black">iMac</div>
+      </div>
+    }
+    endBox
+  />
+</Timeline>`,
+  },
+  {
+    id: 'snap-icon',
+    title: 'Snap Icon',
+    description: 'Snap icons to the start instead of center.',
+    code: `<Timeline vertical snapIcon>
+  <Timeline.Item start="2023" icon={<CheckIcon />} end="Project Started" endBox />
+  <Timeline.Item start="2024" icon={<CheckIcon />} end="Beta Release" endBox />
+  <Timeline.Item start="2025" icon={<ClockIcon />} end="Public Launch" endBox />
+</Timeline>`,
+  },
+  {
+    id: 'colors',
+    title: 'Colors',
+    description: 'Apply different colors to timeline items.',
+    code: `<Timeline vertical>
+  <Timeline.Item start="Completed" icon={<CheckIcon />} end="Task 1" endBox color="success" />
+  <Timeline.Item start="In Progress" icon={<ClockIcon />} end="Task 2" endBox color="info" />
+  <Timeline.Item start="Warning" icon={<AlertIcon />} end="Task 3" endBox color="warning" />
+  <Timeline.Item start="Error" icon={<AlertIcon />} end="Task 4" endBox color="error" />
+</Timeline>`,
+  },
+  {
+    id: 'mode-start',
+    title: 'Mode: Start',
+    description: 'All items aligned to start.',
+    code: `<Timeline vertical mode="start">
+  <Timeline.Item start="2020" icon={<CheckIcon />} end="Event One" endBox />
+  <Timeline.Item start="2021" icon={<CheckIcon />} end="Event Two" endBox />
+  <Timeline.Item start="2022" icon={<CheckIcon />} end="Event Three" endBox />
+</Timeline>`,
+  },
+  {
+    id: 'mode-end',
+    title: 'Mode: End',
+    description: 'All items aligned to end.',
+    code: `<Timeline vertical mode="end">
+  <Timeline.Item start="2020" icon={<CheckIcon />} end="Event One" endBox />
+  <Timeline.Item start="2021" icon={<CheckIcon />} end="Event Two" endBox />
+  <Timeline.Item start="2022" icon={<CheckIcon />} end="Event Three" endBox />
+</Timeline>`,
+  },
+  {
+    id: 'pending',
+    title: 'Pending State',
+    description: 'Show an ongoing activity at the end.',
+    code: `<Timeline vertical pending="Recording in progress...">
+  <Timeline.Item start="9:00 AM" icon={<CheckIcon />} end="Meeting started" endBox color="success" />
+  <Timeline.Item start="9:30 AM" icon={<CheckIcon />} end="Presentation complete" endBox color="success" />
+  <Timeline.Item start="10:00 AM" icon={<CheckIcon />} end="Q&A session" endBox color="success" />
+</Timeline>`,
+  },
+  {
+    id: 'loading',
+    title: 'Loading State',
+    description: 'Show loading spinner on individual items.',
+    code: `<Timeline vertical>
+  <Timeline.Item start="Step 1" icon={<CheckIcon />} end="Complete" endBox color="success" />
+  <Timeline.Item start="Step 2" loading end="Processing..." endBox />
+  <Timeline.Item start="Step 3" icon={<ClockIcon />} end="Pending" endBox />
+</Timeline>`,
+  },
+  {
+    id: 'reverse',
+    title: 'Reverse Order',
+    description: 'Reverse the order of timeline items.',
+    code: `const [reversed, setReversed] = useState(false)
 
-const CheckIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    className="w-5 h-5"
-  >
-    <path
-      fillRule="evenodd"
-      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-      clipRule="evenodd"
-    />
-  </svg>
-)
+<Button size="sm" onClick={() => setReversed(!reversed)}>
+  {reversed ? 'Normal Order' : 'Reverse Order'}
+</Button>
+<Timeline vertical reverse={reversed}>
+  <Timeline.Item start="1st" icon={<CheckIcon />} end="First Event" endBox />
+  <Timeline.Item start="2nd" icon={<CheckIcon />} end="Second Event" endBox />
+  <Timeline.Item start="3rd" icon={<CheckIcon />} end="Third Event" endBox />
+</Timeline>`,
+  },
+  {
+    id: 'declarative',
+    title: 'Declarative API',
+    description: 'Use the items prop for data-driven timelines.',
+    code: `const items: TimelineItemConfig[] = [
+  { key: '1', start: '2020', end: 'Company Founded', endBox: true, icon: <CheckIcon />, color: 'primary' },
+  { key: '2', start: '2021', end: 'Series A Funding', endBox: true, icon: <CheckIcon />, color: 'success' },
+  { key: '3', start: '2022', end: 'Global Expansion', endBox: true, icon: <CheckIcon />, color: 'info' },
+  { key: '4', start: '2023', end: 'IPO', endBox: true, icon: <CheckIcon />, color: 'warning' },
+]
 
-const App: React.FC = () => (
-  <Timeline vertical compact>
-    <Timeline.Item
-      icon={<CheckIcon />}
-      end={
-        <div>
-          <time>1984</time>
-          <div className="text-lg font-black">First Macintosh computer</div>
-        </div>
-      }
-      endBox
-    />
-    <Timeline.Item
-      icon={<CheckIcon />}
-      end={
-        <div>
-          <time>1998</time>
-          <div className="text-lg font-black">iMac</div>
-        </div>
-      }
-      endBox
-    />
-    <Timeline.Item
-      icon={<CheckIcon />}
-      end={
-        <div>
-          <time>2001</time>
-          <div className="text-lg font-black">iPod</div>
-        </div>
-      }
-      endBox
-    />
-  </Timeline>
-)
-
-export default App`,
+<Timeline vertical items={items} />`,
   },
 ];
 ---
@@ -227,16 +248,39 @@ export default App`,
       <div class="mt-8">
         <ApiTable title="Timeline.Item" data={timelineItemApi} />
       </div>
+      <div class="mt-8">
+        <ApiTable title="TimelineItemConfig" data={timelineItemConfigApi} />
+      </div>
     </section>
 
     <section class="mb-8">
       <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
       <ul class="list-disc list-inside space-y-2 text-base-content/80">
-        <li>Uses semantic list structure for screen readers</li>
+        <li>Uses semantic list structure (<code>role="list"</code>) for screen readers</li>
         <li>Timeline items are announced in order</li>
-        <li>Icons have appropriate ARIA labels when meaningful</li>
+        <li>Supports <code>aria-label</code> for describing the timeline purpose</li>
         <li>Connectors are decorative and hidden from assistive technology</li>
+        <li>Loading states include visual spinner indicators</li>
       </ul>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-bold mb-4">Testing</h2>
+      <p class="text-base-content/80 mb-4">The component exposes <code>data-testid</code> attributes:</p>
+      <div class="overflow-x-auto">
+        <table class="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Test ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Root wrapper</td><td><code>{'{baseTestId}'}</code></td></tr>
+            <tr><td>Timeline items</td><td><code>{'{baseTestId}-item-{index}'}</code></td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
   </div>
 </Layout>

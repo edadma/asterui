@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Timeline } from 'asterui';
-import { CheckCircleIcon } from '@heroicons/react/20/solid';
+import { Timeline, Button, Space } from 'asterui';
+import type { TimelineItemConfig } from 'asterui';
+import { CheckCircleIcon, ClockIcon, ExclamationCircleIcon } from '@heroicons/react/20/solid';
 
 const CheckIcon = () => <CheckCircleIcon className="w-5 h-5" />;
 const PrimaryCheckIcon = () => <CheckCircleIcon className="w-5 h-5 text-primary" />;
+const ClockIconEl = () => <ClockIcon className="w-5 h-5" />;
+const AlertIcon = () => <ExclamationCircleIcon className="w-5 h-5" />;
 
 const demos: Record<string, React.ReactNode> = {
   basic: (
@@ -54,12 +57,97 @@ const demos: Record<string, React.ReactNode> = {
       />
     </Timeline>
   ),
+  horizontal: (
+    <Timeline horizontal>
+      <Timeline.Item start="Step 1" icon={<CheckIcon />} end="Planning" endBox />
+      <Timeline.Item start="Step 2" icon={<CheckIcon />} end="Development" endBox />
+      <Timeline.Item start="Step 3" icon={<ClockIconEl />} end="Testing" endBox />
+      <Timeline.Item start="Step 4" icon={<ClockIconEl />} end="Launch" endBox />
+    </Timeline>
+  ),
+  'snap-icon': (
+    <Timeline vertical snapIcon>
+      <Timeline.Item start="2023" icon={<CheckIcon />} end="Project Started" endBox />
+      <Timeline.Item start="2024" icon={<CheckIcon />} end="Beta Release" endBox />
+      <Timeline.Item start="2025" icon={<ClockIconEl />} end="Public Launch" endBox />
+    </Timeline>
+  ),
+  colors: (
+    <Timeline vertical>
+      <Timeline.Item start="Completed" icon={<CheckIcon />} end="Task 1" endBox color="success" />
+      <Timeline.Item start="In Progress" icon={<ClockIconEl />} end="Task 2" endBox color="info" />
+      <Timeline.Item start="Warning" icon={<AlertIcon />} end="Task 3" endBox color="warning" />
+      <Timeline.Item start="Error" icon={<AlertIcon />} end="Task 4" endBox color="error" />
+    </Timeline>
+  ),
+  'mode-start': (
+    <Timeline vertical mode="start">
+      <Timeline.Item start="2020" icon={<CheckIcon />} end="Event One" endBox />
+      <Timeline.Item start="2021" icon={<CheckIcon />} end="Event Two" endBox />
+      <Timeline.Item start="2022" icon={<CheckIcon />} end="Event Three" endBox />
+    </Timeline>
+  ),
+  'mode-end': (
+    <Timeline vertical mode="end">
+      <Timeline.Item start="2020" icon={<CheckIcon />} end="Event One" endBox />
+      <Timeline.Item start="2021" icon={<CheckIcon />} end="Event Two" endBox />
+      <Timeline.Item start="2022" icon={<CheckIcon />} end="Event Three" endBox />
+    </Timeline>
+  ),
+  pending: (
+    <Timeline vertical pending="Recording in progress...">
+      <Timeline.Item start="9:00 AM" icon={<CheckIcon />} end="Meeting started" endBox color="success" />
+      <Timeline.Item start="9:30 AM" icon={<CheckIcon />} end="Presentation complete" endBox color="success" />
+      <Timeline.Item start="10:00 AM" icon={<CheckIcon />} end="Q&A session" endBox color="success" />
+    </Timeline>
+  ),
+  loading: (
+    <Timeline vertical>
+      <Timeline.Item start="Step 1" icon={<CheckIcon />} end="Complete" endBox color="success" />
+      <Timeline.Item start="Step 2" loading end="Processing..." endBox />
+      <Timeline.Item start="Step 3" icon={<ClockIconEl />} end="Pending" endBox />
+    </Timeline>
+  ),
+};
+
+// Declarative items demo
+const declarativeItems: TimelineItemConfig[] = [
+  { key: '1', start: '2020', end: 'Company Founded', endBox: true, icon: <CheckIcon />, color: 'primary' },
+  { key: '2', start: '2021', end: 'Series A Funding', endBox: true, icon: <CheckIcon />, color: 'success' },
+  { key: '3', start: '2022', end: 'Global Expansion', endBox: true, icon: <CheckIcon />, color: 'info' },
+  { key: '4', start: '2023', end: 'IPO', endBox: true, icon: <CheckIcon />, color: 'warning' },
+];
+
+const statefulDemos: Record<string, React.FC> = {
+  declarative: function DeclarativeDemo() {
+    return <Timeline vertical items={declarativeItems} />;
+  },
+  reverse: function ReverseDemo() {
+    const [reversed, setReversed] = useState(false);
+    return (
+      <div className="space-y-4">
+        <Button size="sm" onClick={() => setReversed(!reversed)}>
+          {reversed ? 'Normal Order' : 'Reverse Order'}
+        </Button>
+        <Timeline vertical reverse={reversed}>
+          <Timeline.Item start="1st" icon={<CheckIcon />} end="First Event" endBox />
+          <Timeline.Item start="2nd" icon={<CheckIcon />} end="Second Event" endBox />
+          <Timeline.Item start="3rd" icon={<CheckIcon />} end="Third Event" endBox />
+        </Timeline>
+      </div>
+    );
+  },
 };
 
 document.querySelectorAll('.demo-container').forEach((container) => {
   const example = container.getAttribute('data-example');
-  if (example && demos[example]) {
+  if (example) {
     const root = createRoot(container);
-    root.render(<>{demos[example]}</>);
+    const StatefulComponent = statefulDemos[example];
+    if (StatefulComponent) {
+      root.render(<StatefulComponent />);
+    } else if (demos[example]) {
+      root.render(<>{demos[example]}</>);
+    }
   }
 });
