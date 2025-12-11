@@ -35,7 +35,7 @@ export { ColorPicker } from './components/ColorPicker'
 export type { ColorPickerProps } from './components/ColorPicker'
 
 export { Card } from './components/Card'
-export type { CardProps, CardGridProps } from './components/Card'
+export type { CardProps, CardGridProps, CardMetaProps, CardSize, CardVariant, CardTabItem } from './components/Card'
 
 export { Cascader } from './components/Cascader'
 export type { CascaderProps, CascaderOption } from './components/Cascader'

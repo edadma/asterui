@@ -68,18 +68,29 @@ const App: React.FC = () => (
 export default App
 ```
 
-### Unbordered Card
+### Card Variants
 
-Card without border (cards have borders by default).
+Different card style variants.
 
 ```tsx
 import React from 'react'
-import { Card } from 'asterui'
+import { Card, Space } from 'asterui'
 
 const App: React.FC = () => (
-  <Card title="Unbordered Card" className="w-96" bordered={false}>
-    <p>This card has no border.</p>
-  </Card>
+  <Space direction="vertical" size="sm" className="w-96">
+    <Card title="Default Card" variant="default">
+      <p>Default card with shadow.</p>
+    </Card>
+    <Card title="Bordered Card" variant="border">
+      <p>Card with solid border.</p>
+    </Card>
+    <Card title="Dashed Card" variant="dash">
+      <p>Card with dashed border.</p>
+    </Card>
+    <Card title="Borderless Card" variant="borderless">
+      <p>Card without border or shadow.</p>
+    </Card>
+  </Space>
 )
 
 export default App
@@ -95,16 +106,36 @@ import { Card, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm" className="w-96">
-    <Card title="Extra Small" size="xs" bordered>
+    <Card title="Extra Small" size="xs">
       <p>Compact card with minimal padding.</p>
     </Card>
-    <Card title="Small" size="sm" bordered>
+    <Card title="Small" size="sm">
       <p>Small card with reduced padding.</p>
     </Card>
-    <Card title="Large" size="lg" bordered>
+    <Card title="Large" size="lg">
       <p>Large card with increased padding.</p>
     </Card>
   </Space>
+)
+
+export default App
+```
+
+### Inner Card
+
+Nested card with inner styling.
+
+```tsx
+import React from 'react'
+import { Card } from 'asterui'
+
+const App: React.FC = () => (
+  <Card title="Outer Card" className="w-96">
+    <p>This is the outer card content.</p>
+    <Card title="Inner Card" type="inner" className="mt-4">
+      <p>This is a nested inner card.</p>
+    </Card>
+  </Card>
 )
 
 export default App
@@ -162,6 +193,39 @@ const App: React.FC = () => (
 export default App
 ```
 
+### Card with Tabs
+
+Card with tab navigation.
+
+```tsx
+import React, { useState } from 'react'
+import { Card } from 'asterui'
+
+const App: React.FC = () => {
+  const [activeKey, setActiveKey] = useState('tab1')
+
+  return (
+    <Card
+      title="Tabbed Card"
+      tabList={[
+        { key: 'tab1', label: 'Tab 1' },
+        { key: 'tab2', label: 'Tab 2' },
+        { key: 'tab3', label: 'Tab 3', disabled: true },
+      ]}
+      activeTabKey={activeKey}
+      onTabChange={setActiveKey}
+      tabBarExtraContent={<a href="#">More</a>}
+      className="w-96"
+    >
+      {activeKey === 'tab1' && <p>Content of Tab 1</p>}
+      {activeKey === 'tab2' && <p>Content of Tab 2</p>}
+    </Card>
+  )
+}
+
+export default App
+```
+
 ### Custom Colors
 
 Card with custom background colors using className.
@@ -198,7 +262,6 @@ const App: React.FC = () => (
       title="Left Actions"
       actions={<Button color="primary" size="sm">Left</Button>}
       actionsJustify="start"
-      bordered
     >
       <p>Actions aligned to the left.</p>
     </Card>
@@ -206,7 +269,6 @@ const App: React.FC = () => (
       title="Center Actions"
       actions={<Button color="primary" size="sm">Center</Button>}
       actionsJustify="center"
-      bordered
     >
       <p>Actions aligned to the center.</p>
     </Card>
@@ -350,7 +412,9 @@ export default App
 | `cover` | Cover image or media element | `React.ReactNode` | `-` |
 | `actions` | Action buttons or elements | `React.ReactNode` | `-` |
 | `size` | Card size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
-| `bordered` | Add border and shadow to card | `boolean` | `true` |
+| `variant` | Card style variant | `'default' \| 'border' \| 'dash' \| 'borderless'` | `'default'` |
+| `type` | Inner card styling for nested cards | `'inner'` | `-` |
+| `bordered` | Add border (deprecated, use variant) | `boolean` | `true` |
 | `side` | Place cover beside content (horizontal layout) | `boolean` | `false` |
 | `imageFull` | Make cover image a full background overlay | `boolean` | `false` |
 | `actionsJustify` | Horizontal alignment of actions | `'start' \| 'center' \| 'end'` | `'end'` |
@@ -358,8 +422,22 @@ export default App
 | `hoverable` | Enable hover shadow effect | `boolean` | `false` |
 | `avatar` | Avatar element (for inline meta layout) | `React.ReactNode` | `-` |
 | `description` | Description text (for inline meta layout) | `React.ReactNode` | `-` |
+| `tabList` | Tab items for card header | `CardTabItem[]` | `-` |
+| `activeTabKey` | Active tab key (controlled) | `string` | `-` |
+| `defaultActiveTabKey` | Default active tab key | `string` | `-` |
+| `onTabChange` | Callback when tab changes | `(key: string) => void` | `-` |
+| `tabBarExtraContent` | Extra content in tab bar | `React.ReactNode` | `-` |
+| `data-testid` | Test ID for the component | `string` | `'card'` |
 | `className` | Additional CSS classes | `string` | `-` |
 | `style` | Inline styles | `React.CSSProperties` | `-` |
+
+### CardTabItem
+
+| Property | Description | Type |
+|----------|-------------|------|
+| `key` | Unique identifier | `string` |
+| `label` | Tab label | `React.ReactNode` |
+| `disabled` | Whether tab is disabled | `boolean` |
 
 ### Card.Meta
 
@@ -368,6 +446,7 @@ export default App
 | `avatar` | Avatar or icon element | `React.ReactNode` | `-` |
 | `title` | Title content | `React.ReactNode` | `-` |
 | `description` | Description content | `React.ReactNode` | `-` |
+| `data-testid` | Test ID for the component | `string` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
 
 ### Card.Grid
@@ -376,5 +455,37 @@ export default App
 |----------|-------------|------|---------|
 | `children` | Grid cell content | `React.ReactNode` | `-` |
 | `hoverable` | Enable hover effect | `boolean` | `false` |
+| `data-testid` | Test ID for the component | `string` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
 | `style` | Inline styles | `React.CSSProperties` | `-` |
+
+## Accessibility
+
+The Card component uses semantic HTML and follows accessibility best practices:
+
+- Uses `<h2>` for card titles
+- Tab navigation uses `role="tablist"` and `role="tab"` with `aria-selected`
+- Loading state indicated via `data-loading` attribute
+
+## Testing
+
+The component exposes `data-testid` attributes for testing:
+
+| Element | Test ID |
+|---------|---------|
+| Root | `{baseTestId}` |
+| Header | `{baseTestId}-header` |
+| Extra | `{baseTestId}-extra` |
+| Cover | `{baseTestId}-cover` |
+| Body | `{baseTestId}-body` |
+| Actions | `{baseTestId}-actions` |
+| Tabs | `{baseTestId}-tabs` |
+| Tab | `{baseTestId}-tab-{key}` |
+| Tab Extra | `{baseTestId}-tab-extra` |
+
+Pass a custom `data-testid` prop to use a different base ID:
+
+```tsx
+<Card data-testid="user-profile" title="Profile" />
+// Results in: user-profile-header, user-profile-body, etc.
+```
