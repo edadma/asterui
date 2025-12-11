@@ -112,9 +112,6 @@ export type { HoverGalleryProps } from './components/HoverGallery'
 export { Image } from './components/Image'
 export type { ImageProps } from './components/Image'
 
-export { Indicator } from './components/Indicator'
-export type { IndicatorProps, IndicatorPosition } from './components/Indicator'
-
 export { Dropdown } from './components/Dropdown'
 export type {
   DropdownProps,
