@@ -6,7 +6,7 @@ function App() {
       <Navbar
         className="bg-base-100 shadow-lg"
         start={<a className="text-xl font-bold">AsterUI App</a>}
-        end={<ThemeController.Swap />}
+        end={<ThemeController.Swap className="scale-75" />}
       />
 
       <div className="p-6">
