@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import React, { useState } from 'react'
-import { VirtualList, Chat } from 'asterui'
+import { Chat } from 'asterui'
+import { VirtualList } from 'asterui/virtuallist'
 import { CheckIconSvg } from './icons'
 
 const basicItems = Array.from({ length: 10000 }, (_, i) => ({

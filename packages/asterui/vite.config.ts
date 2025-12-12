@@ -13,9 +13,13 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: {
+        index: resolve(__dirname, 'src/index.ts'),
+        chart: resolve(__dirname, 'src/chart.ts'),
+        qrcode: resolve(__dirname, 'src/qrcode.ts'),
+        virtuallist: resolve(__dirname, 'src/virtuallist.ts'),
+      },
       formats: ['es'],
-      fileName: 'index',
     },
     rollupOptions: {
       external: [
@@ -26,6 +30,7 @@ export default defineConfig({
         'react-hook-form',
         'apexcharts',
         'qrcode',
+        '@tanstack/react-virtual',
       ],
       output: {
         preserveModules: true,

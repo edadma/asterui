@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { useState } from 'react';
-import { QRCode } from 'asterui';
+import { QRCode } from 'asterui/qrcode';
 
 // Static demos
 const staticDemos: Record<string, React.ReactNode> = {

@@ -40,9 +40,6 @@ export type { CardProps, CardGridProps, CardMetaProps, CardSize, CardVariant, Ca
 export { Cascader } from './components/Cascader'
 export type { CascaderProps, CascaderOption } from './components/Cascader'
 
-export { Chart } from './components/Chart'
-export type { ChartProps } from './components/Chart'
-
 export { Carousel } from './components/Carousel'
 export type { CarouselProps, CarouselItemProps } from './components/Carousel'
 
@@ -201,9 +198,6 @@ export type { PopoverProps, PopoverPlacement, PopoverTrigger } from './component
 export { Progress } from './components/Progress'
 export type { ProgressProps } from './components/Progress'
 
-export { QRCode } from './components/QRCode'
-export type { QRCodeProps, QRCodeErrorLevel, QRCodeType, QRCodeStatus } from './components/QRCode'
-
 export { Radio } from './components/Radio'
 export type { RadioProps, RadioGroupProps, RadioGroupChangeEvent } from './components/Radio'
 
@@ -318,9 +312,6 @@ export type {
 
 export { Upload } from './components/Upload'
 export type { UploadProps, UploadFile } from './components/Upload'
-
-export { VirtualList } from './components/VirtualList'
-export type { VirtualListProps } from './components/VirtualList'
 
 export { Watermark } from './components/Watermark'
 export type {
