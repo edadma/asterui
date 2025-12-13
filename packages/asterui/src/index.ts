@@ -139,7 +139,7 @@ export { Kbd } from './components/Kbd'
 export type { KbdProps } from './components/Kbd'
 
 export { Layout, useSiderContext } from './components/Layout'
-export type { LayoutProps, LayoutHeaderProps, LayoutFooterProps, LayoutContentProps, LayoutSiderProps } from './components/Layout'
+export type { LayoutProps, LayoutHeaderProps, LayoutFooterProps, LayoutContentProps, LayoutSiderProps, SiderTheme, SiderCollapsedType } from './components/Layout'
 
 export { List } from './components/List'
 export type { ListProps, ListRowProps, ListItemProps, ListItemMetaProps, ListPaginationConfig, ListGridConfig } from './components/List'
