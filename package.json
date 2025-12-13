@@ -9,6 +9,7 @@
     "dev:docs": "pnpm --filter @asterui/docs dev",
     "test": "pnpm -r test",
     "publish": "pnpm --filter asterui publish --access public",
-    "publish:create": "pnpm --filter create-asterui publish --access public"
+    "publish:create": "pnpm --filter create-asterui publish --access public",
+    "publish:icons": "pnpm --filter @aster-ui/icons publish --access public"
   }
 }
