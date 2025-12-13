@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import React, { useState } from 'react'
 import { Checkbox, Space, Modal } from 'asterui'
-import { SunIcon, MoonIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
+import { SunIcon, MoonIcon, SpeakerWaveIcon, SpeakerXMarkIcon } from '@aster-ui/icons/solid'
 import { CheckIconSvg } from './icons'
 
 // Demo components for each example
@@ -124,8 +124,8 @@ const SwapDemo: React.FC = () => {
         checked={volume}
         onChange={(e) => setVolume(e.target.checked)}
         swap={{
-          on: <SpeakerWaveIcon className="w-8 h-8" />,
-          off: <SpeakerXMarkIcon className="w-8 h-8" />,
+          on: <SpeakerWaveIcon size={32} />,
+          off: <SpeakerXMarkIcon size={32} />,
         }}
       />
       <Checkbox
@@ -154,8 +154,8 @@ const SwapIconsDemo: React.FC = () => {
       checked={isDark}
       onChange={(e) => setIsDark(e.target.checked)}
       swap={{
-        on: <MoonIcon className="w-8 h-8" />,
-        off: <SunIcon className="w-8 h-8" />,
+        on: <MoonIcon size={32} />,
+        off: <SunIcon size={32} />,
         effect: 'rotate',
       }}
     />

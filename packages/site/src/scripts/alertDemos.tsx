@@ -5,7 +5,7 @@ import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   XCircleIcon,
-} from '@heroicons/react/24/outline';
+} from '@aster-ui/icons';
 import { CheckIconSvg } from './icons';
 
 // Demo components for each example

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Tree } from 'asterui'
 import type { TreeDataNode } from 'asterui'
-import { FolderIcon, DocumentIcon } from '@heroicons/react/24/solid'
+import { FolderIcon, DocumentIcon } from '@aster-ui/icons/solid'
 
 const basicTreeData: TreeDataNode[] = [
   {
@@ -125,10 +125,10 @@ function ShowIconTree() {
     {
       key: 'src',
       title: 'src',
-      icon: <FolderIcon className="w-4 h-4" />,
+      icon: <FolderIcon size="sm" />,
       children: [
-        { key: 'App.tsx', title: 'App.tsx', icon: <DocumentIcon className="w-4 h-4" /> },
-        { key: 'index.tsx', title: 'index.tsx', icon: <DocumentIcon className="w-4 h-4" /> },
+        { key: 'App.tsx', title: 'App.tsx', icon: <DocumentIcon size="sm" /> },
+        { key: 'index.tsx', title: 'index.tsx', icon: <DocumentIcon size="sm" /> },
       ],
     },
   ]

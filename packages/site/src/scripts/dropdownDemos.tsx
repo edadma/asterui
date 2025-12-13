@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import React from 'react';
 import { Dropdown, Button, Space, Typography } from 'asterui';
 import type { DropdownMenuItemType } from 'asterui';
-import { PencilIcon, DocumentDuplicateIcon, TrashIcon, FolderIcon, Cog6ToothIcon } from '@heroicons/react/24/outline';
+import { PencilIcon, DocumentDuplicateIcon, TrashIcon, FolderIcon, Cog6ToothIcon } from '@aster-ui/icons';
 import { CheckIconSvg } from './icons'
 
 // Demo components for each example
@@ -21,10 +21,10 @@ const demos: Record<string, React.ReactNode> = {
   ),
   'items-prop': (() => {
     const items: DropdownMenuItemType[] = [
-      { key: 'edit', label: 'Edit', icon: <PencilIcon className="w-4 h-4" /> },
-      { key: 'duplicate', label: 'Duplicate', icon: <DocumentDuplicateIcon className="w-4 h-4" /> },
+      { key: 'edit', label: 'Edit', icon: <PencilIcon size="sm" /> },
+      { key: 'duplicate', label: 'Duplicate', icon: <DocumentDuplicateIcon size="sm" /> },
       { type: 'divider' },
-      { key: 'delete', label: 'Delete', danger: true, icon: <TrashIcon className="w-4 h-4" /> },
+      { key: 'delete', label: 'Delete', danger: true, icon: <TrashIcon size="sm" /> },
     ]
     return (
       <Dropdown items={items}>
@@ -207,10 +207,10 @@ const demos: Record<string, React.ReactNode> = {
         </div>
       </Dropdown.Trigger>
       <Dropdown.Menu>
-        <Dropdown.Item icon={<PencilIcon className="w-4 h-4" />}>Edit</Dropdown.Item>
-        <Dropdown.Item icon={<DocumentDuplicateIcon className="w-4 h-4" />}>Copy</Dropdown.Item>
+        <Dropdown.Item icon={<PencilIcon size="sm" />}>Edit</Dropdown.Item>
+        <Dropdown.Item icon={<DocumentDuplicateIcon size="sm" />}>Copy</Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item icon={<TrashIcon className="w-4 h-4" />} danger>Delete</Dropdown.Item>
+        <Dropdown.Item icon={<TrashIcon size="sm" />} danger>Delete</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   ),
@@ -220,13 +220,13 @@ const demos: Record<string, React.ReactNode> = {
         <Button>With Submenu</Button>
       </Dropdown.Trigger>
       <Dropdown.Menu>
-        <Dropdown.Item icon={<PencilIcon className="w-4 h-4" />}>Edit</Dropdown.Item>
-        <Dropdown.SubMenu title="More Options" icon={<FolderIcon className="w-4 h-4" />}>
+        <Dropdown.Item icon={<PencilIcon size="sm" />}>Edit</Dropdown.Item>
+        <Dropdown.SubMenu title="More Options" icon={<FolderIcon size="sm" />}>
           <Dropdown.Item>Option A</Dropdown.Item>
           <Dropdown.Item>Option B</Dropdown.Item>
           <Dropdown.Item>Option C</Dropdown.Item>
         </Dropdown.SubMenu>
-        <Dropdown.SubMenu title="Settings" icon={<Cog6ToothIcon className="w-4 h-4" />}>
+        <Dropdown.SubMenu title="Settings" icon={<Cog6ToothIcon size="sm" />}>
           <Dropdown.Item>Preferences</Dropdown.Item>
           <Dropdown.Item>Account</Dropdown.Item>
         </Dropdown.SubMenu>

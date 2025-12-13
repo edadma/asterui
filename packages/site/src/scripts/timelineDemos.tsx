@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Timeline, Button, Space } from 'asterui';
 import type { TimelineItemConfig } from 'asterui';
-import { CheckCircleIcon, ClockIcon, ExclamationCircleIcon } from '@heroicons/react/20/solid';
+import { CheckCircleIcon, ClockIcon, ExclamationCircleIcon } from '@aster-ui/icons/solid';
 
-const CheckIcon = () => <CheckCircleIcon className="w-5 h-5" />;
-const PrimaryCheckIcon = () => <CheckCircleIcon className="w-5 h-5 text-primary" />;
-const ClockIconEl = () => <ClockIcon className="w-5 h-5" />;
-const AlertIcon = () => <ExclamationCircleIcon className="w-5 h-5" />;
+const CheckIcon = () => <CheckCircleIcon />;
+const PrimaryCheckIcon = () => <CheckCircleIcon className="text-primary" />;
+const ClockIconEl = () => <ClockIcon />;
+const AlertIcon = () => <ExclamationCircleIcon />;
 
 const demos: Record<string, React.ReactNode> = {
   basic: (

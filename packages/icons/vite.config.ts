@@ -21,7 +21,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime', '@heroicons/react/24/outline', '@heroicons/react/24/solid', 'asterui'],
+      external: ['react', 'react/jsx-runtime', 'asterui'],
       output: {
         preserveModules: true,
         preserveModulesRoot: 'src',

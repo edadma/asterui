@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import React, { useRef } from 'react';
 import { FloatButton, Modal } from 'asterui';
-import { PlusIcon, QuestionMarkCircleIcon, ChatBubbleLeftRightIcon, ArrowPathIcon, HeartIcon, CameraIcon, PhotoIcon, MicrophoneIcon } from '@heroicons/react/24/outline';
+import { PlusIcon, QuestionMarkCircleIcon, ChatBubbleLeftRightIcon, ArrowPathIcon, HeartIcon, CameraIcon, PhotoIcon, MicrophoneIcon } from '@aster-ui/icons';
 import { CheckIconSvg } from './icons';
 
 // Demo components for each example
@@ -10,7 +10,7 @@ const BasicDemo: React.FC = () => {
     <div className="h-40 flex items-center justify-center bg-base-200 rounded-lg relative">
       <p className="text-base-content/50 text-sm">Floating action button in corner</p>
       <FloatButton
-        icon={<PlusIcon className="w-5 h-5" />}
+        icon={<PlusIcon />}
         onClick={() => Modal.info({ title: 'FloatButton', content: 'You clicked the floating action button!' })}
         style={{ position: 'absolute', bottom: 16, right: 16 }}
       />
@@ -23,7 +23,7 @@ const WithTooltipDemo: React.FC = () => {
     <div className="h-40 flex items-center justify-center bg-base-200 rounded-lg relative">
       <p className="text-base-content/50 text-sm">Hover to see tooltip</p>
       <FloatButton
-        icon={<PlusIcon className="w-5 h-5" />}
+        icon={<PlusIcon />}
         tooltip="Add new item"
         type="primary"
         onClick={() => Modal.info({ title: 'Add Item', content: 'Add item clicked!' })}
@@ -38,19 +38,19 @@ const GroupDemo: React.FC = () => {
     <div className="h-56 flex items-center justify-center bg-base-200 rounded-lg relative overflow-hidden">
       <p className="text-base-content/50 text-sm">Click button to expand group</p>
       <FloatButton.Group
-        icon={<PlusIcon className="w-5 h-5" />}
+        icon={<PlusIcon />}
         style={{ position: 'absolute', bottom: 16, right: 16 }}
       >
         <FloatButton
-          icon={<QuestionMarkCircleIcon className="w-5 h-5" />}
+          icon={<QuestionMarkCircleIcon />}
           onClick={() => Modal.info({ title: 'Help', content: 'Help section opened' })}
         />
         <FloatButton
-          icon={<ChatBubbleLeftRightIcon className="w-5 h-5" />}
+          icon={<ChatBubbleLeftRightIcon />}
           onClick={() => Modal.info({ title: 'Support', content: 'Contact support' })}
         />
         <FloatButton
-          icon={<ArrowPathIcon className="w-5 h-5" />}
+          icon={<ArrowPathIcon />}
           onClick={() => Modal.info({ title: 'Refresh', content: 'Refreshing...' })}
         />
       </FloatButton.Group>
@@ -89,13 +89,13 @@ const TypesDemo: React.FC = () => {
   return (
     <div className="h-24 flex items-center justify-center gap-4 bg-base-200 rounded-lg">
       <FloatButton
-        icon={<PlusIcon className="w-5 h-5" />}
+        icon={<PlusIcon />}
         type="default"
         style={{ position: 'static' }}
         onClick={() => Modal.info({ title: 'Default', content: 'Default type button' })}
       />
       <FloatButton
-        icon={<HeartIcon className="w-5 h-5" />}
+        icon={<HeartIcon />}
         type="primary"
         style={{ position: 'static' }}
         onClick={() => Modal.info({ title: 'Primary', content: 'Primary type button' })}
@@ -108,12 +108,12 @@ const ShapesDemo: React.FC = () => {
   return (
     <div className="h-24 flex items-center justify-center gap-4 bg-base-200 rounded-lg">
       <FloatButton
-        icon={<PlusIcon className="w-5 h-5" />}
+        icon={<PlusIcon />}
         shape="circle"
         style={{ position: 'static' }}
       />
       <FloatButton
-        icon={<PlusIcon className="w-5 h-5" />}
+        icon={<PlusIcon />}
         shape="square"
         style={{ position: 'static' }}
       />
@@ -126,7 +126,7 @@ const BadgeDemo: React.FC = () => {
     <div className="h-40 flex items-center justify-center bg-base-200 rounded-lg relative">
       <p className="text-base-content/50 text-sm">Button with badge</p>
       <FloatButton
-        icon={<ChatBubbleLeftRightIcon className="w-5 h-5" />}
+        icon={<ChatBubbleLeftRightIcon />}
         badge={5}
         onClick={() => Modal.info({ title: 'Messages', content: 'You have 5 unread messages' })}
         style={{ position: 'absolute', bottom: 16, right: 16 }}
@@ -141,21 +141,21 @@ const FlowerDemo: React.FC = () => {
       <p className="text-base-content/50 text-sm">Click to expand in radial layout</p>
       <FloatButton.Group
         flower
-        icon={<PlusIcon className="w-5 h-5" />}
-        mainAction={<HeartIcon className="w-5 h-5" />}
+        icon={<PlusIcon />}
+        mainAction={<HeartIcon />}
         onMainAction={() => Modal.info({ title: 'Main Action', content: 'Main action clicked!' })}
         style={{ position: 'absolute', bottom: 16, right: 16 }}
       >
         <FloatButton
-          icon={<CameraIcon className="w-5 h-5" />}
+          icon={<CameraIcon />}
           onClick={() => Modal.info({ title: 'Camera', content: 'Open camera' })}
         />
         <FloatButton
-          icon={<PhotoIcon className="w-5 h-5" />}
+          icon={<PhotoIcon />}
           onClick={() => Modal.info({ title: 'Gallery', content: 'Open gallery' })}
         />
         <FloatButton
-          icon={<MicrophoneIcon className="w-5 h-5" />}
+          icon={<MicrophoneIcon />}
           onClick={() => Modal.info({ title: 'Voice', content: 'Record voice' })}
         />
       </FloatButton.Group>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Segmented, Space } from 'asterui'
-import { Bars3Icon, Squares2X2Icon } from '@heroicons/react/24/outline'
+import { Bars3Icon, Squares2X2Icon } from '@aster-ui/icons'
 
 const demos: Record<string, React.ReactNode> = {
   sizes: (
@@ -88,8 +88,8 @@ function IconSegmented() {
   return (
     <div>
       <Segmented value={view} onChange={(v) => setView(v as string)}>
-        <Segmented.Item value="list" icon={<Bars3Icon className="w-4 h-4" />}>List</Segmented.Item>
-        <Segmented.Item value="grid" icon={<Squares2X2Icon className="w-4 h-4" />}>Grid</Segmented.Item>
+        <Segmented.Item value="list" icon={<Bars3Icon size="sm" />}>List</Segmented.Item>
+        <Segmented.Item value="grid" icon={<Squares2X2Icon size="sm" />}>Grid</Segmented.Item>
       </Segmented>
       <p className="mt-2 text-sm text-base-content/70">View: {view}</p>
     </div>

@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
 import { Input, Space } from 'asterui';
 import { CheckIconSvg } from './icons'
-import { MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon, UserIcon } from '@aster-ui/icons'
 
 // Demo components for each example
 const demos: Record<string, React.ReactNode> = {
@@ -64,8 +64,8 @@ const demos: Record<string, React.ReactNode> = {
   ),
   'prefix-suffix': (
     <Space direction="vertical" size="sm">
-      <Input prefix={<MagnifyingGlassIcon className="w-4 h-4" />} placeholder="Search..." />
-      <Input prefix={<UserIcon className="w-4 h-4" />} placeholder="Username" />
+      <Input prefix={<MagnifyingGlassIcon size="sm" />} placeholder="Search..." />
+      <Input prefix={<UserIcon size="sm" />} placeholder="Username" />
       <Input suffix="@gmail.com" placeholder="Email" />
     </Space>
   ),

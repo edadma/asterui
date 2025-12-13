@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { RadialProgress } from 'asterui';
-import { CheckIcon } from '@heroicons/react/24/outline';
+import { CheckIcon } from '@aster-ui/icons';
 
 const demos: Record<string, React.ReactNode> = {
   'basic': (
@@ -54,7 +54,7 @@ const demos: Record<string, React.ReactNode> = {
         </div>
       </RadialProgress>
       <RadialProgress value={100} color="success">
-        <CheckIcon className="w-8 h-8" />
+        <CheckIcon size={32} />
       </RadialProgress>
     </div>
   ),

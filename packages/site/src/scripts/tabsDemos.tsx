@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Tabs, Input, Button, notification, Space, Typography } from 'asterui'
-import { HomeIcon, UserIcon, CogIcon } from '@heroicons/react/24/outline'
+import { HomeIcon, UserIcon, Cog6ToothIcon } from '@aster-ui/icons'
 
 // Basic demo
 const BasicDemo: React.FC = () => (
@@ -108,9 +108,9 @@ const DataDrivenDemo: React.FC = () => {
   const [activeKey, setActiveKey] = useState('home')
 
   const items = [
-    { key: 'home', label: 'Home', icon: <HomeIcon className="w-4 h-4" />, children: <Typography.Text>Home content</Typography.Text> },
-    { key: 'profile', label: 'Profile', icon: <UserIcon className="w-4 h-4" />, children: <Typography.Text>Profile content</Typography.Text> },
-    { key: 'settings', label: 'Settings', icon: <CogIcon className="w-4 h-4" />, children: <Typography.Text>Settings content</Typography.Text> },
+    { key: 'home', label: 'Home', icon: <HomeIcon size="sm" />, children: <Typography.Text>Home content</Typography.Text> },
+    { key: 'profile', label: 'Profile', icon: <UserIcon size="sm" />, children: <Typography.Text>Profile content</Typography.Text> },
+    { key: 'settings', label: 'Settings', icon: <Cog6ToothIcon size="sm" />, children: <Typography.Text>Settings content</Typography.Text> },
   ]
 
   return (

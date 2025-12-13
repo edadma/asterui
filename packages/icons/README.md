@@ -1,11 +1,11 @@
 # @aster-ui/icons
 
-Heroicons wrapper with AsterUI size tokens.
+Icon library for AsterUI with size tokens. Built from [Heroicons](https://heroicons.com).
 
 ## Installation
 
 ```bash
-npm install @aster-ui/icons @heroicons/react asterui
+npm install @aster-ui/icons asterui
 ```
 
 ## Usage
@@ -63,6 +63,10 @@ import { ArrowUpTrayIcon } from '@aster-ui/icons'
 | md    | 20px   |
 | lg    | 24px   |
 | xl    | 28px   |
+
+## Credits
+
+Icons are derived from [Heroicons](https://heroicons.com) by the makers of Tailwind CSS, licensed under the [MIT License](https://github.com/tailwindlabs/heroicons/blob/master/LICENSE).
 
 ## License
 

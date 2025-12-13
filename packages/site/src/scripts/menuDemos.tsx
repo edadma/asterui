@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
 import { Menu, Space, notification } from 'asterui';
-import { HomeIcon, FolderIcon, UsersIcon, CogIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, FolderIcon, UsersIcon, Cog6ToothIcon } from '@aster-ui/icons';
 import { CheckIconSvg } from './icons'
 
 // Demo components
@@ -36,16 +36,16 @@ const WithIconsDemo: React.FC = () => {
 
   return (
     <Menu selectedKeys={[selected]} onSelect={setSelected}>
-      <Menu.Item itemKey="dashboard" icon={<HomeIcon className="w-5 h-5" />}>
+      <Menu.Item itemKey="dashboard" icon={<HomeIcon />}>
         Dashboard
       </Menu.Item>
-      <Menu.Item itemKey="projects" icon={<FolderIcon className="w-5 h-5" />}>
+      <Menu.Item itemKey="projects" icon={<FolderIcon />}>
         Projects
       </Menu.Item>
-      <Menu.Item itemKey="team" icon={<UsersIcon className="w-5 h-5" />}>
+      <Menu.Item itemKey="team" icon={<UsersIcon />}>
         Team
       </Menu.Item>
-      <Menu.Item itemKey="settings" icon={<CogIcon className="w-5 h-5" />}>
+      <Menu.Item itemKey="settings" icon={<Cog6ToothIcon />}>
         Settings
       </Menu.Item>
     </Menu>
@@ -120,14 +120,14 @@ const DataDrivenDemo: React.FC = () => {
   const [selected, setSelected] = useState('dashboard')
 
   const items = [
-    { key: 'dashboard', label: 'Dashboard', icon: <HomeIcon className="w-5 h-5" /> },
-    { key: 'projects', label: 'Projects', icon: <FolderIcon className="w-5 h-5" />, children: [
+    { key: 'dashboard', label: 'Dashboard', icon: <HomeIcon /> },
+    { key: 'projects', label: 'Projects', icon: <FolderIcon />, children: [
       { key: 'active', label: 'Active Projects' },
       { key: 'archived', label: 'Archived' },
     ]},
     { key: 'divider1', divider: true },
     { key: 'admin', label: 'Admin', title: true },
-    { key: 'settings', label: 'Settings', icon: <CogIcon className="w-5 h-5" /> },
+    { key: 'settings', label: 'Settings', icon: <Cog6ToothIcon /> },
   ]
 
   return (

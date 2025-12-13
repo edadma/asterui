@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Stats, Button } from 'asterui';
-import { InformationCircleIcon, AdjustmentsVerticalIcon } from '@heroicons/react/24/outline';
+import { InformationCircleIcon, AdjustmentsVerticalIcon } from '@aster-ui/icons';
 
 const demos: Record<string, React.ReactNode> = {
   basic: (
@@ -24,13 +24,13 @@ const demos: Record<string, React.ReactNode> = {
   icons: (
     <Stats className="shadow">
       <Stats.Stat
-        figure={<InformationCircleIcon className="w-8 h-8" />}
+        figure={<InformationCircleIcon size={32} />}
         title="Downloads"
         value="31K"
         desc="Jan 1st - Feb 1st"
       />
       <Stats.Stat
-        figure={<AdjustmentsVerticalIcon className="w-8 h-8" />}
+        figure={<AdjustmentsVerticalIcon size={32} />}
         title="New Users"
         value="4,200"
         desc="↗︎ 400 (22%)"

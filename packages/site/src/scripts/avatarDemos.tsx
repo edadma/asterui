@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import { Avatar, Space } from 'asterui'
-import { UserIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { UserIcon, UserCircleIcon } from '@aster-ui/icons'
 import { CheckIconSvg } from './icons'
 
 const imgSrc = 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'

@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import React from 'react'
 import { Navbar, Button, Dropdown, Typography, Flex } from 'asterui'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { ChevronDownIcon } from '@aster-ui/icons'
 
 // Basic demo
 const BasicDemo: React.FC = () => (
@@ -28,7 +28,7 @@ const WithMenuDemo: React.FC = () => (
           <Dropdown.Trigger>
             <Button variant="ghost">
               Products
-              <ChevronDownIcon className="w-4 h-4 ml-1" />
+              <ChevronDownIcon size="sm" className="ml-1" />
             </Button>
           </Dropdown.Trigger>
           <Dropdown.Menu>

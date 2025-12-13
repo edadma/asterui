@@ -11,7 +11,7 @@ import {
   HeartIcon,
   StarIcon,
   BookmarkIcon,
-} from '@heroicons/react/20/solid';
+} from '@aster-ui/icons/solid';
 
 const demos: Record<string, React.ReactNode> = {
   basic: (
@@ -52,13 +52,13 @@ const demos: Record<string, React.ReactNode> = {
   ),
   icons: (
     <Space size="sm" wrap>
-      <Tag color="primary" icon={<ClipboardDocumentIcon className="w-3 h-3" />}>
+      <Tag color="primary" icon={<ClipboardDocumentIcon size="xs" />}>
         Document
       </Tag>
-      <Tag color="success" icon={<CheckIcon className="w-3 h-3" />}>
+      <Tag color="success" icon={<CheckIcon size="xs" />}>
         Done
       </Tag>
-      <Tag color="error" icon={<XMarkIcon className="w-3 h-3" />}>
+      <Tag color="error" icon={<XMarkIcon size="xs" />}>
         Failed
       </Tag>
     </Space>
@@ -131,11 +131,11 @@ const demos: Record<string, React.ReactNode> = {
   ),
   'checkable-icons': (
     <Space size="sm" wrap>
-      <CheckableTag icon={<HeartIcon className="w-3 h-3" />}>Like</CheckableTag>
-      <CheckableTag checked icon={<StarIcon className="w-3 h-3" />}>
+      <CheckableTag icon={<HeartIcon size="xs" />}>Like</CheckableTag>
+      <CheckableTag checked icon={<StarIcon size="xs" />}>
         Star
       </CheckableTag>
-      <CheckableTag icon={<BookmarkIcon className="w-3 h-3" />}>Save</CheckableTag>
+      <CheckableTag icon={<BookmarkIcon size="xs" />}>Save</CheckableTag>
     </Space>
   ),
   'use-cases': (

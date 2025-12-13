@@ -9,7 +9,7 @@ import {
   Cog6ToothIcon,
   BellIcon,
   PlusCircleIcon,
-} from '@heroicons/react/24/outline'
+} from '@aster-ui/icons'
 
 const BasicDemo: React.FC = () => {
   const [active, setActive] = useState(0)
@@ -18,10 +18,10 @@ const BasicDemo: React.FC = () => {
     <Dock
       className="!relative"
       items={[
-        { icon: <HomeIcon className="w-6 h-6" />, label: 'Home' },
-        { icon: <MagnifyingGlassIcon className="w-6 h-6" />, label: 'Search' },
-        { icon: <HeartIcon className="w-6 h-6" />, label: 'Favorites' },
-        { icon: <UserIcon className="w-6 h-6" />, label: 'Profile' },
+        { icon: <HomeIcon size="lg" />, label: 'Home' },
+        { icon: <MagnifyingGlassIcon size="lg" />, label: 'Search' },
+        { icon: <HeartIcon size="lg" />, label: 'Favorites' },
+        { icon: <UserIcon size="lg" />, label: 'Profile' },
       ]}
       activeIndex={active}
       onChange={setActive}
@@ -36,9 +36,9 @@ const SizesDemo: React.FC = () => {
   const [activeLg, setActiveLg] = useState(0)
 
   const items = [
-    { icon: <HomeIcon className="w-5 h-5" />, label: 'Home' },
-    { icon: <Cog6ToothIcon className="w-5 h-5" />, label: 'Settings' },
-    { icon: <BellIcon className="w-5 h-5" />, label: 'Alerts' },
+    { icon: <HomeIcon />, label: 'Home' },
+    { icon: <Cog6ToothIcon />, label: 'Settings' },
+    { icon: <BellIcon />, label: 'Alerts' },
   ]
 
   return (
@@ -70,11 +70,11 @@ const IconsOnlyDemo: React.FC = () => {
     <Dock
       className="!relative"
       items={[
-        { icon: <HomeIcon className="w-6 h-6" /> },
-        { icon: <MagnifyingGlassIcon className="w-6 h-6" /> },
-        { icon: <PlusCircleIcon className="w-8 h-8" /> },
-        { icon: <HeartIcon className="w-6 h-6" /> },
-        { icon: <UserIcon className="w-6 h-6" /> },
+        { icon: <HomeIcon size="lg" /> },
+        { icon: <MagnifyingGlassIcon size="lg" /> },
+        { icon: <PlusCircleIcon size={32} /> },
+        { icon: <HeartIcon size="lg" /> },
+        { icon: <UserIcon size="lg" /> },
       ]}
       activeIndex={active}
       onChange={setActive}
@@ -89,9 +89,9 @@ const CustomStyleDemo: React.FC = () => {
     <Dock
       className="!relative bg-neutral text-neutral-content"
       items={[
-        { icon: <HomeIcon className="w-6 h-6" />, label: 'Home' },
-        { icon: <Cog6ToothIcon className="w-6 h-6" />, label: 'Settings' },
-        { icon: <BellIcon className="w-6 h-6" />, label: 'Alerts' },
+        { icon: <HomeIcon size="lg" />, label: 'Home' },
+        { icon: <Cog6ToothIcon size="lg" />, label: 'Settings' },
+        { icon: <BellIcon size="lg" />, label: 'Alerts' },
       ]}
       activeIndex={active}
       onChange={setActive}
@@ -105,11 +105,11 @@ const ChildrenDemo: React.FC = () => {
   return (
     <Dock className="!relative">
       <Dock.Item active={active === 0} onClick={() => setActive(0)}>
-        <HomeIcon className="w-6 h-6" />
+        <HomeIcon size="lg" />
         <span className="dock-label">Home</span>
       </Dock.Item>
       <Dock.Item active={active === 1} onClick={() => setActive(1)}>
-        <Cog6ToothIcon className="w-6 h-6" />
+        <Cog6ToothIcon size="lg" />
         <span className="dock-label">Settings</span>
       </Dock.Item>
     </Dock>
