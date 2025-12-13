@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button, Space, Form, Input, notification } from 'asterui'
 import { Demo } from './Demo'
-import { XMarkIcon, ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { X, Upload, Check, Trash2 } from 'lucide-react'
 
 export function BrandColorsDemo() {
   return (
@@ -99,10 +99,10 @@ export function ShapesDemo() {
   return (
     <Demo>
       <Button color="primary" shape="square">
-        <XMarkIcon className="w-4 h-4" />
+        <X />
       </Button>
       <Button color="primary" shape="circle">
-        <XMarkIcon className="w-4 h-4" />
+        <X />
       </Button>
     </Demo>
   )
@@ -149,9 +149,9 @@ export function LinkButtonsDemo() {
 export function WithIconsDemo() {
   return (
     <Demo>
-      <Button color="primary" icon={<ArrowUpTrayIcon className="w-4 h-4" />}>Upload</Button>
-      <Button color="success" icon={<CheckIcon className="w-4 h-4" />}>Save</Button>
-      <Button color="error" icon={<TrashIcon className="w-4 h-4" />} iconPosition="end">Delete</Button>
+      <Button color="primary" icon={<Upload />}>Upload</Button>
+      <Button color="success" icon={<Check />}>Save</Button>
+      <Button color="error" icon={<Trash2 />} iconPosition="end">Delete</Button>
     </Demo>
   )
 }
@@ -160,7 +160,7 @@ export function DangerDemo() {
   return (
     <Demo>
       <Button danger>Delete</Button>
-      <Button danger icon={<TrashIcon className="w-4 h-4" />}>Remove Item</Button>
+      <Button danger icon={<Trash2 />}>Remove Item</Button>
       <Button danger variant="outline">Cancel Account</Button>
     </Demo>
   )

@@ -1,5 +1,6 @@
 ---
 import { Code } from 'astro:components'
+import { Copy, Check } from 'lucide-astro'
 
 interface Props {
   title: string
@@ -36,9 +37,9 @@ if (source && fn) {
     const asteruiComponents = ['Button', 'Space', 'Input', 'Form', 'notification']
     const usedComponents = asteruiComponents.filter(c => jsx.includes(`<${c}`) || jsx.includes(`${c}.`))
 
-    // Detect which heroicons are used
-    const heroicons = ['XMarkIcon', 'ArrowUpTrayIcon', 'CheckIcon', 'TrashIcon']
-    const usedIcons = heroicons.filter(icon => jsx.includes(icon))
+    // Detect which lucide icons are used
+    const lucideIcons = ['X', 'Upload', 'Check', 'Trash2']
+    const usedIcons = lucideIcons.filter(icon => jsx.includes(`<${icon}`) || jsx.includes(`{<${icon}`))
 
     // Extract the full function body to check for hooks
     const fullFnRegex = new RegExp(`export function ${fn}\\s*\\([^)]*\\)\\s*\\{([\\s\\S]*?)\\n\\}`, 'm')
@@ -58,7 +59,7 @@ if (source && fn) {
       imports += `import { ${usedComponents.join(', ')} } from 'asterui'\n`
     }
     if (usedIcons.length > 0) {
-      imports += `import { ${usedIcons.join(', ')} } from '@heroicons/react/24/outline'\n`
+      imports += `import { ${usedIcons.join(', ')} } from 'lucide-react'\n`
     }
 
     // Indent JSX for the component body
@@ -114,13 +115,8 @@ export default App`
   <div class="example-code">
     {extractedCode && (
       <button class="copy-btn" aria-label="Copy code" data-code={extractedCode}>
-        <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-        </svg>
-        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
-          <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>
+        <span class="copy-icon"><Copy size={16} /></span>
+        <span class="check-icon"><Check size={16} /></span>
       </button>
     )}
     {extractedCode ? (
@@ -209,16 +205,21 @@ export default App`
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
+    width: 28px;
+    height: 28px;
     background: var(--sl-color-gray-5);
     border: none;
     cursor: pointer;
-    padding: 0.375rem;
     border-radius: 0.25rem;
     color: var(--sl-color-gray-2);
     z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+
+  .copy-btn svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .copy-btn:hover {
@@ -228,6 +229,18 @@ export default App`
 
   .copy-btn.copied {
     color: #22c55e;
+  }
+
+  .copy-btn .check-icon {
+    display: none;
+  }
+
+  .copy-btn.copied .copy-icon {
+    display: none;
+  }
+
+  .copy-btn.copied .check-icon {
+    display: block;
   }
 
   .example-code .expressive-code,
@@ -287,18 +300,8 @@ export default App`
 
       try {
         await navigator.clipboard.writeText(code)
-        const copyIcon = btn.querySelector('.copy-icon') as HTMLElement
-        const checkIcon = btn.querySelector('.check-icon') as HTMLElement
-
         btn.classList.add('copied')
-        copyIcon.style.display = 'none'
-        checkIcon.style.display = 'block'
-
-        setTimeout(() => {
-          btn.classList.remove('copied')
-          copyIcon.style.display = 'block'
-          checkIcon.style.display = 'none'
-        }, 2000)
+        setTimeout(() => btn.classList.remove('copied'), 2000)
       } catch (err) {
         console.error('Failed to copy:', err)
       }

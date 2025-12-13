@@ -53,8 +53,6 @@ export function Demo({ children }: DemoProps) {
           );
         }
         /* Tailwind utilities for AsterUI components */
-        .w-4 { width: 1rem; }
-        .h-4 { height: 1rem; }
         .rounded-full { border-radius: 9999px; }
       `
       shadow.appendChild(style)
