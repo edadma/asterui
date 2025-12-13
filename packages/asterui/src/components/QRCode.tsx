@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import QRCodeLib from 'qrcode'
 
 export type QRCodeErrorLevel = 'L' | 'M' | 'Q' | 'H'
 export type QRCodeType = 'canvas' | 'svg'
@@ -36,6 +35,7 @@ export const QRCode: React.FC<QRCodeProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [loading, setLoading] = useState(status === 'loading')
+  const [missingDep, setMissingDep] = useState(false)
 
   useEffect(() => {
     setLoading(status === 'loading')
@@ -47,6 +47,16 @@ export const QRCode: React.FC<QRCodeProps> = ({
     const generateQRCode = async () => {
       try {
         setLoading(true)
+
+        // Dynamic import to gracefully handle missing dependency
+        let QRCodeLib
+        try {
+          QRCodeLib = await import('qrcode')
+        } catch {
+          setMissingDep(true)
+          setLoading(false)
+          return
+        }
 
         if (type === 'canvas' && canvasRef.current) {
           await QRCodeLib.toCanvas(canvasRef.current, value, {
@@ -98,6 +108,20 @@ export const QRCode: React.FC<QRCodeProps> = ({
   ]
     .filter(Boolean)
     .join(' ')
+
+  if (missingDep) {
+    return (
+      <div className={containerClasses} style={{ width: size + (bordered ? 24 : 0), height: size + (bordered ? 24 : 0) }} data-state="error" {...rest}>
+        <div className="flex flex-col items-center justify-center gap-2 p-4 text-center">
+          <svg className="w-8 h-8 text-warning" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <span className="text-sm text-base-content/70">Missing dependency</span>
+          <code className="text-xs bg-base-200 px-2 py-1 rounded">npm install qrcode</code>
+        </div>
+      </div>
+    )
+  }
 
   if (status === 'loading' || loading) {
     return (
