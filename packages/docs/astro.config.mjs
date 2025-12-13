@@ -1,8 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,34 +20,13 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         {
-          label: 'Getting Started',
+          label: 'Start Here',
           items: [
-            { label: 'Introduction', slug: '' },
-            { label: 'Installation', slug: 'getting-started/installation' },
-            { label: 'Quick Start', slug: 'getting-started/quick-start' },
-          ],
-        },
-        {
-          label: 'Components',
-          items: [
-            { label: 'Overview', slug: 'components/overview' },
-            { label: 'Button', slug: 'components/button' },
-            { label: 'Collapse', slug: 'components/collapse' },
-          ],
-        },
-        {
-          label: 'Theming',
-          items: [
-            { label: 'Overview', slug: 'theming/overview' },
-            { label: 'Dark Mode', slug: 'theming/dark-mode' },
-            { label: 'Custom Themes', slug: 'theming/custom-themes' },
+            { label: 'Getting Started', slug: 'getting-started' },
+            { label: 'Manual Setup', slug: 'manual-setup' },
           ],
         },
       ],
     }),
-    react(),
   ],
-  vite: {
-    plugins: [tailwindcss()],
-  },
 });
