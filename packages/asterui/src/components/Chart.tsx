@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import ApexCharts from 'apexcharts'
 import type { ApexOptions } from 'apexcharts'
+import { MissingDependency } from './MissingDependency'
 
 export interface ChartProps {
   /** Chart type */
@@ -215,8 +215,24 @@ export const Chart: React.FC<ChartProps> = ({
   className = '',
 }) => {
   const chartRef = useRef<HTMLDivElement>(null)
-  const chartInstance = useRef<ApexCharts | null>(null)
-  const [, setMounted] = useState(false)
+  const chartInstance = useRef<any>(null)
+  const [ApexChartsLib, setApexChartsLib] = useState<any>(null)
+  const [missingDep, setMissingDep] = useState(false)
+
+  // Load ApexCharts dynamically
+  useEffect(() => {
+    import('apexcharts')
+      .then((mod) => {
+        if (mod.default) {
+          setApexChartsLib(() => mod.default)
+        } else {
+          setMissingDep(true)
+        }
+      })
+      .catch(() => {
+        setMissingDep(true)
+      })
+  }, [])
 
   // Build final options
   const buildOptions = (): ApexOptions => {
@@ -239,12 +255,11 @@ export const Chart: React.FC<ChartProps> = ({
 
   // Initialize chart
   useEffect(() => {
-    if (!chartRef.current) return
+    if (!chartRef.current || !ApexChartsLib) return
 
     const opts = buildOptions()
-    chartInstance.current = new ApexCharts(chartRef.current, opts)
+    chartInstance.current = new ApexChartsLib(chartRef.current, opts)
     chartInstance.current.render()
-    setMounted(true)
 
     return () => {
       if (chartInstance.current) {
@@ -252,7 +267,7 @@ export const Chart: React.FC<ChartProps> = ({
         chartInstance.current = null
       }
     }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [ApexChartsLib]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Update chart when props change
   useEffect(() => {
@@ -280,6 +295,20 @@ export const Chart: React.FC<ChartProps> = ({
 
     return () => observer.disconnect()
   }, [themed]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (missingDep) {
+    return <MissingDependency packageName="apexcharts" className={className} />
+  }
+
+  if (!ApexChartsLib) {
+    return (
+      <div className={className} style={{ width, height }}>
+        <div className="flex items-center justify-center h-full">
+          <span className="loading loading-spinner"></span>
+        </div>
+      </div>
+    )
+  }
 
   return <div ref={chartRef} className={className} />
 }
