@@ -3,11 +3,12 @@ import { Code } from 'astro:components'
 
 interface Props {
   title: string
+  description?: string
   source?: string
   fn?: string
 }
 
-const { title, source, fn } = Astro.props
+const { title, description, source, fn } = Astro.props
 
 // Extract code from source if provided
 let extractedCode = ''
@@ -26,17 +27,85 @@ if (source && fn) {
         return Math.min(min, indent)
       }, Infinity)
     // Remove that indentation from all lines
-    extractedCode = lines
+    const jsx = lines
       .map(l => l.slice(minIndent))
       .join('\n')
       .trim()
+
+    // Detect which AsterUI components are used
+    const asteruiComponents = ['Button', 'Space', 'Input', 'Form', 'notification']
+    const usedComponents = asteruiComponents.filter(c => jsx.includes(`<${c}`) || jsx.includes(`${c}.`))
+
+    // Detect which heroicons are used
+    const heroicons = ['XMarkIcon', 'ArrowUpTrayIcon', 'CheckIcon', 'TrashIcon']
+    const usedIcons = heroicons.filter(icon => jsx.includes(icon))
+
+    // Extract the full function body to check for hooks
+    const fullFnRegex = new RegExp(`export function ${fn}\\s*\\([^)]*\\)\\s*\\{([\\s\\S]*?)\\n\\}`, 'm')
+    const fullFnMatch = source.match(fullFnRegex)
+    const fullBody = fullFnMatch ? fullFnMatch[1] : ''
+
+    // Detect React hooks usage
+    const reactHooks = ['useState', 'useEffect', 'useRef', 'useCallback', 'useMemo']
+    const usedHooks = reactHooks.filter(hook => fullBody.includes(hook))
+
+    // Build the full example
+    let imports = ''
+    if (usedHooks.length > 0) {
+      imports += `import { ${usedHooks.join(', ')} } from 'react'\n`
+    }
+    if (usedComponents.length > 0) {
+      imports += `import { ${usedComponents.join(', ')} } from 'asterui'\n`
+    }
+    if (usedIcons.length > 0) {
+      imports += `import { ${usedIcons.join(', ')} } from '@heroicons/react/24/outline'\n`
+    }
+
+    // Indent JSX for the component body
+    const indentedJsx = jsx.split('\n').map(l => l ? '    ' + l : l).join('\n')
+
+    if (usedHooks.length > 0) {
+      // For components with hooks, extract the full function body
+      const statefulRegex = new RegExp(`export function ${fn}\\s*\\([^)]*\\)\\s*\\{([\\s\\S]*?)\\n\\}`, 'm')
+      const statefulMatch = source.match(statefulRegex)
+      if (statefulMatch) {
+        let body = statefulMatch[1]
+        // Replace <Demo> with fragment
+        body = body.replace(/<Demo>/g, '<>').replace(/<\/Demo>/g, '</>')
+        // Clean indentation
+        const bodyLines = body.split('\n')
+        const bodyMinIndent = bodyLines
+          .filter(l => l.trim())
+          .reduce((min, l) => Math.min(min, l.match(/^\s*/)?.[0].length ?? 0), Infinity)
+        body = bodyLines.map(l => l.slice(bodyMinIndent)).join('\n').trim()
+
+        extractedCode = `${imports}
+function App() {
+  ${body.split('\n').join('\n  ')}
+}
+
+export default App`
+      }
+    } else {
+      extractedCode = `${imports}
+function App() {
+  return (
+${indentedJsx}
+  )
+}
+
+export default App`
+    }
   }
 }
 ---
 
 <div class="example-card">
   <div class="example-header">
-    <h3>{title}</h3>
+    <div class="example-title">
+      <h3>{title}</h3>
+      {description && <p class="example-description">{description}</p>}
+    </div>
     <button class="toggle-code" aria-label="Toggle code">
       <span>&lt;/&gt;</span>
     </button>
@@ -45,8 +114,7 @@ if (source && fn) {
   <div class="example-code">
     {extractedCode ? (
       <>
-        <div class="code-light"><Code code={extractedCode} lang="tsx" theme="material-theme-lighter" /></div>
-        <div class="code-dark"><Code code={extractedCode} lang="tsx" theme="material-theme-darker" /></div>
+        <Code code={extractedCode} lang="tsx" theme="css-variables" />
       </>
     ) : (
       <slot name="code" />
@@ -81,10 +149,22 @@ if (source && fn) {
     background: var(--sl-color-gray-6);
   }
 
+  .example-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
   .example-header h3 {
     margin: 0;
     font-size: 0.875rem;
     font-weight: 600;
+  }
+
+  .example-description {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-2);
   }
 
   .toggle-code {
@@ -123,17 +203,35 @@ if (source && fn) {
     border-radius: 0;
   }
 
-  /* Theme-aware code blocks */
-  .code-light,
-  .code-dark {
-    margin: 0;
-    padding: 0;
+  /* Syntax highlighting - light theme (default) */
+  .example-code {
+    --astro-code-background: #f6f8fa;
+    --astro-code-foreground: #24292e;
+    --astro-code-token-constant: #005cc5;
+    --astro-code-token-string: #032f62;
+    --astro-code-token-comment: #6a737d;
+    --astro-code-token-keyword: #d73a49;
+    --astro-code-token-parameter: #24292e;
+    --astro-code-token-function: #6f42c1;
+    --astro-code-token-string-expression: #22863a;
+    --astro-code-token-punctuation: #24292e;
+    --astro-code-token-link: #005cc5;
   }
-  .code-light { display: block; }
-  .code-dark { display: none; }
 
-  :root[data-theme="dark"] .code-light { display: none; }
-  :root[data-theme="dark"] .code-dark { display: block; }
+  /* Syntax highlighting - dark theme */
+  :root[data-theme="dark"] .example-code {
+    --astro-code-background: #161b22;
+    --astro-code-foreground: #c9d1d9;
+    --astro-code-token-constant: #79c0ff;
+    --astro-code-token-string: #a5d6ff;
+    --astro-code-token-comment: #8b949e;
+    --astro-code-token-keyword: #ff7b72;
+    --astro-code-token-parameter: #c9d1d9;
+    --astro-code-token-function: #d2a8ff;
+    --astro-code-token-string-expression: #7ee787;
+    --astro-code-token-punctuation: #c9d1d9;
+    --astro-code-token-link: #79c0ff;
+  }
 </style>
 
 <script>

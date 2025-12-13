@@ -20,7 +20,7 @@ export function Demo({ children }: DemoProps) {
       link.href = 'https://cdn.jsdelivr.net/npm/daisyui@5/daisyui.css'
       shadow.appendChild(link)
 
-      // Add base reset styles
+      // Add base styles
       const style = document.createElement('style')
       style.textContent = `
         *, *::before, *::after {
@@ -52,6 +52,10 @@ export function Demo({ children }: DemoProps) {
             transparent 6px
           );
         }
+        /* Tailwind utilities for AsterUI components */
+        .w-4 { width: 1rem; }
+        .h-4 { height: 1rem; }
+        .rounded-full { border-radius: 9999px; }
       `
       shadow.appendChild(style)
 

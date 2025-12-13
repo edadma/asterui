@@ -5,6 +5,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://asterui.com',
   markdown: {
     shikiConfig: {
       themes: {
@@ -48,7 +49,12 @@ export default defineConfig({
         {
           label: 'Components',
           items: [
-            { label: 'Button', slug: 'components/button' },
+            {
+              label: 'Actions',
+              items: [
+                { label: 'Button', slug: 'components/button' },
+              ],
+            },
           ],
         },
       ],

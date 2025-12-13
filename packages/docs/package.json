@@ -12,6 +12,8 @@
   "dependencies": {
     "@astrojs/react": "^4.2.1",
     "@astrojs/starlight": "^0.37.1",
+    "@heroicons/react": "^2.2.0",
+    "@remixicon/react": "^4.7.0",
     "asterui": "workspace:*",
     "astro": "^5.6.1",
     "react": "^19.0.0",
