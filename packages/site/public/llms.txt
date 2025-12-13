@@ -48,7 +48,6 @@ npm install asterui
 - [Join](https://asterui.com/docs/join.md)
 - [Layout](https://asterui.com/docs/layout.md)
 - [Masonry](https://asterui.com/docs/masonry.md)
-- [PageLayout](https://asterui.com/docs/pagelayout.md)
 - [Space](https://asterui.com/docs/space.md)
 - [Splitter](https://asterui.com/docs/splitter.md)
 

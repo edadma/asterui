@@ -186,8 +186,6 @@ export type { OTPInputProps, OTPInputRef } from './components/OTPInput'
 export { Pagination } from './components/Pagination'
 export type { PaginationProps } from './components/Pagination'
 
-export { PageLayout } from './components/PageLayout'
-export type { PageLayoutProps } from './components/PageLayout'
 
 export { Popconfirm } from './components/Popconfirm'
 export type { PopconfirmProps } from './components/Popconfirm'
