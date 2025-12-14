@@ -11,11 +11,11 @@ Simple floating action button.
 ```tsx
 import React from 'react'
 import { FloatButton } from 'asterui'
-import { PlusIcon } from '@heroicons/react/24/outline'
+import { PlusIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <FloatButton
-    icon={<PlusIcon className="w-5 h-5" />}
+    icon={<PlusIcon />}
     onClick={() => console.log('Clicked!')}
   />
 )
@@ -30,11 +30,11 @@ Float button with tooltip on hover.
 ```tsx
 import React from 'react'
 import { FloatButton } from 'asterui'
-import { PlusIcon } from '@heroicons/react/24/outline'
+import { PlusIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <FloatButton
-    icon={<PlusIcon className="w-5 h-5" />}
+    icon={<PlusIcon />}
     tooltip="Add new item"
     type="primary"
     onClick={() => console.log('Add clicked!')}
@@ -51,22 +51,22 @@ Group of float buttons that expand on click.
 ```tsx
 import React from 'react'
 import { FloatButton } from 'asterui'
-import { QuestionMarkCircleIcon, ChatBubbleLeftRightIcon, ArrowPathIcon } from '@heroicons/react/24/outline'
+import { QuestionMarkCircleIcon, ChatBubbleLeftRightIcon, ArrowPathIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <FloatButton.Group trigger="click">
     <FloatButton
-      icon={<QuestionMarkCircleIcon className="w-5 h-5" />}
+      icon={<QuestionMarkCircleIcon />}
       tooltip="Help"
       onClick={() => console.log('Help')}
     />
     <FloatButton
-      icon={<ChatBubbleLeftRightIcon className="w-5 h-5" />}
+      icon={<ChatBubbleLeftRightIcon />}
       tooltip="Support"
       onClick={() => console.log('Support')}
     />
     <FloatButton
-      icon={<ArrowPathIcon className="w-5 h-5" />}
+      icon={<ArrowPathIcon />}
       tooltip="Refresh"
       onClick={() => console.log('Refresh')}
     />

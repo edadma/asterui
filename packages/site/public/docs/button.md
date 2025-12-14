@@ -175,15 +175,15 @@ Square and circle shapes for icon buttons.
 ```tsx
 import React from 'react'
 import { Button, Space } from 'asterui'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm" align="center">
     <Button color="primary" shape="square">
-      <XMarkIcon className="h-6 w-6" />
+      <XMarkIcon size="lg" />
     </Button>
     <Button color="primary" shape="circle">
-      <XMarkIcon className="h-6 w-6" />
+      <XMarkIcon size="lg" />
     </Button>
   </Space>
 )
@@ -278,17 +278,17 @@ Buttons with icons using the icon prop for automatic spacing.
 ```tsx
 import React from 'react'
 import { Button, Space } from 'asterui'
-import { ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
-    <Button color="primary" icon={<ArrowUpTrayIcon className="w-4 h-4" />}>
+    <Button color="primary" icon={<ArrowUpTrayIcon />}>
       Upload
     </Button>
-    <Button color="success" icon={<CheckIcon className="w-4 h-4" />}>
+    <Button color="success" icon={<CheckIcon />}>
       Save
     </Button>
-    <Button color="error" icon={<TrashIcon className="w-4 h-4" />} iconPosition="end">
+    <Button color="error" icon={<TrashIcon />} iconPosition="end">
       Delete
     </Button>
   </Space>
@@ -304,12 +304,12 @@ Semantic danger styling for destructive actions.
 ```tsx
 import React from 'react'
 import { Button, Space } from 'asterui'
-import { TrashIcon } from '@heroicons/react/24/outline'
+import { TrashIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm">
     <Button danger>Delete</Button>
-    <Button danger icon={<TrashIcon className="w-4 h-4" />}>
+    <Button danger icon={<TrashIcon />}>
       Remove Item
     </Button>
     <Button danger variant="outline">Cancel Account</Button>

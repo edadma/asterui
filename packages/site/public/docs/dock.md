@@ -11,7 +11,7 @@ Mobile-style bottom navigation with icons and labels.
 ```tsx
 import React, { useState } from 'react'
 import { Dock } from 'asterui'
-import { HomeIcon, MagnifyingGlassIcon, HeartIcon, UserIcon } from '@heroicons/react/24/outline'
+import { HomeIcon, MagnifyingGlassIcon, HeartIcon, UserIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => {
   const [active, setActive] = useState(0)
@@ -19,10 +19,10 @@ const App: React.FC = () => {
   return (
     <Dock
       items={[
-        { icon: <HomeIcon className="w-6 h-6" />, label: 'Home' },
-        { icon: <MagnifyingGlassIcon className="w-6 h-6" />, label: 'Search' },
-        { icon: <HeartIcon className="w-6 h-6" />, label: 'Favorites' },
-        { icon: <UserIcon className="w-6 h-6" />, label: 'Profile' },
+        { icon: <HomeIcon size="lg" />, label: 'Home' },
+        { icon: <MagnifyingGlassIcon size="lg" />, label: 'Search' },
+        { icon: <HeartIcon size="lg" />, label: 'Favorites' },
+        { icon: <UserIcon size="lg" />, label: 'Profile' },
       ]}
       activeIndex={active}
       onChange={setActive}
@@ -40,12 +40,12 @@ Different dock sizes.
 ```tsx
 import React from 'react'
 import { Dock, Space } from 'asterui'
-import { HomeIcon, Cog6ToothIcon, BellIcon } from '@heroicons/react/24/outline'
+import { HomeIcon, Cog6ToothIcon, BellIcon } from '@aster-ui/icons'
 
 const items = [
-  { icon: <HomeIcon className="w-5 h-5" /> },
-  { icon: <Cog6ToothIcon className="w-5 h-5" /> },
-  { icon: <BellIcon className="w-5 h-5" /> },
+  { icon: <HomeIcon /> },
+  { icon: <Cog6ToothIcon /> },
+  { icon: <BellIcon /> },
 ]
 
 const App: React.FC = () => (
@@ -67,7 +67,7 @@ Dock without labels for a minimal look.
 ```tsx
 import React, { useState } from 'react'
 import { Dock } from 'asterui'
-import { HomeIcon, MagnifyingGlassIcon, PlusCircleIcon, HeartIcon, UserIcon } from '@heroicons/react/24/outline'
+import { HomeIcon, MagnifyingGlassIcon, PlusCircleIcon, HeartIcon, UserIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => {
   const [active, setActive] = useState(2)
@@ -75,11 +75,11 @@ const App: React.FC = () => {
   return (
     <Dock
       items={[
-        { icon: <HomeIcon className="w-6 h-6" /> },
-        { icon: <MagnifyingGlassIcon className="w-6 h-6" /> },
-        { icon: <PlusCircleIcon className="w-8 h-8" /> },
-        { icon: <HeartIcon className="w-6 h-6" /> },
-        { icon: <UserIcon className="w-6 h-6" /> },
+        { icon: <HomeIcon size="lg" /> },
+        { icon: <MagnifyingGlassIcon size="lg" /> },
+        { icon: <PlusCircleIcon size={32} /> },
+        { icon: <HeartIcon size="lg" /> },
+        { icon: <UserIcon size="lg" /> },
       ]}
       activeIndex={active}
       onChange={setActive}
@@ -97,7 +97,7 @@ Apply custom colors to the dock.
 ```tsx
 import React, { useState } from 'react'
 import { Dock } from 'asterui'
-import { HomeIcon, Cog6ToothIcon, BellIcon } from '@heroicons/react/24/outline'
+import { HomeIcon, Cog6ToothIcon, BellIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => {
   const [active, setActive] = useState(0)
@@ -106,9 +106,9 @@ const App: React.FC = () => {
     <Dock
       className="bg-neutral text-neutral-content"
       items={[
-        { icon: <HomeIcon className="w-6 h-6" />, label: 'Home' },
-        { icon: <Cog6ToothIcon className="w-6 h-6" />, label: 'Settings' },
-        { icon: <BellIcon className="w-6 h-6" />, label: 'Alerts' },
+        { icon: <HomeIcon size="lg" />, label: 'Home' },
+        { icon: <Cog6ToothIcon size="lg" />, label: 'Settings' },
+        { icon: <BellIcon size="lg" />, label: 'Alerts' },
       ]}
       activeIndex={active}
       onChange={setActive}
@@ -126,16 +126,16 @@ For more control, use Dock.Item children instead of the items prop.
 ```tsx
 import React from 'react'
 import { Dock } from 'asterui'
-import { HomeIcon, Cog6ToothIcon } from '@heroicons/react/24/outline'
+import { HomeIcon, Cog6ToothIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Dock>
     <Dock.Item active>
-      <HomeIcon className="w-6 h-6" />
+      <HomeIcon size="lg" />
       <span className="dock-label">Home</span>
     </Dock.Item>
     <Dock.Item>
-      <Cog6ToothIcon className="w-6 h-6" />
+      <Cog6ToothIcon size="lg" />
       <span className="dock-label">Settings</span>
     </Dock.Item>
   </Dock>

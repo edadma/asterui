@@ -194,7 +194,7 @@ Use the `swap` prop to toggle between two visual states (icons, text, etc.) inst
 ```tsx
 import React, { useState } from 'react'
 import { Checkbox, Space } from 'asterui'
-import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
+import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@aster-ui/icons/solid'
 
 const App: React.FC = () => {
   const [volume, setVolume] = useState(true)
@@ -205,8 +205,8 @@ const App: React.FC = () => {
         checked={volume}
         onChange={(e) => setVolume(e.target.checked)}
         swap={{
-          on: <SpeakerWaveIcon className="w-8 h-8" />,
-          off: <SpeakerXMarkIcon className="w-8 h-8" />,
+          on: <SpeakerWaveIcon size={32} />,
+          off: <SpeakerXMarkIcon size={32} />,
         }}
       />
       <Checkbox
@@ -237,7 +237,7 @@ Theme toggle example using swap mode with Heroicons.
 ```tsx
 import React, { useState } from 'react'
 import { Checkbox } from 'asterui'
-import { SunIcon, MoonIcon } from '@heroicons/react/24/solid'
+import { SunIcon, MoonIcon } from '@aster-ui/icons/solid'
 
 const App: React.FC = () => {
   const [isDark, setIsDark] = useState(false)
@@ -247,8 +247,8 @@ const App: React.FC = () => {
       checked={isDark}
       onChange={(e) => setIsDark(e.target.checked)}
       swap={{
-        on: <MoonIcon className="w-8 h-8" />,
-        off: <SunIcon className="w-8 h-8" />,
+        on: <MoonIcon size={32} />,
+        off: <SunIcon size={32} />,
         effect: 'rotate',
       }}
     />

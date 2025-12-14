@@ -11,11 +11,11 @@ Simple alert with icon and text.
 ```tsx
 import React from 'react'
 import { Alert } from 'asterui'
-import { InformationCircleIcon } from '@heroicons/react/24/outline'
+import { InformationCircleIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Alert>
-    <InformationCircleIcon className="h-6 w-6 shrink-0" />
+    <InformationCircleIcon size="lg" className="shrink-0" />
     <span>This is a basic alert</span>
   </Alert>
 )
@@ -35,27 +35,27 @@ import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   XCircleIcon,
-} from '@heroicons/react/24/outline'
+} from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
     <Alert type="info">
-      <InformationCircleIcon className="h-6 w-6 shrink-0" />
+      <InformationCircleIcon size="lg" className="shrink-0" />
       <span>Info: New software update available</span>
     </Alert>
 
     <Alert type="success">
-      <CheckCircleIcon className="h-6 w-6 shrink-0" />
+      <CheckCircleIcon size="lg" className="shrink-0" />
       <span>Success: Your purchase has been confirmed</span>
     </Alert>
 
     <Alert type="warning">
-      <ExclamationTriangleIcon className="h-6 w-6 shrink-0" />
+      <ExclamationTriangleIcon size="lg" className="shrink-0" />
       <span>Warning: Invalid email address</span>
     </Alert>
 
     <Alert type="error">
-      <XCircleIcon className="h-6 w-6 shrink-0" />
+      <XCircleIcon size="lg" className="shrink-0" />
       <span>Error: Invalid credentials</span>
     </Alert>
   </Space>
@@ -71,11 +71,11 @@ Alert with dismissal or action button.
 ```tsx
 import React from 'react'
 import { Alert, Button } from 'asterui'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { ExclamationTriangleIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Alert type="warning">
-    <ExclamationTriangleIcon className="h-6 w-6 shrink-0" />
+    <ExclamationTriangleIcon size="lg" className="shrink-0" />
     <span>We use cookies for no reason</span>
     <div>
       <Button size="sm">Accept</Button>
@@ -93,17 +93,17 @@ Alert with outline variant.
 ```tsx
 import React from 'react'
 import { Alert, Space } from 'asterui'
-import { InformationCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
+import { InformationCircleIcon, CheckCircleIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
     <Alert type="info" outline>
-      <InformationCircleIcon className="h-6 w-6 shrink-0" />
+      <InformationCircleIcon size="lg" className="shrink-0" />
       <span>Info outline alert</span>
     </Alert>
 
     <Alert type="success" outline>
-      <CheckCircleIcon className="h-6 w-6 shrink-0" />
+      <CheckCircleIcon size="lg" className="shrink-0" />
       <span>Success outline alert</span>
     </Alert>
   </Space>

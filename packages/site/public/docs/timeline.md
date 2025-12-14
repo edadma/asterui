@@ -11,9 +11,9 @@ Display events in chronological order with alternating or vertical layouts.
 ```tsx
 import React from 'react'
 import { Timeline } from 'asterui'
-import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { CheckCircleIcon } from '@aster-ui/icons/solid'
 
-const CheckIcon = () => <CheckCircleIcon className="w-5 h-5" />
+const CheckIcon = () => <CheckCircleIcon />
 
 const App: React.FC = () => (
   <Timeline>
@@ -30,9 +30,9 @@ export default App
 ```tsx
 import React from 'react'
 import { Timeline } from 'asterui'
-import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { CheckCircleIcon } from '@aster-ui/icons/solid'
 
-const CheckIcon = () => <CheckCircleIcon className="w-5 h-5 text-primary" />
+const CheckIcon = () => <CheckCircleIcon className="text-primary" />
 
 const App: React.FC = () => (
   <Timeline vertical>
@@ -50,14 +50,14 @@ export default App
 ```tsx
 import React from 'react'
 import { Timeline } from 'asterui'
-import { CheckCircleIcon, ClockIcon } from '@heroicons/react/20/solid'
+import { CheckCircleIcon, ClockIcon } from '@aster-ui/icons/solid'
 
 const App: React.FC = () => (
   <Timeline horizontal>
-    <Timeline.Item start="Step 1" icon={<CheckCircleIcon className="w-5 h-5" />} end="Planning" endBox />
-    <Timeline.Item start="Step 2" icon={<CheckCircleIcon className="w-5 h-5" />} end="Development" endBox />
-    <Timeline.Item start="Step 3" icon={<ClockIcon className="w-5 h-5" />} end="Testing" endBox />
-    <Timeline.Item start="Step 4" icon={<ClockIcon className="w-5 h-5" />} end="Launch" endBox />
+    <Timeline.Item start="Step 1" icon={<CheckCircleIcon />} end="Planning" endBox />
+    <Timeline.Item start="Step 2" icon={<CheckCircleIcon />} end="Development" endBox />
+    <Timeline.Item start="Step 3" icon={<ClockIcon />} end="Testing" endBox />
+    <Timeline.Item start="Step 4" icon={<ClockIcon />} end="Launch" endBox />
   </Timeline>
 )
 
@@ -69,9 +69,9 @@ export default App
 ```tsx
 import React from 'react'
 import { Timeline } from 'asterui'
-import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { CheckCircleIcon } from '@aster-ui/icons/solid'
 
-const CheckIcon = () => <CheckCircleIcon className="w-5 h-5" />
+const CheckIcon = () => <CheckCircleIcon />
 
 const App: React.FC = () => (
   <Timeline vertical compact>
@@ -116,14 +116,14 @@ export default App
 ```tsx
 import React from 'react'
 import { Timeline } from 'asterui'
-import { CheckCircleIcon, ClockIcon, ExclamationCircleIcon } from '@heroicons/react/20/solid'
+import { CheckCircleIcon, ClockIcon, ExclamationCircleIcon } from '@aster-ui/icons/solid'
 
 const App: React.FC = () => (
   <Timeline vertical>
-    <Timeline.Item start="Completed" icon={<CheckCircleIcon className="w-5 h-5" />} end="Task 1" endBox color="success" />
-    <Timeline.Item start="In Progress" icon={<ClockIcon className="w-5 h-5" />} end="Task 2" endBox color="info" />
-    <Timeline.Item start="Warning" icon={<ExclamationCircleIcon className="w-5 h-5" />} end="Task 3" endBox color="warning" />
-    <Timeline.Item start="Error" icon={<ExclamationCircleIcon className="w-5 h-5" />} end="Task 4" endBox color="error" />
+    <Timeline.Item start="Completed" icon={<CheckCircleIcon />} end="Task 1" endBox color="success" />
+    <Timeline.Item start="In Progress" icon={<ClockIcon />} end="Task 2" endBox color="info" />
+    <Timeline.Item start="Warning" icon={<ExclamationCircleIcon />} end="Task 3" endBox color="warning" />
+    <Timeline.Item start="Error" icon={<ExclamationCircleIcon />} end="Task 4" endBox color="error" />
   </Timeline>
 )
 
@@ -160,13 +160,13 @@ import { Timeline } from 'asterui'
 ```tsx
 import React from 'react'
 import { Timeline } from 'asterui'
-import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { CheckCircleIcon } from '@aster-ui/icons/solid'
 
 const App: React.FC = () => (
   <Timeline vertical pending="Recording in progress...">
-    <Timeline.Item start="9:00 AM" icon={<CheckCircleIcon className="w-5 h-5" />} end="Meeting started" endBox color="success" />
-    <Timeline.Item start="9:30 AM" icon={<CheckCircleIcon className="w-5 h-5" />} end="Presentation complete" endBox color="success" />
-    <Timeline.Item start="10:00 AM" icon={<CheckCircleIcon className="w-5 h-5" />} end="Q&A session" endBox color="success" />
+    <Timeline.Item start="9:00 AM" icon={<CheckCircleIcon />} end="Meeting started" endBox color="success" />
+    <Timeline.Item start="9:30 AM" icon={<CheckCircleIcon />} end="Presentation complete" endBox color="success" />
+    <Timeline.Item start="10:00 AM" icon={<CheckCircleIcon />} end="Q&A session" endBox color="success" />
   </Timeline>
 )
 
@@ -178,13 +178,13 @@ export default App
 ```tsx
 import React from 'react'
 import { Timeline } from 'asterui'
-import { CheckCircleIcon, ClockIcon } from '@heroicons/react/20/solid'
+import { CheckCircleIcon, ClockIcon } from '@aster-ui/icons/solid'
 
 const App: React.FC = () => (
   <Timeline vertical>
-    <Timeline.Item start="Step 1" icon={<CheckCircleIcon className="w-5 h-5" />} end="Complete" endBox color="success" />
+    <Timeline.Item start="Step 1" icon={<CheckCircleIcon />} end="Complete" endBox color="success" />
     <Timeline.Item start="Step 2" loading end="Processing..." endBox />
-    <Timeline.Item start="Step 3" icon={<ClockIcon className="w-5 h-5" />} end="Pending" endBox />
+    <Timeline.Item start="Step 3" icon={<ClockIcon />} end="Pending" endBox />
   </Timeline>
 )
 
@@ -223,9 +223,9 @@ export default App
 import React from 'react'
 import { Timeline } from 'asterui'
 import type { TimelineItemConfig } from 'asterui'
-import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { CheckCircleIcon } from '@aster-ui/icons/solid'
 
-const CheckIcon = () => <CheckCircleIcon className="w-5 h-5" />
+const CheckIcon = () => <CheckCircleIcon />
 
 const items: TimelineItemConfig[] = [
   { key: '1', start: '2020', end: 'Company Founded', endBox: true, icon: <CheckIcon />, color: 'primary' },

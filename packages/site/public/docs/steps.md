@@ -164,20 +164,20 @@ export default App
 ```tsx
 import React from 'react'
 import { Steps } from 'asterui'
-import { CheckIcon, DocumentTextIcon, CreditCardIcon, TruckIcon } from '@heroicons/react/24/outline'
+import { CheckIcon, DocumentTextIcon, CreditCardIcon, TruckIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Steps>
-    <Steps.Step color="primary" icon={<CheckIcon className="w-4 h-4" />}>
+    <Steps.Step color="primary" icon={<CheckIcon size="sm" />}>
       Order Placed
     </Steps.Step>
-    <Steps.Step color="primary" icon={<DocumentTextIcon className="w-4 h-4" />}>
+    <Steps.Step color="primary" icon={<DocumentTextIcon size="sm" />}>
       Processing
     </Steps.Step>
-    <Steps.Step icon={<CreditCardIcon className="w-4 h-4" />}>
+    <Steps.Step icon={<CreditCardIcon size="sm" />}>
       Payment
     </Steps.Step>
-    <Steps.Step icon={<TruckIcon className="w-4 h-4" />}>
+    <Steps.Step icon={<TruckIcon size="sm" />}>
       Delivery
     </Steps.Step>
   </Steps>

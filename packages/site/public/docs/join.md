@@ -49,13 +49,13 @@ Join input with button for search or forms.
 ```tsx
 import React from 'react'
 import { Join, Input, Button } from 'asterui'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Join>
     <Input placeholder="Search..." />
     <Button color="primary">
-      <MagnifyingGlassIcon className="w-5 h-5" />
+      <MagnifyingGlassIcon />
     </Button>
   </Join>
 )

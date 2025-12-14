@@ -48,17 +48,17 @@ export default App
 ```tsx
 import React from 'react'
 import { Breadcrumb } from 'asterui'
-import { FolderIcon, DocumentTextIcon } from '@heroicons/react/24/outline'
+import { FolderIcon, DocumentTextIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Breadcrumb>
-    <Breadcrumb.Item href="/" icon={<FolderIcon className="w-4 h-4" />}>
+    <Breadcrumb.Item href="/" icon={<FolderIcon size="sm" />}>
       Home
     </Breadcrumb.Item>
-    <Breadcrumb.Item href="/documents" icon={<FolderIcon className="w-4 h-4" />}>
+    <Breadcrumb.Item href="/documents" icon={<FolderIcon size="sm" />}>
       Documents
     </Breadcrumb.Item>
-    <Breadcrumb.Item icon={<DocumentTextIcon className="w-4 h-4" />}>
+    <Breadcrumb.Item icon={<DocumentTextIcon size="sm" />}>
       Add Document
     </Breadcrumb.Item>
   </Breadcrumb>
@@ -72,7 +72,7 @@ export default App
 ```tsx
 import React from 'react'
 import { Breadcrumb } from 'asterui'
-import { ChevronRightIcon } from '@heroicons/react/24/outline'
+import { ChevronRightIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <div className="space-y-4">
@@ -81,7 +81,7 @@ const App: React.FC = () => (
       <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
       <Breadcrumb.Item>Details</Breadcrumb.Item>
     </Breadcrumb>
-    <Breadcrumb separator={<ChevronRightIcon className="w-4 h-4" />}>
+    <Breadcrumb separator={<ChevronRightIcon size="sm" />}>
       <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
       <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>
       <Breadcrumb.Item>Details</Breadcrumb.Item>

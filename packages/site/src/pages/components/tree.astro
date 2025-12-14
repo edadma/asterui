@@ -278,16 +278,16 @@ export default App`,
     description: 'Display custom icons for nodes.',
     code: `import React from 'react'
 import { Tree } from 'asterui'
-import { FolderIcon, DocumentIcon } from '@heroicons/react/24/solid'
+import { FolderIcon, DocumentIcon } from '@aster-ui/icons/solid'
 
 const treeData = [
   {
     key: 'src',
     title: 'src',
-    icon: <FolderIcon className="w-4 h-4" />,
+    icon: <FolderIcon size="sm" />,
     children: [
-      { key: 'App.tsx', title: 'App.tsx', icon: <DocumentIcon className="w-4 h-4" /> },
-      { key: 'index.tsx', title: 'index.tsx', icon: <DocumentIcon className="w-4 h-4" /> },
+      { key: 'App.tsx', title: 'App.tsx', icon: <DocumentIcon size="sm" /> },
+      { key: 'index.tsx', title: 'index.tsx', icon: <DocumentIcon size="sm" /> },
     ],
   },
 ]

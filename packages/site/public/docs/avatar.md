@@ -111,12 +111,12 @@ Display icons instead of images.
 ```tsx
 import React from 'react'
 import { Avatar, Space } from 'asterui'
-import { UserIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { UserIcon, UserCircleIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Space direction="horizontal" size="sm">
-    <Avatar icon={<UserIcon className="h-8 w-8" />} />
-    <Avatar size="lg" icon={<UserCircleIcon className="h-10 w-10" />} />
+    <Avatar icon={<UserIcon size={32} />} />
+    <Avatar size="lg" icon={<UserCircleIcon size={40} />} />
   </Space>
 )
 

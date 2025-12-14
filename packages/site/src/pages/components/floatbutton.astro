@@ -47,11 +47,11 @@ const examples = [
     description: 'Simple floating action button.',
     code: `import React from 'react'
 import { FloatButton, Modal } from 'asterui'
-import { PlusIcon } from '@heroicons/react/24/outline'
+import { PlusIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <FloatButton
-    icon={<PlusIcon className="w-5 h-5" />}
+    icon={<PlusIcon />}
     onClick={() => Modal.info({ title: 'FloatButton', content: 'Button clicked!' })}
   />
 )
@@ -64,11 +64,11 @@ export default App`,
     description: 'Float button with tooltip on hover.',
     code: `import React from 'react'
 import { FloatButton, Modal } from 'asterui'
-import { PlusIcon } from '@heroicons/react/24/outline'
+import { PlusIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <FloatButton
-    icon={<PlusIcon className="w-5 h-5" />}
+    icon={<PlusIcon />}
     tooltip="Add new item"
     type="primary"
     onClick={() => Modal.info({ title: 'Add Item', content: 'Add clicked!' })}
@@ -83,17 +83,17 @@ export default App`,
     description: 'Default and primary button types.',
     code: `import React from 'react'
 import { FloatButton, Modal } from 'asterui'
-import { PlusIcon, HeartIcon } from '@heroicons/react/24/outline'
+import { PlusIcon, HeartIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <>
     <FloatButton
-      icon={<PlusIcon className="w-5 h-5" />}
+      icon={<PlusIcon />}
       type="default"
       onClick={() => Modal.info({ title: 'Default', content: 'Default type' })}
     />
     <FloatButton
-      icon={<HeartIcon className="w-5 h-5" />}
+      icon={<HeartIcon />}
       type="primary"
       onClick={() => Modal.info({ title: 'Primary', content: 'Primary type' })}
     />
@@ -108,12 +108,12 @@ export default App`,
     description: 'Circle and square button shapes.',
     code: `import React from 'react'
 import { FloatButton } from 'asterui'
-import { PlusIcon } from '@heroicons/react/24/outline'
+import { PlusIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <>
-    <FloatButton icon={<PlusIcon className="w-5 h-5" />} shape="circle" />
-    <FloatButton icon={<PlusIcon className="w-5 h-5" />} shape="square" />
+    <FloatButton icon={<PlusIcon />} shape="circle" />
+    <FloatButton icon={<PlusIcon />} shape="square" />
   </>
 )
 
@@ -125,11 +125,11 @@ export default App`,
     description: 'Float button with notification badge.',
     code: `import React from 'react'
 import { FloatButton, Modal } from 'asterui'
-import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
+import { ChatBubbleLeftRightIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <FloatButton
-    icon={<ChatBubbleLeftRightIcon className="w-5 h-5" />}
+    icon={<ChatBubbleLeftRightIcon />}
     badge={5}
     onClick={() => Modal.info({ title: 'Messages', content: 'You have 5 unread messages' })}
   />
@@ -143,20 +143,20 @@ export default App`,
     description: 'Group of float buttons that expand on click.',
     code: `import React from 'react'
 import { FloatButton, Modal } from 'asterui'
-import { PlusIcon, QuestionMarkCircleIcon, ChatBubbleLeftRightIcon, ArrowPathIcon } from '@heroicons/react/24/outline'
+import { PlusIcon, QuestionMarkCircleIcon, ChatBubbleLeftRightIcon, ArrowPathIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
-  <FloatButton.Group icon={<PlusIcon className="w-5 h-5" />}>
+  <FloatButton.Group icon={<PlusIcon />}>
     <FloatButton
-      icon={<QuestionMarkCircleIcon className="w-5 h-5" />}
+      icon={<QuestionMarkCircleIcon />}
       onClick={() => Modal.info({ title: 'Help', content: 'Help section' })}
     />
     <FloatButton
-      icon={<ChatBubbleLeftRightIcon className="w-5 h-5" />}
+      icon={<ChatBubbleLeftRightIcon />}
       onClick={() => Modal.info({ title: 'Support', content: 'Contact support' })}
     />
     <FloatButton
-      icon={<ArrowPathIcon className="w-5 h-5" />}
+      icon={<ArrowPathIcon />}
       onClick={() => Modal.info({ title: 'Refresh', content: 'Refreshing...' })}
     />
   </FloatButton.Group>
@@ -170,25 +170,25 @@ export default App`,
     description: 'Radial quarter-circle arrangement using the flower prop. The mainAction button replaces the trigger when open.',
     code: `import React from 'react'
 import { FloatButton, Modal } from 'asterui'
-import { PlusIcon, HeartIcon, CameraIcon, PhotoIcon, MicrophoneIcon } from '@heroicons/react/24/outline'
+import { PlusIcon, HeartIcon, CameraIcon, PhotoIcon, MicrophoneIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <FloatButton.Group
     flower
-    icon={<PlusIcon className="w-5 h-5" />}
-    mainAction={<HeartIcon className="w-5 h-5" />}
+    icon={<PlusIcon />}
+    mainAction={<HeartIcon />}
     onMainAction={() => Modal.info({ title: 'Main Action', content: 'Main action clicked!' })}
   >
     <FloatButton
-      icon={<CameraIcon className="w-5 h-5" />}
+      icon={<CameraIcon />}
       onClick={() => Modal.info({ title: 'Camera', content: 'Open camera' })}
     />
     <FloatButton
-      icon={<PhotoIcon className="w-5 h-5" />}
+      icon={<PhotoIcon />}
       onClick={() => Modal.info({ title: 'Gallery', content: 'Open gallery' })}
     />
     <FloatButton
-      icon={<MicrophoneIcon className="w-5 h-5" />}
+      icon={<MicrophoneIcon />}
       onClick={() => Modal.info({ title: 'Voice', content: 'Record voice' })}
     />
   </FloatButton.Group>

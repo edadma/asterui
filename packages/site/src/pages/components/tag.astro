@@ -115,14 +115,14 @@ export default App`,
     description: 'Add icons to tags for better visual communication.',
     code: `import React from 'react'
 import { Tag, Space } from 'asterui'
-import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon, ExclamationCircleIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => (
   <Space size="sm" wrap>
-    <Tag color="success" icon={<CheckCircleIcon className="w-4 h-4" />}>
+    <Tag color="success" icon={<CheckCircleIcon size="sm" />}>
       Approved
     </Tag>
-    <Tag color="warning" icon={<ExclamationCircleIcon className="w-4 h-4" />}>
+    <Tag color="warning" icon={<ExclamationCircleIcon size="sm" />}>
       Pending
     </Tag>
   </Space>
@@ -289,7 +289,7 @@ export default App`,
     description: 'Add icons to checkable tags.',
     code: `import React, { useState } from 'react'
 import { CheckableTag, Space } from 'asterui'
-import { HeartIcon, StarIcon, BookmarkIcon } from '@heroicons/react/24/outline'
+import { HeartIcon, StarIcon, BookmarkIcon } from '@aster-ui/icons'
 
 const App: React.FC = () => {
   const [liked, setLiked] = useState(false)
@@ -301,21 +301,21 @@ const App: React.FC = () => {
       <CheckableTag
         checked={liked}
         onChange={setLiked}
-        icon={<HeartIcon className="w-4 h-4" />}
+        icon={<HeartIcon size="sm" />}
       >
         Like
       </CheckableTag>
       <CheckableTag
         checked={starred}
         onChange={setStarred}
-        icon={<StarIcon className="w-4 h-4" />}
+        icon={<StarIcon size="sm" />}
       >
         Star
       </CheckableTag>
       <CheckableTag
         checked={saved}
         onChange={setSaved}
-        icon={<BookmarkIcon className="w-4 h-4" />}
+        icon={<BookmarkIcon size="sm" />}
       >
         Save
       </CheckableTag>

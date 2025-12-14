@@ -1,5 +1,5 @@
 // Shared SVG icon strings for vanilla JS usage
-// For React components, use @heroicons/react directly
+// For React components, use @aster-ui/icons
 // These match heroicons/24/outline paths
 
 export const CheckIconSvg = '<svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m4.5 12.75 6 6 9-13.5" /></svg>'

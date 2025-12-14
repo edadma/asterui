@@ -152,7 +152,7 @@ export default App`,
     description: 'Options with icons and labels.',
     code: `import React, { useState } from 'react'
 import { Segmented } from 'asterui'
-import { Bars3Icon, Squares2X2Icon } from '@heroicons/react/24/outline'
+import { Bars3Icon, Squares2X2Icon } from '@aster-ui/icons'
 
 const App: React.FC = () => {
   const [view, setView] = useState('list')
@@ -160,10 +160,10 @@ const App: React.FC = () => {
   return (
     <div>
       <Segmented value={view} onChange={setView}>
-        <Segmented.Item value="list" icon={<Bars3Icon className="w-4 h-4" />}>
+        <Segmented.Item value="list" icon={<Bars3Icon size="sm" />}>
           List
         </Segmented.Item>
-        <Segmented.Item value="grid" icon={<Squares2X2Icon className="w-4 h-4" />}>
+        <Segmented.Item value="grid" icon={<Squares2X2Icon size="sm" />}>
           Grid
         </Segmented.Item>
       </Segmented>
