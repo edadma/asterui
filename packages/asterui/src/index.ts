@@ -19,11 +19,14 @@ export type { BadgeProps, BadgeRibbonProps, BadgePosition, BadgeStatus, BadgeTyp
 export { Breadcrumb } from './components/Breadcrumb'
 export type { BreadcrumbProps, BreadcrumbItemProps } from './components/Breadcrumb'
 
-export { Button, IconSizeContext } from './components/Button'
+export { Button } from './components/Button'
 export type { ButtonProps } from './components/Button'
 
+export { IconSizeContext } from './contexts/IconSizeContext'
+export type { IconSize } from './contexts/IconSizeContext'
+
 export { CopyButton } from './components/CopyButton'
-export type { CopyButtonProps } from './components/CopyButton'
+export type { CopyButtonProps, CopyButtonPosition } from './components/CopyButton'
 
 export { Checkbox } from './components/Checkbox'
 export type { CheckboxProps, CheckboxGroupProps, CheckboxOptionType, CheckboxSwapConfig } from './components/Checkbox'

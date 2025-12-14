@@ -1,5 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useClipboard } from '../hooks/useClipboard'
+import { IconSizeContext } from '../contexts/IconSizeContext'
+
+const iconSizeClasses = {
+  xs: 'w-3.5 h-3.5',
+  sm: 'w-3.5 h-3.5',
+  md: 'w-4 h-4',
+  lg: 'w-5 h-5',
+  xl: 'w-6 h-6',
+}
+
+export type CopyButtonPosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
 
 export interface CopyButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'onError'> {
   /** Text to copy to clipboard */
@@ -14,6 +25,8 @@ export interface CopyButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLBut
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   /** Button shape */
   shape?: 'square' | 'circle'
+  /** Absolute position within parent (parent must have position: relative) */
+  position?: CopyButtonPosition
   /** Custom icon for default state */
   icon?: React.ReactNode
   /** Custom icon for copied state */
@@ -34,27 +47,40 @@ export interface CopyButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLBut
   copiedTooltipText?: string
 }
 
-const CopyIcon: React.FC = () => (
-  <svg
-    className="w-4 h-4"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-  </svg>
-)
+const CopyIcon: React.FC = () => {
+  const size = useContext(IconSizeContext) ?? 'md'
+  return (
+    <svg
+      className={iconSizeClasses[size]}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+    </svg>
+  )
+}
 
-const CheckIcon: React.FC = () => (
-  <svg
-    className="w-4 h-4"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m4.5 12.75 6 6 9-13.5" />
-  </svg>
-)
+const CheckIcon: React.FC = () => {
+  const size = useContext(IconSizeContext) ?? 'md'
+  return (
+    <svg
+      className={iconSizeClasses[size]}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m4.5 12.75 6 6 9-13.5" />
+    </svg>
+  )
+}
+
+const positionClasses: Record<CopyButtonPosition, string> = {
+  'top-right': 'absolute top-2 right-2',
+  'top-left': 'absolute top-2 left-2',
+  'bottom-right': 'absolute bottom-2 right-2',
+  'bottom-left': 'absolute bottom-2 left-2',
+}
 
 export const CopyButton: React.FC<CopyButtonProps> = ({
   text,
@@ -63,6 +89,7 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
   variant,
   size = 'md',
   shape,
+  position,
   icon,
   copiedIcon,
   children,
@@ -131,6 +158,8 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
     variant && variantClasses[variant],
     sizeClasses[size],
     shape && shapeClasses[shape],
+    // Only add position classes if not using tooltip (tooltip wrapper gets them instead)
+    !showTooltip && position && positionClasses[position],
     className,
   ]
     .filter(Boolean)
@@ -152,13 +181,16 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
       aria-label={copied ? copiedTooltipText : tooltipText}
       {...rest}
     >
-      {content}
+      <IconSizeContext.Provider value={size}>
+        {content}
+      </IconSizeContext.Provider>
     </button>
   )
 
   if (showTooltip) {
+    const tooltipClasses = ['tooltip', position && positionClasses[position]].filter(Boolean).join(' ')
     return (
-      <div className="tooltip" data-tip={copied ? copiedTooltipText : tooltipText}>
+      <div className={tooltipClasses} data-tip={copied ? copiedTooltipText : tooltipText}>
         {button}
       </div>
     )

@@ -14,13 +14,13 @@ export function Demo({ children }: DemoProps) {
     if (hostRef.current && !hostRef.current.shadowRoot) {
       const shadow = hostRef.current.attachShadow({ mode: 'open' })
 
-      // Add DaisyUI CSS via link element
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = 'https://cdn.jsdelivr.net/npm/daisyui@5/daisyui.css'
-      shadow.appendChild(link)
+      // Add Tailwind + DaisyUI CSS (built at build time)
+      const cssLink = document.createElement('link')
+      cssLink.rel = 'stylesheet'
+      cssLink.href = '/demo.css'
+      shadow.appendChild(cssLink)
 
-      // Add base styles
+      // Add base styles and CSS variable fixes for shadow DOM
       const style = document.createElement('style')
       style.textContent = `
         *, *::before, *::after {
@@ -48,22 +48,6 @@ export function Demo({ children }: DemoProps) {
             transparent 6px
           );
         }
-        /* Tailwind utilities for AsterUI components */
-        .rounded-full { border-radius: 9999px; }
-        .flex { display: flex; }
-        .flex-row { flex-direction: row; }
-        .flex-col { flex-direction: column; }
-        .flex-wrap { flex-wrap: wrap; }
-        .items-start { align-items: flex-start; }
-        .items-center { align-items: center; }
-        .items-end { align-items: flex-end; }
-        .items-baseline { align-items: baseline; }
-        .items-stretch { align-items: stretch; }
-        .gap-1 { gap: 0.25rem; }
-        .gap-2 { gap: 0.5rem; }
-        .gap-4 { gap: 1rem; }
-        .gap-6 { gap: 1.5rem; }
-        .gap-8 { gap: 2rem; }
       `
       shadow.appendChild(style)
 

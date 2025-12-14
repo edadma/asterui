@@ -1,0 +1,127 @@
+---
+title: Checkbox
+description: Checkbox input for selecting multiple options from a set
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ColorsDemo,
+  SizesDemo,
+  DisabledDemo,
+  IndeterminateDemo,
+  GroupDemo,
+  GroupOptionsDemo,
+  GroupDirectionDemo,
+  ControlledDemo,
+  SwapDemo,
+} from '../../../components/CheckboxDemo'
+import CheckboxDemoSource from '../../../components/CheckboxDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
+
+Checkbox component for selecting multiple options with various styles and group support.
+
+## Import
+
+```tsx
+import { Checkbox } from 'asterui'
+```
+
+## Examples
+
+<div class="examples">
+
+<Example title="Basic Usage" description="Simple checkbox with label." source={CheckboxDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colors" description="Different checkbox colors for various contexts." source={CheckboxDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sizes" description="Five checkbox sizes from xs to xl." source={CheckboxDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Disabled" description="Disabled checkbox states." source={CheckboxDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Indeterminate" description="Indeterminate state for check-all functionality." source={CheckboxDemoSource} fn="IndeterminateDemo">
+  <IndeterminateDemo client:load slot="demo" />
+</Example>
+
+<Example title="Checkbox Group" description="Group multiple checkboxes with shared state." source={CheckboxDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="Group with Options" description="Generate checkboxes from options array with disabled support." source={CheckboxDemoSource} fn="GroupOptionsDemo">
+  <GroupOptionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Group Direction" description="Horizontal and vertical group layouts." source={CheckboxDemoSource} fn="GroupDirectionDemo">
+  <GroupDirectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Controlled" description="Controlled checkbox with external state management." source={CheckboxDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Swap Mode" description="Toggle between two visual states with animation effects." source={CheckboxDemoSource} fn="SwapDemo">
+  <SwapDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Checkbox`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `checked` | Controlled checked state | `boolean` | - |
+| `defaultChecked` | Default checked state | `boolean` | - |
+| `disabled` | Disable the checkbox | `boolean` | `false` |
+| `indeterminate` | Indeterminate state (partial selection) | `boolean` | `false` |
+| `size` | Checkbox size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | Checkbox color | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `swap` | Swap mode configuration | `CheckboxSwapConfig` | - |
+| `value` | Value when used in a group | `string \| number` | - |
+| `onChange` | Change event handler | `(e: ChangeEvent) => void` | - |
+| `children` | Label content | `ReactNode` | - |
+
+### `Checkbox.Group`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `value` | Controlled selected values | `(string \| number)[]` | - |
+| `defaultValue` | Default selected values | `(string \| number)[]` | - |
+| `onChange` | Selection change callback | `(values: (string \| number)[]) => void` | - |
+| `disabled` | Disable all checkboxes | `boolean` | `false` |
+| `options` | Checkbox options | `(string \| number \| CheckboxOptionType)[]` | - |
+| `direction` | Layout direction | `'horizontal' \| 'vertical'` | `'vertical'` |
+| `children` | Manual checkbox elements | `ReactNode` | - |
+
+### `CheckboxSwapConfig`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `on` | Content shown when checked | `ReactNode` | - |
+| `off` | Content shown when unchecked | `ReactNode` | - |
+| `effect` | Animation effect | `'rotate' \| 'flip'` | - |
+
+### `CheckboxOptionType`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `label` | Option label | `ReactNode` | - |
+| `value` | Option value | `string \| number` | - |
+| `disabled` | Disable this option | `boolean` | `false` |
+
+## Accessibility
+
+- Uses native checkbox input for keyboard and screen reader support
+- Properly associates labels with checkboxes
+- Indeterminate state is communicated via the native indeterminate property
+- Disabled state prevents interaction and is communicated to assistive technologies
+- Focus states are visible for keyboard navigation

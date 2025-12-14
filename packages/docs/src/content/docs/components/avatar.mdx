@@ -1,0 +1,96 @@
+---
+title: Avatar
+description: Display user profile images, initials, or icons with status indicators
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ShapesDemo,
+  StatusDemo,
+  TextDemo,
+  IconDemo,
+  GroupDemo,
+  GroupMaxDemo,
+} from '../../../components/AvatarDemo'
+import AvatarDemoSource from '../../../components/AvatarDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
+
+Display user profile images, initials, icons, or placeholder graphics with status indicators.
+
+## Import
+
+```tsx
+import { Avatar } from 'asterui'
+```
+
+## Examples
+
+<div class="examples">
+
+<Example title="Basic Avatar" description="Simple avatar with image using the src prop." source={AvatarDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sizes" description="Control avatar size with the size prop." source={AvatarDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Shapes" description="Circle or square avatars." source={AvatarDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Status Indicators" description="Show online or offline presence." source={AvatarDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Text Avatars" description="Display initials or text content." source={AvatarDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Icon Avatars" description="Display icons instead of images." source={AvatarDemoSource} fn="IconDemo">
+  <IconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avatar Group" description="Group multiple avatars with overlap." source={AvatarDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avatar Group with Max Count" description="Show overflow count when exceeding max." source={AvatarDemoSource} fn="GroupMaxDemo">
+  <GroupMaxDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Avatar`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `src` | Image source URL | `string` | - |
+| `alt` | Image alt text | `string` | `'avatar'` |
+| `icon` | Icon element to display | `ReactNode` | - |
+| `children` | Text content (e.g., initials) or custom content | `ReactNode` | - |
+| `size` | Avatar size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `shape` | Avatar shape | `'circle' \| 'square'` | `'circle'` |
+| `status` | Presence status indicator | `'online' \| 'offline'` | - |
+| `className` | Additional CSS classes | `string` | - |
+| `style` | Inline styles | `CSSProperties` | - |
+
+### `Avatar.Group`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `children` | Multiple Avatar components | `ReactNode` | - |
+| `max` | Maximum avatars to show before +N overflow | `number` | - |
+| `size` | Size for all avatars in the group | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `className` | Additional CSS classes | `string` | - |
+| `style` | Inline styles | `CSSProperties` | - |
+
+## Accessibility
+
+- Images have `alt` text for screen readers
+- Status indicators use color and position for visibility
+- Text avatars are readable by screen readers

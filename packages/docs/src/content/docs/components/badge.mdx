@@ -1,0 +1,125 @@
+---
+title: Badge
+description: Notification badges, status indicators, and ribbons for highlighting content
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  OverflowDemo,
+  PositionDemo,
+  OffsetDemo,
+  StatusDemo,
+  RibbonDemo,
+  RibbonColorsDemo,
+  DotDemo,
+  ColorsDemo,
+  CustomColorsDemo,
+  SizesDemo,
+  ShowZeroDemo,
+  VariantsDemo,
+} from '../../../components/BadgeDemo'
+import BadgeDemoSource from '../../../components/BadgeDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
+
+Notification badges, status indicators, and ribbons for highlighting content.
+
+## Import
+
+```tsx
+import { Badge } from 'asterui'
+```
+
+## Examples
+
+<div class="examples">
+
+<Example title="Basic Notification Badges" description="Display count badges on elements." source={BadgeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Overflow Count" description="Show count+ when exceeding the overflow threshold." source={BadgeDemoSource} fn="OverflowDemo">
+  <OverflowDemo client:load slot="demo" />
+</Example>
+
+<Example title="Badge Positioning" description="Position badges at any of the 9 corners." source={BadgeDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Badge Offset" description="Fine-tune badge position with pixel offsets." source={BadgeDemoSource} fn="OffsetDemo">
+  <OffsetDemo client:load slot="demo" />
+</Example>
+
+<Example title="Status Badges" description="Status indicators with optional text labels." source={BadgeDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ribbon Badges" description="Decorative ribbon-style badges using the compound Badge.Ribbon component." source={BadgeDemoSource} fn="RibbonDemo">
+  <RibbonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ribbon Colors" description="Ribbons support different color types and custom colors." source={BadgeDemoSource} fn="RibbonColorsDemo">
+  <RibbonColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dot Badges" description="Small circular indicators for presence or status." source={BadgeDemoSource} fn="DotDemo">
+  <DotDemo client:load slot="demo" />
+</Example>
+
+<Example title="Badge Colors" description="Standalone count badges with different colors." source={BadgeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Custom Colors" description="Use the color prop for custom badge colors." source={BadgeDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Badge Sizes" description="Five sizes available for badges." source={BadgeDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Show Zero" description="Display badge even when count is 0." source={BadgeDemoSource} fn="ShowZeroDemo">
+  <ShowZeroDemo client:load slot="demo" />
+</Example>
+
+<Example title="Badge Variants" description="Different visual styles for badges." source={BadgeDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Badge`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `count` | Number to display in the badge | `number` | - |
+| `showZero` | Whether to display badge when count is 0 | `boolean` | `false` |
+| `overflowCount` | Max count to show before displaying count+ | `number` | `99` |
+| `position` | Position of badge when wrapping children | `'top-start' \| 'top-center' \| 'top-end' \| 'middle-start' \| 'middle-center' \| 'middle-end' \| 'bottom-start' \| 'bottom-center' \| 'bottom-end'` | `'top-end'` |
+| `offset` | Offset from default position in pixels [x, y] | `[number, number]` | - |
+| `status` | Status badge mode with colored dot | `'success' \| 'processing' \| 'error' \| 'default' \| 'warning'` | - |
+| `text` | Text to display with status badge | `string` | - |
+| `dot` | Show a small circular dot instead of count | `boolean` | `false` |
+| `type` | Badge color type | `'default' \| 'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'error'` |
+| `size` | Badge size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `variant` | Badge style variant | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost'` | `'solid'` |
+| `color` | Custom background color | `string` | - |
+| `children` | Element to wrap with badge (notification mode) | `ReactNode` | - |
+
+### `Badge.Ribbon`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `text` | Ribbon text content | `string` | required |
+| `placement` | Ribbon placement | `'start' \| 'end'` | `'end'` |
+| `type` | Ribbon color type | Same as Badge type | `'primary'` |
+| `color` | Custom background color | `string` | - |
+| `children` | Element to wrap with ribbon | `ReactNode` | required |
+
+## Accessibility
+
+- Uses `role="status"` for status badges
+- Provides `aria-label` for screen readers with count or notification status
+- Processing status includes visual pulse animation

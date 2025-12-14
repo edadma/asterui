@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Scan demo components for used classes */
+@source "../components/*Demo.tsx";
+@source "../components/Demo.tsx";
+
+/* Scan asterui components for classes they use internally */
+@source "../../../asterui/src/components/**/*.tsx";

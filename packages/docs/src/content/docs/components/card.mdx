@@ -1,0 +1,156 @@
+---
+title: Card
+description: Flexible container for displaying content with images, actions, and meta information
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithCoverDemo,
+  WithActionsDemo,
+  VariantsDemo,
+  SizesDemo,
+  ExtraContentDemo,
+  MetaDemo,
+  CardMetaDemo,
+  HoverableDemo,
+  LoadingDemo,
+  ImageFullDemo,
+  SideLayoutDemo,
+  InnerCardDemo,
+  TabsDemo,
+  GridDemo,
+} from '../../../components/CardDemo'
+import CardDemoSource from '../../../components/CardDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
+
+Flexible card component for displaying grouped content with various layouts.
+
+## Import
+
+```tsx
+import { Card } from 'asterui'
+```
+
+## Examples
+
+<div class="examples">
+
+<Example title="Basic Card" description="Simple card with title and content." source={CardDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="With Cover Image" description="Card with a cover image above the content." source={CardDemoSource} fn="WithCoverDemo">
+  <WithCoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="With Actions" description="Card with action buttons at the bottom." source={CardDemoSource} fn="WithActionsDemo">
+  <WithActionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variants" description="Different card style variants: default, border, dash, borderless." source={CardDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sizes" description="Card sizes from xs to lg with varying padding." source={CardDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Extra Content" description="Add extra content in the card header with the extra prop." source={CardDemoSource} fn="ExtraContentDemo">
+  <ExtraContentDemo client:load slot="demo" />
+</Example>
+
+<Example title="Meta Layout" description="Built-in avatar, title, and description layout." source={CardDemoSource} fn="MetaDemo">
+  <MetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="Card.Meta Component" description="Standalone meta component for flexible positioning." source={CardDemoSource} fn="CardMetaDemo">
+  <CardMetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hoverable" description="Card with hover shadow effect." source={CardDemoSource} fn="HoverableDemo">
+  <HoverableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Loading State" description="Skeleton loading state while content loads." source={CardDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Image Full" description="Content overlays on the cover image." source={CardDemoSource} fn="ImageFullDemo">
+  <ImageFullDemo client:load slot="demo" />
+</Example>
+
+<Example title="Side Layout" description="Horizontal layout with image on the side." source={CardDemoSource} fn="SideLayoutDemo">
+  <SideLayoutDemo client:load slot="demo" />
+</Example>
+
+<Example title="Inner Card" description="Nested cards with subtle background distinction." source={CardDemoSource} fn="InnerCardDemo">
+  <InnerCardDemo client:load slot="demo" />
+</Example>
+
+<Example title="With Tabs" description="Card with tabbed content navigation." source={CardDemoSource} fn="TabsDemo">
+  <TabsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Card Grid" description="Grid layout inside cards with hoverable cells." source={CardDemoSource} fn="GridDemo">
+  <GridDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Card`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `title` | Card title | `ReactNode` | - |
+| `extra` | Content in top-right of header | `ReactNode` | - |
+| `cover` | Cover image element | `ReactNode` | - |
+| `actions` | Action buttons at bottom | `ReactNode` | - |
+| `size` | Card size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `variant` | Card style variant | `'default' \| 'border' \| 'dash' \| 'borderless'` | `'default'` |
+| `type` | Inner card style for nesting | `'inner'` | - |
+| `side` | Horizontal layout with side image | `boolean` | `false` |
+| `imageFull` | Content overlays on cover image | `boolean` | `false` |
+| `actionsJustify` | Actions alignment | `'start' \| 'center' \| 'end'` | `'end'` |
+| `loading` | Show skeleton loading state | `boolean` | `false` |
+| `hoverable` | Add hover shadow effect | `boolean` | `false` |
+| `avatar` | Avatar for meta layout | `ReactNode` | - |
+| `description` | Description for meta layout | `ReactNode` | - |
+| `tabList` | Tab items for card tabs | `CardTabItem[]` | - |
+| `activeTabKey` | Active tab key (controlled) | `string` | - |
+| `defaultActiveTabKey` | Default active tab key | `string` | - |
+| `onTabChange` | Tab change callback | `(key: string) => void` | - |
+| `tabBarExtraContent` | Extra content beside tabs | `ReactNode` | - |
+| `children` | Card body content | `ReactNode` | - |
+
+### `Card.Meta`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `avatar` | Avatar or icon element | `ReactNode` | - |
+| `title` | Title content | `ReactNode` | - |
+| `description` | Description content | `ReactNode` | - |
+
+### `Card.Grid`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `hoverable` | Add hover effect | `boolean` | `false` |
+| `children` | Grid cell content | `ReactNode` | - |
+
+### `CardTabItem`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `key` | Unique tab identifier | `string` | - |
+| `label` | Tab label content | `ReactNode` | - |
+| `disabled` | Disable the tab | `boolean` | `false` |
+
+## Accessibility
+
+- Card structure uses semantic HTML
+- Tab navigation uses proper ARIA roles and states
+- Loading state provides visual feedback
+- Focus states are visible for interactive elements

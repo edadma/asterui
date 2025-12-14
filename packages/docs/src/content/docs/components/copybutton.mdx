@@ -1,0 +1,104 @@
+---
+title: CopyButton
+description: Button for copying text to clipboard with visual feedback
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithTextDemo,
+  ColorsDemo,
+  VariantsDemo,
+  SizesDemo,
+  ShapesDemo,
+  CodeBlockDemo,
+  InputCopyDemo,
+  CallbackDemo,
+  CustomTimeoutDemo,
+} from '../../../components/CopyButtonDemo'
+import CopyButtonDemoSource from '../../../components/CopyButtonDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
+
+A button component for copying text to the clipboard with visual feedback.
+
+## Import
+
+```tsx
+import { CopyButton } from 'asterui'
+```
+
+## Examples
+
+<div class="examples">
+
+<Example title="Basic Usage" description="Simple copy button with default icon. Enable tooltip for visual feedback." source={CopyButtonDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="With Text Content" description="Display text content instead of the default icon." source={CopyButtonDemoSource} fn="WithTextDemo">
+  <WithTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colors" description="Apply different color themes to the button." source={CopyButtonDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variants" description="Different button style variants." source={CopyButtonDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sizes" description="Available button sizes from xs to xl." source={CopyButtonDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Shapes" description="Square and circle button shapes." source={CopyButtonDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Code Block" description="Use the position prop to place the button in a corner. Parent needs position: relative." source={CopyButtonDemoSource} fn="CodeBlockDemo">
+  <CodeBlockDemo client:load slot="demo" />
+</Example>
+
+<Example title="Input with Copy" description="Copy the value from an input field." source={CopyButtonDemoSource} fn="InputCopyDemo">
+  <InputCopyDemo client:load slot="demo" />
+</Example>
+
+<Example title="Callbacks" description="Handle copy success and error events." source={CopyButtonDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="Custom Timeout" description="Control how long the copied state is shown." source={CopyButtonDemoSource} fn="CustomTimeoutDemo">
+  <CustomTimeoutDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `CopyButton`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `text` | Text to copy to clipboard | `string` | - |
+| `timeout` | Duration in ms to show copied state | `number` | `2000` |
+| `color` | Button color | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | - |
+| `variant` | Button style variant | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link'` | - |
+| `size` | Button size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `shape` | Button shape | `'square' \| 'circle'` | - |
+| `position` | Absolute position within parent (parent needs `relative`) | `'top-right' \| 'top-left' \| 'bottom-right' \| 'bottom-left'` | - |
+| `icon` | Custom icon for default state | `ReactNode` | Copy icon |
+| `copiedIcon` | Custom icon for copied state | `ReactNode` | Check icon |
+| `children` | Custom content for default state (overrides icon) | `ReactNode` | - |
+| `copiedChildren` | Custom content for copied state | `ReactNode` | - |
+| `onCopy` | Callback when copy succeeds | `() => void` | - |
+| `onError` | Callback when copy fails | `(error: Error) => void` | - |
+| `showTooltip` | Show tooltip with copy status | `boolean` | `false` |
+| `tooltipText` | Tooltip text for default state | `string` | `'Copy'` |
+| `copiedTooltipText` | Tooltip text for copied state | `string` | `'Copied!'` |
+| `disabled` | Disable the button | `boolean` | `false` |
+
+## Accessibility
+
+- Uses native button element for keyboard support
+- Visual feedback through icon change and optional tooltip
+- Disabled state is properly communicated

@@ -1,6 +1,5 @@
-import React, { createContext } from 'react'
-
-export const IconSizeContext = createContext<'xs' | 'sm' | 'md' | 'lg' | 'xl' | undefined>(undefined)
+import React from 'react'
+import { IconSizeContext } from '../contexts/IconSizeContext'
 
 type BaseButtonProps = {
   /** Button color */

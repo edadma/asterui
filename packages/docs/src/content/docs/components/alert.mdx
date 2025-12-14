@@ -1,0 +1,74 @@
+---
+title: Alert
+description: Display important messages and notifications to users
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TypesDemo,
+  ActionDemo,
+  OutlineDemo,
+  DashDemo,
+  SoftDemo,
+} from '../../../components/AlertDemo'
+import AlertDemoSource from '../../../components/AlertDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
+
+Display important messages and notifications to users with different types and styles.
+
+## Import
+
+```tsx
+import { Alert } from 'asterui'
+```
+
+## Examples
+
+<div class="examples">
+
+<Example title="Basic Alert" description="Simple alert with icon and text." source={AlertDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Alert Types" description="Different color variants for info, success, warning, and error states." source={AlertDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="With Action Button" description="Alert with dismissal or action button." source={AlertDemoSource} fn="ActionDemo">
+  <ActionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Outline Style" description="Alert with outline variant for a lighter appearance." source={AlertDemoSource} fn="OutlineDemo">
+  <OutlineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dash Style" description="Alert with dashed border variant." source={AlertDemoSource} fn="DashDemo">
+  <DashDemo client:load slot="demo" />
+</Example>
+
+<Example title="Soft Style" description="Alert with soft background colors." source={AlertDemoSource} fn="SoftDemo">
+  <SoftDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Alert`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `children` | Alert content | `ReactNode` | - |
+| `type` | Alert color variant | `'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `outline` | Outline style | `boolean` | `false` |
+| `dash` | Dash outline style | `boolean` | `false` |
+| `soft` | Soft style | `boolean` | `false` |
+| `vertical` | Vertical layout | `boolean` | `false` |
+| `className` | Additional CSS classes | `string` | - |
+
+## Accessibility
+
+- Uses `role="alert"` for screen readers
+- Color is not the only indicator - icons provide additional context
+- Action buttons are keyboard accessible

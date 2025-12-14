@@ -3,9 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
+    "build:demo-css": "tailwindcss -i src/styles/demo.css -o public/demo.css --minify",
+    "dev": "pnpm build:demo-css && astro dev",
+    "start": "pnpm build:demo-css && astro dev",
+    "build": "pnpm build:demo-css && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -22,7 +23,10 @@
     "sharp": "^0.34.2"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
     "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0"
+    "@types/react-dom": "^19.0.0",
+    "daisyui": "^5.0.0",
+    "tailwindcss": "4"
   }
 }

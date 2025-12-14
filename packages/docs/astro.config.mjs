@@ -39,6 +39,14 @@ export default defineConfig({
           },
         },
         {
+          tag: 'link',
+          attrs: {
+            rel: 'preload',
+            href: '/demo.css',
+            as: 'style',
+          },
+        },
+        {
           tag: 'script',
           content: `document.addEventListener('DOMContentLoaded',()=>{if(location.pathname.startsWith('/components/'))document.body.classList.add('component-page')})`,
         },
@@ -58,6 +66,27 @@ export default defineConfig({
               label: 'Actions',
               items: [
                 { label: 'Button', slug: 'components/button' },
+                { label: 'CopyButton', slug: 'components/copybutton' },
+              ],
+            },
+            {
+              label: 'Data Display',
+              items: [
+                { label: 'Avatar', slug: 'components/avatar' },
+                { label: 'Badge', slug: 'components/badge' },
+                { label: 'Card', slug: 'components/card' },
+              ],
+            },
+            {
+              label: 'Data Entry',
+              items: [
+                { label: 'Checkbox', slug: 'components/checkbox' },
+              ],
+            },
+            {
+              label: 'Feedback',
+              items: [
+                { label: 'Alert', slug: 'components/alert' },
               ],
             },
           ],
