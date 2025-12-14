@@ -124,6 +124,7 @@ npm install asterui
 - [Alert](https://asterui.com/docs/alert.md)
 - [Drawer](https://asterui.com/docs/drawer.md)
 - [Loading](https://asterui.com/docs/loading.md)
+- [Message](https://asterui.com/docs/message.md)
 - [Notification](https://asterui.com/docs/notification.md)
 - [Popconfirm](https://asterui.com/docs/popconfirm.md)
 - [Progress](https://asterui.com/docs/progress.md)

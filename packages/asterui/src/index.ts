@@ -178,7 +178,10 @@ export { Navbar } from './components/Navbar'
 export type { NavbarProps, NavbarColor, NavbarShadow, NavbarRounded } from './components/Navbar'
 
 export { notification } from './components/Notification'
-export type { NotificationConfig, NotificationType, NotificationPlacement } from './components/Notification'
+export type { NotificationConfig, NotificationType, NotificationPlacement, NotificationVariant } from './components/Notification'
+
+export { message, MessageManager } from './components/Message'
+export type { MessageConfig } from './components/Message'
 
 export { OTPInput } from './components/OTPInput'
 export type { OTPInputProps, OTPInputRef } from './components/OTPInput'
@@ -274,7 +277,18 @@ export { Toggle } from './components/Toggle'
 export type { ToggleProps } from './components/Toggle'
 
 export { Tour } from './components/Tour'
-export type { TourProps, TourStepProps, TourPlacement } from './components/Tour'
+export type {
+  TourProps,
+  TourStepProps,
+  TourPlacement,
+  TourType,
+  TourArrowConfig,
+  TourMaskConfig,
+  TourButtonProps,
+  TourSemanticName,
+  TourActionInfo,
+  TourRef,
+} from './components/Tour'
 
 export { Tooltip } from './components/Tooltip'
 export type { TooltipProps } from './components/Tooltip'

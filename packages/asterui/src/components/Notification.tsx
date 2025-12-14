@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 
 export type NotificationType = 'success' | 'info' | 'warning' | 'error'
-export type NotificationPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
+export type NotificationPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' | 'topCenter' | 'bottomCenter'
+export type NotificationVariant = 'default' | 'compact'
 
 export interface NotificationConfig {
   message: React.ReactNode
@@ -10,7 +11,13 @@ export interface NotificationConfig {
   type?: NotificationType
   duration?: number // in seconds, 0 = no auto close
   placement?: NotificationPlacement
+  variant?: NotificationVariant
   closable?: boolean
+  icon?: React.ReactNode
+  key?: string
+  className?: string
+  style?: React.CSSProperties
+  'data-testid'?: string
   onClick?: () => void
   onClose?: () => void
 }
@@ -56,25 +63,33 @@ class NotificationManager {
   open(config: NotificationConfig) {
     this.ensureContainer()
 
-    const id = `notification-${++this.idCounter}`
-    const notification: NotificationItem = {
+    const id = config.key ?? `notification-${++this.idCounter}`
+    const isCompact = config.variant === 'compact'
+    const notificationItem: NotificationItem = {
       ...config,
       id,
       createdAt: Date.now(),
-      duration: config.duration ?? 4.5,
-      placement: config.placement ?? 'topRight',
-      closable: config.closable ?? true,
+      duration: config.duration ?? (isCompact ? 3 : 4.5),
+      placement: config.placement ?? (isCompact ? 'topCenter' : 'topRight'),
+      variant: config.variant ?? 'default',
+      closable: config.closable ?? !isCompact,
       type: config.type ?? 'info',
     }
 
-    this.notifications.push(notification)
+    // If key exists, update the existing notification
+    const existingIndex = this.notifications.findIndex((n) => n.id === id)
+    if (existingIndex !== -1) {
+      this.notifications[existingIndex] = notificationItem
+    } else {
+      this.notifications.push(notificationItem)
+    }
     this.emit()
 
     // Auto-dismiss
-    if (notification.duration && notification.duration > 0) {
+    if (notificationItem.duration && notificationItem.duration > 0) {
       setTimeout(() => {
         this.close(id)
-      }, notification.duration * 1000)
+      }, notificationItem.duration * 1000)
     }
 
     return id
@@ -132,8 +147,10 @@ function NotificationContainer({ manager }: NotificationContainerProps) {
   const grouped: Record<NotificationPlacement, NotificationItem[]> = {
     topLeft: [],
     topRight: [],
+    topCenter: [],
     bottomLeft: [],
     bottomRight: [],
+    bottomCenter: [],
   }
 
   notifications.forEach((notification) => {
@@ -143,8 +160,10 @@ function NotificationContainer({ manager }: NotificationContainerProps) {
   const placementClasses: Record<NotificationPlacement, string> = {
     topRight: 'toast toast-top toast-end',
     topLeft: 'toast toast-top toast-start',
+    topCenter: 'toast toast-top toast-center',
     bottomRight: 'toast toast-bottom toast-end',
     bottomLeft: 'toast toast-bottom toast-start',
+    bottomCenter: 'toast toast-bottom toast-center',
   }
 
   return (
@@ -174,11 +193,20 @@ interface NotificationItemProps {
 }
 
 function NotificationItem({ notification, onClose }: NotificationItemProps) {
+  const isCompact = notification.variant === 'compact'
+
   const alertTypeClasses: Record<NotificationType, string> = {
     success: 'alert-success',
     error: 'alert-error',
     info: 'alert-info',
     warning: 'alert-warning',
+  }
+
+  const typeIcons: Record<NotificationType, React.ReactNode> = {
+    success: <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>,
+    error: <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" /></svg>,
+    info: <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" /></svg>,
+    warning: <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>,
   }
 
   const handleClick = () => {
@@ -187,9 +215,29 @@ function NotificationItem({ notification, onClose }: NotificationItemProps) {
     }
   }
 
+  const icon = notification.icon ?? typeIcons[notification.type!]
+
+  if (isCompact) {
+    return (
+      <div
+        className={`alert ${alertTypeClasses[notification.type!]} shadow-md py-2 px-4 cursor-pointer${notification.className ? ` ${notification.className}` : ''}`}
+        style={notification.style}
+        data-testid={notification['data-testid']}
+        onClick={handleClick}
+      >
+        <div className="flex items-center gap-2">
+          {icon}
+          <span>{notification.message}</span>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
-      className={`alert ${alertTypeClasses[notification.type!]} shadow-lg cursor-pointer min-w-[300px] max-w-[400px] relative`}
+      className={`alert ${alertTypeClasses[notification.type!]} shadow-lg cursor-pointer min-w-[300px] max-w-[400px] relative${notification.className ? ` ${notification.className}` : ''}`}
+      style={notification.style}
+      data-testid={notification['data-testid']}
       onClick={handleClick}
     >
       <div className={notification.closable ? 'pr-8' : ''}>
