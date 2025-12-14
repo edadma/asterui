@@ -2,54 +2,96 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://asterui.com',
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'material-theme-lighter',
+        dark: 'material-theme-darker',
+      },
+      defaultColor: false,
+    },
+  },
   integrations: [
+    react({
+      include: ['**/components/**/*.tsx'],
+    }),
     starlight({
       title: 'AsterUI',
-      description: 'A React component library built on DaisyUI and Tailwind CSS',
-      logo: {
-        light: './src/assets/logo-light.svg',
-        dark: './src/assets/logo-dark.svg',
-        replacesTitle: true,
+      components: {
+        SiteTitle: './src/components/SiteTitle.astro',
       },
+      description: 'A React component library built on DaisyUI and Tailwind CSS',
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/edadma/asterui' },
-        { icon: 'x.com', label: 'X', href: 'https://x.com/AsterUI' },
+        { icon: 'seti:npm', label: 'npm', href: 'https://www.npmjs.com/package/asterui' },
       ],
       customCss: ['./src/styles/custom.css'],
+      head: [
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'icon',
+            href: '/favicon.ico',
+          },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'preload',
+            href: '/demo.css',
+            as: 'style',
+          },
+        },
+        {
+          tag: 'script',
+          content: `document.addEventListener('DOMContentLoaded',()=>{if(location.pathname.startsWith('/components/'))document.body.classList.add('component-page')})`,
+        },
+      ],
       sidebar: [
         {
-          label: 'Getting Started',
+          label: 'Start Here',
           items: [
-            { label: 'Introduction', slug: '' },
-            { label: 'Installation', slug: 'getting-started/installation' },
-            { label: 'Quick Start', slug: 'getting-started/quick-start' },
+            { label: 'Getting Started', slug: 'getting-started' },
+            { label: 'Manual Setup', slug: 'manual-setup' },
           ],
         },
         {
           label: 'Components',
           items: [
-            { label: 'Overview', slug: 'components/overview' },
-            { label: 'Button', slug: 'components/button' },
-            { label: 'Collapse', slug: 'components/collapse' },
-          ],
-        },
-        {
-          label: 'Theming',
-          items: [
-            { label: 'Overview', slug: 'theming/overview' },
-            { label: 'Dark Mode', slug: 'theming/dark-mode' },
-            { label: 'Custom Themes', slug: 'theming/custom-themes' },
+            {
+              label: 'Actions',
+              items: [
+                { label: 'Button', slug: 'components/button' },
+                { label: 'CopyButton', slug: 'components/copybutton' },
+              ],
+            },
+            {
+              label: 'Data Display',
+              items: [
+                { label: 'Avatar', slug: 'components/avatar' },
+                { label: 'Badge', slug: 'components/badge' },
+                { label: 'Card', slug: 'components/card' },
+              ],
+            },
+            {
+              label: 'Data Entry',
+              items: [
+                { label: 'Checkbox', slug: 'components/checkbox' },
+              ],
+            },
+            {
+              label: 'Feedback',
+              items: [
+                { label: 'Alert', slug: 'components/alert' },
+              ],
+            },
           ],
         },
       ],
     }),
-    react(),
   ],
-  vite: {
-    plugins: [tailwindcss()],
-  },
 });

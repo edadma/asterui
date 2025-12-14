@@ -1,12 +1,36 @@
 ---
 title: Button
 description: Clickable buttons with variants, colors, sizes, and states
+tableOfContents: false
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-import { BasicButtonDemo, ButtonVariantsDemo, ButtonSizesDemo, ButtonStatesDemo, ButtonShapesDemo } from '../../../components/ButtonDemo';
+import {
+  BrandColorsDemo,
+  StateColorsDemo,
+  VariantsDemo,
+  SizesDemo,
+  OutlineDemo,
+  DashDemo,
+  SoftDemo,
+  StatesDemo,
+  ShapesDemo,
+  WideDemo,
+  BlockDemo,
+  LoadingDemo,
+  LinkButtonsDemo,
+  WithIconsDemo,
+  IconSizesDemo,
+  DangerDemo,
+  RoundDemo,
+  ToggleDemo,
+  NoAnimationDemo,
+  FormSubmitDemo,
+  EventHandlingDemo,
+} from '../../../components/ButtonDemo'
+import ButtonDemoSource from '../../../components/ButtonDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
 
-Buttons trigger actions or navigate to other pages. AsterUI buttons support multiple colors, variants, sizes, and states.
+Versatile button component with DaisyUI styling and many variants.
 
 ## Import
 
@@ -14,114 +38,125 @@ Buttons trigger actions or navigate to other pages. AsterUI buttons support mult
 import { Button } from 'asterui'
 ```
 
-## Colors
+## Examples
 
-Buttons support all DaisyUI semantic colors:
+<div class="examples">
 
-<div class="component-preview">
-  <BasicButtonDemo client:load />
+<Example title="Brand Colors" description="Primary brand colors for common actions." source={ButtonDemoSource} fn="BrandColorsDemo">
+  <BrandColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="State Colors" description="Semantic colors for different states and feedback." source={ButtonDemoSource} fn="StateColorsDemo">
+  <StateColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variants" description="Different style variants: solid (default), outline, dash, soft, ghost, and link." source={ButtonDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sizes" description="Five sizes: xs, sm, md (default), lg, and xl." source={ButtonDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Outline" description="Outline variant with transparent background." source={ButtonDemoSource} fn="OutlineDemo">
+  <OutlineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dashed Border" description="Buttons with dashed border styling." source={ButtonDemoSource} fn="DashDemo">
+  <DashDemo client:load slot="demo" />
+</Example>
+
+<Example title="Soft Colors" description="Muted color backgrounds for subtle emphasis." source={ButtonDemoSource} fn="SoftDemo">
+  <SoftDemo client:load slot="demo" />
+</Example>
+
+<Example title="States" description="Active, loading, and disabled states." source={ButtonDemoSource} fn="StatesDemo">
+  <StatesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Shapes" description="Square and circle shapes for icon buttons." source={ButtonDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Wide" description="Extra wide buttons for emphasis." source={ButtonDemoSource} fn="WideDemo">
+  <WideDemo client:load slot="demo" />
+</Example>
+
+<Example title="Block" description="Full width buttons." source={ButtonDemoSource} fn="BlockDemo">
+  <BlockDemo client:load slot="demo" />
+</Example>
+
+<Example title="Loading States" description="Loading spinner with different colors." source={ButtonDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Link Buttons" description="Buttons that navigate to URLs. Renders as anchor element when href is provided." source={ButtonDemoSource} fn="LinkButtonsDemo">
+  <LinkButtonsDemo client:load slot="demo" />
+</Example>
+
+<Example title="With Icons" description="Buttons with icons using the icon prop for automatic spacing." source={ButtonDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Icon Sizes" description="Icons from @aster-ui/icons automatically match the button size." source={ButtonDemoSource} fn="IconSizesDemo">
+  <IconSizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Danger Button" description="Semantic danger styling for destructive actions." source={ButtonDemoSource} fn="DangerDemo">
+  <DangerDemo client:load slot="demo" />
+</Example>
+
+<Example title="Round Shape" description="Pill-shaped buttons with fully rounded ends." source={ButtonDemoSource} fn="RoundDemo">
+  <RoundDemo client:load slot="demo" />
+</Example>
+
+<Example title="Toggle Button" description="Toggle buttons using pressed prop for accessibility." source={ButtonDemoSource} fn="ToggleDemo">
+  <ToggleDemo client:load slot="demo" />
+</Example>
+
+<Example title="No Animation" description="Disable the click animation effect." source={ButtonDemoSource} fn="NoAnimationDemo">
+  <NoAnimationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Form Submit" description="Button with htmlType='submit' inside AsterUI Form component." source={ButtonDemoSource} fn="FormSubmitDemo">
+  <FormSubmitDemo client:load slot="demo" />
+</Example>
+
+<Example title="Event Handling" description="Buttons with onClick handlers and state management." source={ButtonDemoSource} fn="EventHandlingDemo">
+  <EventHandlingDemo client:load slot="demo" />
+</Example>
+
 </div>
-
-```tsx
-<Space wrap>
-  <Button>Default</Button>
-  <Button color="primary">Primary</Button>
-  <Button color="secondary">Secondary</Button>
-  <Button color="accent">Accent</Button>
-  <Button color="info">Info</Button>
-  <Button color="success">Success</Button>
-  <Button color="warning">Warning</Button>
-  <Button color="error">Error</Button>
-</Space>
-```
-
-## Variants
-
-Different visual styles for various contexts:
-
-<div class="component-preview">
-  <ButtonVariantsDemo client:load />
-</div>
-
-```tsx
-<Space wrap>
-  <Button color="primary">Solid</Button>
-  <Button color="primary" variant="outline">Outline</Button>
-  <Button color="primary" variant="soft">Soft</Button>
-  <Button color="primary" variant="ghost">Ghost</Button>
-  <Button color="primary" variant="link">Link</Button>
-</Space>
-```
-
-## Sizes
-
-Four size options to fit different contexts:
-
-<div class="component-preview">
-  <ButtonSizesDemo client:load />
-</div>
-
-```tsx
-<Space wrap align="center">
-  <Button color="primary" size="xs">Extra Small</Button>
-  <Button color="primary" size="sm">Small</Button>
-  <Button color="primary" size="md">Medium</Button>
-  <Button color="primary" size="lg">Large</Button>
-</Space>
-```
-
-## States
-
-Loading, disabled, and block states:
-
-<div class="component-preview">
-  <ButtonStatesDemo client:load />
-</div>
-
-```tsx
-<Space wrap>
-  <Button color="primary" loading>Loading</Button>
-  <Button color="primary" disabled>Disabled</Button>
-  <Button color="primary" block>Block Button</Button>
-</Space>
-```
-
-## Shapes
-
-Square and circle shapes for icon buttons:
-
-<div class="component-preview">
-  <ButtonShapesDemo client:load />
-</div>
-
-```tsx
-<Space wrap>
-  <Button color="primary">Default</Button>
-  <Button color="primary" shape="square">S</Button>
-  <Button color="primary" shape="circle">C</Button>
-</Space>
-```
 
 ## API
 
-### Button Props
+### `Button`
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| `color` | Button color | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral' \| 'ghost'` | - |
-| `variant` | Button style variant | `'solid' \| 'outline' \| 'soft' \| 'ghost' \| 'link'` | `'solid'` |
-| `size` | Button size | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
-| `shape` | Button shape | `'default' \| 'square' \| 'circle'` | `'default'` |
-| `loading` | Show loading spinner | `boolean` | `false` |
-| `disabled` | Disable the button | `boolean` | `false` |
-| `block` | Full width button | `boolean` | `false` |
+| `color` | Button color | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | - |
+| `variant` | Button style variant | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link'` | - |
+| `size` | Button size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `active` | Active/pressed visual state | `boolean` | `false` |
+| `loading` | Show loading spinner and disable button | `boolean` | `false` |
+| `shape` | Button shape | `'square' \| 'circle' \| 'wide' \| 'block' \| 'round'` | - |
+| `icon` | Icon element to display | `ReactNode` | - |
+| `iconPosition` | Position of the icon | `'start' \| 'end'` | `'start'` |
+| `danger` | Applies error/danger styling | `boolean` | `false` |
+| `pressed` | Toggle button pressed state (sets aria-pressed) | `boolean` | - |
+| `noAnimation` | Disable click animation | `boolean` | `false` |
+| `disabled` | Disabled state | `boolean` | `false` |
+| `href` | URL to navigate to (renders as anchor element) | `string` | - |
+| `target` | Where to open the linked URL | `string` | - |
 | `htmlType` | HTML button type | `'button' \| 'submit' \| 'reset'` | `'button'` |
-| `onClick` | Click handler | `(e: MouseEvent) => void` | - |
 | `className` | Additional CSS classes | `string` | - |
+| `children` | Button content | `ReactNode` | - |
 
 ## Accessibility
 
-- Buttons use native `<button>` elements for proper semantics
-- Loading state adds `aria-busy="true"`
-- Disabled buttons have `aria-disabled="true"`
+- Uses native `<button>` element for proper keyboard support
+- Renders as `<a>` element when `href` is provided for proper link semantics
+- Loading state sets `aria-busy="true"` and disables the button
+- Toggle buttons use `aria-pressed` for screen reader support
+- Disabled state is properly communicated to assistive technologies
 - Focus states are visible for keyboard navigation

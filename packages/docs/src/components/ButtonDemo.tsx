@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { Button, Space, Form, Input, notification } from 'asterui'
-import { Demo } from './Demo'
+import { Button, Space, Input, Form, notification } from 'asterui'
 import { XMarkIcon, ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@aster-ui/icons'
+import { Demo } from './Demo'
 
 export function BrandColorsDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary">Primary</Button>
         <Button color="secondary">Secondary</Button>
         <Button color="accent">Accent</Button>
@@ -19,7 +19,7 @@ export function BrandColorsDemo() {
 export function StateColorsDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="info">Info</Button>
         <Button color="success">Success</Button>
         <Button color="warning">Warning</Button>
@@ -32,7 +32,7 @@ export function StateColorsDemo() {
 export function VariantsDemo() {
   return (
     <Demo>
-      <Space wrap>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary">Solid</Button>
         <Button color="primary" variant="outline">Outline</Button>
         <Button color="primary" variant="dash">Dash</Button>
@@ -47,7 +47,7 @@ export function VariantsDemo() {
 export function SizesDemo() {
   return (
     <Demo>
-      <Space wrap align="center">
+      <Space direction="horizontal" wrap size="sm" align="center">
         <Button size="xs">XS</Button>
         <Button size="sm">Small</Button>
         <Button size="md">Medium</Button>
@@ -61,7 +61,7 @@ export function SizesDemo() {
 export function OutlineDemo() {
   return (
     <Demo>
-      <Space wrap>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary" variant="outline">Primary</Button>
         <Button color="secondary" variant="outline">Secondary</Button>
         <Button color="accent" variant="outline">Accent</Button>
@@ -75,7 +75,7 @@ export function OutlineDemo() {
 export function DashDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary" variant="dash">Primary</Button>
         <Button color="secondary" variant="dash">Secondary</Button>
         <Button color="accent" variant="dash">Accent</Button>
@@ -87,7 +87,7 @@ export function DashDemo() {
 export function SoftDemo() {
   return (
     <Demo>
-      <Space wrap>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary" variant="soft">Primary</Button>
         <Button color="secondary" variant="soft">Secondary</Button>
         <Button color="accent" variant="soft">Accent</Button>
@@ -101,7 +101,7 @@ export function SoftDemo() {
 export function StatesDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary">Normal</Button>
         <Button color="primary" active>Active</Button>
         <Button color="primary" loading>Loading</Button>
@@ -114,7 +114,7 @@ export function StatesDemo() {
 export function ShapesDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm" align="center">
         <Button color="primary" shape="square">
           <XMarkIcon />
         </Button>
@@ -129,7 +129,7 @@ export function ShapesDemo() {
 export function WideDemo() {
   return (
     <Demo>
-      <Space direction="vertical">
+      <Space direction="vertical" size="sm">
         <Button color="primary" shape="wide">Wide Button</Button>
         <Button color="secondary" shape="wide">Another Wide</Button>
       </Space>
@@ -140,7 +140,7 @@ export function WideDemo() {
 export function BlockDemo() {
   return (
     <Demo>
-      <Space direction="vertical" block>
+      <Space direction="vertical" className="w-full">
         <Button color="primary" shape="block">Block Button</Button>
         <Button color="secondary" shape="block">Another Block</Button>
       </Space>
@@ -151,7 +151,7 @@ export function BlockDemo() {
 export function LoadingDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary" loading>Loading</Button>
         <Button color="success" loading>Processing</Button>
         <Button color="error" loading>Deleting</Button>
@@ -163,7 +163,7 @@ export function LoadingDemo() {
 export function LinkButtonsDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary" href="https://github.com" target="_blank">GitHub</Button>
         <Button variant="ghost" href="https://npmjs.com" target="_blank">npm</Button>
         <Button href="/components" variant="link">Internal Link</Button>
@@ -175,10 +175,16 @@ export function LinkButtonsDemo() {
 export function WithIconsDemo() {
   return (
     <Demo>
-      <Space>
-        <Button color="primary" icon={<ArrowUpTrayIcon />}>Upload</Button>
-        <Button color="success" icon={<CheckIcon />}>Save</Button>
-        <Button color="error" icon={<TrashIcon />} iconPosition="end">Delete</Button>
+      <Space direction="horizontal" wrap size="sm">
+        <Button color="primary" icon={<ArrowUpTrayIcon />}>
+          Upload
+        </Button>
+        <Button color="success" icon={<CheckIcon />}>
+          Save
+        </Button>
+        <Button color="error" icon={<TrashIcon />} iconPosition="end">
+          Delete
+        </Button>
       </Space>
     </Demo>
   )
@@ -187,12 +193,12 @@ export function WithIconsDemo() {
 export function IconSizesDemo() {
   return (
     <Demo>
-      <Space wrap align="center">
-        <Button size="xs" color="primary" icon={<CheckIcon />}>XS</Button>
-        <Button size="sm" color="primary" icon={<CheckIcon />}>Small</Button>
-        <Button size="md" color="primary" icon={<CheckIcon />}>Medium</Button>
-        <Button size="lg" color="primary" icon={<CheckIcon />}>Large</Button>
-        <Button size="xl" color="primary" icon={<CheckIcon />}>XL</Button>
+      <Space direction="horizontal" wrap size="sm" align="center">
+        <Button size="xs" color="primary" icon={<ArrowUpTrayIcon />}>XS</Button>
+        <Button size="sm" color="primary" icon={<ArrowUpTrayIcon />}>Small</Button>
+        <Button size="md" color="primary" icon={<ArrowUpTrayIcon />}>Medium</Button>
+        <Button size="lg" color="primary" icon={<ArrowUpTrayIcon />}>Large</Button>
+        <Button size="xl" color="primary" icon={<ArrowUpTrayIcon />}>XL</Button>
       </Space>
     </Demo>
   )
@@ -201,9 +207,11 @@ export function IconSizesDemo() {
 export function DangerDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
         <Button danger>Delete</Button>
-        <Button danger icon={<TrashIcon />}>Remove Item</Button>
+        <Button danger icon={<TrashIcon />}>
+          Remove Item
+        </Button>
         <Button danger variant="outline">Cancel Account</Button>
       </Space>
     </Demo>
@@ -213,7 +221,7 @@ export function DangerDemo() {
 export function RoundDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary" shape="round">Get Started</Button>
         <Button color="secondary" shape="round">Learn More</Button>
         <Button color="accent" shape="round">Subscribe</Button>
@@ -222,11 +230,23 @@ export function RoundDemo() {
   )
 }
 
-export function ToggleDemo() {
-  const [pressed, setPressed] = useState(false)
+export function NoAnimationDemo() {
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
+        <Button color="primary">With Animation</Button>
+        <Button color="primary" noAnimation>No Animation</Button>
+      </Space>
+    </Demo>
+  )
+}
+
+export function ToggleDemo() {
+  const [pressed, setPressed] = useState(false)
+
+  return (
+    <Demo>
+      <Space direction="horizontal" wrap size="sm">
         <Button
           color="primary"
           pressed={pressed}
@@ -249,17 +269,6 @@ export function ToggleDemo() {
   )
 }
 
-export function NoAnimationDemo() {
-  return (
-    <Demo>
-      <Space>
-        <Button color="primary">With Animation</Button>
-        <Button color="primary" noAnimation>No Animation</Button>
-      </Space>
-    </Demo>
-  )
-}
-
 export function FormSubmitDemo() {
   const handleFinish = (values: { email: string }) => {
     notification.success({ message: 'Submitted!', description: `Email: ${values.email}` })
@@ -272,7 +281,7 @@ export function FormSubmitDemo() {
           <Input type="email" placeholder="you@example.com" />
         </Form.Item>
         <Form.Item>
-          <Space>
+          <Space direction="horizontal" size="sm">
             <Button color="primary" htmlType="submit">Submit</Button>
             <Button htmlType="reset">Reset</Button>
           </Space>
@@ -294,7 +303,7 @@ export function EventHandlingDemo() {
 
   return (
     <Demo>
-      <Space>
+      <Space direction="horizontal" wrap size="sm">
         <Button color="primary" onClick={() => setCount(c => c + 1)}>
           Clicked {count} times
         </Button>

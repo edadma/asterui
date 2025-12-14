@@ -1,6 +1,5 @@
 ---
 import { Code } from 'astro:components'
-import { Copy, Check } from 'lucide-astro'
 
 interface Props {
   title: string
@@ -34,7 +33,7 @@ if (source && fn) {
       .trim()
 
     // Detect which AsterUI components are used
-    const asteruiComponents = ['Button', 'Space', 'Input', 'Form', 'notification']
+    const asteruiComponents = ['Avatar', 'Badge', 'Button', 'Card', 'Checkbox', 'Form', 'Input', 'Space', 'notification']
     const usedComponents = asteruiComponents.filter(c => jsx.includes(`<${c}`) || jsx.includes(`${c}.`))
 
     // Detect which @aster-ui/icons are used
@@ -141,44 +140,54 @@ export default App`
   <div class="example-header">
     <div class="example-title">
       <h3>{title}</h3>
-      {description && <p class="example-description">{description}</p>}
+      {description && <p>{description}</p>}
     </div>
     <button class="toggle-code" aria-label="Toggle code">
-      <span>&lt;/&gt;</span>
+      &lt;/&gt;
     </button>
   </div>
-  <slot name="demo" />
+  <div class="demo-wrapper">
+    <slot name="demo" />
+  </div>
   <div class="example-code">
     {extractedCode && (
       <button class="copy-btn" aria-label="Copy code" data-code={extractedCode}>
-        <span class="copy-icon"><Copy size={16} /></span>
-        <span class="check-icon"><Check size={16} /></span>
+        <span class="copy-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </span>
+        <span class="check-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </span>
       </button>
     )}
     {extractedCode ? (
-      <Code code={extractedCode} lang="tsx" theme="css-variables" />
+      <Code code={extractedCode} lang="tsx" themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
     ) : (
       <slot name="code" />
     )}
   </div>
 </div>
 
-<style is:global>
+<style>
   .example-card {
     break-inside: avoid;
     margin-bottom: 1.5rem;
-    border: 1px solid var(--sl-color-gray-5);
     border-radius: 0.5rem;
     overflow: hidden;
+    border: 1px solid #4b5563;
   }
 
-  .example-card > astro-island > div {
-    margin: 0 !important;
-    padding: 0 !important;
+  :global([data-theme="light"]) .example-card {
+    border-color: #d1d5db;
   }
 
-  .example-card > .example-code {
-    margin: 0 !important;
+  .demo-wrapper > :global(astro-island) {
+    display: block;
   }
 
   .example-header {
@@ -186,8 +195,13 @@ export default App`
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 0.75rem;
-    border-bottom: 1px solid var(--sl-color-gray-5);
-    background: var(--sl-color-gray-6);
+    border-bottom: 1px solid #4b5563;
+    background: #374151;
+  }
+
+  :global([data-theme="light"]) .example-header {
+    border-bottom-color: #d1d5db;
+    background: #f3f4f6;
   }
 
   .example-title {
@@ -200,12 +214,21 @@ export default App`
     margin: 0;
     font-size: 0.875rem;
     font-weight: 600;
+    color: #f3f4f6;
   }
 
-  .example-description {
+  :global([data-theme="light"]) .example-header h3 {
+    color: #1f2937;
+  }
+
+  .example-title p {
     margin: 0;
     font-size: 0.875rem;
-    color: var(--sl-color-gray-2);
+    color: #9ca3af;
+  }
+
+  :global([data-theme="light"]) .example-title p {
+    color: #6b7280;
   }
 
   .toggle-code {
@@ -215,26 +238,35 @@ export default App`
     padding: 0.25rem 0.5rem;
     font-family: monospace;
     font-size: 0.875rem;
-    color: var(--sl-color-gray-2);
+    color: #9ca3af;
     border-radius: 0.25rem;
   }
 
   .toggle-code:hover {
-    background: var(--sl-color-gray-5);
+    background: #4b5563;
+    color: #f3f4f6;
+  }
+
+  :global([data-theme="light"]) .toggle-code:hover {
+    background: #e5e7eb;
+    color: #1f2937;
   }
 
   .example-code {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+    position: relative;
   }
 
   .example-card.open .example-code {
     max-height: 1000px;
   }
 
-  .example-code {
-    position: relative;
+  .example-code :global(pre) {
+    margin: 0;
+    border-radius: 0;
+    padding: 0.75rem;
   }
 
   .copy-btn {
@@ -243,28 +275,30 @@ export default App`
     right: 0.5rem;
     width: 28px;
     height: 28px;
-    background: var(--sl-color-gray-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4b5563;
     border: none;
     cursor: pointer;
     border-radius: 0.25rem;
-    color: var(--sl-color-gray-2);
+    color: #9ca3af;
     z-index: 10;
   }
 
-  .copy-btn svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
   .copy-btn:hover {
-    background: var(--sl-color-gray-4);
-    color: var(--sl-color-white);
+    background: #6b7280;
+    color: #f3f4f6;
   }
 
-  .copy-btn.copied {
-    color: #22c55e;
+  :global([data-theme="light"]) .copy-btn {
+    background: #e5e7eb;
+    color: #6b7280;
+  }
+
+  :global([data-theme="light"]) .copy-btn:hover {
+    background: #d1d5db;
+    color: #1f2937;
   }
 
   .copy-btn .check-icon {
@@ -276,48 +310,13 @@ export default App`
   }
 
   .copy-btn.copied .check-icon {
-    display: block;
+    display: flex;
+    color: #22c55e;
   }
 
-  .example-code .expressive-code,
-  .example-code .astro-code,
-  .example-code pre.astro-code {
+  .example-code :global(pre) {
     margin: 0 !important;
-    border-radius: 0;
-  }
-
-  .example-code pre {
-    border-radius: 0;
-  }
-
-  /* Syntax highlighting - light theme (default) */
-  .example-code {
-    --astro-code-background: #f6f8fa;
-    --astro-code-foreground: #24292e;
-    --astro-code-token-constant: #005cc5;
-    --astro-code-token-string: #032f62;
-    --astro-code-token-comment: #6a737d;
-    --astro-code-token-keyword: #d73a49;
-    --astro-code-token-parameter: #24292e;
-    --astro-code-token-function: #6f42c1;
-    --astro-code-token-string-expression: #22863a;
-    --astro-code-token-punctuation: #24292e;
-    --astro-code-token-link: #005cc5;
-  }
-
-  /* Syntax highlighting - dark theme */
-  :root[data-theme="dark"] .example-code {
-    --astro-code-background: #161b22;
-    --astro-code-foreground: #c9d1d9;
-    --astro-code-token-constant: #79c0ff;
-    --astro-code-token-string: #a5d6ff;
-    --astro-code-token-comment: #8b949e;
-    --astro-code-token-keyword: #ff7b72;
-    --astro-code-token-parameter: #c9d1d9;
-    --astro-code-token-function: #d2a8ff;
-    --astro-code-token-string-expression: #7ee787;
-    --astro-code-token-punctuation: #c9d1d9;
-    --astro-code-token-link: #79c0ff;
+    border-radius: 0 !important;
   }
 </style>
 

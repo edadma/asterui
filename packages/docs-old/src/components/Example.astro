@@ -1,0 +1,346 @@
+---
+import { Code } from 'astro:components'
+import { Copy, Check } from 'lucide-astro'
+
+interface Props {
+  title: string
+  description?: string
+  source?: string
+  fn?: string
+}
+
+const { title, description, source, fn } = Astro.props
+
+// Extract code from source if provided
+let extractedCode = ''
+if (source && fn) {
+  // Find the function and extract content between <Demo> tags
+  const fnRegex = new RegExp(`export function ${fn}\\s*\\([^)]*\\)\\s*\\{[\\s\\S]*?return\\s*\\(\\s*<Demo>([\\s\\S]*?)<\\/Demo>`, 'm')
+  const match = source.match(fnRegex)
+  if (match) {
+    // Clean up the extracted code - remove leading whitespace consistently
+    const lines = match[1].split('\n')
+    // Find minimum indentation (ignoring empty lines)
+    const minIndent = lines
+      .filter(l => l.trim())
+      .reduce((min, l) => {
+        const indent = l.match(/^\s*/)?.[0].length ?? 0
+        return Math.min(min, indent)
+      }, Infinity)
+    // Remove that indentation from all lines
+    const jsx = lines
+      .map(l => l.slice(minIndent))
+      .join('\n')
+      .trim()
+
+    // Detect which AsterUI components are used
+    const asteruiComponents = ['Button', 'Space', 'Input', 'Form', 'notification']
+    const usedComponents = asteruiComponents.filter(c => jsx.includes(`<${c}`) || jsx.includes(`${c}.`))
+
+    // Detect which @aster-ui/icons are used
+    const asterIcons = ['XMarkIcon', 'ArrowUpTrayIcon', 'CheckIcon', 'TrashIcon']
+    const usedIcons = asterIcons.filter(icon => jsx.includes(`<${icon}`) || jsx.includes(`{<${icon}`))
+
+    // Extract the full function body to check for hooks
+    const fullFnRegex = new RegExp(`export function ${fn}\\s*\\([^)]*\\)\\s*\\{([\\s\\S]*?)\\n\\}`, 'm')
+    const fullFnMatch = source.match(fullFnRegex)
+    const fullBody = fullFnMatch ? fullFnMatch[1] : ''
+
+    // Detect React hooks usage
+    const reactHooks = ['useState', 'useEffect', 'useRef', 'useCallback', 'useMemo']
+    const usedHooks = reactHooks.filter(hook => fullBody.includes(hook))
+
+    // Build the full example
+    let imports = ''
+    if (usedHooks.length > 0) {
+      imports += `import { ${usedHooks.join(', ')} } from 'react'\n`
+    }
+    if (usedComponents.length > 0) {
+      imports += `import { ${usedComponents.join(', ')} } from 'asterui'\n`
+    }
+    if (usedIcons.length > 0) {
+      imports += `import { ${usedIcons.join(', ')} } from '@aster-ui/icons'\n`
+    }
+
+    // Indent JSX for the component body
+    const indentedJsx = jsx.split('\n').map(l => l ? '    ' + l : l).join('\n')
+
+    if (usedHooks.length > 0) {
+      // For components with hooks, extract the full function body
+      const statefulRegex = new RegExp(`export function ${fn}\\s*\\([^)]*\\)\\s*\\{([\\s\\S]*?)\\n\\}`, 'm')
+      const statefulMatch = source.match(statefulRegex)
+      if (statefulMatch) {
+        let body = statefulMatch[1]
+        // Check if content inside Demo has a single root element
+        const demoContentMatch = body.match(/<Demo>([\s\S]*?)<\/Demo>/)
+        const demoContent = demoContentMatch ? demoContentMatch[1].trim() : ''
+        const demoFirstLine = demoContent.split('\n')[0].trim()
+        const demoLastLine = demoContent.split('\n').filter(l => l.trim()).pop()?.trim() || ''
+        const demoFirstTag = demoFirstLine.match(/^<(\w+)/)
+        const demoLastTag = demoLastLine.match(/^<\/(\w+)>$/)
+        const hasSingleRoot = demoFirstTag && demoLastTag && demoFirstTag[1] === demoLastTag[1]
+
+        // Replace <Demo> with fragment only if needed, otherwise just remove Demo tags
+        if (!hasSingleRoot) {
+          body = body.replace(/<Demo>/g, '<>').replace(/<\/Demo>/g, '</>')
+        } else {
+          body = body.replace(/<Demo>\s*\n?/g, '').replace(/\s*<\/Demo>/g, '')
+        }
+        // Clean indentation
+        const bodyLines = body.split('\n')
+        const bodyMinIndent = bodyLines
+          .filter(l => l.trim())
+          .reduce((min, l) => Math.min(min, l.match(/^\s*/)?.[0].length ?? 0), Infinity)
+        body = bodyLines.map(l => l.slice(bodyMinIndent)).join('\n').trim()
+
+        extractedCode = `${imports}
+function App() {
+  ${body.split('\n').join('\n  ')}
+}
+
+export default App`
+      }
+    } else {
+      // Check if JSX has a single root element (first tag matches last closing tag at root level)
+      const firstLine = jsx.split('\n')[0].trim()
+      const lastLine = jsx.split('\n').filter(l => l.trim()).pop()?.trim() || ''
+      const firstTagMatch = firstLine.match(/^<(\w+)/)
+      const lastTagMatch = lastLine.match(/^<\/(\w+)>$/)
+      const hasSingleRoot = firstTagMatch && lastTagMatch && firstTagMatch[1] === lastTagMatch[1]
+      const needsFragment = !hasSingleRoot
+
+      if (needsFragment) {
+        // Add extra indentation for fragment wrapper
+        const fragmentIndentedJsx = jsx.split('\n').map(l => l ? '      ' + l : l).join('\n')
+        extractedCode = `${imports}
+function App() {
+  return (
+    <>
+${fragmentIndentedJsx}
+    </>
+  )
+}
+
+export default App`
+      } else {
+        extractedCode = `${imports}
+function App() {
+  return (
+${indentedJsx}
+  )
+}
+
+export default App`
+      }
+    }
+  }
+}
+---
+
+<div class="example-card">
+  <div class="example-header">
+    <div class="example-title">
+      <h3>{title}</h3>
+      {description && <p class="example-description">{description}</p>}
+    </div>
+    <button class="toggle-code" aria-label="Toggle code">
+      <span>&lt;/&gt;</span>
+    </button>
+  </div>
+  <slot name="demo" />
+  <div class="example-code">
+    {extractedCode && (
+      <button class="copy-btn" aria-label="Copy code" data-code={extractedCode}>
+        <span class="copy-icon"><Copy size={16} /></span>
+        <span class="check-icon"><Check size={16} /></span>
+      </button>
+    )}
+    {extractedCode ? (
+      <Code code={extractedCode} lang="tsx" theme="css-variables" />
+    ) : (
+      <slot name="code" />
+    )}
+  </div>
+</div>
+
+<style is:global>
+  .example-card {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .example-card > astro-island > div {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .example-card > .example-code {
+    margin: 0 !important;
+  }
+
+  .example-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    background: var(--sl-color-gray-6);
+  }
+
+  .example-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .example-header h3 {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .example-description {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-2);
+  }
+
+  .toggle-code {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: var(--sl-color-gray-2);
+    border-radius: 0.25rem;
+  }
+
+  .toggle-code:hover {
+    background: var(--sl-color-gray-5);
+  }
+
+  .example-code {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .example-card.open .example-code {
+    max-height: 1000px;
+  }
+
+  .example-code {
+    position: relative;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 28px;
+    height: 28px;
+    background: var(--sl-color-gray-5);
+    border: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    color: var(--sl-color-gray-2);
+    z-index: 10;
+  }
+
+  .copy-btn svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .copy-btn:hover {
+    background: var(--sl-color-gray-4);
+    color: var(--sl-color-white);
+  }
+
+  .copy-btn.copied {
+    color: #22c55e;
+  }
+
+  .copy-btn .check-icon {
+    display: none;
+  }
+
+  .copy-btn.copied .copy-icon {
+    display: none;
+  }
+
+  .copy-btn.copied .check-icon {
+    display: block;
+  }
+
+  .example-code .expressive-code,
+  .example-code .astro-code,
+  .example-code pre.astro-code {
+    margin: 0 !important;
+    border-radius: 0;
+  }
+
+  .example-code pre {
+    border-radius: 0;
+  }
+
+  /* Syntax highlighting - light theme (default) */
+  .example-code {
+    --astro-code-background: #f6f8fa;
+    --astro-code-foreground: #24292e;
+    --astro-code-token-constant: #005cc5;
+    --astro-code-token-string: #032f62;
+    --astro-code-token-comment: #6a737d;
+    --astro-code-token-keyword: #d73a49;
+    --astro-code-token-parameter: #24292e;
+    --astro-code-token-function: #6f42c1;
+    --astro-code-token-string-expression: #22863a;
+    --astro-code-token-punctuation: #24292e;
+    --astro-code-token-link: #005cc5;
+  }
+
+  /* Syntax highlighting - dark theme */
+  :root[data-theme="dark"] .example-code {
+    --astro-code-background: #161b22;
+    --astro-code-foreground: #c9d1d9;
+    --astro-code-token-constant: #79c0ff;
+    --astro-code-token-string: #a5d6ff;
+    --astro-code-token-comment: #8b949e;
+    --astro-code-token-keyword: #ff7b72;
+    --astro-code-token-parameter: #c9d1d9;
+    --astro-code-token-function: #d2a8ff;
+    --astro-code-token-string-expression: #7ee787;
+    --astro-code-token-punctuation: #c9d1d9;
+    --astro-code-token-link: #79c0ff;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.toggle-code').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.example-card')
+      card?.classList.toggle('open')
+    })
+  })
+
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const code = btn.getAttribute('data-code')
+      if (!code) return
+
+      try {
+        await navigator.clipboard.writeText(code)
+        btn.classList.add('copied')
+        setTimeout(() => btn.classList.remove('copied'), 2000)
+      } catch (err) {
+        console.error('Failed to copy:', err)
+      }
+    })
+  })
+</script>
