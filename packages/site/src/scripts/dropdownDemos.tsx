@@ -100,18 +100,9 @@ const demos: Record<string, React.ReactNode> = {
         <Button color="primary">Options</Button>
       </Dropdown.Trigger>
       <Dropdown.Menu>
-        <Dropdown.Item>
-          <PencilIcon className="w-4 h-4 mr-2" />
-          Edit
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <DocumentDuplicateIcon className="w-4 h-4 mr-2" />
-          Duplicate
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <TrashIcon className="w-4 h-4 mr-2" />
-          Delete
-        </Dropdown.Item>
+        <Dropdown.Item icon={<PencilIcon size="sm" />}>Edit</Dropdown.Item>
+        <Dropdown.Item icon={<DocumentDuplicateIcon size="sm" />}>Duplicate</Dropdown.Item>
+        <Dropdown.Item icon={<TrashIcon size="sm" />}>Delete</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   ),

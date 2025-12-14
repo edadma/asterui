@@ -204,18 +204,9 @@ const App: React.FC = () => (
       <Button color="primary">Options</Button>
     </Dropdown.Trigger>
     <Dropdown.Menu>
-      <Dropdown.Item>
-        <PencilIcon size="sm" className="mr-2" />
-        Edit
-      </Dropdown.Item>
-      <Dropdown.Item>
-        <DocumentDuplicateIcon size="sm" className="mr-2" />
-        Duplicate
-      </Dropdown.Item>
-      <Dropdown.Item>
-        <TrashIcon size="sm" className="mr-2" />
-        Delete
-      </Dropdown.Item>
+      <Dropdown.Item icon={<PencilIcon size="sm" />}>Edit</Dropdown.Item>
+      <Dropdown.Item icon={<DocumentDuplicateIcon size="sm" />}>Duplicate</Dropdown.Item>
+      <Dropdown.Item icon={<TrashIcon size="sm" />}>Delete</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
 )
