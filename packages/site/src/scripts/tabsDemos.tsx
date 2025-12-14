@@ -6,13 +6,13 @@ import { HomeIcon, UserIcon, Cog6ToothIcon } from '@aster-ui/icons'
 // Basic demo
 const BasicDemo: React.FC = () => (
   <Tabs>
-    <Tabs.Panel tab="Tab 1" tabKey="1">
+    <Tabs.Panel tab="Tab 1" key="1">
       <Typography.Text>Content of Tab 1</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Tab 2" tabKey="2">
+    <Tabs.Panel tab="Tab 2" key="2">
       <Typography.Text>Content of Tab 2</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Tab 3" tabKey="3">
+    <Tabs.Panel tab="Tab 3" key="3">
       <Typography.Text>Content of Tab 3</Typography.Text>
     </Tabs.Panel>
   </Tabs>
@@ -21,14 +21,14 @@ const BasicDemo: React.FC = () => (
 // Settings demo
 const SettingsDemo: React.FC = () => (
   <Tabs defaultActiveKey="account" variant="border">
-    <Tabs.Panel tab="Account" tabKey="account">
+    <Tabs.Panel tab="Account" key="account">
       <Space direction="vertical" size="md">
         <Input floatingLabel="Username" placeholder="john_doe" />
         <Input floatingLabel="Email" type="email" placeholder="john@example.com" />
         <Button color="primary">Save</Button>
       </Space>
     </Tabs.Panel>
-    <Tabs.Panel tab="Security" tabKey="security">
+    <Tabs.Panel tab="Security" key="security">
       <Space direction="vertical" size="md">
         <Input floatingLabel="Current Password" type="password" />
         <Input floatingLabel="New Password" type="password" />
@@ -41,13 +41,13 @@ const SettingsDemo: React.FC = () => (
 // Box variant demo
 const BoxDemo: React.FC = () => (
   <Tabs variant="box">
-    <Tabs.Panel tab="Home" tabKey="home">
+    <Tabs.Panel tab="Home" key="home">
       <Typography.Text>Home content</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Profile" tabKey="profile">
+    <Tabs.Panel tab="Profile" key="profile">
       <Typography.Text>Profile content</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Settings" tabKey="settings">
+    <Tabs.Panel tab="Settings" key="settings">
       <Typography.Text>Settings content</Typography.Text>
     </Tabs.Panel>
   </Tabs>
@@ -56,13 +56,13 @@ const BoxDemo: React.FC = () => (
 // Lift variant demo
 const LiftDemo: React.FC = () => (
   <Tabs variant="lift">
-    <Tabs.Panel tab="Overview" tabKey="1">
+    <Tabs.Panel tab="Overview" key="1">
       <Typography.Text>Overview content</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Reports" tabKey="2">
+    <Tabs.Panel tab="Reports" key="2">
       <Typography.Text>Reports content</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Analytics" tabKey="3">
+    <Tabs.Panel tab="Analytics" key="3">
       <Typography.Text>Analytics content</Typography.Text>
     </Tabs.Panel>
   </Tabs>
@@ -74,15 +74,15 @@ const SizesDemo: React.FC = () => (
     <div>
       <Typography.Text strong>Small</Typography.Text>
       <Tabs size="sm">
-        <Tabs.Panel tab="Tab 1" tabKey="1"><Typography.Text>Small tabs content</Typography.Text></Tabs.Panel>
-        <Tabs.Panel tab="Tab 2" tabKey="2"><Typography.Text>Content 2</Typography.Text></Tabs.Panel>
+        <Tabs.Panel tab="Tab 1" key="1"><Typography.Text>Small tabs content</Typography.Text></Tabs.Panel>
+        <Tabs.Panel tab="Tab 2" key="2"><Typography.Text>Content 2</Typography.Text></Tabs.Panel>
       </Tabs>
     </div>
     <div>
       <Typography.Text strong>Large</Typography.Text>
       <Tabs size="lg">
-        <Tabs.Panel tab="Tab 1" tabKey="1"><Typography.Text>Large tabs content</Typography.Text></Tabs.Panel>
-        <Tabs.Panel tab="Tab 2" tabKey="2"><Typography.Text>Content 2</Typography.Text></Tabs.Panel>
+        <Tabs.Panel tab="Tab 1" key="1"><Typography.Text>Large tabs content</Typography.Text></Tabs.Panel>
+        <Tabs.Panel tab="Tab 2" key="2"><Typography.Text>Content 2</Typography.Text></Tabs.Panel>
       </Tabs>
     </div>
   </Space>
@@ -91,13 +91,13 @@ const SizesDemo: React.FC = () => (
 // Disabled demo
 const DisabledDemo: React.FC = () => (
   <Tabs>
-    <Tabs.Panel tab="Active" tabKey="1">
+    <Tabs.Panel tab="Active" key="1">
       <Typography.Text>Active content</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Disabled" tabKey="2" disabled>
+    <Tabs.Panel tab="Disabled" key="2" disabled>
       <Typography.Text>Cannot see this</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Also Active" tabKey="3">
+    <Tabs.Panel tab="Also Active" key="3">
       <Typography.Text>Active content</Typography.Text>
     </Tabs.Panel>
   </Tabs>
@@ -129,13 +129,13 @@ const DataDrivenDemo: React.FC = () => {
 // Position demo
 const PositionDemo: React.FC = () => (
   <Tabs position="bottom" variant="border">
-    <Tabs.Panel tab="Tab 1" tabKey="1">
+    <Tabs.Panel tab="Tab 1" key="1">
       <Typography.Text>Content appears above the tabs</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Tab 2" tabKey="2">
+    <Tabs.Panel tab="Tab 2" key="2">
       <Typography.Text>Second tab content</Typography.Text>
     </Tabs.Panel>
-    <Tabs.Panel tab="Tab 3" tabKey="3">
+    <Tabs.Panel tab="Tab 3" key="3">
       <Typography.Text>Third tab content</Typography.Text>
     </Tabs.Panel>
   </Tabs>

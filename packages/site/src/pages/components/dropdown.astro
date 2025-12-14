@@ -20,10 +20,10 @@ const dropdownApi = [
 ];
 
 const itemApi = [
+  { property: 'key', description: 'Unique key for the item (React key prop)', type: 'string' },
   { property: 'children', description: 'Item content', type: 'React.ReactNode' },
   { property: 'label', description: 'Item label (alternative to children)', type: 'React.ReactNode' },
   { property: 'icon', description: 'Icon to display before label', type: 'React.ReactNode' },
-  { property: 'itemKey', description: 'Unique key for the item', type: 'string' },
   { property: 'onClick', description: 'Click handler', type: '() => void' },
   { property: 'active', description: 'Active/selected state', type: 'boolean', default: 'false' },
   { property: 'disabled', description: 'Disable the item', type: 'boolean', default: 'false' },
@@ -42,10 +42,10 @@ const menuItemTypeApi = [
 ];
 
 const subMenuApi = [
+  { property: 'key', description: 'Unique key for the submenu (React key prop)', type: 'string', default: '-' },
   { property: 'children', description: 'Submenu items', type: 'React.ReactNode', default: '-' },
   { property: 'title', description: 'Submenu title/label', type: 'React.ReactNode', default: '-' },
   { property: 'icon', description: 'Icon to display before title', type: 'React.ReactNode', default: '-' },
-  { property: 'itemKey', description: 'Unique key for the submenu', type: 'string', default: '-' },
   { property: 'disabled', description: 'Disable the submenu', type: 'boolean', default: 'false' },
 ];
 

@@ -52,9 +52,9 @@ const App: React.FC = () => (
     <Layout className="flex-1">
       <Layout.Sider width={160} className="p-2">
         <Menu size="sm">
-          <Menu.Item itemKey="home" icon={<HomeIcon />}>Home</Menu.Item>
-          <Menu.Item itemKey="about" icon={<InfoIcon />}>About</Menu.Item>
-          <Menu.Item itemKey="contact" icon={<MailIcon />}>Contact</Menu.Item>
+          <Menu.Item key="home" icon={<HomeIcon />}>Home</Menu.Item>
+          <Menu.Item key="about" icon={<InfoIcon />}>About</Menu.Item>
+          <Menu.Item key="contact" icon={<MailIcon />}>Contact</Menu.Item>
         </Menu>
       </Layout.Sider>
       <Layout.Content className="bg-base-200 p-6">
@@ -96,9 +96,9 @@ const App: React.FC = () => (
       <Layout.Sider width={160} reverseArrow className="p-2 border-l border-base-300">
         <Menu size="sm">
           <Menu.Title>Quick Links</Menu.Title>
-          <Menu.Item itemKey="info">Info Panel</Menu.Item>
-          <Menu.Item itemKey="help">Help</Menu.Item>
-          <Menu.Item itemKey="docs">Documentation</Menu.Item>
+          <Menu.Item key="info">Info Panel</Menu.Item>
+          <Menu.Item key="help">Help</Menu.Item>
+          <Menu.Item key="docs">Documentation</Menu.Item>
         </Menu>
       </Layout.Sider>
     </Layout>
@@ -148,13 +148,13 @@ const App: React.FC = () => {
           className="p-2"
         >
           <Menu size="sm">
-            <Menu.Item itemKey="dash" icon={<DashboardIcon />}>
+            <Menu.Item key="dash" icon={<DashboardIcon />}>
               {!collapsed && 'Dashboard'}
             </Menu.Item>
-            <Menu.Item itemKey="users" icon={<UsersIcon />}>
+            <Menu.Item key="users" icon={<UsersIcon />}>
               {!collapsed && 'Users'}
             </Menu.Item>
-            <Menu.Item itemKey="settings" icon={<SettingsIcon />}>
+            <Menu.Item key="settings" icon={<SettingsIcon />}>
               {!collapsed && 'Settings'}
             </Menu.Item>
           </Menu>
@@ -212,11 +212,11 @@ const App: React.FC = () => {
             onSelect={setSelectedKey}
           >
             <Menu.Title>Navigation</Menu.Title>
-            <Menu.Item itemKey="dashboard" icon={<DashboardIcon />}>Dashboard</Menu.Item>
-            <Menu.Item itemKey="users" icon={<UsersIcon />}>Users</Menu.Item>
-            <Menu.Item itemKey="analytics" icon={<AnalyticsIcon />}>Analytics</Menu.Item>
+            <Menu.Item key="dashboard" icon={<DashboardIcon />}>Dashboard</Menu.Item>
+            <Menu.Item key="users" icon={<UsersIcon />}>Users</Menu.Item>
+            <Menu.Item key="analytics" icon={<AnalyticsIcon />}>Analytics</Menu.Item>
             <Menu.Divider />
-            <Menu.Item itemKey="settings" icon={<SettingsIcon />}>Settings</Menu.Item>
+            <Menu.Item key="settings" icon={<SettingsIcon />}>Settings</Menu.Item>
           </Menu>
         </Layout.Sider>
         <Layout.Content className="bg-base-200 p-6">
@@ -260,14 +260,14 @@ const App: React.FC = () => {
             defaultOpenKeys={['settings', 'users']}
             onSelect={setSelectedKey}
           >
-            <Menu.SubMenu itemKey="settings" label="Settings" icon={<SettingsIcon />}>
-              <Menu.Item itemKey="general">General</Menu.Item>
-              <Menu.Item itemKey="security">Security</Menu.Item>
-              <Menu.Item itemKey="profile">Profile</Menu.Item>
+            <Menu.SubMenu key="settings" label="Settings" icon={<SettingsIcon />}>
+              <Menu.Item key="general">General</Menu.Item>
+              <Menu.Item key="security">Security</Menu.Item>
+              <Menu.Item key="profile">Profile</Menu.Item>
             </Menu.SubMenu>
-            <Menu.SubMenu itemKey="users" label="Users" icon={<UsersIcon />}>
-              <Menu.Item itemKey="team">Team Members</Menu.Item>
-              <Menu.Item itemKey="roles">Roles</Menu.Item>
+            <Menu.SubMenu key="users" label="Users" icon={<UsersIcon />}>
+              <Menu.Item key="team">Team Members</Menu.Item>
+              <Menu.Item key="roles">Roles</Menu.Item>
             </Menu.SubMenu>
           </Menu>
         </Layout.Sider>

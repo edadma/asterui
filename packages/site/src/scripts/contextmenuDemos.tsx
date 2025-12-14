@@ -7,9 +7,9 @@ const BasicDemo = () => (
     <div className="p-8 bg-base-200 rounded-lg text-center cursor-context-menu">
       Right-click here
     </div>
-    <ContextMenu.Item itemKey="copy">Copy</ContextMenu.Item>
-    <ContextMenu.Item itemKey="paste">Paste</ContextMenu.Item>
-    <ContextMenu.Item itemKey="cut">Cut</ContextMenu.Item>
+    <ContextMenu.Item key="copy">Copy</ContextMenu.Item>
+    <ContextMenu.Item key="paste">Paste</ContextMenu.Item>
+    <ContextMenu.Item key="cut">Cut</ContextMenu.Item>
   </ContextMenu>
 )
 

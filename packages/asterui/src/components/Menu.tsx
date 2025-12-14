@@ -38,23 +38,25 @@ export interface MenuProps extends Omit<React.HTMLAttributes<HTMLUListElement>, 
 
 export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLAnchorElement>, 'onClick'> {
   children: React.ReactNode
-  itemKey?: string
   icon?: React.ReactNode
   disabled?: boolean
   onClick?: () => void
-  /** @deprecated Use itemKey and selectedKeys instead */
+  /** @deprecated Use key and selectedKeys instead */
   active?: boolean
+  /** @internal */
+  _key?: string
 }
 
 export interface MenuSubMenuProps extends Omit<React.HTMLAttributes<HTMLLIElement>, 'title'> {
   children: React.ReactNode
-  itemKey: string
   /** Submenu label */
   label?: React.ReactNode
   /** Submenu title (alias for label) */
   title?: React.ReactNode
   icon?: React.ReactNode
   disabled?: boolean
+  /** @internal */
+  _key?: string
 }
 
 export interface MenuTitleProps extends React.HTMLAttributes<HTMLLIElement> {
@@ -93,14 +95,14 @@ function renderMenuItem(item: MenuItem, onSelect: (key: string) => void, selecte
 
   if (item.children && item.children.length > 0) {
     return (
-      <MenuSubMenu key={item.key} itemKey={item.key} label={item.label} icon={item.icon} disabled={item.disabled}>
+      <MenuSubMenu key={item.key} _key={item.key} label={item.label} icon={item.icon} disabled={item.disabled}>
         {item.children.map((child) => renderMenuItem(child, onSelect, selectedKeys, openKeys, onToggleOpen))}
       </MenuSubMenu>
     )
   }
 
   return (
-    <MenuItem key={item.key} itemKey={item.key} icon={item.icon} disabled={item.disabled}>
+    <MenuItem key={item.key} _key={item.key} icon={item.icon} disabled={item.disabled}>
       {item.label}
     </MenuItem>
   )
@@ -174,10 +176,23 @@ function MenuRoot({
     onToggleOpen: handleToggleOpen,
   }
 
+  // Clone children to extract keys
+  const cloneChildrenWithKeys = (children: React.ReactNode): React.ReactNode => {
+    return React.Children.map(children, (child) => {
+      if (React.isValidElement(child)) {
+        const childKey = child.key != null ? String(child.key) : undefined
+        if (child.type === MenuItem || child.type === MenuSubMenu) {
+          return React.cloneElement(child as React.ReactElement<any>, { _key: childKey })
+        }
+      }
+      return child
+    })
+  }
+
   // Render data-driven items if provided
   const content = items && items.length > 0
     ? items.map((item) => renderMenuItem(item, handleSelect, selectedKeys, openKeys, handleToggleOpen))
-    : children
+    : cloneChildrenWithKeys(children)
 
   return (
     <MenuContext.Provider value={contextValue}>
@@ -188,23 +203,23 @@ function MenuRoot({
 
 function MenuItem({
   children,
-  itemKey,
   icon,
   disabled = false,
   onClick,
   active,
   className = '',
+  _key,
   ...rest
 }: MenuItemProps) {
   const context = useContext(MenuContext)
 
   // Support both old active prop and new key-based selection
-  const isSelected = itemKey && context ? context.selectedKeys.includes(itemKey) : active
+  const isSelected = _key && context ? context.selectedKeys.includes(_key) : active
 
   const handleClick = () => {
     if (disabled) return
-    if (itemKey && context) {
-      context.onSelect(itemKey)
+    if (_key && context) {
+      context.onSelect(_key)
     }
     onClick?.()
   }
@@ -236,24 +251,24 @@ function MenuItem({
 
 function MenuSubMenu({
   children,
-  itemKey,
   label,
   title,
   icon,
   disabled = false,
   className = '',
+  _key,
   ...rest
 }: MenuSubMenuProps) {
   const context = useMenuContext()
-  const isOpen = context.openKeys.includes(itemKey)
+  const isOpen = _key ? context.openKeys.includes(_key) : false
   const submenuId = useId()
 
   // Support both label and title (title as alias for backwards compatibility)
   const displayLabel = label ?? title
 
   const handleToggle = () => {
-    if (disabled) return
-    context.onToggleOpen(itemKey)
+    if (disabled || !_key) return
+    context.onToggleOpen(_key)
   }
 
   const submenuClasses = [disabled && 'disabled', className].filter(Boolean).join(' ')

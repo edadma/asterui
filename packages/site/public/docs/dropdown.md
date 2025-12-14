@@ -268,10 +268,10 @@ export default App
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
+| `key` | Unique key for the item (React key prop) | `string` | - |
 | `children` | Item content | `React.ReactNode` | - |
 | `label` | Item label (alternative to children) | `React.ReactNode` | - |
 | `icon` | Icon to display before label | `React.ReactNode` | - |
-| `itemKey` | Unique key for the item | `string` | - |
 | `onClick` | Click handler | `() => void` | - |
 | `active` | Active/selected state | `boolean` | `false` |
 | `disabled` | Disable the item | `boolean` | `false` |
@@ -282,10 +282,10 @@ export default App
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
+| `key` | Unique key for the submenu (React key prop) | `string` | - |
 | `children` | Submenu items | `React.ReactNode` | - |
 | `title` | Submenu title/label | `React.ReactNode` | - |
 | `icon` | Icon to display before title | `React.ReactNode` | - |
-| `itemKey` | Unique key for the submenu | `string` | - |
 | `disabled` | Disable the submenu | `boolean` | `false` |
 
 ### DropdownMenuItem (for items prop)

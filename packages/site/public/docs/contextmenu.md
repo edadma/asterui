@@ -15,9 +15,9 @@ import { ContextMenu } from 'asterui'
   <div className="p-8 bg-base-200 rounded cursor-context-menu">
     Right-click here
   </div>
-  <ContextMenu.Item itemKey="copy">Copy</ContextMenu.Item>
-  <ContextMenu.Item itemKey="paste">Paste</ContextMenu.Item>
-  <ContextMenu.Item itemKey="cut">Cut</ContextMenu.Item>
+  <ContextMenu.Item key="copy">Copy</ContextMenu.Item>
+  <ContextMenu.Item key="paste">Paste</ContextMenu.Item>
+  <ContextMenu.Item key="cut">Cut</ContextMenu.Item>
 </ContextMenu>
 ```
 
@@ -127,7 +127,7 @@ import { ContextMenu } from 'asterui'
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| itemKey | Unique key for the item | `string` | - |
+| key | Unique key for the item (React key prop) | `string` | - |
 | children | Item content | `React.ReactNode` | - |
 | icon | Icon to display before label | `React.ReactNode` | - |
 | disabled | Whether the item is disabled | `boolean` | `false` |
@@ -137,7 +137,7 @@ import { ContextMenu } from 'asterui'
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| itemKey | Unique key for the submenu | `string` | - |
+| key | Unique key for the submenu (React key prop) | `string` | - |
 | label | Submenu label | `React.ReactNode` | - |
 | icon | Icon to display before label | `React.ReactNode` | - |
 | disabled | Whether the submenu is disabled | `boolean` | `false` |

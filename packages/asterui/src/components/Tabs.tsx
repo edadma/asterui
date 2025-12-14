@@ -34,8 +34,6 @@ export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'o
 export interface TabPanelProps {
   /** Tab button label */
   tab: React.ReactNode
-  /** Unique identifier for the tab */
-  tabKey: string
   /** Disable the tab */
   disabled?: boolean
   /** Tab panel content */
@@ -58,6 +56,10 @@ const sizeClasses: Record<TabsSize, string> = {
   xl: 'tabs-xl',
 }
 
+interface InternalPanelProps extends TabPanelProps {
+  _key: string
+}
+
 function TabsRoot({
   children,
   items,
@@ -70,25 +72,29 @@ function TabsRoot({
   className = '',
   ...rest
 }: TabsProps) {
-  // Get panels from children (compound pattern)
-  const panels = React.Children.toArray(children).filter(
-    (child): child is React.ReactElement<TabPanelProps> =>
+  // Get panels from children (compound pattern), extracting key from React element
+  const panels = React.Children.toArray(children)
+    .filter((child): child is React.ReactElement<TabPanelProps> =>
       React.isValidElement(child) && child.type === TabPanel
-  )
+    )
+    .map((child) => ({
+      ...child.props,
+      _key: child.key != null ? String(child.key) : '',
+    }))
 
   // Convert items to panel-like structure if using data-driven pattern
-  const effectivePanels = items && items.length > 0
+  const effectivePanels: InternalPanelProps[] = items && items.length > 0
     ? items.map(item => ({
-        tabKey: item.key,
+        _key: item.key,
         tab: item.label,
         children: item.children,
         disabled: item.disabled,
         icon: item.icon,
       }))
-    : panels.map(p => p.props)
+    : panels
 
   const [internalActiveKey, setInternalActiveKey] = useState(
-    defaultActiveKey || effectivePanels[0]?.tabKey || ''
+    defaultActiveKey || effectivePanels[0]?._key || ''
   )
   const currentActiveKey = activeKey !== undefined ? activeKey : internalActiveKey
 
@@ -108,12 +114,12 @@ function TabsRoot({
     .filter(Boolean)
     .join(' ')
 
-  const activePanel = effectivePanels.find((panel) => panel.tabKey === currentActiveKey)
+  const activePanel = effectivePanels.find((panel) => panel._key === currentActiveKey)
 
   const tabList = (
     <div role="tablist" className={classes}>
       {effectivePanels.map((panel) => {
-        const isActive = currentActiveKey === panel.tabKey
+        const isActive = currentActiveKey === panel._key
         const tabClasses = [
           'tab',
           isActive && 'tab-active',
@@ -124,10 +130,10 @@ function TabsRoot({
 
         return (
           <button
-            key={panel.tabKey}
+            key={panel._key}
             role="tab"
             className={tabClasses}
-            onClick={() => !panel.disabled && handleTabClick(panel.tabKey)}
+            onClick={() => !panel.disabled && handleTabClick(panel._key)}
             disabled={panel.disabled}
             data-state={isActive ? 'active' : 'inactive'}
             aria-selected={isActive}

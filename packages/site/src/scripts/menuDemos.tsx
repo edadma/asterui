@@ -10,10 +10,10 @@ const BasicDemo: React.FC = () => {
 
   return (
     <Menu selectedKeys={[selected]} onSelect={setSelected}>
-      <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
-      <Menu.Item itemKey="projects">Projects</Menu.Item>
-      <Menu.Item itemKey="team">Team</Menu.Item>
-      <Menu.Item itemKey="settings">Settings</Menu.Item>
+      <Menu.Item key="dashboard">Dashboard</Menu.Item>
+      <Menu.Item key="projects">Projects</Menu.Item>
+      <Menu.Item key="team">Team</Menu.Item>
+      <Menu.Item key="settings">Settings</Menu.Item>
     </Menu>
   )
 }
@@ -23,10 +23,10 @@ const HorizontalDemo: React.FC = () => {
 
   return (
     <Menu mode="horizontal" selectedKeys={[selected]} onSelect={setSelected}>
-      <Menu.Item itemKey="home">Home</Menu.Item>
-      <Menu.Item itemKey="about">About</Menu.Item>
-      <Menu.Item itemKey="services">Services</Menu.Item>
-      <Menu.Item itemKey="contact">Contact</Menu.Item>
+      <Menu.Item key="home">Home</Menu.Item>
+      <Menu.Item key="about">About</Menu.Item>
+      <Menu.Item key="services">Services</Menu.Item>
+      <Menu.Item key="contact">Contact</Menu.Item>
     </Menu>
   )
 }
@@ -36,16 +36,16 @@ const WithIconsDemo: React.FC = () => {
 
   return (
     <Menu selectedKeys={[selected]} onSelect={setSelected}>
-      <Menu.Item itemKey="dashboard" icon={<HomeIcon />}>
+      <Menu.Item key="dashboard" icon={<HomeIcon />}>
         Dashboard
       </Menu.Item>
-      <Menu.Item itemKey="projects" icon={<FolderIcon />}>
+      <Menu.Item key="projects" icon={<FolderIcon />}>
         Projects
       </Menu.Item>
-      <Menu.Item itemKey="team" icon={<UsersIcon />}>
+      <Menu.Item key="team" icon={<UsersIcon />}>
         Team
       </Menu.Item>
-      <Menu.Item itemKey="settings" icon={<Cog6ToothIcon />}>
+      <Menu.Item key="settings" icon={<Cog6ToothIcon />}>
         Settings
       </Menu.Item>
     </Menu>
@@ -57,21 +57,21 @@ const SubmenuDemo: React.FC = () => {
 
   return (
     <Menu selectedKeys={[selected]} onSelect={setSelected} defaultOpenKeys={['projects']}>
-      <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
-      <Menu.SubMenu itemKey="projects" label="Projects">
-        <Menu.Item itemKey="active">Active Projects</Menu.Item>
-        <Menu.Item itemKey="archived">Archived</Menu.Item>
-        <Menu.Item itemKey="templates">Templates</Menu.Item>
+      <Menu.Item key="dashboard">Dashboard</Menu.Item>
+      <Menu.SubMenu key="projects" label="Projects">
+        <Menu.Item key="active">Active Projects</Menu.Item>
+        <Menu.Item key="archived">Archived</Menu.Item>
+        <Menu.Item key="templates">Templates</Menu.Item>
       </Menu.SubMenu>
-      <Menu.SubMenu itemKey="team" label="Team">
-        <Menu.Item itemKey="members">Members</Menu.Item>
-        <Menu.Item itemKey="roles">Roles</Menu.Item>
-        <Menu.Item itemKey="permissions">Permissions</Menu.Item>
+      <Menu.SubMenu key="team" label="Team">
+        <Menu.Item key="members">Members</Menu.Item>
+        <Menu.Item key="roles">Roles</Menu.Item>
+        <Menu.Item key="permissions">Permissions</Menu.Item>
       </Menu.SubMenu>
       <Menu.Divider />
       <Menu.Title>Admin</Menu.Title>
-      <Menu.Item itemKey="admin-settings">Settings</Menu.Item>
-      <Menu.Item itemKey="billing">Billing</Menu.Item>
+      <Menu.Item key="admin-settings">Settings</Menu.Item>
+      <Menu.Item key="billing">Billing</Menu.Item>
     </Menu>
   )
 }
@@ -81,36 +81,36 @@ const SizesDemo: React.FC = () => (
     <div>
       <div className="text-sm font-semibold mb-2">Extra Small</div>
       <Menu size="xs" defaultSelectedKeys={['dashboard']}>
-        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
-        <Menu.Item itemKey="projects">Projects</Menu.Item>
-        <Menu.Item itemKey="team">Team</Menu.Item>
+        <Menu.Item key="dashboard">Dashboard</Menu.Item>
+        <Menu.Item key="projects">Projects</Menu.Item>
+        <Menu.Item key="team">Team</Menu.Item>
       </Menu>
     </div>
 
     <div>
       <div className="text-sm font-semibold mb-2">Small</div>
       <Menu size="sm" defaultSelectedKeys={['dashboard']}>
-        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
-        <Menu.Item itemKey="projects">Projects</Menu.Item>
-        <Menu.Item itemKey="team">Team</Menu.Item>
+        <Menu.Item key="dashboard">Dashboard</Menu.Item>
+        <Menu.Item key="projects">Projects</Menu.Item>
+        <Menu.Item key="team">Team</Menu.Item>
       </Menu>
     </div>
 
     <div>
       <div className="text-sm font-semibold mb-2">Medium</div>
       <Menu size="md" defaultSelectedKeys={['dashboard']}>
-        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
-        <Menu.Item itemKey="projects">Projects</Menu.Item>
-        <Menu.Item itemKey="team">Team</Menu.Item>
+        <Menu.Item key="dashboard">Dashboard</Menu.Item>
+        <Menu.Item key="projects">Projects</Menu.Item>
+        <Menu.Item key="team">Team</Menu.Item>
       </Menu>
     </div>
 
     <div>
       <div className="text-sm font-semibold mb-2">Large</div>
       <Menu size="lg" defaultSelectedKeys={['dashboard']}>
-        <Menu.Item itemKey="dashboard">Dashboard</Menu.Item>
-        <Menu.Item itemKey="projects">Projects</Menu.Item>
-        <Menu.Item itemKey="team">Team</Menu.Item>
+        <Menu.Item key="dashboard">Dashboard</Menu.Item>
+        <Menu.Item key="projects">Projects</Menu.Item>
+        <Menu.Item key="team">Team</Menu.Item>
       </Menu>
     </div>
   </Space>

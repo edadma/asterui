@@ -25,8 +25,6 @@ export interface ContextMenuProps {
 }
 
 export interface ContextMenuItemProps {
-  /** Unique key for the item */
-  itemKey: string
   /** Item content */
   children: React.ReactNode
   /** Icon to display before label */
@@ -37,6 +35,8 @@ export interface ContextMenuItemProps {
   danger?: boolean
   /** Additional CSS classes */
   className?: string
+  /** @internal */
+  _key?: string
 }
 
 export interface ContextMenuDividerProps {
@@ -45,8 +45,6 @@ export interface ContextMenuDividerProps {
 }
 
 export interface ContextMenuSubMenuProps {
-  /** Unique key for the submenu */
-  itemKey: string
   /** Submenu label */
   label: React.ReactNode
   /** Icon to display before label */
@@ -57,6 +55,8 @@ export interface ContextMenuSubMenuProps {
   children: React.ReactNode
   /** Additional CSS classes */
   className?: string
+  /** @internal */
+  _key?: string
 }
 
 interface ContextMenuContextValue {
@@ -81,18 +81,18 @@ const useContextMenuContext = () => {
 
 // Compound pattern components
 const ContextMenuItemComponent: React.FC<ContextMenuItemProps> = ({
-  itemKey,
   children,
   icon,
   disabled = false,
   danger = false,
   className = '',
+  _key,
 }) => {
   const { onSelect, onClose } = useContextMenuContext()
 
   const handleClick = () => {
-    if (disabled) return
-    onSelect(itemKey)
+    if (disabled || !_key) return
+    onSelect(_key)
     onClose()
   }
 
@@ -119,12 +119,12 @@ const ContextMenuDividerComponent: React.FC<ContextMenuDividerProps> = ({ classN
 }
 
 const ContextMenuSubMenuComponent: React.FC<ContextMenuSubMenuProps> = ({
-  itemKey: _itemKey,
   label,
   icon,
   disabled = false,
   children,
   className = '',
+  _key: _unusedKey,
 }) => {
   const [showSubmenu, setShowSubmenu] = useState(false)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -336,11 +336,24 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
     }
   }, [visible, handleClose])
 
+  // Clone children to extract keys
+  const cloneChildrenWithKeys = (children: React.ReactNode): React.ReactNode => {
+    return React.Children.map(children, (child) => {
+      if (React.isValidElement(child)) {
+        const childKey = child.key != null ? String(child.key) : undefined
+        if (child.type === ContextMenuItemComponent || child.type === ContextMenuSubMenuComponent) {
+          return React.cloneElement(child as React.ReactElement<any>, { _key: childKey })
+        }
+      }
+      return child
+    })
+  }
+
   // Determine if using data-driven or compound pattern
   // Find menu content children (not the trigger element)
   const childArray = React.Children.toArray(children)
   const triggerChild = childArray[0]
-  const menuChildren = childArray.slice(1)
+  const menuChildren = cloneChildrenWithKeys(childArray.slice(1))
   const useDataDriven = items && items.length > 0
 
   const contextValue: ContextMenuContextValue = {

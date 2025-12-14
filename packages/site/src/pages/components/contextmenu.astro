@@ -22,7 +22,7 @@ const contextMenuItemApi = [
 ];
 
 const contextMenuItemCompoundApi = [
-  { property: 'itemKey', description: 'Unique key for the item', type: 'string', default: '-' },
+  { property: 'key', description: 'Unique key for the item (React key prop)', type: 'string', default: '-' },
   { property: 'children', description: 'Item content', type: 'React.ReactNode', default: '-' },
   { property: 'icon', description: 'Icon to display before label', type: 'React.ReactNode', default: '-' },
   { property: 'disabled', description: 'Whether the item is disabled', type: 'boolean', default: 'false' },
@@ -30,7 +30,7 @@ const contextMenuItemCompoundApi = [
 ];
 
 const contextMenuSubMenuApi = [
-  { property: 'itemKey', description: 'Unique key for the submenu', type: 'string', default: '-' },
+  { property: 'key', description: 'Unique key for the submenu (React key prop)', type: 'string', default: '-' },
   { property: 'label', description: 'Submenu label', type: 'React.ReactNode', default: '-' },
   { property: 'icon', description: 'Icon to display before label', type: 'React.ReactNode', default: '-' },
   { property: 'disabled', description: 'Whether the submenu is disabled', type: 'boolean', default: 'false' },
@@ -50,9 +50,9 @@ const App: React.FC = () => (
     <div className="p-8 bg-base-200 rounded-lg text-center cursor-context-menu">
       Right-click here
     </div>
-    <ContextMenu.Item itemKey="copy">Copy</ContextMenu.Item>
-    <ContextMenu.Item itemKey="paste">Paste</ContextMenu.Item>
-    <ContextMenu.Item itemKey="cut">Cut</ContextMenu.Item>
+    <ContextMenu.Item key="copy">Copy</ContextMenu.Item>
+    <ContextMenu.Item key="paste">Paste</ContextMenu.Item>
+    <ContextMenu.Item key="cut">Cut</ContextMenu.Item>
   </ContextMenu>
 )
 

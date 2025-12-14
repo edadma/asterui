@@ -88,8 +88,6 @@ export interface DropdownMenuProps {
 
 export interface DropdownItemProps {
   children?: React.ReactNode
-  /** Unique key for the item */
-  itemKey?: string
   /** Icon to display before label */
   icon?: React.ReactNode
   /** Item label (alternative to children) */
@@ -99,19 +97,22 @@ export interface DropdownItemProps {
   disabled?: boolean
   danger?: boolean
   className?: string
-  _index?: number // Internal prop passed by DropdownMenu
+  /** @internal */
+  _index?: number
+  /** @internal */
+  _key?: string
 }
 
 export interface DropdownSubMenuProps {
   children: React.ReactNode
-  /** Unique key for the submenu */
-  itemKey?: string
   /** Submenu title/label */
   title: React.ReactNode
   /** Icon to display before title */
   icon?: React.ReactNode
   disabled?: boolean
   className?: string
+  /** @internal */
+  _key?: string
 }
 
 export interface DropdownDividerProps {
@@ -277,7 +278,6 @@ function DropdownRoot({
         return (
           <DropdownSubMenu
             key={menuItem.key}
-            itemKey={menuItem.key}
             title={menuItem.label}
             icon={menuItem.icon}
             disabled={menuItem.disabled}
@@ -285,7 +285,6 @@ function DropdownRoot({
             {menuItem.children.map((child) => (
               <DropdownItem
                 key={child.key}
-                itemKey={child.key}
                 icon={child.icon}
                 disabled={child.disabled}
                 danger={child.danger}
@@ -300,7 +299,6 @@ function DropdownRoot({
       return (
         <DropdownItem
           key={menuItem.key}
-          itemKey={menuItem.key}
           icon={menuItem.icon}
           disabled={menuItem.disabled}
           danger={menuItem.danger}
@@ -493,10 +491,16 @@ function DropdownMenu({ children, className = '' }: DropdownMenuProps) {
     .filter(Boolean)
     .join(' ')
 
-  // Clone children to pass index
+  // Clone children to pass index and extract key
   const childrenWithIndex = React.Children.map(children, (child, index) => {
-    if (React.isValidElement(child) && child.type === DropdownItem) {
-      return React.cloneElement(child as React.ReactElement<any>, { _index: index })
+    if (React.isValidElement(child)) {
+      const childKey = child.key != null ? String(child.key) : undefined
+      if (child.type === DropdownItem) {
+        return React.cloneElement(child as React.ReactElement<any>, { _index: index, _key: childKey })
+      }
+      if (child.type === DropdownSubMenu) {
+        return React.cloneElement(child as React.ReactElement<any>, { _key: childKey })
+      }
     }
     return child
   })
@@ -534,7 +538,6 @@ function DropdownMenu({ children, className = '' }: DropdownMenuProps) {
 
 function DropdownItem({
   children,
-  itemKey,
   icon,
   label,
   onClick,
@@ -542,6 +545,7 @@ function DropdownItem({
   disabled = false,
   danger = false,
   className = '',
+  _key,
 }: DropdownItemProps) {
   const { closeDropdown } = useDropdownContext()
   const itemClasses = [active && 'active', disabled && 'disabled', className].filter(Boolean).join(' ')
@@ -563,7 +567,7 @@ function DropdownItem({
   const content = label || children
 
   return (
-    <li className={itemClasses} role="none" data-key={itemKey}>
+    <li className={itemClasses} role="none" data-key={_key}>
       <a
         role="menuitem"
         tabIndex={disabled ? -1 : 0}
@@ -581,11 +585,11 @@ function DropdownItem({
 
 function DropdownSubMenu({
   children,
-  itemKey,
   title,
   icon,
   disabled = false,
   className = '',
+  _key,
 }: DropdownSubMenuProps) {
   const [isSubOpen, setIsSubOpen] = useState(false)
   const subMenuRef = useRef<HTMLLIElement>(null)
@@ -671,7 +675,7 @@ function DropdownSubMenu({
       ref={subMenuRef}
       className={itemClasses}
       role="none"
-      data-key={itemKey}
+      data-key={_key}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
