@@ -15,6 +15,7 @@ import CheckboxDemoSource from '../../components/CheckboxDemo.tsx?raw';
 
 const api = [
   { title: 'Checkbox', data: [
+    { property: 'children', description: 'Label content (automatically wrapped in label element)', type: 'React.ReactNode' },
     { property: 'checked', description: 'Controlled checked state', type: 'boolean' },
     { property: 'defaultChecked', description: 'Initial checked state', type: 'boolean', default: 'false' },
     { property: 'onChange', description: 'Change handler', type: '(e: ChangeEvent) => void' },
@@ -23,15 +24,21 @@ const api = [
     { property: 'size', description: 'Checkbox size', type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'" },
     { property: 'color', description: 'Checkbox color', type: "'primary' | 'secondary' | 'accent' | 'neutral' | 'info' | 'success' | 'warning' | 'error'" },
     { property: 'swap', description: 'Swap mode config', type: '{ on: ReactNode, off: ReactNode, effect?: "rotate" | "flip" }' },
+    { property: 'name', description: 'HTML name attribute for the input', type: 'string' },
+    { property: 'value', description: 'Value attribute (used with Checkbox.Group)', type: 'string | number' },
+    { property: 'autoFocus', description: 'Auto focus on mount', type: 'boolean', default: 'false' },
     { property: 'className', description: 'Additional CSS classes', type: 'string' },
+    { property: 'data-testid', description: 'Test ID for the checkbox element', type: 'string' },
   ]},
   { title: 'Checkbox.Group', data: [
-    { property: 'value', description: 'Selected values', type: '(string | number)[]' },
+    { property: 'value', description: 'Selected values (controlled)', type: '(string | number)[]' },
     { property: 'defaultValue', description: 'Initial selected values', type: '(string | number)[]' },
     { property: 'onChange', description: 'Change handler', type: '(values: (string | number)[]) => void' },
     { property: 'options', description: 'Checkbox options', type: 'CheckboxOption[]' },
     { property: 'disabled', description: 'Disable all checkboxes', type: 'boolean', default: 'false' },
     { property: 'direction', description: 'Layout direction', type: "'horizontal' | 'vertical'", default: "'vertical'" },
+    { property: 'name', description: 'HTML name attribute for all checkboxes (for form submission)', type: 'string' },
+    { property: 'data-testid', description: 'Test ID prefix (options get {testId}-option-{value})', type: 'string' },
   ]},
 ];
 ---
@@ -41,7 +48,7 @@ const api = [
   description="Checkbox input with group support, indeterminate state, and multiple colors."
   api={api}
 >
-  <Example title="Basic Checkbox" description="Simple checkbox with label." source={CheckboxDemoSource} fn="BasicDemo">
+  <Example title="Basic Checkbox" description="Simple checkbox with label using the built-in children prop." source={CheckboxDemoSource} fn="BasicDemo">
     <BasicDemo client:load slot="demo" />
   </Example>
 
@@ -77,8 +84,9 @@ const api = [
     <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
     <ul class="list-disc list-inside space-y-2 text-base-content/80">
       <li>Uses native <code class="bg-base-content/20 px-1 rounded">&lt;input type="checkbox"&gt;</code> for full keyboard support</li>
-      <li>Always pair with a <code class="bg-base-content/20 px-1 rounded">&lt;label&gt;</code> for accessibility</li>
-      <li>Indeterminate state is properly communicated to screen readers</li>
+      <li>When using <code class="bg-base-content/20 px-1 rounded">children</code>, the checkbox is automatically wrapped in a <code class="bg-base-content/20 px-1 rounded">&lt;label&gt;</code> for proper accessibility</li>
+      <li><code class="bg-base-content/20 px-1 rounded">aria-checked="mixed"</code> is set automatically when <code class="bg-base-content/20 px-1 rounded">indeterminate</code> is true</li>
+      <li>Focus visible styles are provided by default</li>
     </ul>
   </section>
 </ComponentLayout>

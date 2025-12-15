@@ -6,10 +6,7 @@ import { Demo } from './Demo'
 export function BasicDemo() {
   return (
     <Demo>
-      <label className="flex items-center gap-2 cursor-pointer">
-        <Checkbox />
-        <span>Accept terms and conditions</span>
-      </label>
+      <Checkbox>Accept terms and conditions</Checkbox>
     </Demo>
   )
 }
@@ -18,22 +15,13 @@ export function ColorsDemo() {
   return (
     <Demo>
       <Space direction="vertical" size="sm">
-        <label className="flex items-center gap-2 cursor-pointer">
-          <Checkbox color="primary" defaultChecked />
-          <span>Primary</span>
-        </label>
-        <label className="flex items-center gap-2 cursor-pointer">
-          <Checkbox color="secondary" defaultChecked />
-          <span>Secondary</span>
-        </label>
-        <label className="flex items-center gap-2 cursor-pointer">
-          <Checkbox color="accent" defaultChecked />
-          <span>Accent</span>
-        </label>
-        <label className="flex items-center gap-2 cursor-pointer">
-          <Checkbox color="success" defaultChecked />
-          <span>Success</span>
-        </label>
+        <Checkbox color="primary" defaultChecked>Primary</Checkbox>
+        <Checkbox color="secondary" defaultChecked>Secondary</Checkbox>
+        <Checkbox color="accent" defaultChecked>Accent</Checkbox>
+        <Checkbox color="success" defaultChecked>Success</Checkbox>
+        <Checkbox color="warning" defaultChecked>Warning</Checkbox>
+        <Checkbox color="info" defaultChecked>Info</Checkbox>
+        <Checkbox color="error" defaultChecked>Error</Checkbox>
       </Space>
     </Demo>
   )
@@ -43,22 +31,11 @@ export function SizesDemo() {
   return (
     <Demo>
       <Space direction="horizontal" size="md" align="center">
-        <label className="flex items-center gap-2 cursor-pointer">
-          <Checkbox size="xs" defaultChecked />
-          <span className="text-xs">XS</span>
-        </label>
-        <label className="flex items-center gap-2 cursor-pointer">
-          <Checkbox size="sm" defaultChecked />
-          <span className="text-sm">SM</span>
-        </label>
-        <label className="flex items-center gap-2 cursor-pointer">
-          <Checkbox size="md" defaultChecked />
-          <span>MD</span>
-        </label>
-        <label className="flex items-center gap-2 cursor-pointer">
-          <Checkbox size="lg" defaultChecked />
-          <span className="text-lg">LG</span>
-        </label>
+        <Checkbox size="xs" defaultChecked>XS</Checkbox>
+        <Checkbox size="sm" defaultChecked>SM</Checkbox>
+        <Checkbox size="md" defaultChecked>MD</Checkbox>
+        <Checkbox size="lg" defaultChecked>LG</Checkbox>
+        <Checkbox size="xl" defaultChecked>XL</Checkbox>
       </Space>
     </Demo>
   )
@@ -68,14 +45,8 @@ export function DisabledDemo() {
   return (
     <Demo>
       <Space direction="horizontal" size="md">
-        <label className="flex items-center gap-2 cursor-not-allowed opacity-50">
-          <Checkbox disabled />
-          <span>Disabled</span>
-        </label>
-        <label className="flex items-center gap-2 cursor-not-allowed opacity-50">
-          <Checkbox disabled defaultChecked />
-          <span>Disabled Checked</span>
-        </label>
+        <Checkbox disabled>Disabled</Checkbox>
+        <Checkbox disabled defaultChecked>Disabled Checked</Checkbox>
       </Space>
     </Demo>
   )
@@ -93,28 +64,28 @@ export function IndeterminateDemo() {
   return (
     <Demo>
       <Space direction="vertical" size="sm">
-        <label className="flex items-center gap-2 cursor-pointer font-medium">
-          <Checkbox
-            checked={allChecked}
-            indeterminate={someChecked}
-            onChange={handleSelectAll}
-          />
-          <span>Select All</span>
-        </label>
+        <Checkbox
+          checked={allChecked}
+          indeterminate={someChecked}
+          onChange={handleSelectAll}
+          className="font-medium"
+        >
+          Select All
+        </Checkbox>
         <div className="ml-6">
           <Space direction="vertical" size="xs">
             {['Item 1', 'Item 2', 'Item 3'].map((item, i) => (
-              <label key={i} className="flex items-center gap-2 cursor-pointer">
-                <Checkbox
-                  checked={items[i]}
-                  onChange={() => {
-                    const newItems = [...items]
-                    newItems[i] = !newItems[i]
-                    setItems(newItems)
-                  }}
-                />
-                <span>{item}</span>
-              </label>
+              <Checkbox
+                key={i}
+                checked={items[i]}
+                onChange={() => {
+                  const newItems = [...items]
+                  newItems[i] = !newItems[i]
+                  setItems(newItems)
+                }}
+              >
+                {item}
+              </Checkbox>
             ))}
           </Space>
         </div>

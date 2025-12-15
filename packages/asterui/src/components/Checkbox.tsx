@@ -34,13 +34,17 @@ export interface CheckboxGroupProps {
   options?: (string | number | CheckboxOptionType)[]
   /** Layout direction for options */
   direction?: 'horizontal' | 'vertical'
+  /** HTML name attribute for all checkboxes in the group (for form submission) */
+  name?: string
   className?: string
+  'data-testid'?: string
 }
 
 interface CheckboxGroupContextValue {
   value?: (string | number)[]
   onChange?: (checkedValue: string | number, checked: boolean) => void
   disabled?: boolean
+  name?: string
 }
 
 const CheckboxGroupContext = createContext<CheckboxGroupContextValue | null>(null)
@@ -53,7 +57,9 @@ function CheckboxGroup({
   disabled = false,
   options,
   direction = 'vertical',
-  className = ''
+  name,
+  className = '',
+  'data-testid': testId
 }: CheckboxGroupProps) {
   const [internalValue, setInternalValue] = React.useState<(string | number)[]>(defaultValue || [])
   const currentValue = value !== undefined ? value : internalValue
@@ -73,6 +79,7 @@ function CheckboxGroup({
     value: currentValue,
     onChange: handleChange,
     disabled,
+    name,
   }
 
   // If options are provided, render checkboxes automatically
@@ -80,19 +87,21 @@ function CheckboxGroup({
     const directionClasses = direction === 'horizontal' ? 'flex flex-row flex-wrap gap-4' : 'flex flex-col'
     return (
       <CheckboxGroupContext.Provider value={contextValue}>
-        <div className={`${directionClasses} ${className}`.trim()}>
+        <div className={`${directionClasses} ${className}`.trim()} data-testid={testId}>
           {options.map((option) => {
             if (typeof option === 'string' || typeof option === 'number') {
+              const optionTestId = testId ? `${testId}-option-${option}` : undefined
               return (
                 <label key={option} className="flex items-center cursor-pointer gap-2">
-                  <CheckboxRoot value={option} />
+                  <CheckboxRoot value={option} data-testid={optionTestId} />
                   <span>{option}</span>
                 </label>
               )
             } else {
+              const optionTestId = testId ? `${testId}-option-${option.value}` : undefined
               return (
                 <label key={option.value} className="flex items-center cursor-pointer gap-2">
-                  <CheckboxRoot value={option.value} disabled={option.disabled} />
+                  <CheckboxRoot value={option.value} disabled={option.disabled} data-testid={optionTestId} />
                   <span>{option.label}</span>
                 </label>
               )
@@ -156,6 +165,12 @@ const CheckboxRoot = forwardRef<HTMLInputElement, CheckboxProps>(
       .filter(Boolean)
       .join(' ')
 
+    // Get name from group context or props
+    const inputName = groupContext?.name ?? props.name
+
+    // aria-checked should be "mixed" for indeterminate state
+    const ariaChecked = indeterminate ? 'mixed' : undefined
+
     // If in a group, use group's value to determine checked state
     const isChecked = groupContext && value !== undefined && (typeof value === 'string' || typeof value === 'number')
       ? groupContext.value?.includes(value) ?? false
@@ -203,9 +218,11 @@ const CheckboxRoot = forwardRef<HTMLInputElement, CheckboxProps>(
           <input
             ref={ref}
             type="checkbox"
+            name={inputName}
             checked={isChecked}
             onChange={handleChange}
             disabled={isDisabled}
+            aria-checked={ariaChecked}
             data-state={dataState}
             {...props}
           />
@@ -215,31 +232,44 @@ const CheckboxRoot = forwardRef<HTMLInputElement, CheckboxProps>(
       )
     }
 
-    const checkboxInput = (
-      <input
-        ref={checkboxRef}
-        type="checkbox"
-        className={checkboxClasses}
-        value={value}
-        checked={isChecked}
-        onChange={handleChange}
-        disabled={isDisabled}
-        data-state={dataState}
-        {...props}
-      />
-    )
-
     // If children provided, wrap in label
     if (children) {
       return (
-        <label className={`flex items-center cursor-pointer gap-2 ${className}`}>
-          {checkboxInput}
+        <label className={`flex items-center cursor-pointer gap-2 ${className}`.trim()}>
+          <input
+            ref={checkboxRef}
+            type="checkbox"
+            className={checkboxClasses}
+            name={inputName}
+            value={value}
+            checked={isChecked}
+            onChange={handleChange}
+            disabled={isDisabled}
+            aria-checked={ariaChecked}
+            data-state={dataState}
+            {...props}
+          />
           <span>{children}</span>
         </label>
       )
     }
 
-    return checkboxInput
+    // Bare checkbox input (no children, no swap)
+    return (
+      <input
+        ref={checkboxRef}
+        type="checkbox"
+        className={`${checkboxClasses} ${className}`.trim()}
+        name={inputName}
+        value={value}
+        checked={isChecked}
+        onChange={handleChange}
+        disabled={isDisabled}
+        aria-checked={ariaChecked}
+        data-state={dataState}
+        {...props}
+      />
+    )
   }
 )
 
