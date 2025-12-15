@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import QRCodeLib from 'qrcode'
 
 export type QRCodeErrorLevel = 'L' | 'M' | 'Q' | 'H'
@@ -35,52 +35,42 @@ export const QRCode: React.FC<QRCodeProps> = ({
   ...rest
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [loading, setLoading] = useState(status === 'loading')
 
   useEffect(() => {
-    setLoading(status === 'loading')
-  }, [status])
-
-  useEffect(() => {
-    if (status !== 'active' || !value) return
+    if (status !== 'active' || !value || type !== 'canvas') return
 
     const generateQRCode = async () => {
+      if (!canvasRef.current) return
+
       try {
-        setLoading(true)
+        await QRCodeLib.toCanvas(canvasRef.current, value, {
+          width: size,
+          margin: 1,
+          color: {
+            dark: color,
+            light: bgColor,
+          },
+          errorCorrectionLevel: errorLevel,
+        })
 
-        if (type === 'canvas' && canvasRef.current) {
-          await QRCodeLib.toCanvas(canvasRef.current, value, {
-            width: size,
-            margin: 1,
-            color: {
-              dark: color,
-              light: bgColor,
-            },
-            errorCorrectionLevel: errorLevel,
-          })
-
-          if (icon) {
-            const canvas = canvasRef.current
-            const ctx = canvas.getContext('2d')
-            if (ctx) {
-              const img = new Image()
-              img.crossOrigin = 'anonymous'
-              img.onload = () => {
-                const iconX = (size - iconSize) / 2
-                const iconY = (size - iconSize) / 2
-                ctx.fillStyle = bgColor
-                ctx.fillRect(iconX - 4, iconY - 4, iconSize + 8, iconSize + 8)
-                ctx.drawImage(img, iconX, iconY, iconSize, iconSize)
-              }
-              img.src = icon
+        if (icon && canvasRef.current) {
+          const canvas = canvasRef.current
+          const ctx = canvas.getContext('2d')
+          if (ctx) {
+            const img = new Image()
+            img.crossOrigin = 'anonymous'
+            img.onload = () => {
+              const iconX = (size - iconSize) / 2
+              const iconY = (size - iconSize) / 2
+              ctx.fillStyle = bgColor
+              ctx.fillRect(iconX - 4, iconY - 4, iconSize + 8, iconSize + 8)
+              ctx.drawImage(img, iconX, iconY, iconSize, iconSize)
             }
+            img.src = icon
           }
         }
-
-        setLoading(false)
       } catch (error) {
         console.error('QR Code generation error:', error)
-        setLoading(false)
       }
     }
 
@@ -99,7 +89,7 @@ export const QRCode: React.FC<QRCodeProps> = ({
     .filter(Boolean)
     .join(' ')
 
-  if (status === 'loading' || loading) {
+  if (status === 'loading') {
     return (
       <div className={containerClasses} style={{ width: size + (bordered ? 24 : 0), height: size + (bordered ? 24 : 0) }} data-state="loading" {...rest}>
         <div className="flex flex-col items-center justify-center gap-2">
