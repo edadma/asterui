@@ -1,34 +1,49 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useId, useEffect, useState } from 'react'
 
 export type DescriptionsSize = 'sm' | 'md' | 'lg'
 export type DescriptionsLayout = 'horizontal' | 'vertical'
 
 export interface DescriptionsItemProps {
+  /** Unique key for the item */
+  itemKey?: string
   /** Label for the item */
   label?: React.ReactNode
-  /** Number of columns to span */
-  span?: number
+  /** Number of columns to span, or 'filled' to fill remaining space */
+  span?: number | 'filled'
   /** Content of the item */
   children?: React.ReactNode
   /** Custom label styles */
   labelStyle?: React.CSSProperties
   /** Custom content styles */
   contentStyle?: React.CSSProperties
+  /** Custom label class */
+  labelClassName?: string
+  /** Custom content class */
+  contentClassName?: string
 }
 
 /** Item configuration for the items prop */
 export interface DescriptionsItemConfig {
+  /** Unique key for the item (used for test IDs and React keys) */
+  key?: string
   /** Label for the item */
   label: React.ReactNode
   /** Content of the item */
   children: React.ReactNode
-  /** Number of columns to span */
-  span?: number
+  /** Number of columns to span, or 'filled' to fill remaining space */
+  span?: number | 'filled'
   /** Custom label styles */
   labelStyle?: React.CSSProperties
   /** Custom content styles */
   contentStyle?: React.CSSProperties
+  /** Custom label class */
+  labelClassName?: string
+  /** Custom content class */
+  contentClassName?: string
 }
+
+/** Semantic DOM structure for styles/classNames */
+export type DescriptionsSemanticDOM = 'root' | 'header' | 'title' | 'extra' | 'table' | 'label' | 'content'
 
 export interface DescriptionsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /** Title of the descriptions block */
@@ -52,10 +67,14 @@ export interface DescriptionsProps extends Omit<React.HTMLAttributes<HTMLDivElem
   layout?: DescriptionsLayout
   /** Show colon after labels */
   colon?: boolean
-  /** Default label styles */
+  /** Default label styles (deprecated, use styles.label) */
   labelStyle?: React.CSSProperties
-  /** Default content styles */
+  /** Default content styles (deprecated, use styles.content) */
   contentStyle?: React.CSSProperties
+  /** Semantic styles for component parts */
+  styles?: Partial<Record<DescriptionsSemanticDOM, React.CSSProperties>>
+  /** Semantic classNames for component parts */
+  classNames?: Partial<Record<DescriptionsSemanticDOM, string>>
   /** Item configurations (alternative to children) */
   items?: DescriptionsItemConfig[]
   /** Children (Descriptions.Item elements) */
@@ -65,6 +84,8 @@ export interface DescriptionsProps extends Omit<React.HTMLAttributes<HTMLDivElem
 }
 
 function DescriptionsItem(_props: DescriptionsItemProps) {
+  // This component is used for the compound pattern
+  // The parent Descriptions component extracts props from children
   return null
 }
 
@@ -72,6 +93,64 @@ const sizeClasses: Record<DescriptionsSize, string> = {
   sm: 'text-sm',
   md: 'text-base',
   lg: 'text-lg',
+}
+
+// Breakpoint values in pixels (matches Tailwind defaults)
+const breakpoints = {
+  xs: 0,
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  '2xl': 1536,
+}
+
+type BreakpointKey = keyof typeof breakpoints
+
+function useResponsiveColumn(
+  column: number | Partial<Record<BreakpointKey, number>>
+): number {
+  const [columnCount, setColumnCount] = useState(() => {
+    if (typeof column === 'number') return column
+    // SSR fallback: use md or first available
+    return column.md ?? column.sm ?? column.xs ?? 3
+  })
+
+  useEffect(() => {
+    if (typeof column === 'number') {
+      setColumnCount(column)
+      return
+    }
+
+    const updateColumns = () => {
+      const width = window.innerWidth
+      const sortedBreakpoints = (Object.keys(breakpoints) as BreakpointKey[])
+        .filter((key) => column[key] !== undefined)
+        .sort((a, b) => breakpoints[b] - breakpoints[a])
+
+      for (const bp of sortedBreakpoints) {
+        if (width >= breakpoints[bp]) {
+          setColumnCount(column[bp]!)
+          return
+        }
+      }
+      // Fallback to smallest defined or 3
+      const smallest = sortedBreakpoints[sortedBreakpoints.length - 1]
+      setColumnCount(smallest ? column[smallest]! : 3)
+    }
+
+    updateColumns()
+    window.addEventListener('resize', updateColumns)
+    return () => window.removeEventListener('resize', updateColumns)
+  }, [column])
+
+  return columnCount
+}
+
+/** Internal item config with resolved key */
+interface InternalItemConfig extends DescriptionsItemConfig {
+  _key: string
+  _index: number
 }
 
 const DescriptionsRoot = forwardRef<HTMLDivElement, DescriptionsProps>(
@@ -86,6 +165,8 @@ const DescriptionsRoot = forwardRef<HTMLDivElement, DescriptionsProps>(
       colon = true,
       labelStyle,
       contentStyle,
+      styles,
+      classNames,
       items: itemsProp,
       className = '',
       style,
@@ -95,46 +176,67 @@ const DescriptionsRoot = forwardRef<HTMLDivElement, DescriptionsProps>(
     },
     ref
   ) => {
+    const baseId = useId()
+    const columnCount = useResponsiveColumn(column)
+
+    // Merge deprecated props with styles prop
+    const mergedLabelStyle = { ...labelStyle, ...styles?.label }
+    const mergedContentStyle = { ...contentStyle, ...styles?.content }
+
     // Convert children to item configs, or use items prop
-    const itemConfigs: DescriptionsItemConfig[] = itemsProp
-      ? itemsProp
-      : React.Children.toArray(children)
-          .filter((child): child is React.ReactElement<DescriptionsItemProps> =>
-            React.isValidElement(child)
-          )
-          .map((child) => ({
-            label: child.props.label,
-            children: child.props.children,
-            span: child.props.span,
-            labelStyle: child.props.labelStyle,
-            contentStyle: child.props.contentStyle,
-          }))
+    const itemConfigs: InternalItemConfig[] = (
+      itemsProp
+        ? itemsProp
+        : React.Children.toArray(children)
+            .filter((child): child is React.ReactElement<DescriptionsItemProps> =>
+              React.isValidElement(child)
+            )
+            .map((child) => ({
+              key: child.props.itemKey ?? child.key?.toString().replace(/^\.\$/, ''),
+              label: child.props.label,
+              children: child.props.children,
+              span: child.props.span,
+              labelStyle: child.props.labelStyle,
+              contentStyle: child.props.contentStyle,
+              labelClassName: child.props.labelClassName,
+              contentClassName: child.props.contentClassName,
+            }))
+    ).map((item, index) => ({
+      ...item,
+      _key: item.key ?? `item-${index}`,
+      _index: index,
+    }))
 
-    const getColumnCount = () => {
-      if (typeof column === 'number') {
-        return column
-      }
-      return column.md || column.sm || column.xs || 3
-    }
-
-    const columnCount = getColumnCount()
-
-    const renderVerticalLayout = () => {
-      const rows: DescriptionsItemConfig[][] = []
-      let currentRow: DescriptionsItemConfig[] = []
+    // Calculate rows with 'filled' span support
+    const calculateRows = (): InternalItemConfig[][] => {
+      const rows: InternalItemConfig[][] = []
+      let currentRow: InternalItemConfig[] = []
       let currentSpan = 0
 
       itemConfigs.forEach((item) => {
-        const span = item.span || 1
-        const effectiveSpan = Math.min(span, columnCount)
-
-        if (currentSpan + effectiveSpan > columnCount) {
-          rows.push(currentRow)
-          currentRow = [item]
-          currentSpan = effectiveSpan
+        if (item.span === 'filled') {
+          // 'filled' means fill the rest of the row
+          if (currentRow.length > 0) {
+            currentRow.push({ ...item, span: columnCount - currentSpan })
+            rows.push(currentRow)
+            currentRow = []
+            currentSpan = 0
+          } else {
+            // First item in row with 'filled' takes whole row
+            rows.push([{ ...item, span: columnCount }])
+          }
         } else {
-          currentRow.push(item)
-          currentSpan += effectiveSpan
+          const span = item.span ?? 1
+          const effectiveSpan = Math.min(span, columnCount)
+
+          if (currentSpan + effectiveSpan > columnCount) {
+            rows.push(currentRow)
+            currentRow = [item]
+            currentSpan = effectiveSpan
+          } else {
+            currentRow.push(item)
+            currentSpan += effectiveSpan
+          }
         }
       })
 
@@ -142,40 +244,79 @@ const DescriptionsRoot = forwardRef<HTMLDivElement, DescriptionsProps>(
         rows.push(currentRow)
       }
 
+      return rows
+    }
+
+    const rows = calculateRows()
+
+    const getLabelClasses = (item: InternalItemConfig) => {
+      return [
+        bordered ? 'border border-base-content/10' : '',
+        'bg-base-200/50 font-semibold text-left px-4 py-2',
+        layout === 'horizontal' ? 'whitespace-nowrap' : '',
+        classNames?.label ?? '',
+        item.labelClassName ?? '',
+      ].filter(Boolean).join(' ')
+    }
+
+    const getContentClasses = (item: InternalItemConfig) => {
+      return [
+        bordered ? 'border border-base-content/10' : '',
+        'bg-base-100 px-4 py-2',
+        classNames?.content ?? '',
+        item.contentClassName ?? '',
+      ].filter(Boolean).join(' ')
+    }
+
+    const getLabelStyle = (item: InternalItemConfig): React.CSSProperties => ({
+      ...mergedLabelStyle,
+      ...item.labelStyle,
+    })
+
+    const getContentStyle = (item: InternalItemConfig): React.CSSProperties => ({
+      ...mergedContentStyle,
+      ...item.contentStyle,
+    })
+
+    const renderVerticalLayout = () => {
       return rows.map((row, rowIndex) => (
-        <React.Fragment key={rowIndex}>
-          <tr>
-            {row.map((item, cellIndex) => {
-              const span = item.span || 1
+        <React.Fragment key={row.map(r => r._key).join('-')}>
+          <tr data-testid={`${testId}-row-${rowIndex}-labels`}>
+            {row.map((item) => {
+              const span = typeof item.span === 'number' ? item.span : 1
               const effectiveSpan = Math.min(span, columnCount)
-              const itemLabelStyle = item.labelStyle || labelStyle
+              const labelId = `${baseId}-${item._key}-label`
 
               return (
                 <th
-                  key={cellIndex}
-                  className={`${bordered ? 'border border-base-content/10' : ''} bg-base-200/50 font-semibold text-left px-4 py-2`}
-                  style={itemLabelStyle}
+                  key={item._key}
+                  id={labelId}
+                  className={getLabelClasses(item)}
+                  style={getLabelStyle(item)}
                   colSpan={effectiveSpan}
                   scope="col"
+                  data-testid={`${testId}-${item._key}-label`}
                 >
                   {item.label}
-                  {colon && item.label && ':'}
+                  {colon && item.label && <span aria-hidden="true">:</span>}
                 </th>
               )
             })}
           </tr>
-          <tr>
-            {row.map((item, cellIndex) => {
-              const span = item.span || 1
+          <tr data-testid={`${testId}-row-${rowIndex}-values`}>
+            {row.map((item) => {
+              const span = typeof item.span === 'number' ? item.span : 1
               const effectiveSpan = Math.min(span, columnCount)
-              const itemContentStyle = item.contentStyle || contentStyle
+              const labelId = `${baseId}-${item._key}-label`
 
               return (
                 <td
-                  key={cellIndex}
-                  className={`${bordered ? 'border border-base-content/10' : ''} bg-base-100 px-4 py-2`}
-                  style={itemContentStyle}
+                  key={item._key}
+                  className={getContentClasses(item)}
+                  style={getContentStyle(item)}
                   colSpan={effectiveSpan}
+                  aria-labelledby={labelId}
+                  data-testid={`${testId}-${item._key}-content`}
                 >
                   {item.children}
                 </td>
@@ -187,50 +328,31 @@ const DescriptionsRoot = forwardRef<HTMLDivElement, DescriptionsProps>(
     }
 
     const renderHorizontalLayout = () => {
-      const rows: DescriptionsItemConfig[][] = []
-      let currentRow: DescriptionsItemConfig[] = []
-      let currentSpan = 0
-
-      itemConfigs.forEach((item) => {
-        const span = item.span || 1
-        const effectiveSpan = Math.min(span, columnCount)
-
-        if (currentSpan + effectiveSpan > columnCount) {
-          rows.push(currentRow)
-          currentRow = [item]
-          currentSpan = effectiveSpan
-        } else {
-          currentRow.push(item)
-          currentSpan += effectiveSpan
-        }
-      })
-
-      if (currentRow.length > 0) {
-        rows.push(currentRow)
-      }
-
       return rows.map((row, rowIndex) => (
-        <tr key={rowIndex}>
-          {row.map((item, cellIndex) => {
-            const span = item.span || 1
+        <tr key={row.map(r => r._key).join('-')} data-testid={`${testId}-row-${rowIndex}`}>
+          {row.map((item) => {
+            const span = typeof item.span === 'number' ? item.span : 1
             const effectiveSpan = Math.min(span, columnCount)
-            const itemLabelStyle = item.labelStyle || labelStyle
-            const itemContentStyle = item.contentStyle || contentStyle
+            const labelId = `${baseId}-${item._key}-label`
 
             return (
-              <React.Fragment key={cellIndex}>
+              <React.Fragment key={item._key}>
                 <th
-                  className={`${bordered ? 'border border-base-content/10' : ''} bg-base-200/50 font-semibold text-left px-4 py-2 whitespace-nowrap`}
-                  style={itemLabelStyle}
+                  id={labelId}
+                  className={getLabelClasses(item)}
+                  style={getLabelStyle(item)}
                   scope="row"
+                  data-testid={`${testId}-${item._key}-label`}
                 >
                   {item.label}
-                  {colon && item.label && ':'}
+                  {colon && item.label && <span aria-hidden="true">:</span>}
                 </th>
                 <td
-                  className={`${bordered ? 'border border-base-content/10' : ''} bg-base-100 px-4 py-2`}
-                  style={itemContentStyle}
+                  className={getContentClasses(item)}
+                  style={getContentStyle(item)}
                   colSpan={effectiveSpan > 1 ? effectiveSpan * 2 - 1 : 1}
+                  aria-labelledby={labelId}
+                  data-testid={`${testId}-${item._key}-content`}
                 >
                   {item.children}
                 </td>
@@ -245,34 +367,58 @@ const DescriptionsRoot = forwardRef<HTMLDivElement, DescriptionsProps>(
       'w-full',
       bordered && 'border-collapse',
       sizeClasses[size],
+      classNames?.table ?? '',
       className,
     ]
       .filter(Boolean)
       .join(' ')
 
+    const rootClasses = [classNames?.root ?? ''].filter(Boolean).join(' ')
+
     return (
       <div
         ref={ref}
-        style={style}
+        className={rootClasses || undefined}
+        style={{ ...styles?.root, ...style }}
         data-testid={testId}
         {...rest}
       >
         {(title || extra) && (
-          <div className="flex items-center justify-between mb-4" data-testid={`${testId}-header`}>
+          <div
+            className={`flex items-center justify-between mb-4 ${classNames?.header ?? ''}`}
+            style={styles?.header}
+            data-testid={`${testId}-header`}
+          >
             {title && (
-              <div className="text-lg font-semibold">{title}</div>
+              <div
+                className={`text-lg font-semibold ${classNames?.title ?? ''}`}
+                style={styles?.title}
+                data-testid={`${testId}-title`}
+              >
+                {title}
+              </div>
             )}
             {extra && (
-              <div data-testid={`${testId}-extra`}>{extra}</div>
+              <div
+                className={classNames?.extra ?? ''}
+                style={styles?.extra}
+                data-testid={`${testId}-extra`}
+              >
+                {extra}
+              </div>
             )}
           </div>
         )}
         <table
           className={containerClasses}
-          role="table"
-          aria-label={typeof title === 'string' ? title : undefined}
+          style={styles?.table}
           data-testid={`${testId}-table`}
         >
+          {title && (
+            <caption className="sr-only">
+              {typeof title === 'string' ? title : 'Description list'}
+            </caption>
+          )}
           <tbody>
             {layout === 'vertical' ? renderVerticalLayout() : renderHorizontalLayout()}
           </tbody>
