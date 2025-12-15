@@ -104,11 +104,12 @@ if (source && fn) {
         // Check if content inside Demo has a single root element
         const demoContentMatch = body.match(/<Demo>([\s\S]*?)<\/Demo>/)
         const demoContent = demoContentMatch ? demoContentMatch[1].trim() : ''
-        const demoFirstLine = demoContent.split('\n')[0].trim()
-        const demoLastLine = demoContent.split('\n').filter(l => l.trim()).pop()?.trim() || ''
-        const demoFirstTag = demoFirstLine.match(/^<(\w+)/)
-        const demoLastTag = demoLastLine.match(/^<\/(\w+)>$/)
-        const hasSingleRoot = demoFirstTag && demoLastTag && demoFirstTag[1] === demoLastTag[1]
+        const demoFirstTag = demoContent.match(/^<(\w+)/)
+        // Check for closing tag at end - either on its own line or inline
+        const demoLastClosingTag = demoContent.match(/<\/(\w+)>\s*$/)
+        const demoSelfClosing = demoContent.match(/^<(\w+)[^>]*\/>\s*$/)
+        const hasSingleRoot = (demoFirstTag && demoLastClosingTag && demoFirstTag[1] === demoLastClosingTag[1]) ||
+                             (demoSelfClosing !== null)
 
         // Replace <Demo> with fragment only if needed, otherwise just remove Demo tags
         if (!hasSingleRoot) {
@@ -131,12 +132,14 @@ function App() {
 export default App`
       }
     } else {
-      // Check if JSX has a single root element (first tag matches last closing tag at root level)
-      const firstLine = jsx.split('\n')[0].trim()
-      const lastLine = jsx.split('\n').filter(l => l.trim()).pop()?.trim() || ''
-      const firstTagMatch = firstLine.match(/^<(\w+)/)
-      const lastTagMatch = lastLine.match(/^<\/(\w+)>$/)
-      const hasSingleRoot = firstTagMatch && lastTagMatch && firstTagMatch[1] === lastTagMatch[1]
+      // Check if JSX has a single root element
+      const trimmedJsx = jsx.trim()
+      const firstTagMatch = trimmedJsx.match(/^<(\w+)/)
+      // Check for closing tag at end - either on its own line or inline (e.g., <Tag>content</Tag> or <Tag />)
+      const lastClosingTagMatch = trimmedJsx.match(/<\/(\w+)>\s*$/)
+      const selfClosingMatch = trimmedJsx.match(/^<(\w+)[^>]*\/>\s*$/)
+      const hasSingleRoot = (firstTagMatch && lastClosingTagMatch && firstTagMatch[1] === lastClosingTagMatch[1]) ||
+                           (selfClosingMatch !== null)
       const needsFragment = !hasSingleRoot
 
       if (needsFragment) {
