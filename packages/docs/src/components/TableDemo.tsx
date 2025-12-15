@@ -62,41 +62,108 @@ const columnsWithRender: ColumnType<User>[] = [
   },
 ];
 
+// @example-imports: { Table } from 'asterui'
 export function BasicDemo() {
+  // @example-include
+  const userData = [
+    { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'User' },
+    { id: '4', name: 'Alice Williams', email: 'alice@example.com', role: 'Editor' },
+    { id: '5', name: 'Charlie Brown', email: 'charlie@example.com', role: 'User' },
+  ];
+
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name' },
+    { key: 'email', title: 'Email', dataIndex: 'email' },
+    { key: 'role', title: 'Role', dataIndex: 'role' },
+  ];
+  // @example-include-end
+
   return (
     <Demo>
-      <Table columns={basicColumns} dataSource={userData.slice(0, 5)} pagination={false} />
+      {/* @example-return */}
+      <Table columns={columns} dataSource={userData} pagination={false} />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table, Tag, Button, Space } from 'asterui'
 export function CustomRenderDemo() {
+  // @example-include
+  const userData = [
+    { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'active' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User', status: 'active' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'User', status: 'inactive' },
+    { id: '4', name: 'Alice Williams', email: 'alice@example.com', role: 'Editor', status: 'active' },
+  ];
+
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name', width: 150 },
+    { key: 'email', title: 'Email', dataIndex: 'email' },
+    { key: 'role', title: 'Role', dataIndex: 'role', align: 'center' },
+    {
+      key: 'status',
+      title: 'Status',
+      dataIndex: 'status',
+      align: 'center',
+      render: (value) => (
+        <Tag color={value === 'active' ? 'success' : 'ghost'} size="sm">
+          {String(value)}
+        </Tag>
+      ),
+    },
+    {
+      key: 'actions',
+      title: 'Actions',
+      align: 'right',
+      render: () => (
+        <Space size="xs">
+          <Button size="xs" variant="ghost">Edit</Button>
+          <Button size="xs" variant="ghost">Delete</Button>
+        </Space>
+      ),
+    },
+  ];
+  // @example-include-end
+
   return (
     <Demo>
-      <Table columns={columnsWithRender} dataSource={userData.slice(0, 4)} pagination={false} />
+      {/* @example-return */}
+      <Table columns={columns} dataSource={userData} pagination={false} />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function StripedDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Table columns={basicColumns} dataSource={userData.slice(0, 5)} striped pagination={false} />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function BorderedDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Table columns={basicColumns} dataSource={userData.slice(0, 5)} bordered pagination={false} />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function SizeXsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Table
         columns={basicColumns}
         dataSource={userData.slice(0, 5)}
@@ -105,57 +172,97 @@ export function SizeXsDemo() {
         bordered
         pagination={false}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function SizeXlDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Table columns={basicColumns} dataSource={userData.slice(0, 3)} size="xl" pagination={false} />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function EmptyDemo() {
+  // @example-include
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name' },
+    { key: 'email', title: 'Email', dataIndex: 'email' },
+    { key: 'role', title: 'Role', dataIndex: 'role' },
+  ];
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Table
-        columns={basicColumns}
+        columns={columns}
         dataSource={[]}
         pagination={false}
         locale={{ emptyText: 'No users found' }}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function LoadingDemo() {
+  // @example-include
   const [isLoading, setIsLoading] = useState(false);
+
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name' },
+    { key: 'email', title: 'Email', dataIndex: 'email' },
+    { key: 'role', title: 'Role', dataIndex: 'role' },
+  ];
+
+  const userData = [
+    { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'User' },
+    { id: '4', name: 'Alice Williams', email: 'alice@example.com', role: 'Editor' },
+    { id: '5', name: 'Charlie Brown', email: 'charlie@example.com', role: 'User' },
+  ];
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div className="space-y-4">
         <Button size="sm" onClick={() => setIsLoading(!isLoading)}>
           {isLoading ? 'Hide' : 'Show'} Loading
         </Button>
-        <Table columns={basicColumns} dataSource={userData.slice(0, 5)} loading={isLoading} pagination={false} />
+        <Table columns={columns} dataSource={userData} loading={isLoading} pagination={false} />
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function PaginationDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Table columns={basicColumns} dataSource={userData} pagination={{ pageSize: 5 }} />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function PaginationFeaturesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Table
         columns={basicColumns}
         dataSource={userData}
@@ -167,41 +274,71 @@ export function PaginationFeaturesDemo() {
           pageSizeOptions: [5, 10, 20],
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function PinnedDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="max-h-64 overflow-auto border border-base-content/10 rounded-lg">
         <Table columns={basicColumns} dataSource={userData} pinRows striped pagination={false} />
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function SortingDemo() {
+  // @example-include
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name', sorter: true },
+    { key: 'age', title: 'Age', dataIndex: 'age', sorter: true, defaultSortOrder: 'ascend' },
+    { key: 'email', title: 'Email', dataIndex: 'email', sorter: true },
+  ];
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Table
-        columns={[
-          { key: 'name', title: 'Name', dataIndex: 'name', sorter: true },
-          { key: 'age', title: 'Age', dataIndex: 'age', sorter: true, defaultSortOrder: 'ascend' },
-          { key: 'email', title: 'Email', dataIndex: 'email', sorter: true },
-        ]}
+        columns={columns}
         dataSource={userData.slice(0, 6)}
         pagination={false}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table, Button, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function ControlledSortDemo() {
+  // @example-include
   const [sortOrder, setSortOrder] = useState<'ascend' | 'descend' | null>('ascend');
+
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name', sorter: true, sortOrder },
+    { key: 'email', title: 'Email', dataIndex: 'email' },
+    { key: 'role', title: 'Role', dataIndex: 'role' },
+  ];
+
+  const userData = [
+    { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'User' },
+    { id: '4', name: 'Alice Williams', email: 'alice@example.com', role: 'Editor' },
+    { id: '5', name: 'Charlie Brown', email: 'charlie@example.com', role: 'User' },
+  ];
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div className="space-y-4">
         <Space size="sm">
           <Button size="sm" variant={sortOrder === 'ascend' ? 'primary' : 'outline'} onClick={() => setSortOrder('ascend')}>
@@ -215,65 +352,88 @@ export function ControlledSortDemo() {
           </Button>
         </Space>
         <Table
-          columns={[
-            { key: 'name', title: 'Name', dataIndex: 'name', sorter: true, sortOrder },
-            { key: 'email', title: 'Email', dataIndex: 'email' },
-            { key: 'role', title: 'Role', dataIndex: 'role' },
-          ]}
-          dataSource={userData.slice(0, 5)}
+          columns={columns}
+          dataSource={userData}
           pagination={false}
           onSortChange={(sorter) => setSortOrder(sorter.order ?? null)}
         />
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function FilteringDemo() {
+  // @example-include
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name' },
+    {
+      key: 'role',
+      title: 'Role',
+      dataIndex: 'role',
+      filters: [
+        { text: 'Admin', value: 'Admin' },
+        { text: 'User', value: 'User' },
+        { text: 'Editor', value: 'Editor' },
+      ],
+      onFilter: (value, record) => record.role === value,
+    },
+    {
+      key: 'status',
+      title: 'Status',
+      dataIndex: 'status',
+      filters: [
+        { text: 'Active', value: 'active' },
+        { text: 'Inactive', value: 'inactive' },
+      ],
+      onFilter: (value, record) => record.status === value,
+    },
+  ];
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Table
-        columns={[
-          { key: 'name', title: 'Name', dataIndex: 'name' },
-          {
-            key: 'role',
-            title: 'Role',
-            dataIndex: 'role',
-            filters: [
-              { text: 'Admin', value: 'Admin' },
-              { text: 'User', value: 'User' },
-              { text: 'Editor', value: 'Editor' },
-            ],
-            onFilter: (value, record) => record.role === value,
-          },
-          {
-            key: 'status',
-            title: 'Status',
-            dataIndex: 'status',
-            filters: [
-              { text: 'Active', value: 'active' },
-              { text: 'Inactive', value: 'inactive' },
-            ],
-            onFilter: (value, record) => record.status === value,
-          },
-        ]}
+        columns={columns}
         dataSource={userData.slice(0, 6)}
         pagination={false}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function SelectionDemo() {
+  // @example-include
   const [selectedKeys, setSelectedKeys] = useState<React.Key[]>([]);
+
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name' },
+    { key: 'email', title: 'Email', dataIndex: 'email' },
+    { key: 'role', title: 'Role', dataIndex: 'role' },
+  ];
+
+  const userData = [
+    { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'User' },
+    { id: '4', name: 'Alice Williams', email: 'alice@example.com', role: 'Editor' },
+    { id: '5', name: 'Charlie Brown', email: 'charlie@example.com', role: 'User' },
+  ];
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div className="space-y-4">
         <div className="text-sm">Selected: {selectedKeys.join(', ') || 'None'}</div>
         <Table
-          columns={basicColumns}
-          dataSource={userData.slice(0, 5)}
+          columns={columns}
+          dataSource={userData}
           rowSelection={{
             selectedRowKeys: selectedKeys,
             onChange: (keys) => setSelectedKeys(keys),
@@ -281,20 +441,40 @@ export function SelectionDemo() {
           pagination={false}
         />
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function RadioSelectionDemo() {
+  // @example-include
   const [selectedKeys, setSelectedKeys] = useState<React.Key[]>([]);
+
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name' },
+    { key: 'email', title: 'Email', dataIndex: 'email' },
+    { key: 'role', title: 'Role', dataIndex: 'role' },
+  ];
+
+  const userData = [
+    { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'User' },
+    { id: '4', name: 'Alice Williams', email: 'alice@example.com', role: 'Editor' },
+    { id: '5', name: 'Charlie Brown', email: 'charlie@example.com', role: 'User' },
+  ];
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div className="space-y-4">
         <div className="text-sm">Selected: {selectedKeys.join(', ') || 'None'}</div>
         <Table
-          columns={basicColumns}
-          dataSource={userData.slice(0, 5)}
+          columns={columns}
+          dataSource={userData}
           rowSelection={{
             type: 'radio',
             selectedRowKeys: selectedKeys,
@@ -303,12 +483,29 @@ export function RadioSelectionDemo() {
           pagination={false}
         />
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function ExpandableDemo() {
-  const expandable: ExpandableConfig<User> = {
+  // @example-include
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name' },
+    { key: 'email', title: 'Email', dataIndex: 'email' },
+    { key: 'role', title: 'Role', dataIndex: 'role' },
+  ];
+
+  const userData = [
+    { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'active', age: 32, description: 'Senior administrator' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User', status: 'active', age: 28, description: 'Regular user' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'User', status: 'inactive', age: 45, description: 'Account suspended' },
+    { id: '4', name: 'Alice Williams', email: 'alice@example.com', role: 'Editor', status: 'active', age: 35, description: 'Content editor' },
+    { id: '5', name: 'Charlie Brown', email: 'charlie@example.com', role: 'User', status: 'active', age: 29, description: 'New user' },
+  ];
+
+  const expandable = {
     expandedRowRender: (record) => (
       <div className="p-2">
         <p className="text-sm"><strong>Description:</strong> {record.description}</p>
@@ -317,58 +514,92 @@ export function ExpandableDemo() {
     ),
     rowExpandable: (record) => record.status === 'active',
   };
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Table
-        columns={basicColumns}
-        dataSource={userData.slice(0, 5)}
+        columns={columns}
+        dataSource={userData}
         expandable={expandable}
         pagination={false}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function EllipsisDemo() {
+  // @example-include
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name', width: 100 },
+    { key: 'email', title: 'Email', dataIndex: 'email', width: 150, ellipsis: true },
+    { key: 'description', title: 'Description', dataIndex: 'description', ellipsis: true },
+  ];
+
+  const userData = [
+    { id: '1', name: 'John Doe', email: 'john@example.com', description: 'Senior administrator with full system access' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', description: 'Regular user account' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', description: 'Account currently suspended' },
+    { id: '4', name: 'Alice Williams', email: 'alice@example.com', description: 'Content editor with publishing rights' },
+  ];
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Table
-        columns={[
-          { key: 'name', title: 'Name', dataIndex: 'name', width: 100 },
-          { key: 'email', title: 'Email', dataIndex: 'email', width: 150, ellipsis: true },
-          { key: 'description', title: 'Description', dataIndex: 'description', ellipsis: true },
-        ]}
-        dataSource={userData.slice(0, 4)}
+        columns={columns}
+        dataSource={userData}
         pagination={false}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table } from 'asterui'
 export function ScrollDemo() {
+  // @example-include
+  const columns = [
+    { key: 'name', title: 'Name', dataIndex: 'name', width: 150 },
+    { key: 'email', title: 'Email', dataIndex: 'email', width: 200 },
+    { key: 'role', title: 'Role', dataIndex: 'role', width: 100 },
+    { key: 'status', title: 'Status', dataIndex: 'status', width: 100 },
+    { key: 'age', title: 'Age', dataIndex: 'age', width: 80 },
+    { key: 'description', title: 'Description', dataIndex: 'description', width: 300 },
+  ];
+
+  const userData = [
+    { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'active', age: 32, description: 'Senior administrator' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'User', status: 'active', age: 28, description: 'Regular user' },
+    { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'User', status: 'inactive', age: 45, description: 'Account suspended' },
+    { id: '4', name: 'Alice Williams', email: 'alice@example.com', role: 'Editor', status: 'active', age: 35, description: 'Content editor' },
+    { id: '5', name: 'Charlie Brown', email: 'charlie@example.com', role: 'User', status: 'active', age: 29, description: 'New user' },
+  ];
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Table
-        columns={[
-          { key: 'name', title: 'Name', dataIndex: 'name', width: 150 },
-          { key: 'email', title: 'Email', dataIndex: 'email', width: 200 },
-          { key: 'role', title: 'Role', dataIndex: 'role', width: 100 },
-          { key: 'status', title: 'Status', dataIndex: 'status', width: 100 },
-          { key: 'age', title: 'Age', dataIndex: 'age', width: 80 },
-          { key: 'description', title: 'Description', dataIndex: 'description', width: 300 },
-        ]}
-        dataSource={userData.slice(0, 5)}
+        columns={columns}
+        dataSource={userData}
         scroll={{ x: 800, y: 200 }}
         pagination={false}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Table, Tag, Button, Space } from 'asterui'
 export function CompleteDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Table
         columns={columnsWithRender}
         dataSource={userData}
@@ -377,6 +608,7 @@ export function CompleteDemo() {
         bordered
         pagination={{ pageSize: 5 }}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }

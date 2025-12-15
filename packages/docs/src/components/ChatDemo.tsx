@@ -1,20 +1,25 @@
 import { Chat } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Chat } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Chat position="start" message="Hey! How are you?" />
         <Chat position="end" message="I'm doing great, thanks for asking!" />
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chat } from 'asterui'
 export function AvatarsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Chat
           position="start"
@@ -29,13 +34,16 @@ export function AvatarsDemo() {
           message="Yes! They look amazing!"
         />
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chat } from 'asterui'
 export function HeadersDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Chat
           position="start"
@@ -50,26 +58,32 @@ export function HeadersDemo() {
           message="Yes, joining now!"
         />
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chat } from 'asterui'
 export function ColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Chat position="start" color="primary" message="Primary color message" />
         <Chat position="end" color="secondary" message="Secondary color message" />
         <Chat position="start" color="success" message="Success color message" />
         <Chat position="end" color="error" message="Error color message" />
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chat } from 'asterui'
 export function FooterDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Chat
           position="end"
@@ -84,6 +98,7 @@ export function FooterDemo() {
           message="Hello?"
         />
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }

@@ -2,11 +2,16 @@ import { useState } from 'react'
 import { ResponsiveDrawer, Button, Menu, Avatar } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { ResponsiveDrawer, Button, Menu } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function BasicDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <ResponsiveDrawer
         open={open}
         onOpenChange={setOpen}
@@ -25,15 +30,21 @@ export function BasicDemo() {
           <p className="mt-4">Main content area</p>
         </div>
       </ResponsiveDrawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { ResponsiveDrawer, Button, Menu } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function ResponsiveDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <ResponsiveDrawer
         open={open}
         onOpenChange={setOpen}
@@ -57,15 +68,21 @@ export function ResponsiveDemo() {
           </p>
         </div>
       </ResponsiveDrawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { ResponsiveDrawer, Button, Menu } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CustomWidthDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <ResponsiveDrawer
         open={open}
         onOpenChange={setOpen}
@@ -84,15 +101,21 @@ export function CustomWidthDemo() {
           </Button>
         </div>
       </ResponsiveDrawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { ResponsiveDrawer, Button, Menu } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function EndDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <ResponsiveDrawer
         open={open}
         onOpenChange={setOpen}
@@ -112,15 +135,21 @@ export function EndDemo() {
           <p className="mt-4">Main content area</p>
         </div>
       </ResponsiveDrawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { ResponsiveDrawer, Button, Avatar } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CustomSidebarDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <ResponsiveDrawer
         open={open}
         onOpenChange={setOpen}
@@ -150,6 +179,7 @@ export function CustomSidebarDemo() {
           <p className="mt-4">Application content</p>
         </div>
       </ResponsiveDrawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }

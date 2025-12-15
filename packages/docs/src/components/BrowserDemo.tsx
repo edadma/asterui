@@ -1,21 +1,26 @@
 import { Browser } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Browser } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Browser url="https://daisyui.com" className="w-full">
         <div className="grid place-content-center h-40 bg-base-200">
           Hello!
         </div>
       </Browser>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Browser } from 'asterui'
 export function PreviewDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Browser url="https://mysite.com" className="w-full">
         <div className="bg-base-100">
           <div className="bg-primary text-primary-content p-4">
@@ -27,25 +32,31 @@ export function PreviewDemo() {
           </div>
         </div>
       </Browser>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Browser } from 'asterui'
 export function GradientDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Browser url="https://app.example.com" className="w-full">
         <div className="bg-gradient-to-br from-purple-500 to-pink-500 h-48 grid place-content-center">
           <span className="text-white text-2xl font-bold">Gradient</span>
         </div>
       </Browser>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Browser } from 'asterui'
 export function DashboardDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Browser url="https://dashboard.example.com" className="w-full">
         <div className="bg-base-100 p-4 h-56">
           <div className="flex gap-4 mb-4">
@@ -61,6 +72,7 @@ export function DashboardDemo() {
           <div className="bg-base-200 rounded-lg h-24"></div>
         </div>
       </Browser>
+      {/* @example-return-end */}
     </Demo>
   )
 }

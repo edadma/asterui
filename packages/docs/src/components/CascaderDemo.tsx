@@ -3,7 +3,9 @@ import { Cascader } from 'asterui'
 import type { CascaderOption } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Cascader } from 'asterui'
 export function BasicDemo() {
+  // @example-include
   const options = [
     {
       value: 'usa',
@@ -28,15 +30,20 @@ export function BasicDemo() {
       ],
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Cascader options={options} placeholder="Select location" />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Cascader } from 'asterui'
 export function HoverDemo() {
+  // @example-include
   const options = [
     {
       value: 'electronics',
@@ -61,46 +68,61 @@ export function HoverDemo() {
       ],
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Cascader options={options} expandTrigger="hover" placeholder="Select category" />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Cascader } from 'asterui'
 export function SizesDemo() {
+  // @example-include
   const options = [
     { value: 'opt1', label: 'Option 1' },
     { value: 'opt2', label: 'Option 2' },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div className="flex flex-col gap-2">
         <Cascader size="xs" options={options} placeholder="Extra small" />
         <Cascader size="sm" options={options} placeholder="Small" />
         <Cascader size="md" options={options} placeholder="Medium" />
         <Cascader size="lg" options={options} placeholder="Large" />
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Cascader } from 'asterui'
 export function DisabledDemo() {
+  // @example-include
   const options = [
     { value: 'opt1', label: 'Option 1' },
     { value: 'opt2', label: 'Option 2' },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Cascader options={options} disabled value={['opt1']} />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Cascader } from 'asterui'
 export function SearchDemo() {
+  // @example-include
   const options = [
     {
       value: 'usa',
@@ -117,15 +139,21 @@ export function SearchDemo() {
       ],
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Cascader options={options} showSearch placeholder="Search locations" />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Cascader } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function ChangeOnSelectDemo() {
+  // @example-include
   const [value, setValue] = useState<string[]>([])
   const options = [
     {
@@ -137,9 +165,11 @@ export function ChangeOnSelectDemo() {
       ],
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Cascader
           options={options}
@@ -150,11 +180,15 @@ export function ChangeOnSelectDemo() {
         />
         <p className="mt-2 text-sm">Selected: {value.join(' / ') || 'None'}</p>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Cascader } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function AsyncLoadDemo() {
+  // @example-include
   const [options, setOptions] = useState<CascaderOption[]>([
     { value: 'region1', label: 'Region 1' },
     { value: 'region2', label: 'Region 2' },
@@ -180,31 +214,41 @@ export function AsyncLoadDemo() {
       return update(prev)
     })
   }
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Cascader options={options} loadData={loadData} placeholder="Load on expand" />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Cascader } from 'asterui'
 export function StatusDemo() {
+  // @example-include
   const options = [
     { value: 'opt1', label: 'Option 1' },
     { value: 'opt2', label: 'Option 2' },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div className="flex flex-col gap-2">
         <Cascader options={options} status="error" placeholder="Error state" />
         <Cascader options={options} status="warning" placeholder="Warning state" />
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Cascader } from 'asterui'
 export function MultipleDemo() {
+  // @example-include
   const options = [
     {
       value: 'fruits',
@@ -223,10 +267,13 @@ export function MultipleDemo() {
       ],
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Cascader options={options} multiple placeholder="Select multiple" />
+      {/* @example-return-end */}
     </Demo>
   )
 }

@@ -1,19 +1,24 @@
 import { Tooltip, Button, Space } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Tooltip, Button } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Tooltip tip="This is a tooltip">
         <Button>Hover me</Button>
       </Tooltip>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tooltip, Button } from 'asterui'
 export function PositionsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="flex flex-wrap gap-4 justify-center py-8">
         <Tooltip tip="Top tooltip" position="top">
           <Button>Top</Button>
@@ -28,13 +33,16 @@ export function PositionsDemo() {
           <Button>Right</Button>
         </Tooltip>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tooltip, Button, Space } from 'asterui'
 export function ColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space wrap>
         <Tooltip tip="Primary tooltip" color="primary">
           <Button color="primary">Primary</Button>
@@ -58,16 +66,20 @@ export function ColorsDemo() {
           <Button color="error">Error</Button>
         </Tooltip>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tooltip, Button } from 'asterui'
 export function OpenStateDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Tooltip tip="Always visible" open>
         <Button>Always Open</Button>
       </Tooltip>
+      {/* @example-return-end */}
     </Demo>
   )
 }

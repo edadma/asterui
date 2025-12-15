@@ -1,20 +1,25 @@
 import { TextRotate } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { TextRotate } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <TextRotate
         items={['Hello', 'Salut', 'Hola', 'Ciao', 'Hallo']}
         className="text-4xl font-bold"
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { TextRotate } from 'asterui'
 export function CenteredDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <TextRotate
         items={[
           'Build faster',
@@ -25,13 +30,16 @@ export function CenteredDemo() {
         centered
         className="text-3xl font-semibold text-primary"
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { TextRotate } from 'asterui'
 export function StyledDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <TextRotate
         items={[
           <span className="text-primary">Creative</span>,
@@ -41,13 +49,16 @@ export function StyledDemo() {
         ]}
         className="text-5xl font-black"
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { TextRotate } from 'asterui'
 export function FastDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <TextRotate
         items={[
           'BLAZING',
@@ -57,6 +68,7 @@ export function FastDemo() {
         centered
         className="text-7xl"
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }

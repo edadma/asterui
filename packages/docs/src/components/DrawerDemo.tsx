@@ -2,11 +2,16 @@ import { useState, useEffect } from 'react'
 import { Drawer, Button, Space } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Drawer, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function BasicDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Open Drawer
       </Button>
@@ -17,11 +22,15 @@ export function BasicDemo() {
       >
         <p>Drawer content goes here.</p>
       </Drawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Drawer, Button, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function PlacementDemo() {
+  // @example-include
   const [placement, setPlacement] = useState<'left' | 'right' | 'top' | 'bottom'>('right')
   const [open, setOpen] = useState(false)
 
@@ -29,9 +38,11 @@ export function PlacementDemo() {
     setPlacement(p)
     setOpen(true)
   }
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Button onClick={() => showDrawer('left')}>Left</Button>
         <Button onClick={() => showDrawer('right')}>Right</Button>
@@ -46,15 +57,21 @@ export function PlacementDemo() {
       >
         <p>This drawer slides in from the {placement}.</p>
       </Drawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Drawer, Button, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function WithFooterDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Open Drawer
       </Button>
@@ -73,15 +90,21 @@ export function WithFooterDemo() {
       >
         <p>Form content would go here...</p>
       </Drawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Drawer, Button, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function ExtraDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Open Drawer
       </Button>
@@ -98,11 +121,15 @@ export function ExtraDemo() {
       >
         <p>User information displayed here.</p>
       </Drawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Drawer, Button, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function SizesDemo() {
+  // @example-include
   const [size, setSize] = useState<'default' | 'large'>('default')
   const [open, setOpen] = useState(false)
 
@@ -110,9 +137,11 @@ export function SizesDemo() {
     setSize(s)
     setOpen(true)
   }
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm">
         <Button onClick={() => showDrawer('default')}>Default (378px)</Button>
         <Button onClick={() => showDrawer('large')}>Large (736px)</Button>
@@ -125,11 +154,15 @@ export function SizesDemo() {
       >
         <p>This drawer uses the {size} preset size.</p>
       </Drawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Drawer, Button } from 'asterui'
+// @example-imports: { useState, useEffect } from 'react'
 export function LoadingDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(true)
 
@@ -140,9 +173,11 @@ export function LoadingDemo() {
       return () => clearTimeout(timer)
     }
   }, [open])
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Load Data
       </Button>
@@ -158,16 +193,22 @@ export function LoadingDemo() {
           <p><strong>Role:</strong> Administrator</p>
         </div>
       </Drawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Drawer, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function NestedDemo() {
+  // @example-include
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen1(true)}>
         Open First Drawer
       </Button>
@@ -191,15 +232,21 @@ export function NestedDemo() {
           <p>Notice how the first drawer pushed back.</p>
         </Drawer>
       </Drawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Drawer, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function NoMaskDemo() {
+  // @example-include
   const [open, setOpen] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Open Drawer
       </Button>
@@ -212,6 +259,7 @@ export function NoMaskDemo() {
         <p>This drawer has no backdrop overlay.</p>
         <p>You can still interact with the page behind it.</p>
       </Drawer>
+      {/* @example-return-end */}
     </Demo>
   )
 }

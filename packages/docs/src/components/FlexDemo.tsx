@@ -3,33 +3,41 @@ import { Demo } from './Demo'
 
 const { Title, Paragraph } = Typography
 
+// @example-imports: { Flex, Button } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Flex gap="sm">
         <Button color="primary">Button 1</Button>
         <Button color="secondary">Button 2</Button>
         <Button color="accent">Button 3</Button>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Flex, Button } from 'asterui'
 export function DirectionDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Flex direction="column" gap="sm">
         <Button color="primary">First</Button>
         <Button color="secondary">Second</Button>
         <Button color="accent">Third</Button>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Flex, Button } from 'asterui'
 export function JustifyDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Flex direction="column" gap="md">
         <Flex justify="start" gap="sm" className="bg-base-200 p-2 rounded">
           <Button size="sm">Start</Button>
@@ -48,13 +56,16 @@ export function JustifyDemo() {
           <Button size="sm">Items</Button>
         </Flex>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Flex, Button } from 'asterui'
 export function AlignDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Flex gap="md">
         <Flex align="start" gap="sm" className="bg-base-200 p-2 rounded h-24">
           <Button size="xs">Top</Button>
@@ -69,13 +80,16 @@ export function AlignDemo() {
           <Button size="sm">Aligned</Button>
         </Flex>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Flex, Badge } from 'asterui'
 export function GapDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Flex direction="column" gap="lg">
         <Flex gap="xs">
           <Badge>XS</Badge>
@@ -98,13 +112,16 @@ export function GapDemo() {
           <Badge>Gap</Badge>
         </Flex>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Flex, Badge } from 'asterui'
 export function WrapDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Flex wrap gap="sm">
         <Badge>Tag 1</Badge>
         <Badge>Tag 2</Badge>
@@ -115,13 +132,20 @@ export function WrapDemo() {
         <Badge>Tag 7</Badge>
         <Badge>Tag 8</Badge>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Flex, Card, Typography } from 'asterui'
 export function CenteringDemo() {
+  // @example-include
+  const { Title, Paragraph } = Typography
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Flex
         justify="center"
         align="center"
@@ -133,13 +157,16 @@ export function CenteringDemo() {
           <Paragraph>This card is centered in its container.</Paragraph>
         </Card>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Flex, Button } from 'asterui'
 export function NestedDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Flex direction="column" gap="md">
         <Flex justify="between" className="bg-base-200 p-4 rounded">
           <Button variant="ghost">Logo</Button>
@@ -159,6 +186,7 @@ export function NestedDemo() {
           </Flex>
         </Flex>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }

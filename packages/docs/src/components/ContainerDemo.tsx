@@ -1,20 +1,25 @@
 import { Container, Space } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Container } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Container>
         <h1>Page Content</h1>
         <p>Content is centered with max-width constraint.</p>
       </Container>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Container, Space } from 'asterui'
 export function PageLayoutDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Container size="lg">
         <Space direction="vertical" size="lg">
           <header>
@@ -26,6 +31,7 @@ export function PageLayoutDemo() {
           </main>
         </Space>
       </Container>
+      {/* @example-return-end */}
     </Demo>
   )
 }

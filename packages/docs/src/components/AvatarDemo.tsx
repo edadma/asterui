@@ -2,20 +2,25 @@ import { Avatar, Space } from 'asterui'
 import { UserIcon, UserCircleIcon } from '@aster-ui/icons'
 import { Demo } from './Demo'
 
+// @example-imports: { Avatar } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Avatar
         src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
         alt="User avatar"
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" align="center">
         <Avatar size="xs" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         <Avatar size="sm" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
@@ -23,35 +28,44 @@ export function SizesDemo() {
         <Avatar size="lg" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         <Avatar size="xl" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
 export function ShapesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm">
         <Avatar shape="circle" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         <Avatar shape="square" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
 export function StatusDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm">
         <Avatar status="online" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         <Avatar status="offline" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
 export function TextDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" align="center">
         <Avatar size="xl">
           <span className="text-3xl">AI</span>
@@ -63,37 +77,47 @@ export function TextDemo() {
           <span>MX</span>
         </Avatar>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
+// @example-imports: { UserIcon, UserCircleIcon } from '@aster-ui/icons'
 export function IconDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm">
         <Avatar icon={<UserIcon size={32} />} />
         <Avatar size="lg" icon={<UserCircleIcon size={40} />} />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar } from 'asterui'
 export function GroupDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Avatar.Group>
         <Avatar src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         <Avatar src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         <Avatar src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         <Avatar src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
       </Avatar.Group>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar } from 'asterui'
 export function GroupMaxDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Avatar.Group max={3}>
         <Avatar src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         <Avatar src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
@@ -102,6 +126,7 @@ export function GroupMaxDemo() {
         <Avatar src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         <Avatar src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
       </Avatar.Group>
+      {/* @example-return-end */}
     </Demo>
   )
 }

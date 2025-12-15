@@ -60,76 +60,120 @@ export function AllDemos() {
   )
 }
 
+// @example-imports: { Countdown } from 'asterui'
+// @example-imports: { useMemo } from 'react'
 export function BasicDemo() {
+  // @example-include
   const target = useMemo(() => Date.now() + 60 * 60 * 1000, [])
-  return <Countdown value={target} />
+  // @example-include-end
+  return (
+    <Demo>
+      {/* @example-return */}
+      <Countdown value={target} />
+      {/* @example-return-end */}
+    </Demo>
+  )
 }
 
+// @example-imports: { Countdown } from 'asterui'
+// @example-imports: { useMemo } from 'react'
 export function WithDaysDemo() {
+  // @example-include
   const target = useMemo(() => Date.now() + 3 * 24 * 60 * 60 * 1000, [])
-  return <Countdown value={target} format="DD:HH:MM:SS" />
+  // @example-include-end
+  return (
+    <Demo>
+      {/* @example-return */}
+      <Countdown value={target} format="DD:HH:MM:SS" />
+      {/* @example-return-end */}
+    </Demo>
+  )
 }
 
+// @example-imports: { Countdown, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function SizesDemo() {
+  // @example-include
   const [target] = useState(() => Date.now() + 60 * 60 * 1000)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="lg">
         <Countdown value={target} size="xs" />
         <Countdown value={target} size="sm" />
         <Countdown value={target} size="md" />
         <Countdown value={target} size="lg" />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Countdown } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function WithLabelsDemo() {
+  // @example-include
   const [target] = useState(() => Date.now() + 2 * 24 * 60 * 60 * 1000)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Countdown
         value={target}
         format="DD:HH:MM:SS"
         showLabels
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Countdown } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function BoxedDemo() {
+  // @example-include
   const [target] = useState(() => Date.now() + 24 * 60 * 60 * 1000)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Countdown
         value={target}
         format="DD:HH:MM:SS"
         showLabels
         boxed
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Countdown, notification } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CallbackDemo() {
+  // @example-include
   const [target, setTarget] = useState(() => Date.now() + 20 * 1000)
 
   const handleFinish = () => {
     notification.success({ message: 'Countdown finished!' })
     setTarget(Date.now() + 20 * 1000) // Restart
   }
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Countdown
         key={target}
         value={target}
         format="MM:SS"
         onFinish={handleFinish}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }

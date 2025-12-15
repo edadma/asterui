@@ -3,7 +3,10 @@ import { Tour, Button, Input, Card, Space } from 'asterui';
 import { Demo } from './Demo';
 
 // Basic Tour Demo
+// @example-imports: { Tour, Button, Input, Card } from 'asterui'
+// @example-imports: { useState, useRef } from 'react'
 export function BasicTourDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const profileRef = useRef<HTMLButtonElement>(null);
@@ -29,9 +32,11 @@ export function BasicTourDemo() {
       placement: 'left' as const,
     },
   ];
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Card className="p-4">
         <div className="flex gap-4 items-center mb-4">
           <Input ref={searchRef} placeholder="Search..." className="flex-1" />
@@ -48,12 +53,16 @@ export function BasicTourDemo() {
           onFinish={() => setOpen(false)}
         />
       </Card>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
 // Without Target Demo
+// @example-imports: { Tour, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function WithoutTargetDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
 
   const steps = [
@@ -70,9 +79,11 @@ export function WithoutTargetDemo() {
       description: 'You are ready to start using the app.',
     },
   ];
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Start Intro
       </Button>
@@ -82,12 +93,16 @@ export function WithoutTargetDemo() {
         onClose={() => setOpen(false)}
         type="primary"
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
 // With Cover Demo
+// @example-imports: { Tour, Button } from 'asterui'
+// @example-imports: { useState, useRef } from 'react'
 export function WithCoverDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -106,9 +121,11 @@ export function WithCoverDemo() {
       placement: 'right' as const,
     },
   ];
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button ref={buttonRef} color="primary" onClick={() => setOpen(true)}>
         View Feature
       </Button>
@@ -118,12 +135,16 @@ export function WithCoverDemo() {
         onClose={() => setOpen(false)}
         showSkip={false}
       />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
 // Placements Demo
+// @example-imports: { Tour, Button, Space } from 'asterui'
+// @example-imports: { useState, useRef } from 'react'
 export function PlacementsDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
   const targetRef = useRef<HTMLDivElement>(null);
   const placements = ['top', 'right', 'bottom', 'left'] as const;
@@ -137,9 +158,11 @@ export function PlacementsDemo() {
       placement: placements[placementIndex],
     },
   ];
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div className="flex flex-col items-center gap-4">
         <div
           ref={targetRef}
@@ -162,6 +185,7 @@ export function PlacementsDemo() {
           showIndicators={false}
         />
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }

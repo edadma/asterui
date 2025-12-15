@@ -2,11 +2,16 @@ import { useState } from 'react';
 import { Modal, Button, Space } from 'asterui';
 import { Demo } from './Demo';
 
+// @example-imports: { Modal, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function BasicDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Open Modal
       </Button>
@@ -18,15 +23,21 @@ export function BasicDemo() {
         <p>This is the modal content.</p>
         <p>You can put any content here.</p>
       </Modal>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Modal, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function DefaultFooterDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Open Modal
       </Button>
@@ -43,20 +54,26 @@ export function DefaultFooterDemo() {
       >
         <p>Click OK to submit the form or Cancel to close.</p>
       </Modal>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Modal, Button, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CustomFooterDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
 
   const handleOk = () => {
     setOpen(false);
     Modal.success({ title: 'Success', content: 'Action completed successfully!' });
   };
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Open Modal
       </Button>
@@ -75,13 +92,16 @@ export function CustomFooterDemo() {
       >
         <p>Are you sure you want to proceed with this action?</p>
       </Modal>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Modal, Button, Space } from 'asterui'
 export function StaticMethodsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Button onClick={() => Modal.info({ title: 'Info', content: 'This is an informational message.' })}>
           Info
@@ -96,13 +116,16 @@ export function StaticMethodsDemo() {
           Error
         </Button>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Modal, Button } from 'asterui'
 export function ConfirmDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Button
         onClick={() =>
           Modal.confirm({
@@ -116,15 +139,21 @@ export function ConfirmDemo() {
       >
         Delete Item
       </Button>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Modal, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CenteredDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Centered Modal
       </Button>
@@ -136,11 +165,15 @@ export function CenteredDemo() {
       >
         <p>This modal is vertically centered on the screen.</p>
       </Modal>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Modal, Button, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function SizesDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
   const [width, setWidth] = useState<number | string>(520);
 
@@ -148,9 +181,11 @@ export function SizesDemo() {
     setWidth(w);
     setOpen(true);
   };
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Button onClick={() => showModal(400)}>
           Small (400px)
@@ -170,15 +205,21 @@ export function SizesDemo() {
       >
         <p>This modal has a width of {width}px.</p>
       </Modal>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Modal, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function ResponsiveDemo() {
+  // @example-include
   const [open, setOpen] = useState(false);
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button color="primary" onClick={() => setOpen(true)}>
         Responsive Modal
       </Button>
@@ -191,6 +232,7 @@ export function ResponsiveDemo() {
         <p>This modal appears at the bottom on mobile and centered on larger screens.</p>
         <p className="text-sm text-base-content/70 mt-2">Resize your browser to see the effect.</p>
       </Modal>
+      {/* @example-return-end */}
     </Demo>
   );
 }

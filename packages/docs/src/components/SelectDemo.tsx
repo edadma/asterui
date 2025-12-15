@@ -2,9 +2,11 @@ import React from 'react';
 import { Select, Space, Form, Button } from 'asterui';
 import { Demo } from './Demo';
 
+// @example-imports: { Select } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Select>
         <option disabled selected>
           Pick your favorite
@@ -14,26 +16,32 @@ export function BasicDemo() {
         <option>Banana</option>
         <option>Grape</option>
       </Select>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Select } from 'asterui'
 export function DefaultValueDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Select defaultValue="orange">
         <option value="apple">Apple</option>
         <option value="orange">Orange</option>
         <option value="banana">Banana</option>
         <option value="grape">Grape</option>
       </Select>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Select, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="xs">
         <Select size="xs">
           <option>Extra small</option>
@@ -51,13 +59,16 @@ export function SizesDemo() {
           <option>Extra large</option>
         </Select>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Select, Space } from 'asterui'
 export function ColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="xs">
         <Select color="primary">
           <option>Primary</option>
@@ -81,13 +92,16 @@ export function ColorsDemo() {
           <option>Error</option>
         </Select>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Select } from 'asterui'
 export function GhostDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Select ghost>
         <option disabled selected>
           Pick one
@@ -95,28 +109,36 @@ export function GhostDemo() {
         <option>Option 1</option>
         <option>Option 2</option>
       </Select>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Select } from 'asterui'
 export function DisabledDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Select disabled>
         <option>Disabled select</option>
       </Select>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Select, Form, Button } from 'asterui'
 export function FormDemo() {
+  // @example-include
   const handleSubmit = (values: Record<string, unknown>) => {
     console.log('Form values:', values);
     alert(JSON.stringify(values, null, 2));
   };
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Form onFinish={handleSubmit} initialValues={{ country: 'canada' }}>
         <Form.Item
           name="country"
@@ -154,6 +176,7 @@ export function FormDemo() {
           </Button>
         </Form.Item>
       </Form>
+      {/* @example-return-end */}
     </Demo>
   );
 }

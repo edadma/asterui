@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Splitter, Button, Space, Menu } from 'asterui';
 import { Demo } from './Demo';
 
+// @example-imports: { Splitter } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="h-64 border border-base-300 rounded-lg overflow-hidden">
         <Splitter>
           <Splitter.Panel>
@@ -21,13 +23,16 @@ export function BasicDemo() {
           </Splitter.Panel>
         </Splitter>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Splitter } from 'asterui'
 export function VerticalDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="h-64 border border-base-300 rounded-lg overflow-hidden">
         <Splitter direction="vertical">
           <Splitter.Panel>
@@ -42,15 +47,21 @@ export function VerticalDemo() {
           </Splitter.Panel>
         </Splitter>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Splitter, Button, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function ControlledDemo() {
+  // @example-include
   const [sizes, setSizes] = useState([30, 70]);
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Space className="mb-4">
           <Button size="sm" onClick={() => setSizes([20, 80])}>
@@ -74,13 +85,16 @@ export function ControlledDemo() {
           </Splitter>
         </div>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Splitter } from 'asterui'
 export function MultiplePanelsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
         <Splitter defaultSizes={[25, 50, 25]}>
           <Splitter.Panel>
@@ -94,13 +108,16 @@ export function MultiplePanelsDemo() {
           </Splitter.Panel>
         </Splitter>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Splitter } from 'asterui'
 export function MinMaxDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
         <Splitter>
           <Splitter.Panel minSize={100} maxSize={300}>
@@ -115,13 +132,16 @@ export function MinMaxDemo() {
           </Splitter.Panel>
         </Splitter>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Splitter } from 'asterui'
 export function NestedDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="h-72 border border-base-300 rounded-lg overflow-hidden">
         <Splitter defaultSizes={[30, 70]}>
           <Splitter.Panel>
@@ -145,13 +165,16 @@ export function NestedDemo() {
           </Splitter.Panel>
         </Splitter>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Splitter } from 'asterui'
 export function GutterDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
         <Splitter gutterSize={12}>
           <Splitter.Panel>
@@ -162,13 +185,16 @@ export function GutterDemo() {
           </Splitter.Panel>
         </Splitter>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Splitter, Menu } from 'asterui'
 export function IdeDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="h-80 border border-base-300 rounded-lg overflow-hidden">
         <Splitter defaultSizes={[20, 80]}>
           <Splitter.Panel minSize={150}>
@@ -202,13 +228,16 @@ export function IdeDemo() {
           </Splitter.Panel>
         </Splitter>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Splitter } from 'asterui'
 export function CollapsibleDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="h-64 border border-base-300 rounded-lg overflow-hidden">
         <Splitter defaultSizes={[25, 75]}>
           <Splitter.Panel collapsible minSize={100}>
@@ -229,13 +258,16 @@ export function CollapsibleDemo() {
           </Splitter.Panel>
         </Splitter>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Splitter } from 'asterui'
 export function NonResizableDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="h-48 border border-base-300 rounded-lg overflow-hidden">
         <Splitter>
           <Splitter.Panel resizable={false} defaultSize={30}>
@@ -250,6 +282,7 @@ export function NonResizableDemo() {
           </Splitter.Panel>
         </Splitter>
       </div>
+      {/* @example-return-end */}
     </Demo>
   );
 }

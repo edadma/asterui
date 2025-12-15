@@ -11,29 +11,47 @@ interface UploadFile {
   percent?: number
 }
 
+// @example-imports: { Upload, Button } from 'asterui'
 export function BasicUploadDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Upload>
         <Button>Click to Upload</Button>
       </Upload>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Upload } from 'asterui'
 export function DragUploadDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Upload.Dragger>
         <p className="text-4xl mb-4">📁</p>
         <p className="text-lg">Click or drag file to this area to upload</p>
         <p className="text-sm opacity-60">Support for single or bulk upload</p>
       </Upload.Dragger>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Upload } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function PictureCardUploadDemo() {
+  // @example-include
+  interface UploadFile {
+    uid: string
+    name: string
+    status?: 'uploading' | 'done' | 'error' | 'removed'
+    url?: string
+    thumbUrl?: string
+    percent?: number
+  }
+
   const [fileList, setFileList] = useState<UploadFile[]>([
     {
       uid: '-1',
@@ -42,9 +60,11 @@ export function PictureCardUploadDemo() {
       url: 'https://picsum.photos/200',
     },
   ])
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Upload
         listType="picture-card"
         fileList={fileList}
@@ -57,11 +77,24 @@ export function PictureCardUploadDemo() {
           </div>
         )}
       </Upload>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Upload, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function ControlledUploadDemo() {
+  // @example-include
+  interface UploadFile {
+    uid: string
+    name: string
+    status?: 'uploading' | 'done' | 'error' | 'removed'
+    url?: string
+    thumbUrl?: string
+    percent?: number
+  }
+
   const [fileList, setFileList] = useState<UploadFile[]>([])
 
   const handleChange = ({ fileList }: { fileList: UploadFile[] }) => {
@@ -74,9 +107,11 @@ export function ControlledUploadDemo() {
       onSuccess()
     }, 1000)
   }
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Upload
           fileList={fileList}
@@ -88,37 +123,48 @@ export function ControlledUploadDemo() {
         </Upload>
         <p>Files: {fileList.length}/3</p>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Upload, Button } from 'asterui'
 export function MaxSizeUploadDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Upload maxSize={1024 * 1024 * 5}>
         <Button>Upload (max 5MB)</Button>
       </Upload>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Upload, Button } from 'asterui'
 export function AcceptUploadDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Upload accept="image/*">
         <Button>Upload Images Only</Button>
       </Upload>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Upload, Button, Form } from 'asterui'
 export function FormUploadDemo() {
+  // @example-include
   const handleSubmit = (values: Record<string, unknown>) => {
     console.log(values)
   }
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Form onFinish={handleSubmit}>
         <Form.Item
           name="avatar"
@@ -148,6 +194,7 @@ export function FormUploadDemo() {
           </Button>
         </Form.Item>
       </Form>
+      {/* @example-return-end */}
     </Demo>
   )
 }

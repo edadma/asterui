@@ -1,9 +1,11 @@
 import { Carousel, Space, Card, Button } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Carousel } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Carousel className="w-full max-w-md h-48">
         <Carousel.Item>
           <img src="https://picsum.photos/seed/1/400/200" alt="Slide 1" className="w-full h-full object-cover" />
@@ -15,13 +17,16 @@ export function BasicDemo() {
           <img src="https://picsum.photos/seed/3/400/200" alt="Slide 3" className="w-full h-full object-cover" />
         </Carousel.Item>
       </Carousel>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Carousel } from 'asterui'
 export function AutoplayDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Carousel autoplay autoplaySpeed={2000} className="w-full max-w-md h-40">
         <Carousel.Item>
           <div className="bg-primary text-primary-content h-full flex items-center justify-center">
@@ -39,13 +44,16 @@ export function AutoplayDemo() {
           </div>
         </Carousel.Item>
       </Carousel>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Carousel } from 'asterui'
 export function FadeDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Carousel effect="fade" autoplay autoplaySpeed={3000} className="w-full max-w-md h-48">
         <Carousel.Item>
           <img src="https://picsum.photos/seed/10/400/200" alt="Slide 1" className="w-full h-full object-cover" />
@@ -57,13 +65,16 @@ export function FadeDemo() {
           <img src="https://picsum.photos/seed/12/400/200" alt="Slide 3" className="w-full h-full object-cover" />
         </Carousel.Item>
       </Carousel>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Carousel } from 'asterui'
 export function VerticalDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Carousel vertical className="h-48 w-full max-w-md">
         <Carousel.Item>
           <img src="https://picsum.photos/seed/4/400/200" alt="Slide 1" className="w-full h-full object-cover" />
@@ -75,13 +86,16 @@ export function VerticalDemo() {
           <img src="https://picsum.photos/seed/6/400/200" alt="Slide 3" className="w-full h-full object-cover" />
         </Carousel.Item>
       </Carousel>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Carousel } from 'asterui'
 export function NoControlsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Carousel arrows={false} className="w-full max-w-md h-48">
         <Carousel.Item>
           <img src="https://picsum.photos/seed/7/400/200" alt="Slide 1" className="w-full h-full object-cover" />
@@ -93,13 +107,16 @@ export function NoControlsDemo() {
           <img src="https://picsum.photos/seed/9/400/200" alt="Slide 3" className="w-full h-full object-cover" />
         </Carousel.Item>
       </Carousel>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Carousel, Space } from 'asterui'
 export function DotPlacementDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="lg" className="w-full">
         <Carousel dotPlacement="top" className="w-full max-w-md h-32">
           <Carousel.Item>
@@ -118,13 +135,16 @@ export function DotPlacementDemo() {
           </Carousel.Item>
         </Carousel>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Carousel, Card, Button } from 'asterui'
 export function CustomContentDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Carousel className="w-full max-w-md">
         <Carousel.Item>
           <Card title="Feature 1" className="bg-base-200 h-full">
@@ -139,6 +159,7 @@ export function CustomContentDemo() {
           </Card>
         </Carousel.Item>
       </Carousel>
+      {/* @example-return-end */}
     </Demo>
   )
 }

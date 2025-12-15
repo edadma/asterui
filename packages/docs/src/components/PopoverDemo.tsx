@@ -1,32 +1,40 @@
 import { Popover, Button } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Popover, Button } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Popover content="This is a simple popover">
         <Button>Hover me</Button>
       </Popover>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Popover, Button } from 'asterui'
 export function TitleDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Popover
         title="User Information"
         content="Additional details about the user and their account settings."
       >
         <Button>Hover me</Button>
       </Popover>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Popover, Button } from 'asterui'
 export function TriggersDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="flex gap-4">
         <Popover trigger="hover" content="Triggered by hovering">
           <Button>Hover</Button>
@@ -38,13 +46,16 @@ export function TriggersDemo() {
           <Button>Focus</Button>
         </Popover>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Popover, Button } from 'asterui'
 export function PlacementTopDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="flex gap-4 justify-center">
         <Popover placement="top" content="Top placement">
           <Button>Top</Button>
@@ -56,13 +67,16 @@ export function PlacementTopDemo() {
           <Button>Top Right</Button>
         </Popover>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Popover, Button } from 'asterui'
 export function PlacementBottomDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="flex gap-4 justify-center">
         <Popover placement="bottom" content="Bottom placement">
           <Button>Bottom</Button>
@@ -74,13 +88,16 @@ export function PlacementBottomDemo() {
           <Button>Bottom Right</Button>
         </Popover>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Popover, Button } from 'asterui'
 export function PlacementLeftDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="flex gap-4 justify-center">
         <Popover placement="left" content="Left placement">
           <Button>Left</Button>
@@ -92,13 +109,16 @@ export function PlacementLeftDemo() {
           <Button>Left Bottom</Button>
         </Popover>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Popover, Button } from 'asterui'
 export function PlacementRightDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <div className="flex gap-4 justify-center">
         <Popover placement="right" content="Right placement">
           <Button>Right</Button>
@@ -110,6 +130,7 @@ export function PlacementRightDemo() {
           <Button>Right Bottom</Button>
         </Popover>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }

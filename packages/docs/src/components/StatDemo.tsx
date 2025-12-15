@@ -3,41 +3,53 @@ import { Stats, Button } from 'asterui';
 import { InformationCircleIcon, AdjustmentsVerticalIcon } from '@aster-ui/icons';
 import { Demo } from './Demo';
 
+// @example-imports: { Stats } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Stats className="shadow">
         <Stats.Stat title="Total Page Views" value="89,400" />
       </Stats>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Stats } from 'asterui'
 export function DescDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Stats className="shadow">
         <Stats.Stat title="Downloads" value="31K" desc="Jan 1st - Feb 1st" />
       </Stats>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Stats } from 'asterui'
 export function MultipleDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Stats className="shadow">
         <Stats.Stat title="Total Users" value="4,200" desc="↗︎ 400 (22%)" />
         <Stats.Stat title="New Users" value="1,200" desc="↘︎ 90 (14%)" />
         <Stats.Stat title="New Registers" value="4,200" desc="↗︎ 400 (22%)" />
       </Stats>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Stats } from 'asterui'
+// @example-imports: { InformationCircleIcon, AdjustmentsVerticalIcon } from '@aster-ui/icons'
 export function IconsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Stats className="shadow">
         <Stats.Stat
           figure={<InformationCircleIcon size={32} />}
@@ -52,13 +64,16 @@ export function IconsDemo() {
           desc="↗︎ 400 (22%)"
         />
       </Stats>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Stats } from 'asterui'
 export function ColoredDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Stats className="shadow">
         <Stats.Stat
           title="Account balance"
@@ -71,25 +86,31 @@ export function ColoredDemo() {
           desc="12% less than last month"
         />
       </Stats>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Stats } from 'asterui'
 export function VerticalDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Stats vertical className="shadow">
         <Stats.Stat title="Downloads" value="31K" desc="Jan 1st - Feb 1st" />
         <Stats.Stat title="New Users" value="4,200" desc="↗︎ 400 (22%)" />
         <Stats.Stat title="New Registers" value="1,200" desc="↘︎ 90 (14%)" />
       </Stats>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Stats, Button } from 'asterui'
 export function ActionsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Stats className="shadow">
         <Stats.Stat
           title="Account balance"
@@ -101,6 +122,7 @@ export function ActionsDemo() {
           }
         />
       </Stats>
+      {/* @example-return-end */}
     </Demo>
   );
 }

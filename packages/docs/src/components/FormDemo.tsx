@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { Form, Input, Button, Textarea, Radio, Space } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Form, Input, Button } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Form onFinish={(values) => alert(JSON.stringify(values, null, 2))}>
         <Form.Item name="username" label="Username">
           <Input placeholder="Enter username" />
@@ -18,13 +20,16 @@ export function BasicDemo() {
           </Button>
         </Form.Item>
       </Form>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Form, Input, Button } from 'asterui'
 export function ValidationDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Form onFinish={(values) => alert(JSON.stringify(values, null, 2))}>
         <Form.Item
           name="email"
@@ -52,13 +57,16 @@ export function ValidationDemo() {
           </Button>
         </Form.Item>
       </Form>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Form, Input, Button } from 'asterui'
 export function TooltipExtraDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Form onFinish={(values) => alert(JSON.stringify(values, null, 2))}>
         <Form.Item
           name="username"
@@ -73,13 +81,16 @@ export function TooltipExtraDemo() {
           <Button color="primary" htmlType="submit">Save</Button>
         </Form.Item>
       </Form>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Form, Input, Button } from 'asterui'
 export function FeedbackDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Form onFinish={(values) => alert(JSON.stringify(values, null, 2))}>
         <Form.Item
           name="email"
@@ -104,14 +115,21 @@ export function FeedbackDemo() {
           <Button color="primary" htmlType="submit">Register</Button>
         </Form.Item>
       </Form>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Form, Input, Button, Radio, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function LayoutsDemo() {
+  // @example-include
   const [layout, setLayout] = useState<'horizontal' | 'vertical' | 'inline'>('vertical')
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="lg" className="w-full">
         <Radio.Group
           value={layout}
@@ -136,18 +154,24 @@ export function LayoutsDemo() {
           </Form.Item>
         </Form>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Form, Input, Button, Textarea } from 'asterui'
 export function InitialValuesDemo() {
+  // @example-include
   const initialValues = {
     username: 'john_doe',
     email: 'john@example.com',
     bio: 'Software developer'
   }
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Form initialValues={initialValues} onFinish={(values) => alert(JSON.stringify(values, null, 2))}>
         <Form.Item name="username" label="Username">
           <Input />
@@ -164,13 +188,16 @@ export function InitialValuesDemo() {
           </Button>
         </Form.Item>
       </Form>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Form, Input, Button } from 'asterui'
 export function FloatingLabelDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Form onFinish={(values) => alert(JSON.stringify(values, null, 2))}>
         <Form.Item name="fullName" floatingLabel="Full Name" required>
           <Input />
@@ -187,13 +214,16 @@ export function FloatingLabelDemo() {
           </Button>
         </Form.Item>
       </Form>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Form, Input, Button } from 'asterui'
 export function AddonsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Form onFinish={(values) => alert(JSON.stringify(values, null, 2))}>
         <Form.Item name="website" label="Website" addonBefore="https://">
           <Input placeholder="your-site.com" />
@@ -210,6 +240,7 @@ export function AddonsDemo() {
           </Button>
         </Form.Item>
       </Form>
+      {/* @example-return-end */}
     </Demo>
   )
 }

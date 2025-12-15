@@ -1,22 +1,27 @@
 import { Footer } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Footer } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Footer horizontal className="bg-base-200 p-4">
         <a href="#" className="link link-hover">About</a>
         <a href="#" className="link link-hover">Contact</a>
         <a href="#" className="link link-hover">Privacy</a>
         <a href="#" className="link link-hover">Terms</a>
       </Footer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Footer } from 'asterui'
 export function WithSectionsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Footer horizontal className="bg-base-200 p-10">
         <nav>
           <Footer.Title>Services</Footer.Title>
@@ -37,13 +42,16 @@ export function WithSectionsDemo() {
           <a href="#" className="link link-hover">Cookie policy</a>
         </nav>
       </Footer>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Footer } from 'asterui'
 export function CenteredDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Footer center horizontal className="bg-base-200 p-4">
         <nav className="flex gap-4">
           <a href="#" className="link link-hover">About</a>
@@ -55,6 +63,7 @@ export function CenteredDemo() {
           <p>© 2024 Company Name. All rights reserved.</p>
         </aside>
       </Footer>
+      {/* @example-return-end */}
     </Demo>
   )
 }

@@ -3,9 +3,11 @@ import { Navbar, Button, Dropdown, Typography, Flex } from 'asterui'
 import { ChevronDownIcon } from '@aster-ui/icons'
 import { Demo } from './Demo'
 
+// @example-imports: { Navbar, Button, Typography, Flex } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Navbar
         start={<Typography.Text strong className="text-xl">AsterUI</Typography.Text>}
         end={
@@ -16,13 +18,17 @@ export function BasicDemo() {
           </Flex>
         }
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Navbar, Button, Dropdown, Typography, Flex } from 'asterui'
+// @example-imports: { ChevronDownIcon } from '@aster-ui/icons'
 export function WithDropdownDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Navbar
         start={<Typography.Text strong className="text-xl">AsterUI</Typography.Text>}
         end={
@@ -46,13 +52,16 @@ export function WithDropdownDemo() {
           </Flex>
         }
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Navbar, Button, Dropdown, Typography } from 'asterui'
 export function WithMenuIconDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Navbar
         start={
           <Dropdown>
@@ -70,13 +79,16 @@ export function WithMenuIconDemo() {
         center={<Typography.Text strong className="text-xl">AsterUI</Typography.Text>}
         end={<Button color="primary">Sign In</Button>}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Navbar, Button, Typography, Flex } from 'asterui'
 export function ColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Flex direction="column" gap="md">
         <Navbar
           color="neutral"
@@ -94,13 +106,16 @@ export function ColorsDemo() {
           end={<Button variant="ghost">Action</Button>}
         />
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Navbar, Button, Typography, Flex } from 'asterui'
 export function ShadowDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Navbar
         shadow="md"
         start={<Typography.Text strong className="text-xl">AsterUI</Typography.Text>}
@@ -111,13 +126,16 @@ export function ShadowDemo() {
           </Flex>
         }
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Navbar, Button, Typography, Flex } from 'asterui'
 export function RoundedDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Navbar
         color="neutral"
         rounded="lg"
@@ -129,6 +147,7 @@ export function RoundedDemo() {
           </Flex>
         }
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }

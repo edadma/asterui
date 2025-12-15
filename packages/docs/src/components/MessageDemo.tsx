@@ -1,10 +1,12 @@
-import React from 'react';
+import { useState } from 'react';
 import { message, Button, Space } from 'asterui';
 import { Demo } from './Demo';
 
+// @example-imports: { message, Button, Space } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Button
           color="primary"
@@ -31,12 +33,16 @@ export function BasicDemo() {
           Warning
         </Button>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { message, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function LoadingDemo() {
-  const [loadingId, setLoadingId] = React.useState<string | null>(null);
+  // @example-include
+  const [loadingId, setLoadingId] = useState<string | null>(null);
 
   const handleClick = () => {
     const id = message.loading('Processing...');
@@ -48,19 +54,24 @@ export function LoadingDemo() {
       setLoadingId(null);
     }, 2000);
   };
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Button onClick={handleClick} disabled={!!loadingId}>
         {loadingId ? 'Processing...' : 'Submit'}
       </Button>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { message, Button, Space } from 'asterui'
 export function DurationDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Button
           onClick={() => message.info('Quick message', { duration: 1 })}
@@ -81,13 +92,16 @@ export function DurationDemo() {
           6 seconds
         </Button>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { message, Button } from 'asterui'
 export function StackingDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Button
         color="primary"
         onClick={() => {
@@ -98,6 +112,7 @@ export function StackingDemo() {
       >
         Show Multiple
       </Button>
+      {/* @example-return-end */}
     </Demo>
   );
 }

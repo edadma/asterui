@@ -7,7 +7,15 @@ const HEIGHTS = [100, 120, 140, 160, 180, 200]
 
 interface Item { id: number; color: string; height: number }
 
+// @example-imports: { Masonry, Button } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function DynamicMasonryDemo() {
+  // @example-include
+  const COLORS = ['#0092ff', '#00d084', '#ff6b6b', '#ffd93d', '#a29bfe', '#fd79a8']
+  const HEIGHTS = [100, 120, 140, 160, 180, 200]
+
+  interface Item { id: number; color: string; height: number }
+
   const [items, setItems] = useState<Item[]>([
     { id: 1, color: COLORS[0], height: 120 },
     { id: 2, color: COLORS[1], height: 180 },
@@ -25,9 +33,11 @@ export function DynamicMasonryDemo() {
   }
 
   const removeItem = (id: number) => setItems(items.filter(item => item.id !== id))
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <div className="mb-4">
           <Button color="primary" onClick={addItem}>Add Item</Button>
@@ -53,13 +63,16 @@ export function DynamicMasonryDemo() {
           ))}
         </Masonry>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Masonry } from 'asterui'
 export function BasicMasonryDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Masonry columns={3} gap={16}>
         <div style={{ background: '#0092ff', padding: '16px', color: 'white', height: '120px' }}>
           Item 1
@@ -80,13 +93,16 @@ export function BasicMasonryDemo() {
           Item 6
         </div>
       </Masonry>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Masonry } from 'asterui'
 export function ResponsiveMasonryDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Masonry columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} gap={16}>
         <div style={{ background: '#0092ff', padding: '16px', color: 'white', height: '120px' }}>
           Item 1
@@ -113,13 +129,16 @@ export function ResponsiveMasonryDemo() {
           Item 8
         </div>
       </Masonry>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Masonry } from 'asterui'
 export function CustomGapDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Masonry columns={3} gap={32}>
         <div style={{ background: '#0092ff', padding: '16px', color: 'white', height: '120px' }}>
           Item 1
@@ -140,6 +159,7 @@ export function CustomGapDemo() {
           Item 6
         </div>
       </Masonry>
+      {/* @example-return-end */}
     </Demo>
   )
 }

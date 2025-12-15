@@ -3,8 +3,10 @@ import { Tabs, Input, Button, notification, Space, Typography } from 'asterui'
 import { HomeIcon, UserIcon, Cog6ToothIcon } from '@aster-ui/icons'
 import { Demo } from './Demo'
 
+// @example-imports: { Tabs, Typography } from 'asterui'
 export const BasicDemo: React.FC = () => (
   <Demo>
+    {/* @example-return */}
     <Tabs>
       <Tabs.Panel tab="Tab 1" key="1">
         <Typography.Text>Content of Tab 1</Typography.Text>
@@ -16,11 +18,14 @@ export const BasicDemo: React.FC = () => (
         <Typography.Text>Content of Tab 3</Typography.Text>
       </Tabs.Panel>
     </Tabs>
+    {/* @example-return-end */}
   </Demo>
 )
 
+// @example-imports: { Tabs, Space, Input, Button } from 'asterui'
 export const SettingsDemo: React.FC = () => (
   <Demo>
+    {/* @example-return */}
     <Tabs defaultActiveKey="account" variant="border">
       <Tabs.Panel tab="Account" key="account">
         <Space direction="vertical" size="md">
@@ -37,11 +42,14 @@ export const SettingsDemo: React.FC = () => (
         </Space>
       </Tabs.Panel>
     </Tabs>
+    {/* @example-return-end */}
   </Demo>
 )
 
+// @example-imports: { Tabs, Typography } from 'asterui'
 export const BoxDemo: React.FC = () => (
   <Demo>
+    {/* @example-return */}
     <Tabs variant="box">
       <Tabs.Panel tab="Home" key="home">
         <Typography.Text>Home content</Typography.Text>
@@ -53,11 +61,14 @@ export const BoxDemo: React.FC = () => (
         <Typography.Text>Settings content</Typography.Text>
       </Tabs.Panel>
     </Tabs>
+    {/* @example-return-end */}
   </Demo>
 )
 
+// @example-imports: { Tabs, Typography } from 'asterui'
 export const LiftDemo: React.FC = () => (
   <Demo>
+    {/* @example-return */}
     <Tabs variant="lift">
       <Tabs.Panel tab="Overview" key="1">
         <Typography.Text>Overview content</Typography.Text>
@@ -69,11 +80,14 @@ export const LiftDemo: React.FC = () => (
         <Typography.Text>Analytics content</Typography.Text>
       </Tabs.Panel>
     </Tabs>
+    {/* @example-return-end */}
   </Demo>
 )
 
+// @example-imports: { Tabs, Space, Typography } from 'asterui'
 export const SizesDemo: React.FC = () => (
   <Demo>
+    {/* @example-return */}
     <Space direction="vertical" size="md">
       <div>
         <Typography.Text strong>Small</Typography.Text>
@@ -90,11 +104,14 @@ export const SizesDemo: React.FC = () => (
         </Tabs>
       </div>
     </Space>
+    {/* @example-return-end */}
   </Demo>
 )
 
+// @example-imports: { Tabs, Typography } from 'asterui'
 export const DisabledDemo: React.FC = () => (
   <Demo>
+    {/* @example-return */}
     <Tabs>
       <Tabs.Panel tab="Active" key="1">
         <Typography.Text>Active content</Typography.Text>
@@ -106,10 +123,15 @@ export const DisabledDemo: React.FC = () => (
         <Typography.Text>Active content</Typography.Text>
       </Tabs.Panel>
     </Tabs>
+    {/* @example-return-end */}
   </Demo>
 )
 
+// @example-imports: { Tabs, notification, Typography } from 'asterui'
+// @example-imports: { HomeIcon, UserIcon, Cog6ToothIcon } from '@aster-ui/icons'
+// @example-imports: { useState } from 'react'
 export const DataDrivenDemo: React.FC = () => {
+  // @example-include
   const [activeKey, setActiveKey] = useState('home')
 
   const items = [
@@ -117,9 +139,11 @@ export const DataDrivenDemo: React.FC = () => {
     { key: 'profile', label: 'Profile', icon: <UserIcon size="sm" />, children: <Typography.Text>Profile content</Typography.Text> },
     { key: 'settings', label: 'Settings', icon: <Cog6ToothIcon size="sm" />, children: <Typography.Text>Settings content</Typography.Text> },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Tabs
         items={items}
         activeKey={activeKey}
@@ -129,12 +153,15 @@ export const DataDrivenDemo: React.FC = () => {
         }}
         variant="border"
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tabs, Typography } from 'asterui'
 export const PositionDemo: React.FC = () => (
   <Demo>
+    {/* @example-return */}
     <Tabs position="bottom" variant="border">
       <Tabs.Panel tab="Tab 1" key="1">
         <Typography.Text>Content appears above the tabs</Typography.Text>
@@ -146,5 +173,6 @@ export const PositionDemo: React.FC = () => (
         <Typography.Text>Third tab content</Typography.Text>
       </Tabs.Panel>
     </Tabs>
+    {/* @example-return-end */}
   </Demo>
 )

@@ -2,9 +2,11 @@ import React from 'react';
 import { notification, Button, Space } from 'asterui';
 import { Demo } from './Demo';
 
+// @example-imports: { notification, Button, Space } from 'asterui'
 export const BasicDemo: React.FC = () => {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Button
           color="primary"
@@ -51,13 +53,16 @@ export const BasicDemo: React.FC = () => {
           Warning
         </Button>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 };
 
+// @example-imports: { notification, Button, Space } from 'asterui'
 export const PlacementsDemo: React.FC = () => {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Button
           onClick={() =>
@@ -107,13 +112,16 @@ export const PlacementsDemo: React.FC = () => {
           Bottom Right
         </Button>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 };
 
+// @example-imports: { notification, Button, Space } from 'asterui'
 export const DurationDemo: React.FC = () => {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Button
           onClick={() =>
@@ -163,6 +171,7 @@ export const DurationDemo: React.FC = () => {
           No Auto-close
         </Button>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 };

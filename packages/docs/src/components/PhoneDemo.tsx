@@ -1,19 +1,24 @@
 import { Phone, Button } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Phone } from 'asterui'
 export function BasicPhoneDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Phone displayClassName="bg-base-100 grid place-content-center">
         <span className="text-xl">Hello World</span>
       </Phone>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Phone } from 'asterui'
 export function ImagePhoneDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Phone>
         <img
           src="https://img.daisyui.com/images/stock/453966.webp"
@@ -21,23 +26,29 @@ export function ImagePhoneDemo() {
           className="w-full h-full object-cover"
         />
       </Phone>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Phone } from 'asterui'
 export function ColorPhoneDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Phone color="#ff8938" displayClassName="bg-gradient-to-b from-orange-400 to-orange-600 grid place-content-center">
         <span className="text-white text-xl font-bold">Orange</span>
       </Phone>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Phone, Button } from 'asterui'
 export function AppPhoneDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Phone displayClassName="bg-base-100 flex flex-col">
         <div className="bg-primary text-primary-content p-4">
           <h2 className="font-bold">My App</h2>
@@ -51,13 +62,16 @@ export function AppPhoneDemo() {
           <Button color="primary" size="sm" className="w-full">Action</Button>
         </div>
       </Phone>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Phone } from 'asterui'
 export function ChatPhoneDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Phone displayClassName="bg-base-200 flex flex-col">
         <div className="bg-base-100 p-3 border-b border-base-300 flex items-center gap-3">
           <div className="avatar">
@@ -79,6 +93,7 @@ export function ChatPhoneDemo() {
           </div>
         </div>
       </Phone>
+      {/* @example-return-end */}
     </Demo>
   )
 }

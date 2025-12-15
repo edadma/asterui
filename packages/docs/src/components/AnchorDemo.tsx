@@ -1,11 +1,15 @@
 import { Anchor, Flex } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Anchor, Flex } from 'asterui'
 export function BasicDemo() {
+  // @example-include
   const getContainer = () => document.getElementById('scroll-container-basic') as HTMLElement
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Flex gap="md">
         <Anchor
           items={[
@@ -30,15 +34,20 @@ export function BasicDemo() {
           </section>
         </div>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Anchor } from 'asterui'
 export function HorizontalDemo() {
+  // @example-include
   const getContainer = () => document.getElementById('scroll-container-horizontal') as HTMLElement
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Anchor
           direction="horizontal"
@@ -69,15 +78,20 @@ export function HorizontalDemo() {
           </section>
         </div>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Anchor, Flex } from 'asterui'
 export function NestedDemo() {
+  // @example-include
   const getContainer = () => document.getElementById('scroll-container-nested') as HTMLElement
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Flex gap="md">
         <Anchor
           items={[
@@ -121,6 +135,7 @@ export function NestedDemo() {
           </section>
         </div>
       </Flex>
+      {/* @example-return-end */}
     </Demo>
   )
 }

@@ -44,19 +44,75 @@ const fileTreeData: TreeDataNode[] = [
   },
 ]
 
+// @example-imports: { Tree } from 'asterui'
+// @example-imports: type { TreeDataNode } from 'asterui'
 export function BasicDemo() {
+  // @example-include
+  const basicTreeData: TreeDataNode[] = [
+    {
+      key: '0',
+      title: 'Parent Node',
+      children: [
+        {
+          key: '0-0',
+          title: 'Child Node 1',
+          children: [
+            { key: '0-0-0', title: 'Leaf Node 1' },
+            { key: '0-0-1', title: 'Leaf Node 2' },
+          ],
+        },
+        {
+          key: '0-1',
+          title: 'Child Node 2',
+          children: [{ key: '0-1-0', title: 'Leaf Node 3' }],
+        },
+      ],
+    },
+  ]
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Tree treeData={basicTreeData} defaultExpandedKeys={['0', '0-0']} />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tree } from 'asterui'
+// @example-imports: type { TreeDataNode } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CheckableDemo() {
+  // @example-include
+  const basicTreeData: TreeDataNode[] = [
+    {
+      key: '0',
+      title: 'Parent Node',
+      children: [
+        {
+          key: '0-0',
+          title: 'Child Node 1',
+          children: [
+            { key: '0-0-0', title: 'Leaf Node 1' },
+            { key: '0-0-1', title: 'Leaf Node 2' },
+          ],
+        },
+        {
+          key: '0-1',
+          title: 'Child Node 2',
+          children: [{ key: '0-1-0', title: 'Leaf Node 3' }],
+        },
+      ],
+    },
+  ]
+
   const [checkedKeys, setCheckedKeys] = useState<string[]>([])
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Tree
         treeData={basicTreeData}
         checkable
@@ -65,15 +121,44 @@ export function CheckableDemo() {
         defaultExpandedKeys={['0', '0-0', '0-1']}
       />
       <p className="mt-4 text-sm">Checked: {checkedKeys.join(', ') || 'None'}</p>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tree } from 'asterui'
+// @example-imports: type { TreeDataNode } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function SelectableDemo() {
+  // @example-include
+  const basicTreeData: TreeDataNode[] = [
+    {
+      key: '0',
+      title: 'Parent Node',
+      children: [
+        {
+          key: '0-0',
+          title: 'Child Node 1',
+          children: [
+            { key: '0-0-0', title: 'Leaf Node 1' },
+            { key: '0-0-1', title: 'Leaf Node 2' },
+          ],
+        },
+        {
+          key: '0-1',
+          title: 'Child Node 2',
+          children: [{ key: '0-1-0', title: 'Leaf Node 3' }],
+        },
+      ],
+    },
+  ]
+
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Tree
         treeData={basicTreeData}
         selectable
@@ -82,15 +167,44 @@ export function SelectableDemo() {
         defaultExpandedKeys={['0', '0-0', '0-1']}
       />
       <p className="mt-4 text-sm">Selected: {selectedKeys.join(', ') || 'None'}</p>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tree } from 'asterui'
+// @example-imports: type { TreeDataNode } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function MultipleDemo() {
+  // @example-include
+  const basicTreeData: TreeDataNode[] = [
+    {
+      key: '0',
+      title: 'Parent Node',
+      children: [
+        {
+          key: '0-0',
+          title: 'Child Node 1',
+          children: [
+            { key: '0-0-0', title: 'Leaf Node 1' },
+            { key: '0-0-1', title: 'Leaf Node 2' },
+          ],
+        },
+        {
+          key: '0-1',
+          title: 'Child Node 2',
+          children: [{ key: '0-1-0', title: 'Leaf Node 3' }],
+        },
+      ],
+    },
+  ]
+
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Tree
         treeData={basicTreeData}
         selectable
@@ -99,23 +213,52 @@ export function MultipleDemo() {
         onSelect={setSelectedKeys}
         defaultExpandedKeys={['0', '0-0', '0-1']}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tree } from 'asterui'
+// @example-imports: type { TreeDataNode } from 'asterui'
 export function ShowLineDemo() {
+  // @example-include
+  const fileTreeData: TreeDataNode[] = [
+    {
+      key: 'src',
+      title: 'src',
+      children: [
+        {
+          key: 'components',
+          title: 'components',
+          children: [
+            { key: 'Button.tsx', title: 'Button.tsx' },
+            { key: 'Input.tsx', title: 'Input.tsx' },
+          ],
+        },
+        { key: 'App.tsx', title: 'App.tsx' },
+      ],
+    },
+  ]
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Tree
         treeData={fileTreeData}
         showLine
         defaultExpandedKeys={['src', 'components']}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tree } from 'asterui'
+// @example-imports: type { TreeDataNode } from 'asterui'
+// @example-imports: { FolderIcon, DocumentIcon } from '@aster-ui/icons/solid'
 export function ShowIconDemo() {
+  // @example-include
   const treeDataWithIcons: TreeDataNode[] = [
     {
       key: 'src',
@@ -127,17 +270,22 @@ export function ShowIconDemo() {
       ],
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Tree treeData={treeDataWithIcons} showIcon defaultExpandedKeys={['src']} />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tree } from 'asterui'
 export function CompoundDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Tree defaultExpandedKeys={['parent']}>
         <Tree.Node key="parent" title="Parent Node">
           <Tree.Node key="child-1" title="Child Node 1">
@@ -147,13 +295,41 @@ export function CompoundDemo() {
           <Tree.Node key="child-2" title="Child Node 2" />
         </Tree.Node>
       </Tree>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tree } from 'asterui'
+// @example-imports: type { TreeDataNode } from 'asterui'
 export function CheckboxColorsDemo() {
+  // @example-include
+  const basicTreeData: TreeDataNode[] = [
+    {
+      key: '0',
+      title: 'Parent Node',
+      children: [
+        {
+          key: '0-0',
+          title: 'Child Node 1',
+          children: [
+            { key: '0-0-0', title: 'Leaf Node 1' },
+            { key: '0-0-1', title: 'Leaf Node 2' },
+          ],
+        },
+        {
+          key: '0-1',
+          title: 'Child Node 2',
+          children: [{ key: '0-1-0', title: 'Leaf Node 3' }],
+        },
+      ],
+    },
+  ]
+  // @example-include-end
+
   return (
     <Demo>
+      {/* @example-return */}
       <Tree
         treeData={basicTreeData}
         checkable
@@ -161,15 +337,44 @@ export function CheckboxColorsDemo() {
         checkboxSize="md"
         defaultExpandedKeys={['0']}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tree } from 'asterui'
+// @example-imports: type { TreeDataNode } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CheckStrictlyDemo() {
+  // @example-include
+  const basicTreeData: TreeDataNode[] = [
+    {
+      key: '0',
+      title: 'Parent Node',
+      children: [
+        {
+          key: '0-0',
+          title: 'Child Node 1',
+          children: [
+            { key: '0-0-0', title: 'Leaf Node 1' },
+            { key: '0-0-1', title: 'Leaf Node 2' },
+          ],
+        },
+        {
+          key: '0-1',
+          title: 'Child Node 2',
+          children: [{ key: '0-1-0', title: 'Leaf Node 3' }],
+        },
+      ],
+    },
+  ]
+
   const [checkedKeys, setCheckedKeys] = useState<string[]>([])
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Tree
         treeData={basicTreeData}
         checkable
@@ -178,11 +383,16 @@ export function CheckStrictlyDemo() {
         onCheck={setCheckedKeys}
         defaultExpandedKeys={['0']}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Tree } from 'asterui'
+// @example-imports: type { TreeDataNode } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function AsyncLoadDemo() {
+  // @example-include
   const [treeData, setTreeData] = useState<TreeDataNode[]>([
     { key: '0', title: 'Expand to load' },
     { key: '1', title: 'Expand to load' },
@@ -202,10 +412,13 @@ export function AsyncLoadDemo() {
       return update(prev)
     })
   }
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Tree treeData={treeData} loadData={loadData} />
+      {/* @example-return-end */}
     </Demo>
   )
 }

@@ -2,33 +2,41 @@ import React from 'react';
 import { Space, Button, Badge, Card, Divider } from 'asterui';
 import { Demo } from './Demo';
 
+// @example-imports: { Space, Button } from 'asterui'
 export function HorizontalDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space>
         <Button color="primary">Button 1</Button>
         <Button color="secondary">Button 2</Button>
         <Button color="accent">Button 3</Button>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Space, Button } from 'asterui'
 export function VerticalDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical">
         <Button color="primary">Button 1</Button>
         <Button color="secondary">Button 2</Button>
         <Button color="accent">Button 3</Button>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Space, Badge } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical">
         <Space size="xs">
           <Badge>Extra Small</Badge>
@@ -55,13 +63,16 @@ export function SizesDemo() {
           <Badge>Spacing</Badge>
         </Space>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Space, Button } from 'asterui'
 export function AlignmentDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space align="center">
         <Button color="primary" size="xs">
           Small
@@ -73,13 +84,16 @@ export function AlignmentDemo() {
           Large
         </Button>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Space, Badge } from 'asterui'
 export function WrapDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space wrap>
         <Badge>Tag 1</Badge>
         <Badge>Tag 2</Badge>
@@ -90,13 +104,16 @@ export function WrapDemo() {
         <Badge>Tag 7</Badge>
         <Badge>Tag 8</Badge>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Space, Card, Button } from 'asterui'
 export function NestedDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical">
         <Card title="Card 1">
           <Space>
@@ -120,13 +137,16 @@ export function NestedDemo() {
           </Space>
         </Card>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Space, Button } from 'asterui'
 export function JustifyDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space justify="between" className="w-full">
         <Button variant="ghost">Cancel</Button>
         <Space>
@@ -134,19 +154,23 @@ export function JustifyDemo() {
           <Button color="primary">Submit</Button>
         </Space>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Space, Divider } from 'asterui'
 export function SplitDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space split={<Divider type="vertical" />}>
         <a href="#">Home</a>
         <a href="#">Products</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }

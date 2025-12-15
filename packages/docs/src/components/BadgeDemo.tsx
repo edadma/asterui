@@ -1,9 +1,11 @@
 import { Badge, Button, Avatar, Space, Card } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Badge, Button, Space } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="lg" wrap>
         <Badge count={5}>
           <Button>Messages</Button>
@@ -15,13 +17,16 @@ export function BasicDemo() {
           <Button color="accent">No Count</Button>
         </Badge>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Avatar, Space } from 'asterui'
 export function OverflowDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="lg" align="center" wrap>
         <Badge count={99}>
           <Avatar size="lg">U</Avatar>
@@ -33,13 +38,16 @@ export function OverflowDemo() {
           <Avatar size="lg">U</Avatar>
         </Badge>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Avatar, Space } from 'asterui'
 export function PositionDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="lg" wrap>
         <Badge count={5} position="top-start">
           <Avatar size="lg">TL</Avatar>
@@ -57,13 +65,16 @@ export function PositionDemo() {
           <Avatar size="lg">BR</Avatar>
         </Badge>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Avatar, Space } from 'asterui'
 export function OffsetDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="lg">
         <Badge count={5}>
           <Avatar size="lg">Default</Avatar>
@@ -75,13 +86,16 @@ export function OffsetDemo() {
           <Avatar size="lg">Down</Avatar>
         </Badge>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Space } from 'asterui'
 export function StatusDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="sm">
         <Badge status="success" text="Success" />
         <Badge status="processing" text="Processing" />
@@ -89,13 +103,16 @@ export function StatusDemo() {
         <Badge status="warning" text="Warning" />
         <Badge status="default" text="Default" />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Card, Space } from 'asterui'
 export function RibbonDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="lg" wrap>
         <Badge.Ribbon text="Recommended">
           <Card title="Premium Plan" variant="border" className="w-48">
@@ -108,13 +125,16 @@ export function RibbonDemo() {
           </Card>
         </Badge.Ribbon>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Card, Space } from 'asterui'
 export function RibbonColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="md">
         <Badge.Ribbon text="Primary" type="primary">
           <Card title="Primary Ribbon" variant="border" className="w-48">Card content</Card>
@@ -126,13 +146,16 @@ export function RibbonColorsDemo() {
           <Card title="Custom Color" variant="border" className="w-48">Card content</Card>
         </Badge.Ribbon>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Button, Space } from 'asterui'
 export function DotDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="lg" wrap>
         <Badge dot type="error">
           <Button>Notifications</Button>
@@ -144,13 +167,16 @@ export function DotDemo() {
           <Button color="secondary">Pending</Button>
         </Badge>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Space } from 'asterui'
 export function ColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Badge count={5} />
         <Badge count={5} type="primary" />
@@ -161,13 +187,16 @@ export function ColorsDemo() {
         <Badge count={5} type="warning" />
         <Badge count={5} type="error" />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Button, Space } from 'asterui'
 export function CustomColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="md">
         <Badge count={5} color="#722ed1">
           <Button>Purple</Button>
@@ -182,13 +211,16 @@ export function CustomColorsDemo() {
           <Button>Gold</Button>
         </Badge>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" align="center">
         <Badge count={5} type="primary" size="xs" />
         <Badge count={5} type="primary" size="sm" />
@@ -196,13 +228,16 @@ export function SizesDemo() {
         <Badge count={5} type="primary" size="lg" />
         <Badge count={5} type="primary" size="xl" />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Button, Space } from 'asterui'
 export function ShowZeroDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="lg">
         <Badge count={0} showZero>
           <Button>Messages</Button>
@@ -211,13 +246,16 @@ export function ShowZeroDemo() {
           <Button color="secondary">Hidden Zero</Button>
         </Badge>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Badge, Space } from 'asterui'
 export function VariantsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="md">
         <Space direction="horizontal" size="sm" wrap>
           <Badge count={5} type="primary" variant="solid" />
@@ -245,6 +283,7 @@ export function VariantsDemo() {
           <Badge count={5} type="accent" variant="ghost" />
         </Space>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }

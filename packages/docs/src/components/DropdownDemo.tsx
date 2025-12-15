@@ -2,9 +2,11 @@ import { Dropdown, Button, Space, Typography } from 'asterui'
 import { PencilIcon, DocumentDuplicateIcon, TrashIcon, FolderIcon, Cog6ToothIcon } from '@aster-ui/icons'
 import { Demo } from './Demo'
 
+// @example-imports: { Dropdown, Button } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Dropdown>
         <Dropdown.Trigger>
           <Button color="primary">Actions</Button>
@@ -15,32 +17,41 @@ export function BasicDemo() {
           <Dropdown.Item>Delete</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Dropdown, Button } from 'asterui'
+// @example-imports: { PencilIcon, DocumentDuplicateIcon, TrashIcon } from '@aster-ui/icons'
 export function ItemsPropDemo() {
+  // @example-include
   const items = [
     { key: 'edit', label: 'Edit', icon: <PencilIcon size="sm" /> },
     { key: 'duplicate', label: 'Duplicate', icon: <DocumentDuplicateIcon size="sm" /> },
     { type: 'divider' as const },
     { key: 'delete', label: 'Delete', danger: true, icon: <TrashIcon size="sm" /> },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Dropdown items={items}>
         <Dropdown.Trigger>
           <Button color="primary">Data-Driven</Button>
         </Dropdown.Trigger>
       </Dropdown>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Dropdown, Button, Space } from 'asterui'
 export function PositionDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Dropdown position="top">
           <Dropdown.Trigger>
@@ -86,13 +97,16 @@ export function PositionDemo() {
           </Dropdown.Menu>
         </Dropdown>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Dropdown, Button, Space } from 'asterui'
 export function TriggerDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Dropdown trigger={['click']}>
           <Dropdown.Trigger>
@@ -114,13 +128,17 @@ export function TriggerDemo() {
           </Dropdown.Menu>
         </Dropdown>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Dropdown, Button } from 'asterui'
+// @example-imports: { PencilIcon, DocumentDuplicateIcon, TrashIcon } from '@aster-ui/icons'
 export function WithIconsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Dropdown>
         <Dropdown.Trigger>
           <Button color="primary">Options</Button>
@@ -131,13 +149,16 @@ export function WithIconsDemo() {
           <Dropdown.Item icon={<TrashIcon size="sm" />}>Delete</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Dropdown, Button } from 'asterui'
 export function WithDividerDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Dropdown>
         <Dropdown.Trigger>
           <Button>Account</Button>
@@ -150,13 +171,16 @@ export function WithDividerDemo() {
           <Dropdown.Item danger>Sign out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Dropdown, Button } from 'asterui'
 export function ItemStatesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Dropdown>
         <Dropdown.Trigger>
           <Button>States</Button>
@@ -169,13 +193,16 @@ export function ItemStatesDemo() {
           <Dropdown.Item danger>Delete Account</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Dropdown, Button, Space } from 'asterui'
 export function AlignDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" wrap>
         <Dropdown align="start">
           <Dropdown.Trigger>
@@ -207,13 +234,17 @@ export function AlignDemo() {
           </Dropdown.Menu>
         </Dropdown>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Dropdown, Typography } from 'asterui'
+// @example-imports: { PencilIcon, DocumentDuplicateIcon, TrashIcon } from '@aster-ui/icons'
 export function ContextMenuDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Dropdown trigger={['contextMenu']}>
         <Dropdown.Trigger>
           <div className="p-8 border-2 border-dashed border-base-300 rounded-lg text-center cursor-context-menu">
@@ -227,13 +258,17 @@ export function ContextMenuDemo() {
           <Dropdown.Item icon={<TrashIcon size="sm" />} danger>Delete</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Dropdown, Button } from 'asterui'
+// @example-imports: { PencilIcon, FolderIcon, Cog6ToothIcon } from '@aster-ui/icons'
 export function SubmenuDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Dropdown>
         <Dropdown.Trigger>
           <Button>With Submenu</Button>
@@ -253,6 +288,7 @@ export function SubmenuDemo() {
           <Dropdown.Item danger>Delete</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      {/* @example-return-end */}
     </Demo>
   )
 }

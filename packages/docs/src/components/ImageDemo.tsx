@@ -1,22 +1,27 @@
 import { Image, Space } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Image } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Image
         src="https://picsum.photos/seed/asterui/800/600"
         alt="Landscape"
         width={400}
         height={300}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Image, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="md" align="center">
         <Image
           src="https://picsum.photos/seed/asterui/800/600"
@@ -37,13 +42,16 @@ export function SizesDemo() {
           height={200}
         />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Image } from 'asterui'
 export function PreviewDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Image
         src="https://picsum.photos/seed/asterui/800/600"
         alt="Landscape with preview"
@@ -51,13 +59,16 @@ export function PreviewDemo() {
         height={300}
         preview
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Image, Space } from 'asterui'
 export function FallbackDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="md">
         <Image
           src="https://invalid-url.example.com/broken.jpg"
@@ -67,6 +78,7 @@ export function FallbackDemo() {
           fallback="https://picsum.photos/seed/asterui/800/600"
         />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }

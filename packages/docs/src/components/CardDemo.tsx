@@ -2,19 +2,24 @@ import { useState } from 'react'
 import { Card, Button, Space, Avatar } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Card } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card title="Card Title" className="w-96">
         <p>This is a basic card with some content inside it.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card } from 'asterui'
 export function ImageDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         title="Image Card"
         cover={<img src="https://picsum.photos/400/200" alt="Placeholder" />}
@@ -22,13 +27,16 @@ export function ImageDemo() {
       >
         <p>A card with an image positioned at the top.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Button } from 'asterui'
 export function ActionsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         title="Action Card"
         actions={
@@ -41,23 +49,29 @@ export function ActionsDemo() {
       >
         <p>Card with buttons in the actions area.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card } from 'asterui'
 export function UnborderedDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card title="Unbordered Card" className="w-96" bordered={false}>
         <p>This card has no border.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="sm" className="w-96">
         <Card title="Extra Small" size="xs" bordered>
           <p>Compact card with minimal padding.</p>
@@ -69,13 +83,16 @@ export function SizesDemo() {
           <p>Large card with increased padding.</p>
         </Card>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Button } from 'asterui'
 export function SideDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         title="Side Card"
         cover={
@@ -91,13 +108,16 @@ export function SideDemo() {
       >
         <p>Image positioned beside the content.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Button } from 'asterui'
 export function OverlayDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         title="Overlay Card"
         cover={<img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />}
@@ -107,13 +127,16 @@ export function OverlayDemo() {
       >
         <p>Text appears over the background image.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Space } from 'asterui'
 export function ColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="sm" className="w-96">
         <Card title="Primary Card" className="bg-primary text-primary-content">
           <p>Card with primary background color.</p>
@@ -122,13 +145,16 @@ export function ColorsDemo() {
           <p>Card with neutral background color.</p>
         </Card>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Button, Space } from 'asterui'
 export function AlignmentDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="sm" className="w-96">
         <Card
           title="Left Actions"
@@ -147,13 +173,16 @@ export function AlignmentDemo() {
           <p>Actions aligned to the center.</p>
         </Card>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card } from 'asterui'
 export function ExtraDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         title="Card Title"
         extra={<a href="#" className="link link-primary">More</a>}
@@ -161,13 +190,16 @@ export function ExtraDemo() {
       >
         <p>Card with extra content in the header area.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Space } from 'asterui'
 export function HoverableDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm">
         <Card title="Hoverable Card" hoverable className="w-64">
           <p>Hover over this card to see the shadow effect.</p>
@@ -176,15 +208,21 @@ export function HoverableDemo() {
           <p>This card has no hover effect.</p>
         </Card>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Button, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function LoadingDemo() {
+  // @example-include
   const [loading, setLoading] = useState(true)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="sm">
         <Button size="sm" onClick={() => setLoading(!loading)}>
           Toggle Loading
@@ -199,13 +237,16 @@ export function LoadingDemo() {
           <p>Content appears when loading is false.</p>
         </Card>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Avatar } from 'asterui'
 export function MetaDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card className="w-96">
         <Card.Meta
           avatar={<Avatar src="https://i.pravatar.cc/100" />}
@@ -216,13 +257,16 @@ export function MetaDemo() {
           This card uses Card.Meta for a structured avatar layout.
         </p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Avatar, Button } from 'asterui'
 export function AvatarPropsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         avatar={<Avatar src="https://i.pravatar.cc/100" />}
         title="Jane Smith"
@@ -232,6 +276,7 @@ export function AvatarPropsDemo() {
       >
         <p className="mt-2">Building beautiful user experiences.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }

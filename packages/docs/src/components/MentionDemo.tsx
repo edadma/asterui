@@ -16,11 +16,23 @@ const tags = [
   { value: 'webdev', label: 'Web Development' },
 ]
 
+// @example-imports: { Mention } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function BasicDemo() {
+  // @example-include
+  const users = [
+    { value: 'john', label: 'John Doe' },
+    { value: 'jane', label: 'Jane Smith' },
+    { value: 'bob', label: 'Bob Johnson' },
+    { value: 'alice', label: 'Alice Williams' },
+  ]
+
   const [text, setText] = useState('')
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Mention
           options={users}
@@ -32,15 +44,28 @@ export function BasicDemo() {
           Text: {text || '(empty)'}
         </div>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Mention } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CustomPrefixDemo() {
+  // @example-include
+  const tags = [
+    { value: 'react', label: 'React' },
+    { value: 'typescript', label: 'TypeScript' },
+    { value: 'javascript', label: 'JavaScript' },
+    { value: 'webdev', label: 'Web Development' },
+  ]
+
   const [text, setText] = useState('')
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <div>
         <Mention
           options={tags}
@@ -53,16 +78,36 @@ export function CustomPrefixDemo() {
           Text: {text || '(empty)'}
         </div>
       </div>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Mention, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function MultiTriggerDemo() {
+  // @example-include
+  const users = [
+    { value: 'john', label: 'John Doe' },
+    { value: 'jane', label: 'Jane Smith' },
+    { value: 'bob', label: 'Bob Johnson' },
+    { value: 'alice', label: 'Alice Williams' },
+  ]
+
+  const tags = [
+    { value: 'react', label: 'React' },
+    { value: 'typescript', label: 'TypeScript' },
+    { value: 'javascript', label: 'JavaScript' },
+    { value: 'webdev', label: 'Web Development' },
+  ]
+
   const [userText, setUserText] = useState('')
   const [tagText, setTagText] = useState('')
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="md">
         <div>
           <label className="block mb-2 text-sm font-medium">
@@ -96,6 +141,7 @@ export function MultiTriggerDemo() {
           </div>
         </div>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }

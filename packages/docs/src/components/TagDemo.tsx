@@ -9,9 +9,11 @@ import {
 } from '@aster-ui/icons';
 import { Demo } from './Demo';
 
+// @example-imports: { Tag, Space } from 'asterui'
 export function BasicTagsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" wrap>
         <Tag>Default</Tag>
         <Tag color="primary">Primary</Tag>
@@ -22,32 +24,41 @@ export function BasicTagsDemo() {
         <Tag color="warning">Warning</Tag>
         <Tag color="error">Error</Tag>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Tag, Space } from 'asterui'
 export function VariantsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" wrap>
         <Tag color="primary" variant="filled">Filled</Tag>
         <Tag color="primary" variant="outlined">Outlined</Tag>
         <Tag color="primary" variant="soft">Soft</Tag>
         <Tag color="primary" variant="dash">Dash</Tag>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Tag, Space, TagLiveRegion } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function ClosableTagsDemo() {
+  // @example-include
   const [tags, setTags] = useState(['Tag 1', 'Tag 2', 'Tag 3']);
 
   const handleClose = (tag: string) => {
     setTags(tags.filter((t) => t !== tag));
   };
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <TagLiveRegion />
       <Space size="sm" wrap>
         {tags.map((tag) => (
@@ -61,13 +72,17 @@ export function ClosableTagsDemo() {
           </Tag>
         ))}
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Tag, Space } from 'asterui'
+// @example-imports: { CheckCircleIcon, ExclamationCircleIcon } from '@aster-ui/icons'
 export function TagsWithIconsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" wrap>
         <Tag color="success" icon={<CheckCircleIcon size="sm" />}>
           Approved
@@ -76,13 +91,16 @@ export function TagsWithIconsDemo() {
           Pending
         </Tag>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Tag, Space } from 'asterui'
 export function TagSizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" align="center" wrap>
         <Tag color="primary" size="xs">Extra Small</Tag>
         <Tag color="primary" size="sm">Small</Tag>
@@ -90,13 +108,16 @@ export function TagSizesDemo() {
         <Tag color="primary" size="lg">Large</Tag>
         <Tag color="primary" size="xl">Extra Large</Tag>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Tag, Space } from 'asterui'
 export function CustomColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" wrap>
         <Tag color="#f50">Red</Tag>
         <Tag color="#2db7f5">Blue</Tag>
@@ -104,13 +125,16 @@ export function CustomColorsDemo() {
         <Tag color="#108ee9">Cyan</Tag>
         <Tag color="#f5222d">Crimson</Tag>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Tag, Space } from 'asterui'
 export function LinkTagsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" wrap>
         <Tag color="primary" href="https://github.com" target="_blank">
           GitHub
@@ -119,23 +143,30 @@ export function LinkTagsDemo() {
           Documentation
         </Tag>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Tag, CheckableTag, Space } from 'asterui'
 export function DisabledTagsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" wrap>
         <Tag color="primary" disabled>Disabled Tag</Tag>
         <Tag color="primary" closable disabled>Disabled Closable</Tag>
         <CheckableTag disabled>Disabled Checkable</CheckableTag>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { CheckableTag, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CheckableTagsDemo() {
+  // @example-include
   const [selectedTags, setSelectedTags] = useState<string[]>(['React']);
 
   const handleChange = (tag: string, checked: boolean) => {
@@ -146,9 +177,11 @@ export function CheckableTagsDemo() {
   };
 
   const tags = ['React', 'Vue', 'Angular', 'Svelte'];
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" wrap>
         {tags.map((tag) => (
           <CheckableTag
@@ -160,15 +193,21 @@ export function CheckableTagsDemo() {
           </CheckableTag>
         ))}
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { CheckableTag, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function CheckableTagColorsDemo() {
+  // @example-include
   const [checked, setChecked] = useState([true, false, false]);
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" wrap>
         <CheckableTag
           checked={checked[0]}
@@ -195,17 +234,24 @@ export function CheckableTagColorsDemo() {
           Error
         </CheckableTag>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { CheckableTag, Space } from 'asterui'
+// @example-imports: { HeartIcon, StarIcon, BookmarkIcon } from '@aster-ui/icons'
+// @example-imports: { useState } from 'react'
 export function CheckableTagsWithIconsDemo() {
+  // @example-include
   const [liked, setLiked] = useState(false);
   const [starred, setStarred] = useState(true);
   const [saved, setSaved] = useState(false);
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="sm" wrap>
         <CheckableTag
           checked={liked}
@@ -229,13 +275,16 @@ export function CheckableTagsWithIconsDemo() {
           Save
         </CheckableTag>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Tag, Space } from 'asterui'
 export function UseCasesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="md">
         {/* Article tags */}
         <Space size="sm" align="center">
@@ -253,6 +302,7 @@ export function UseCasesDemo() {
           <Tag color="error">Expired</Tag>
         </Space>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }

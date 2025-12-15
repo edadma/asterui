@@ -1,9 +1,11 @@
 import { Chart } from 'asterui/chart'
 import { Demo } from './Demo'
 
+// @example-imports: { Chart } from 'asterui/chart'
 export function LineDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Chart
         type="line"
         height={300}
@@ -19,13 +21,16 @@ export function LineDemo() {
           },
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chart } from 'asterui/chart'
 export function MultiLineDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Chart
         type="line"
         height={300}
@@ -48,13 +53,16 @@ export function MultiLineDemo() {
           },
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chart } from 'asterui/chart'
 export function BarDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Chart
         type="bar"
         height={300}
@@ -75,13 +83,16 @@ export function BarDemo() {
           },
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chart } from 'asterui/chart'
 export function StackedBarDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Chart
         type="bar"
         height={300}
@@ -95,13 +106,16 @@ export function StackedBarDemo() {
           xaxis: { categories: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6'] },
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chart } from 'asterui/chart'
 export function PieDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Chart
         type="pie"
         height={350}
@@ -113,13 +127,16 @@ export function PieDemo() {
           },
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chart } from 'asterui/chart'
 export function DonutDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Chart
         type="donut"
         height={350}
@@ -144,13 +161,16 @@ export function DonutDemo() {
           },
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chart } from 'asterui/chart'
 export function AreaDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Chart
         type="area"
         height={300}
@@ -180,13 +200,16 @@ export function AreaDemo() {
           },
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chart } from 'asterui/chart'
 export function RadarDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Chart
         type="radar"
         height={350}
@@ -206,13 +229,16 @@ export function RadarDemo() {
           },
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Chart } from 'asterui/chart'
 export function RadialBarDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Chart
         type="radialBar"
         height={350}
@@ -231,6 +257,7 @@ export function RadialBarDemo() {
           },
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }

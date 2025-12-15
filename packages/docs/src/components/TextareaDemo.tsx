@@ -2,25 +2,33 @@ import React, { useState } from 'react';
 import { Textarea, Form, Button, Modal, Space } from 'asterui';
 import { Demo } from './Demo';
 
+// @example-imports: { Textarea } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Textarea placeholder="Type your message here" />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Textarea } from 'asterui'
 export function RowsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Textarea rows={6} placeholder="Tall textarea" />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Textarea, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="xs">
         <Textarea size="xs" placeholder="Extra small" />
         <Textarea size="sm" placeholder="Small" />
@@ -28,13 +36,16 @@ export function SizesDemo() {
         <Textarea size="lg" placeholder="Large" />
         <Textarea size="xl" placeholder="Extra large" />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Textarea, Space } from 'asterui'
 export function ColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="xs">
         <Textarea color="primary" placeholder="Primary" />
         <Textarea color="secondary" placeholder="Secondary" />
@@ -44,27 +55,37 @@ export function ColorsDemo() {
         <Textarea color="warning" placeholder="Warning" />
         <Textarea color="error" placeholder="Error" />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Textarea } from 'asterui'
 export function GhostDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Textarea ghost placeholder="Ghost textarea" />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Textarea } from 'asterui'
 export function DisabledDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Textarea disabled placeholder="Disabled textarea" />
+      {/* @example-return-end */}
     </Demo>
   );
 }
 
+// @example-imports: { Textarea, Form, Button, Modal } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function FormDemo() {
+  // @example-include
   const [submittedData, setSubmittedData] = useState<Record<string, unknown> | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -72,9 +93,11 @@ export function FormDemo() {
     setSubmittedData(values);
     setIsModalOpen(true);
   };
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Form onFinish={handleSubmit}>
         <Form.Item
           name="message"
@@ -108,6 +131,7 @@ export function FormDemo() {
           </pre>
         </div>
       </Modal>
+      {/* @example-return-end */}
     </Demo>
   );
 }

@@ -3,17 +3,22 @@ import { Checkbox, Space, Modal } from 'asterui'
 import { SpeakerWaveIcon, SpeakerXMarkIcon, SunIcon, MoonIcon } from '@aster-ui/icons/solid'
 import { Demo } from './Demo'
 
+// @example-imports: { Checkbox } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Checkbox>Accept terms and conditions</Checkbox>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Checkbox, Space } from 'asterui'
 export function ColorsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="sm">
         <Checkbox color="primary" defaultChecked>Primary</Checkbox>
         <Checkbox color="secondary" defaultChecked>Secondary</Checkbox>
@@ -23,13 +28,16 @@ export function ColorsDemo() {
         <Checkbox color="info" defaultChecked>Info</Checkbox>
         <Checkbox color="error" defaultChecked>Error</Checkbox>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Checkbox, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="md" align="center">
         <Checkbox size="xs" defaultChecked>XS</Checkbox>
         <Checkbox size="sm" defaultChecked>SM</Checkbox>
@@ -37,22 +45,29 @@ export function SizesDemo() {
         <Checkbox size="lg" defaultChecked>LG</Checkbox>
         <Checkbox size="xl" defaultChecked>XL</Checkbox>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Checkbox, Space } from 'asterui'
 export function DisabledDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="md">
         <Checkbox disabled>Disabled</Checkbox>
         <Checkbox disabled defaultChecked>Disabled Checked</Checkbox>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Checkbox, Space } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function IndeterminateDemo() {
+  // @example-include
   const [items, setItems] = useState([true, false, true])
   const allChecked = items.every(Boolean)
   const someChecked = items.some(Boolean) && !allChecked
@@ -60,9 +75,11 @@ export function IndeterminateDemo() {
   const handleSelectAll = () => {
     setItems(allChecked ? [false, false, false] : [true, true, true])
   }
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="sm">
         <Checkbox
           checked={allChecked}
@@ -90,34 +107,46 @@ export function IndeterminateDemo() {
           </Space>
         </div>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Checkbox, Modal } from 'asterui'
 export function GroupDemo() {
+  // @example-include
   const options = [
     { label: 'Apple', value: 'apple' },
     { label: 'Banana', value: 'banana' },
     { label: 'Orange', value: 'orange' },
     { label: 'Mango', value: 'mango' },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Checkbox.Group
         options={options}
         defaultValue={['apple', 'orange']}
         onChange={(values) => Modal.info({ title: 'Selected', content: values.join(', ') })}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Checkbox, Space } from 'asterui'
+// @example-imports: { SpeakerWaveIcon, SpeakerXMarkIcon } from '@aster-ui/icons/solid'
+// @example-imports: { useState } from 'react'
 export function SwapDemo() {
+  // @example-include
   const [volume, setVolume] = useState(true)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space size="lg">
         <Checkbox
           checked={volume}
@@ -142,15 +171,22 @@ export function SwapDemo() {
           }}
         />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Checkbox } from 'asterui'
+// @example-imports: { SunIcon, MoonIcon } from '@aster-ui/icons/solid'
+// @example-imports: { useState } from 'react'
 export function SwapIconsDemo() {
+  // @example-include
   const [isDark, setIsDark] = useState(false)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Checkbox
         checked={isDark}
         onChange={(e) => setIsDark(e.target.checked)}
@@ -160,6 +196,7 @@ export function SwapIconsDemo() {
           effect: 'rotate',
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }

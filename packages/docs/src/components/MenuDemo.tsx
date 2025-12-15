@@ -3,41 +3,59 @@ import { Menu, Space, notification } from 'asterui';
 import { HomeIcon, FolderIcon, UsersIcon, Cog6ToothIcon } from '@aster-ui/icons';
 import { Demo } from './Demo';
 
+// @example-imports: { Menu } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function BasicDemo() {
+  // @example-include
   const [selected, setSelected] = useState('dashboard')
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Menu selectedKeys={[selected]} onSelect={setSelected}>
         <Menu.Item key="dashboard">Dashboard</Menu.Item>
         <Menu.Item key="projects">Projects</Menu.Item>
         <Menu.Item key="team">Team</Menu.Item>
         <Menu.Item key="settings">Settings</Menu.Item>
       </Menu>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Menu } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function HorizontalDemo() {
+  // @example-include
   const [selected, setSelected] = useState('home')
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Menu mode="horizontal" selectedKeys={[selected]} onSelect={setSelected}>
         <Menu.Item key="home">Home</Menu.Item>
         <Menu.Item key="about">About</Menu.Item>
         <Menu.Item key="services">Services</Menu.Item>
         <Menu.Item key="contact">Contact</Menu.Item>
       </Menu>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Menu } from 'asterui'
+// @example-imports: { HomeIcon, FolderIcon, UsersIcon, Cog6ToothIcon } from '@aster-ui/icons'
+// @example-imports: { useState } from 'react'
 export function WithIconsDemo() {
+  // @example-include
   const [selected, setSelected] = useState('dashboard')
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Menu selectedKeys={[selected]} onSelect={setSelected}>
         <Menu.Item key="dashboard" icon={<HomeIcon />}>
           Dashboard
@@ -52,15 +70,21 @@ export function WithIconsDemo() {
           Settings
         </Menu.Item>
       </Menu>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Menu } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function SubmenuDemo() {
+  // @example-include
   const [selected, setSelected] = useState('dashboard')
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Menu selectedKeys={[selected]} onSelect={setSelected} defaultOpenKeys={['projects']}>
         <Menu.Item key="dashboard">Dashboard</Menu.Item>
         <Menu.SubMenu key="projects" label="Projects">
@@ -78,13 +102,16 @@ export function SubmenuDemo() {
         <Menu.Item key="admin-settings">Settings</Menu.Item>
         <Menu.Item key="billing">Billing</Menu.Item>
       </Menu>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Menu, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="lg" wrap>
         <div>
           <div className="text-sm font-semibold mb-2">Extra Small</div>
@@ -122,11 +149,16 @@ export function SizesDemo() {
           </Menu>
         </div>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Menu, notification } from 'asterui'
+// @example-imports: { HomeIcon, FolderIcon, Cog6ToothIcon } from '@aster-ui/icons'
+// @example-imports: { useState } from 'react'
 export function DataDrivenDemo() {
+  // @example-include
   const [selected, setSelected] = useState('dashboard')
 
   const items = [
@@ -139,9 +171,11 @@ export function DataDrivenDemo() {
     { key: 'admin', label: 'Admin', title: true },
     { key: 'settings', label: 'Settings', icon: <Cog6ToothIcon /> },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Menu
         items={items}
         selectedKeys={[selected]}
@@ -150,6 +184,7 @@ export function DataDrivenDemo() {
           notification.info({ message: `Selected: ${key}` })
         }}
       />
+      {/* @example-return-end */}
     </Demo>
   )
 }

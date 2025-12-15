@@ -1,9 +1,11 @@
 import { Hero, Button } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Hero } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Hero contentClassName="text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">Hello there</h1>
@@ -14,13 +16,16 @@ export function BasicDemo() {
           </p>
         </div>
       </Hero>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Hero, Button } from 'asterui'
 export function WithButtonDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Hero contentClassName="text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">Hello there</h1>
@@ -31,13 +36,16 @@ export function WithButtonDemo() {
           <Button color="primary">Get Started</Button>
         </div>
       </Hero>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Hero, Button } from 'asterui'
 export function WithFigureDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Hero contentClassName="flex-col lg:flex-row-reverse">
         <img
           src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
@@ -54,13 +62,16 @@ export function WithFigureDemo() {
           <Button color="primary">Get Started</Button>
         </div>
       </Hero>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Hero, Button } from 'asterui'
 export function OverlayDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Hero
         overlay
         contentClassName="text-center text-neutral-content"
@@ -78,6 +89,7 @@ export function OverlayDemo() {
           <Button color="primary">Get Started</Button>
         </div>
       </Hero>
+      {/* @example-return-end */}
     </Demo>
   )
 }

@@ -2,20 +2,27 @@ import { Alert, Space, Button } from 'asterui'
 import { InformationCircleIcon, CheckCircleIcon, ExclamationTriangleIcon, XCircleIcon } from '@aster-ui/icons'
 import { Demo } from './Demo'
 
+// @example-imports: { Alert } from 'asterui'
+// @example-imports: { InformationCircleIcon } from '@aster-ui/icons'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Alert>
         <InformationCircleIcon size="lg" className="shrink-0" />
         <span>This is a basic alert</span>
       </Alert>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Alert, Space } from 'asterui'
+// @example-imports: { InformationCircleIcon, CheckCircleIcon, ExclamationTriangleIcon, XCircleIcon } from '@aster-ui/icons'
 export function TypesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="sm">
         <Alert type="info">
           <InformationCircleIcon size="lg" className="shrink-0" />
@@ -37,13 +44,17 @@ export function TypesDemo() {
           <span>Error: Invalid credentials</span>
         </Alert>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Alert, Button } from 'asterui'
+// @example-imports: { ExclamationTriangleIcon } from '@aster-ui/icons'
 export function ActionDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Alert type="warning">
         <ExclamationTriangleIcon size="lg" className="shrink-0" />
         <span>We use cookies for no reason</span>
@@ -51,13 +62,17 @@ export function ActionDemo() {
           <Button size="sm">Accept</Button>
         </div>
       </Alert>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Alert, Space } from 'asterui'
+// @example-imports: { InformationCircleIcon, CheckCircleIcon } from '@aster-ui/icons'
 export function OutlineDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="sm">
         <Alert type="info" outline>
           <InformationCircleIcon size="lg" className="shrink-0" />
@@ -69,6 +84,7 @@ export function OutlineDemo() {
           <span>Success outline alert</span>
         </Alert>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }

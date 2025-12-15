@@ -1,7 +1,9 @@
 import { Collapse, Button, Space } from 'asterui'
 import { Demo } from './Demo'
 
+// @example-imports: { Collapse } from 'asterui'
 export function BasicDemo() {
+  // @example-include
   const items = [
     {
       key: '1',
@@ -19,15 +21,20 @@ export function BasicDemo() {
       children: 'Yes, AsterUI is open source and free to use.',
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Collapse items={items} defaultActiveKey={['1']} />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Collapse } from 'asterui'
 export function AccordionDemo() {
+  // @example-include
   const items = [
     {
       key: '1',
@@ -45,15 +52,20 @@ export function AccordionDemo() {
       children: 'Content for section 3. This is accordion behavior.',
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Collapse items={items} accordion defaultActiveKey="1" />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Collapse } from 'asterui'
 export function BorderlessDemo() {
+  // @example-include
   const items = [
     {
       key: '1',
@@ -66,15 +78,20 @@ export function BorderlessDemo() {
       children: 'Great for FAQ sections or sidebars.',
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Collapse items={items} bordered={false} />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Collapse, Button, Space } from 'asterui'
 export function NestedDemo() {
+  // @example-include
   const items = [
     {
       key: '1',
@@ -97,15 +114,20 @@ export function NestedDemo() {
       children: 'Learn about advanced patterns and customization options.',
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Collapse items={items} />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Collapse } from 'asterui'
 export function GhostDemo() {
+  // @example-include
   const items = [
     {
       key: '1',
@@ -118,15 +140,20 @@ export function GhostDemo() {
       children: 'Great for minimalist designs.',
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Collapse items={items} ghost bordered={false} />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Collapse } from 'asterui'
 export function PlusIconDemo() {
+  // @example-include
   const items = [
     {
       key: '1',
@@ -139,10 +166,13 @@ export function PlusIconDemo() {
       children: 'Click the plus icon to expand.',
     },
   ]
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Collapse items={items} icon="plus" />
+      {/* @example-return-end */}
     </Demo>
   )
 }
