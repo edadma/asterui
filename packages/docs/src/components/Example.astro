@@ -29,8 +29,6 @@ const { title, description, source, fn } = Astro.props
  *     </Demo>
  *   )
  * }
- *
- * For fragments: {/- @example-return fragment -/}
  */
 
 function dedent(code: string): string {
@@ -71,13 +69,11 @@ if (source && fn) {
     const includeCode = includeBlocks.join('\n\n')
 
     // Extract @example-return block
-    // Supports both: {/* @example-return */} and {/* @example-return fragment */}
-    const returnRegex = /\{\/\* @example-return(\s+fragment)? \*\/\}([\s\S]*?)\{\/\* @example-return-end \*\/\}/
+    const returnRegex = /\{\/\* @example-return \*\/\}([\s\S]*?)\{\/\* @example-return-end \*\/\}/
     const returnMatch = fnBody.match(returnRegex)
 
     if (returnMatch) {
-      const needsFragment = !!returnMatch[1]
-      const returnJsx = dedent(returnMatch[2])
+      const returnJsx = dedent(returnMatch[1])
 
       // Build the example code
       let body = ''
@@ -86,12 +82,7 @@ if (source && fn) {
       }
 
       const indentedJsx = returnJsx.split('\n').map(l => l ? '    ' + l : l).join('\n')
-
-      if (needsFragment) {
-        body += `return (\n    <>\n${indentedJsx.split('\n').map(l => l ? '  ' + l : l).join('\n')}\n    </>\n  )`
-      } else {
-        body += `return (\n${indentedJsx}\n  )`
-      }
+      body += `return (\n${indentedJsx}\n  )`
 
       extractedCode = `${imports}${imports ? '\n\n' : ''}function App() {
   ${body.split('\n').join('\n  ')}

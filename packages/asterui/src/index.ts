@@ -56,6 +56,9 @@ export { enUS, enGB, enCA, zhCN, esES, jaJP, ptBR, deDE, frFR, koKR } from './lo
 export { Collapse } from './components/Collapse'
 export type { CollapseProps, CollapseItemType, CollapseSize, CollapseIconPosition, CollapseCollapsible } from './components/Collapse'
 
+export { Command } from './components/Command'
+export type { CommandProps, CommandItemConfig } from './components/Command'
+
 export { Container } from './components/Container'
 export type { ContainerProps } from './components/Container'
 
