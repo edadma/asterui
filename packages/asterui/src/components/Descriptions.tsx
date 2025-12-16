@@ -252,7 +252,7 @@ const DescriptionsRoot = forwardRef<HTMLDivElement, DescriptionsProps>(
     const getLabelClasses = (item: InternalItemConfig) => {
       return [
         bordered ? 'border border-base-content/10' : '',
-        'bg-base-200/50 font-semibold text-left px-4 py-2',
+        'bg-base-200/50 font-semibold text-base-content/70 text-left px-4 py-2',
         layout === 'horizontal' ? 'whitespace-nowrap' : '',
         classNames?.label ?? '',
         item.labelClassName ?? '',
@@ -262,7 +262,7 @@ const DescriptionsRoot = forwardRef<HTMLDivElement, DescriptionsProps>(
     const getContentClasses = (item: InternalItemConfig) => {
       return [
         bordered ? 'border border-base-content/10' : '',
-        'bg-base-100 px-4 py-2',
+        'bg-base-100 text-base-content px-4 py-2',
         classNames?.content ?? '',
         item.contentClassName ?? '',
       ].filter(Boolean).join(' ')
