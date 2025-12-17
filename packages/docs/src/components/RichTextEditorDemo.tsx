@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { RichTextEditor } from 'asterui/editor'
-import { Card, Button, message } from 'asterui'
+import { Card, Space } from 'asterui'
 import { Demo } from './Demo'
 
 // @example-imports: { RichTextEditor } from 'asterui/editor'
@@ -24,13 +24,13 @@ export function ControlledDemo() {
   return (
     <Demo>
       {/* @example-return */}
-      <div className="space-y-4">
+      <Space direction="vertical" size="md" block>
         <RichTextEditor value={content} onChange={setContent} />
         <Card size="sm" className="bg-base-200">
           <p className="text-sm font-medium mb-2">HTML Output:</p>
           <code className="text-xs break-all">{content}</code>
         </Card>
-      </div>
+      </Space>
       {/* @example-return-end */}
     </Demo>
   )
@@ -106,7 +106,7 @@ export function SizesDemo() {
   return (
     <Demo>
       {/* @example-return */}
-      <div className="space-y-4">
+      <Space direction="vertical" size="md" block>
         <div>
           <p className="text-sm mb-1">Small</p>
           <RichTextEditor
@@ -134,7 +134,7 @@ export function SizesDemo() {
             minHeight={100}
           />
         </div>
-      </div>
+      </Space>
       {/* @example-return-end */}
     </Demo>
   )
@@ -198,7 +198,7 @@ export function EditorInstanceDemo() {
   return (
     <Demo>
       {/* @example-return */}
-      <div className="space-y-2">
+      <Space direction="vertical" size="sm" block>
         <RichTextEditor
           placeholder="Start typing to see word count..."
           onEditorReady={(editor) => {
@@ -210,7 +210,7 @@ export function EditorInstanceDemo() {
           }}
         />
         <p className="text-sm text-base-content/60">Word count: {wordCount}</p>
-      </div>
+      </Space>
       {/* @example-return-end */}
     </Demo>
   )

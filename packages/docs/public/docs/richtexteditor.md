@@ -31,15 +31,16 @@ Editor with controlled value and onChange handler.
 ```tsx
 import React, { useState } from 'react'
 import { RichTextEditor } from 'asterui/editor'
+import { Space } from 'asterui'
 
 const App: React.FC = () => {
   const [content, setContent] = useState('<p>Edit this text...</p>')
 
   return (
-    <div>
+    <Space direction="vertical" size="md" block>
       <RichTextEditor value={content} onChange={setContent} />
       <p>HTML Output: {content}</p>
-    </div>
+    </Space>
   )
 }
 
@@ -130,13 +131,14 @@ Text size variants for the editor.
 ```tsx
 import React from 'react'
 import { RichTextEditor } from 'asterui/editor'
+import { Space } from 'asterui'
 
 const App: React.FC = () => (
-  <div className="space-y-4">
+  <Space direction="vertical" size="md" block>
     <RichTextEditor size="sm" placeholder="Small editor..." minHeight={100} />
     <RichTextEditor size="md" placeholder="Medium editor..." minHeight={100} />
     <RichTextEditor size="lg" placeholder="Large editor..." minHeight={100} />
-  </div>
+  </Space>
 )
 
 export default App
@@ -209,12 +211,13 @@ Access the Tiptap editor instance for advanced features like word count.
 ```tsx
 import React, { useState } from 'react'
 import { RichTextEditor } from 'asterui/editor'
+import { Space } from 'asterui'
 
 const App: React.FC = () => {
   const [wordCount, setWordCount] = useState(0)
 
   return (
-    <div>
+    <Space direction="vertical" size="sm" block>
       <RichTextEditor
         placeholder="Start typing to see word count..."
         onEditorReady={(editor) => {
@@ -226,7 +229,7 @@ const App: React.FC = () => {
         }}
       />
       <p>Word count: {wordCount}</p>
-    </div>
+    </Space>
   )
 }
 
