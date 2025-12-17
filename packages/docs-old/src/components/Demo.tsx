@@ -1,36 +1,39 @@
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
-import { createPortal } from 'react-dom'
 
 interface DemoProps {
   children: ReactNode
 }
 
 export function Demo({ children }: DemoProps) {
-  const hostRef = useRef<HTMLDivElement>(null)
-  const [container, setContainer] = useState<HTMLDivElement | null>(null)
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
-    if (hostRef.current && !hostRef.current.shadowRoot) {
-      const shadow = hostRef.current.attachShadow({ mode: 'open' })
+    const syncTheme = () => {
+      const isDark = document.documentElement.dataset.theme === 'dark' ||
+        document.documentElement.classList.contains('dark') ||
+        (document.querySelector('[data-theme]') as HTMLElement)?.dataset.theme === 'dark'
+      setTheme(isDark ? 'dark' : 'light')
+    }
 
-      // Add Tailwind + DaisyUI CSS (built at build time)
-      const cssLink = document.createElement('link')
-      cssLink.rel = 'stylesheet'
-      cssLink.href = '/demo.css'
-      shadow.appendChild(cssLink)
+    syncTheme()
 
-      // Add base styles and CSS variable fixes for shadow DOM
-      const style = document.createElement('style')
-      style.textContent = `
-        *, *::before, *::after {
-          box-sizing: border-box;
-        }
-        :host {
-          display: block;
-        }
-        :host > div {
-          padding: 0.75rem;
+    const observer = new MutationObserver(syncTheme)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme', 'class']
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div className="demo-area not-content" data-theme={theme} style={{ padding: '1rem', borderRadius: '0.5rem' }}>
+      {children}
+      <style>{`
+        .demo-area {
+          padding: 1rem !important;
+          border-radius: 0.5rem !important;
           background-image: repeating-linear-gradient(
             -45deg,
             rgba(0, 0, 0, 0.05),
@@ -39,7 +42,7 @@ export function Demo({ children }: DemoProps) {
             transparent 6px
           );
         }
-        :host > div[data-theme="dark"] {
+        [data-theme="dark"] .demo-area {
           background-image: repeating-linear-gradient(
             -45deg,
             rgba(255, 255, 255, 0.05),
@@ -48,39 +51,30 @@ export function Demo({ children }: DemoProps) {
             transparent 6px
           );
         }
-      `
-      shadow.appendChild(style)
-
-      // Create container for React content
-      const div = document.createElement('div')
-      shadow.appendChild(div)
-
-      // Sync theme with Starlight
-      const syncTheme = () => {
-        const isDark = document.documentElement.dataset.theme === 'dark' ||
-          document.documentElement.classList.contains('dark') ||
-          (document.querySelector('[data-theme]') as HTMLElement)?.dataset.theme === 'dark'
-        div.setAttribute('data-theme', isDark ? 'dark' : 'light')
-      }
-
-      syncTheme()
-
-      // Watch for theme changes
-      const observer = new MutationObserver(syncTheme)
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['data-theme', 'class']
-      })
-
-      setContainer(div)
-
-      return () => observer.disconnect()
-    }
-  }, [])
-
-  return (
-    <div ref={hostRef}>
-      {container && createPortal(children, container)}
+        /* Override Starlight's styles for Tailwind utilities */
+        .demo-area .flex { display: flex !important; }
+        .demo-area .inline-flex { display: inline-flex !important; }
+        .demo-area .flex-row { flex-direction: row !important; }
+        .demo-area .flex-col { flex-direction: column !important; }
+        .demo-area .flex-wrap { flex-wrap: wrap !important; }
+        .demo-area .flex-shrink-0 { flex-shrink: 0 !important; }
+        .demo-area .items-start { align-items: flex-start !important; }
+        .demo-area .items-end { align-items: flex-end !important; }
+        .demo-area .items-center { align-items: center !important; }
+        .demo-area .items-baseline { align-items: baseline !important; }
+        .demo-area .items-stretch { align-items: stretch !important; }
+        .demo-area .justify-start { justify-content: flex-start !important; }
+        .demo-area .justify-end { justify-content: flex-end !important; }
+        .demo-area .justify-center { justify-content: center !important; }
+        .demo-area .justify-between { justify-content: space-between !important; }
+        .demo-area .justify-around { justify-content: space-around !important; }
+        .demo-area .justify-evenly { justify-content: space-evenly !important; }
+        .demo-area .gap-1 { gap: 0.25rem !important; }
+        .demo-area .gap-2 { gap: 0.5rem !important; }
+        .demo-area .gap-4 { gap: 1rem !important; }
+        .demo-area .gap-6 { gap: 1.5rem !important; }
+        .demo-area .gap-8 { gap: 2rem !important; }
+      `}</style>
     </div>
   )
 }

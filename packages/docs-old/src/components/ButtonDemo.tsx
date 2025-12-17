@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Space, Form, Input, notification } from 'asterui'
+import { Button, Space, Form, Input, notification } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 import { XMarkIcon, ArrowUpTrayIcon, CheckIcon, TrashIcon } from '@aster-ui/icons'
 

@@ -41,9 +41,8 @@ export default defineConfig({
         {
           tag: 'link',
           attrs: {
-            rel: 'preload',
+            rel: 'stylesheet',
             href: '/demo.css',
-            as: 'style',
           },
         },
         {

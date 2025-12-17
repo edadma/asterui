@@ -3,7 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import type { Props } from '@astrojs/starlight/props'
 
-const pkgPath = path.join(process.cwd(), 'node_modules/asterui/package.json')
+const pkgPath = path.join(process.cwd(), 'node_modules/@aster-ui/prefixed/package.json')
 const { version } = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
 ---
 

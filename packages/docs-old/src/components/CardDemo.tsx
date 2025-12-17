@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, Avatar, Button, Space } from 'asterui'
+import { Card, Avatar, Button, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 export function BasicDemo() {

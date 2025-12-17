@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Checkbox, Space } from 'asterui'
+import { Checkbox, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 export function BasicDemo() {

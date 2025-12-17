@@ -1,4 +1,4 @@
-import { Avatar, Space } from 'asterui'
+import { Avatar, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 import { UserIcon, UserCircleIcon } from '@aster-ui/icons'
 

@@ -1,4 +1,4 @@
-import { Alert, Button, Space } from 'asterui'
+import { Alert, Button, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 import {
   InformationCircleIcon,

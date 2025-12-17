@@ -1,9 +1,14 @@
-@import "tailwindcss";
-@plugin "daisyui";
+/* Only import utilities layer, skip base reset that conflicts with Starlight */
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+@plugin "daisyui" {
+  prefix: "d-";
+}
 
 /* Scan demo components for used classes */
 @source "../components/*Demo.tsx";
 @source "../components/Demo.tsx";
 
-/* Scan asterui components for classes they use internally */
-@source "../../../asterui/src/components/**/*.tsx";
+/* Scan built prefixed package for classes */
+@source "../../node_modules/@aster-ui/prefixed/dist";
