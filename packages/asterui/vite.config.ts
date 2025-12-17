@@ -37,6 +37,9 @@ export default defineConfig({
         '@tiptap/extension-link',
         '@tiptap/extension-placeholder',
         '@tiptap/extension-underline',
+        '@aster-ui/icons',
+        '@aster-ui/icons/solid',
+        '@aster-ui/icons/outline',
       ],
       output: {
         preserveModules: true,

@@ -4,6 +4,25 @@ import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
+import {
+  BoldIcon,
+  ItalicIcon,
+  UnderlineIcon,
+  StrikethroughIcon,
+  CodeBracketIcon,
+  H1Icon,
+  H2Icon,
+  H3Icon,
+  ListBulletIcon,
+  NumberedListIcon,
+  LinkIcon,
+  MinusIcon,
+  ArrowUturnLeftIcon,
+  ArrowUturnRightIcon,
+  CommandLineIcon,
+  Bars3BottomLeftIcon,
+} from '@aster-ui/icons/outline'
+import { IconSizeContext, type IconSize } from '../contexts/IconSizeContext'
 
 export type ToolbarItem =
   | 'bold'
@@ -114,84 +133,19 @@ const ToolbarDivider: React.FC = () => (
   <div className="w-px h-6 bg-base-300 mx-1" />
 )
 
-// Icons as simple SVG components
-const icons = {
-  bold: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z" />
-    </svg>
-  ),
-  italic: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 4h4m-2 0l-4 16m0 0h4" />
-    </svg>
-  ),
-  underline: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4v7a5 5 0 0010 0V4M5 20h14" />
-    </svg>
-  ),
-  strikethrough: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 10c0-3.87-3.13-6-7-6-3.87 0-6 2.13-6 5s2.13 4 6 4M4 12h16m-7 0c3.87 0 7 1.13 7 4s-2.13 5-6 5c-3.87 0-7-2.13-7-6" />
-    </svg>
-  ),
-  code: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-    </svg>
-  ),
-  heading1: <span className="font-bold text-sm">H1</span>,
-  heading2: <span className="font-bold text-sm">H2</span>,
-  heading3: <span className="font-bold text-sm">H3</span>,
-  bulletList: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h.01M8 6h12M4 12h.01M8 12h12M4 18h.01M8 18h12" />
-    </svg>
-  ),
-  orderedList: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h.01M8 6h12M4 12h.01M8 12h12M4 18h.01M8 18h12" />
-      <text x="2" y="8" fontSize="6" fill="currentColor">1</text>
-    </svg>
-  ),
-  blockquote: (
-    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
-    </svg>
-  ),
-  codeBlock: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-    </svg>
-  ),
-  horizontalRule: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 12h16" />
-    </svg>
-  ),
-  link: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-    </svg>
-  ),
-  undo: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a5 5 0 015 5v2M3 10l4 4m-4-4l4-4" />
-    </svg>
-  ),
-  redo: (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10H11a5 5 0 00-5 5v2m15-7l-4 4m4-4l-4-4" />
-    </svg>
-  ),
+// Map editor size to icon size
+const editorSizeToIconSize: Record<'sm' | 'md' | 'lg', IconSize> = {
+  sm: 'xs',
+  md: 'sm',
+  lg: 'md',
 }
 
 const EditorToolbar: React.FC<{
   editor: Editor | null
   toolbar: ToolbarItem[]
-}> = ({ editor, toolbar }) => {
+  editorSize: 'sm' | 'md' | 'lg'
+}> = ({ editor, toolbar, editorSize }) => {
+  const iconSize = editorSizeToIconSize[editorSize]
   const setLink = useCallback(() => {
     if (!editor) return
 
@@ -217,99 +171,115 @@ const EditorToolbar: React.FC<{
 
     const toolbarActions: Record<
       Exclude<ToolbarItem, '|'>,
-      { action: () => void; isActive: () => boolean; canExecute: () => boolean; title: string }
+      { icon: React.FC; action: () => void; isActive: () => boolean; canExecute: () => boolean; title: string }
     > = {
       bold: {
+        icon: BoldIcon,
         action: () => editor.chain().focus().toggleBold().run(),
         isActive: () => editor.isActive('bold'),
         canExecute: () => editor.can().chain().focus().toggleBold().run(),
         title: 'Bold',
       },
       italic: {
+        icon: ItalicIcon,
         action: () => editor.chain().focus().toggleItalic().run(),
         isActive: () => editor.isActive('italic'),
         canExecute: () => editor.can().chain().focus().toggleItalic().run(),
         title: 'Italic',
       },
       underline: {
+        icon: UnderlineIcon,
         action: () => editor.chain().focus().toggleUnderline().run(),
         isActive: () => editor.isActive('underline'),
         canExecute: () => editor.can().chain().focus().toggleUnderline().run(),
         title: 'Underline',
       },
       strikethrough: {
+        icon: StrikethroughIcon,
         action: () => editor.chain().focus().toggleStrike().run(),
         isActive: () => editor.isActive('strike'),
         canExecute: () => editor.can().chain().focus().toggleStrike().run(),
         title: 'Strikethrough',
       },
       code: {
+        icon: CodeBracketIcon,
         action: () => editor.chain().focus().toggleCode().run(),
         isActive: () => editor.isActive('code'),
         canExecute: () => editor.can().chain().focus().toggleCode().run(),
         title: 'Inline Code',
       },
       heading1: {
+        icon: H1Icon,
         action: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
         isActive: () => editor.isActive('heading', { level: 1 }),
         canExecute: () => true,
         title: 'Heading 1',
       },
       heading2: {
+        icon: H2Icon,
         action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
         isActive: () => editor.isActive('heading', { level: 2 }),
         canExecute: () => true,
         title: 'Heading 2',
       },
       heading3: {
+        icon: H3Icon,
         action: () => editor.chain().focus().toggleHeading({ level: 3 }).run(),
         isActive: () => editor.isActive('heading', { level: 3 }),
         canExecute: () => true,
         title: 'Heading 3',
       },
       bulletList: {
+        icon: ListBulletIcon,
         action: () => editor.chain().focus().toggleBulletList().run(),
         isActive: () => editor.isActive('bulletList'),
         canExecute: () => true,
         title: 'Bullet List',
       },
       orderedList: {
+        icon: NumberedListIcon,
         action: () => editor.chain().focus().toggleOrderedList().run(),
         isActive: () => editor.isActive('orderedList'),
         canExecute: () => true,
         title: 'Numbered List',
       },
       blockquote: {
+        icon: Bars3BottomLeftIcon,
         action: () => editor.chain().focus().toggleBlockquote().run(),
         isActive: () => editor.isActive('blockquote'),
         canExecute: () => true,
         title: 'Blockquote',
       },
       codeBlock: {
+        icon: CommandLineIcon,
         action: () => editor.chain().focus().toggleCodeBlock().run(),
         isActive: () => editor.isActive('codeBlock'),
         canExecute: () => true,
         title: 'Code Block',
       },
       horizontalRule: {
+        icon: MinusIcon,
         action: () => editor.chain().focus().setHorizontalRule().run(),
         isActive: () => false,
         canExecute: () => true,
         title: 'Horizontal Rule',
       },
       link: {
+        icon: LinkIcon,
         action: setLink,
         isActive: () => editor.isActive('link'),
         canExecute: () => true,
         title: 'Add Link',
       },
       undo: {
+        icon: ArrowUturnLeftIcon,
         action: () => editor.chain().focus().undo().run(),
         isActive: () => false,
         canExecute: () => editor.can().chain().focus().undo().run(),
         title: 'Undo',
       },
       redo: {
+        icon: ArrowUturnRightIcon,
         action: () => editor.chain().focus().redo().run(),
         isActive: () => false,
         canExecute: () => editor.can().chain().focus().redo().run(),
@@ -317,7 +287,7 @@ const EditorToolbar: React.FC<{
       },
     }
 
-    const config = toolbarActions[item]
+    const { icon: Icon, ...config } = toolbarActions[item]
     return (
       <ToolbarButton
         key={item}
@@ -326,15 +296,17 @@ const EditorToolbar: React.FC<{
         disabled={!config.canExecute()}
         title={config.title}
       >
-        {icons[item]}
+        <Icon />
       </ToolbarButton>
     )
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-0.5 p-2 border-b border-base-300 bg-base-200/50">
-      {toolbar.map((item, index) => renderToolbarItem(item, index))}
-    </div>
+    <IconSizeContext.Provider value={iconSize}>
+      <div className="flex flex-wrap items-center gap-0.5 p-2 border-b border-base-300 bg-base-200/50">
+        {toolbar.map((item, index) => renderToolbarItem(item, index))}
+      </div>
+    </IconSizeContext.Provider>
   )
 }
 
@@ -429,7 +401,7 @@ export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>(
         data-testid={testId}
         {...rest}
       >
-        {!hideToolbar && <EditorToolbar editor={editor} toolbar={toolbar} />}
+        {!hideToolbar && <EditorToolbar editor={editor} toolbar={toolbar} editorSize={size} />}
         <div
           className={`
             p-4 overflow-y-auto

@@ -4,7 +4,7 @@
 
 **Note:** This component requires additional dependencies:
 ```bash
-npm install @tiptap/react @tiptap/starter-kit @tiptap/extension-link @tiptap/extension-placeholder @tiptap/extension-underline
+npm install @aster-ui/icons @tiptap/react @tiptap/starter-kit @tiptap/extension-link @tiptap/extension-placeholder @tiptap/extension-underline
 ```
 
 ## Examples
