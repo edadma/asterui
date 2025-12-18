@@ -98,7 +98,7 @@ import { Button } from 'asterui'
   <WithIconsDemo client:load slot="demo" />
 </Example>
 
-<Example title="Icon Sizes" description="Icons from @aster-ui/icons automatically match the button size." source={ButtonDemoSource} fn="IconSizesDemo">
+<Example title="Auto-sized Icons" description="Icons from @aster-ui/icons automatically match the button size." source={ButtonDemoSource} fn="IconSizesDemo">
   <IconSizesDemo client:load slot="demo" />
 </Example>
 
@@ -142,13 +142,13 @@ import { Button } from 'asterui'
 | `shape` | Button shape | `'square' \| 'circle' \| 'wide' \| 'block' \| 'round'` | - |
 | `icon` | Icon element to display | `ReactNode` | - |
 | `iconPosition` | Position of the icon | `'start' \| 'end'` | `'start'` |
-| `danger` | Applies error/danger styling | `boolean` | `false` |
+| `danger` | Applies error/danger styling (shorthand for color="error") | `boolean` | `false` |
 | `pressed` | Toggle button pressed state (sets aria-pressed) | `boolean` | - |
 | `noAnimation` | Disable click animation | `boolean` | `false` |
 | `disabled` | Disabled state | `boolean` | `false` |
 | `href` | URL to navigate to (renders as anchor element) | `string` | - |
-| `target` | Where to open the linked URL | `string` | - |
-| `htmlType` | HTML button type | `'button' \| 'submit' \| 'reset'` | `'button'` |
+| `target` | Where to open the linked URL (when href is set) | `string` | - |
+| `htmlType` | HTML button type (only when href is not set) | `'button' \| 'submit' \| 'reset'` | `'button'` |
 | `className` | Additional CSS classes | `string` | - |
 | `children` | Button content | `ReactNode` | - |
 

@@ -4,25 +4,114 @@ import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
-import {
-  BoldIcon,
-  ItalicIcon,
-  UnderlineIcon,
-  StrikethroughIcon,
-  CodeBracketIcon,
-  H1Icon,
-  H2Icon,
-  H3Icon,
-  ListBulletIcon,
-  NumberedListIcon,
-  LinkIcon,
-  MinusIcon,
-  ArrowUturnLeftIcon,
-  ArrowUturnRightIcon,
-  CommandLineIcon,
-  Bars3BottomLeftIcon,
-} from '@aster-ui/icons/outline'
-import { IconSizeContext, type IconSize } from '../contexts/IconSizeContext'
+
+// Inline toolbar icons (from Heroicons outline)
+const iconProps = (size: number) => ({
+  xmlns: 'http://www.w3.org/2000/svg',
+  fill: 'none',
+  viewBox: '0 0 24 24',
+  strokeWidth: 1.5,
+  stroke: 'currentColor',
+  width: size,
+  height: size,
+  'aria-hidden': true as const,
+})
+
+const BoldIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3.75h6.75a3.75 3.75 0 0 1 0 7.5H6.75V3.75ZM6.75 11.25h7.5a3.75 3.75 0 0 1 0 7.5h-7.5v-7.5Z" />
+  </svg>
+)
+
+const ItalicIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M5.248 20.248h4.5m4.5 0h4.5m-7.5-16.5h4.5m4.5 0h4.5M9.748 3.748l-4.5 16.5" />
+  </svg>
+)
+
+const UnderlineIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17.995 3.744v7.5a6 6 0 1 1-12 0v-7.5m-2.25 16.502h16.5" />
+  </svg>
+)
+
+const StrikethroughIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 12a4.5 4.5 0 0 0 0 9c2.485 0 4.5-2.015 4.5-4.5M12 12V3m0 9H3m9 0h9m-4.5-4.5a4.5 4.5 0 0 0-9 0" />
+  </svg>
+)
+
+const CodeBracketIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+  </svg>
+)
+
+const H1Icon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M2.243 4.493v7.5m0 0v7.502m0-7.501h10.5m0-7.5v7.5m0 0v7.501m4.501-8.627 2.25-1.5v10.126m0 0h-2.25m2.25 0h2.25" />
+  </svg>
+)
+
+const H2Icon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 19.5H16.5v-1.609a2.25 2.25 0 0 1 1.244-2.012l2.89-1.445c.651-.326 1.116-.955 1.116-1.684 0-.498-.04-.987-.118-1.463-.135-.825-.835-1.422-1.668-1.489a15.202 15.202 0 0 0-3.464.12M2.243 4.492v7.5m0 0v7.502m0-7.501h10.5m0-7.5v7.5m0 0v7.501" />
+  </svg>
+)
+
+const H3Icon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M20.905 14.626a4.52 4.52 0 0 1 .738 3.603c-.154.695-.794 1.143-1.504 1.208a15.194 15.194 0 0 1-3.639-.104m4.405-4.707a4.52 4.52 0 0 0 .738-3.603c-.154-.696-.794-1.144-1.504-1.209a15.19 15.19 0 0 0-3.639.104m4.405 4.708H18M2.243 4.493v7.5m0 0v7.502m0-7.501h10.5m0-7.5v7.5m0 0v7.501" />
+  </svg>
+)
+
+const ListBulletIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+  </svg>
+)
+
+const NumberedListIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.242 5.992h12m-12 6.003h12m-12 5.999h12M4.117 7.495v-3.75H2.99m1.125 3.75H2.99m1.125 0H5.24m-1.92 2.577a1.125 1.125 0 1 1 1.591 1.59l-1.83 1.83h2.16M2.99 15.745h1.125a1.125 1.125 0 0 1 0 2.25H3.74m0-.002h.375a1.125 1.125 0 0 1 0 2.25H2.99" />
+  </svg>
+)
+
+const Bars3BottomLeftIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+  </svg>
+)
+
+const CommandLineIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+  </svg>
+)
+
+const MinusIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
+  </svg>
+)
+
+const LinkIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+  </svg>
+)
+
+const ArrowUturnLeftIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+  </svg>
+)
+
+const ArrowUturnRightIcon = ({ size }: { size: number }) => (
+  <svg {...iconProps(size)}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="m15 15 6-6m0 0-6-6m6 6H9a6 6 0 0 0 0 12h3" />
+  </svg>
+)
 
 export type ToolbarItem =
   | 'bold'
@@ -133,11 +222,11 @@ const ToolbarDivider: React.FC = () => (
   <div className="w-px h-6 bg-base-300 mx-1" />
 )
 
-// Map editor size to icon size
-const editorSizeToIconSize: Record<'sm' | 'md' | 'lg', IconSize> = {
-  sm: 'xs',
-  md: 'sm',
-  lg: 'md',
+// Map editor size to icon pixel size
+const editorSizeToIconSize: Record<'sm' | 'md' | 'lg', number> = {
+  sm: 12,
+  md: 16,
+  lg: 20,
 }
 
 const EditorToolbar: React.FC<{
@@ -171,7 +260,7 @@ const EditorToolbar: React.FC<{
 
     const toolbarActions: Record<
       Exclude<ToolbarItem, '|'>,
-      { icon: React.FC; action: () => void; isActive: () => boolean; canExecute: () => boolean; title: string }
+      { icon: React.FC<{ size: number }>; action: () => void; isActive: () => boolean; canExecute: () => boolean; title: string }
     > = {
       bold: {
         icon: BoldIcon,
@@ -296,17 +385,15 @@ const EditorToolbar: React.FC<{
         disabled={!config.canExecute()}
         title={config.title}
       >
-        <Icon />
+        <Icon size={iconSize} />
       </ToolbarButton>
     )
   }
 
   return (
-    <IconSizeContext.Provider value={iconSize}>
-      <div className="flex flex-wrap items-center gap-0.5 p-2 border-b border-base-300 bg-base-200/50">
-        {toolbar.map((item, index) => renderToolbarItem(item, index))}
-      </div>
-    </IconSizeContext.Provider>
+    <div className="flex flex-wrap items-center gap-0.5 p-2 border-b border-base-300 bg-base-200/50">
+      {toolbar.map((item, index) => renderToolbarItem(item, index))}
+    </div>
   )
 }
 

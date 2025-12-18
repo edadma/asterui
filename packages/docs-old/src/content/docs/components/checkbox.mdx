@@ -88,7 +88,10 @@ import { Checkbox } from 'asterui'
 | `swap` | Swap mode configuration | `CheckboxSwapConfig` | - |
 | `value` | Value when used in a group | `string \| number` | - |
 | `onChange` | Change event handler | `(e: ChangeEvent) => void` | - |
-| `children` | Label content | `ReactNode` | - |
+| `name` | HTML name attribute for the input | `string` | - |
+| `autoFocus` | Auto focus on mount | `boolean` | `false` |
+| `className` | Additional CSS classes | `string` | - |
+| `children` | Label content (automatically wrapped in label element) | `ReactNode` | - |
 
 ### `Checkbox.Group`
 
@@ -100,6 +103,7 @@ import { Checkbox } from 'asterui'
 | `disabled` | Disable all checkboxes | `boolean` | `false` |
 | `options` | Checkbox options | `(string \| number \| CheckboxOptionType)[]` | - |
 | `direction` | Layout direction | `'horizontal' \| 'vertical'` | `'vertical'` |
+| `name` | HTML name attribute for all checkboxes (for form submission) | `string` | - |
 | `children` | Manual checkbox elements | `ReactNode` | - |
 
 ### `CheckboxSwapConfig`

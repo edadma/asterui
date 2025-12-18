@@ -47,7 +47,7 @@ import { CopyButton } from 'asterui'
   <VariantsDemo client:load slot="demo" />
 </Example>
 
-<Example title="Sizes" description="Available button sizes from xs to xl." source={CopyButtonDemoSource} fn="SizesDemo">
+<Example title="Sizes" description="Available button sizes." source={CopyButtonDemoSource} fn="SizesDemo">
   <SizesDemo client:load slot="demo" />
 </Example>
 
@@ -55,7 +55,7 @@ import { CopyButton } from 'asterui'
   <ShapesDemo client:load slot="demo" />
 </Example>
 
-<Example title="Code Block" description="Use the position prop to place the button in a corner. Parent needs position: relative." source={CopyButtonDemoSource} fn="CodeBlockDemo">
+<Example title="Code Block" description="Copy button positioned in the corner of a custom code block." source={CopyButtonDemoSource} fn="CodeBlockDemo">
   <CodeBlockDemo client:load slot="demo" />
 </Example>
 
@@ -85,7 +85,6 @@ import { CopyButton } from 'asterui'
 | `variant` | Button style variant | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link'` | - |
 | `size` | Button size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | `shape` | Button shape | `'square' \| 'circle'` | - |
-| `position` | Absolute position within parent (parent needs `relative`) | `'top-right' \| 'top-left' \| 'bottom-right' \| 'bottom-left'` | - |
 | `icon` | Custom icon for default state | `ReactNode` | Copy icon |
 | `copiedIcon` | Custom icon for copied state | `ReactNode` | Check icon |
 | `children` | Custom content for default state (overrides icon) | `ReactNode` | - |

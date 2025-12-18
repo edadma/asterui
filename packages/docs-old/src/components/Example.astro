@@ -11,127 +11,83 @@ interface Props {
 
 const { title, description, source, fn } = Astro.props
 
-// Extract code from source if provided
+// Extract example code using directive comments:
+//
+// // @example-imports: { Component } from 'asterui'
+// // @example-imports: { useState } from 'react'
+//
+// export function MyDemo() {
+//   // @example-include
+//   const items = [...]
+//   // @example-include-end
+//
+//   return (
+//     <Demo>
+//       {/* @example-return */}
+//       <Component items={items} />
+//       {/* @example-return-end */}
+//     </Demo>
+//   )
+// }
+
+function dedent(code: string): string {
+  const lines = code.split('\n')
+  const nonEmptyLines = lines.filter(l => l.trim())
+  if (nonEmptyLines.length === 0) return code
+  const minIndent = nonEmptyLines.reduce((min, l) => {
+    const indent = l.match(/^\s*/)?.[0].length ?? 0
+    return Math.min(min, indent)
+  }, Infinity)
+  return lines.map(l => l.slice(minIndent)).join('\n').trim()
+}
+
 let extractedCode = ''
 if (source && fn) {
-  // Find the function and extract content between <Demo> tags
-  const fnRegex = new RegExp(`export function ${fn}\\s*\\([^)]*\\)\\s*\\{[\\s\\S]*?return\\s*\\(\\s*<Demo>([\\s\\S]*?)<\\/Demo>`, 'm')
-  const match = source.match(fnRegex)
-  if (match) {
-    // Clean up the extracted code - remove leading whitespace consistently
-    const lines = match[1].split('\n')
-    // Find minimum indentation (ignoring empty lines)
-    const minIndent = lines
-      .filter(l => l.trim())
-      .reduce((min, l) => {
-        const indent = l.match(/^\s*/)?.[0].length ?? 0
-        return Math.min(min, indent)
-      }, Infinity)
-    // Remove that indentation from all lines
-    const jsx = lines
-      .map(l => l.slice(minIndent))
+  // Find the function in source
+  const fnRegex = new RegExp(`((?:\\/\\/ @example-imports:[^\\n]*\\n)*)export function ${fn}\\s*\\([^)]*\\)\\s*\\{([\\s\\S]*?)\\n\\}(?=\\s*(?:export|$))`, 'm')
+  const fnMatch = source.match(fnRegex)
+
+  if (fnMatch) {
+    const importsBlock = fnMatch[1] || ''
+    const fnBody = fnMatch[2]
+
+    // Extract @example-imports directives
+    const imports = importsBlock
+      .split('\n')
+      .filter(line => line.startsWith('// @example-imports:'))
+      .map(line => `import ${line.replace('// @example-imports:', '').trim()}`)
       .join('\n')
-      .trim()
 
-    // Detect which AsterUI components are used
-    const asteruiComponents = ['Button', 'Space', 'Input', 'Form', 'notification']
-    const usedComponents = asteruiComponents.filter(c => jsx.includes(`<${c}`) || jsx.includes(`${c}.`))
-
-    // Detect which @aster-ui/icons are used
-    const asterIcons = ['XMarkIcon', 'ArrowUpTrayIcon', 'CheckIcon', 'TrashIcon']
-    const usedIcons = asterIcons.filter(icon => jsx.includes(`<${icon}`) || jsx.includes(`{<${icon}`))
-
-    // Extract the full function body to check for hooks
-    const fullFnRegex = new RegExp(`export function ${fn}\\s*\\([^)]*\\)\\s*\\{([\\s\\S]*?)\\n\\}`, 'm')
-    const fullFnMatch = source.match(fullFnRegex)
-    const fullBody = fullFnMatch ? fullFnMatch[1] : ''
-
-    // Detect React hooks usage
-    const reactHooks = ['useState', 'useEffect', 'useRef', 'useCallback', 'useMemo']
-    const usedHooks = reactHooks.filter(hook => fullBody.includes(hook))
-
-    // Build the full example
-    let imports = ''
-    if (usedHooks.length > 0) {
-      imports += `import { ${usedHooks.join(', ')} } from 'react'\n`
+    // Extract @example-include blocks
+    const includeRegex = /\/\/ @example-include\n([\s\S]*?)\/\/ @example-include-end/g
+    const includeBlocks: string[] = []
+    let includeMatch
+    while ((includeMatch = includeRegex.exec(fnBody)) !== null) {
+      includeBlocks.push(dedent(includeMatch[1]))
     }
-    if (usedComponents.length > 0) {
-      imports += `import { ${usedComponents.join(', ')} } from 'asterui'\n`
-    }
-    if (usedIcons.length > 0) {
-      imports += `import { ${usedIcons.join(', ')} } from '@aster-ui/icons'\n`
-    }
+    const includeCode = includeBlocks.join('\n\n')
 
-    // Indent JSX for the component body
-    const indentedJsx = jsx.split('\n').map(l => l ? '    ' + l : l).join('\n')
+    // Extract @example-return block
+    const returnRegex = /\{\/\* @example-return \*\/\}([\s\S]*?)\{\/\* @example-return-end \*\/\}/
+    const returnMatch = fnBody.match(returnRegex)
 
-    if (usedHooks.length > 0) {
-      // For components with hooks, extract the full function body
-      const statefulRegex = new RegExp(`export function ${fn}\\s*\\([^)]*\\)\\s*\\{([\\s\\S]*?)\\n\\}`, 'm')
-      const statefulMatch = source.match(statefulRegex)
-      if (statefulMatch) {
-        let body = statefulMatch[1]
-        // Check if content inside Demo has a single root element
-        const demoContentMatch = body.match(/<Demo>([\s\S]*?)<\/Demo>/)
-        const demoContent = demoContentMatch ? demoContentMatch[1].trim() : ''
-        const demoFirstLine = demoContent.split('\n')[0].trim()
-        const demoLastLine = demoContent.split('\n').filter(l => l.trim()).pop()?.trim() || ''
-        const demoFirstTag = demoFirstLine.match(/^<(\w+)/)
-        const demoLastTag = demoLastLine.match(/^<\/(\w+)>$/)
-        const hasSingleRoot = demoFirstTag && demoLastTag && demoFirstTag[1] === demoLastTag[1]
+    if (returnMatch) {
+      const returnJsx = dedent(returnMatch[1])
 
-        // Replace <Demo> with fragment only if needed, otherwise just remove Demo tags
-        if (!hasSingleRoot) {
-          body = body.replace(/<Demo>/g, '<>').replace(/<\/Demo>/g, '</>')
-        } else {
-          body = body.replace(/<Demo>\s*\n?/g, '').replace(/\s*<\/Demo>/g, '')
-        }
-        // Clean indentation
-        const bodyLines = body.split('\n')
-        const bodyMinIndent = bodyLines
-          .filter(l => l.trim())
-          .reduce((min, l) => Math.min(min, l.match(/^\s*/)?.[0].length ?? 0), Infinity)
-        body = bodyLines.map(l => l.slice(bodyMinIndent)).join('\n').trim()
+      // Build the example code
+      let body = ''
+      if (includeCode) {
+        body += includeCode + '\n\n'
+      }
 
-        extractedCode = `${imports}
-function App() {
+      const indentedJsx = returnJsx.split('\n').map(l => l ? '    ' + l : l).join('\n')
+      body += `return (\n${indentedJsx}\n  )`
+
+      extractedCode = `${imports}${imports ? '\n\n' : ''}function App() {
   ${body.split('\n').join('\n  ')}
 }
 
 export default App`
-      }
-    } else {
-      // Check if JSX has a single root element (first tag matches last closing tag at root level)
-      const firstLine = jsx.split('\n')[0].trim()
-      const lastLine = jsx.split('\n').filter(l => l.trim()).pop()?.trim() || ''
-      const firstTagMatch = firstLine.match(/^<(\w+)/)
-      const lastTagMatch = lastLine.match(/^<\/(\w+)>$/)
-      const hasSingleRoot = firstTagMatch && lastTagMatch && firstTagMatch[1] === lastTagMatch[1]
-      const needsFragment = !hasSingleRoot
-
-      if (needsFragment) {
-        // Add extra indentation for fragment wrapper
-        const fragmentIndentedJsx = jsx.split('\n').map(l => l ? '      ' + l : l).join('\n')
-        extractedCode = `${imports}
-function App() {
-  return (
-    <>
-${fragmentIndentedJsx}
-    </>
-  )
-}
-
-export default App`
-      } else {
-        extractedCode = `${imports}
-function App() {
-  return (
-${indentedJsx}
-  )
-}
-
-export default App`
-      }
     }
   }
 }

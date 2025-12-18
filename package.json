@@ -12,6 +12,9 @@
     "test": "pnpm -r test",
     "publish": "pnpm --filter asterui publish --access public",
     "publish:create": "pnpm --filter create-asterui publish --access public",
-    "publish:icons": "pnpm --filter @aster-ui/icons publish --access public"
+    "publish:icons": "pnpm --filter @aster-ui/icons publish --access public",
+    "publish:icons-prefixed": "pnpm --filter @aster-ui/icons-prefixed publish --access public",
+    "publish:prefixed": "pnpm --filter @aster-ui/prefixed publish --access public",
+    "sync-prefixed": "rm -rf packages/prefixed/src && cp -r packages/asterui/src packages/prefixed/ && npx tsx scripts/daisyui-prefix.ts --prefix d- --dir packages/prefixed/src"
   }
 }

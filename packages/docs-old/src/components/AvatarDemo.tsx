@@ -2,55 +2,72 @@ import { Avatar, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 import { UserIcon, UserCircleIcon } from '@aster-ui/icons-prefixed'
 
-const imgSrc = 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
+const avatarSrc = '/avatar-1.webp'
 
+// @example-imports: { Avatar } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
-      <Avatar src={imgSrc} alt="User avatar" />
+      {/* @example-return */}
+      <Avatar
+        src={avatarSrc}
+        alt="User avatar"
+      />
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" align="center">
-        <Avatar size="xs" src={imgSrc} />
-        <Avatar size="sm" src={imgSrc} />
-        <Avatar size="md" src={imgSrc} />
-        <Avatar size="lg" src={imgSrc} />
-        <Avatar size="xl" src={imgSrc} />
+        <Avatar size="xs" src={avatarSrc} />
+        <Avatar size="sm" src={avatarSrc} />
+        <Avatar size="md" src={avatarSrc} />
+        <Avatar size="lg" src={avatarSrc} />
+        <Avatar size="xl" src={avatarSrc} />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
 export function ShapesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm">
-        <Avatar shape="circle" src={imgSrc} />
-        <Avatar shape="square" src={imgSrc} />
+        <Avatar shape="circle" src={avatarSrc} />
+        <Avatar shape="square" src={avatarSrc} />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
 export function StatusDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm">
-        <Avatar status="online" src={imgSrc} />
-        <Avatar status="offline" src={imgSrc} />
+        <Avatar status="online" src={avatarSrc} />
+        <Avatar status="offline" src={avatarSrc} />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
 export function TextDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm" align="center">
         <Avatar size="xl">
           <span className="text-3xl">AI</span>
@@ -62,45 +79,56 @@ export function TextDemo() {
           <span>MX</span>
         </Avatar>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar, Space } from 'asterui'
+// @example-imports: { UserIcon, UserCircleIcon } from '@aster-ui/icons'
 export function IconDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" size="sm">
-        <Avatar icon={<UserIcon className="h-8 w-8" />} />
-        <Avatar size="lg" icon={<UserCircleIcon className="h-10 w-10" />} />
+        <Avatar icon={<UserIcon size={32} />} />
+        <Avatar size="lg" icon={<UserCircleIcon size={40} />} />
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar } from 'asterui'
 export function GroupDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Avatar.Group>
-        <Avatar size="sm" src={imgSrc} />
-        <Avatar size="sm" src={imgSrc} />
-        <Avatar size="sm" src={imgSrc} />
-        <Avatar size="sm" src={imgSrc} />
+        <Avatar src={avatarSrc} />
+        <Avatar src={avatarSrc} />
+        <Avatar src={avatarSrc} />
+        <Avatar src={avatarSrc} />
       </Avatar.Group>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Avatar } from 'asterui'
 export function GroupMaxDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Avatar.Group max={3}>
-        <Avatar size="sm" src={imgSrc} />
-        <Avatar size="sm" src={imgSrc} />
-        <Avatar size="sm" src={imgSrc} />
-        <Avatar size="sm" src={imgSrc} />
-        <Avatar size="sm" src={imgSrc} />
-        <Avatar size="sm" src={imgSrc} />
+        <Avatar src={avatarSrc} />
+        <Avatar src={avatarSrc} />
+        <Avatar src={avatarSrc} />
+        <Avatar src={avatarSrc} />
+        <Avatar src={avatarSrc} />
+        <Avatar src={avatarSrc} />
       </Avatar.Group>
+      {/* @example-return-end */}
     </Demo>
   )
 }

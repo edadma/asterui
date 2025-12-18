@@ -2,19 +2,24 @@ import { useState } from 'react'
 import { Card, Avatar, Button, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
+// @example-imports: { Card } from 'asterui'
 export function BasicDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card title="Card Title" style={{ width: '20rem' }}>
         <p>Card content goes here. This is a basic card with a title.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card } from 'asterui'
 export function WithCoverDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         cover={<img src="https://picsum.photos/seed/card1/400/200" alt="Cover" />}
         title="Card with Cover"
@@ -22,13 +27,16 @@ export function WithCoverDemo() {
       >
         <p>Cards can have cover images that appear above the content.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Button } from 'asterui'
 export function WithActionsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         cover={<img src="https://picsum.photos/seed/card2/400/200" alt="Cover" />}
         title="Card with Actions"
@@ -42,13 +50,16 @@ export function WithActionsDemo() {
       >
         <p>Action buttons appear at the bottom of the card.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Space } from 'asterui'
 export function VariantsDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" wrap size="md">
         <Card title="Default" variant="default" style={{ width: '14rem' }}>
           Shadow style
@@ -63,13 +74,16 @@ export function VariantsDemo() {
           No border
         </Card>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Space } from 'asterui'
 export function SizesDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="horizontal" wrap size="md" align="start">
         <Card title="Extra Small" size="xs" style={{ width: '12rem' }}>
           <p>Compact content</p>
@@ -84,13 +98,16 @@ export function SizesDemo() {
           <p>Large card content</p>
         </Card>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card } from 'asterui'
 export function ExtraContentDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         title="Card Title"
         extra={<a href="#" className="link link-primary text-sm">More</a>}
@@ -98,43 +115,52 @@ export function ExtraContentDemo() {
       >
         <p>Use the extra prop to add content in the top-right corner.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Avatar } from 'asterui'
 export function MetaDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
-        avatar={<Avatar src="https://i.pravatar.cc/150?img=3" />}
+        avatar={<Avatar src="/avatar-1.webp" />}
         title="John Doe"
         description="Software Engineer"
         style={{ width: '20rem' }}
       >
         <p className="mt-4">Use avatar, title, and description for a meta layout.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Avatar } from 'asterui'
 export function CardMetaDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card style={{ width: '20rem' }}>
         <Card.Meta
-          avatar={<Avatar src="https://i.pravatar.cc/150?img=5" />}
+          avatar={<Avatar src="/avatar-1.webp" />}
           title="Jane Smith"
           description="Product Designer"
         />
         <p className="mt-4">Card.Meta can be used anywhere inside the card body.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card } from 'asterui'
 export function HoverableDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         hoverable
         cover={<img src="https://picsum.photos/seed/card3/400/200" alt="Cover" />}
@@ -143,15 +169,21 @@ export function HoverableDemo() {
       >
         <p>Hover over this card to see the shadow effect.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Button, Space, Avatar } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function LoadingDemo() {
+  // @example-include
   const [loading, setLoading] = useState(true)
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Space direction="vertical" size="md">
         <Button size="sm" onClick={() => setLoading(!loading)}>
           Toggle Loading
@@ -172,13 +204,16 @@ export function LoadingDemo() {
           <p className="mt-4">Card content that appears when not loading.</p>
         </Card>
       </Space>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Button } from 'asterui'
 export function ImageFullDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         imageFull
         cover={<img src="https://picsum.photos/seed/card4/400/250" alt="Cover" />}
@@ -188,13 +223,16 @@ export function ImageFullDemo() {
       >
         <p>Content overlays on top of the image with dark gradient.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card, Button } from 'asterui'
 export function SideLayoutDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         side
         cover={<img src="https://picsum.photos/seed/card5/200/200" alt="Cover" className="max-w-[200px]" />}
@@ -204,28 +242,37 @@ export function SideLayoutDemo() {
       >
         <p>The cover image appears on the side instead of the top.</p>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card } from 'asterui'
 export function InnerCardDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card title="Outer Card" style={{ width: '24rem' }}>
         <p className="mb-4">This is the outer card content.</p>
         <Card type="inner" title="Inner Card">
           <p>Inner cards have a subtle background distinction.</p>
         </Card>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card } from 'asterui'
+// @example-imports: { useState } from 'react'
 export function TabsDemo() {
+  // @example-include
   const [activeKey, setActiveKey] = useState('tab1')
+  // @example-include-end
 
   return (
     <Demo>
+      {/* @example-return */}
       <Card
         tabList={[
           { key: 'tab1', label: 'Article' },
@@ -240,13 +287,16 @@ export function TabsDemo() {
         {activeKey === 'tab2' && <p>App content here...</p>}
         {activeKey === 'tab3' && <p>Project content here...</p>}
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
 
+// @example-imports: { Card } from 'asterui'
 export function GridDemo() {
   return (
     <Demo>
+      {/* @example-return */}
       <Card title="Card Grid" style={{ width: '28rem' }}>
         <div className="grid grid-cols-2 -mx-6 -mb-6">
           <Card.Grid hoverable>Grid Item 1</Card.Grid>
@@ -255,6 +305,7 @@ export function GridDemo() {
           <Card.Grid hoverable>Grid Item 4</Card.Grid>
         </div>
       </Card>
+      {/* @example-return-end */}
     </Demo>
   )
 }
