@@ -21,7 +21,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime', 'asterui'],
+      external: ['react', 'react/jsx-runtime', '@aster-ui/prefixed'],
       output: {
         preserveModules: true,
         preserveModulesRoot: 'src',

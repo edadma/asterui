@@ -10,9 +10,6 @@ importers:
 
   packages/asterui:
     devDependencies:
-      '@aster-ui/icons':
-        specifier: workspace:*
-        version: link:../icons
       '@tailwindcss/vite':
         specifier: ^4.1.17
         version: 4.1.17(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)(yaml@2.8.2))
@@ -152,9 +149,9 @@ importers:
 
   packages/docs-old:
     dependencies:
-      '@aster-ui/icons':
+      '@aster-ui/icons-prefixed':
         specifier: workspace:*
-        version: link:../icons
+        version: link:../icons-prefixed
       '@aster-ui/prefixed':
         specifier: workspace:*
         version: link:../prefixed

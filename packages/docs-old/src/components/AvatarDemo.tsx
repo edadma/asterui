@@ -1,6 +1,6 @@
 import { Avatar, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
-import { UserIcon, UserCircleIcon } from '@aster-ui/icons'
+import { UserIcon, UserCircleIcon } from '@aster-ui/icons-prefixed'
 
 const imgSrc = 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'
 

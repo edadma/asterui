@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@aster-ui/icons": "workspace:*",
+    "@aster-ui/icons-prefixed": "workspace:*",
     "@astrojs/react": "^4.2.1",
     "@astrojs/starlight": "^0.37.1",
     "@remixicon/react": "^4.7.0",

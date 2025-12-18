@@ -5,7 +5,7 @@ import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   XCircleIcon,
-} from '@aster-ui/icons'
+} from '@aster-ui/icons-prefixed'
 
 export function BasicDemo() {
   return (
