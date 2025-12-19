@@ -1,0 +1,117 @@
+---
+title: ConfigProvider
+description: Global configuration provider for locale, component size, direction, and other settings.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizeDemo,
+  LocaleDemo,
+  DirectionDemo,
+  NestedDemo,
+} from '../../../components/ConfigProviderDemo'
+import ConfigProviderDemoSource from '../../../components/ConfigProviderDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
+
+Global configuration provider for locale, component size, direction, and other settings.
+
+## Import
+
+```tsx
+import { ConfigProvider } from 'asterui'
+```
+
+## Examples
+
+<div class="examples">
+
+<Example title="Basic Usage" description="Set global component size for all child components." source={ConfigProviderDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Component Size" description="Switch between small, middle, and large sizes globally." source={ConfigProviderDemoSource} fn="SizeDemo">
+  <SizeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Locale" description="Customize locale strings for internationalization." source={ConfigProviderDemoSource} fn="LocaleDemo">
+  <LocaleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Direction" description="Support for LTR and RTL layouts." source={ConfigProviderDemoSource} fn="DirectionDemo">
+  <DirectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Nested Providers" description="Nested ConfigProviders inherit and override parent settings." source={ConfigProviderDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ConfigProvider`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `locale` | Locale configuration object | `Locale` | `enUS` |
+| `componentSize` | Default size for all components | `'small' \| 'middle' \| 'large'` | `'middle'` |
+| `direction` | Layout direction | `'ltr' \| 'rtl'` | `'ltr'` |
+| `prefixCls` | Prefix for CSS classes | `string` | - |
+| `getPopupContainer` | Default container for portals (modals, dropdowns) | `(triggerNode?: HTMLElement) => HTMLElement` | - |
+| `children` | Child components | `React.ReactNode` | - |
+
+## Available Locales
+
+Import locales from `asterui/locale`:
+
+```tsx
+import { zhCN, jaJP, koKR, deDE, frFR, esES, ptBR, enGB, enCA } from 'asterui/locale'
+```
+
+| Locale | Language |
+|--------|----------|
+| `enUS` | English (US) - default |
+| `enGB` | English (UK) |
+| `enCA` | English (Canada) |
+| `zhCN` | Chinese (Simplified) |
+| `jaJP` | Japanese |
+| `koKR` | Korean |
+| `deDE` | German |
+| `frFR` | French |
+| `esES` | Spanish |
+| `ptBR` | Portuguese (Brazil) |
+
+## Hooks
+
+### `useConfig`
+
+Access the current configuration values:
+
+```tsx
+import { useConfig } from 'asterui'
+
+function MyComponent() {
+  const { locale, componentSize, direction } = useConfig()
+  // ...
+}
+```
+
+### `useLocale`
+
+Access the current locale:
+
+```tsx
+import { useLocale } from 'asterui'
+
+function MyComponent() {
+  const locale = useLocale()
+  // ...
+}
+```
+
+## Accessibility
+
+- Use `direction="rtl"` for right-to-left languages like Arabic and Hebrew
+- Locale settings affect screen reader text in components like Empty, Pagination, etc.
+- Nested providers allow different regions of your app to have different configurations
