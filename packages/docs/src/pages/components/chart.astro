@@ -1,0 +1,134 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+import Example from '../../components/Example.astro'
+import {
+  LineDemo,
+  MultiLineDemo,
+  BarDemo,
+  StackedBarDemo,
+  PieDemo,
+  DonutDemo,
+  AreaDemo,
+  RadarDemo,
+  RadialBarDemo,
+} from '../../components/ChartDemo'
+import ChartDemoSource from '../../components/ChartDemo.tsx?raw'
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Chart',
+    description: 'Data visualization with ApexCharts integration.',
+    tableOfContents: false,
+  }}
+>
+  <div class="sl-markdown-content">
+  <p>Data visualization with ApexCharts integration.</p>
+
+  <h2>Installation</h2>
+  <p>This component requires <code>apexcharts</code> as a peer dependency:</p>
+  <pre><code>npm install apexcharts</code></pre>
+
+  <h2>Import</h2>
+  <pre><code>import {'{ Chart }'} from 'asterui/chart'</code></pre>
+
+  <h2>Examples</h2>
+
+  <div class="examples">
+    <Example title="Line Chart" description="Simple line chart for time series data." source={ChartDemoSource} fn="LineDemo">
+      <LineDemo client:only="react" slot="demo" />
+    </Example>
+
+    <Example title="Multi-line Chart" description="Compare multiple data series." source={ChartDemoSource} fn="MultiLineDemo">
+      <MultiLineDemo client:only="react" slot="demo" />
+    </Example>
+
+    <Example title="Bar Chart" description="Categorical data visualization." source={ChartDemoSource} fn="BarDemo">
+      <BarDemo client:only="react" slot="demo" />
+    </Example>
+
+    <Example title="Stacked Bar Chart" description="Show composition of values." source={ChartDemoSource} fn="StackedBarDemo">
+      <StackedBarDemo client:only="react" slot="demo" />
+    </Example>
+
+    <Example title="Pie Chart" description="Show proportions of a whole." source={ChartDemoSource} fn="PieDemo">
+      <PieDemo client:only="react" slot="demo" />
+    </Example>
+
+    <Example title="Donut Chart" description="Pie chart with center cutout for totals." source={ChartDemoSource} fn="DonutDemo">
+      <DonutDemo client:only="react" slot="demo" />
+    </Example>
+
+    <Example title="Area Chart" description="Line chart with filled area." source={ChartDemoSource} fn="AreaDemo">
+      <AreaDemo client:only="react" slot="demo" />
+    </Example>
+
+    <Example title="Radar Chart" description="Multi-axis comparison chart." source={ChartDemoSource} fn="RadarDemo">
+      <RadarDemo client:only="react" slot="demo" />
+    </Example>
+
+    <Example title="Radial Bar Chart" description="Circular progress indicators." source={ChartDemoSource} fn="RadialBarDemo">
+      <RadialBarDemo client:only="react" slot="demo" />
+    </Example>
+  </div>
+
+  <h2>API</h2>
+  <h3><code>Chart</code></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>type</code></td>
+        <td>Chart type</td>
+        <td><code>'line' | 'bar' | 'pie' | 'donut' | 'area' | 'radar' | 'radialBar'</code></td>
+        <td><code>'line'</code></td>
+      </tr>
+      <tr>
+        <td><code>series</code></td>
+        <td>Data series</td>
+        <td><code>ApexAxisChartSeries | ApexNonAxisChartSeries</code></td>
+        <td><code>[]</code></td>
+      </tr>
+      <tr>
+        <td><code>options</code></td>
+        <td>ApexCharts options</td>
+        <td><code>ApexOptions</code></td>
+        <td><code>{'{}'}</code></td>
+      </tr>
+      <tr>
+        <td><code>height</code></td>
+        <td>Chart height</td>
+        <td><code>number | string</code></td>
+        <td><code>350</code></td>
+      </tr>
+      <tr>
+        <td><code>width</code></td>
+        <td>Chart width</td>
+        <td><code>number | string</code></td>
+        <td><code>'100%'</code></td>
+      </tr>
+      <tr>
+        <td><code>className</code></td>
+        <td>Additional CSS classes</td>
+        <td><code>string</code></td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Accessibility</h2>
+  <ul>
+    <li>Charts include ARIA labels for data points</li>
+    <li>Legend items are keyboard navigable</li>
+    <li>Tooltips provide detailed data on hover/focus</li>
+    <li>Colors are chosen for sufficient contrast</li>
+  </ul>
+  </div>
+</StarlightPage>

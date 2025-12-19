@@ -7,6 +7,9 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://asterui.com',
   vite: {
+    optimizeDeps: {
+      include: ['apexcharts'],
+    },
     ssr: {
       external: ['apexcharts', 'qrcode', '@tiptap/react', '@tiptap/starter-kit', '@tanstack/react-virtual'],
     },
@@ -82,7 +85,7 @@ export default defineConfig({
                 { label: 'Badge', slug: 'components/badge' },
                 { label: 'Card', slug: 'components/card' },
                 { label: 'Carousel', slug: 'components/carousel' },
-                { label: 'Chart', slug: 'components/chart' },
+                { label: 'Chart', link: '/components/chart' },
                 { label: 'Chat', slug: 'components/chat' },
                 { label: 'Collapse', slug: 'components/collapse' },
                 { label: 'Countdown', slug: 'components/countdown' },

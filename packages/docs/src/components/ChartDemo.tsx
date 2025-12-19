@@ -1,14 +1,5 @@
-import React, { lazy, Suspense } from 'react'
+import { Chart } from '@aster-ui/prefixed/chart'
 import { Demo } from './Demo'
-
-// Lazy load Chart to avoid SSR issues with ApexCharts
-const LazyChart = lazy(() => import('@aster-ui/prefixed/chart').then(m => ({ default: m.Chart })))
-
-const Chart = (props: any) => (
-  <Suspense fallback={<div style={{ height: props.height || 350 }} className="animate-pulse bg-base-300/50 rounded" />}>
-    <LazyChart {...props} />
-  </Suspense>
-)
 
 // @example-imports: { Chart } from 'asterui/chart'
 export function LineDemo() {
