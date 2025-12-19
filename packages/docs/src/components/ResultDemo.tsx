@@ -1,5 +1,5 @@
 import React from 'react';
-import { Result, Button, Space } from 'asterui';
+import { Result, Button, Space } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Result, Button, Space } from 'asterui'

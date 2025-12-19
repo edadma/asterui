@@ -1,4 +1,4 @@
-import { Flex, Button, Badge, Card, Typography } from 'asterui'
+import { Flex, Button, Badge, Card, Typography } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const { Title, Paragraph } = Typography

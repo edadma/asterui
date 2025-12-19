@@ -1,4 +1,4 @@
-import { Container, Space } from 'asterui'
+import { Container, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Container } from 'asterui'

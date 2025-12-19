@@ -1,9 +1,0 @@
-# Astro
-.astro/
-dist/
-
-# Dependencies
-node_modules/
-
-# Generated
-public/demo.css

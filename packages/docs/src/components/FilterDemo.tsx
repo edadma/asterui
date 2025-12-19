@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Filter, Space } from 'asterui'
+import { Filter, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Filter, Space } from 'asterui'

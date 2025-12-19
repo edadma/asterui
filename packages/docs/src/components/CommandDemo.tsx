@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Command, Button, Space } from 'asterui';
+import { Command, Button, Space } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Command, Button } from 'asterui'

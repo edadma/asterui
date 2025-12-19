@@ -1,4 +1,4 @@
-import { ContextMenu, notification } from 'asterui'
+import { ContextMenu, notification } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { ContextMenu, notification } from 'asterui'

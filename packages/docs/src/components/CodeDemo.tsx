@@ -1,4 +1,4 @@
-import { Code } from 'asterui'
+import { Code } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Code } from 'asterui'

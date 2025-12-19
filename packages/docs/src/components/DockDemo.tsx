@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Dock, Space } from 'asterui'
-import { HomeIcon, MagnifyingGlassIcon, HeartIcon, UserIcon, Cog6ToothIcon, BellIcon, PlusCircleIcon } from '@aster-ui/icons'
+import { Dock, Space } from '@aster-ui/prefixed'
+import { HomeIcon, MagnifyingGlassIcon, HeartIcon, UserIcon, Cog6ToothIcon, BellIcon, PlusCircleIcon } from '@aster-ui/icons-prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Dock } from 'asterui'

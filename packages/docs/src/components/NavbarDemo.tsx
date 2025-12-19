@@ -1,6 +1,6 @@
 import React from 'react'
-import { Navbar, Button, Dropdown, Typography, Flex } from 'asterui'
-import { ChevronDownIcon } from '@aster-ui/icons'
+import { Navbar, Button, Dropdown, Typography, Flex } from '@aster-ui/prefixed'
+import { ChevronDownIcon } from '@aster-ui/icons-prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Navbar, Button, Typography, Flex } from 'asterui'

@@ -1,4 +1,4 @@
-import { Kbd, Space, Typography } from 'asterui'
+import { Kbd, Space, Typography } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const { Paragraph } = Typography

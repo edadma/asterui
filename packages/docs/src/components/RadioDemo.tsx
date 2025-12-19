@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Radio, Space, Form, Modal } from 'asterui';
+import { Radio, Space, Form, Modal } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Radio, Space } from 'asterui'

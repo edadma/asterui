@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Tree } from 'asterui'
-import type { TreeDataNode } from 'asterui'
-import { FolderIcon, DocumentIcon } from '@aster-ui/icons/solid'
+import { Tree } from '@aster-ui/prefixed'
+import type { TreeDataNode } from '@aster-ui/prefixed'
+import { FolderIcon, DocumentIcon } from '@aster-ui/icons-prefixed/solid'
 import { Demo } from './Demo'
 
 const basicTreeData: TreeDataNode[] = [

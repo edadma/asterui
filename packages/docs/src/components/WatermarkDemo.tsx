@@ -1,5 +1,5 @@
 import React from 'react'
-import { Watermark, Card, Space, Typography } from 'asterui'
+import { Watermark, Card, Space, Typography } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const { Title, Paragraph, Text } = Typography

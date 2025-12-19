@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react'
-import { Countdown, Space, notification } from 'asterui'
+import { Countdown, Space, notification } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // Single component with all demos to avoid multiple React roots

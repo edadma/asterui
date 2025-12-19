@@ -1,4 +1,4 @@
-import { FloatButton } from 'asterui'
+import { FloatButton } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { FloatButton } from 'asterui'

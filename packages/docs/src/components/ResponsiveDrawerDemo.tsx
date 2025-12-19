@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ResponsiveDrawer, Button, Menu, Avatar } from 'asterui'
+import { ResponsiveDrawer, Button, Menu, Avatar } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { ResponsiveDrawer, Button, Menu } from 'asterui'

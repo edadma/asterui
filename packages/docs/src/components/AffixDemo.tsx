@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Affix, Button } from 'asterui'
+import { Affix, Button } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Affix, Button } from 'asterui'

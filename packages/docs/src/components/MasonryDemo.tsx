@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Masonry, Button } from 'asterui'
+import { Masonry, Button } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const COLORS = ['#0092ff', '#00d084', '#ff6b6b', '#ffd93d', '#a29bfe', '#fd79a8']

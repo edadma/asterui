@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { TreeSelect } from 'asterui'
-import type { TreeDataNode } from 'asterui'
+import { TreeSelect } from '@aster-ui/prefixed'
+import type { TreeDataNode } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const basicTreeData: TreeDataNode[] = [

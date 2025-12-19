@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Rating, Space, Form, notification, Button } from 'asterui'
+import { Rating, Space, Form, notification, Button } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Rating } from 'asterui'

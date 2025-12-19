@@ -1,5 +1,5 @@
 import React from 'react'
-import { Window, Code } from 'asterui'
+import { Window, Code } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Window } from 'asterui'

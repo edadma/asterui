@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Cascader } from 'asterui'
-import type { CascaderOption } from 'asterui'
+import { Cascader } from '@aster-ui/prefixed'
+import type { CascaderOption } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Cascader } from 'asterui'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { OTPInput, Space } from 'asterui'
+import { OTPInput, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { OTPInput } from 'asterui'

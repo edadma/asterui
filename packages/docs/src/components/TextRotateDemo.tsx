@@ -1,4 +1,4 @@
-import { TextRotate } from 'asterui'
+import { TextRotate } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { TextRotate } from 'asterui'

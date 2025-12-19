@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ColorPicker, Space, Typography } from 'asterui'
+import { ColorPicker, Space, Typography } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const { Text } = Typography

@@ -1,4 +1,4 @@
-import { Popover, Button } from 'asterui'
+import { Popover, Button } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Popover, Button } from 'asterui'

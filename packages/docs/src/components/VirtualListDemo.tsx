@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Chat } from 'asterui'
-import { VirtualList } from 'asterui/virtuallist'
+import { Chat } from '@aster-ui/prefixed'
+import { VirtualList } from '@aster-ui/prefixed/virtuallist'
 import { Demo } from './Demo'
 
 const basicItems = Array.from({ length: 10000 }, (_, i) => ({

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mask, Space } from 'asterui'
+import { Mask, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Mask, Space } from 'asterui'

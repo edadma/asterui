@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Toggle, Form, Button, Space } from 'asterui'
+import { Toggle, Form, Button, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Toggle } from 'asterui'

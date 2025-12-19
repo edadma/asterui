@@ -1,5 +1,5 @@
-import { Join, Button, Input } from 'asterui'
-import { MagnifyingGlassIcon } from '@aster-ui/icons'
+import { Join, Button, Input } from '@aster-ui/prefixed'
+import { MagnifyingGlassIcon } from '@aster-ui/icons-prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Join, Button } from 'asterui'

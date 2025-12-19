@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Modal, Button, Space } from 'asterui';
+import { Modal, Button, Space } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Modal, Button } from 'asterui'

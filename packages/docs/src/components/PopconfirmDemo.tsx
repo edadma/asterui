@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popconfirm, Button, notification } from 'asterui';
+import { Popconfirm, Button, notification } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 const handleDelete = () => {

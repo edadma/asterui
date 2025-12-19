@@ -1,4 +1,4 @@
-import { Collapse, Button, Space } from 'asterui'
+import { Collapse, Button, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Collapse } from 'asterui'

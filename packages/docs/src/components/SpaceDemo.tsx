@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space, Button, Badge, Card, Divider } from 'asterui';
+import { Space, Button, Badge, Card, Divider } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Space, Button } from 'asterui'

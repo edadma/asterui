@@ -1,4 +1,4 @@
-import { Diff, Space } from 'asterui'
+import { Diff, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Diff } from 'asterui'

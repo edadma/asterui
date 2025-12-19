@@ -1,5 +1,5 @@
-import { Dropdown, Button, Space, Typography } from 'asterui'
-import { PencilIcon, DocumentDuplicateIcon, TrashIcon, FolderIcon, Cog6ToothIcon } from '@aster-ui/icons'
+import { Dropdown, Button, Space, Typography } from '@aster-ui/prefixed'
+import { PencilIcon, DocumentDuplicateIcon, TrashIcon, FolderIcon, Cog6ToothIcon } from '@aster-ui/icons-prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Dropdown, Button } from 'asterui'

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Drawer, Button, Space } from 'asterui'
+import { Drawer, Button, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Drawer, Button } from 'asterui'

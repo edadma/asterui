@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Table, Button, Tag, Space } from 'asterui';
-import type { ColumnType, ExpandableConfig } from 'asterui';
+import { Table, Button, Tag, Space } from '@aster-ui/prefixed';
+import type { ColumnType, ExpandableConfig } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 interface User {

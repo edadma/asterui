@@ -1,4 +1,4 @@
-import { Hero, Button } from 'asterui'
+import { Hero, Button } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Hero } from 'asterui'

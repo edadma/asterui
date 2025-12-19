@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, Avatar } from 'asterui';
+import { List, Avatar } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 const basicData = [

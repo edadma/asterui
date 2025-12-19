@@ -1,4 +1,4 @@
-import { Fieldset, Input } from 'asterui'
+import { Fieldset, Input } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Fieldset } from 'asterui'

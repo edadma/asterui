@@ -1,4 +1,4 @@
-import { Row, Col, Space } from 'asterui'
+import { Row, Col, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Row, Col } from 'asterui'

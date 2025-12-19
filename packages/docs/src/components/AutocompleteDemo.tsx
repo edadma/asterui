@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Autocomplete, Space, Form, Button, Modal } from 'asterui'
+import { Autocomplete, Space, Form, Button, Modal } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Autocomplete } from 'asterui'

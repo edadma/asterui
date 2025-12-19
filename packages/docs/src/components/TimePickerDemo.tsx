@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TimePicker, Form, Button, Space, Typography, Row, Col, notification } from 'asterui'
+import { TimePicker, Form, Button, Space, Typography, Row, Col, notification } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const { Text } = Typography

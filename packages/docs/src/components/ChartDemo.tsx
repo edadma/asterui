@@ -1,5 +1,32 @@
-import { Chart } from 'asterui/chart'
+import { useState, useEffect, memo } from 'react'
 import { Demo } from './Demo'
+
+// Singleton: load Chart component once, share across all instances
+let cachedChart: React.ComponentType<any> | null = null
+let loadPromise: Promise<void> | null = null
+
+const Chart = memo((props: any) => {
+  const [, forceUpdate] = useState(0)
+
+  useEffect(() => {
+    if (cachedChart) return
+
+    if (!loadPromise) {
+      loadPromise = import('@aster-ui/prefixed/chart').then(m => {
+        cachedChart = m.Chart
+      })
+    }
+
+    loadPromise.then(() => forceUpdate(n => n + 1))
+  }, [])
+
+  if (!cachedChart) {
+    return <div style={{ height: props.height || 350 }} className="animate-pulse bg-base-300/50 rounded" />
+  }
+
+  const LoadedChart = cachedChart
+  return <LoadedChart {...props} />
+})
 
 // @example-imports: { Chart } from 'asterui/chart'
 export function LineDemo() {

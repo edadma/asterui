@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { message, Button, Space } from 'asterui';
+import { message, Button, Space } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { message, Button, Space } from 'asterui'

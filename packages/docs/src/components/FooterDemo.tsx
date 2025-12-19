@@ -1,4 +1,4 @@
-import { Footer } from 'asterui'
+import { Footer } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Footer } from 'asterui'

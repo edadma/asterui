@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Transfer } from 'asterui'
+import { Transfer } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 interface TransferItem {

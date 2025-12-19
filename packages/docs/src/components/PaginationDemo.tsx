@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Pagination } from 'asterui';
+import { Pagination } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Pagination } from 'asterui'

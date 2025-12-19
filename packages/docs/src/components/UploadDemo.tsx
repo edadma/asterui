@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Upload, Button, Form } from 'asterui'
+import { Upload, Button, Form } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 interface UploadFile {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Menu, Space, notification } from 'asterui';
-import { HomeIcon, FolderIcon, UsersIcon, Cog6ToothIcon } from '@aster-ui/icons';
+import { Menu, Space, notification } from '@aster-ui/prefixed';
+import { HomeIcon, FolderIcon, UsersIcon, Cog6ToothIcon } from '@aster-ui/icons-prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Menu } from 'asterui'

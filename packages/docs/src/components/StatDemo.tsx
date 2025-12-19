@@ -1,6 +1,6 @@
 import React from 'react';
-import { Stats, Button } from 'asterui';
-import { InformationCircleIcon, AdjustmentsVerticalIcon } from '@aster-ui/icons';
+import { Stats, Button } from '@aster-ui/prefixed';
+import { InformationCircleIcon, AdjustmentsVerticalIcon } from '@aster-ui/icons-prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Stats } from 'asterui'

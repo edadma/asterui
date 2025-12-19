@@ -1,4 +1,4 @@
-import { Divider, Space } from 'asterui'
+import { Divider, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Divider } from 'asterui'

@@ -1,4 +1,4 @@
-import { Image, Space } from 'asterui'
+import { Image, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Image } from 'asterui'

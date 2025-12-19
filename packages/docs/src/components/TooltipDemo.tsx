@@ -1,4 +1,4 @@
-import { Tooltip, Button, Space } from 'asterui'
+import { Tooltip, Button, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Tooltip, Button } from 'asterui'

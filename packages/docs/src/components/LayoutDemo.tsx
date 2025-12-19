@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Layout, Menu, Button } from 'asterui'
+import { Layout, Menu, Button } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // Icons for menu items

@@ -1,4 +1,4 @@
-import { Loading, Space } from 'asterui'
+import { Loading, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Loading } from 'asterui'

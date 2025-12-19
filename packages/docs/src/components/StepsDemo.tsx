@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Steps, Button, notification } from 'asterui';
-import { CheckIcon, DocumentTextIcon, CreditCardIcon, TruckIcon } from '@aster-ui/icons';
+import { Steps, Button, notification } from '@aster-ui/prefixed';
+import { CheckIcon, DocumentTextIcon, CreditCardIcon, TruckIcon } from '@aster-ui/icons-prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Steps } from 'asterui'

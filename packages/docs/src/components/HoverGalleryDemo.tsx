@@ -1,4 +1,4 @@
-import { HoverGallery, Card } from 'asterui'
+import { HoverGallery, Card } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const images = [

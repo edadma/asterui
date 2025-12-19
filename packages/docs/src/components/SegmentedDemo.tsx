@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Segmented, Space } from 'asterui'
-import { Bars3Icon, Squares2X2Icon } from '@aster-ui/icons'
+import { Segmented, Space } from '@aster-ui/prefixed'
+import { Bars3Icon, Squares2X2Icon } from '@aster-ui/icons-prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Segmented } from 'asterui'

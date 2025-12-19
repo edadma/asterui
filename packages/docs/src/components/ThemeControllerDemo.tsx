@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeController, Modal, Space } from 'asterui';
+import { ThemeController, Modal, Space } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { ThemeController } from 'asterui'

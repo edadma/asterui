@@ -1,5 +1,5 @@
-import { RadialProgress } from 'asterui'
-import { CheckIcon } from '@aster-ui/icons'
+import { RadialProgress } from '@aster-ui/prefixed'
+import { CheckIcon } from '@aster-ui/icons-prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { RadialProgress } from 'asterui'

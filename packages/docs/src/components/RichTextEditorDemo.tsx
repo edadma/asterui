@@ -1,7 +1,33 @@
-import { useState } from 'react'
-import { RichTextEditor } from 'asterui/editor'
-import { Card, Space } from 'asterui'
+import { useState, useEffect, memo } from 'react'
+import { Card, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
+
+// Singleton: load RichTextEditor component once, share across all instances
+let cachedEditor: React.ComponentType<any> | null = null
+let loadPromise: Promise<void> | null = null
+
+const RichTextEditor = memo((props: any) => {
+  const [, forceUpdate] = useState(0)
+
+  useEffect(() => {
+    if (cachedEditor) return
+
+    if (!loadPromise) {
+      loadPromise = import('@aster-ui/prefixed/editor').then(m => {
+        cachedEditor = m.RichTextEditor
+      })
+    }
+
+    loadPromise.then(() => forceUpdate(n => n + 1))
+  }, [])
+
+  if (!cachedEditor) {
+    return <div style={{ minHeight: props.minHeight || 200 }} className="animate-pulse bg-base-300/50 rounded border border-base-300" />
+  }
+
+  const LoadedEditor = cachedEditor
+  return <LoadedEditor {...props} />
+})
 
 // @example-imports: { RichTextEditor } from 'asterui/editor'
 export function BasicDemo() {

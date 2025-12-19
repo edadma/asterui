@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mention, Space } from 'asterui'
+import { Mention, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const users = [

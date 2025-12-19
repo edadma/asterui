@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CopyButton, Space, Input } from 'asterui'
+import { CopyButton, Space, Input } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { CopyButton, Space } from 'asterui'

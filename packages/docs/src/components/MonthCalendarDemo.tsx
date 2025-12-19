@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MonthCalendar, Card, Button, Space, message, type CalendarEvent } from 'asterui'
+import { MonthCalendar, Card, Button, Space, message, type CalendarEvent } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { MonthCalendar, Card } from 'asterui'

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { DatePicker, Space } from 'asterui'
+import { DatePicker, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { DatePicker } from 'asterui'

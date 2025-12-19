@@ -1,4 +1,4 @@
-import { Anchor, Flex } from 'asterui'
+import { Anchor, Flex } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Anchor, Flex } from 'asterui'

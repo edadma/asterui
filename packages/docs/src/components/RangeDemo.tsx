@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Range, Space, Form, Button } from 'asterui';
+import { Range, Space, Form, Button } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Range } from 'asterui'

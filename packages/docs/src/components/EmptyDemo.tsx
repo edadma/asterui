@@ -1,4 +1,4 @@
-import { Empty, Button } from 'asterui'
+import { Empty, Button } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Empty } from 'asterui'

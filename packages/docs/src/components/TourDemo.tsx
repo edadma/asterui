@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Tour, Button, Input, Card, Space } from 'asterui';
+import { Tour, Button, Input, Card, Space } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // Basic Tour Demo

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Tag, CheckableTag, Space, TagLiveRegion } from 'asterui';
+import { Tag, CheckableTag, Space, TagLiveRegion } from '@aster-ui/prefixed';
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
   HeartIcon,
   StarIcon,
   BookmarkIcon,
-} from '@aster-ui/icons';
+} from '@aster-ui/icons-prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Tag, Space } from 'asterui'

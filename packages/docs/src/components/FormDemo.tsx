@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Form, Input, Button, Textarea, Radio, Space } from 'asterui'
+import { Form, Input, Button, Textarea, Radio, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Form, Input, Button } from 'asterui'

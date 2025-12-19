@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { InputNumber, Space } from 'asterui';
+import { InputNumber, Space } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { InputNumber } from 'asterui'

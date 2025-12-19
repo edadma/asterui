@@ -1,4 +1,4 @@
-import { FileInput, Space } from 'asterui'
+import { FileInput, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { FileInput } from 'asterui'

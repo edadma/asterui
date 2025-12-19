@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Splitter, Button, Space, Menu } from 'asterui';
+import { Splitter, Button, Space, Menu } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Splitter } from 'asterui'

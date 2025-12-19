@@ -1,5 +1,5 @@
-import { Breadcrumb } from 'asterui'
-import { FolderIcon, DocumentTextIcon, ChevronRightIcon } from '@aster-ui/icons'
+import { Breadcrumb } from '@aster-ui/prefixed'
+import { FolderIcon, DocumentTextIcon, ChevronRightIcon } from '@aster-ui/icons-prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Breadcrumb } from 'asterui'

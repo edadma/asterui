@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Timeline, Button, Space } from 'asterui';
-import type { TimelineItemConfig } from 'asterui';
-import { CheckCircleIcon, ClockIcon, ExclamationCircleIcon } from '@aster-ui/icons/solid';
+import { Timeline, Button, Space } from '@aster-ui/prefixed';
+import type { TimelineItemConfig } from '@aster-ui/prefixed';
+import { CheckCircleIcon, ClockIcon, ExclamationCircleIcon } from '@aster-ui/icons-prefixed/solid';
 import { Demo } from './Demo';
 
 const CheckIcon = () => <CheckCircleIcon />;

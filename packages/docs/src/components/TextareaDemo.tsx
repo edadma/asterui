@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Textarea, Form, Button, Modal, Space } from 'asterui';
+import { Textarea, Form, Button, Modal, Space } from '@aster-ui/prefixed';
 import { Demo } from './Demo';
 
 // @example-imports: { Textarea } from 'asterui'

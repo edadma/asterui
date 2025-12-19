@@ -1,4 +1,4 @@
-import { Browser } from 'asterui'
+import { Browser } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Browser } from 'asterui'

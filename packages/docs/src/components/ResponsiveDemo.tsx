@@ -1,5 +1,5 @@
 import React from 'react'
-import { Show, Hide, useBreakpoint, Button, Flex, Alert, Card, Typography } from 'asterui'
+import { Show, Hide, useBreakpoint, Button, Flex, Alert, Card, Typography } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 const { Text } = Typography

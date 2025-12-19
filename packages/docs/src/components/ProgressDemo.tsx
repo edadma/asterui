@@ -1,4 +1,4 @@
-import { Progress } from 'asterui'
+import { Progress } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Progress } from 'asterui'

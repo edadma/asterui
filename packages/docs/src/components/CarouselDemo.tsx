@@ -1,4 +1,4 @@
-import { Carousel, Space, Card, Button } from 'asterui'
+import { Carousel, Space, Card, Button } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Carousel } from 'asterui'

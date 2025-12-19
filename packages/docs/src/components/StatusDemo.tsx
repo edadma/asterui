@@ -1,5 +1,5 @@
 import React from 'react'
-import { Status, Space } from 'asterui'
+import { Status, Space } from '@aster-ui/prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Status, Space } from 'asterui'

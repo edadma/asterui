@@ -1,5 +1,5 @@
-import { Alert, Space, Button } from 'asterui'
-import { InformationCircleIcon, CheckCircleIcon, ExclamationTriangleIcon, XCircleIcon } from '@aster-ui/icons'
+import { Alert, Space, Button } from '@aster-ui/prefixed'
+import { InformationCircleIcon, CheckCircleIcon, ExclamationTriangleIcon, XCircleIcon } from '@aster-ui/icons-prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Alert } from 'asterui'
@@ -82,6 +82,50 @@ export function OutlineDemo() {
         <Alert type="success" outline>
           <CheckCircleIcon size="lg" className="shrink-0" />
           <span>Success outline alert</span>
+        </Alert>
+      </Space>
+      {/* @example-return-end */}
+    </Demo>
+  )
+}
+
+// @example-imports: { Alert, Space } from 'asterui'
+// @example-imports: { ExclamationTriangleIcon, XCircleIcon } from '@aster-ui/icons'
+export function DashDemo() {
+  return (
+    <Demo>
+      {/* @example-return */}
+      <Space direction="vertical" size="sm">
+        <Alert type="warning" dash>
+          <ExclamationTriangleIcon size="lg" className="shrink-0" />
+          <span>Warning dash alert</span>
+        </Alert>
+
+        <Alert type="error" dash>
+          <XCircleIcon size="lg" className="shrink-0" />
+          <span>Error dash alert</span>
+        </Alert>
+      </Space>
+      {/* @example-return-end */}
+    </Demo>
+  )
+}
+
+// @example-imports: { Alert, Space } from 'asterui'
+// @example-imports: { InformationCircleIcon, CheckCircleIcon } from '@aster-ui/icons'
+export function SoftDemo() {
+  return (
+    <Demo>
+      {/* @example-return */}
+      <Space direction="vertical" size="sm">
+        <Alert type="info" soft>
+          <InformationCircleIcon size="lg" className="shrink-0" />
+          <span>Info soft alert</span>
+        </Alert>
+
+        <Alert type="success" soft>
+          <CheckCircleIcon size="lg" className="shrink-0" />
+          <span>Success soft alert</span>
         </Alert>
       </Space>
       {/* @example-return-end */}
