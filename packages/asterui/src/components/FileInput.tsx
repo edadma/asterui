@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface FileInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -10,6 +11,9 @@ export interface FileInputProps extends Omit<React.InputHTMLAttributes<HTMLInput
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   ({ size, color, ghost = false, bordered = true, className = '', ...props }, ref) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
+
     const sizeClasses = {
       xs: 'file-input-xs',
       sm: 'file-input-sm',
@@ -35,7 +39,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       // In DaisyUI 5, borders are on by default. Use ghost to remove them.
       !bordered && 'file-input-ghost',
       ghost && 'file-input-ghost',
-      size && sizeClasses[size],
+      effectiveSize && sizeClasses[effectiveSize],
       color && colorClasses[color],
       className,
     ]

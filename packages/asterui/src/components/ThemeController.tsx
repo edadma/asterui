@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useId } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface ThemeControllerSwapProps {
   lightTheme?: string
@@ -18,7 +19,7 @@ export interface ThemeControllerToggleProps {
   lightTheme?: string
   darkTheme?: string
   onChange?: (theme: string) => void
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   className?: string
 }
 
@@ -159,15 +160,19 @@ const sizeClasses: Record<string, string> = {
   sm: 'toggle-sm',
   md: 'toggle-md',
   lg: 'toggle-lg',
+  xl: 'toggle-xl',
 }
 
 function ThemeControllerToggle({
   lightTheme = 'light',
   darkTheme = 'dark',
   onChange,
-  size = 'md',
+  size,
   className = '',
 }: ThemeControllerToggleProps) {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
+
   const [isDark, setIsDark] = useState(() => {
     const current = getCurrentTheme()
     return current === darkTheme
@@ -193,7 +198,7 @@ function ThemeControllerToggle({
   return (
     <input
       type="checkbox"
-      className={`toggle ${sizeClasses[size]} ${className}`}
+      className={`toggle ${sizeClasses[effectiveSize]} ${className}`}
       checked={isDark}
       onChange={handleChange}
       aria-label="Toggle theme"

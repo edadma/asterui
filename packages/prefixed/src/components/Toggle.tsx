@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface ToggleProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -16,6 +17,9 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     },
     ref
   ) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
+
     const sizeClasses = {
       xs: 'd-toggle-xs',
       sm: 'd-toggle-sm',
@@ -37,7 +41,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
 
     const toggleClasses = [
       'd-toggle',
-      size && sizeClasses[size],
+      effectiveSize && sizeClasses[effectiveSize],
       color && colorClasses[color],
       className,
     ]

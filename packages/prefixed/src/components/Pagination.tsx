@@ -1,4 +1,5 @@
 import React from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface PaginationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   current?: number
@@ -13,7 +14,7 @@ export interface PaginationProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   showQuickJumper?: boolean
   showTotal?: boolean | ((total: number, range: [number, number]) => React.ReactNode)
   simple?: boolean
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   disabled?: boolean
 }
 
@@ -30,11 +31,13 @@ export const Pagination: React.FC<PaginationProps> = ({
   showQuickJumper = false,
   showTotal = false,
   simple = false,
-  size = 'md',
+  size,
   disabled = false,
   className = '',
   ...rest
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   const [internalCurrent, setInternalCurrent] = React.useState(defaultCurrent)
   const [internalPageSize, setInternalPageSize] = React.useState(defaultPageSize)
   const [jumpPage, setJumpPage] = React.useState('')
@@ -117,7 +120,8 @@ export const Pagination: React.FC<PaginationProps> = ({
     sm: 'd-btn-sm',
     md: '',
     lg: 'd-btn-lg',
-  }[size]
+    xl: 'd-btn-xl',
+  }[effectiveSize]
 
   const range: [number, number] = [
     (current - 1) * pageSize + 1,

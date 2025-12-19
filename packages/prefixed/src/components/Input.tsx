@@ -1,4 +1,5 @@
 import React, { forwardRef, useState, useCallback, useRef, useEffect } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'> {
   type?: 'text' | 'password' | 'email' | 'number' | 'date' | 'datetime-local' | 'week' | 'month' | 'tel' | 'url' | 'search' | 'time'
@@ -131,6 +132,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
+
     const sizeClasses = {
       xs: 'd-input-xs',
       sm: 'd-input-sm',
@@ -169,7 +173,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           'd-input',
           !bordered && 'border-0',
           ghost && 'd-input-ghost',
-          size && sizeClasses[size],
+          sizeClasses[effectiveSize],
           effectiveColorClass,
           className,
         ].filter(Boolean).join(' ')
@@ -423,7 +427,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
       const floatingClasses = [
         'd-floating-label',
-        size && floatingSizeClasses[size],
+        floatingSizeClasses[effectiveSize],
       ].filter(Boolean).join(' ')
 
       return (
@@ -443,7 +447,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         'flex',
         'items-center',
         'gap-2',
-        size && sizeClasses[size],
+        sizeClasses[effectiveSize],
         effectiveColorClass,
       ].filter(Boolean).join(' ')
 

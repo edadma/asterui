@@ -1,5 +1,6 @@
 import React, { createContext, useContext, cloneElement, isValidElement, useId, useEffect, useRef } from 'react'
 import { useForm, UseFormReturn, FieldValues, SubmitHandler, UseFormProps, Controller, useFieldArray, FieldArrayPath, FieldArray, useWatch } from 'react-hook-form'
+import { useConfig } from './ConfigProvider'
 
 interface FormContextValue {
   form: UseFormReturn<any>
@@ -122,6 +123,9 @@ function FormRoot<TFieldValues extends FieldValues = FieldValues>({
   noValidate = true,
   ...props
 }: FormProps<TFieldValues>) {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
+
   const internalForm = useForm<TFieldValues>({
     defaultValues: initialValues,
   })
@@ -168,7 +172,7 @@ function FormRoot<TFieldValues extends FieldValues = FieldValues>({
   }
 
   return (
-    <FormContext.Provider value={{ form, layout, labelWidth, size, disabled }}>
+    <FormContext.Provider value={{ form, layout, labelWidth, size: effectiveSize, disabled }}>
       <form onSubmit={handleSubmit} onReset={handleReset} className={className} noValidate={noValidate} {...props}>
         {children}
       </form>

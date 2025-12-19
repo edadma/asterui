@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Input } from './Input'
+import { useConfig } from './ConfigProvider'
 
 export interface DatePickerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   value?: Date | null
@@ -8,7 +9,7 @@ export interface DatePickerProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   format?: string
   placeholder?: string
   disabled?: boolean
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
@@ -56,9 +57,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   placeholder = 'Select date',
   disabled = false,
   className = '',
-  size = 'md',
+  size,
   ...rest
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   const [selectedDate, setSelectedDate] = useState<Date | null>(
     value || defaultValue || null
   )
@@ -152,7 +155,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         value={formatDate(selectedDate, format)}
         placeholder={placeholder}
         disabled={disabled}
-        size={size}
+        size={effectiveSize}
         readOnly
         onClick={() => !disabled && setIsOpen(!isOpen)}
         className="cursor-pointer"

@@ -4,6 +4,7 @@ import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
+import { useConfig } from './ConfigProvider'
 
 // Inline toolbar icons (from Heroicons outline)
 const iconProps = (size: number) => ({
@@ -153,7 +154,7 @@ export interface RichTextEditorProps
   /** Maximum height of the editor (enables scrolling) */
   maxHeight?: string | number
   /** Editor size variant */
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   /** Show border around editor */
   bordered?: boolean
   /** Callback with editor instance */
@@ -183,9 +184,11 @@ const defaultToolbar: ToolbarItem[] = [
 ]
 
 const sizeClasses = {
+  xs: 'text-xs',
   sm: 'text-sm',
   md: 'text-base',
   lg: 'text-lg',
+  xl: 'text-xl',
 }
 
 interface ToolbarButtonProps {
@@ -223,16 +226,18 @@ const ToolbarDivider: React.FC = () => (
 )
 
 // Map editor size to icon pixel size
-const editorSizeToIconSize: Record<'sm' | 'md' | 'lg', number> = {
-  sm: 12,
+const editorSizeToIconSize: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', number> = {
+  xs: 12,
+  sm: 14,
   md: 16,
   lg: 20,
+  xl: 24,
 }
 
 const EditorToolbar: React.FC<{
   editor: Editor | null
   toolbar: ToolbarItem[]
-  editorSize: 'sm' | 'md' | 'lg'
+  editorSize: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }> = ({ editor, toolbar, editorSize }) => {
   const iconSize = editorSizeToIconSize[editorSize]
   const setLink = useCallback(() => {
@@ -409,7 +414,7 @@ export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>(
       autoFocus = false,
       minHeight = 200,
       maxHeight,
-      size = 'md',
+      size,
       bordered = true,
       onEditorReady,
       className = '',
@@ -418,6 +423,9 @@ export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>(
     },
     ref
   ) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
+
     const editor = useEditor({
       extensions: [
         StarterKit.configure({
@@ -445,7 +453,7 @@ export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>(
       },
       editorProps: {
         attributes: {
-          class: `prose prose-sm max-w-none focus:outline-none ${sizeClasses[size]}`,
+          class: `prose prose-sm max-w-none focus:outline-none ${sizeClasses[effectiveSize]}`,
         },
       },
     })
@@ -488,7 +496,7 @@ export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>(
         data-testid={testId}
         {...rest}
       >
-        {!hideToolbar && <EditorToolbar editor={editor} toolbar={toolbar} editorSize={size} />}
+        {!hideToolbar && <EditorToolbar editor={editor} toolbar={toolbar} editorSize={effectiveSize} />}
         <div
           className={`
             p-4 overflow-y-auto

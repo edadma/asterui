@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react'
+import { useComponentLocale } from './ConfigProvider'
 
 export interface EmptyProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Extra content like buttons or actions */
@@ -100,7 +101,7 @@ const EmptyRoot = forwardRef<HTMLDivElement, EmptyProps>(
     {
       children,
       className = '',
-      description = 'No Data',
+      description,
       image,
       imageStyle,
       'data-testid': testId = 'empty',
@@ -108,6 +109,9 @@ const EmptyRoot = forwardRef<HTMLDivElement, EmptyProps>(
     },
     ref
   ) => {
+    const locale = useComponentLocale('Empty')
+    const displayDescription = description ?? locale.description
+
     const classes = ['flex flex-col items-center justify-center py-8 px-4', className]
       .filter(Boolean)
       .join(' ')
@@ -117,7 +121,7 @@ const EmptyRoot = forwardRef<HTMLDivElement, EmptyProps>(
         ref={ref}
         className={classes}
         role="status"
-        aria-label={typeof description === 'string' ? description : 'Empty'}
+        aria-label={typeof displayDescription === 'string' ? displayDescription : 'Empty'}
         data-testid={testId}
         {...rest}
       >
@@ -126,9 +130,9 @@ const EmptyRoot = forwardRef<HTMLDivElement, EmptyProps>(
             {image === undefined ? <DefaultEmptyImage /> : image}
           </div>
         )}
-        {description && (
+        {displayDescription && (
           <div className="text-base-content/60 text-sm mb-4" data-testid={`${testId}-description`}>
-            {description}
+            {displayDescription}
           </div>
         )}
         {children && (

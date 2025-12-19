@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback, forwardRef } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface ColorPickerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   value?: string
@@ -6,7 +7,7 @@ export interface ColorPickerProps extends Omit<React.HTMLAttributes<HTMLDivEleme
   onChange?: (color: string) => void
   mode?: 'swatches' | 'picker' | 'both'
   presets?: string[]
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   disabled?: boolean
   showText?: boolean
   allowClear?: boolean
@@ -93,7 +94,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(({
   onChange,
   mode = 'both',
   presets = DEFAULT_PRESETS,
-  size = 'md',
+  size,
   disabled = false,
   showText = false,
   allowClear = false,
@@ -103,6 +104,8 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(({
   'data-testid': testId,
   ...rest
 }, ref) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   const initialValue = value !== undefined ? value : defaultValue
   const [internalValue, setInternalValue] = useState(initialValue)
   const currentValue = value !== undefined ? value : internalValue
@@ -287,9 +290,10 @@ export const ColorPicker = forwardRef<HTMLDivElement, ColorPickerProps>(({
     sm: { panel: 'w-40 h-40', hue: 'h-4', swatch: 'w-5 h-5', input: 'input-sm' },
     md: { panel: 'w-48 h-48', hue: 'h-5', swatch: 'w-6 h-6', input: 'input-md' },
     lg: { panel: 'w-56 h-56', hue: 'h-6', swatch: 'w-7 h-7', input: 'input-lg' },
+    xl: { panel: 'w-64 h-64', hue: 'h-7', swatch: 'w-8 h-8', input: 'input-xl' },
   }
 
-  const config = sizeConfig[size]
+  const config = sizeConfig[effectiveSize]
   const showPicker = mode === 'picker' || mode === 'both'
   const showSwatches = mode === 'swatches' || mode === 'both'
 

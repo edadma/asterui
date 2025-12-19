@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react'
 import { Pagination } from './Pagination'
 import { Loading } from './Loading'
+import { useConfig } from './ConfigProvider'
 
 export interface ListPaginationConfig {
   current?: number
@@ -39,7 +40,7 @@ export interface ListProps<T = unknown> extends Omit<React.HTMLAttributes<HTMLUL
   /** Show divider between items */
   split?: boolean
   /** Size variant */
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   /** Layout direction */
   itemLayout?: 'horizontal' | 'vertical'
   /** Empty state text */
@@ -80,9 +81,11 @@ export interface ListItemMetaProps extends Omit<React.HTMLAttributes<HTMLDivElem
 export type ListRowProps = ListItemProps
 
 const sizeClasses = {
+  xs: 'py-1',
   sm: 'py-2',
   md: 'py-3',
   lg: 'py-4',
+  xl: 'py-5',
 }
 
 const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
@@ -141,7 +144,7 @@ const ListRoot = forwardRef<HTMLUListElement, ListProps>(
       grid,
       bordered = true,
       split = true,
-      size = 'md',
+      size,
       itemLayout = 'horizontal',
       locale,
       loadMore,
@@ -154,6 +157,9 @@ const ListRoot = forwardRef<HTMLUListElement, ListProps>(
     },
     ref
   ) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
+
     const listClasses = [
       'list bg-base-100 rounded-box',
       bordered && 'border border-base-300',
@@ -163,7 +169,7 @@ const ListRoot = forwardRef<HTMLUListElement, ListProps>(
       .filter(Boolean)
       .join(' ')
 
-    const itemClasses = sizeClasses[size]
+    const itemClasses = sizeClasses[effectiveSize]
 
     // Grid styles
     const gridStyles: React.CSSProperties = grid

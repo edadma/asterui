@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -20,6 +21,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref
   ) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
+
     const sizeClasses = {
       xs: 'textarea-xs',
       sm: 'textarea-sm',
@@ -44,7 +48,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       'w-full',
       bordered && 'textarea-bordered',
       ghost && 'textarea-ghost',
-      size && sizeClasses[size],
+      effectiveSize && sizeClasses[effectiveSize],
       color && colorClasses[color],
       className,
     ]

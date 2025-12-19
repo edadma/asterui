@@ -1,11 +1,12 @@
 import React, { useState, useCallback, createContext, useContext } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export type SegmentedValue = string | number
 
 interface SegmentedContextValue {
   value?: SegmentedValue
   onChange?: (value: SegmentedValue) => void
-  size: 'xs' | 'sm' | 'md' | 'lg'
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   disabled: boolean
 }
 
@@ -37,6 +38,7 @@ const sizeClasses = {
   sm: 'd-btn-sm',
   md: '',
   lg: 'd-btn-lg',
+  xl: 'd-btn-xl',
 }
 
 const SegmentedItem: React.FC<SegmentedItemProps> = ({
@@ -90,7 +92,7 @@ export interface SegmentedProps {
   /** Callback when selection changes */
   onChange?: (value: SegmentedValue) => void
   /** Size variant */
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   /** Take full width of container */
   block?: boolean
   /** Disable all options */
@@ -105,12 +107,15 @@ export const Segmented: React.FC<SegmentedProps> & { Item: typeof SegmentedItem 
   value,
   defaultValue,
   onChange,
-  size = 'md',
+  size,
   block = false,
   disabled = false,
   className = '',
   children,
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
+
   const [internalValue, setInternalValue] = useState<SegmentedValue | undefined>(defaultValue)
 
   const isControlled = value !== undefined
@@ -129,7 +134,7 @@ export const Segmented: React.FC<SegmentedProps> & { Item: typeof SegmentedItem 
   const contextValue: SegmentedContextValue = {
     value: currentValue,
     onChange: handleChange,
-    size,
+    size: effectiveSize,
     disabled,
   }
 

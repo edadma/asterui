@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface RangeProps {
   value?: number
@@ -7,7 +8,7 @@ export interface RangeProps {
   min?: number
   max?: number
   step?: number
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   color?: 'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'info' | 'error'
   disabled?: boolean
   showValue?: boolean
@@ -22,13 +23,15 @@ export const Range: React.FC<RangeProps> = ({
   min = 0,
   max = 100,
   step = 1,
-  size = 'md',
+  size,
   color,
   disabled = false,
   showValue = false,
   showSteps = false,
   className = '',
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   const [internalValue, setInternalValue] = useState(defaultValue)
   const currentValue = value !== undefined ? value : internalValue
 
@@ -45,6 +48,7 @@ export const Range: React.FC<RangeProps> = ({
     sm: 'd-range-sm',
     md: 'd-range-md',
     lg: 'd-range-lg',
+    xl: 'd-range-xl',
   } as const
 
   const colorClasses = {
@@ -57,7 +61,7 @@ export const Range: React.FC<RangeProps> = ({
     error: 'd-range-error',
   } as const
 
-  const sizeClass = sizeClasses[size]
+  const sizeClass = sizeClasses[effectiveSize]
   const colorClass = color ? colorClasses[color] : ''
 
   // Calculate steps for visual markers

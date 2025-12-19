@@ -1,4 +1,5 @@
 import React, { forwardRef, createContext, useContext } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -51,6 +52,8 @@ function RadioGroup({ children, value, defaultValue, onChange, name, className =
 
 const RadioRoot = forwardRef<HTMLInputElement, RadioProps>(
   ({ size, color, className = '', value, checked, onChange, name: nameProp, children, ...props }, ref) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
     const groupContext = useContext(RadioGroupContext)
 
     const sizeClasses = {
@@ -72,7 +75,7 @@ const RadioRoot = forwardRef<HTMLInputElement, RadioProps>(
       error: 'radio-error',
     }
 
-    const radioClasses = ['radio', size && sizeClasses[size], color && colorClasses[color]]
+    const radioClasses = ['radio', effectiveSize && sizeClasses[effectiveSize], color && colorClasses[color]]
       .filter(Boolean)
       .join(' ')
 

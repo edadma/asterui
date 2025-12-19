@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface DockItemConfig {
   /** Icon element */
@@ -53,6 +54,9 @@ DockItem.displayName = 'Dock.Item'
 
 const DockRoot = forwardRef<HTMLDivElement, DockProps>(
   ({ items, size, activeIndex, onChange, children, className = '', ...props }, ref) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
+
     const sizeClasses = {
       xs: 'dock-xs',
       sm: 'dock-sm',
@@ -61,7 +65,7 @@ const DockRoot = forwardRef<HTMLDivElement, DockProps>(
       xl: 'dock-xl',
     }
 
-    const classes = ['dock', size && sizeClasses[size], className].filter(Boolean).join(' ')
+    const classes = ['dock', sizeClasses[effectiveSize], className].filter(Boolean).join(' ')
 
     // If items array is provided, render from config
     if (items) {

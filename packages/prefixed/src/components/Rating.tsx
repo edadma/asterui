@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useId, useState } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface RatingProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   children?: React.ReactNode
@@ -55,6 +56,8 @@ function RatingRoot({
   className = '',
   ...rest
 }: RatingProps) {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   const [internalValue, setInternalValue] = useState(defaultValue)
   const [hoverValue, setHoverValue] = useState(0)
   const currentValue = value !== undefined ? value : internalValue
@@ -97,7 +100,7 @@ function RatingRoot({
   const classes = [
     'd-rating',
     // Half-star mode requires a size class to render correctly, default to md
-    allowHalf ? sizeClasses[size || 'md'] : (size && sizeClasses[size]),
+    allowHalf ? sizeClasses[effectiveSize] : (effectiveSize && sizeClasses[effectiveSize]),
     allowHalf ? 'd-rating-half' : (gap && gapClasses[gap]),
     className,
   ].filter(Boolean).join(' ')
@@ -126,7 +129,7 @@ function RatingRoot({
   )
 
   return (
-    <RatingContext.Provider value={{ name, currentValue, hoverValue, onChange: handleChange, onHover: handleHover, size, disabled, halfGap: allowHalf ? gap : undefined }}>
+    <RatingContext.Provider value={{ name, currentValue, hoverValue, onChange: handleChange, onHover: handleHover, size: effectiveSize, disabled, halfGap: allowHalf ? gap : undefined }}>
       <div
         role="radiogroup"
         aria-label="Rating"

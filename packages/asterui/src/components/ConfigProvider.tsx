@@ -2,7 +2,7 @@ import React, { createContext, useContext, useMemo } from 'react'
 import type { Locale } from '../locale'
 import enUS from '../locale/en-US'
 
-export type ComponentSize = 'small' | 'middle' | 'large'
+export type ComponentSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type Direction = 'ltr' | 'rtl'
 
 export interface ConfigContextValue {
@@ -35,7 +35,7 @@ export interface ConfigProviderProps {
 
 const defaultConfig: ConfigContextValue = {
   locale: enUS,
-  componentSize: 'middle',
+  componentSize: 'md',
   direction: 'ltr',
 }
 

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface OTPInputProps {
   /** Number of input fields */
@@ -39,7 +40,7 @@ export const OTPInput = forwardRef<OTPInputRef, OTPInputProps>(
       value = '',
       onChange,
       onComplete,
-      size = 'md',
+      size,
       type = 'number',
       mask = false,
       disabled = false,
@@ -50,6 +51,8 @@ export const OTPInput = forwardRef<OTPInputRef, OTPInputProps>(
     },
     ref
   ) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
     const [otp, setOtp] = useState<string[]>(() => {
       const initial = value.split('').slice(0, length)
       return [...initial, ...Array(length - initial.length).fill('')]
@@ -211,7 +214,7 @@ export const OTPInput = forwardRef<OTPInputRef, OTPInputProps>(
             onFocus={handleFocus}
             className={`
               d-input text-center font-mono
-              ${sizeClasses[size]}
+              ${sizeClasses[effectiveSize]}
               ${error ? 'd-input-error' : ''}
               ${disabled ? 'input-disabled opacity-50' : ''}
             `}

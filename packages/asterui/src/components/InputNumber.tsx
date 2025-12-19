@@ -1,4 +1,5 @@
 import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface InputNumberProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange' | 'value' | 'defaultValue'> {
   value?: number
@@ -38,6 +39,9 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
     },
     ref
   ) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
+
     const [internalValue, setInternalValue] = useState<number | null>(defaultValue ?? null)
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -136,14 +140,14 @@ export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
     const inputClasses = [
       'input',
       'w-full',
-      size && sizeClasses[size],
+      effectiveSize && sizeClasses[effectiveSize],
       disabled && 'input-disabled',
       controls && 'pr-8',
     ]
       .filter(Boolean)
       .join(' ')
 
-    const buttonSize = size === 'xs' || size === 'sm' ? 'btn-xs' : 'btn-sm'
+    const buttonSize = effectiveSize === 'xs' || effectiveSize === 'sm' ? 'btn-xs' : 'btn-sm'
 
     return (
       <div className={`relative ${block ? 'w-full' : 'inline-block'} group ${className}`}>

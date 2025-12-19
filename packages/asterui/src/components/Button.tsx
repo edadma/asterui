@@ -1,5 +1,6 @@
 import React from 'react'
 import { IconSizeContext } from '../contexts/IconSizeContext'
+import { useConfig } from './ConfigProvider'
 
 type BaseButtonProps = {
   /** Button color */
@@ -46,7 +47,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   color,
   variant,
-  size = 'md',
+  size,
   active = false,
   loading = false,
   shape,
@@ -58,6 +59,8 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   // danger prop is a shorthand for color="error"
   const effectiveColor = danger ? 'error' : color
 
@@ -101,7 +104,7 @@ export const Button: React.FC<ButtonProps> = ({
     'btn',
     effectiveColor && colorClasses[effectiveColor],
     variant && variantClasses[variant],
-    sizeClasses[size],
+    sizeClasses[effectiveSize],
     active && 'btn-active',
     shape && shapeClasses[shape],
     noAnimation && 'no-animation',
@@ -119,10 +122,10 @@ export const Button: React.FC<ButtonProps> = ({
     lg: iconPosition === 'start' ? 'mr-2' : 'ml-2',
     xl: iconPosition === 'start' ? 'mr-2' : 'ml-2',
   }
-  const iconSpacing = hasChildren ? spacingBySize[size] : ''
+  const iconSpacing = hasChildren ? spacingBySize[effectiveSize] : ''
 
   const iconElement = icon && (
-    <IconSizeContext.Provider value={size}>
+    <IconSizeContext.Provider value={effectiveSize}>
       <span className={`inline-flex items-center ${iconSpacing}`} aria-hidden="true">
         {icon}
       </span>

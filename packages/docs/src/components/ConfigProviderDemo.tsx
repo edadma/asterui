@@ -7,7 +7,7 @@ export function BasicDemo() {
   return (
     <Demo>
       {/* @example-return */}
-      <ConfigProvider componentSize="small">
+      <ConfigProvider componentSize="sm">
         <div className="space-y-4">
           <div className="flex gap-2">
             <Button>Small Button</Button>
@@ -25,7 +25,7 @@ export function BasicDemo() {
 // @example-imports: { useState } from 'react'
 export function SizeDemo() {
   // @example-include
-  const [size, setSize] = useState<'small' | 'middle' | 'large'>('middle')
+  const [size, setSize] = useState<'xs' | 'sm' | 'md' | 'lg' | 'xl'>('md')
   // @example-include-end
 
   return (
@@ -33,9 +33,9 @@ export function SizeDemo() {
       {/* @example-return */}
       <div className="space-y-4">
         <div className="flex gap-2">
-          <Button size="sm" variant={size === 'small' ? 'primary' : 'outline'} onClick={() => setSize('small')}>Small</Button>
-          <Button size="sm" variant={size === 'middle' ? 'primary' : 'outline'} onClick={() => setSize('middle')}>Middle</Button>
-          <Button size="sm" variant={size === 'large' ? 'primary' : 'outline'} onClick={() => setSize('large')}>Large</Button>
+          <Button size="sm" color={size === 'sm' ? 'primary' : undefined} variant={size !== 'sm' ? 'outline' : undefined} onClick={() => setSize('sm')}>Small</Button>
+          <Button size="sm" color={size === 'md' ? 'primary' : undefined} variant={size !== 'md' ? 'outline' : undefined} onClick={() => setSize('md')}>Medium</Button>
+          <Button size="sm" color={size === 'lg' ? 'primary' : undefined} variant={size !== 'lg' ? 'outline' : undefined} onClick={() => setSize('lg')}>Large</Button>
         </div>
         <ConfigProvider componentSize={size}>
           <div className="flex gap-2 flex-wrap">
@@ -110,14 +110,14 @@ export function NestedDemo() {
   return (
     <Demo>
       {/* @example-return */}
-      <ConfigProvider componentSize="large">
+      <ConfigProvider componentSize="lg">
         <div className="space-y-4">
-          <p className="text-sm">Outer: large size</p>
+          <p className="text-sm">Outer: lg size</p>
           <Button>Large Button</Button>
 
-          <ConfigProvider componentSize="small">
+          <ConfigProvider componentSize="sm">
             <div className="p-4 bg-base-200 rounded-lg space-y-2">
-              <p className="text-sm">Inner: small size (overrides parent)</p>
+              <p className="text-sm">Inner: sm size (overrides parent)</p>
               <Button>Small Button</Button>
             </div>
           </ConfigProvider>

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useId } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface AutocompleteOption {
   value: string
@@ -60,7 +61,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   options: rawOptions,
   placeholder = 'Type to search...',
   disabled = false,
-  size = 'md',
+  size,
   color,
   status,
   className = '',
@@ -75,6 +76,8 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   defaultActiveFirstOption = true,
   ...rest
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   // Generate unique IDs for ARIA
   const baseId = useId()
   const inputId = `${baseId}-input`
@@ -268,7 +271,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
   const inputClasses = [
     'd-input w-full',
-    sizeClasses[size],
+    sizeClasses[effectiveSize],
     effectiveColorClass,
     showClear && 'pr-10',
   ].filter(Boolean).join(' ')

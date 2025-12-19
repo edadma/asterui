@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface CountdownProps {
   /** Target timestamp in milliseconds or Date object */
@@ -102,11 +103,13 @@ export const Countdown: React.FC<CountdownProps> = ({
   onFinish,
   onChange,
   className = '',
-  size = 'md',
+  size,
   showLabels = false,
   labels = {},
   boxed = false,
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   const targetTime = value instanceof Date ? value.getTime() : value
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => calculateTimeLeft(targetTime))
   const [finished, setFinished] = useState(false)
@@ -143,7 +146,7 @@ export const Countdown: React.FC<CountdownProps> = ({
   const showMinutes = format.includes('M')
   const showSeconds = format.includes('S')
 
-  const separatorSize = size === 'lg' || size === 'xl' ? 'text-3xl' : size === 'md' ? 'text-2xl' : 'text-xl'
+  const separatorSize = effectiveSize === 'lg' || effectiveSize === 'xl' ? 'text-3xl' : effectiveSize === 'md' ? 'text-2xl' : 'text-xl'
   const showSeparators = !showLabels && !boxed
 
   return (
@@ -153,7 +156,7 @@ export const Countdown: React.FC<CountdownProps> = ({
           <CountdownUnit
             value={timeLeft.days}
             label={defaultLabels.days}
-            size={size}
+            size={effectiveSize}
             showLabel={showLabels}
             boxed={boxed}
           />
@@ -167,7 +170,7 @@ export const Countdown: React.FC<CountdownProps> = ({
           <CountdownUnit
             value={timeLeft.hours}
             label={defaultLabels.hours}
-            size={size}
+            size={effectiveSize}
             showLabel={showLabels}
             boxed={boxed}
           />
@@ -181,7 +184,7 @@ export const Countdown: React.FC<CountdownProps> = ({
           <CountdownUnit
             value={timeLeft.minutes}
             label={defaultLabels.minutes}
-            size={size}
+            size={effectiveSize}
             showLabel={showLabels}
             boxed={boxed}
           />
@@ -192,7 +195,7 @@ export const Countdown: React.FC<CountdownProps> = ({
         <CountdownUnit
           value={timeLeft.seconds}
           label={defaultLabels.seconds}
-          size={size}
+          size={effectiveSize}
           showLabel={showLabels}
           boxed={boxed}
         />

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, forwardRef, useCallback, useId } from 'react'
 import { Input } from './Input'
+import { useConfig } from './ConfigProvider'
 
 export interface TimePickerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   value?: Date | null
@@ -8,7 +9,7 @@ export interface TimePickerProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   format?: '12' | '24'
   placeholder?: string
   disabled?: boolean
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   showSeconds?: boolean
   allowClear?: boolean
   open?: boolean
@@ -48,7 +49,7 @@ export const TimePicker = forwardRef<HTMLDivElement, TimePickerProps>(({
   placeholder = 'Select time',
   disabled = false,
   className,
-  size = 'md',
+  size,
   showSeconds = false,
   allowClear = true,
   open: controlledOpen,
@@ -60,6 +61,8 @@ export const TimePicker = forwardRef<HTMLDivElement, TimePickerProps>(({
   'data-testid': testId,
   ...rest
 }, ref) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   const [selectedTime, setSelectedTime] = useState<Date | null>(
     value !== undefined ? value : defaultValue || null
   )
@@ -305,7 +308,7 @@ export const TimePicker = forwardRef<HTMLDivElement, TimePickerProps>(({
           value={formatTime(selectedTime, format, showSeconds)}
           placeholder={placeholder}
           disabled={disabled}
-          size={size}
+          size={effectiveSize}
           readOnly
           onClick={() => !disabled && setOpen(!isOpen)}
           className={['cursor-pointer pr-8', status ? statusClasses[status] : ''].filter(Boolean).join(' ')}

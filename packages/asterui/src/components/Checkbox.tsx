@@ -1,4 +1,5 @@
 import React, { forwardRef, createContext, useContext } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface CheckboxSwapConfig {
   /** Content shown when checked */
@@ -136,6 +137,8 @@ const CheckboxRoot = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
     const groupContext = useContext(CheckboxGroupContext)
 
     const sizeClasses = {
@@ -159,7 +162,7 @@ const CheckboxRoot = forwardRef<HTMLInputElement, CheckboxProps>(
 
     const checkboxClasses = [
       'checkbox',
-      size && sizeClasses[size],
+      effectiveSize && sizeClasses[effectiveSize],
       color && colorClasses[color],
     ]
       .filter(Boolean)

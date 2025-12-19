@@ -1,7 +1,8 @@
 import React from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface LoadingProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   type?: 'spinner' | 'dots' | 'ring' | 'ball' | 'bars' | 'infinity'
   spinning?: boolean
   children?: React.ReactNode
@@ -9,7 +10,7 @@ export interface LoadingProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Loading: React.FC<LoadingProps> = ({
-  size = 'md',
+  size,
   type = 'spinner',
   className = '',
   spinning = true,
@@ -17,11 +18,15 @@ export const Loading: React.FC<LoadingProps> = ({
   tip,
   ...rest
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
+
   const sizeClasses = {
     xs: 'd-loading-xs',
     sm: 'd-loading-sm',
     md: 'd-loading-md',
     lg: 'd-loading-lg',
+    xl: 'd-loading-xl',
   }
 
   const typeClasses = {
@@ -33,7 +38,7 @@ export const Loading: React.FC<LoadingProps> = ({
     infinity: 'd-loading-infinity',
   }
 
-  const spinnerClasses = ['d-loading', typeClasses[type], sizeClasses[size], className]
+  const spinnerClasses = ['d-loading', typeClasses[type], sizeClasses[effectiveSize], className]
     .filter(Boolean)
     .join(' ')
 

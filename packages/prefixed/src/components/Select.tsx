@@ -1,4 +1,5 @@
 import React, { forwardRef, useRef } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -34,6 +35,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref
   ) => {
+    const { componentSize } = useConfig()
+    const effectiveSize = size ?? componentSize ?? 'md'
+
     const innerRef = useRef<HTMLSelectElement>(null)
     const selectRef = (ref as React.RefObject<HTMLSelectElement>) || innerRef
 
@@ -74,7 +78,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           'w-full',
           bordered && 'select-bordered',
           ghost && 'd-select-ghost',
-          size && sizeClasses[size],
+          effectiveSize && sizeClasses[effectiveSize],
           effectiveColorClass,
           className,
         ].filter(Boolean).join(' ')
@@ -90,7 +94,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     if (floatingLabel) {
       const floatingClasses = [
         'd-floating-label',
-        size && sizeClasses[size],
+        effectiveSize && sizeClasses[effectiveSize],
       ].filter(Boolean).join(' ')
 
       return (
@@ -111,7 +115,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         'flex',
         'items-center',
         'gap-2',
-        size && sizeClasses[size],
+        effectiveSize && sizeClasses[effectiveSize],
         effectiveColorClass,
       ].filter(Boolean).join(' ')
 

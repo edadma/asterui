@@ -1,4 +1,5 @@
 import React, { useState, useId } from 'react'
+import { useConfig } from './ConfigProvider'
 
 export interface FilterOption {
   label: string
@@ -18,7 +19,7 @@ export interface FilterProps {
   /** Radio group name (auto-generated if not provided) */
   name?: string
   /** Button size */
-  size?: 'xs' | 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   /** Show reset button */
   showReset?: boolean
   /** Reset button label */
@@ -32,6 +33,7 @@ const sizeClasses: Record<string, string> = {
   sm: 'btn-sm',
   md: '',
   lg: 'btn-lg',
+  xl: 'btn-xl',
 }
 
 export const Filter: React.FC<FilterProps> = ({
@@ -40,11 +42,14 @@ export const Filter: React.FC<FilterProps> = ({
   defaultValue,
   onChange,
   name,
-  size = 'md',
+  size,
   showReset = true,
   resetLabel = '×',
   className = '',
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
+
   const autoId = useId()
   const groupName = name || `filter-${autoId}`
 
@@ -70,8 +75,8 @@ export const Filter: React.FC<FilterProps> = ({
     onChange?.(undefined)
   }
 
-  const buttonClasses = ['btn', sizeClasses[size]].filter(Boolean).join(' ')
-  const resetClasses = ['btn', 'btn-square', sizeClasses[size]].filter(Boolean).join(' ')
+  const buttonClasses = ['btn', sizeClasses[effectiveSize]].filter(Boolean).join(' ')
+  const resetClasses = ['btn', 'btn-square', sizeClasses[effectiveSize]].filter(Boolean).join(' ')
 
   return (
     <form className={`filter ${className}`.trim()} onReset={handleReset}>

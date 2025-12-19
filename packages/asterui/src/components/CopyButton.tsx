@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useClipboard } from '../hooks/useClipboard'
 import { IconSizeContext } from '../contexts/IconSizeContext'
+import { useConfig } from './ConfigProvider'
 
 const iconSizeClasses = {
   xs: 'w-3.5 h-3.5',
@@ -87,7 +88,7 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
   timeout = 2000,
   color,
   variant,
-  size = 'md',
+  size,
   shape,
   position,
   icon,
@@ -104,6 +105,8 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
   onClick,
   ...rest
 }) => {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
   const { copy, copied } = useClipboard(timeout)
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -156,7 +159,7 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
     color && colorClasses[color],
     copied && 'btn-success',
     variant && variantClasses[variant],
-    sizeClasses[size],
+    sizeClasses[effectiveSize],
     shape && shapeClasses[shape],
     // Only add position classes if not using tooltip (tooltip wrapper gets them instead)
     !showTooltip && position && positionClasses[position],
@@ -181,7 +184,7 @@ export const CopyButton: React.FC<CopyButtonProps> = ({
       aria-label={copied ? copiedTooltipText : tooltipText}
       {...rest}
     >
-      <IconSizeContext.Provider value={size}>
+      <IconSizeContext.Provider value={effectiveSize}>
         {content}
       </IconSizeContext.Provider>
     </button>
