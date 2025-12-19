@@ -1,32 +1,14 @@
-import { useState, useEffect, memo } from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Demo } from './Demo'
 
-// Singleton: load Chart component once, share across all instances
-let cachedChart: React.ComponentType<any> | null = null
-let loadPromise: Promise<void> | null = null
+// Lazy load Chart to avoid SSR issues with ApexCharts
+const LazyChart = lazy(() => import('@aster-ui/prefixed/chart').then(m => ({ default: m.Chart })))
 
-const Chart = memo((props: any) => {
-  const [, forceUpdate] = useState(0)
-
-  useEffect(() => {
-    if (cachedChart) return
-
-    if (!loadPromise) {
-      loadPromise = import('@aster-ui/prefixed/chart').then(m => {
-        cachedChart = m.Chart
-      })
-    }
-
-    loadPromise.then(() => forceUpdate(n => n + 1))
-  }, [])
-
-  if (!cachedChart) {
-    return <div style={{ height: props.height || 350 }} className="animate-pulse bg-base-300/50 rounded" />
-  }
-
-  const LoadedChart = cachedChart
-  return <LoadedChart {...props} />
-})
+const Chart = (props: any) => (
+  <Suspense fallback={<div style={{ height: props.height || 350 }} className="animate-pulse bg-base-300/50 rounded" />}>
+    <LazyChart {...props} />
+  </Suspense>
+)
 
 // @example-imports: { Chart } from 'asterui/chart'
 export function LineDemo() {
