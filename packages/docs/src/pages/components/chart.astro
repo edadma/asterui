@@ -1,5 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+import { Code } from 'astro:components'
 import Example from '../../components/Example.astro'
 import {
   LineDemo,
@@ -27,10 +28,10 @@ import ChartDemoSource from '../../components/ChartDemo.tsx?raw'
 
   <h2>Installation</h2>
   <p>This component requires <code>apexcharts</code> as a peer dependency:</p>
-  <pre><code>npm install apexcharts</code></pre>
+  <Code code="npm install apexcharts" lang="bash" />
 
   <h2>Import</h2>
-  <pre><code>import {'{ Chart }'} from 'asterui/chart'</code></pre>
+  <Code code="import { Chart } from 'asterui/chart'" lang="tsx" />
 
   <h2>Examples</h2>
 
