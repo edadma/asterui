@@ -1,14 +1,26 @@
 import { useEffect, useState } from 'react'
 
 export interface ThemeColors {
-  /** Base background color (--b1 / base-100) */
+  /** Base background color (--color-base-100) */
   background: string
-  /** Base content/text color (--bc / base-content) */
+  /** Base content/text color (--color-base-content) */
   foreground: string
-  /** Primary color (--p / primary) */
+  /** Primary color (--color-primary) */
   primary: string
-  /** Primary content color (--pc / primary-content) */
+  /** Primary content color (--color-primary-content) */
   primaryContent: string
+  /** Secondary color (--color-secondary) */
+  secondary: string
+  /** Accent color (--color-accent) */
+  accent: string
+  /** Info color (--color-info) */
+  info: string
+  /** Success color (--color-success) */
+  success: string
+  /** Warning color (--color-warning) */
+  warning: string
+  /** Error color (--color-error) */
+  error: string
 }
 
 export interface UseThemeReturn {
@@ -33,18 +45,23 @@ function colorToHex(color: string): string {
 function getThemeColors(): ThemeColors {
   const style = getComputedStyle(document.documentElement)
 
-  // Get computed colors from CSS custom properties
-  const background = style.getPropertyValue('--b1').trim()
-  const foreground = style.getPropertyValue('--bc').trim()
-  const primary = style.getPropertyValue('--p').trim()
-  const primaryContent = style.getPropertyValue('--pc').trim()
+  const getColor = (varName: string, fallback: string): string => {
+    const value = style.getPropertyValue(varName).trim()
+    return value ? colorToHex(value) : fallback
+  }
 
-  // DaisyUI uses oklch, convert to hex for canvas compatibility
+  // DaisyUI v5 uses --color-* variables with full oklch() values
   return {
-    background: background ? colorToHex(`oklch(${background})`) : '#ffffff',
-    foreground: foreground ? colorToHex(`oklch(${foreground})`) : '#000000',
-    primary: primary ? colorToHex(`oklch(${primary})`) : '#6366f1',
-    primaryContent: primaryContent ? colorToHex(`oklch(${primaryContent})`) : '#ffffff',
+    background: getColor('--color-base-100', '#ffffff'),
+    foreground: getColor('--color-base-content', '#000000'),
+    primary: getColor('--color-primary', '#6366f1'),
+    primaryContent: getColor('--color-primary-content', '#ffffff'),
+    secondary: getColor('--color-secondary', '#f000b8'),
+    accent: getColor('--color-accent', '#37cdbe'),
+    info: getColor('--color-info', '#3abff8'),
+    success: getColor('--color-success', '#36d399'),
+    warning: getColor('--color-warning', '#fbbd23'),
+    error: getColor('--color-error', '#f87272'),
   }
 }
 
@@ -67,6 +84,12 @@ export function useTheme(): UseThemeReturn {
       foreground: '#000000',
       primary: '#6366f1',
       primaryContent: '#ffffff',
+      secondary: '#f000b8',
+      accent: '#37cdbe',
+      info: '#3abff8',
+      success: '#36d399',
+      warning: '#fbbd23',
+      error: '#f87272',
     }
   })
 

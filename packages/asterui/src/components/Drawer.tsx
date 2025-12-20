@@ -159,7 +159,7 @@ export const Drawer = forwardRef<DrawerRef, DrawerProps>(
     const contentId = useId()
     const [mounted, setMounted] = useState(false)
     const [shouldRender, setShouldRender] = useState(open || forceRender)
-    const [isAnimating, setIsAnimating] = useState(false)
+    const [, setIsAnimating] = useState(false)
 
     // Get parent drawer context for nested push behavior
     const parentDrawer = useDrawerContext()

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { useTheme } from '../hooks/useTheme'
 
 export type WatermarkGap = [number, number]
 export type WatermarkOffset = [number, number]
@@ -51,30 +52,10 @@ type WatermarkImage = {
 const DEFAULT_CONTENT = 'asterui'
 const DEFAULT_OPACITY = 0.22
 
-const resolveThemeColor = (requested?: string, opacity = DEFAULT_OPACITY) => {
-  const fallback = `rgba(0,0,0,${opacity})`
-
-  if (requested && requested.includes('var(--bc')) {
-    if (typeof window !== 'undefined') {
-      const docBase = getComputedStyle(document.documentElement).getPropertyValue('--bc').trim()
-      const bodyBase = getComputedStyle(document.body).getPropertyValue('--bc').trim()
-      const base = docBase || bodyBase
-      if (base) {
-        return requested.replace(/var\(--bc\)/g, base)
-      }
-    }
-    return fallback
-  }
-
-  if (requested) return requested
-
-  if (typeof window === 'undefined') return fallback
-
-  const docBase = getComputedStyle(document.documentElement).getPropertyValue('--bc').trim()
-  const bodyBase = getComputedStyle(document.body).getPropertyValue('--bc').trim()
-  const base = docBase || bodyBase
-
-  return base ? `hsl(${base} / ${opacity})` : fallback
+// Add opacity to a hex color (returns #rrggbbaa format)
+function hexWithOpacity(hex: string, opacity: number): string {
+  const alpha = Math.round(opacity * 255).toString(16).padStart(2, '0')
+  return hex + alpha
 }
 
 const getFontSettings = (font: WatermarkFontOptions | undefined, resolvedColor: string) => {
@@ -111,6 +92,7 @@ export const Watermark: React.FC<WatermarkProps> = ({
   const gapY = gap?.[1] ?? 120
   const offsetX = offset?.[0] ?? gapX / 2
   const offsetY = offset?.[1] ?? gapY / 2
+  const { colors } = useTheme()
   const textLines = useMemo(
     () =>
       typeof content === 'string'
@@ -120,7 +102,8 @@ export const Watermark: React.FC<WatermarkProps> = ({
           : [DEFAULT_CONTENT],
     [content]
   )
-  const resolvedColor = resolveThemeColor(font?.color)
+  // Use provided color or theme foreground with opacity
+  const resolvedColor = font?.color ?? hexWithOpacity(colors.foreground, DEFAULT_OPACITY)
   const fontSettings = useMemo(
     () => getFontSettings(font, resolvedColor),
     [font, resolvedColor]
