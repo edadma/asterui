@@ -1,6 +1,6 @@
 {
   "name": "@aster-ui/icons-prefixed",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Heroicons wrapper with AsterUI size tokens (prefixed version)",
   "type": "module",
   "main": "./dist/index.js",
@@ -30,7 +30,7 @@
     "dev": "vite build --watch"
   },
   "peerDependencies": {
-    "@aster-ui/prefixed": "^0.1.0",
+    "@aster-ui/prefixed": "^0.12.0",
     "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
