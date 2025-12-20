@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -26,6 +27,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    sitemap(),
     react({
       include: ['**/components/**/*.tsx'],
       exclude: ['**/scripts/**/*.tsx'],
@@ -59,6 +61,71 @@ export default defineConfig({
         {
           tag: 'script',
           content: `document.addEventListener('DOMContentLoaded',()=>{if(location.pathname.startsWith('/components/'))document.body.classList.add('component-page')})`,
+        },
+        // SEO meta tags
+        {
+          tag: 'meta',
+          attrs: {
+            name: 'keywords',
+            content: 'AsterUI, Aster UI, React components, DaisyUI, DaisyUI v5, DaisyUI React, React DaisyUI, DaisyUI component library, React components for DaisyUI, Tailwind CSS v4, Tailwind React, TypeScript UI library, open source component library, React form validation, React modal, React table',
+          },
+        },
+        // Open Graph
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:type',
+            content: 'website',
+          },
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:site_name',
+            content: 'AsterUI',
+          },
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:image',
+            content: 'https://asterui.com/logo.png',
+          },
+        },
+        // Twitter Card
+        {
+          tag: 'meta',
+          attrs: {
+            name: 'twitter:card',
+            content: 'summary',
+          },
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            name: 'twitter:image',
+            content: 'https://asterui.com/logo.png',
+          },
+        },
+        // JSON-LD Structured Data
+        {
+          tag: 'script',
+          attrs: {
+            type: 'application/ld+json',
+          },
+          content: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareSourceCode',
+            name: 'AsterUI',
+            alternateName: ['Aster UI', 'DaisyUI React', 'React DaisyUI Components'],
+            description: 'React component library built on DaisyUI v5 with enterprise-level developer convenience. Production-ready, test-friendly, and fully typed.',
+            programmingLanguage: ['TypeScript', 'React', 'JavaScript'],
+            runtimePlatform: 'Node.js',
+            codeRepository: 'https://github.com/edadma/asterui',
+            url: 'https://asterui.com',
+            license: 'https://opensource.org/licenses/MIT',
+            keywords: ['DaisyUI', 'React', 'Tailwind CSS', 'TypeScript', 'UI components', 'form validation', 'modal', 'table'],
+          }),
         },
       ],
       sidebar: [

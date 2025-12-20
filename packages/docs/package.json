@@ -14,6 +14,7 @@
     "@aster-ui/icons-prefixed": "workspace:*",
     "@aster-ui/prefixed": "workspace:*",
     "@astrojs/react": "^4.2.1",
+    "@astrojs/sitemap": "^3.2.0",
     "@astrojs/starlight": "^0.37.1",
     "@remixicon/react": "^4.7.0",
     "@tanstack/react-virtual": "^3.0.0",
