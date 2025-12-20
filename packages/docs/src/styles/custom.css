@@ -1,3 +1,14 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  prefix: "d-";
+  themes: all;
+}
+
+@source "../components/*Demo.tsx";
+@source "../components/Demo.tsx";
+@source "../../node_modules/@aster-ui/prefixed/dist";
+
 /* Starlight overrides */
 :root {
   --sl-color-accent-low: #1e1b4b;

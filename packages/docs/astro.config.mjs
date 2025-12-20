@@ -52,13 +52,6 @@ export default defineConfig({
           },
         },
         {
-          tag: 'link',
-          attrs: {
-            rel: 'stylesheet',
-            href: '/demo.css',
-          },
-        },
-        {
           tag: 'script',
           content: `document.addEventListener('DOMContentLoaded',()=>{if(location.pathname.startsWith('/components/'))document.body.classList.add('component-page')})`,
         },

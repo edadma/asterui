@@ -294,7 +294,7 @@ export function FormListDemo() {
           )}
         </Form.List>
         <Form.Item>
-          <Button color="primary" htmlType="submit" style={{ marginTop: 16 }}>
+          <Button color="primary" htmlType="submit" className="mt-4">
             Submit
           </Button>
         </Form.Item>

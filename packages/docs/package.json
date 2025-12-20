@@ -3,10 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "build:demo-css": "tailwindcss -i src/styles/demo.css -o public/demo.css --minify",
-    "dev": "pnpm build:demo-css && astro dev",
-    "start": "pnpm build:demo-css && astro dev",
-    "build": "pnpm build:demo-css && astro build",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -32,7 +31,6 @@
     "sharp": "^0.34.2"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.18",
     "@tailwindcss/vite": "^4.1.17",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
