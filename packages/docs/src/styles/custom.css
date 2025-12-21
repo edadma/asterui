@@ -57,8 +57,8 @@ body.components-overview .content-panel {
   max-width: none;
 }
 
-/* Theme-aware code blocks */
-.theme-code.dark-only { display: none; }
-.theme-code.light-only { display: block; }
-:root[data-theme="dark"] .theme-code.dark-only { display: block; }
-:root[data-theme="dark"] .theme-code.light-only { display: none; }
+/* Theme-aware visibility */
+.dark-only { display: none; }
+.light-only { display: block; }
+:root[data-theme="dark"] .dark-only { display: block; }
+:root[data-theme="dark"] .light-only { display: none; }

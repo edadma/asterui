@@ -2,9 +2,7 @@
  * Capture component screenshots and GIFs for the overview page.
  *
  * Usage:
- *   pnpm add -D playwright
- *   npx playwright install chromium
- *   pnpm dev  # Start dev server first
+ *   pnpm dev  # or use live site
  *   npx tsx scripts/capture-components.ts [component-name]
  *
  * Examples:
@@ -15,6 +13,7 @@
 import { chromium } from 'playwright'
 import { existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
+import { execSync } from 'child_process'
 
 const BASE_URL = process.env.BASE_URL || 'https://asterui.com'
 const OUTPUT_DIR = join(import.meta.dirname, '../public/components')
@@ -23,9 +22,25 @@ const OUTPUT_DIR = join(import.meta.dirname, '../public/components')
 const ANIMATED_COMPONENTS = new Set([
   'carousel',
   'countdown',
-  'textrotate',
   'loading',
+  'textrotate',
 ])
+
+// Configure which demo to capture and any setup actions
+interface DemoConfig {
+  demo?: number           // Which demo (1-indexed, default 1)
+  selector?: string       // Custom selector instead of demo index
+  click?: string          // Selector to click before capturing
+  wait?: number           // Extra wait time after click (ms)
+  captureArea?: boolean   // Capture the whole demo area (for dropdowns, popovers, etc.)
+}
+
+const DEMO_CONFIG: Record<string, DemoConfig> = {
+  'card': { demo: 2 },
+  'collapse': { click: '.collapse-title' },
+  // These components have floating elements that are hard to capture cleanly
+  // Just show them in their closed/default state
+}
 
 // All components
 const COMPONENTS = [
@@ -49,88 +64,105 @@ const COMPONENTS = [
   'textrotate', 'themecontroller', 'tour', 'typography', 'watermark', 'window',
 ]
 
-async function captureComponent(page: any, slug: string) {
+async function getComponentElement(page: any, slug: string) {
+  const config = DEMO_CONFIG[slug] || {}
+
+  // Hide demo area backgrounds
+  await page.addStyleTag({
+    content: `
+      .demo-area {
+        background: transparent !important;
+        background-image: none !important;
+        padding: 0 !important;
+      }
+    `
+  })
+
+  let demoArea
+  if (config.selector) {
+    // Custom selector
+    demoArea = await page.$(config.selector)
+  } else {
+    // Get nth demo area (1-indexed, default 1)
+    const index = (config.demo || 1) - 1
+    const demoAreas = await page.$$('.demo-area')
+    demoArea = demoAreas[index]
+  }
+
+  if (!demoArea) return null
+
+  // Click to activate if configured
+  if (config.click) {
+    const clickTarget = await demoArea.$(config.click)
+    if (clickTarget) {
+      await clickTarget.click()
+      await page.waitForTimeout(config.wait || 300)
+    }
+  }
+
+  // Return the demo area or its first child based on config
+  if (config.captureArea) {
+    return demoArea
+  }
+  return await demoArea.$(':scope > *')
+}
+
+async function captureComponent(page: any, slug: string, theme: 'light' | 'dark') {
   const url = `${BASE_URL}/components/${slug}`
-  console.log(`Capturing ${slug}...`)
 
   try {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 })
     await page.waitForSelector('.demo-area', { timeout: 10000 })
 
-    // Hide the demo area background to get transparent screenshots
-    await page.addStyleTag({
-      content: `
-        .demo-area {
-          background: transparent !important;
-          background-image: none !important;
-          padding: 0 !important;
-        }
-      `
-    })
+    // Set theme
+    await page.evaluate((t: string) => {
+      document.documentElement.setAttribute('data-theme', t)
+    }, theme)
 
-    // Find the first demo area and get its first child (the actual component)
-    const demoArea = await page.$('.demo-area')
-    if (!demoArea) {
-      console.log(`  No demo area found for ${slug}, skipping`)
-      return false
-    }
+    // Wait for theme to apply
+    await page.waitForTimeout(100)
 
-    // Get the first meaningful child element (skip text nodes)
-    const component = await demoArea.$(':scope > *')
+    const component = await getComponentElement(page, slug)
     if (!component) {
-      console.log(`  No component found in demo area for ${slug}, skipping`)
       return false
     }
 
-    const outputPath = join(OUTPUT_DIR, `${slug}.png`)
+    const suffix = theme === 'dark' ? '-dark' : ''
+    const outputPath = join(OUTPUT_DIR, `${slug}${suffix}.png`)
 
-    // Capture with transparent background
     await component.screenshot({
       path: outputPath,
       type: 'png',
       omitBackground: true,
     })
 
-    console.log(`  ✓ Saved ${slug}.png`)
     return true
   } catch (err: any) {
-    console.error(`  ✗ Error capturing ${slug}:`, err.message)
+    console.error(`  ✗ Error (${theme}):`, err.message)
     return false
   }
 }
 
-async function captureAnimatedComponent(page: any, slug: string, frames = 20, duration = 2000) {
+async function captureAnimatedComponent(page: any, slug: string, theme: 'light' | 'dark', frames = 20, duration = 2000) {
   const url = `${BASE_URL}/components/${slug}`
-  console.log(`Capturing animated ${slug}...`)
 
   try {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 })
     await page.waitForSelector('.demo-area', { timeout: 10000 })
 
-    await page.addStyleTag({
-      content: `
-        .demo-area {
-          background: transparent !important;
-          background-image: none !important;
-          padding: 0 !important;
-        }
-      `
-    })
+    // Set theme
+    await page.evaluate((t: string) => {
+      document.documentElement.setAttribute('data-theme', t)
+    }, theme)
+    await page.waitForTimeout(100)
 
-    const demoArea = await page.$('.demo-area')
-    if (!demoArea) {
-      console.log(`  No demo area found for ${slug}, skipping`)
-      return false
-    }
-
-    const component = await demoArea.$(':scope > *')
+    const component = await getComponentElement(page, slug)
     if (!component) {
-      console.log(`  No component found for ${slug}, skipping`)
       return false
     }
 
-    // Capture multiple frames
-    const frameDir = join(OUTPUT_DIR, `${slug}-frames`)
+    const suffix = theme === 'dark' ? '-dark' : ''
+    const frameDir = join(OUTPUT_DIR, `${slug}${suffix}-frames`)
     if (!existsSync(frameDir)) {
       mkdirSync(frameDir, { recursive: true })
     }
@@ -145,17 +177,30 @@ async function captureAnimatedComponent(page: any, slug: string, frames = 20, du
       await page.waitForTimeout(interval)
     }
 
-    console.log(`  ✓ Captured ${frames} frames for ${slug}`)
-    console.log(`    Convert to GIF: ffmpeg -framerate 10 -i ${frameDir}/frame-%03d.png -vf "palettegen" palette.png && ffmpeg -framerate 10 -i ${frameDir}/frame-%03d.png -i palette.png -lavfi "paletteuse" ${OUTPUT_DIR}/${slug}.gif`)
+    // Convert to GIF
+    const gifPath = join(OUTPUT_DIR, `${slug}${suffix}.gif`)
+    try {
+      execSync(`ffmpeg -y -framerate 10 -i "${frameDir}/frame-%03d.png" -vf "palettegen" "${frameDir}/palette.png"`, { stdio: 'pipe' })
+      execSync(`ffmpeg -y -framerate 10 -i "${frameDir}/frame-%03d.png" -i "${frameDir}/palette.png" -lavfi "paletteuse" "${gifPath}"`, { stdio: 'pipe' })
+      // Clean up frames
+      execSync(`rm -rf "${frameDir}"`, { stdio: 'pipe' })
+    } catch {
+      console.log(`    (ffmpeg not available, frames saved to ${frameDir})`)
+    }
+
     return true
   } catch (err: any) {
-    console.error(`  ✗ Error capturing ${slug}:`, err.message)
+    console.error(`  ✗ Error (${theme}):`, err.message)
     return false
   }
 }
 
 async function main() {
-  const targetComponent = process.argv[2]
+  const args = process.argv.slice(2).filter(a => !a.startsWith('--'))
+  const targetComponent = args[0]
+  const darkOnly = process.argv.includes('--dark')
+  const lightOnly = process.argv.includes('--light')
+  const themes: ('light' | 'dark')[] = darkOnly ? ['dark'] : lightOnly ? ['light'] : ['light', 'dark']
 
   if (!existsSync(OUTPUT_DIR)) {
     mkdirSync(OUTPUT_DIR, { recursive: true })
@@ -167,11 +212,6 @@ async function main() {
   })
   const page = await context.newPage()
 
-  // Set light theme
-  await page.addInitScript(() => {
-    document.documentElement.setAttribute('data-theme', 'light')
-  })
-
   const componentsToCapture = targetComponent
     ? [targetComponent]
     : COMPONENTS
@@ -181,12 +221,22 @@ async function main() {
 
   for (const slug of componentsToCapture) {
     const isAnimated = ANIMATED_COMPONENTS.has(slug)
-    const result = isAnimated
-      ? await captureAnimatedComponent(page, slug)
-      : await captureComponent(page, slug)
 
-    if (result) success++
-    else failed++
+    for (const theme of themes) {
+      process.stdout.write(`Capturing ${slug} (${theme})... `)
+
+      const result = isAnimated
+        ? await captureAnimatedComponent(page, slug, theme)
+        : await captureComponent(page, slug, theme)
+
+      if (result) {
+        console.log('✓')
+        success++
+      } else {
+        console.log('✗')
+        failed++
+      }
+    }
   }
 
   await browser.close()

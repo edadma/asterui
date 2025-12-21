@@ -1,11 +1,14 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
 
-// Helper to get image path - uses .gif for animated components, .png otherwise
-const getImage = (slug: string) => {
+// Helper to get image paths - returns both light and dark versions
+const getImages = (slug: string) => {
   const animated = ['carousel', 'countdown', 'loading', 'textrotate']
   const ext = animated.includes(slug) ? 'gif' : 'png'
-  return `/components/${slug}.${ext}`
+  return {
+    light: `/components/${slug}.${ext}`,
+    dark: `/components/${slug}-dark.${ext}`,
+  }
 }
 
 const categories = [
@@ -189,7 +192,8 @@ const totalComponents = categories.reduce((acc, cat) => acc + cat.components.len
               <h3 class="font-medium mb-1">{comp.name}</h3>
               <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{comp.description}</p>
               <div class="h-16 flex items-center justify-center">
-                <img src={getImage(comp.slug)} alt={comp.name} class="max-h-full max-w-full object-contain" />
+                <img src={getImages(comp.slug).light} alt={comp.name} class="max-h-full max-w-full object-contain light-only" />
+                <img src={getImages(comp.slug).dark} alt={comp.name} class="max-h-full max-w-full object-contain dark-only" />
               </div>
             </a>
           ))}
