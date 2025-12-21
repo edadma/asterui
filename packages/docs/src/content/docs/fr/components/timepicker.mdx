@@ -1,0 +1,98 @@
+---
+title: Sélecteur d'heure
+description: Sélectionner l'heure avec une interface de sélection interactive.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TwelveHourDemo,
+  SecondsDemo,
+  ControlledDemo,
+  SizesDemo,
+  DisabledDemo,
+  StepsDemo,
+  FormDemo,
+} from '../../../../components/TimePickerDemo'
+import TimePickerDemoSource from '../../../../components/TimePickerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Sélectionner l'heure avec une interface de sélection interactive.
+
+## Importation
+
+```tsx
+import { TimePicker } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Sélecteur d'heure de base" description="Sélecteur d'heure simple avec format 24 heures par défaut." source={TimePickerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Format 12 heures" description="Sélecteur d'heure avec format 12 heures et sélection AM/PM." source={TimePickerDemoSource} fn="TwelveHourDemo">
+  <TwelveHourDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec secondes" description="Sélecteur d'heure qui inclut la sélection des secondes." source={TimePickerDemoSource} fn="SecondsDemo">
+  <SecondsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contrôlé" description="Sélecteur d'heure contrôlé avec gestion d'état." source={TimePickerDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Différentes tailles" description="Sélecteur d'heure en différentes tailles." source={TimePickerDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Désactivé" description="Sélecteur d'heure désactivé avec une valeur par défaut." source={TimePickerDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Intervalles de temps" description="Sélecteur d'heure avec intervalles personnalisés (pas de 15 minutes)." source={TimePickerDemoSource} fn="StepsDemo">
+  <StepsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dans un formulaire" description="TimePicker intégré avec le composant Form utilisant la disposition Row/Col." source={TimePickerDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `TimePicker`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Heure sélectionnée contrôlée | `Date \| null` | `-` |
+| `defaultValue` | Heure sélectionnée par défaut (non contrôlée) | `Date \| null` | `-` |
+| `onChange` | Callback lorsque l'heure est sélectionnée | `(date: Date \| null) => void` | `-` |
+| `format` | Format d'affichage de l'heure (12 heures ou 24 heures) | `'12' \| '24'` | `'24'` |
+| `placeholder` | Texte de placeholder de l'input | `string` | `"Sélectionner une heure"` |
+| `disabled` | Désactiver le sélecteur d'heure | `boolean` | `false` |
+| `size` | Taille de l'input | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `showSeconds` | Afficher la colonne des secondes dans le sélecteur d'heure | `boolean` | `false` |
+| `allowClear` | Afficher le bouton de suppression lorsque l'heure est sélectionnée | `boolean` | `true` |
+| `open` | État ouvert contrôlé du menu déroulant | `boolean` | `-` |
+| `onOpenChange` | Callback lorsque l'état ouvert du menu déroulant change | `(open: boolean) => void` | `-` |
+| `hourStep` | Intervalle entre les heures dans le sélecteur | `number` | `1` |
+| `minuteStep` | Intervalle entre les minutes dans le sélecteur | `number` | `1` |
+| `secondStep` | Intervalle entre les secondes dans le sélecteur | `number` | `1` |
+| `status` | Statut de validation | `'error' \| 'warning'` | `-` |
+| `data-testid` | Préfixe d'ID de test pour les éléments enfants | `string` | `"timepicker"` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+## Accessibilité
+
+- Le champ d'entrée a les attributs `aria-haspopup` et `aria-expanded`
+- Le menu déroulant utilise `role="dialog"` avec un étiquetage approprié
+- Les colonnes d'heures utilisent `role="listbox"` avec `aria-label`
+- Les options d'heures utilisent `role="option"` avec `aria-selected`
+- Navigation complète au clavier : touches fléchées pour naviguer, Échap pour fermer, Entrée pour confirmer
+- Le bouton de suppression a un `aria-label` pour les lecteurs d'écran
+- L'état désactivé est correctement communiqué à la technologie d'assistance

@@ -1,0 +1,63 @@
+---
+title: Affix
+description: Rendre un élément fixe dans la fenêtre lors du défilement. Utile pour la navigation, les barres d'outils ou les boutons d'action.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CallbackDemo,
+  BottomDemo,
+  TargetDemo,
+} from '../../../../components/AffixDemo'
+import AffixDemoSource from '../../../../components/AffixDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Rendre un élément fixe dans la fenêtre lors du défilement. Utile pour la navigation, les barres d'outils ou les boutons d'action.
+
+## Importation
+
+```tsx
+import { Affix } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Affix basique" description="L'élément devient fixe une fois dépassé lors du défilement." source={AffixDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec callback" description="Recevoir une notification lorsque l'état affix change." source={AffixDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="Affix en bas" description="Fixer l'élément en bas de la fenêtre." source={AffixDemoSource} fn="BottomDemo">
+  <BottomDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cible personnalisée" description="Affix dans un conteneur défilable." source={AffixDemoSource} fn="TargetDemo">
+  <TargetDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Affix`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu à rendre fixe | `React.ReactNode` | - |
+| `offsetTop` | Décalage depuis le haut lorsque fixe (pixels) | `number` | - |
+| `offsetBottom` | Décalage depuis le bas lorsque fixe (pixels) | `number` | - |
+| `target` | Élément cible de défilement | `() => HTMLElement \| Window` | - |
+| `onChange` | Callback lorsque l'état affix change | `(affixed: boolean) => void` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise CSS `position: sticky` pour de meilleures performances
+- Ne piège pas le focus clavier lorsque fixe
+- Le contenu reste dans le flux du document lorsqu'il n'est pas fixe

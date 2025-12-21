@@ -1,0 +1,100 @@
+---
+title: Range
+description: Sélectionnez des valeurs numériques à l'aide d'un curseur interactif.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ShowValueDemo,
+  ShowStepsDemo,
+  ControlledDemo,
+  CustomRangeDemo,
+  ColorsDemo,
+  SizesDemo,
+  DisabledDemo,
+  VolumeDemo,
+  FormDemo,
+} from '../../../../components/RangeDemo'
+import RangeDemoSource from '../../../../components/RangeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Sélectionnez des valeurs numériques à l'aide d'un curseur interactif.
+
+## Import
+
+```tsx
+import { Range } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Range basique" description="Curseur simple avec paramètres par défaut." source={RangeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec affichage de la valeur" description="Curseur affichant la valeur actuelle." source={RangeDemoSource} fn="ShowValueDemo">
+  <ShowValueDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec étapes" description="Curseur avec marqueurs d'étapes visibles." source={RangeDemoSource} fn="ShowStepsDemo">
+  <ShowStepsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contrôlé" description="Curseur contrôlé avec gestion d'état." source={RangeDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Plage personnalisée" description="Curseur avec valeurs min, max et step personnalisées." source={RangeDemoSource} fn="CustomRangeDemo">
+  <CustomRangeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs" description="Curseurs dans diverses couleurs de thème." source={RangeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Curseurs dans diverses tailles." source={RangeDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Désactivé" description="Curseur désactivé." source={RangeDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Exemple de contrôle de volume" description="Exemple concret d'un contrôle de volume." source={RangeDemoSource} fn="VolumeDemo">
+  <VolumeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dans un formulaire" description="Curseur intégré au composant Form." source={RangeDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Range`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Valeur contrôlée | `number` | - |
+| `defaultValue` | Valeur par défaut (non contrôlée) | `number` | `50` |
+| `onChange` | Callback lorsque la valeur change | `(value: number) => void` | - |
+| `min` | Valeur minimale | `number` | `0` |
+| `max` | Valeur maximale | `number` | `100` |
+| `step` | Incrément d'étape | `number` | `1` |
+| `size` | Taille du range | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Thème de couleur du range | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `disabled` | Désactiver l'entrée range | `boolean` | `false` |
+| `showValue` | Afficher la valeur actuelle sous le range | `boolean` | `false` |
+| `showSteps` | Afficher les marqueurs d'étapes sous le range | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise `<input type="range">` natif pour une accessibilité complète
+- La valeur est annoncée aux lecteurs d'écran en pourcentage
+- Navigation au clavier avec les touches fléchées prise en charge
+- Fonctionne avec `showValue` pour l'affichage visuel de la valeur

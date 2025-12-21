@@ -1,0 +1,50 @@
+---
+title: useBreakpoint
+description: Hook pour détecter le point de rupture responsive actuel.
+---
+
+Suit le point de rupture Tailwind CSS actuel en fonction de la largeur de la fenêtre.
+
+## Import
+
+```tsx
+import { useBreakpoint } from 'asterui'
+```
+
+## Utilisation
+
+```tsx
+function ResponsiveComponent() {
+  const { breakpoint, isAbove, isBelow } = useBreakpoint()
+
+  return (
+    <div>
+      <p>Point de rupture actuel : {breakpoint}</p>
+      {isBelow('md') && <MobileNav />}
+      {isAbove('md') && <DesktopNav />}
+    </div>
+  )
+}
+```
+
+## Valeur de retour
+
+| Propriété | Type | Description |
+|----------|------|-------------|
+| `breakpoint` | `Breakpoint` | Point de rupture actuel : `'xs'` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` \| `'2xl'` |
+| `width` | `number` | Largeur actuelle de la fenêtre en pixels |
+| `isAbove(bp)` | `(bp: Breakpoint) => boolean` | Vrai si le point de rupture actuel est égal ou supérieur à `bp` |
+| `isBelow(bp)` | `(bp: Breakpoint) => boolean` | Vrai si le point de rupture actuel est inférieur à `bp` |
+| `isAt(bp)` | `(bp: Breakpoint) => boolean` | Vrai si le point de rupture actuel est égal à `bp` |
+| `isBetween(min, max)` | `(min: Breakpoint, max: Breakpoint) => boolean` | Vrai si le point de rupture actuel est entre `min` et `max` |
+
+## Points de rupture
+
+| Nom | Largeur minimale |
+|------|-----------|
+| `xs` | 0px |
+| `sm` | 640px |
+| `md` | 768px |
+| `lg` | 1024px |
+| `xl` | 1280px |
+| `2xl` | 1536px |

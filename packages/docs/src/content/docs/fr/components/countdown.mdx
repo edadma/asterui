@@ -1,0 +1,76 @@
+---
+title: Countdown
+description: Minuteur de compte à rebours avec format et style personnalisables.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithDaysDemo,
+  SizesDemo,
+  WithLabelsDemo,
+  BoxedDemo,
+  CallbackDemo,
+} from '../../../../components/CountdownDemo'
+import CountdownDemoSource from '../../../../components/CountdownDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Minuteur de compte à rebours avec format et style personnalisables.
+
+## Import
+
+```tsx
+import { Countdown } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Compte à rebours de base" description="Minuteur de compte à rebours simple." source={CountdownDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec jours" description="Inclure les jours dans le compte à rebours." source={CountdownDemoSource} fn="WithDaysDemo">
+  <WithDaysDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Différentes variantes de taille." source={CountdownDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec étiquettes" description="Afficher les étiquettes sous chaque unité." source={CountdownDemoSource} fn="WithLabelsDemo">
+  <WithLabelsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Style encadré" description="Chaque unité dans une boîte stylisée." source={CountdownDemoSource} fn="BoxedDemo">
+  <BoxedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec callback" description="Exécuter un callback lorsque le compte à rebours se termine." source={CountdownDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Countdown`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Horodatage cible en millisecondes ou objet Date | `number \| Date` | - |
+| `format` | Chaîne de format : 'D' jours, 'H' heures, 'M' minutes, 'S' secondes | `string` | `'HH:MM:SS'` |
+| `onFinish` | Callback lorsque le compte à rebours atteint zéro | `() => void` | - |
+| `onChange` | Callback à chaque tic avec le temps restant | `(value: number) => void` | - |
+| `size` | Variante de taille | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `showLabels` | Afficher les étiquettes sous chaque unité | `boolean` | `false` |
+| `labels` | Étiquettes personnalisées pour chaque unité | `{ days?: string, hours?: string, minutes?: string, seconds?: string }` | - |
+| `boxed` | Afficher le style encadré autour de chaque unité | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise aria-live pour annoncer les mises à jour du compte à rebours
+- Fournit aria-label pour chaque unité de compte à rebours
+- Les étiquettes sont visuellement associées à leurs valeurs

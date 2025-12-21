@@ -1,0 +1,115 @@
+---
+title: Modal
+description: Superposition de dialogue pour l'interaction utilisateur et l'affichage d'informations.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DefaultFooterDemo,
+  CustomFooterDemo,
+  StaticMethodsDemo,
+  ConfirmDemo,
+  CenteredDemo,
+  SizesDemo,
+  ResponsiveDemo,
+} from '../../../../components/ModalDemo'
+import ModalDemoSource from '../../../../components/ModalDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Superposition de dialogue pour l'interaction utilisateur et l'affichage d'informations.
+
+## Import
+
+```tsx
+import { Modal } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Modal de base" description="Modal simple avec fonctionnalité d'ouverture/fermeture." source={ModalDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pied de page par défaut" description="Modal avec boutons OK/Annuler intégrés en utilisant les props onOk et onCancel." source={ModalDemoSource} fn="DefaultFooterDemo">
+  <DefaultFooterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pied de page personnalisé" description="Modal avec boutons de pied de page personnalisés." source={ModalDemoSource} fn="CustomFooterDemo">
+  <CustomFooterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Méthodes statiques" description="Dialogues rapides utilisant Modal.info, Modal.success, Modal.warning et Modal.error." source={ModalDemoSource} fn="StaticMethodsDemo">
+  <StaticMethodsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dialogue de confirmation" description="Dialogue de confirmation avec boutons OK et Annuler utilisant Modal.confirm." source={ModalDemoSource} fn="ConfirmDemo">
+  <ConfirmDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modal centré" description="Modal centré verticalement." source={ModalDemoSource} fn="CenteredDemo">
+  <CenteredDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles de modal" description="Différentes largeurs de modal." source={ModalDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Position responsive" description="La position du modal peut changer en fonction de la taille de l'écran en utilisant un objet de position responsive." source={ModalDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Modal`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `open` | État d'ouverture contrôlé | `boolean` | `false` |
+| `title` | Titre du modal | `React.ReactNode` | - |
+| `children` | Contenu du modal | `React.ReactNode` | - |
+| `footer` | Contenu de pied de page personnalisé (définir à null pour masquer) | `React.ReactNode` | - |
+| `onOk` | Gestionnaire de clic du bouton OK (affiche le pied de page par défaut) | `() => void \| Promise<void>` | - |
+| `onCancel` | Gestionnaire de clic du bouton Annuler | `() => void` | - |
+| `onClose` | Gestionnaire de fermeture (alias pour onCancel) | `() => void` | - |
+| `okText` | Texte du bouton OK | `string` | `'OK'` |
+| `cancelText` | Texte du bouton Annuler | `string` | `'Cancel'` |
+| `width` | Largeur du modal | `number \| string` | - |
+| `centered` | Centrer verticalement le modal | `boolean` | `false` |
+| `position` | Position du modal (supporte l'objet responsive) | `'top' \| 'middle' \| 'bottom' \| { base?, sm?, md?, lg?, xl?, '2xl'? }` | - |
+| `align` | Alignement du modal | `'start' \| 'end'` | - |
+| `maskClosable` | Fermer en cliquant sur l'arrière-plan | `boolean` | `true` |
+| `closable` | Afficher l'arrière-plan de fermeture | `boolean` | `true` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `Modal.info/success/warning/error/confirm`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `title` | Titre du modal | `React.ReactNode` | - |
+| `content` | Contenu du modal | `React.ReactNode` | - |
+| `onOk` | Gestionnaire de clic du bouton OK | `() => void \| Promise<void>` | - |
+| `onCancel` | Gestionnaire de clic du bouton Annuler (confirm uniquement) | `() => void` | - |
+| `okText` | Texte du bouton OK | `string` | `'OK'` |
+| `cancelText` | Texte du bouton Annuler (confirm uniquement) | `string` | `'Cancel'` |
+| `type` | Type de modal pour le style | `'info' \| 'success' \| 'warning' \| 'error'` | - |
+
+### Méthodes statiques
+
+- `Modal.info(config)` - Dialogue d'information
+- `Modal.success(config)` - Dialogue de succès
+- `Modal.warning(config)` - Dialogue d'avertissement
+- `Modal.error(config)` - Dialogue d'erreur
+- `Modal.confirm(config)` - Dialogue de confirmation avec OK/Annuler
+
+## Accessibilité
+
+- Utilise l'élément natif `<dialog>` pour un comportement modal approprié
+- Le focus est piégé dans le modal lorsqu'il est ouvert
+- Appuyer sur Échap ferme le modal
+- Le focus est restauré sur l'élément déclencheur à la fermeture
+- Utilise `aria-labelledby` et `aria-describedby` pour les lecteurs d'écran

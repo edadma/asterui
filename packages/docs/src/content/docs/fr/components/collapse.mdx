@@ -1,0 +1,92 @@
+---
+title: Collapse
+description: Panneaux de contenu pliables pour les FAQ, accordéons et sections extensibles.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AccordionDemo,
+  BorderlessDemo,
+  NestedDemo,
+  GhostDemo,
+  PlusIconDemo,
+} from '../../../../components/CollapseDemo'
+import CollapseDemoSource from '../../../../components/CollapseDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Panneaux de contenu pliables pour les FAQ, accordéons et sections extensibles.
+
+## Import
+
+```tsx
+import { Collapse } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Collapse de base" description="Panneaux pliables simples." source={CollapseDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Accordéon" description="Un seul panneau peut être ouvert à la fois." source={CollapseDemoSource} fn="AccordionDemo">
+  <AccordionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sans bordure" description="Collapse sans bordures." source={CollapseDemoSource} fn="BorderlessDemo">
+  <BorderlessDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenu imbriqué" description="Collapse avec contenu imbriqué riche." source={CollapseDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mode fantôme" description="Fond transparent pour une apparence minimale." source={CollapseDemoSource} fn="GhostDemo">
+  <GhostDemo client:load slot="demo" />
+</Example>
+
+<Example title="Icône Plus/Moins" description="Utiliser des icônes plus/moins au lieu de flèches." source={CollapseDemoSource} fn="PlusIconDemo">
+  <PlusIconDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Collapse`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `items` | Éléments de panneau pliable | `CollapseItemType[]` | - |
+| `activeKey` | Clés de panneau actif contrôlées | `string \| number \| (string \| number)[]` | - |
+| `defaultActiveKey` | Clés de panneau actif initiales | `string \| number \| (string \| number)[]` | - |
+| `accordion` | Un seul panneau ouvert à la fois | `boolean` | `false` |
+| `bordered` | Afficher la bordure autour des panneaux | `boolean` | `true` |
+| `ghost` | Style de fond transparent | `boolean` | `false` |
+| `size` | Variante de taille | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `icon` | Type d'icône pour l'indicateur d'expansion | `'arrow' \| 'plus' \| 'none'` | `'arrow'` |
+| `expandIconPlacement` | Placement de l'icône | `'start' \| 'end'` | `'start'` |
+| `onChange` | Gestionnaire de changement | `(activeKey: (string \| number)[]) => void` | - |
+| `data-testid` | ID de test pour le composant | `string` | `'collapse'` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `CollapseItemType`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Identifiant unique pour le panneau | `string \| number` | - |
+| `label` | Contenu de l'en-tête du panneau | `React.ReactNode` | - |
+| `children` | Contenu du corps du panneau | `React.ReactNode` | - |
+| `extra` | Élément supplémentaire dans le coin de l'en-tête | `React.ReactNode` | - |
+| `showArrow` | Afficher ou non l'icône d'expansion | `boolean` | `true` |
+| `collapsible` | Mode pliable | `'header' \| 'icon' \| 'disabled'` | - |
+| `className` | Nom de classe personnalisé pour ce panneau | `string` | - |
+
+## Accessibilité
+
+- Les en-têtes de panneau sont accessibles au clavier avec Entrée et Espace
+- Utilise `aria-expanded` pour indiquer l'état du panneau
+- Utilise `aria-disabled` pour les panneaux désactivés
+- Les panneaux exposent `data-state` pour les tests et le style

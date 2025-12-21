@@ -1,0 +1,61 @@
+---
+title: Hero
+description: Créez des sections de pages d'accueil percutantes avec des bannières et arrière-plans hero.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithButtonDemo,
+  WithFigureDemo,
+  OverlayDemo,
+} from '../../../../components/HeroDemo'
+import HeroDemoSource from '../../../../components/HeroDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Créez des sections de pages d'accueil percutantes avec des bannières et arrière-plans hero.
+
+## Import
+
+```tsx
+import { Hero } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Hero basique" description="Section hero simple avec titre et sous-titre." source={HeroDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hero avec bouton CTA" description="Section hero avec un bouton d'appel à l'action." source={HeroDemoSource} fn="WithButtonDemo">
+  <WithButtonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hero avec figure" description="Hero avec image latérale ou élément figure." source={HeroDemoSource} fn="WithFigureDemo">
+  <WithFigureDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hero avec superposition d'arrière-plan" description="Hero avec image d'arrière-plan et effet de superposition." source={HeroDemoSource} fn="OverlayDemo">
+  <OverlayDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu du hero | `React.ReactNode` | - |
+| `overlay` | Afficher l'effet de superposition (pour les images d'arrière-plan) | `boolean` | `false` |
+| `contentClassName` | Classes CSS pour l'enveloppe du contenu | `string` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `style` | Styles en ligne (utile pour les images d'arrière-plan) | `React.CSSProperties` | - |
+
+## Accessibilité
+
+- Utilisez des éléments de titre sémantiques (h1, h2) pour les titres hero
+- Assurez un contraste de couleur suffisant entre le texte et l'arrière-plan
+- Fournissez un texte alternatif pour les images hero
+- Rendez les boutons CTA accessibles au clavier

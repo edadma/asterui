@@ -1,0 +1,73 @@
+---
+title: useTheme
+description: Hook pour détecter le thème actuel et obtenir les couleurs calculées.
+---
+
+Détecte le thème actuel et fournit les valeurs de couleur calculées à partir des variables CSS DaisyUI. Utile pour les composants basés sur canvas qui ne peuvent pas utiliser directement les variables CSS.
+
+## Import
+
+```tsx
+import { useTheme } from 'asterui'
+```
+
+## Utilisation
+
+```tsx
+function ThemeAwareComponent() {
+  const { isDark, colors } = useTheme()
+
+  return (
+    <div style={{
+      background: colors.background,
+      color: colors.foreground
+    }}>
+      Thème actuel : {isDark ? 'Sombre' : 'Clair'}
+    </div>
+  )
+}
+```
+
+### Exemple Canvas
+
+```tsx
+function CanvasComponent() {
+  const { colors } = useTheme()
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const ctx = canvasRef.current?.getContext('2d')
+    if (!ctx) return
+    ctx.fillStyle = colors.background
+    ctx.fillRect(0, 0, 100, 100)
+    ctx.fillStyle = colors.foreground
+    ctx.fillText('Bonjour', 10, 50)
+  }, [colors])
+
+  return <canvas ref={canvasRef} />
+}
+```
+
+## Valeur de retour
+
+| Propriété | Type | Description |
+|----------|------|-------------|
+| `isDark` | `boolean` | `true` si le mode sombre est actif |
+| `colors` | `ThemeColors` | Couleurs du thème calculées en valeurs hexadécimales |
+
+### ThemeColors
+
+| Propriété | Type | Description |
+|----------|------|-------------|
+| `background` | `string` | Couleur de fond de base (DaisyUI `base-100`) |
+| `foreground` | `string` | Couleur de texte de base (DaisyUI `base-content`) |
+| `primary` | `string` | Couleur primaire |
+| `primaryContent` | `string` | Couleur de contenu primaire |
+
+## Comment ça fonctionne
+
+1. Vérifie l'attribut `data-theme` sur l'élément `<html>` (convention DaisyUI)
+2. Se replie sur la media query `prefers-color-scheme: dark` si aucun attribut n'est défini
+3. Lit les variables CSS DaisyUI et convertit les couleurs oklch en hexadécimal
+4. Utilise MutationObserver pour réagir aux changements de thème
+5. Met automatiquement à jour les couleurs quand le thème change

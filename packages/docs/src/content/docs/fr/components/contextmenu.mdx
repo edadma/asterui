@@ -1,0 +1,105 @@
+---
+title: ContextMenu
+description: Menu contextuel du clic droit avec sous-menus imbriqués et icônes.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DataDrivenDemo,
+  IconsDemo,
+  DividersDemo,
+  SubmenuDemo,
+  DisabledDemo,
+} from '../../../../components/ContextMenuDemo'
+import ContextMenuDemoSource from '../../../../components/ContextMenuDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Menu contextuel du clic droit avec sous-menus imbriqués et icônes.
+
+## Import
+
+```tsx
+import { ContextMenu } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Menu contextuel de base" description="Cliquez avec le bouton droit sur l'élément pour afficher le menu." source={ContextMenuDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modèle piloté par données" description="Utiliser la prop items pour les menus pilotés par données." source={ContextMenuDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec icônes" description="Éléments de menu avec icônes." source={ContextMenuDemoSource} fn="IconsDemo">
+  <IconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec séparateurs" description="Séparer les sections de menu avec des séparateurs." source={ContextMenuDemoSource} fn="DividersDemo">
+  <DividersDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sous-menu imbriqué" description="Éléments de menu avec sous-menus imbriqués." source={ContextMenuDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+<Example title="Éléments désactivés" description="Certains éléments de menu peuvent être désactivés." source={ContextMenuDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ContextMenu`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Élément qui déclenche le menu contextuel au clic droit | `React.ReactNode` | - |
+| `items` | Éléments de menu | `ContextMenuItem[]` | - |
+| `onSelect` | Callback lorsqu'un élément est sélectionné | `(key: string) => void` | - |
+| `disabled` | Si le menu contextuel est désactivé | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires pour le menu | `string` | - |
+
+### `ContextMenuItem` (pour la prop items)
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Identifiant unique pour l'élément | `string` | - |
+| `label` | Libellé d'affichage | `React.ReactNode` | - |
+| `icon` | Élément d'icône | `React.ReactNode` | - |
+| `disabled` | État désactivé | `boolean` | `false` |
+| `danger` | Afficher comme action dangereuse/destructive | `boolean` | `false` |
+| `divider` | Rendre comme séparateur | `boolean` | `false` |
+| `children` | Éléments de sous-menu | `ContextMenuItem[]` | - |
+
+### `ContextMenu.Item` (modèle composé)
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Clé unique pour l'élément (prop key React) | `string` | - |
+| `children` | Contenu de l'élément | `React.ReactNode` | - |
+| `icon` | Icône à afficher avant le libellé | `React.ReactNode` | - |
+| `disabled` | Si l'élément est désactivé | `boolean` | `false` |
+| `danger` | Afficher comme action dangereuse/destructive | `boolean` | `false` |
+
+### `ContextMenu.SubMenu` (modèle composé)
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Clé unique pour le sous-menu (prop key React) | `string` | - |
+| `label` | Libellé du sous-menu | `React.ReactNode` | - |
+| `icon` | Icône à afficher avant le libellé | `React.ReactNode` | - |
+| `disabled` | Si le sous-menu est désactivé | `boolean` | `false` |
+| `children` | Éléments de sous-menu | `React.ReactNode` | - |
+
+## Accessibilité
+
+- Le menu se ferme à la pression de la touche Échap
+- Le menu se ferme lors d'un clic à l'extérieur
+- Les éléments de menu sont navigables au clavier
+- Les éléments désactivés sont correctement annoncés

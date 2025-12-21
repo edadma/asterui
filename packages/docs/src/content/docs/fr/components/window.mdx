@@ -1,0 +1,69 @@
+---
+title: Window
+description: Composant de maquette de fenêtre de style OS pour présenter du code ou du contenu.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithCodeDemo,
+  MultiLineDemo,
+  WithPrefixDemo,
+  StyledDemo,
+  ContentDemo,
+} from '../../../../components/WindowDemo'
+import WindowDemoSource from '../../../../components/WindowDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de maquette de fenêtre de style OS pour présenter du code ou du contenu.
+
+## Importation
+
+```tsx
+import { Window } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Fenêtre basique" description="Maquette de fenêtre simple avec contenu." source={WindowDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec code" description="Fenêtre contenant l'affichage de code." source={WindowDemoSource} fn="WithCodeDemo">
+  <WithCodeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Code multi-lignes" description="Fenêtre avec plusieurs lignes de code." source={WindowDemoSource} fn="MultiLineDemo">
+  <MultiLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec préfixe" description="Lignes de code avec préfixes de commande." source={WindowDemoSource} fn="WithPrefixDemo">
+  <WithPrefixDemo client:load slot="demo" />
+</Example>
+
+<Example title="Fenêtre stylisée" description="Fenêtre personnalisée avec un arrière-plan différent." source={WindowDemoSource} fn="StyledDemo">
+  <StyledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenu personnalisé" description="Fenêtre avec style de contenu personnalisé." source={WindowDemoSource} fn="ContentDemo">
+  <ContentDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu de la fenêtre | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires pour la fenêtre | `string` | - |
+| `contentClassName` | Classes CSS supplémentaires pour la zone de contenu | `string` | - |
+
+## Accessibilité
+
+- Le chrome de la fenêtre est décoratif et marqué comme présentation
+- La zone de contenu maintient un ordre de lecture approprié
+- Les blocs de code sont lisibles par les lecteurs d'écran
+- Les boutons de feux de circulation sont des décorations non interactives

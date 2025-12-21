@@ -1,0 +1,71 @@
+---
+title: Progress
+description: Afficher l'achèvement d'une tâche ou le passage du temps avec des barres de progression.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ColorsDemo,
+  StatusDemo,
+  IndeterminateDemo,
+  SizesDemo,
+  LabelDemo,
+} from '../../../../components/ProgressDemo'
+import ProgressDemoSource from '../../../../components/ProgressDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Afficher l'achèvement d'une tâche ou le passage du temps avec des barres de progression.
+
+## Import
+
+```tsx
+import { Progress } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Progression de base" description="Barre de progression simple avec valeur." source={ProgressDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes de couleur" description="Différents schémas de couleurs pour les barres de progression." source={ProgressDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs de statut" description="Couleurs sémantiques pour différents états." source={ProgressDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Indéterminé" description="Barre de progression sans valeur spécifique (animée)." source={ProgressDemoSource} fn="IndeterminateDemo">
+  <IndeterminateDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Contrôler la largeur avec les classes Tailwind." source={ProgressDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec étiquette" description="Progression avec étiquette de texte." source={ProgressDemoSource} fn="LabelDemo">
+  <LabelDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Progress`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Valeur de progression actuelle (0-100). Omettre pour l'état indéterminé | `number` | - |
+| `max` | Valeur maximale | `number` | `100` |
+| `type` | Variante de couleur | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise l'élément natif `<progress>` pour l'accessibilité
+- La valeur est annoncée par les lecteurs d'écran
+- L'état indéterminé est correctement communiqué

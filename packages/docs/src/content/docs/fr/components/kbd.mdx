@@ -1,0 +1,70 @@
+---
+title: Kbd
+description: Affichez les touches et raccourcis clavier.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  CombinationDemo,
+  InTextDemo,
+  ArrowsDemo,
+  FullKeyboardDemo,
+} from '../../../../components/KbdDemo'
+import KbdDemoSource from '../../../../components/KbdDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Affichez les touches et raccourcis clavier.
+
+## Import
+
+```tsx
+import { Kbd } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Basique" description="Affichage simple de touche clavier." source={KbdDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Différentes tailles pour divers contextes." source={KbdDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Combinaison de touches" description="Affichez les raccourcis clavier." source={KbdDemoSource} fn="CombinationDemo">
+  <CombinationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dans le texte" description="Utilisez kbd en ligne avec du texte." source={KbdDemoSource} fn="InTextDemo">
+  <InTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Touches fléchées" description="Affichage des touches fléchées pour les instructions de navigation." source={KbdDemoSource} fn="ArrowsDemo">
+  <ArrowsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Clavier complet" description="Exemple de disposition de clavier complète." source={KbdDemoSource} fn="FullKeyboardDemo">
+  <FullKeyboardDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Kbd`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `size` | Taille du kbd | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `children` | Contenu de la touche | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise l'élément HTML sémantique `<kbd>`
+- Les lecteurs d'écran annoncent les touches clavier de manière appropriée
+- Le style à contraste élevé garantit la visibilité

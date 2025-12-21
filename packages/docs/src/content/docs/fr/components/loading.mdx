@@ -1,0 +1,61 @@
+---
+title: Loading
+description: Affichez des états de chargement avec divers indicateurs animés pour montrer les processus en cours.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TypesDemo,
+  SizesDemo,
+  ColorsDemo,
+} from '../../../../components/LoadingDemo'
+import LoadingDemoSource from '../../../../components/LoadingDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Affichez des états de chargement avec divers indicateurs animés pour montrer les processus en cours.
+
+## Import
+
+```tsx
+import { Loading } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Chargement basique" description="Spinner de chargement par défaut." source={LoadingDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Types de chargement" description="Différents types d'animation pour les indicateurs de chargement." source={LoadingDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Contrôlez la taille de l'indicateur de chargement." source={LoadingDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs" description="Différentes variantes de couleur pour les indicateurs de chargement." source={LoadingDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Loading`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `size` | Taille de l'indicateur de chargement | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `type` | Type d'animation de chargement | `'spinner' \| 'dots' \| 'ring' \| 'ball' \| 'bars' \| 'infinity'` | `'spinner'` |
+| `color` | Couleur de l'indicateur de chargement | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise `aria-label` pour décrire l'état de chargement
+- L'animation peut être mise en pause par les utilisateurs qui préfèrent un mouvement réduit
+- Assurez-vous que les indicateurs de chargement sont associés à du texte pour les lecteurs d'écran lorsque cela est possible

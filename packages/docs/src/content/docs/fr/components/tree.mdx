@@ -1,0 +1,171 @@
+---
+title: Tree
+description: Structure arborescente hiérarchique pour afficher des données imbriquées.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CheckableDemo,
+  SelectableDemo,
+  MultipleDemo,
+  ShowLineDemo,
+  ShowIconDemo,
+  CompoundDemo,
+  CheckboxColorsDemo,
+  CheckStrictlyDemo,
+  AsyncLoadDemo,
+} from '../../../../components/TreeDemo'
+import TreeDemoSource from '../../../../components/TreeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Structure arborescente hiérarchique pour afficher des données imbriquées.
+
+## Importation
+
+```tsx
+import { Tree } from 'asterui'
+import type { TreeDataNode } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Arbre basique" description="Arbre simple avec des nœuds extensibles." source={TreeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cochable" description="Arbre avec sélection par case à cocher." source={TreeDemoSource} fn="CheckableDemo">
+  <CheckableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sélectionnable" description="Arbre avec sélection de nœuds." source={TreeDemoSource} fn="SelectableDemo">
+  <SelectableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sélection multiple" description="Permettre la sélection de plusieurs nœuds." source={TreeDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Afficher les lignes" description="Afficher les lignes de connexion entre les nœuds." source={TreeDemoSource} fn="ShowLineDemo">
+  <ShowLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Afficher les icônes" description="Afficher des icônes personnalisées pour les nœuds." source={TreeDemoSource} fn="ShowIconDemo">
+  <ShowIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modèle composé" description="Utilisez Tree.Node pour une structure d'arbre déclarative." source={TreeDemoSource} fn="CompoundDemo">
+  <CompoundDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs de case à cocher" description="Personnalisez l'apparence des cases à cocher avec les couleurs DaisyUI." source={TreeDemoSource} fn="CheckboxColorsDemo">
+  <CheckboxColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Vérification stricte" description="Découpler la relation parent-enfant des cases à cocher." source={TreeDemoSource} fn="CheckStrictlyDemo">
+  <CheckStrictlyDemo client:load slot="demo" />
+</Example>
+
+<Example title="Chargement asynchrone" description="Charger les nœuds enfants de manière asynchrone lors de l'expansion." source={TreeDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tree`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `treeData` | Structure de données d'arbre (alternative au modèle composé) | `TreeDataNode[]` | `[]` |
+| `children` | Enfants Tree.Node pour le modèle composé | `React.ReactNode` | `-` |
+| `checkable` | Afficher une case à cocher pour chaque nœud | `boolean` | `false` |
+| `checkboxColor` | Couleur de la case à cocher (DaisyUI) | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` |
+| `checkboxSize` | Taille de la case à cocher (DaisyUI) | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |
+| `checkedKeys` | Clés cochées contrôlées | `string[]` | `-` |
+| `defaultCheckedKeys` | Clés cochées par défaut | `string[]` | `[]` |
+| `checkStrictly` | Découpler la relation parent-enfant des cases à cocher | `boolean` | `false` |
+| `onCheck` | Callback lorsqu'un nœud est coché | `(keys: string[], info: { node, checked }) => void` | `-` |
+| `selectable` | Activer la sélection de nœuds | `boolean` | `true` |
+| `selectedKeys` | Clés sélectionnées contrôlées | `string[]` | `-` |
+| `defaultSelectedKeys` | Clés sélectionnées par défaut | `string[]` | `[]` |
+| `onSelect` | Callback lorsqu'un nœud est sélectionné | `(keys: string[], info: { node, selected }) => void` | `-` |
+| `multiple` | Permettre la sélection multiple | `boolean` | `false` |
+| `expandedKeys` | Clés étendues contrôlées | `string[]` | `-` |
+| `defaultExpandedKeys` | Clés étendues par défaut | `string[]` | `[]` |
+| `defaultExpandAll` | Développer tous les nœuds par défaut | `boolean` | `false` |
+| `autoExpandParent` | Développer automatiquement les nœuds parents | `boolean` | `true` |
+| `onExpand` | Callback lorsqu'un nœud est développé | `(keys: string[], info: { node, expanded }) => void` | `-` |
+| `showLine` | Afficher les lignes de connexion | `boolean` | `false` |
+| `showIcon` | Afficher les icônes de nœud | `boolean` | `false` |
+| `blockNode` | Faire en sorte que les nœuds remplissent l'espace horizontal | `boolean` | `false` |
+| `switcherIcon` | Icône personnalisée de développer/réduire | `ReactNode \| ((expanded: boolean) => ReactNode)` | `-` |
+| `titleRender` | Fonction de rendu de titre personnalisée | `(node: TreeDataNode) => ReactNode` | `-` |
+| `filterTreeNode` | Fonction de filtrage pour mettre en évidence les nœuds | `(node: TreeDataNode) => boolean` | `-` |
+| `loadData` | Fonction de chargement de données asynchrone | `(node: TreeDataNode) => Promise<void>` | `-` |
+| `onRightClick` | Gestionnaire de clic droit | `(info: { event, node }) => void` | `-` |
+| `fieldNames` | Noms de champs personnalisés pour le mappage de données | `{ key?: string; title?: string; children?: string }` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+### `TreeDataNode`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Identifiant unique | `string` | `-` |
+| `title` | Titre affiché | `React.ReactNode` | `-` |
+| `children` | Nœuds enfants | `TreeDataNode[]` | `-` |
+| `icon` | Icône personnalisée | `React.ReactNode` | `-` |
+| `disabled` | Désactiver le nœud | `boolean` | `false` |
+| `disableCheckbox` | Désactiver la case à cocher pour le nœud | `boolean` | `false` |
+| `selectable` | Si le nœud peut être sélectionné | `boolean` | `true` |
+| `checkable` | Si le nœud affiche une case à cocher | `boolean` | `true` |
+| `isLeaf` | Forcer le nœud à être une feuille (pas d'icône de développement) | `boolean` | `-` |
+
+### `Tree.Node`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Identifiant unique (prop key React) | `string` | `-` |
+| `title` | Titre affiché | `React.ReactNode` | `-` |
+| `children` | Éléments enfants Tree.Node | `React.ReactNode` | `-` |
+| `icon` | Icône personnalisée | `React.ReactNode` | `-` |
+| `disabled` | Désactiver le nœud | `boolean` | `false` |
+| `disableCheckbox` | Désactiver la case à cocher pour le nœud | `boolean` | `false` |
+| `selectable` | Si le nœud peut être sélectionné | `boolean` | `true` |
+| `checkable` | Si le nœud affiche une case à cocher | `boolean` | `true` |
+| `isLeaf` | Forcer le nœud à être une feuille (pas d'icône de développement) | `boolean` | `-` |
+
+## Accessibilité
+
+Le composant Tree implémente le modèle d'arbre WAI-ARIA complet :
+
+- `role="tree"` sur le conteneur et `role="treeitem"` sur les nœuds
+- `aria-expanded` indique l'état d'expansion du nœud
+- `aria-selected` indique l'état de sélection
+- `aria-checked` indique l'état de la case à cocher (avec `"mixed"` pour indéterminé)
+- `aria-disabled` indique l'état désactivé
+- `aria-level` indique la profondeur d'imbrication
+
+### Navigation au clavier
+
+| Touche | Action |
+|-----|--------|
+| <kbd>↓</kbd> | Déplacer le focus vers le nœud visible suivant |
+| <kbd>↑</kbd> | Déplacer le focus vers le nœud visible précédent |
+| <kbd>→</kbd> | Développer un nœud réduit, ou se déplacer vers le premier enfant |
+| <kbd>←</kbd> | Réduire un nœud développé |
+| <kbd>Entrée</kbd> / <kbd>Espace</kbd> | Basculer la case à cocher, sélectionner le nœud ou développer/réduire |
+| <kbd>Début</kbd> | Déplacer le focus vers le premier nœud |
+| <kbd>Fin</kbd> | Déplacer le focus vers le dernier nœud visible |
+
+### Tests
+
+Le composant inclut des attributs de données pour les tests :
+
+- `data-testid="tree"` sur le conteneur de l'arbre
+- `data-testid="tree-node-{key}"` sur chaque nœud
+- `data-state="selected|expanded|collapsed"` indique l'état du nœud
+- `data-key="{key}"` fournit la clé du nœud

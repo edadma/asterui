@@ -1,0 +1,153 @@
+---
+title: Descriptions
+description: Afficher des paires clé-valeur dans un format structuré et lisible.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  BorderedDemo,
+  SizesDemo,
+  VerticalDemo,
+  ColumnsDemo,
+  WithSpanDemo,
+  FilledSpanDemo,
+  TitleExtraDemo,
+  NoColonDemo,
+  CustomStylesDemo,
+  CompoundDemo,
+  ResponsiveDemo,
+} from '../../../../components/DescriptionsDemo'
+import DescriptionsDemoSource from '../../../../components/DescriptionsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Afficher des paires clé-valeur dans un format structuré et lisible.
+
+## Importation
+
+```tsx
+import { Descriptions } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Descriptions de base" description="Affichage simple de paires clé-valeur." source={DescriptionsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec bordures" description="Descriptions avec bordures." source={DescriptionsDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Différentes variantes de taille." source={DescriptionsDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Titre avec extra" description="Titre et contenu supplémentaire dans l'en-tête." source={DescriptionsDemoSource} fn="TitleExtraDemo">
+  <TitleExtraDemo client:load slot="demo" />
+</Example>
+
+<Example title="Disposition verticale" description="Disposition verticale des étiquettes et du contenu." source={DescriptionsDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colonnes personnalisées" description="Contrôler le nombre de colonnes." source={DescriptionsDemoSource} fn="ColumnsDemo">
+  <ColumnsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colonnes réactives" description="Les colonnes s'ajustent en fonction de la largeur de la fenêtre." source={DescriptionsDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec espacement de colonnes" description="Éléments s'étendant sur plusieurs colonnes." source={DescriptionsDemoSource} fn="WithSpanDemo">
+  <WithSpanDemo client:load slot="demo" />
+</Example>
+
+<Example title="Espacement rempli" description="Éléments qui remplissent l'espace de ligne restant." source={DescriptionsDemoSource} fn="FilledSpanDemo">
+  <FilledSpanDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sans deux-points" description="Masquer les deux-points après les étiquettes." source={DescriptionsDemoSource} fn="NoColonDemo">
+  <NoColonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Styles personnalisés" description="Appliquer des styles et classes personnalisés aux parties sémantiques." source={DescriptionsDemoSource} fn="CustomStylesDemo">
+  <CustomStylesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modèle composé" description="Utiliser les enfants Descriptions.Item au lieu de la prop items." source={DescriptionsDemoSource} fn="CompoundDemo">
+  <CompoundDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Descriptions`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `items` | Éléments de description (alternative aux enfants) | `DescriptionsItemConfig[]` | - |
+| `title` | Titre du bloc de descriptions | `React.ReactNode` | - |
+| `extra` | Contenu supplémentaire dans le coin supérieur droit | `React.ReactNode` | - |
+| `column` | Nombre de colonnes (ou configuration réactive) | `number \| { xs?, sm?, md?, lg?, xl?, 2xl? }` | `3` |
+| `bordered` | Afficher les bordures autour des cellules | `boolean` | `false` |
+| `layout` | Direction de la disposition | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `size` | Variante de taille | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `colon` | Afficher les deux-points après les étiquettes | `boolean` | `true` |
+| `styles` | Styles sémantiques pour les parties du composant | `Partial<Record<SemanticDOM, CSSProperties>>` | - |
+| `classNames` | Classes sémantiques pour les parties du composant | `Partial<Record<SemanticDOM, string>>` | - |
+| `labelStyle` | Styles d'étiquette par défaut (déprécié, utiliser styles.label) | `React.CSSProperties` | - |
+| `contentStyle` | Styles de contenu par défaut (déprécié, utiliser styles.content) | `React.CSSProperties` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `style` | Styles en ligne pour l'élément racine | `React.CSSProperties` | - |
+| `data-testid` | ID de test pour le composant | `string` | `'descriptions'` |
+
+### `DescriptionsItemConfig`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Clé unique pour l'élément (utilisée pour les ID de test et les clés React) | `string` | - |
+| `label` | Étiquette pour l'élément | `React.ReactNode` | - |
+| `children` | Contenu de l'élément | `React.ReactNode` | - |
+| `span` | Nombre de colonnes à occuper, ou 'filled' pour remplir l'espace restant | `number \| 'filled'` | `1` |
+| `labelStyle` | Styles d'étiquette personnalisés | `React.CSSProperties` | - |
+| `contentStyle` | Styles de contenu personnalisés | `React.CSSProperties` | - |
+| `labelClassName` | Classe d'étiquette personnalisée | `string` | - |
+| `contentClassName` | Classe de contenu personnalisée | `string` | - |
+
+### `Descriptions.Item` (composé)
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Clé React, extraite par le parent | `string` | - |
+| `itemKey` | Clé explicite (alternative à la clé React) | `string` | - |
+| `label` | Étiquette pour l'élément | `React.ReactNode` | - |
+| `children` | Contenu de l'élément | `React.ReactNode` | - |
+| `span` | Nombre de colonnes à occuper, ou 'filled' | `number \| 'filled'` | `1` |
+| `labelStyle` | Styles d'étiquette personnalisés | `React.CSSProperties` | - |
+| `contentStyle` | Styles de contenu personnalisés | `React.CSSProperties` | - |
+| `labelClassName` | Classe d'étiquette personnalisée | `string` | - |
+| `contentClassName` | Classe de contenu personnalisée | `string` | - |
+
+### Clés `SemanticDOM`
+
+| Propriété | Description | Type |
+|----------|-------------|------|
+| `root` | Élément conteneur racine | - |
+| `header` | En-tête contenant le titre et l'extra | - |
+| `title` | Élément de titre | - |
+| `extra` | Élément de contenu supplémentaire | - |
+| `table` | Élément de tableau | - |
+| `label` | Cellules d'étiquette (éléments th) | - |
+| `content` | Cellules de contenu (éléments td) | - |
+
+## Accessibilité
+
+- Utilise le balisage sémantique `<table>` pour une structure appropriée
+- Les cellules d'en-tête utilisent l'attribut `scope` pour les lecteurs d'écran
+- Le tableau a un élément `<caption>` (visuellement masqué) lorsqu'un titre est fourni
+- Les cellules de contenu ont `aria-labelledby` lié à leurs étiquettes
+- Les deux-points après les étiquettes sont marqués avec `aria-hidden` pour éviter les annonces redondantes

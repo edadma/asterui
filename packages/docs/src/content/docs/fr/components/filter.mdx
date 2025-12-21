@@ -1,0 +1,75 @@
+---
+title: Filter
+description: Un groupe de boutons radio pour le filtrage à option unique. La sélection d'une option masque les autres et affiche un bouton de réinitialisation.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ObjectOptionsDemo,
+  NoResetDemo,
+} from '../../../../components/FilterDemo'
+import FilterDemoSource from '../../../../components/FilterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Un groupe de boutons radio pour le filtrage à option unique. La sélection d'une option masque les autres et affiche un bouton de réinitialisation.
+
+## Importation
+
+```tsx
+import { Filter } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="De base" description="Filtre simple avec options en chaîne. Cliquez sur une option pour sélectionner, cliquez sur réinitialiser pour effacer." source={FilterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Variantes de taille disponibles." source={FilterDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Options objets" description="Utiliser des objets pour les options avec étiquettes, valeurs personnalisées et état désactivé." source={FilterDemoSource} fn="ObjectOptionsDemo">
+  <ObjectOptionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sans bouton de réinitialisation" description="Masquer le bouton de réinitialisation lorsque vous souhaitez exiger une sélection." source={FilterDemoSource} fn="NoResetDemo">
+  <NoResetDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Filter`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `options` | Options de filtre | `(string \| FilterOption)[]` | - |
+| `value` | Valeur sélectionnée contrôlée | `string` | - |
+| `defaultValue` | Valeur par défaut pour le mode non contrôlé | `string` | - |
+| `onChange` | Appelé lors du changement de sélection | `(value: string \| undefined) => void` | - |
+| `name` | Nom du groupe radio (généré automatiquement si non fourni) | `string` | - |
+| `size` | Taille du bouton | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `showReset` | Afficher le bouton de réinitialisation | `boolean` | `true` |
+| `resetLabel` | Étiquette du bouton de réinitialisation | `React.ReactNode` | `'×'` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `FilterOption`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `label` | Texte d'affichage pour l'option | `string` | - |
+| `value` | Valeur de l'option | `string` | - |
+| `disabled` | Si l'option est désactivée | `boolean` | `false` |
+
+## Accessibilité
+
+- Utilise des entrées radio natives pour la prise en charge du clavier et du lecteur d'écran
+- Les options utilisent `aria-label` pour les noms accessibles
+- Le bouton de réinitialisation a `aria-label="Reset filter"`
+- Prend en charge la navigation au clavier avec Tab et Espace/Entrée

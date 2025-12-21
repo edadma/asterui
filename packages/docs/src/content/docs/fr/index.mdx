@@ -1,0 +1,41 @@
+---
+title: AsterUI
+description: Une bibliothèque de composants React construite sur DaisyUI et Tailwind CSS
+template: splash
+head:
+  - tag: title
+    content: AsterUI - Composants React avec DaisyUI
+hero:
+  tagline: De magnifiques composants React avec le style DaisyUI et une API conviviale pour les développeurs.
+  actions:
+    - text: Commencer
+      link: /fr/getting-started/
+      icon: right-arrow
+    - text: Voir sur GitHub
+      link: https://github.com/edadma/asterui
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Convivial pour les développeurs" icon="puzzle">
+    Des modèles d'API intuitifs que vous connaissez déjà. Form.Item, colonnes de Table, Modal, et plus encore.
+  </Card>
+  <Card title="Style DaisyUI v5" icon="star">
+    De magnifiques composants thématiques avec plus de 30 thèmes DaisyUI prêts à l'emploi.
+  </Card>
+  <Card title="Facile à tester" icon="approve-check">
+    Attributs data-testid, data-state intégrés et rôles ARIA pour des tests fiables.
+  </Card>
+  <Card title="TypeScript d'abord" icon="seti:typescript">
+    Sécurité de type complète avec des types de props complets et support IntelliSense.
+  </Card>
+  <Card title="Plus de 100 composants" icon="list-format">
+    Formulaires, tableaux, modales, navigation, graphiques, et tout ce dont vous avez besoin.
+  </Card>
+  <Card title="Léger" icon="rocket">
+    Tree-shakable. N'embarquez que ce que vous utilisez.
+  </Card>
+</CardGrid>

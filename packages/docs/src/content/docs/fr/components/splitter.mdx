@@ -1,0 +1,111 @@
+---
+title: Splitter
+description: Créez des panneaux divisés redimensionnables avec des séparateurs déplaçables.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  ControlledDemo,
+  MultiplePanelsDemo,
+  MinMaxDemo,
+  NestedDemo,
+  GutterDemo,
+  IdeDemo,
+  CollapsibleDemo,
+  NonResizableDemo,
+} from '../../../../components/SplitterDemo'
+import SplitterDemoSource from '../../../../components/SplitterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Créez des panneaux divisés redimensionnables avec des séparateurs déplaçables.
+
+## Import
+
+```tsx
+import { Splitter } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Splitter horizontal basique" description="Faites glisser le séparateur pour redimensionner les panneaux." source={SplitterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Splitter vertical" description="Divisez les panneaux verticalement." source={SplitterDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles contrôlées" description="Contrôlez les tailles des panneaux de manière programmatique." source={SplitterDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Panneaux multiples" description="Divisez en plus de deux panneaux." source={SplitterDemoSource} fn="MultiplePanelsDemo">
+  <MultiplePanelsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec tailles min/max" description="Contraignez les tailles des panneaux avec des valeurs min et max." source={SplitterDemoSource} fn="MinMaxDemo">
+  <MinMaxDemo client:load slot="demo" />
+</Example>
+
+<Example title="Splitters imbriqués" description="Combinez des splitters horizontaux et verticaux." source={SplitterDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Taille de gouttière personnalisée" description="Ajustez la taille de la gouttière (séparateur)." source={SplitterDemoSource} fn="GutterDemo">
+  <GutterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Disposition de style IDE" description="Disposition complexe similaire à un IDE." source={SplitterDemoSource} fn="IdeDemo">
+  <IdeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Panneaux pliables" description="Les panneaux peuvent être pliés à l'aide des boutons fléchés sur la gouttière." source={SplitterDemoSource} fn="CollapsibleDemo">
+  <CollapsibleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Panneau non redimensionnable" description="Désactivez le redimensionnement pour des panneaux spécifiques." source={SplitterDemoSource} fn="NonResizableDemo">
+  <NonResizableDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Splitter`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `direction` | Direction du splitter | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `sizes` | Tailles de panneaux contrôlées en pourcentages | `number[]` | `-` |
+| `defaultSizes` | Tailles de panneaux par défaut en pourcentages (non contrôlées) | `number[]` | `-` |
+| `onSizesChange` | Callback lorsque les tailles changent | `(sizes: number[]) => void` | `-` |
+| `gutterSize` | Taille de la gouttière déplaçable en pixels | `number` | `8` |
+| `minSize` | Taille minimale de panneau par défaut en pixels | `number` | `50` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+### `Splitter.Panel`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu du panneau | `React.ReactNode` | `-` |
+| `defaultSize` | Pourcentage de taille par défaut | `number` | `-` |
+| `size` | Pourcentage de taille contrôlée | `number` | `-` |
+| `minSize` | Taille minimale en pixels | `number` | `-` |
+| `maxSize` | Taille maximale en pixels | `number` | `-` |
+| `collapsible` | Permettre de plier le panneau | `boolean` | `false` |
+| `collapsed` | État plié contrôlé | `boolean` | `-` |
+| `defaultCollapsed` | État plié par défaut | `boolean` | `false` |
+| `onCollapse` | Callback lorsque l'état plié change | `(collapsed: boolean) => void` | `-` |
+| `resizable` | Permettre de redimensionner le panneau | `boolean` | `true` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+## Accessibilité
+
+- La gouttière est accessible au clavier avec les touches fléchées
+- Les attributs ARIA annoncent les tailles actuelles des panneaux
+- Les indicateurs de focus sont visibles sur la gouttière
+- Augmentez gutterSize pour une interaction tactile plus facile

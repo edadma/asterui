@@ -1,0 +1,103 @@
+---
+title: CopyButton
+description: Bouton pour copier du texte dans le presse-papiers avec retour visuel
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithTextDemo,
+  ColorsDemo,
+  VariantsDemo,
+  SizesDemo,
+  ShapesDemo,
+  CodeBlockDemo,
+  InputCopyDemo,
+  CallbackDemo,
+  CustomTimeoutDemo,
+} from '../../../../components/CopyButtonDemo'
+import CopyButtonDemoSource from '../../../../components/CopyButtonDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Un composant bouton pour copier du texte dans le presse-papiers avec retour visuel.
+
+## Import
+
+```tsx
+import { CopyButton } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Utilisation de base" description="Bouton de copie simple avec icône par défaut. Activer l'info-bulle pour un retour visuel." source={CopyButtonDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec contenu texte" description="Afficher du contenu texte au lieu de l'icône par défaut." source={CopyButtonDemoSource} fn="WithTextDemo">
+  <WithTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs" description="Appliquer différents thèmes de couleur au bouton." source={CopyButtonDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes" description="Différentes variantes de style de bouton." source={CopyButtonDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Tailles de bouton disponibles." source={CopyButtonDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Formes" description="Formes de bouton carré et cercle." source={CopyButtonDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Bloc de code" description="Bouton de copie positionné dans le coin d'un bloc de code personnalisé." source={CopyButtonDemoSource} fn="CodeBlockDemo">
+  <CodeBlockDemo client:load slot="demo" />
+</Example>
+
+<Example title="Entrée avec copie" description="Copier la valeur d'un champ d'entrée." source={CopyButtonDemoSource} fn="InputCopyDemo">
+  <InputCopyDemo client:load slot="demo" />
+</Example>
+
+<Example title="Callbacks" description="Gérer les événements de succès et d'erreur de copie." source={CopyButtonDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="Délai personnalisé" description="Contrôler la durée d'affichage de l'état copié." source={CopyButtonDemoSource} fn="CustomTimeoutDemo">
+  <CustomTimeoutDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `CopyButton`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `text` | Texte à copier dans le presse-papiers | `string` | - |
+| `timeout` | Durée en ms pour afficher l'état copié | `number` | `2000` |
+| `color` | Couleur du bouton | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | - |
+| `variant` | Variante de style de bouton | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link'` | - |
+| `size` | Taille du bouton | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `shape` | Forme du bouton | `'square' \| 'circle'` | - |
+| `icon` | Icône personnalisée pour l'état par défaut | `ReactNode` | Icône de copie |
+| `copiedIcon` | Icône personnalisée pour l'état copié | `ReactNode` | Icône de coche |
+| `children` | Contenu personnalisé pour l'état par défaut (remplace l'icône) | `ReactNode` | - |
+| `copiedChildren` | Contenu personnalisé pour l'état copié | `ReactNode` | - |
+| `onCopy` | Callback lors du succès de la copie | `() => void` | - |
+| `onError` | Callback lors de l'échec de la copie | `(error: Error) => void` | - |
+| `showTooltip` | Afficher l'info-bulle avec l'état de copie | `boolean` | `false` |
+| `tooltipText` | Texte de l'info-bulle pour l'état par défaut | `string` | `'Copy'` |
+| `copiedTooltipText` | Texte de l'info-bulle pour l'état copié | `string` | `'Copied!'` |
+| `disabled` | Désactiver le bouton | `boolean` | `false` |
+
+## Accessibilité
+
+- Utilise l'élément bouton natif pour le support du clavier
+- Retour visuel via changement d'icône et info-bulle optionnelle
+- L'état désactivé est correctement communiqué

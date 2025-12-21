@@ -1,0 +1,49 @@
+---
+title: Join
+description: Joignez visuellement des éléments ensemble en supprimant l'espacement et les bordures entre eux.
+tableOfContents: false
+---
+
+import {
+  JoinedButtonsDemo,
+  VerticalJoinDemo,
+  JoinedInputAndButtonDemo,
+} from '../../../../components/JoinDemo'
+import JoinDemoSource from '../../../../components/JoinDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Joignez visuellement des éléments ensemble en supprimant l'espacement et les bordures entre eux.
+
+## Import
+
+```tsx
+import { Join } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Boutons joints" description="Jointure horizontale basique avec boutons." source={JoinDemoSource} fn="JoinedButtonsDemo">
+  <JoinedButtonsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Jointure verticale" description="Éléments joints verticalement." source={JoinDemoSource} fn="VerticalJoinDemo">
+  <VerticalJoinDemo client:load slot="demo" />
+</Example>
+
+<Example title="Input et bouton joints" description="Joindre un input avec un bouton pour la recherche ou les formulaires." source={JoinDemoSource} fn="JoinedInputAndButtonDemo">
+  <JoinedInputAndButtonDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Join`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `direction` | Direction de jointure | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `children` | Éléments à joindre ensemble | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |

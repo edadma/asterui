@@ -1,0 +1,87 @@
+---
+title: Statistiques
+description: Afficher des statistiques et des données dans des blocs organisés pour les tableaux de bord et les analyses.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DescDemo,
+  MultipleDemo,
+  IconsDemo,
+  ColoredDemo,
+  VerticalDemo,
+  ActionsDemo,
+} from '../../../../components/StatDemo'
+import StatDemoSource from '../../../../components/StatDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Afficher des statistiques et des données dans des blocs organisés pour les tableaux de bord et les analyses.
+
+## Importation
+
+```tsx
+import { Stats } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Statistique de base" description="Statistique simple avec titre et valeur." source={StatDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec description" description="Ajouter une description en utilisant la propriété desc." source={StatDemoSource} fn="DescDemo">
+  <DescDemo client:load slot="demo" />
+</Example>
+
+<Example title="Statistiques multiples" description="Afficher plusieurs statistiques horizontalement." source={StatDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec icônes" description="Ajouter des icônes en utilisant la propriété figure." source={StatDemoSource} fn="IconsDemo">
+  <IconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Valeurs colorées" description="Utiliser className pour les valeurs colorées." source={StatDemoSource} fn="ColoredDemo">
+  <ColoredDemo client:load slot="demo" />
+</Example>
+
+<Example title="Disposition verticale" description="Empiler les statistiques verticalement." source={StatDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec actions" description="Ajouter des boutons en utilisant la propriété actions." source={StatDemoSource} fn="ActionsDemo">
+  <ActionsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Stats`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Éléments de statistiques à afficher | `React.ReactNode` | `-` |
+| `vertical` | Empiler les statistiques verticalement | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+### `Stats.Stat`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `title` | Titre de la statistique | `React.ReactNode` | `-` |
+| `value` | Valeur de la statistique | `React.ReactNode` | `-` |
+| `desc` | Texte de description | `React.ReactNode` | `-` |
+| `figure` | Icône ou image | `React.ReactNode` | `-` |
+| `actions` | Boutons d'action ou éléments | `React.ReactNode` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+## Accessibilité
+
+- Structure de titre sémantique pour les titres de statistiques
+- Les valeurs peuvent inclure des labels ARIA pour le contexte
+- Les figures ont un texte alternatif approprié lors de l'utilisation d'images
+- Les boutons d'action sont accessibles au clavier

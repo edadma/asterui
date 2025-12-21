@@ -1,0 +1,131 @@
+---
+title: Checkbox
+description: Entrée de case à cocher pour sélectionner plusieurs options à partir d'un ensemble
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ColorsDemo,
+  SizesDemo,
+  DisabledDemo,
+  IndeterminateDemo,
+  GroupDemo,
+  GroupOptionsDemo,
+  GroupDirectionDemo,
+  ControlledDemo,
+  SwapDemo,
+} from '../../../../components/CheckboxDemo'
+import CheckboxDemoSource from '../../../../components/CheckboxDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de case à cocher pour sélectionner plusieurs options avec différents styles et support de groupe.
+
+## Import
+
+```tsx
+import { Checkbox } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Utilisation de base" description="Case à cocher simple avec étiquette." source={CheckboxDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs" description="Différentes couleurs de case à cocher pour divers contextes." source={CheckboxDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Cinq tailles de case à cocher de xs à xl." source={CheckboxDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Désactivée" description="États de case à cocher désactivée." source={CheckboxDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Indéterminée" description="État indéterminé pour la fonctionnalité tout cocher." source={CheckboxDemoSource} fn="IndeterminateDemo">
+  <IndeterminateDemo client:load slot="demo" />
+</Example>
+
+<Example title="Groupe de cases à cocher" description="Grouper plusieurs cases à cocher avec état partagé." source={CheckboxDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="Groupe avec options" description="Générer des cases à cocher à partir d'un tableau d'options avec support de désactivation." source={CheckboxDemoSource} fn="GroupOptionsDemo">
+  <GroupOptionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Direction du groupe" description="Dispositions de groupe horizontales et verticales." source={CheckboxDemoSource} fn="GroupDirectionDemo">
+  <GroupDirectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contrôlée" description="Case à cocher contrôlée avec gestion d'état externe." source={CheckboxDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mode échange" description="Basculer entre deux états visuels avec effets d'animation." source={CheckboxDemoSource} fn="SwapDemo">
+  <SwapDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Checkbox`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `checked` | État coché contrôlé | `boolean` | - |
+| `defaultChecked` | État coché par défaut | `boolean` | - |
+| `disabled` | Désactiver la case à cocher | `boolean` | `false` |
+| `indeterminate` | État indéterminé (sélection partielle) | `boolean` | `false` |
+| `size` | Taille de la case à cocher | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | Couleur de la case à cocher | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `swap` | Configuration du mode échange | `CheckboxSwapConfig` | - |
+| `value` | Valeur lorsqu'elle est utilisée dans un groupe | `string \| number` | - |
+| `onChange` | Gestionnaire d'événement de changement | `(e: ChangeEvent) => void` | - |
+| `name` | Attribut HTML name pour l'input | `string` | - |
+| `autoFocus` | Focus automatique au montage | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `children` | Contenu de l'étiquette (automatiquement enveloppé dans un élément label) | `ReactNode` | - |
+
+### `Checkbox.Group`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Valeurs sélectionnées contrôlées | `(string \| number)[]` | - |
+| `defaultValue` | Valeurs sélectionnées par défaut | `(string \| number)[]` | - |
+| `onChange` | Callback de changement de sélection | `(values: (string \| number)[]) => void` | - |
+| `disabled` | Désactiver toutes les cases à cocher | `boolean` | `false` |
+| `options` | Options de cases à cocher | `(string \| number \| CheckboxOptionType)[]` | - |
+| `direction` | Direction de la disposition | `'horizontal' \| 'vertical'` | `'vertical'` |
+| `name` | Attribut HTML name pour toutes les cases à cocher (pour la soumission de formulaire) | `string` | - |
+| `children` | Éléments de case à cocher manuels | `ReactNode` | - |
+
+### `CheckboxSwapConfig`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `on` | Contenu affiché lorsque coché | `ReactNode` | - |
+| `off` | Contenu affiché lorsque décoché | `ReactNode` | - |
+| `effect` | Effet d'animation | `'rotate' \| 'flip'` | - |
+
+### `CheckboxOptionType`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `label` | Étiquette de l'option | `ReactNode` | - |
+| `value` | Valeur de l'option | `string \| number` | - |
+| `disabled` | Désactiver cette option | `boolean` | `false` |
+
+## Accessibilité
+
+- Utilise l'input de case à cocher native pour le support du clavier et du lecteur d'écran
+- Associe correctement les étiquettes aux cases à cocher
+- L'état indéterminé est communiqué via la propriété native indeterminate
+- L'état désactivé empêche l'interaction et est communiqué aux technologies d'assistance
+- Les états de focus sont visibles pour la navigation au clavier

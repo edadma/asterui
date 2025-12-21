@@ -1,0 +1,124 @@
+---
+title: Command
+description: Une palette de commandes (⌘K) pour la recherche et les actions rapides. Prend en charge la navigation au clavier, les éléments groupés, les pages imbriquées et les modèles de composants pilotés par données et composés.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CompoundDemo,
+  WithIconsDemo,
+  KeywordsDemo,
+  NestedPagesDemo,
+  DisabledItemsDemo,
+  CustomShortcutDemo,
+  CustomFilterDemo,
+} from '../../../../components/CommandDemo'
+import CommandDemoSource from '../../../../components/CommandDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Une palette de commandes (⌘K) pour la recherche et les actions rapides. Prend en charge la navigation au clavier, les éléments groupés, les pages imbriquées et les modèles de composants pilotés par données et composés.
+
+## Import
+
+```tsx
+import { Command } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Utilisation de base" description="Palette de commandes pilotée par données avec éléments groupés." source={CommandDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Composants composés" description="Créer des palettes de commandes en utilisant des composants composés pour plus de contrôle." source={CommandDemoSource} fn="CompoundDemo">
+  <CompoundDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Avec icônes" description="Ajouter des icônes aux éléments de commande pour le contexte visuel." source={CommandDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Mots-clés de recherche" description="Ajouter des mots-clés supplémentaires pour rendre les éléments trouvables par des termes alternatifs." source={CommandDemoSource} fn="KeywordsDemo">
+  <KeywordsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Pages imbriquées" description="Naviguer vers des sous-pages avec support de navigation arrière. Appuyez sur Retour arrière (lorsque la recherche est vide) ou cliquez sur la flèche arrière pour revenir." source={CommandDemoSource} fn="NestedPagesDemo">
+  <NestedPagesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Éléments désactivés" description="Désactiver des éléments spécifiques pour empêcher la sélection." source={CommandDemoSource} fn="DisabledItemsDemo">
+  <DisabledItemsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Raccourci personnalisé" description="Changer le raccourci clavier global de ⌘K à une autre touche." source={CommandDemoSource} fn="CustomShortcutDemo">
+  <CustomShortcutDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Filtre personnalisé" description="Fournir une fonction de filtre personnalisée pour une logique de correspondance avancée." source={CommandDemoSource} fn="CustomFilterDemo">
+  <CustomFilterDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Command`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `open` | État d'ouverture contrôlé | `boolean` | - |
+| `onOpenChange` | Callback lors du changement d'état d'ouverture | `(open: boolean) => void` | - |
+| `defaultOpen` | État d'ouverture par défaut (non contrôlé) | `boolean` | `false` |
+| `items` | Configuration d'élément pilotée par données | `CommandItemConfig[]` | - |
+| `filter` | Fonction de filtre personnalisée | `(value: string, search: string, keywords?: string[]) => boolean` | - |
+| `loop` | Boucler la navigation au clavier aux extrémités | `boolean` | `true` |
+| `shortcut` | Touche(s) de raccourci clavier global | `string[]` | `['k']` |
+| `placeholder` | Espace réservé d'entrée de recherche | `string` | `'Type a command or search...'` |
+| `emptyMessage` | Message lorsqu'aucun résultat n'est trouvé | `ReactNode` | `'No results found.'` |
+
+### `CommandItemConfig`
+
+Lors de l'utilisation de la prop `items` pilotée par données :
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Clé unique pour l'élément | `string` | - |
+| `label` | Libellé d'affichage | `ReactNode` | - |
+| `group` | Nom de groupe pour la catégorisation | `string` | - |
+| `keywords` | Mots-clés de recherche supplémentaires | `string[]` | - |
+| `disabled` | Désactiver l'élément | `boolean` | `false` |
+| `onSelect` | Callback lorsque l'élément est sélectionné | `() => void` | - |
+| `icon` | Élément d'icône à afficher | `ReactNode` | - |
+
+### Composants composés
+
+Pour plus de contrôle, utilisez des composants composés :
+
+| Composant | Description |
+|-----------|-------------|
+| `Command.List` | Conteneur pour les groupes et les éléments |
+| `Command.Group` | Grouper les éléments avec en-tête optionnel |
+| `Command.Item` | Élément de commande sélectionnable |
+| `Command.Empty` | Affiché lorsqu'aucun résultat ne correspond |
+| `Command.Page` | Page imbriquée pour la navigation |
+| `Command.Separator` | Séparateur visuel entre les sections |
+
+## Accessibilité
+
+- Utilise l'élément natif `<dialog>` pour le piégeage du focus et la gestion d'ESC
+- L'entrée de recherche a `role="combobox"` avec les attributs ARIA appropriés
+- La liste utilise `role="listbox"` avec des éléments `role="option"`
+- Navigation au clavier avec les touches fléchées, Entrée pour sélectionner, Échap pour fermer
+- `aria-activedescendant` suit l'élément surligné
+- Les groupes utilisent `role="group"` avec `aria-label`
+
+## Raccourcis clavier
+
+- `⌘K` / `Ctrl+K` - Ouvrir la palette de commandes (personnalisable)
+- `↑` `↓` - Naviguer dans les éléments
+- `Entrée` - Sélectionner l'élément surligné
+- `Échap` - Fermer la palette (ou revenir en arrière sur la page imbriquée)
+- `Retour arrière` - Revenir à la page précédente (lorsque la recherche est vide)

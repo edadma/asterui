@@ -1,0 +1,79 @@
+---
+title: Transfer
+description: Composant de transfert à deux colonnes pour déplacer des éléments entre des listes.
+tableOfContents: false
+---
+
+import {
+  BasicTransferDemo,
+  SearchTransferDemo,
+  CustomRenderTransferDemo,
+  DisabledItemsTransferDemo,
+  TitlesTransferDemo,
+} from '../../../../components/TransferDemo'
+import TransferDemoSource from '../../../../components/TransferDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de transfert à deux colonnes pour déplacer des éléments entre des listes.
+
+## Importation
+
+```tsx
+import { Transfer } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Transfer basique" description="Déplacez des éléments entre deux colonnes." source={TransferDemoSource} fn="BasicTransferDemo">
+  <BasicTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec recherche" description="Filtrez les éléments avec une entrée de recherche." source={TransferDemoSource} fn="SearchTransferDemo">
+  <SearchTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="Rendu personnalisé" description="Rendu d'élément personnalisé avec titre et description." source={TransferDemoSource} fn="CustomRenderTransferDemo">
+  <CustomRenderTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="Éléments désactivés" description="Certains éléments peuvent être désactivés." source={TransferDemoSource} fn="DisabledItemsTransferDemo">
+  <DisabledItemsTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="Titres personnalisés" description="Personnalisez les en-têtes de colonne." source={TransferDemoSource} fn="TitlesTransferDemo">
+  <TitlesTransferDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Transfer`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `dataSource` | Tableau de source de données | `TransferItem[]` | `[]` |
+| `targetKeys` | Clés des éléments dans la colonne de droite | `string[]` | `[]` |
+| `onChange` | Callback lorsque les éléments sont transférés | `(targetKeys: string[]) => void` | `-` |
+| `render` | Fonction de rendu personnalisée pour les éléments | `(item: TransferItem) => React.ReactNode` | `-` |
+| `showSearch` | Afficher l'entrée de recherche | `boolean` | `false` |
+| `titles` | Titres pour les colonnes de gauche et de droite | `[string, string]` | `['Source', 'Target']` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+### `TransferItem`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Identifiant unique | `string` | `-` |
+| `title` | Titre affiché | `string` | `-` |
+| `description` | Description facultative | `string` | `-` |
+| `disabled` | Si l'élément est désactivé | `boolean` | `false` |
+
+## Accessibilité
+
+- Utilise des entrées de case à cocher pour la sélection d'éléments
+- Navigation au clavier entre les éléments
+- Les boutons de transfert sont accessibles au clavier
+- Les éléments désactivés sont correctement annoncés

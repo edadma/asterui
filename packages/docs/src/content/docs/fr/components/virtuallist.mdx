@@ -1,0 +1,82 @@
+---
+title: VirtualList
+description: Rendu efficace de grandes listes en affichant uniquement les éléments visibles. Propulsé par @tanstack/react-virtual.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  StyledDemo,
+  GapDemo,
+  ScrollCallbackDemo,
+  VariableHeightDemo,
+} from '../../../../components/VirtualListDemo'
+import VirtualListDemoSource from '../../../../components/VirtualListDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Rendu efficace de grandes listes en affichant uniquement les éléments visibles. Propulsé par @tanstack/react-virtual.
+
+## Installation
+
+Ce composant nécessite `@tanstack/react-virtual` comme dépendance pair :
+
+```bash
+npm install @tanstack/react-virtual
+```
+
+## Importation
+
+```tsx
+import { VirtualList } from 'asterui/virtuallist'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Utilisation basique" description="Rendu efficace d'une liste de 10 000 éléments." source={VirtualListDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Liste stylisée" description="Avec style de carte et effets de survol." source={VirtualListDemoSource} fn="StyledDemo">
+  <StyledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec espacement" description="Éléments espacés avec un intervalle entre eux." source={VirtualListDemoSource} fn="GapDemo">
+  <GapDemo client:load slot="demo" />
+</Example>
+
+<Example title="Callback de défilement" description="Suivre la position de défilement pour le chargement infini ou l'analyse." source={VirtualListDemoSource} fn="ScrollCallbackDemo">
+  <ScrollCallbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hauteur variable (Chat)" description="Messages de chat de différentes longueurs utilisant le composant Chat." source={VirtualListDemoSource} fn="VariableHeightDemo">
+  <VariableHeightDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `VirtualList`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `items` | Tableau d'éléments à rendre | `T[]` | - |
+| `height` | Hauteur du conteneur défilable | `number \| string` | - |
+| `itemHeight` | Hauteur fixe, ou fonction retournant la hauteur estimée par élément pour les hauteurs variables | `number \| ((item: T, index: number) => number)` | - |
+| `renderItem` | Fonction de rendu pour chaque élément | `(item: T, index: number) => ReactNode` | - |
+| `overscan` | Nombre d'éléments à rendre en dehors de la zone visible | `number` | `5` |
+| `gap` | Espacement entre les éléments en pixels | `number` | `0` |
+| `width` | Largeur du conteneur | `number \| string` | - |
+| `className` | Classe supplémentaire pour le conteneur de défilement | `string` | - |
+| `innerClassName` | Classe supplémentaire pour le conteneur interne | `string` | - |
+| `itemClassName` | Classe supplémentaire pour chaque wrapper d'élément | `string` | - |
+| `onScroll` | Callback lorsque la position de défilement change | `(scrollTop: number) => void` | - |
+
+## Conseils de performance
+
+- Utilisez une `itemHeight` fixe lorsque c'est possible pour de meilleures performances
+- Mémorisez votre fonction `renderItem` si elle est coûteuse
+- Augmentez `overscan` si vous constatez un scintillement lors d'un défilement rapide
+- Gardez les composants d'éléments simples - évitez les calculs lourds dans le rendu

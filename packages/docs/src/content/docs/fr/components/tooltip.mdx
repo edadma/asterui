@@ -1,0 +1,64 @@
+---
+title: Info-bulle
+description: Afficher des informations supplémentaires au survol.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PositionsDemo,
+  ColorsDemo,
+  OpenStateDemo,
+} from '../../../../components/TooltipDemo'
+import TooltipDemoSource from '../../../../components/TooltipDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Afficher des informations supplémentaires au survol.
+
+## Importation
+
+```tsx
+import { Tooltip } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Info-bulle de base" description="Info-bulle simple qui apparaît au survol." source={TooltipDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Positions" description="Les info-bulles peuvent apparaître à différentes positions." source={TooltipDemoSource} fn="PositionsDemo">
+  <PositionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs" description="Variantes de couleurs pour différents contextes." source={TooltipDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Toujours ouverte" description="Forcer l'info-bulle à rester visible." source={TooltipDemoSource} fn="OpenStateDemo">
+  <OpenStateDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tooltip`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `tip` | Contenu texte de l'info-bulle | `string` | `-` |
+| `position` | Position de l'info-bulle | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` |
+| `color` | Couleur de l'info-bulle | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `open` | Forcer l'info-bulle à être visible | `boolean` | `false` |
+| `children` | Élément qui déclenche l'info-bulle | `React.ReactNode` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+## Accessibilité
+
+- Le contenu de l'info-bulle est exposé via aria-describedby
+- Les info-bulles apparaissent au focus ainsi qu'au survol
+- Contraste de couleur suffisant dans toutes les variantes de couleurs
+- Les touches fléchées peuvent être utilisées lorsque l'info-bulle contient des éléments pouvant recevoir le focus

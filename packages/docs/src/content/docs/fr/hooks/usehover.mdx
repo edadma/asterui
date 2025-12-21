@@ -1,0 +1,36 @@
+---
+title: useHover
+description: Hook qui suit l'état de survol d'un élément.
+---
+
+Suit si la souris survole un élément.
+
+## Import
+
+```tsx
+import { useHover } from 'asterui'
+```
+
+## Utilisation
+
+```tsx
+function HoverExample() {
+  const { ref, isHovered } = useHover<HTMLDivElement>()
+
+  return (
+    <div
+      ref={ref}
+      className={isHovered ? 'bg-blue-500' : 'bg-gray-500'}
+    >
+      {isHovered ? 'En survol !' : 'Survolez-moi'}
+    </div>
+  )
+}
+```
+
+## Valeur de retour
+
+| Propriété | Type | Description |
+|----------|------|-------------|
+| `ref` | `RefObject<T>` | Ref à attacher à l'élément |
+| `isHovered` | `boolean` | Vrai quand la souris est sur l'élément |

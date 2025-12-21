@@ -1,0 +1,65 @@
+---
+title: Masonry
+description: Mise en page en maçonnerie de style Pinterest pour afficher des éléments de hauteurs variables dans une grille organisée.
+tableOfContents: false
+---
+
+import {
+  DynamicMasonryDemo,
+  BasicMasonryDemo,
+  ResponsiveMasonryDemo,
+  CustomGapDemo,
+} from '../../../../components/MasonryDemo'
+import MasonryDemoSource from '../../../../components/MasonryDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Mise en page en maçonnerie de style Pinterest pour afficher des éléments de hauteurs variables dans une grille organisée.
+
+## Import
+
+```tsx
+import { Masonry } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Éléments dynamiques" description="Ajoutez et supprimez des éléments dynamiquement. Les nouveaux éléments sont placés dans la colonne la plus courte." source={MasonryDemoSource} fn="DynamicMasonryDemo">
+  <DynamicMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="Maçonnerie basique" description="Grille de maçonnerie simple avec éléments de hauteur variable." source={MasonryDemoSource} fn="BasicMasonryDemo">
+  <BasicMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colonnes réactives" description="Nombre de colonnes réactif à différents points de rupture." source={MasonryDemoSource} fn="ResponsiveMasonryDemo">
+  <ResponsiveMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="Espacement personnalisé" description="Différentes tailles d'espacement entre les éléments." source={MasonryDemoSource} fn="CustomGapDemo">
+  <CustomGapDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Masonry`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `columns` | Nombre de colonnes ou configuration de colonnes réactive | `number \| { xs?: number, sm?: number, md?: number, lg?: number, xl?: number, '2xl'?: number }` | `3` |
+| `gap` | Espacement entre les éléments en pixels | `number` | `16` |
+| `children` | Éléments à afficher dans la mise en page en maçonnerie | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Notes d'utilisation
+
+- Le composant Masonry crée une mise en page de style Pinterest où les éléments sont disposés en colonnes
+- Les éléments s'écoulent dans la colonne la plus courte pour créer une mise en page équilibrée
+- Utilisez la prop `columns` pour définir un nombre fixe de colonnes ou le rendre réactif
+- La prop `gap` contrôle l'espacement entre les éléments en pixels
+- Points de rupture réactifs : xs (&lt;640px), sm (≥640px), md (≥768px), lg (≥1024px), xl (≥1280px), 2xl (≥1536px)
+- Les éléments peuvent avoir des hauteurs variables - la mise en page les distribuera automatiquement de manière efficace
+- Idéal pour les galeries d'images, les grilles de produits et les cartes de contenu

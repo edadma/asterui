@@ -1,0 +1,56 @@
+---
+title: HoverGallery
+description: Révélez plusieurs images en survolant horizontalement. Idéal pour les galeries de produits.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ProductCardDemo,
+  TwoImagesDemo,
+} from '../../../../components/HoverGalleryDemo'
+import HoverGalleryDemoSource from '../../../../components/HoverGalleryDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Révélez plusieurs images en survolant horizontalement. Idéal pour les galeries de produits.
+
+## Import
+
+```tsx
+import { HoverGallery } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Galerie basique" description="Survolez horizontalement pour révéler différentes images." source={HoverGalleryDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Carte produit" description="Parfait pour l'affichage de produits e-commerce." source={HoverGalleryDemoSource} fn="ProductCardDemo">
+  <ProductCardDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deux images" description="Comparaison simple avant/après ou recto/verso." source={HoverGalleryDemoSource} fn="TwoImagesDemo">
+  <TwoImagesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `HoverGallery`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `images` | Tableau d'URLs d'images (2-10 images) | `string[]` | - |
+| `alts` | Texte alternatif pour chaque image | `string[]` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Notes
+
+- Prend en charge jusqu'à 10 images
+- La première image est visible par défaut
+- CSS pur - aucun JavaScript requis pour l'effet de survol
+- Fonctionne mieux avec des images du même rapport d'aspect

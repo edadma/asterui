@@ -1,0 +1,117 @@
+---
+title: ConfigProvider
+description: Fournisseur de configuration globale pour les paramètres régionaux, la taille des composants, la direction et d'autres paramètres.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizeDemo,
+  LocaleDemo,
+  DirectionDemo,
+  NestedDemo,
+} from '../../../../components/ConfigProviderDemo'
+import ConfigProviderDemoSource from '../../../../components/ConfigProviderDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Fournisseur de configuration globale pour les paramètres régionaux, la taille des composants, la direction et d'autres paramètres.
+
+## Import
+
+```tsx
+import { ConfigProvider } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Utilisation de base" description="Définir la taille de composant globale pour tous les composants enfants." source={ConfigProviderDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Taille de composant" description="Basculer entre les tailles petite, moyenne et grande globalement." source={ConfigProviderDemoSource} fn="SizeDemo">
+  <SizeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Paramètres régionaux" description="Personnaliser les chaînes de paramètres régionaux pour l'internationalisation." source={ConfigProviderDemoSource} fn="LocaleDemo">
+  <LocaleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Direction" description="Support des mises en page LTR et RTL." source={ConfigProviderDemoSource} fn="DirectionDemo">
+  <DirectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Fournisseurs imbriqués" description="Les ConfigProviders imbriqués héritent et remplacent les paramètres parents." source={ConfigProviderDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ConfigProvider`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `locale` | Objet de configuration des paramètres régionaux | `Locale` | `enUS` |
+| `componentSize` | Taille par défaut pour tous les composants | `'small' \| 'middle' \| 'large'` | `'middle'` |
+| `direction` | Direction de mise en page | `'ltr' \| 'rtl'` | `'ltr'` |
+| `prefixCls` | Préfixe pour les classes CSS | `string` | - |
+| `getPopupContainer` | Conteneur par défaut pour les portails (modales, menus déroulants) | `(triggerNode?: HTMLElement) => HTMLElement` | - |
+| `children` | Composants enfants | `React.ReactNode` | - |
+
+## Paramètres régionaux disponibles
+
+Importer les paramètres régionaux depuis `asterui/locale` :
+
+```tsx
+import { zhCN, jaJP, koKR, deDE, frFR, esES, ptBR, enGB, enCA } from 'asterui/locale'
+```
+
+| Paramètres régionaux | Langue |
+|--------|----------|
+| `enUS` | Anglais (États-Unis) - par défaut |
+| `enGB` | Anglais (Royaume-Uni) |
+| `enCA` | Anglais (Canada) |
+| `zhCN` | Chinois (simplifié) |
+| `jaJP` | Japonais |
+| `koKR` | Coréen |
+| `deDE` | Allemand |
+| `frFR` | Français |
+| `esES` | Espagnol |
+| `ptBR` | Portugais (Brésil) |
+
+## Hooks
+
+### `useConfig`
+
+Accéder aux valeurs de configuration actuelles :
+
+```tsx
+import { useConfig } from 'asterui'
+
+function MyComponent() {
+  const { locale, componentSize, direction } = useConfig()
+  // ...
+}
+```
+
+### `useLocale`
+
+Accéder aux paramètres régionaux actuels :
+
+```tsx
+import { useLocale } from 'asterui'
+
+function MyComponent() {
+  const locale = useLocale()
+  // ...
+}
+```
+
+## Accessibilité
+
+- Utilisez `direction="rtl"` pour les langues de droite à gauche comme l'arabe et l'hébreu
+- Les paramètres régionaux affectent le texte du lecteur d'écran dans les composants comme Empty, Pagination, etc.
+- Les fournisseurs imbriqués permettent à différentes régions de votre application d'avoir des configurations différentes

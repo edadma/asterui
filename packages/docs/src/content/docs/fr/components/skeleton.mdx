@@ -1,0 +1,84 @@
+---
+title: Skeleton
+description: Espaces réservés de chargement animés pour le contenu.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CircleDemo,
+  TextDemo,
+  DimensionsDemo,
+  AvatarTextDemo,
+  CardDemo,
+  ListDemo,
+  ComplexDemo,
+} from '../../../../components/SkeletonDemo'
+import SkeletonDemoSource from '../../../../components/SkeletonDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Espaces réservés de chargement animés pour le contenu.
+
+## Import
+
+```tsx
+import { Skeleton } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Basique" description="Formes de squelette simples avec différentes dimensions." source={SkeletonDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cercle" description="Squelette circulaire pour les avatars." source={SkeletonDemoSource} fn="CircleDemo">
+  <CircleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variante texte" description="Squelette qui anime la couleur du texte au lieu de l'arrière-plan." source={SkeletonDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Propriétés de largeur et hauteur" description="Utilisez les propriétés width et height pour un dimensionnement précis." source={SkeletonDemoSource} fn="DimensionsDemo">
+  <DimensionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avatar avec texte" description="Modèle courant pour les profils utilisateur." source={SkeletonDemoSource} fn="AvatarTextDemo">
+  <AvatarTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Squelette de carte" description="Espace réservé de chargement pour le contenu de carte." source={SkeletonDemoSource} fn="CardDemo">
+  <CardDemo client:load slot="demo" />
+</Example>
+
+<Example title="Squelette de liste" description="Espace réservé de chargement pour les éléments de liste." source={SkeletonDemoSource} fn="ListDemo">
+  <ListDemo client:load slot="demo" />
+</Example>
+
+<Example title="Disposition complexe" description="Squelette pour des dispositions de contenu plus complexes." source={SkeletonDemoSource} fn="ComplexDemo">
+  <ComplexDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Skeleton`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `width` | Largeur en pixels ou chaîne CSS | `string \| number` | - |
+| `height` | Hauteur en pixels ou chaîne CSS | `string \| number` | - |
+| `circle` | Rendre le squelette circulaire | `boolean` | `false` |
+| `variant` | Variante de squelette | `'default' \| 'text'` | `'default'` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `children` | Contenu (pour la variante texte) | `React.ReactNode` | - |
+
+## Accessibilité
+
+- Le squelette est masqué des lecteurs d'écran par défaut
+- Utilisez avec des états de chargement pour informer les utilisateurs que le contenu se charge
+- Faites correspondre les formes de squelette à la disposition du contenu réel
+- Combinez avec les régions ARIA live pour les annonces de chargement

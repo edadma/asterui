@@ -1,0 +1,92 @@
+---
+title: List
+description: Affichez une liste d'éléments avec support de la pagination et des états de chargement.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithAvatarDemo,
+  LoadingDemo,
+  PaginationDemo,
+} from '../../../../components/ListDemo'
+import ListDemoSource from '../../../../components/ListDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Affichez une liste d'éléments avec support de la pagination et des états de chargement.
+
+## Import
+
+```tsx
+import { List } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Liste basique" description="Liste simple avec éléments." source={ListDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec avatar" description="Éléments de liste avec avatars et descriptions." source={ListDemoSource} fn="WithAvatarDemo">
+  <WithAvatarDemo client:load slot="demo" />
+</Example>
+
+<Example title="État de chargement" description="Liste en état de chargement avec squelette." source={ListDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec pagination" description="Liste avec contrôles de pagination." source={ListDemoSource} fn="PaginationDemo">
+  <PaginationDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `List`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `dataSource` | Tableau d'éléments de données à rendre | `T[]` | - |
+| `renderItem` | Fonction pour rendre chaque élément | `(item: T, index: number) => React.ReactNode` | - |
+| `header` | Contenu de l'en-tête de liste | `React.ReactNode` | - |
+| `footer` | Contenu du pied de page de liste | `React.ReactNode` | - |
+| `loading` | Indique si la liste est en état de chargement | `boolean` | `false` |
+| `pagination` | Configuration de pagination | `ListPaginationConfig \| false` | `false` |
+| `grid` | Configuration de mise en page en grille | `ListGridConfig` | - |
+| `bordered` | Afficher la bordure autour de la liste | `boolean` | `true` |
+| `split` | Afficher le diviseur entre les éléments | `boolean` | `true` |
+| `size` | Variante de taille | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `itemLayout` | Direction de mise en page pour les éléments | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `locale` | Texte d'internationalisation | `{ emptyText?: React.ReactNode }` | - |
+| `loadMore` | Contenu de chargement supplémentaire (par ex., bouton) | `React.ReactNode` | - |
+| `rowKey` | Extraction de clé personnalisée pour les éléments | `keyof T \| ((item: T) => React.Key)` | - |
+| `data-testid` | ID de test pour le composant | `string` | `'list'` |
+| `aria-label` | Étiquette accessible pour la liste | `string` | - |
+
+### `List.Item`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu de l'élément | `React.ReactNode` | - |
+| `actions` | Boutons d'action affichés à droite | `React.ReactNode[]` | - |
+| `extra` | Contenu supplémentaire sur le côté droit | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `List.Item.Meta`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `avatar` | Élément avatar ou icône | `React.ReactNode` | - |
+| `title` | Contenu du titre | `React.ReactNode` | - |
+| `description` | Contenu de la description | `React.ReactNode` | - |
+
+## Accessibilité
+
+- Utilisez `aria-label` pour fournir un contexte pour la liste
+- Les éléments de liste sont rendus dans des éléments sémantiques `<ul>` ou `<ol>`
+- L'état de chargement est communiqué aux lecteurs d'écran
+- Les contrôles de pagination sont accessibles au clavier
+- Le contenu de l'état vide est correctement annoncé

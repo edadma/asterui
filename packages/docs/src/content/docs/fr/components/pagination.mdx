@@ -1,0 +1,98 @@
+---
+title: Pagination
+description: Naviguer à travers les pages de données avec des contrôles personnalisables.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizeChangerDemo,
+  ShowTotalDemo,
+  CustomTotalDemo,
+  QuickJumperDemo,
+  AllFeaturesDemo,
+  SimpleDemo,
+  SizesDemo,
+  DisabledDemo,
+} from '../../../../components/PaginationDemo'
+import PaginationDemoSource from '../../../../components/PaginationDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Naviguer à travers les pages de données avec des contrôles personnalisables.
+
+## Import
+
+```tsx
+import { Pagination } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Pagination de base" description="Pagination simple avec numéros de page." source={PaginationDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec changeur de taille" description="Permettre aux utilisateurs de modifier la taille de la page." source={PaginationDemoSource} fn="SizeChangerDemo">
+  <SizeChangerDemo client:load slot="demo" />
+</Example>
+
+<Example title="Afficher le total" description="Afficher le nombre total d'éléments." source={PaginationDemoSource} fn="ShowTotalDemo">
+  <ShowTotalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Total personnalisé" description="Rendu personnalisé du nombre total." source={PaginationDemoSource} fn="CustomTotalDemo">
+  <CustomTotalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Saut rapide" description="Permettre aux utilisateurs de sauter à une page spécifique." source={PaginationDemoSource} fn="QuickJumperDemo">
+  <QuickJumperDemo client:load slot="demo" />
+</Example>
+
+<Example title="Toutes les fonctionnalités" description="Pagination avec toutes les fonctionnalités activées." source={PaginationDemoSource} fn="AllFeaturesDemo">
+  <AllFeaturesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mode simple" description="Pagination minimale avec uniquement les contrôles précédent/suivant." source={PaginationDemoSource} fn="SimpleDemo">
+  <SimpleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Différentes tailles pour les contrôles de pagination." source={PaginationDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Désactivé" description="État désactivé pour la pagination." source={PaginationDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Pagination`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `current` | Numéro de page actuel (contrôlé) | `number` | - |
+| `defaultCurrent` | Numéro de page initial par défaut | `number` | `1` |
+| `total` | Nombre total d'éléments | `number` | - |
+| `pageSize` | Nombre d'éléments par page (contrôlé) | `number` | - |
+| `defaultPageSize` | Nombre par défaut d'éléments par page | `number` | `10` |
+| `pageSizeOptions` | Options pour le sélecteur de taille de page | `number[]` | `[10, 20, 50, 100]` |
+| `onChange` | Rappel lorsque la page ou pageSize change | `(page: number, pageSize: number) => void` | - |
+| `onShowSizeChange` | Rappel lorsque pageSize change | `(current: number, size: number) => void` | - |
+| `showSizeChanger` | Afficher le sélecteur de taille de page | `boolean` | `false` |
+| `showQuickJumper` | Afficher l'input de saut rapide vers une page | `boolean` | `false` |
+| `showTotal` | Afficher le nombre total ou fonction de rendu personnalisée | `boolean \| ((total: number, range: [number, number]) => ReactNode)` | `false` |
+| `simple` | Mode simple avec contrôles minimaux | `boolean` | `false` |
+| `size` | Taille des boutons de pagination | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `disabled` | Désactiver tous les contrôles de pagination | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise l'élément `nav` avec `aria-label="Pagination"`
+- La page actuelle est marquée avec `aria-current="page"`
+- Les boutons désactivés ont un état `aria-disabled` approprié
+- L'input de saut rapide a une étiquette accessible

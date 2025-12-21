@@ -1,0 +1,128 @@
+---
+title: Layout
+description: Composants structurels pour construire des mises en page d'application avec en-tête, pied de page, barre latérale et zones de contenu.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithSiderDemo,
+  SiderRightDemo,
+  CollapsibleDemo,
+  MenuNavigationDemo,
+  SubmenuDemo,
+} from '../../../../components/LayoutDemo'
+import LayoutDemoSource from '../../../../components/LayoutDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composants structurels pour construire des mises en page d'application avec en-tête, pied de page, barre latérale et zones de contenu.
+
+## Import
+
+```tsx
+import { Layout, Menu } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Mise en page basique" description="Mise en page simple avec en-tête, contenu et pied de page." source={LayoutDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mise en page avec Sider et Menu" description="Mise en page avec navigation latérale utilisant le composant Menu." source={LayoutDemoSource} fn="WithSiderDemo">
+  <WithSiderDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sider à droite" description="Mise en page avec barre latérale à droite utilisant reverseArrow." source={LayoutDemoSource} fn="SiderRightDemo">
+  <SiderRightDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sider pliable" description="Sider avec fonctionnalité de réduction/expansion et déclencheur intégré." source={LayoutDemoSource} fn="CollapsibleDemo">
+  <CollapsibleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Navigation par menu" description="Sider interactif avec Menu qui change le contenu lorsque des éléments sont sélectionnés." source={LayoutDemoSource} fn="MenuNavigationDemo">
+  <MenuNavigationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Menu en ligne avec sous-menus" description="Mise en page avec sous-menus imbriqués utilisant le mode en ligne pour la navigation extensible." source={LayoutDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Layout`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu de la mise en page (Header, Sider, Content, Footer) | `React.ReactNode` | - |
+| `hasSider` | Indique si contient un Sider (détecté automatiquement si non spécifié) | `boolean` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `style` | Styles en ligne | `React.CSSProperties` | - |
+| `data-testid` | ID de test pour les tests | `string` | - |
+
+### `Layout.Header`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu de l'en-tête | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `style` | Styles en ligne | `React.CSSProperties` | - |
+| `data-testid` | ID de test pour les tests | `string` | - |
+
+### `Layout.Footer`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu du pied de page | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `style` | Styles en ligne | `React.CSSProperties` | - |
+| `data-testid` | ID de test pour les tests | `string` | - |
+
+### `Layout.Sider`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu du Sider | `React.ReactNode` | - |
+| `width` | Largeur du sider | `number \| string` | `200` |
+| `collapsedWidth` | Largeur lorsque réduit | `number \| string` | `80` |
+| `collapsed` | État réduit contrôlé | `boolean` | - |
+| `defaultCollapsed` | État réduit initial | `boolean` | `false` |
+| `collapsible` | Indique si le sider peut être réduit | `boolean` | `false` |
+| `onCollapse` | Callback lorsque l'état de réduction change | `(collapsed: boolean, type: 'clickTrigger' \| 'responsive') => void` | - |
+| `trigger` | Élément de déclenchement personnalisé (null pour masquer) | `React.ReactNode \| null` | - |
+| `breakpoint` | Point de rupture pour la réduction automatique | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | - |
+| `onBreakpoint` | Callback lorsque le point de rupture est franchi | `(broken: boolean) => void` | - |
+| `reverseArrow` | Inverser la direction de la flèche (pour sider côté droit) | `boolean` | `false` |
+| `theme` | Thème de couleur du sider | `'light' \| 'dark'` | `'dark'` |
+| `zeroWidthTriggerStyle` | Style pour le déclencheur de largeur zéro | `React.CSSProperties` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `style` | Styles en ligne | `React.CSSProperties` | - |
+| `data-testid` | ID de test pour les tests ; le déclencheur utilise le suffixe `{id}-trigger` | `string` | - |
+
+### `Layout.Content`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu de la zone de contenu | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `style` | Styles en ligne | `React.CSSProperties` | - |
+| `data-testid` | ID de test pour les tests | `string` | - |
+
+## Accessibilité
+
+- Les composants Layout fournissent une structure sémantique pour votre application
+- Utilisez `Layout.Header` pour la zone de navigation supérieure ou de marque
+- Utilisez `Layout.Footer` pour le contenu du pied de page inférieur
+- Utilisez `Layout.Sider` pour la navigation latérale ou le contenu auxiliaire
+- Utilisez `Layout.Content` pour la zone de contenu principale
+- Le Layout détecte automatiquement les composants Sider et s'ajuste à une mise en page horizontale
+- Les mises en page peuvent être imbriquées pour créer des structures de page complexes
+- Utilisez la prop `collapsible` sur Sider pour une navigation réactive
+- Utilisez `reverseArrow` pour les siders côté droit
+- Combinez avec le composant `Menu` pour la navigation avec des éléments sélectionnables
+- Tous les composants transfèrent les refs et prennent en charge `data-testid` pour les tests

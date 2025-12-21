@@ -1,0 +1,66 @@
+---
+title: Message
+description: Messages de retour légers affichés en haut au centre de l'écran
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  LoadingDemo,
+  DurationDemo,
+  StackingDemo,
+} from '../../../../components/MessageDemo'
+import MessageDemoSource from '../../../../components/MessageDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Messages de retour légers affichés en haut au centre de l'écran.
+
+## Import
+
+```tsx
+import { message } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Messages de base" description="Messages de retour légers pour les actions de l'utilisateur." source={MessageDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Message de chargement" description="Afficher un message de chargement qui peut être fermé de manière programmatique." source={MessageDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Durée personnalisée" description="Contrôler la durée d'affichage des messages." source={MessageDemoSource} fn="DurationDemo">
+  <DurationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Empilement de messages" description="Plusieurs messages s'empilent en haut au centre de l'écran." source={MessageDemoSource} fn="StackingDemo">
+  <StackingDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### Options du message
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `content` | Texte du message (premier argument) | `React.ReactNode` | - |
+| `duration` | Durée de fermeture automatique en secondes | `number` | `3` |
+| `key` | Identifiant unique. La mise à jour avec la même clé met à jour le message existant | `string` | - |
+| `icon` | Icône personnalisée à afficher | `React.ReactNode` | - |
+| `className` | Classe CSS supplémentaire | `string` | - |
+| `style` | Styles en ligne | `React.CSSProperties` | - |
+| `data-testid` | ID de test pour les frameworks de test | `string` | - |
+| `onClick` | Rappel lorsque le message est cliqué | `() => void` | - |
+| `onClose` | Rappel lorsque le message est fermé | `() => void` | - |
+
+## Accessibilité
+
+- Les messages sont annoncés aux lecteurs d'écran via des régions actives
+- Les icônes fournissent des indices visuels en plus de la couleur pour le type de message
+- Les messages se ferment automatiquement mais peuvent être configurés pour persister

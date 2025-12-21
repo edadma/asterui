@@ -1,0 +1,64 @@
+---
+title: Fieldset
+description: Regrouper les contrôles de formulaire associés avec une légende optionnelle et un état désactivé.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithInputsDemo,
+  DisabledDemo,
+} from '../../../../components/FieldsetDemo'
+import FieldsetDemoSource from '../../../../components/FieldsetDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Regrouper les contrôles de formulaire associés avec une légende optionnelle et un état désactivé.
+
+## Importation
+
+```tsx
+import { Fieldset } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Fieldset de base" description="Simple fieldset avec légende." source={FieldsetDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec champs de formulaire" description="Fieldset contenant des champs de formulaire avec étiquettes." source={FieldsetDemoSource} fn="WithInputsDemo">
+  <WithInputsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Fieldset désactivé" description="Tous les contrôles de formulaire à l'intérieur sont désactivés." source={FieldsetDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Fieldset`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu du fieldset | `React.ReactNode` | - |
+| `disabled` | Désactive tous les contrôles de formulaire à l'intérieur | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `Fieldset.Legend`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Texte ou contenu de la légende | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `Fieldset.Label`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Texte ou contenu de l'étiquette | `React.ReactNode` | - |
+| `htmlFor` | ID de l'élément de formulaire auquel l'étiquette est associée | `string` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |

@@ -1,0 +1,71 @@
+---
+title: Image
+description: Affichez des images avec prévisualisation et support de repli.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  PreviewDemo,
+  FallbackDemo,
+} from '../../../../components/ImageDemo'
+import ImageDemoSource from '../../../../components/ImageDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Affichez des images avec prévisualisation et support de repli.
+
+## Import
+
+```tsx
+import { Image } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Image basique" description="Affichage d'image simple avec les props src et alt." source={ImageDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Différentes tailles" description="Images avec différentes dimensions." source={ImageDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Prévisualisation d'image" description="Cliquez sur l'image pour la prévisualiser en taille réelle." source={ImageDemoSource} fn="PreviewDemo">
+  <PreviewDemo client:load slot="demo" />
+</Example>
+
+<Example title="Image de repli" description="Affichez une image de repli lorsque la source ne parvient pas à se charger." source={ImageDemoSource} fn="FallbackDemo">
+  <FallbackDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Image`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `src` | URL de la source de l'image | `string` | - |
+| `alt` | Texte alternatif pour l'image | `string` | `''` |
+| `width` | Largeur de l'image | `number \| string` | - |
+| `height` | Hauteur de l'image | `number \| string` | - |
+| `preview` | Activer le clic pour prévisualiser l'image dans une lightbox | `boolean` | `true` |
+| `fallback` | URL de l'image de repli lorsque la source échoue | `string` | - |
+| `placeholder` | Contenu d'espace réservé affiché pendant le chargement | `React.ReactNode` | - |
+| `onLoad` | Callback lorsque l'image se charge avec succès | `() => void` | - |
+| `onError` | Callback lorsque l'image échoue à se charger | `() => void` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `style` | Styles en ligne | `React.CSSProperties` | - |
+
+## Accessibilité
+
+- Fournissez toujours un texte `alt` significatif pour les lecteurs d'écran
+- Utilisez des images de repli pour garantir que le contenu est toujours visible
+- La prévisualisation est accessible au clavier : appuyez sur Entrée ou Espace pour ouvrir, Échap pour fermer
+- Les images prévisualisables ont `role="button"` avec un aria-label approprié
+- La modale de prévisualisation a `role="dialog"` et `aria-modal="true"`
+- L'état d'erreur inclut un aria-label décrivant l'échec

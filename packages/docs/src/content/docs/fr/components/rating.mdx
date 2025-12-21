@@ -1,0 +1,120 @@
+---
+title: Rating
+description: Notations par étoiles pour les retours utilisateurs et les avis.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ClearableDemo,
+  SizesDemo,
+  HalfDemo,
+  HeartDemo,
+  CustomColorsDemo,
+  DisabledDemo,
+  CountDemo,
+  ControlledDemo,
+  AltStarDemo,
+  FormDemo,
+} from '../../../../components/RatingDemo'
+import RatingDemoSource from '../../../../components/RatingDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Notations par étoiles pour les retours utilisateurs et les avis.
+
+## Import
+
+```tsx
+import { Rating } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Notation basique" description="Simple notation 5 étoiles sans configuration nécessaire." source={RatingDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Effaçable" description="Cliquez à nouveau sur la même étoile pour effacer la notation." source={RatingDemoSource} fn="ClearableDemo">
+  <ClearableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Différentes tailles" description="Notation dans diverses tailles." source={RatingDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Demi-étoile" description="Autorisez une précision de demi-étoile." source={RatingDemoSource} fn="HalfDemo">
+  <HalfDemo client:load slot="demo" />
+</Example>
+
+<Example title="Forme de coeur" description="Notation avec icônes en forme de coeur." source={RatingDemoSource} fn="HeartDemo">
+  <HeartDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs personnalisées" description="Différentes couleurs pour chaque niveau de notation en utilisant Rating.Item." source={RatingDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Désactivé" description="Afficher la notation sans interaction." source={RatingDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Nombre personnalisé" description="Spécifiez un nombre différent d'étoiles." source={RatingDemoSource} fn="CountDemo">
+  <CountDemo client:load slot="demo" />
+</Example>
+
+<Example title="Notation contrôlée" description="Contrôlez la valeur de notation de manière externe." source={RatingDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Étoile alternative" description="Style d'étoile différent." source={RatingDemoSource} fn="AltStarDemo">
+  <AltStarDemo client:load slot="demo" />
+</Example>
+
+<Example title="Intégration de formulaire" description="La notation fonctionne avec la validation de formulaire." source={RatingDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Rating`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Composants Rating.Item personnalisés (optionnel) | `React.ReactNode` | - |
+| `value` | Valeur de notation contrôlée | `number` | - |
+| `defaultValue` | Valeur de notation par défaut (non contrôlée) | `number` | `0` |
+| `onChange` | Callback lorsque la notation change | `(value: number) => void` | - |
+| `onHoverChange` | Callback lorsque la valeur de survol change | `(value: number) => void` | - |
+| `count` | Nombre d'étoiles | `number` | `5` |
+| `size` | Taille de notation | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `gap` | Espace entre les étoiles | `'none' \| 'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Classe de couleur d'arrière-plan Tailwind | `string` | `'bg-warning'` |
+| `mask` | Forme des icônes de notation | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `allowClear` | Permettre d'effacer la notation en cliquant sur la même valeur | `boolean` | `true` |
+| `allowHalf` | Permettre la sélection de demi-étoiles | `boolean` | `false` |
+| `disabled` | État désactivé (non interactif) | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `Rating.Item`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Valeur de notation que cet élément représente | `number` | - |
+| `mask` | Forme de l'icône de notation | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `color` | Classe de couleur d'arrière-plan Tailwind | `string` | `'bg-warning'` |
+| `hidden` | Élément masqué pour effacer la notation | `boolean` | `false` |
+| `half` | Position de demi-étoile | `'first' \| 'second'` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise `role="radiogroup"` pour une sémantique appropriée
+- Utilise le pattern des boutons radio pour la sélection de notation
+- Chaque étoile a un `aria-label` décrivant sa valeur
+- Navigation au clavier entre les options de notation
+- L'aperçu au survol affiche un retour visuel avant la sélection
+- L'état désactivé empêche l'interaction tout en affichant la valeur

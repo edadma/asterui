@@ -1,0 +1,46 @@
+---
+title: Container
+description: Conteneur de contenu centré avec largeur maximale configurable pour les mises en page de page.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PageLayoutDemo,
+} from '../../../../components/ContainerDemo'
+import ContainerDemoSource from '../../../../components/ContainerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Conteneur de contenu centré avec largeur maximale configurable pour les mises en page de page.
+
+## Import
+
+```tsx
+import { Container } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Utilisation de base" description="Le Container fournit un contenu centré avec largeur maximale et marge intérieure responsive." source={ContainerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mise en page de page" description="Utilisation typique pour le contenu de page." source={ContainerDemoSource} fn="PageLayoutDemo">
+  <PageLayoutDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Container`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu du conteneur | `React.ReactNode` | - |
+| `size` | Taille de largeur maximale | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| 'full'` | `'xl'` |
+| `centered` | Centrer le conteneur horizontalement | `boolean` | `true` |
+| `padding` | Ajouter une marge intérieure horizontale | `boolean` | `true` |
+| `className` | Classes CSS supplémentaires | `string` | - |

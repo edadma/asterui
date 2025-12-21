@@ -1,0 +1,147 @@
+---
+title: Autocomplete
+description: Rechercher et sélectionner parmi une liste d'options avec navigation au clavier et filtrage.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ObjectsDemo,
+  ControlledDemo,
+  AllowClearDemo,
+  NoCustomDemo,
+  FilterDemo,
+  SizesDemo,
+  ColorsDemo,
+  StatusDemo,
+  DisabledDemo,
+  DisabledOptionsDemo,
+  NotFoundDemo,
+  EmailDemo,
+  FormDemo,
+} from '../../../../components/AutocompleteDemo'
+import AutocompleteDemoSource from '../../../../components/AutocompleteDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Rechercher et sélectionner parmi une liste d'options avec navigation au clavier et filtrage.
+
+## Importation
+
+```tsx
+import { Autocomplete } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Autocomplete basique" description="Autocomplete simple avec options de tableau de chaînes." source={AutocompleteDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec options objets" description="Autocomplete avec options objets valeur/libellé." source={AutocompleteDemoSource} fn="ObjectsDemo">
+  <ObjectsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contrôlé" description="Autocomplete contrôlé avec gestion d'état." source={AutocompleteDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Autoriser l'effacement" description="Autocomplete avec bouton d'effacement." source={AutocompleteDemoSource} fn="AllowClearDemo">
+  <AllowClearDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pas de valeurs personnalisées" description="Autocomplete qui autorise uniquement la sélection parmi les options." source={AutocompleteDemoSource} fn="NoCustomDemo">
+  <NoCustomDemo client:load slot="demo" />
+</Example>
+
+<Example title="Filtre personnalisé" description="Autocomplete avec logique de filtrage personnalisée (commence par)." source={AutocompleteDemoSource} fn="FilterDemo">
+  <FilterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Différentes tailles" description="Autocomplete en différentes tailles." source={AutocompleteDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs" description="Différentes variantes de couleurs." source={AutocompleteDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Statut de validation" description="Autocomplete avec statut de validation pour le retour de formulaire." source={AutocompleteDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Désactivé" description="Autocomplete désactivé." source={AutocompleteDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Options désactivées" description="Les options individuelles peuvent être désactivées." source={AutocompleteDemoSource} fn="DisabledOptionsDemo">
+  <DisabledOptionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenu personnalisé introuvable" description="Autocomplete avec message personnalisé en cas d'absence de résultats." source={AutocompleteDemoSource} fn="NotFoundDemo">
+  <NotFoundDemo client:load slot="demo" />
+</Example>
+
+<Example title="Autocomplete de domaine email" description="Exemple pratique avec suggestions de domaines email." source={AutocompleteDemoSource} fn="EmailDemo">
+  <EmailDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dans un formulaire" description="Autocomplete intégré au composant Form." source={AutocompleteDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Autocomplete`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Valeur contrôlée | `string` | - |
+| `defaultValue` | Valeur par défaut (non contrôlée) | `string` | `''` |
+| `onChange` | Callback lorsque la valeur change | `(value: string) => void` | - |
+| `onSelect` | Callback lorsqu'une option est sélectionnée | `(value: string, option: AutocompleteOption) => void` | - |
+| `onSearch` | Callback lorsque la valeur d'entrée change (pour le filtrage asynchrone) | `(value: string) => void` | - |
+| `options` | Tableau d'options à afficher | `string[] \| AutocompleteOption[]` | - |
+| `placeholder` | Texte de placeholder de l'entrée | `string` | `"Type to search..."` |
+| `disabled` | Désactiver l'autocomplete | `boolean` | `false` |
+| `size` | Taille de l'entrée | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `color` | Variante de couleur de l'entrée | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `status` | Statut de validation (définit aria-invalid) | `'error' \| 'warning'` | - |
+| `allowCustomValue` | Autoriser l'utilisateur à saisir des valeurs personnalisées non présentes dans les options | `boolean` | `true` |
+| `filterOption` | Fonction de filtre personnalisée | `(option: AutocompleteOption, inputValue: string) => boolean` | - |
+| `notFoundContent` | Contenu à afficher lorsqu'aucune option ne correspond | `React.ReactNode` | `"No results found"` |
+| `allowClear` | Afficher le bouton d'effacement lorsque l'entrée a une valeur | `boolean \| { clearIcon?: ReactNode }` | `false` |
+| `onClear` | Callback lorsque le bouton d'effacement est cliqué | `() => void` | - |
+| `open` | État d'ouverture contrôlé du menu déroulant | `boolean` | - |
+| `defaultOpen` | État d'ouverture par défaut (non contrôlé) | `boolean` | `false` |
+| `onOpenChange` | Callback lorsque l'état d'ouverture change | `(open: boolean) => void` | - |
+| `defaultActiveFirstOption` | Activer la première option par défaut lors du filtrage | `boolean` | `true` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `AutocompleteOption`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | La valeur de l'option | `string` | - |
+| `label` | Le texte d'affichage de l'option | `string` | - |
+| `disabled` | Si l'option est désactivée | `boolean` | - |
+
+## Navigation au clavier
+
+- Haut / Bas - Naviguer parmi les options
+- Entrée - Sélectionner l'option en surbrillance
+- Échap - Fermer le menu déroulant et retirer le focus de l'entrée
+
+## Accessibilité
+
+- Utilise `role="combobox"` avec les attributs ARIA appropriés
+- Le menu déroulant utilise `role="listbox"` avec des éléments `role="option"`
+- `aria-expanded` indique l'état d'ouverture du menu déroulant
+- `aria-activedescendant` suit l'option en surbrillance
+- `aria-selected` indique l'option actuellement en surbrillance
+- Utiliser `status="error"` pour définir automatiquement `aria-invalid`
+- Les options désactivées utilisent `aria-disabled`
+- Le bouton d'effacement a un `aria-label` pour les lecteurs d'écran

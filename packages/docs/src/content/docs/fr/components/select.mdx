@@ -1,0 +1,80 @@
+---
+title: Select
+description: Composant de sélection déroulante pour choisir parmi une liste d'options.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DefaultValueDemo,
+  SizesDemo,
+  ColorsDemo,
+  GhostDemo,
+  DisabledDemo,
+  FormDemo,
+} from '../../../../components/SelectDemo'
+import SelectDemoSource from '../../../../components/SelectDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de sélection déroulante pour choisir parmi une liste d'options.
+
+## Import
+
+```tsx
+import { Select } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Select basique" description="Menu déroulant de sélection simple." source={SelectDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec valeur par défaut" description="Sélection avec option présélectionnée." source={SelectDemoSource} fn="DefaultValueDemo">
+  <DefaultValueDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Cinq tailles : xs, sm, md, lg et xl." source={SelectDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs" description="Variantes de couleur pour différents états." source={SelectDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variante fantôme" description="Style d'arrière-plan transparent." source={SelectDemoSource} fn="GhostDemo">
+  <GhostDemo client:load slot="demo" />
+</Example>
+
+<Example title="État désactivé" description="Sélection désactivée non interactive." source={SelectDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dans un formulaire" description="Sélection avec validation de formulaire." source={SelectDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Select`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `size` | Taille du select | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | Thème de couleur du select | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `ghost` | Variante de style fantôme | `boolean` | `false` |
+| `bordered` | Afficher la bordure | `boolean` | `true` |
+| `disabled` | État désactivé | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `children` | Éléments d'option | `React.ReactNode` | - |
+
+## Accessibilité
+
+- Utilise `<select>` natif pour une accessibilité complète
+- Navigation au clavier avec les touches fléchées et Entrée
+- Fonctionne avec les étiquettes de formulaire standard
+- L'état désactivé est correctement communiqué

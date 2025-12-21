@@ -1,0 +1,41 @@
+---
+title: useClipboard
+description: Hook pour copier du texte dans le presse-papiers avec état de succès/erreur.
+---
+
+Copie du texte dans le presse-papiers et suit l'état de succès/erreur.
+
+## Import
+
+```tsx
+import { useClipboard } from 'asterui'
+```
+
+## Utilisation
+
+```tsx
+function CopyExample() {
+  const { copy, copied } = useClipboard()
+
+  return (
+    <Button onClick={() => copy('Bonjour le monde !')}>
+      {copied ? 'Copié !' : 'Copier dans le presse-papiers'}
+    </Button>
+  )
+}
+```
+
+## Paramètres
+
+| Paramètre | Type | Défaut | Description |
+|-----------|------|---------|-------------|
+| `timeout` | `number` | `2000` | Durée en ms pour afficher l'état copié |
+
+## Valeur de retour
+
+| Propriété | Type | Description |
+|----------|------|-------------|
+| `copy` | `(text: string) => Promise<boolean>` | Copie le texte, retourne le statut de succès |
+| `copied` | `boolean` | Vrai si récemment copié avec succès |
+| `error` | `Error \| null` | Erreur si la copie a échoué |
+| `reset` | `() => void` | Réinitialise l'état copié et d'erreur |

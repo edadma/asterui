@@ -1,0 +1,89 @@
+---
+title: InputNumber
+description: Champ de saisie numérique avec contrôles d'incrémentation/décrémentation et contraintes de valeur.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MinMaxDemo,
+  StepDemo,
+  PrecisionDemo,
+  SizesDemo,
+  NoControlsDemo,
+  DisabledDemo,
+} from '../../../../components/InputNumberDemo'
+import InputNumberDemoSource from '../../../../components/InputNumberDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Champ de saisie numérique avec contrôles d'incrémentation/décrémentation et contraintes de valeur.
+
+## Import
+
+```tsx
+import { InputNumber } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="InputNumber basique" description="Saisie de nombre simple avec contrôles d'incrémentation/décrémentation." source={InputNumberDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Limites min/max" description="Saisie de nombre avec contraintes de valeur minimale et maximale." source={InputNumberDemoSource} fn="MinMaxDemo">
+  <MinMaxDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pas personnalisé" description="Saisie de nombre avec valeur de pas d'incrémentation/décrémentation personnalisée." source={InputNumberDemoSource} fn="StepDemo">
+  <StepDemo client:load slot="demo" />
+</Example>
+
+<Example title="Précision décimale" description="Saisie de nombre avec contrôle de précision décimale." source={InputNumberDemoSource} fn="PrecisionDemo">
+  <PrecisionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Cinq tailles : xs, sm, md, lg et xl." source={InputNumberDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sans contrôles" description="Saisie de nombre sans boutons d'incrémentation/décrémentation." source={InputNumberDemoSource} fn="NoControlsDemo">
+  <NoControlsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Désactivé" description="État d'input number désactivé." source={InputNumberDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `InputNumber`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `value` | Valeur numérique actuelle (contrôlée) | `number` | - |
+| `defaultValue` | Valeur initiale (non contrôlée) | `number` | - |
+| `onChange` | Callback lorsque la valeur change | `(value: number \| null) => void` | - |
+| `min` | Valeur minimale | `number` | `-Infinity` |
+| `max` | Valeur maximale | `number` | `Infinity` |
+| `step` | Pas d'incrémentation/décrémentation de la valeur | `number` | `1` |
+| `precision` | Précision décimale pour l'affichage | `number` | - |
+| `formatter` | Formater la valeur d'affichage | `(value: number \| undefined) => string` | - |
+| `parser` | Analyser la valeur d'affichage en nombre | `(displayValue: string) => number` | - |
+| `controls` | Afficher les boutons d'incrémentation/décrémentation | `boolean` | `true` |
+| `disabled` | État désactivé | `boolean` | `false` |
+| `size` | Taille de l'input | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `block` | Input en pleine largeur | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise `role="spinbutton"` avec `inputMode="decimal"` pour une sémantique appropriée
+- Expose `aria-valuemin`, `aria-valuemax` et `aria-valuenow` pour les lecteurs d'écran
+- Les boutons d'incrémentation/décrémentation ont un `aria-label` pour les utilisateurs de lecteurs d'écran
+- L'état désactivé est correctement annoncé aux lecteurs d'écran
+- Les états de focus sont clairement visibles pour la navigation au clavier
+- Les touches fléchées peuvent être utilisées pour incrémenter/décrémenter les valeurs

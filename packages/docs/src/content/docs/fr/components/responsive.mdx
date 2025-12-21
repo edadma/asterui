@@ -1,0 +1,82 @@
+---
+title: Responsive
+description: Composants pour créer des mises en page réactives basées sur la taille de l'écran
+tableOfContents: false
+---
+
+import {
+  ShowAboveDemo,
+  HideBelowDemo,
+  ShowAtDemo,
+  ShowBetweenDemo,
+  ResponsiveLayoutDemo,
+} from '../../../../components/ResponsiveDemo'
+import ResponsiveDemoSource from '../../../../components/ResponsiveDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composants pour afficher/masquer du contenu en fonction de la taille de l'écran.
+
+## Import
+
+```tsx
+import { Show, Hide } from 'asterui'
+```
+
+## Points de rupture
+
+Utilise les mêmes points de rupture que Tailwind CSS :
+
+| Point de rupture | Largeur min |
+|------------|-----------|
+| `xs` | 0px |
+| `sm` | 640px |
+| `md` | 768px |
+| `lg` | 1024px |
+| `xl` | 1280px |
+| `2xl` | 1536px |
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Afficher au-dessus du point de rupture" description="Afficher le contenu uniquement sur les écrans moyens et plus." source={ResponsiveDemoSource} fn="ShowAboveDemo">
+  <ShowAboveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Masquer en dessous du point de rupture" description="Masquer le contenu sur les petits écrans." source={ResponsiveDemoSource} fn="HideBelowDemo">
+  <HideBelowDemo client:load slot="demo" />
+</Example>
+
+<Example title="Afficher à des points de rupture spécifiques" description="Afficher le contenu uniquement à des points de rupture spécifiques." source={ResponsiveDemoSource} fn="ShowAtDemo">
+  <ShowAtDemo client:load slot="demo" />
+</Example>
+
+<Example title="Afficher entre des points de rupture" description="Afficher le contenu dans une plage de points de rupture." source={ResponsiveDemoSource} fn="ShowBetweenDemo">
+  <ShowBetweenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mise en page réactive" description="Créez différentes mises en page pour mobile et ordinateur." source={ResponsiveDemoSource} fn="ResponsiveLayoutDemo">
+  <ResponsiveLayoutDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Show` / `Hide`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu à afficher/masquer | `React.ReactNode` | - |
+| `above` | Afficher/masquer à ce point de rupture et au-dessus | `Breakpoint` | - |
+| `below` | Afficher/masquer en dessous de ce point de rupture | `Breakpoint` | - |
+| `at` | Afficher/masquer exactement à ce point de rupture (ou tableau de points de rupture) | `Breakpoint \| Breakpoint[]` | - |
+| `between` | Afficher/masquer entre deux points de rupture (inclus) | `[Breakpoint, Breakpoint]` | - |
+
+## Notes
+
+- Utilise JavaScript pour détecter le point de rupture, pas les media queries CSS
+- Une seule propriété de condition (`above`, `below`, `at` ou `between`) doit être utilisée à la fois
+- Le rendu côté serveur utilise par défaut une largeur de 1024px (point de rupture lg)
+
+Voir aussi : Hook [useBreakpoint](/hooks/usebreakpoint) pour un accès programmatique aux informations de point de rupture.

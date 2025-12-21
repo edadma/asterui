@@ -1,0 +1,89 @@
+---
+title: ResponsiveDrawer
+description: Une disposition de barre latérale réactive utilisant le drawer de DaisyUI. Utilisez-la pour les barres latérales de navigation qui basculent sur mobile mais peuvent être toujours visibles sur les grands écrans.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ResponsiveDemo,
+  CustomWidthDemo,
+  EndDemo,
+  CustomSidebarDemo,
+} from '../../../../components/ResponsiveDrawerDemo'
+import ResponsiveDrawerDemoSource from '../../../../components/ResponsiveDrawerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Une disposition de barre latérale réactive utilisant le drawer de DaisyUI. Utilisez-la pour les barres latérales de navigation qui basculent sur mobile mais peuvent être toujours visibles sur les grands écrans.
+
+## Import
+
+```tsx
+import { ResponsiveDrawer } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="ResponsiveDrawer basique" description="Barre latérale réactive qui bascule sur mobile." source={ResponsiveDrawerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Toujours ouvert sur ordinateur" description="La barre latérale bascule sur mobile mais est toujours visible sur les écrans lg et plus." source={ResponsiveDrawerDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Largeur personnalisée" description="Barre latérale avec largeur personnalisée." source={ResponsiveDrawerDemoSource} fn="CustomWidthDemo">
+  <CustomWidthDemo client:load slot="demo" />
+</Example>
+
+<Example title="Barre latérale à droite" description="Barre latérale positionnée du côté droit." source={ResponsiveDrawerDemoSource} fn="EndDemo">
+  <EndDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenu de barre latérale personnalisé" description="Barre latérale avec contenu stylisé personnalisé." source={ResponsiveDrawerDemoSource} fn="CustomSidebarDemo">
+  <CustomSidebarDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ResponsiveDrawer`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Zone de contenu principale | `React.ReactNode` | - |
+| `sidebar` | Contenu de la barre latérale | `React.ReactNode` | - |
+| `open` | État d'ouverture contrôlé | `boolean` | `false` |
+| `onOpenChange` | Callback lorsque l'état d'ouverture change | `(open: boolean) => void` | - |
+| `end` | Positionner la barre latérale du côté droit | `boolean` | `false` |
+| `width` | Largeur de la barre latérale | `number \| string` | `320` |
+| `responsive` | Point de rupture auquel la barre latérale devient toujours visible | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | - |
+| `sidebarClassName` | Classes supplémentaires pour le conteneur de la barre latérale | `string` | - |
+| `contentClassName` | Classes supplémentaires pour la zone de contenu | `string` | - |
+| `overlayClassName` | Classes supplémentaires pour la superposition | `string` | - |
+| `id` | ID unique pour le drawer (généré automatiquement s'il n'est pas fourni) | `string` | - |
+| `className` | Classes CSS supplémentaires pour l'enveloppe du drawer | `string` | - |
+| `data-testid` | ID de test pour les tests | `string` | - |
+
+## Notes d'utilisation
+
+- ResponsiveDrawer enveloppe le composant `drawer` de DaisyUI
+- Utilisez `open` et `onOpenChange` pour un état contrôlé
+- Utilisez la propriété `responsive` pour rendre la barre latérale toujours visible au-dessus d'un point de rupture
+- Utilisez `width` pour personnaliser la largeur de la barre latérale (par défaut : 320px)
+- Utilisez la propriété `end` pour positionner la barre latérale du côté droit
+- Pour les drawers de panneau qui glissent sur le contenu (comme les formulaires ou les vues détaillées), utilisez plutôt le composant [Drawer](/components/drawer)
+
+## Comparaison
+
+| Fonctionnalité | ResponsiveDrawer | Drawer | Layout.Sider |
+|---------|------------------|--------|--------------|
+| Cas d'usage | Barres latérales de navigation réactives | Panneaux superposés pour formulaires, détails | Barres latérales pliables permanentes |
+| Rendu | Partie de la disposition de la page | Portail vers document.body | Partie de la structure Layout |
+| Superposition | Oui (mobile) | Oui (toujours) | Non |
+| Réactif | Oui (auto-ouverture au point de rupture) | Non | Oui (auto-pliage) |
+| Placement | Gauche ou droite | Les 4 côtés | Gauche ou droite |
+| En-tête/Pied | Pas intégré | Oui (propriétés title, footer) | Pas intégré |

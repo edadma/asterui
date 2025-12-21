@@ -1,0 +1,146 @@
+---
+title: Cascader
+description: Boîte de sélection en cascade pour les données hiérarchiques comme les emplacements ou les catégories.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HoverDemo,
+  SizesDemo,
+  DisabledDemo,
+  SearchDemo,
+  ChangeOnSelectDemo,
+  AsyncLoadDemo,
+  StatusDemo,
+  MultipleDemo,
+} from '../../../../components/CascaderDemo'
+import CascaderDemoSource from '../../../../components/CascaderDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Boîte de sélection en cascade pour les données hiérarchiques comme les emplacements ou les catégories.
+
+## Import
+
+```tsx
+import { Cascader } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Basique" description="Sélection hiérarchique simple." source={CascaderDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Expansion au survol" description="Développer les sous-menus au survol." source={CascaderDemoSource} fn="HoverDemo">
+  <HoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Différentes tailles de cascader." source={CascaderDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Désactivé" description="État désactivé du cascader." source={CascaderDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Recherche" description="Activer la fonctionnalité de recherche/filtre." source={CascaderDemoSource} fn="SearchDemo">
+  <SearchDemo client:load slot="demo" />
+</Example>
+
+<Example title="Changement à la sélection" description="Autoriser la sélection de n'importe quel niveau, pas seulement les nœuds feuilles." source={CascaderDemoSource} fn="ChangeOnSelectDemo">
+  <ChangeOnSelectDemo client:load slot="demo" />
+</Example>
+
+<Example title="Chargement asynchrone" description="Charger les options dynamiquement lors de l'expansion." source={CascaderDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+<Example title="État de validation" description="Afficher l'état de validation d'erreur ou d'avertissement." source={CascaderDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sélection multiple" description="Sélectionner plusieurs valeurs feuilles." source={CascaderDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Cascader`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `options` | Données d'options hiérarchiques | `CascaderOption[]` | `[]` |
+| `value` | Chemin de valeur sélectionnée contrôlée | `string[]` | - |
+| `defaultValue` | Valeur sélectionnée par défaut (non contrôlée) | `string[]` | `[]` |
+| `onChange` | Callback lors du changement de sélection | `(value: string[], selectedOptions: CascaderOption[]) => void` | - |
+| `placeholder` | Texte de l'espace réservé d'entrée | `string` | `'Please select'` |
+| `disabled` | Désactiver le cascader | `boolean` | `false` |
+| `allowClear` | Afficher le bouton d'effacement | `boolean` | `true` |
+| `expandTrigger` | Comment développer les sous-menus | `'click' \| 'hover'` | `'click'` |
+| `changeOnSelect` | Autoriser la sélection de n'importe quel niveau, pas seulement les feuilles | `boolean` | `false` |
+| `displayRender` | Fonction de rendu d'affichage personnalisée | `(labels: ReactNode[], selectedOptions: CascaderOption[]) => ReactNode` | - |
+| `size` | Taille d'entrée | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Couleur de l'anneau de focus | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `status` | État de validation | `'error' \| 'warning'` | - |
+| `showSearch` | Activer la fonctionnalité de recherche | `boolean \| { filter?, render?, matchInputWidth? }` | `false` |
+| `notFoundContent` | Contenu lorsqu'aucun résultat de recherche | `ReactNode` | `'No results found'` |
+| `loadData` | Fonction de chargement de données asynchrone | `(selectedOptions: CascaderOption[]) => Promise<void>` | - |
+| `fieldNames` | Noms de champs personnalisés pour le mappage de données | `{ label?: string; value?: string; children?: string }` | - |
+| `open` | État d'ouverture contrôlée du menu déroulant | `boolean` | - |
+| `onDropdownVisibleChange` | Callback lors du changement de visibilité du menu déroulant | `(open: boolean) => void` | - |
+| `popupClassName` | Nom de classe pour le menu déroulant | `string` | - |
+| `dropdownRender` | Rendu d'enveloppe de menu déroulant personnalisé | `(menu: ReactNode) => ReactNode` | - |
+| `multiple` | Activer le mode de sélection multiple | `boolean` | `false` |
+| `maxTagCount` | Nombre maximum d'étiquettes à afficher en mode multiple | `number \| 'responsive'` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `CascaderOption`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Identifiant unique | `string` | - |
+| `label` | Libellé d'affichage | `ReactNode` | - |
+| `children` | Options enfants | `CascaderOption[]` | - |
+| `disabled` | Désactiver cette option | `boolean` | `false` |
+| `isLeaf` | Forcer comme nœud feuille (pas d'expansion, pas de chargement asynchrone) | `boolean` | - |
+
+## Accessibilité
+
+Le composant Cascader suit le modèle de combobox WAI-ARIA :
+
+- Utilise `role="combobox"` sur le déclencheur avec `aria-expanded`, `aria-haspopup`
+- `aria-activedescendant` suit l'option focalisée pour les lecteurs d'écran
+- `aria-selected` indique l'état sélectionné sur les options
+- `aria-disabled` indique l'état désactivé
+- Le bouton d'effacement a `aria-label="Clear selection"`
+
+### Navigation au clavier
+
+| Touche | Action |
+|-----|--------|
+| Bas | Ouvrir le menu déroulant ou passer à l'option suivante |
+| Haut | Passer à l'option précédente |
+| Droite | Passer à la colonne suivante (développer) |
+| Gauche | Passer à la colonne précédente |
+| Entrée | Sélectionner l'option focalisée ou ouvrir le menu déroulant |
+| Espace | Basculer le menu déroulant (lorsque non en recherche) |
+| Échap | Fermer le menu déroulant |
+| Début | Passer à la première option |
+| Fin | Passer à la dernière option |
+
+### Tests
+
+Le composant inclut des attributs de données pour les tests :
+
+- `data-testid="cascader"` sur le conteneur racine
+- `data-testid="cascader-dropdown"` sur le menu déroulant
+- `data-testid="cascader-option-{value}"` sur chaque option
+- `data-testid="cascader-clear"` sur le bouton d'effacement
+- `data-state="open|closed"` sur la racine indique l'état du menu déroulant
+- `data-state="selected|hovered"` sur les options indique l'état
+- `data-value="{value}"` sur les options fournit la valeur

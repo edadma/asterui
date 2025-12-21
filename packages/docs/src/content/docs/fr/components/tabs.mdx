@@ -1,0 +1,114 @@
+---
+title: Onglets
+description: Organiser le contenu dans des vues séparées où une seule est visible à la fois.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SettingsDemo,
+  BoxDemo,
+  LiftDemo,
+  SizesDemo,
+  DisabledDemo,
+  DataDrivenDemo,
+  PositionDemo,
+} from '../../../../components/TabsDemo'
+import TabsDemoSource from '../../../../components/TabsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Organiser le contenu dans des vues séparées où une seule est visible à la fois.
+
+## Importation
+
+```tsx
+import { Tabs } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Utilisation de base" description="Onglets simples avec changement de contenu géré automatiquement." source={TabsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Page de paramètres" description="Page de paramètres complète avec formulaires utilisant des inputs à label flottant." source={TabsDemoSource} fn="SettingsDemo">
+  <SettingsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variante encadrée" description="Onglets avec style de boîte encadrée." source={TabsDemoSource} fn="BoxDemo">
+  <BoxDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variante surélevée" description="Onglets avec apparence 3D surélevée." source={TabsDemoSource} fn="LiftDemo">
+  <LiftDemo client:load slot="demo" />
+</Example>
+
+<Example title="Différentes tailles" description="Onglets en différentes tailles utilisant les composants Space et Typography." source={TabsDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Onglet désactivé" description="Désactiver des onglets spécifiques." source={TabsDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modèle piloté par les données" description="Utiliser la propriété items pour des onglets pilotés par les données avec icônes." source={TabsDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Position en bas" description="Onglets positionnés sous le contenu." source={TabsDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tabs`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Panneaux d'onglets (modèle composé) | `React.ReactNode` | `-` |
+| `items` | Éléments d'onglets (modèle piloté par les données) | `TabItem[]` | `-` |
+| `activeKey` | Clé de l'onglet actif actuel (contrôlé) | `string` | `-` |
+| `defaultActiveKey` | Clé de l'onglet actif par défaut (non contrôlé) | `string` | `-` |
+| `onChange` | Callback lorsque l'onglet change | `(key: string) => void` | `-` |
+| `variant` | Variante de style visuel | `'box' \| 'border' \| 'lift'` | `-` |
+| `size` | Taille de l'onglet | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
+| `position` | Position de l'onglet par rapport au contenu | `'top' \| 'bottom'` | `'top'` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+### `TabItem` (pour la propriété items)
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Identifiant unique | `string` | `-` |
+| `label` | Label du bouton d'onglet | `React.ReactNode` | `-` |
+| `children` | Contenu du panneau d'onglet | `React.ReactNode` | `-` |
+| `disabled` | Désactiver l'onglet | `boolean` | `false` |
+| `icon` | Icône de l'onglet | `React.ReactNode` | `-` |
+
+### `Tabs.Panel` (modèle composé)
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Identifiant unique pour l'onglet (propriété key de React) | `string` | `-` |
+| `tab` | Label du bouton d'onglet | `React.ReactNode` | `-` |
+| `disabled` | Désactiver l'onglet | `boolean` | `false` |
+| `icon` | Icône de l'onglet | `React.ReactNode` | `-` |
+| `children` | Contenu du panneau d'onglet | `React.ReactNode` | `-` |
+
+## Accessibilité
+
+- Utilise les rôles ARIA appropriés : `tablist`, `tab` et `tabpanel`
+- Navigation au clavier : les touches fléchées déplacent entre les onglets, la touche Tab déplace le focus dans le panneau
+- L'onglet actif est indiqué avec `aria-selected="true"`
+- Les onglets désactivés utilisent `aria-disabled` pour une communication appropriée
+- Les panneaux d'onglets utilisent `aria-labelledby` pour s'associer à leur onglet
+
+## Conseils d'utilisation
+
+- Utilisez `activeKey` pour les onglets contrôlés, `defaultActiveKey` pour les non contrôlés
+- Utilisez la propriété `items` pour les onglets pilotés par les données, `Tabs.Panel` pour le modèle composé
+- Utilisez `position="bottom"` pour placer les onglets sous le contenu

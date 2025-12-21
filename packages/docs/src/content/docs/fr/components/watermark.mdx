@@ -1,0 +1,64 @@
+---
+title: Watermark
+description: Superposez des filigranes de texte ou d'image répétitifs pour protéger le contenu tout en le gardant interactif.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MultilineDemo,
+  ImageDemo,
+} from '../../../../components/WatermarkDemo'
+import WatermarkDemoSource from '../../../../components/WatermarkDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Superposez des filigranes de texte ou d'image répétitifs pour protéger le contenu tout en le gardant interactif.
+
+## Importation
+
+```tsx
+import { Watermark } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Filigrane de texte" description="Appliquez un filigrane de texte répétitif à une carte." source={WatermarkDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Lignes multiples" description="Empilez plusieurs lignes avec police, espacement et rotation personnalisés." source={WatermarkDemoSource} fn="MultilineDemo">
+  <MultilineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Filigrane d'image" description="Utilisez un URI de données ou une image hébergée pour filigraner le contenu." source={WatermarkDemoSource} fn="ImageDemo">
+  <ImageDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Watermark`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `content` | Texte du filigrane (chaîne ou lignes) | `string \| string[]` | `-` |
+| `image` | URL d'image ou URI de données à rendre au lieu du texte | `string` | `-` |
+| `gap` | Espacement horizontal et vertical entre les tuiles | `[number, number]` | `[120, 120]` |
+| `offset` | Décalage de départ pour la première tuile | `[number, number]` | `gap / 2` |
+| `width` | Largeur de la tuile en pixels | `number` | `120` |
+| `height` | Hauteur de la tuile en pixels | `number` | `64` |
+| `rotate` | Angle de rotation en degrés | `number` | `-22` |
+| `zIndex` | z-index pour la superposition | `number` | `1000` |
+| `font` | Paramètres de police pour les filigranes de texte | `WatermarkFontOptions` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+| `style` | Styles personnalisés pour le wrapper | `React.CSSProperties` | `-` |
+
+## Accessibilité
+
+- La superposition de filigrane utilise `pointer-events: none` pour garantir que le contenu reste interactif
+- Le filigrane est purement décoratif et n'interfère pas avec les technologies d'assistance
+- Tous les éléments interactifs sous le filigrane restent entièrement accessibles aux utilisateurs de clavier et de lecteur d'écran
+- Le rendu semi-transparent garantit que le contenu sous-jacent reste visible et lisible

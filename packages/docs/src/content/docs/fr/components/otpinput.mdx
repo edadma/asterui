@@ -1,0 +1,92 @@
+---
+title: OTPInput
+description: Saisie de mot de passe à usage unique avec auto-focus et support de collage.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  FourDigitDemo,
+  SizesDemo,
+  MaskedDemo,
+  AlphanumericDemo,
+  ErrorDemo,
+  DisabledDemo,
+} from '../../../../components/OTPInputDemo'
+import OTPInputDemoSource from '../../../../components/OTPInputDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Saisie de mot de passe à usage unique avec auto-focus et support de collage.
+
+## Import
+
+```tsx
+import { OTPInput } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Saisie OTP de base" description="Saisie OTP simple à 6 chiffres." source={OTPInputDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Quatre chiffres" description="Saisie OTP de longueur personnalisée." source={OTPInputDemoSource} fn="FourDigitDemo">
+  <FourDigitDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Différentes variantes de taille." source={OTPInputDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Saisie masquée" description="Masquer les valeurs saisies avec des points." source={OTPInputDemoSource} fn="MaskedDemo">
+  <MaskedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Alphanumérique" description="Accepter à la fois les lettres et les chiffres." source={OTPInputDemoSource} fn="AlphanumericDemo">
+  <AlphanumericDemo client:load slot="demo" />
+</Example>
+
+<Example title="État d'erreur" description="Afficher le style d'erreur pour une saisie invalide." source={OTPInputDemoSource} fn="ErrorDemo">
+  <ErrorDemo client:load slot="demo" />
+</Example>
+
+<Example title="État désactivé" description="Saisie désactivée non interactive." source={OTPInputDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `OTPInput`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `length` | Nombre de champs de saisie | `number` | `6` |
+| `value` | Valeur actuelle | `string` | - |
+| `onChange` | Rappel lorsque la valeur change | `(value: string) => void` | - |
+| `onComplete` | Rappel lorsque tous les champs sont remplis | `(value: string) => void` | - |
+| `size` | Taille de la saisie | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `type` | Type de saisie - chiffres uniquement ou alphanumérique | `'number' \| 'text'` | `'number'` |
+| `mask` | Masquer la saisie (afficher des points au lieu de caractères) | `boolean` | `false` |
+| `disabled` | État désactivé | `boolean` | `false` |
+| `error` | État d'erreur | `boolean` | `false` |
+| `autoFocus` | Auto-focus sur la première saisie au montage | `boolean` | `false` |
+| `placeholder` | Caractère de placeholder | `string` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### Méthodes de Ref
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `focus` | Focus sur la première saisie | `() => void` | - |
+| `clear` | Effacer toutes les saisies et focus sur la première | `() => void` | - |
+
+## Accessibilité
+
+- Chaque saisie a un aria-label indiquant sa position
+- Prend en charge la navigation au clavier avec les touches fléchées
+- Retour arrière déplace le focus vers la saisie précédente
+- Prend en charge le collage de codes OTP complets

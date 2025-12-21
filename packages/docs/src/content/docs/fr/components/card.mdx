@@ -1,0 +1,164 @@
+---
+title: Card
+description: Conteneur flexible pour afficher du contenu avec images, actions et méta-informations
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  BorderedDemo,
+  WithCoverDemo,
+  WithActionsDemo,
+  VariantsDemo,
+  SizesDemo,
+  ExtraContentDemo,
+  MetaDemo,
+  CardMetaDemo,
+  HoverableDemo,
+  LoadingDemo,
+  ImageFullDemo,
+  SideLayoutDemo,
+  InnerCardDemo,
+  TabsDemo,
+  GridDemo,
+} from '../../../../components/CardDemo'
+import CardDemoSource from '../../../../components/CardDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant carte flexible pour afficher du contenu groupé avec diverses mises en page.
+
+## Importation
+
+```tsx
+import { Card } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Carte basique" description="Carte simple avec titre et contenu." source={CardDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec bordure" description="Carte avec bordure solide au lieu d'une ombre." source={CardDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec image de couverture" description="Carte avec image de couverture au-dessus du contenu." source={CardDemoSource} fn="WithCoverDemo">
+  <WithCoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec actions" description="Carte avec boutons d'action en bas." source={CardDemoSource} fn="WithActionsDemo">
+  <WithActionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes" description="Différentes variantes de style de carte : shadow, border, dash, borderless." source={CardDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Tailles de carte de xs à lg avec padding variable." source={CardDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenu extra" description="Ajouter du contenu extra dans l'en-tête de la carte avec la prop extra." source={CardDemoSource} fn="ExtraContentDemo">
+  <ExtraContentDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mise en page méta" description="Mise en page intégrée avatar, titre et description." source={CardDemoSource} fn="MetaDemo">
+  <MetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="Composant Card.Meta" description="Composant méta autonome pour positionnement flexible." source={CardDemoSource} fn="CardMetaDemo">
+  <CardMetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="Survol" description="Carte avec effet d'ombre au survol." source={CardDemoSource} fn="HoverableDemo">
+  <HoverableDemo client:load slot="demo" />
+</Example>
+
+<Example title="État de chargement" description="État de chargement squelette pendant le chargement du contenu." source={CardDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Image complète" description="Le contenu se superpose sur l'image de couverture." source={CardDemoSource} fn="ImageFullDemo">
+  <ImageFullDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mise en page latérale" description="Mise en page horizontale avec image sur le côté." source={CardDemoSource} fn="SideLayoutDemo">
+  <SideLayoutDemo client:load slot="demo" />
+</Example>
+
+<Example title="Carte interne" description="Cartes imbriquées avec distinction d'arrière-plan subtile." source={CardDemoSource} fn="InnerCardDemo">
+  <InnerCardDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec onglets" description="Carte avec navigation de contenu par onglets." source={CardDemoSource} fn="TabsDemo">
+  <TabsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grille de carte" description="Mise en page en grille à l'intérieur des cartes avec cellules survolables." source={CardDemoSource} fn="GridDemo">
+  <GridDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Card`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `title` | Titre de la carte | `ReactNode` | - |
+| `extra` | Contenu en haut à droite de l'en-tête | `ReactNode` | - |
+| `cover` | Élément image de couverture | `ReactNode` | - |
+| `actions` | Boutons d'action en bas | `ReactNode` | - |
+| `size` | Taille de la carte | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `variant` | Variante de style de carte | `'shadow' \| 'border' \| 'dash' \| 'borderless'` | `'shadow'` |
+| `type` | Style de carte interne pour l'imbrication | `'inner'` | - |
+| `side` | Mise en page horizontale avec image latérale | `boolean` | `false` |
+| `imageFull` | Le contenu se superpose sur l'image de couverture | `boolean` | `false` |
+| `actionsJustify` | Alignement des actions | `'start' \| 'center' \| 'end'` | `'end'` |
+| `loading` | Afficher l'état de chargement squelette | `boolean` | `false` |
+| `hoverable` | Ajouter un effet d'ombre au survol | `boolean` | `false` |
+| `avatar` | Avatar pour la mise en page méta | `ReactNode` | - |
+| `description` | Description pour la mise en page méta | `ReactNode` | - |
+| `tabList` | Éléments d'onglets pour les onglets de carte | `CardTabItem[]` | - |
+| `activeTabKey` | Clé d'onglet actif (contrôlé) | `string` | - |
+| `defaultActiveTabKey` | Clé d'onglet actif par défaut | `string` | - |
+| `onTabChange` | Callback de changement d'onglet | `(key: string) => void` | - |
+| `tabBarExtraContent` | Contenu extra à côté des onglets | `ReactNode` | - |
+| `children` | Contenu du corps de la carte | `ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `bodyClassName` | Classes CSS supplémentaires pour l'élément card-body | `string` | - |
+| `style` | Styles inline | `CSSProperties` | - |
+
+### `Card.Meta`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `avatar` | Élément avatar ou icône | `ReactNode` | - |
+| `title` | Contenu du titre | `ReactNode` | - |
+| `description` | Contenu de la description | `ReactNode` | - |
+
+### `Card.Grid`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `hoverable` | Ajouter un effet de survol | `boolean` | `false` |
+| `children` | Contenu de la cellule de grille | `ReactNode` | - |
+
+### `CardTabItem`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Identifiant unique de l'onglet | `string` | - |
+| `label` | Contenu du libellé de l'onglet | `ReactNode` | - |
+| `disabled` | Désactiver l'onglet | `boolean` | `false` |
+
+## Accessibilité
+
+- La structure de la carte utilise du HTML sémantique
+- La navigation par onglets utilise les rôles et états ARIA appropriés
+- L'état de chargement fournit un retour visuel
+- Les états de focus sont visibles pour les éléments interactifs

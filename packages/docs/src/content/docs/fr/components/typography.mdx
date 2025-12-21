@@ -1,0 +1,97 @@
+---
+title: Typography
+description: Composants de texte sémantiques pour les titres, les paragraphes et le formatage de texte.
+tableOfContents: false
+---
+
+import {
+  TitlesDemo,
+  ParagraphDemo,
+  TextDemo,
+  TextStylesDemo,
+  LinksDemo,
+  CopyableDemo,
+  EllipsisDemo,
+  EditableDemo,
+} from '../../../../components/TypographyDemo'
+import TypographyDemoSource from '../../../../components/TypographyDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composants de texte sémantiques pour les titres, les paragraphes et le formatage de texte.
+
+## Importation
+
+```tsx
+import { Typography } from 'asterui'
+
+const { Title, Paragraph, Text, Link } = Typography
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Titres" description="Niveaux de titre de h1 à h5." source={TypographyDemoSource} fn="TitlesDemo">
+  <TitlesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Paragraphe" description="Contenu textuel au niveau bloc." source={TypographyDemoSource} fn="ParagraphDemo">
+  <ParagraphDemo client:load slot="demo" />
+</Example>
+
+<Example title="Types de texte" description="Différents types de texte pour divers contextes." source={TypographyDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Styles de texte" description="Diverses options de formatage de texte." source={TypographyDemoSource} fn="TextStylesDemo">
+  <TextStylesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Liens" description="Éléments d'ancrage stylisés." source={TypographyDemoSource} fn="LinksDemo">
+  <LinksDemo client:load slot="demo" />
+</Example>
+
+<Example title="Copiable" description="Copiez le texte dans le presse-papiers en un clic." source={TypographyDemoSource} fn="CopyableDemo">
+  <CopyableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Points de suspension" description="Tronquer le texte long avec des points de suspension." source={TypographyDemoSource} fn="EllipsisDemo">
+  <EllipsisDemo client:load slot="demo" />
+</Example>
+
+<Example title="Éditable" description="Texte éditable en ligne." source={TypographyDemoSource} fn="EditableDemo">
+  <EditableDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `level` | Niveau de titre (h1-h5) - Title uniquement | `1 \| 2 \| 3 \| 4 \| 5` | `1` |
+| `copyable` | Activer la copie vers le presse-papiers - Title et Paragraph | `boolean \| { text?: string }` | `false` |
+| `ellipsis` | Tronquer avec des points de suspension - Title et Paragraph | `boolean \| { rows?: number }` | `false` |
+| `editable` | Activer l'édition en ligne - Title uniquement | `boolean` | `false` |
+| `type` | Type de texte pour le style - Text et Link | `'secondary' \| 'success' \| 'warning' \| 'danger'` | - |
+| `disabled` | Style désactivé - Text uniquement | `boolean` | `false` |
+| `strong` | Texte en gras - Text uniquement | `boolean` | `false` |
+| `italic` | Texte en italique - Text uniquement | `boolean` | `false` |
+| `underline` | Texte souligné - Text uniquement | `boolean` | `false` |
+| `delete` | Texte barré - Text uniquement | `boolean` | `false` |
+| `code` | Style de code - Text uniquement | `boolean` | `false` |
+| `mark` | Texte surligné - Text uniquement | `boolean` | `false` |
+| `keyboard` | Style clavier - Text uniquement | `boolean` | `false` |
+| `size` | Taille du texte - Paragraph et Link | `'sm' \| 'base' \| 'lg' \| 'xl' \| '2xl'` | - |
+| `align` | Alignement du texte - Paragraph uniquement | `'left' \| 'center' \| 'right'` | - |
+| `href` | URL du lien - Link uniquement | `string` | `'#'` |
+| `external` | Ouvrir dans un nouvel onglet avec icône externe - Link uniquement | `boolean` | `false` |
+
+## Accessibilité
+
+- Utilise des éléments HTML sémantiques (h1-h5, p, span, a)
+- Hiérarchie de titres appropriée maintenue
+- Les liens ont des étiquettes accessibles
+- Les actions de copie et d'édition sont accessibles au clavier

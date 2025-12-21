@@ -1,0 +1,85 @@
+---
+title: Breadcrumb
+description: Fil d'Ariane de navigation affichant l'emplacement hiérarchique.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  IconsDemo,
+  SeparatorDemo,
+  ItemsDemo,
+  ScrollDemo,
+} from '../../../../components/BreadcrumbDemo'
+import BreadcrumbDemoSource from '../../../../components/BreadcrumbDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Fil d'Ariane de navigation affichant l'emplacement hiérarchique.
+
+## Importation
+
+```tsx
+import { Breadcrumb } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Breadcrumb basique" description="Navigation simple par fil d'Ariane." source={BreadcrumbDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec icônes" description="Fil d'Ariane avec icônes." source={BreadcrumbDemoSource} fn="IconsDemo">
+  <IconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Séparateur personnalisé" description="Utiliser une chaîne ou un nœud React comme séparateur." source={BreadcrumbDemoSource} fn="SeparatorDemo">
+  <SeparatorDemo client:load slot="demo" />
+</Example>
+
+<Example title="Piloté par données" description="Utiliser la prop items pour des fils d'Ariane pilotés par données." source={BreadcrumbDemoSource} fn="ItemsDemo">
+  <ItemsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Largeur maximale avec défilement" description="Fil d'Ariane avec défilement en cas de débordement." source={BreadcrumbDemoSource} fn="ScrollDemo">
+  <ScrollDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Breadcrumb`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Composants Breadcrumb.Item (modèle composé) | `React.ReactNode` | - |
+| `items` | Données des éléments de fil d'Ariane (modèle piloté par données) | `BreadcrumbItemType[]` | - |
+| `separator` | Séparateur personnalisé entre les éléments | `React.ReactNode` | `"/"` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `BreadcrumbItemType` (pour la prop items)
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `title` | Titre/libellé de l'élément | `React.ReactNode` | - |
+| `href` | URL du lien | `string` | - |
+| `onClick` | Gestionnaire de clic | `() => void` | - |
+| `className` | Classe CSS personnalisée | `string` | - |
+
+### `Breadcrumb.Item` (modèle composé)
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu de l'élément (texte ou éléments) | `React.ReactNode` | - |
+| `href` | URL du lien (rend l'élément cliquable) | `string` | - |
+| `onClick` | Gestionnaire de clic (rend l'élément cliquable) | `() => void` | - |
+| `icon` | Icône à afficher avant le libellé | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Conseils d'utilisation
+
+- Omettre href/onClick sur le dernier élément pour afficher l'emplacement actuel
+- Utiliser des classes max-width pour activer le défilement horizontal
+- Ajouter des icônes en utilisant la prop icon sur Breadcrumb.Item

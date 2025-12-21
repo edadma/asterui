@@ -1,0 +1,243 @@
+---
+title: Tableau
+description: Composant de tableau riche en fonctionnalités pour afficher des données tabulaires.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomRenderDemo,
+  StripedDemo,
+  BorderedDemo,
+  SizeXsDemo,
+  SizeXlDemo,
+  EmptyDemo,
+  LoadingDemo,
+  PaginationDemo,
+  PaginationFeaturesDemo,
+  PinnedDemo,
+  SortingDemo,
+  ControlledSortDemo,
+  FilteringDemo,
+  SelectionDemo,
+  RadioSelectionDemo,
+  ExpandableDemo,
+  EllipsisDemo,
+  ScrollDemo,
+  CompleteDemo,
+} from '../../../../components/TableDemo'
+import TableDemoSource from '../../../../components/TableDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de tableau riche en fonctionnalités pour afficher des données tabulaires.
+
+## Importation
+
+```tsx
+import { Table } from 'asterui'
+import type { ColumnType, RowSelection, ExpandableConfig, PaginationConfig } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Tableau de base" description="Tableau simple avec des données." source={TableDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Rendu personnalisé" description="Utiliser des fonctions de rendu pour les tags, boutons et contenu personnalisé." source={TableDemoSource} fn="CustomRenderDemo">
+  <CustomRenderDemo client:load slot="demo" />
+</Example>
+
+<Example title="Lignes rayées" description="Zébrure pour une meilleure lisibilité." source={TableDemoSource} fn="StripedDemo">
+  <StripedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tableau avec bordures" description="Ajouter des bordures pour un aspect plus défini." source={TableDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Taille compacte" description="Taille extra petite pour des données denses." source={TableDemoSource} fn="SizeXsDemo">
+  <SizeXsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Taille extra large" description="Taille extra large pour l'emphase." source={TableDemoSource} fn="SizeXlDemo">
+  <SizeXlDemo client:load slot="demo" />
+</Example>
+
+<Example title="État vide" description="Message d'état vide personnalisable." source={TableDemoSource} fn="EmptyDemo">
+  <EmptyDemo client:load slot="demo" />
+</Example>
+
+<Example title="État de chargement" description="Afficher un spinner de chargement pendant la récupération des données." source={TableDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pagination de base" description="Paginer de grands ensembles de données." source={TableDemoSource} fn="PaginationDemo">
+  <PaginationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pagination avancée" description="Changeur de taille de page, saut rapide et affichage du total." source={TableDemoSource} fn="PaginationFeaturesDemo">
+  <PaginationFeaturesDemo client:load slot="demo" />
+</Example>
+
+<Example title="En-tête épinglé" description="Garder l'en-tête visible pendant le défilement." source={TableDemoSource} fn="PinnedDemo">
+  <PinnedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tri des colonnes" description="Cliquer sur les en-têtes de colonnes pour trier les données." source={TableDemoSource} fn="SortingDemo">
+  <SortingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tri contrôlé" description="Contrôler l'état de tri de manière externe." source={TableDemoSource} fn="ControlledSortDemo">
+  <ControlledSortDemo client:load slot="demo" />
+</Example>
+
+<Example title="Filtrage des colonnes" description="Ajouter des menus déroulants de filtrage aux colonnes." source={TableDemoSource} fn="FilteringDemo">
+  <FilteringDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sélection par cases à cocher" description="Activer la sélection de lignes avec des cases à cocher." source={TableDemoSource} fn="SelectionDemo">
+  <SelectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sélection par radio" description="Sélection de ligne unique avec des boutons radio." source={TableDemoSource} fn="RadioSelectionDemo">
+  <RadioSelectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Lignes extensibles" description="Développer les lignes pour afficher un contenu supplémentaire." source={TableDemoSource} fn="ExpandableDemo">
+  <ExpandableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ellipse de texte" description="Tronquer le texte long avec des points de suspension." source={TableDemoSource} fn="EllipsisDemo">
+  <EllipsisDemo client:load slot="demo" />
+</Example>
+
+<Example title="Configuration du défilement" description="Définir la largeur et la hauteur maximales avec défilement." source={TableDemoSource} fn="ScrollDemo">
+  <ScrollDemo client:load slot="demo" />
+</Example>
+
+<Example title="Exemple complet" description="Tableau avec plusieurs fonctionnalités combinées." source={TableDemoSource} fn="CompleteDemo">
+  <CompleteDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Table`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `columns` | Configuration des colonnes du tableau | `ColumnType<T>[]` | `-` |
+| `dataSource` | Données à afficher dans le tableau | `T[]` | `-` |
+| `rowKey` | Clé unique pour chaque ligne | `keyof T \| ((record: T) => string)` | `'id'` |
+| `loading` | État de chargement | `boolean` | `false` |
+| `size` | Taille du tableau | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `bordered` | Ajouter une bordure autour du tableau | `boolean` | `false` |
+| `hoverable` | Mettre en surbrillance la ligne au survol | `boolean` | `true` |
+| `striped` | Couleurs de lignes alternées (rayures zébrées) | `boolean` | `false` |
+| `pinRows` | Épingler les lignes d'en-tête pendant le défilement | `boolean` | `false` |
+| `pinCols` | Épingler les colonnes pendant le défilement | `boolean` | `false` |
+| `pagination` | Configuration de la pagination ou false pour désactiver | `false \| PaginationConfig` | `{ pageSize: 10 }` |
+| `rowSelection` | Configuration de la sélection de lignes | `RowSelection<T>` | `-` |
+| `expandable` | Configuration des lignes extensibles | `ExpandableConfig<T>` | `-` |
+| `scroll` | Configuration du défilement pour des dimensions fixes | `ScrollConfig` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+| `onRow` | Gestionnaires d'événements de ligne | `(record: T, index: number) => HTMLAttributes` | `-` |
+| `onChange` | Callback unifié pour la pagination, le tri et le filtrage | `(pagination, filters, sorter, extra) => void` | `-` |
+| `onSortChange` | Callback lorsque le tri change | `(sorter: SorterResult<T>) => void` | `-` |
+| `onFilterChange` | Callback lorsque le filtre change | `(filters: Record<string, ...>) => void` | `-` |
+| `locale` | Configuration de localisation pour le texte vide, les labels de filtre | `{ emptyText?, filterConfirm?, filterReset?, selectAll? }` | `-` |
+| `data-testid` | ID de test pour le composant | `string` | `'table'` |
+| `aria-label` | Label accessible pour le tableau | `string` | `-` |
+
+### `ColumnType`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Clé unique pour la colonne | `string` | `-` |
+| `title` | Titre de l'en-tête de colonne | `ReactNode` | `-` |
+| `dataIndex` | Nom du champ dans l'enregistrement de données | `keyof T` | `-` |
+| `render` | Fonction de rendu personnalisée pour le contenu de la cellule | `(value, record, index) => ReactNode` | `-` |
+| `width` | Largeur de colonne | `string \| number` | `-` |
+| `align` | Alignement du texte | `'left' \| 'center' \| 'right'` | `'left'` |
+| `fixed` | Fixer la colonne à gauche ou à droite | `'left' \| 'right'` | `-` |
+| `sorter` | Activer le tri ou fonction de tri personnalisée | `boolean \| ((a: T, b: T) => number)` | `-` |
+| `sortOrder` | Ordre de tri contrôlé | `'ascend' \| 'descend' \| null` | `-` |
+| `defaultSortOrder` | Ordre de tri par défaut | `'ascend' \| 'descend'` | `-` |
+| `filters` | Configuration du menu déroulant de filtrage | `FilterConfig[]` | `-` |
+| `filteredValue` | Valeurs filtrées contrôlées | `(string \| number \| boolean)[]` | `-` |
+| `defaultFilteredValue` | Valeurs filtrées par défaut | `(string \| number \| boolean)[]` | `-` |
+| `onFilter` | Fonction de filtrage | `(value, record) => boolean` | `-` |
+| `ellipsis` | Tronquer le texte avec des points de suspension | `boolean` | `false` |
+| `hidden` | Masquer la colonne | `boolean` | `false` |
+
+### `RowSelection`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `type` | Type de sélection | `'checkbox' \| 'radio'` | `'checkbox'` |
+| `selectedRowKeys` | Clés de lignes sélectionnées contrôlées | `React.Key[]` | `-` |
+| `onChange` | Callback lorsque la sélection change | `(selectedRowKeys, selectedRows) => void` | `-` |
+| `getCheckboxProps` | Fonction pour personnaliser les propriétés de la case à cocher | `(record) => { disabled?, name? }` | `-` |
+
+### `ExpandableConfig`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `expandedRowRender` | Fonction de rendu pour le contenu développé | `(record, index, expanded) => ReactNode` | `-` |
+| `expandedRowKeys` | Clés de lignes développées contrôlées | `React.Key[]` | `-` |
+| `defaultExpandedRowKeys` | Clés de lignes développées par défaut | `React.Key[]` | `-` |
+| `rowExpandable` | Fonction pour déterminer si la ligne est extensible | `(record) => boolean` | `-` |
+| `onExpand` | Callback lorsque l'état de développement change | `(expanded, record) => void` | `-` |
+| `onExpandedRowsChange` | Callback lorsque les clés développées changent | `(expandedKeys) => void` | `-` |
+| `expandRowByClick` | Développer la ligne au clic | `boolean` | `false` |
+| `expandIcon` | Icône de développement personnalisée | `(props) => ReactNode` | `-` |
+
+### `PaginationConfig`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `current` | Numéro de page actuel | `number` | `1` |
+| `pageSize` | Nombre d'éléments par page | `number` | `10` |
+| `total` | Nombre total d'éléments (pour pagination côté serveur) | `number` | `-` |
+| `showSizeChanger` | Afficher le menu déroulant de taille de page | `boolean` | `false` |
+| `showQuickJumper` | Afficher l'entrée de saut rapide de page | `boolean` | `false` |
+| `showTotal` | Fonction pour rendre le texte total | `(total, range) => ReactNode` | `-` |
+| `pageSizeOptions` | Options de taille de page | `number[]` | `[10, 20, 50, 100]` |
+| `position` | Position de la pagination | `'topLeft' \| 'topCenter' \| 'topRight' \| 'bottomLeft' \| 'bottomCenter' \| 'bottomRight'` | `'bottomRight'` |
+| `onChange` | Callback lorsque la page change | `(page, pageSize) => void` | `-` |
+| `onShowSizeChange` | Callback lorsque la taille de page change | `(current, size) => void` | `-` |
+
+## Accessibilité
+
+- Utilise un `<table>` sémantique avec `role="grid"`
+- Les en-têtes de colonnes incluent `role="columnheader"` et `aria-sort` pour les colonnes triables
+- Les cases à cocher de sélection de lignes ont un `aria-label` approprié
+- Les contrôles de tri sont accessibles au clavier (Entrée/Espace pour basculer)
+- Les menus déroulants de filtrage supportent la touche Échap pour fermer
+- Les boutons de pagination incluent `aria-label` et `aria-current`
+- Les boutons développer/réduire incluent `aria-expanded`
+- État de case à cocher indéterminé pour sélection partielle
+
+## Tests
+
+Le composant expose des attributs `data-testid` :
+- `{baseTestId}` - Conteneur racine
+- `{baseTestId}-table` - Élément de tableau
+- `{baseTestId}-header-{columnKey}` - En-têtes de colonnes
+- `{baseTestId}-row-{index}` - Lignes du tableau
+- `{baseTestId}-row-{index}-{columnKey}` - Cellules du tableau
+- `{baseTestId}-row-{index}-select` - Case à cocher de sélection de ligne
+- `{baseTestId}-row-{index}-expanded` - Contenu de ligne développée
+- `{baseTestId}-select-all` - Case à cocher tout sélectionner
+- `{baseTestId}-pagination` - Conteneur de pagination
+- `{baseTestId}-prev`, `{baseTestId}-next` - Boutons de pagination
+- `{baseTestId}-{columnKey}-filter-button` - Bouton de filtre
+- `{baseTestId}-empty` - État vide
+- `{baseTestId}-loading` - État de chargement
+
+Attributs de données :
+- `data-state="selected"` - Sur les lignes sélectionnées

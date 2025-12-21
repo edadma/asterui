@@ -1,0 +1,113 @@
+---
+title: FloatButton
+description: Bouton d'action flottant qui reste fixe sur la page pour un accès rapide aux actions courantes.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithTooltipDemo,
+  TypesDemo,
+  ShapesDemo,
+  WithBadgeDemo,
+  GroupDemo,
+  BackTopDemo,
+} from '../../../../components/FloatButtonDemo'
+import FloatButtonDemoSource from '../../../../components/FloatButtonDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Bouton d'action flottant qui reste fixe sur la page pour un accès rapide aux actions courantes.
+
+## Importation
+
+```tsx
+import { FloatButton } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="De base" description="Simple bouton d'action flottant." source={FloatButtonDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec infobulle" description="Bouton flottant avec infobulle au survol." source={FloatButtonDemoSource} fn="WithTooltipDemo">
+  <WithTooltipDemo client:load slot="demo" />
+</Example>
+
+<Example title="Types" description="Types de boutons par défaut et primaire." source={FloatButtonDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Formes" description="Formes de boutons cercle et carré." source={FloatButtonDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec badge" description="Bouton flottant avec badge de notification." source={FloatButtonDemoSource} fn="WithBadgeDemo">
+  <WithBadgeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Groupe de boutons flottants" description="Groupe de boutons flottants qui s'étendent au clic." source={FloatButtonDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="Retour en haut" description="Bouton de défilement vers le haut qui apparaît après avoir fait défiler vers le bas." source={FloatButtonDemoSource} fn="BackTopDemo">
+  <BackTopDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `FloatButton`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `icon` | Icône à afficher dans le bouton | `React.ReactNode` | - |
+| `description` | Texte de description sous l'icône | `React.ReactNode` | - |
+| `type` | Type/couleur du bouton | `'default' \| 'primary'` | `'default'` |
+| `shape` | Forme du bouton | `'circle' \| 'square'` | `'circle'` |
+| `tooltip` | Texte d'infobulle au survol | `string` | - |
+| `tooltipPlacement` | Position de l'infobulle | `'left' \| 'right' \| 'top' \| 'bottom'` | `'left'` |
+| `badge` | Contenu du badge à afficher | `number \| React.ReactNode` | - |
+| `href` | URL du lien (rendu comme ancre) | `string` | - |
+| `target` | Cible du lien | `string` | - |
+| `onClick` | Gestionnaire d'événement de clic | `() => void` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `FloatButton.Group`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Composants FloatButton à regrouper | `React.ReactNode` | - |
+| `flower` | Organiser les boutons en disposition quart de cercle (radiale) | `boolean` | `false` |
+| `shape` | Forme du bouton pour les enfants | `'circle' \| 'square'` | `'circle'` |
+| `icon` | Icône du bouton déclencheur principal | `React.ReactNode` | - |
+| `mainAction` | Icône du bouton d'action principal (remplace le déclencheur lorsque ouvert) | `React.ReactNode` | - |
+| `onMainAction` | Gestionnaire de clic pour le bouton d'action principal | `() => void` | - |
+| `showClose` | Afficher le bouton de fermeture lorsque ouvert | `boolean` | `false` |
+| `type` | Type/couleur du bouton | `'default' \| 'primary'` | `'default'` |
+| `position` | Position à l'écran | `'bottom-right' \| 'bottom-left' \| 'top-right' \| 'top-left'` | `'bottom-right'` |
+| `offset` | Distance du bord en pixels | `number` | `24` |
+
+### `FloatButton.BackTop`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `visibilityHeight` | Distance de défilement avant l'apparition du bouton (pixels) | `number` | `400` |
+| `target` | Élément cible de défilement | `() => HTMLElement \| Window` | - |
+| `onClick` | Gestionnaire d'événement de clic (appelé avant le défilement) | `() => void` | - |
+| `icon` | Icône personnalisée | `React.ReactNode` | - |
+| `duration` | Durée de l'animation de défilement en ms | `number` | `450` |
+| `position` | Position à l'écran | `'bottom-right' \| 'bottom-left'` | `'bottom-right'` |
+| `offset` | Distance du bord en pixels | `number` | `24` |
+
+## Accessibilité
+
+- Utilise l'élément `<button>` natif pour une prise en charge appropriée du clavier
+- Prend en charge la prop `href` pour rendre comme ancre pour la fonctionnalité de lien
+- Les infobulles fournissent un contexte pour les lecteurs d'écran lorsqu'elles sont présentes
+- Les états de focus sont clairement visibles pour la navigation au clavier
+- L'expansion du groupe est accessible au clavier
+- Le bouton BackTop apparaît/disparaît en fonction de la position de défilement

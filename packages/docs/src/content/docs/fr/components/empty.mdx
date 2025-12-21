@@ -1,0 +1,62 @@
+---
+title: Empty
+description: Afficher un contenu de remplacement lorsqu'il n'y a pas de données à montrer.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomDescriptionDemo,
+  CustomImageDemo,
+  WithActionDemo,
+  SimpleImageDemo,
+} from '../../../../components/EmptyDemo'
+import EmptyDemoSource from '../../../../components/EmptyDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Afficher un contenu de remplacement lorsqu'il n'y a pas de données à montrer.
+
+## Importation
+
+```tsx
+import { Empty } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Empty de base" description="État vide simple avec image par défaut." source={EmptyDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Description personnalisée" description="État vide avec texte de description personnalisé." source={EmptyDemoSource} fn="CustomDescriptionDemo">
+  <CustomDescriptionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Image personnalisée" description="État vide avec image ou icône personnalisée." source={EmptyDemoSource} fn="CustomImageDemo">
+  <CustomImageDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec bouton d'action" description="État vide avec bouton d'action." source={EmptyDemoSource} fn="WithActionDemo">
+  <WithActionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Image simple" description="État vide minimal avec image plus petite." source={EmptyDemoSource} fn="SimpleImageDemo">
+  <SimpleImageDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Empty`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `description` | Texte ou nœud à afficher comme description | `React.ReactNode` | `'No Data'` |
+| `image` | Image ou icône personnalisée ; définir à null pour masquer | `React.ReactNode` | `Empty.PRESENTED_IMAGE_DEFAULT` |
+| `imageStyle` | Style appliqué au conteneur d'image | `React.CSSProperties` | - |
+| `children` | Contenu supplémentaire comme boutons ou actions | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+| `data-testid` | ID de test pour le composant | `string` | `'empty'` |

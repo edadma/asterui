@@ -1,0 +1,88 @@
+---
+title: Grid
+description: Système de grille flexible avec composants Row et Col. Supporte les modes 24 colonnes (par défaut) et 120 colonnes pour des mises en page précises.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  GutterDemo,
+  OffsetDemo,
+  ResponsiveDemo,
+  Cols120Demo,
+} from '../../../../components/GridDemo'
+import GridDemoSource from '../../../../components/GridDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Système de grille flexible avec composants Row et Col. Supporte les modes 24 colonnes (par défaut) et 120 colonnes pour des mises en page précises.
+
+## Importation
+
+```tsx
+import { Row, Col } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Grille de base" description="Système de grille de base à 24 colonnes." source={GridDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Gouttière de grille" description="Personnaliser l'espacement entre les colonnes. Par défaut 16px ; valeurs recommandées : 16, 24, 32, 40, 48." source={GridDemoSource} fn="GutterDemo">
+  <GutterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Décalage de colonne" description="Décaler les colonnes en utilisant la prop offset." source={GridDemoSource} fn="OffsetDemo">
+  <OffsetDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colonnes réactives" description="Différentes portées de colonnes à différents points de rupture." source={GridDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grille 120 colonnes" description="Contrôle précis avec 120 colonnes pour des mises en page exactes." source={GridDemoSource} fn="Cols120Demo">
+  <Cols120Demo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Row`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `cols` | Nombre de colonnes de grille | `24 \| 120` | `24` |
+| `gutter` | Espacement entre les colonnes (px) | `number \| [number, number]` | `16` |
+| `justify` | Alignement horizontal des éléments de grille | `'start' \| 'end' \| 'center' \| 'between' \| 'around' \| 'evenly'` | - |
+| `align` | Alignement vertical des éléments de grille | `'start' \| 'end' \| 'center' \| 'stretch' \| 'baseline'` | - |
+| `children` | Composants de colonnes | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `Col`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `span` | Nombre de colonnes à occuper (sur 24 ou 120) | `number` | `24` |
+| `offset` | Nombre de colonnes à décaler | `number` | `0` |
+| `order` | Ordre visuel de la colonne (1-12) | `number` | - |
+| `xs` | Portée réactive pour écrans extra petits (&lt;640px) | `number` | - |
+| `sm` | Portée réactive pour petits écrans (≥640px) | `number` | - |
+| `md` | Portée réactive pour écrans moyens (≥768px) | `number` | - |
+| `lg` | Portée réactive pour grands écrans (≥1024px) | `number` | - |
+| `xl` | Portée réactive pour écrans extra larges (≥1280px) | `number` | - |
+| `xxl` | Portée réactive pour écrans 2x extra larges (≥1536px) | `number` | - |
+| `children` | Contenu de la colonne | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Notes d'utilisation
+
+- Par défaut, mise en page à 24 colonnes ; utiliser `cols={120}` pour un contrôle plus fin
+- Utiliser `Row` comme conteneur et `Col` pour les colonnes
+- Définir `gutter` sur Row pour ajouter de l'espacement entre les colonnes
+- Utiliser les props réactives (xs, sm, md, lg, xl, xxl) pour différentes portées de colonnes à différentes tailles d'écran
+- Les portées de colonnes doivent totaliser au maximum le nombre total de colonnes (24 ou 120) par ligne
+- Utiliser `offset` pour créer un espace vide avant une colonne
+- Le mode 120 colonnes est utile pour les mises en page nécessitant des ratios comme 1:3, 2:3 ou des pourcentages comme 25%, 37.5%

@@ -1,0 +1,125 @@
+---
+title: Badge
+description: Badges de notification, indicateurs de statut et rubans pour mettre en évidence du contenu
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  OverflowDemo,
+  PositionDemo,
+  OffsetDemo,
+  StatusDemo,
+  RibbonDemo,
+  RibbonColorsDemo,
+  DotDemo,
+  ColorsDemo,
+  CustomColorsDemo,
+  SizesDemo,
+  ShowZeroDemo,
+  VariantsDemo,
+} from '../../../../components/BadgeDemo'
+import BadgeDemoSource from '../../../../components/BadgeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Badges de notification, indicateurs de statut et rubans pour mettre en évidence du contenu.
+
+## Importation
+
+```tsx
+import { Badge } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Badges de notification basiques" description="Afficher des badges de comptage sur les éléments." source={BadgeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Nombre de dépassement" description="Afficher nombre+ lorsque le seuil de dépassement est dépassé." source={BadgeDemoSource} fn="OverflowDemo">
+  <OverflowDemo client:load slot="demo" />
+</Example>
+
+<Example title="Positionnement du badge" description="Positionner les badges à l'un des 9 coins." source={BadgeDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Décalage du badge" description="Ajuster finement la position du badge avec des décalages en pixels." source={BadgeDemoSource} fn="OffsetDemo">
+  <OffsetDemo client:load slot="demo" />
+</Example>
+
+<Example title="Badges de statut" description="Indicateurs de statut avec étiquettes de texte optionnelles." source={BadgeDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Badges ruban" description="Badges décoratifs de style ruban utilisant Badge.Ribbon." source={BadgeDemoSource} fn="RibbonDemo">
+  <RibbonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs de ruban" description="Les rubans prennent en charge différents types de couleurs et couleurs personnalisées." source={BadgeDemoSource} fn="RibbonColorsDemo">
+  <RibbonColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Badges point" description="Petits indicateurs circulaires pour la présence ou le statut." source={BadgeDemoSource} fn="DotDemo">
+  <DotDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs de badge" description="Badges de comptage autonomes avec différentes couleurs." source={BadgeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs personnalisées" description="Utiliser la prop color pour des couleurs de badge personnalisées." source={BadgeDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles de badge" description="Cinq tailles disponibles pour les badges." source={BadgeDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Afficher zéro" description="Afficher le badge même lorsque le nombre est 0." source={BadgeDemoSource} fn="ShowZeroDemo">
+  <ShowZeroDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes de badge" description="Différents styles visuels pour les badges." source={BadgeDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Badge`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `count` | Nombre à afficher dans le badge | `number` | - |
+| `showZero` | Afficher le badge lorsque le nombre est 0 | `boolean` | `false` |
+| `overflowCount` | Nombre maximum à afficher avant d'afficher nombre+ | `number` | `99` |
+| `position` | Position du badge lors de l'enveloppement des enfants | `'top-start' \| 'top-center' \| 'top-end' \| 'middle-start' \| 'middle-center' \| 'middle-end' \| 'bottom-start' \| 'bottom-center' \| 'bottom-end'` | `'top-end'` |
+| `offset` | Décalage par rapport à la position par défaut en pixels [x, y] | `[number, number]` | - |
+| `status` | Mode badge de statut avec point coloré | `'success' \| 'processing' \| 'error' \| 'default' \| 'warning'` | - |
+| `text` | Texte à afficher avec le badge de statut | `string` | - |
+| `dot` | Afficher un petit point circulaire au lieu du nombre | `boolean` | `false` |
+| `type` | Type de couleur du badge | `'default' \| 'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'error'` |
+| `size` | Taille du badge | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `variant` | Variante de style du badge | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost'` | `'solid'` |
+| `color` | Couleur d'arrière-plan personnalisée | `string` | - |
+| `children` | Élément à envelopper avec le badge (mode notification) | `ReactNode` | - |
+
+### `Badge.Ribbon`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `text` | Contenu texte du ruban | `string` | requis |
+| `placement` | Placement du ruban | `'start' \| 'end'` | `'end'` |
+| `type` | Type de couleur du ruban | Identique au type Badge | `'primary'` |
+| `color` | Couleur d'arrière-plan personnalisée | `string` | - |
+| `children` | Élément à envelopper avec le ruban | `ReactNode` | requis |
+
+## Accessibilité
+
+- Utilise `role="status"` pour les badges de statut
+- Fournit `aria-label` pour les lecteurs d'écran avec le nombre ou le statut de notification
+- Le statut de traitement inclut une animation de pulsation visuelle

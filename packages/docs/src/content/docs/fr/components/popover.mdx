@@ -1,0 +1,82 @@
+---
+title: Popover
+description: Une carte qui affiche des informations supplémentaires lorsqu'elle est déclenchée
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TitleDemo,
+  TriggersDemo,
+  PlacementTopDemo,
+  PlacementBottomDemo,
+  PlacementLeftDemo,
+  PlacementRightDemo,
+} from '../../../../components/PopoverDemo'
+import PopoverDemoSource from '../../../../components/PopoverDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Une carte qui affiche des informations supplémentaires lorsqu'elle est déclenchée.
+
+## Import
+
+```tsx
+import { Popover } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Utilisation de base" description="Popover simple déclenché au survol." source={PopoverDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec titre" description="Popover avec un titre et du contenu." source={PopoverDemoSource} fn="TitleDemo">
+  <TitleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Types de déclencheur" description="Différents modes de déclenchement pour le popover." source={PopoverDemoSource} fn="TriggersDemo">
+  <TriggersDemo client:load slot="demo" />
+</Example>
+
+<Example title="Placement - Haut" description="Variantes de placement en haut." source={PopoverDemoSource} fn="PlacementTopDemo">
+  <PlacementTopDemo client:load slot="demo" />
+</Example>
+
+<Example title="Placement - Bas" description="Variantes de placement en bas." source={PopoverDemoSource} fn="PlacementBottomDemo">
+  <PlacementBottomDemo client:load slot="demo" />
+</Example>
+
+<Example title="Placement - Gauche" description="Variantes de placement à gauche." source={PopoverDemoSource} fn="PlacementLeftDemo">
+  <PlacementLeftDemo client:load slot="demo" />
+</Example>
+
+<Example title="Placement - Droite" description="Variantes de placement à droite." source={PopoverDemoSource} fn="PlacementRightDemo">
+  <PlacementRightDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Popover`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Élément déclencheur | `React.ReactNode` | - |
+| `content` | Contenu du popover | `React.ReactNode` | - |
+| `title` | Titre du popover | `React.ReactNode` | - |
+| `trigger` | Comment le popover est déclenché | `'hover' \| 'click' \| 'focus'` | `'hover'` |
+| `placement` | Position du popover | `'top' \| 'topLeft' \| 'topRight' \| 'bottom' \| 'bottomLeft' \| 'bottomRight' \| 'left' \| 'leftTop' \| 'leftBottom' \| 'right' \| 'rightTop' \| 'rightBottom'` | `'top'` |
+| `open` | Si le popover est visible (mode contrôlé) | `boolean` | - |
+| `onOpenChange` | Rappel lors du changement de visibilité | `(open: boolean) => void` | - |
+| `className` | Classes CSS supplémentaires pour le wrapper | `string` | - |
+| `overlayClassName` | Classes CSS supplémentaires pour la superposition du popover | `string` | - |
+
+## Accessibilité
+
+- Popover utilise des attributs ARIA appropriés pour les infobulles
+- Les déclencheurs de clic et de focus sont accessibles au clavier
+- Le contenu est annoncé aux lecteurs d'écran lorsqu'il est affiché
+- La touche Échap ferme les popovers déclenchés par clic

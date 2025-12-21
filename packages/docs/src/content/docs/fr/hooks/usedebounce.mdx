@@ -1,0 +1,47 @@
+---
+title: useDebounce
+description: Hook qui retarde la mise à jour d'une valeur jusqu'après un délai spécifié.
+---
+
+Retarde les mises à jour de valeur pour réduire les opérations excessives comme les appels API.
+
+## Import
+
+```tsx
+import { useDebounce } from 'asterui'
+```
+
+## Utilisation
+
+```tsx
+function SearchExample() {
+  const [search, setSearch] = useState('')
+  const debouncedSearch = useDebounce(search, 500)
+
+  useEffect(() => {
+    // Ne s'exécute que 500ms après que l'utilisateur arrête de taper
+    fetchResults(debouncedSearch)
+  }, [debouncedSearch])
+
+  return (
+    <Input
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      placeholder="Rechercher..."
+    />
+  )
+}
+```
+
+## Paramètres
+
+| Paramètre | Type | Défaut | Description |
+|-----------|------|---------|-------------|
+| `value` | `T` | - | Valeur à retarder |
+| `delay` | `number` | `300` | Délai en millisecondes |
+
+## Valeur de retour
+
+| Type | Description |
+|------|-------------|
+| `T` | Valeur retardée (mise à jour après le délai) |

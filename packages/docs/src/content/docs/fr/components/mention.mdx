@@ -1,0 +1,67 @@
+---
+title: Mention
+description: Composant de saisie pour mentionner des utilisateurs, des tags ou d'autres entités avec suggestions d'autocomplétion.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomPrefixDemo,
+  MultiTriggerDemo,
+} from '../../../../components/MentionDemo'
+import MentionDemoSource from '../../../../components/MentionDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de saisie pour mentionner des utilisateurs, des tags ou d'autres entités avec suggestions d'autocomplétion.
+
+## Import
+
+```tsx
+import { Mention } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Mention basique" description="Saisie de mention simple avec déclencheur @." source={MentionDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Préfixe personnalisé" description="Utilisation du préfixe # pour les mentions de hashtag." source={MentionDemoSource} fn="CustomPrefixDemo">
+  <CustomPrefixDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Déclencheurs multiples" description="Utilisation de plusieurs composants de mention avec différents préfixes." source={MentionDemoSource} fn="MultiTriggerDemo">
+  <MultiTriggerDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Mention`
+
+| Propriété | Description | Type | Par défaut |
+|----------|-------------|------|---------|
+| `options` | Tableau d'options de mention | `Array<{ value: string, label: string }>` | - |
+| `value` | Valeur contrôlée | `string` | - |
+| `onChange` | Callback lorsque la valeur change | `(value: string) => void` | - |
+| `prefix` | Caractère qui déclenche les suggestions de mention | `string` | `'@'` |
+| `split` | Caractère utilisé pour séparer les mentions dans la saisie | `string` | - |
+| `placeholder` | Texte d'espace réservé de l'input | `string` | - |
+| `disabled` | Désactiver la saisie de mention | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Navigation au clavier
+
+- **↑** / **↓** - Naviguer à travers les suggestions de mention
+- **Entrée** - Sélectionner la mention en surbrillance
+- **Échap** - Fermer le menu déroulant de mention
+
+## Accessibilité
+
+- Support complet de la navigation au clavier pour sélectionner les mentions
+- Attributs ARIA pour que les lecteurs d'écran annoncent les suggestions
+- Gestion du focus lors de l'ouverture et de la fermeture du menu déroulant
+- Indicateurs visuels clairs pour les éléments sélectionnés et en focus

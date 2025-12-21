@@ -1,0 +1,162 @@
+---
+title: TreeSelect
+description: Sélection arborescente déroulante pour données hiérarchiques.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MultipleDemo,
+  CheckableDemo,
+  SearchableDemo,
+  SizesDemo,
+  StatusDemo,
+  AsyncLoadDemo,
+  MaxTagDemo,
+  TreeLineDemo,
+  DisabledItemsDemo,
+} from '../../../../components/TreeSelectDemo'
+import TreeSelectDemoSource from '../../../../components/TreeSelectDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Sélection arborescente déroulante pour données hiérarchiques.
+
+## Importation
+
+```tsx
+import { TreeSelect } from 'asterui'
+import type { TreeDataNode } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="TreeSelect basique" description="Sélectionnez une seule valeur à partir d'une structure arborescente." source={TreeSelectDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sélection multiple" description="Sélectionnez plusieurs valeurs de l'arbre." source={TreeSelectDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cochable" description="Utilisez des cases à cocher pour la sélection avec association parent-enfant." source={TreeSelectDemoSource} fn="CheckableDemo">
+  <CheckableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Recherchable" description="Filtrez les nœuds de l'arbre avec la recherche." source={TreeSelectDemoSource} fn="SearchableDemo">
+  <SearchableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="TreeSelect est disponible en différentes tailles." source={TreeSelectDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="État de validation" description="Afficher les états d'erreur ou d'avertissement." source={TreeSelectDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Chargement asynchrone" description="Charger les nœuds de l'arbre de manière asynchrone lors de l'expansion." source={TreeSelectDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+<Example title="Nombre maximum d'étiquettes" description="Limiter le nombre d'étiquettes visibles." source={TreeSelectDemoSource} fn="MaxTagDemo">
+  <MaxTagDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ligne d'arbre" description="Afficher les lignes de connexion entre les nœuds de l'arbre." source={TreeSelectDemoSource} fn="TreeLineDemo">
+  <TreeLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Éléments désactivés" description="Certains nœuds de l'arbre peuvent être désactivés." source={TreeSelectDemoSource} fn="DisabledItemsDemo">
+  <DisabledItemsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `TreeSelect`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `treeData` | Structure de données d'arbre | `TreeDataNode[]` | `[]` |
+| `value` | Valeur(s) sélectionnée(s) | `string \| string[]` | `-` |
+| `defaultValue` | Valeur(s) sélectionnée(s) par défaut | `string \| string[]` | `[]` |
+| `onChange` | Callback lorsque la sélection change | `(value: string \| string[], labels: ReactNode[]) => void` | `-` |
+| `multiple` | Permettre la sélection multiple | `boolean` | `false` |
+| `treeCheckable` | Afficher la case à cocher pour les nœuds de l'arbre | `boolean` | `false` |
+| `treeCheckStrictly` | Vérifier sans association parent-enfant | `boolean` | `false` |
+| `showCheckedStrategy` | Comment afficher les éléments cochés | `'SHOW_ALL' \| 'SHOW_PARENT' \| 'SHOW_CHILD'` | `'SHOW_ALL'` |
+| `showSearch` | Activer la fonctionnalité de recherche | `boolean` | `false` |
+| `searchValue` | Valeur contrôlée de l'entrée de recherche | `string` | `-` |
+| `onSearch` | Callback lorsque l'entrée de recherche change | `(value: string) => void` | `-` |
+| `filterTreeNode` | Fonction de filtrage personnalisée | `(searchValue: string, node: TreeDataNode) => boolean` | `-` |
+| `placeholder` | Texte de placeholder | `string` | `'Please select'` |
+| `allowClear` | Afficher le bouton effacer | `boolean` | `true` |
+| `disabled` | Désactiver la sélection | `boolean` | `false` |
+| `size` | Taille de l'entrée | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `color` | Thème de couleur | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `status` | État de validation | `'error' \| 'warning'` | `-` |
+| `maxTagCount` | Nombre maximum d'étiquettes à afficher | `number \| 'responsive'` | `-` |
+| `maxTagPlaceholder` | Contenu pour les étiquettes masquées | `ReactNode \| ((omittedValues: string[]) => ReactNode)` | `-` |
+| `treeLine` | Afficher les lignes de connexion | `boolean` | `false` |
+| `treeDefaultExpandAll` | Développer tous les nœuds de l'arbre par défaut | `boolean` | `false` |
+| `treeDefaultExpandedKeys` | Clés de nœuds d'arbre étendus par défaut | `string[]` | `[]` |
+| `treeExpandedKeys` | Clés de nœuds d'arbre étendus contrôlés | `string[]` | `-` |
+| `onTreeExpand` | Callback lorsque les nœuds de l'arbre se développent/réduisent | `(expandedKeys: string[]) => void` | `-` |
+| `loadData` | Charger les données de manière asynchrone | `(node: TreeDataNode) => Promise<void>` | `-` |
+| `fieldNames` | Personnaliser les noms de champs | `{ label?: string; value?: string; children?: string }` | `-` |
+| `open` | Visibilité contrôlée du menu déroulant | `boolean` | `-` |
+| `onDropdownVisibleChange` | Callback lorsque la visibilité du menu déroulant change | `(open: boolean) => void` | `-` |
+| `suffixIcon` | Icône de suffixe personnalisée | `ReactNode` | `-` |
+| `switcherIcon` | Icône personnalisée de développer/réduire | `ReactNode \| ((props: { expanded: boolean }) => ReactNode)` | `-` |
+| `notFoundContent` | Contenu lorsqu'il n'y a pas de résultats | `ReactNode` | `'No results found'` |
+| `dropdownRender` | Rendu personnalisé du contenu déroulant | `(menu: ReactNode) => ReactNode` | `-` |
+| `popupClassName` | Classe pour le menu déroulant | `string` | `-` |
+| `data-testid` | ID de test pour le composant | `string` | `'treeselect'` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+### `TreeDataNode`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Identifiant unique | `string` | `-` |
+| `title` | Texte affiché | `ReactNode` | `-` |
+| `children` | Nœuds enfants | `TreeDataNode[]` | `-` |
+| `disabled` | Si désactivé | `boolean` | `-` |
+| `isLeaf` | Si c'est un nœud feuille | `boolean` | `-` |
+
+## Accessibilité
+
+Le composant TreeSelect suit les modèles WAI-ARIA combobox et tree avec des attributs ARIA appropriés et une navigation au clavier.
+
+### Navigation au clavier
+
+| Touche | Action |
+|-----|--------|
+| <kbd>Entrée</kbd> / <kbd>Espace</kbd> | Ouvrir le menu déroulant ou sélectionner l'élément focalisé |
+| <kbd>Échap</kbd> | Fermer le menu déroulant |
+| <kbd>↓</kbd> | Ouvrir le menu déroulant ou déplacer le focus vers le bas |
+| <kbd>↑</kbd> | Déplacer le focus vers le haut |
+| <kbd>→</kbd> | Développer le nœud de l'arbre focalisé |
+| <kbd>←</kbd> | Réduire le nœud de l'arbre focalisé ou se déplacer vers le parent |
+| <kbd>Début</kbd> | Déplacer le focus vers le premier élément |
+| <kbd>Fin</kbd> | Déplacer le focus vers le dernier élément |
+
+### Tests
+
+Le composant expose les attributs `data-testid` et `data-state` pour les tests :
+
+| Élément | ID de test | Attributs de données |
+|---------|---------|-----------------|
+| Racine | `{baseTestId}` | `data-state="open\|closed"`, `data-disabled` |
+| Déclencheur | `{baseTestId}-trigger` | `-` |
+| Menu déroulant | `{baseTestId}-dropdown` | `-` |
+| Recherche | `{baseTestId}-search` | `-` |
+| Effacer | `{baseTestId}-clear` | `-` |
+| Option | `{baseTestId}-option-{key}` | `data-state="selected\|unselected"`, `data-disabled` |
+| Étiquette | `{baseTestId}-tag-{key}` | `-` |
+| Vide | `{baseTestId}-empty` | `-` |
+
+Passez une prop personnalisée `data-testid` pour utiliser un ID de base différent.

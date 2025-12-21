@@ -1,0 +1,83 @@
+---
+title: Upload
+description: Composant de téléchargement de fichiers avec prise en charge du glisser-déposer.
+tableOfContents: false
+---
+
+import {
+  BasicUploadDemo,
+  DragUploadDemo,
+  PictureCardUploadDemo,
+  ControlledUploadDemo,
+  MaxSizeUploadDemo,
+  AcceptUploadDemo,
+  FormUploadDemo,
+} from '../../../../components/UploadDemo'
+import UploadDemoSource from '../../../../components/UploadDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de téléchargement de fichiers avec prise en charge du glisser-déposer.
+
+## Importation
+
+```tsx
+import { Upload } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Upload basique" description="Téléchargement de fichiers simple avec bouton déclencheur." source={UploadDemoSource} fn="BasicUploadDemo">
+  <BasicUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Glisser-déposer" description="Glissez des fichiers vers la zone de téléchargement." source={UploadDemoSource} fn="DragUploadDemo">
+  <DragUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Carte image" description="Afficher les images téléchargées sous forme de cartes." source={UploadDemoSource} fn="PictureCardUploadDemo">
+  <PictureCardUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Upload contrôlé" description="Contrôler la liste de fichiers avec l'état et une requête personnalisée." source={UploadDemoSource} fn="ControlledUploadDemo">
+  <ControlledUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Taille maximale de fichier" description="Limiter la taille du fichier avec validation." source={UploadDemoSource} fn="MaxSizeUploadDemo">
+  <MaxSizeUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Types de fichiers acceptés" description="Restreindre les types de fichiers pouvant être téléchargés." source={UploadDemoSource} fn="AcceptUploadDemo">
+  <AcceptUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Dans un formulaire" description="Upload intégré au composant Form." source={UploadDemoSource} fn="FormUploadDemo">
+  <FormUploadDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Upload`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `fileList` | Liste contrôlée des fichiers téléchargés | `UploadFile[]` | `-` |
+| `onChange` | Callback lorsque la liste de fichiers change | `({ fileList }) => void` | `-` |
+| `customRequest` | Gestionnaire de requête de téléchargement personnalisé | `({ file, onSuccess, onError }) => void` | `-` |
+| `listType` | Style d'affichage de la liste de fichiers | `'text' \| 'picture' \| 'picture-card'` | `'text'` |
+| `maxCount` | Nombre maximum de fichiers | `number` | `-` |
+| `maxSize` | Taille maximale du fichier en octets | `number` | `-` |
+| `accept` | Types de fichiers acceptés | `string` | `-` |
+| `disabled` | Désactiver le téléchargement | `boolean` | `false` |
+| `children` | Élément déclencheur de téléchargement | `React.ReactNode` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+## Accessibilité
+
+- L'entrée de fichier est correctement étiquetée
+- La zone de glisser-déposer dispose d'une prise en charge du clavier
+- La progression du téléchargement est annoncée aux lecteurs d'écran
+- Les boutons de suppression sont accessibles au clavier

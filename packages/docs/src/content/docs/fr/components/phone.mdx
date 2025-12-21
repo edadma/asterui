@@ -1,0 +1,66 @@
+---
+title: Phone
+description: Afficher du contenu dans une maquette de cadre de téléphone de style iPhone
+tableOfContents: false
+---
+
+import {
+  BasicPhoneDemo,
+  ImagePhoneDemo,
+  ColorPhoneDemo,
+  AppPhoneDemo,
+  ChatPhoneDemo,
+} from '../../../../components/PhoneDemo'
+import PhoneDemoSource from '../../../../components/PhoneDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Afficher du contenu dans une maquette de cadre de téléphone de style iPhone.
+
+## Import
+
+```tsx
+import { Phone } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Téléphone de base" description="Maquette de téléphone simple avec contenu centré." source={PhoneDemoSource} fn="BasicPhoneDemo">
+  <BasicPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec image" description="Afficher une image comme fond d'écran." source={PhoneDemoSource} fn="ImagePhoneDemo">
+  <ImagePhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleur personnalisée" description="Personnaliser la couleur du cadre du téléphone." source={PhoneDemoSource} fn="ColorPhoneDemo">
+  <ColorPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Interface d'application" description="Maquette d'une mise en page d'application mobile." source={PhoneDemoSource} fn="AppPhoneDemo">
+  <AppPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Interface de chat" description="Maquette d'une mise en page d'application de chat." source={PhoneDemoSource} fn="ChatPhoneDemo">
+  <ChatPhoneDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Phone`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu à l'intérieur de l'écran du téléphone | `React.ReactNode` | - |
+| `color` | Couleur de cadre personnalisée | `string` | - |
+| `className` | Classes pour le conteneur du téléphone | `string` | - |
+| `displayClassName` | Classes pour la zone d'affichage | `string` | - |
+
+## Accessibilité
+
+- La maquette de téléphone est décorative - le contenu à l'intérieur doit être accessible
+- Les images à l'intérieur doivent avoir un attribut `alt` approprié
+- Les éléments interactifs à l'intérieur restent entièrement accessibles

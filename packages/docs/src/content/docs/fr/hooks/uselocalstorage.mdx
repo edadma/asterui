@@ -1,0 +1,54 @@
+---
+title: useLocalStorage
+description: Hook pour persister l'état dans localStorage.
+---
+
+Persiste l'état dans localStorage avec synchronisation automatique entre les onglets.
+
+## Import
+
+```tsx
+import { useLocalStorage } from 'asterui'
+```
+
+## Utilisation
+
+```tsx
+function SettingsExample() {
+  const [theme, setTheme] = useLocalStorage('theme', 'light')
+  const [user, setUser, removeUser] = useLocalStorage('user', null)
+
+  return (
+    <>
+      <Select value={theme} onChange={setTheme}>
+        <option value="light">Clair</option>
+        <option value="dark">Sombre</option>
+      </Select>
+      <Button onClick={removeUser}>Déconnexion</Button>
+    </>
+  )
+}
+```
+
+## Paramètres
+
+| Paramètre | Type | Description |
+|-----------|------|-------------|
+| `key` | `string` | Clé localStorage |
+| `initialValue` | `T` | Valeur initiale si la clé n'existe pas |
+
+## Valeur de retour
+
+Retourne un tuple `[value, setValue, removeValue]` :
+
+| Index | Type | Description |
+|-------|------|-------------|
+| `0` | `T` | Valeur stockée actuelle |
+| `1` | `(value: T \| (prev: T) => T) => void` | Met à jour la valeur |
+| `2` | `() => void` | Supprime de localStorage et réinitialise à la valeur initiale |
+
+## Fonctionnalités
+
+- Synchronise entre les onglets/fenêtres via l'événement `storage`
+- Compatible SSR (gère `window` indéfini)
+- Supporte les mises à jour fonctionnelles comme `useState`

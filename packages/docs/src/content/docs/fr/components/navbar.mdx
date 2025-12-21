@@ -1,0 +1,78 @@
+---
+title: Navbar
+description: Composant de barre de navigation avec mise en page flexible pour en-têtes et barres d'application.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithDropdownDemo,
+  WithMenuIconDemo,
+  ColorsDemo,
+  ShadowDemo,
+  RoundedDemo,
+} from '../../../../components/NavbarDemo'
+import NavbarDemoSource from '../../../../components/NavbarDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de barre de navigation avec mise en page flexible pour en-têtes et barres d'application.
+
+## Import
+
+```tsx
+import { Navbar } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Navbar de base" description="Navbar simple avec titre et boutons de navigation." source={NavbarDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec menu déroulant" description="Navbar avec un menu déroulant pour des options supplémentaires." source={NavbarDemoSource} fn="WithDropdownDemo">
+  <WithDropdownDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec icône de menu" description="Navbar avec un menu déroulant hamburger." source={NavbarDemoSource} fn="WithMenuIconDemo">
+  <WithMenuIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes de couleur" description="Navbar avec différentes variantes de couleur d'arrière-plan." source={NavbarDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec ombre" description="Navbar avec ombre pour une apparence élevée." source={NavbarDemoSource} fn="ShadowDemo">
+  <ShadowDemo client:load slot="demo" />
+</Example>
+
+<Example title="Coins arrondis" description="Navbar avec coins arrondis pour un aspect plus doux." source={NavbarDemoSource} fn="RoundedDemo">
+  <RoundedDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Navbar`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `start` | Contenu pour la section de début de la navbar (généralement logo/marque) | `React.ReactNode` | - |
+| `center` | Contenu pour la section centrale de la navbar | `React.ReactNode` | - |
+| `end` | Contenu pour la section de fin de la navbar (généralement actions/menu) | `React.ReactNode` | - |
+| `children` | Contenu personnalisé qui remplace la mise en page à trois sections | `React.ReactNode` | - |
+| `color` | Variante de couleur d'arrière-plan | `'base' \| 'neutral' \| 'primary' \| 'secondary' \| 'accent'` | `'base'` |
+| `sticky` | Rendre la navbar fixe en haut | `boolean` | `false` |
+| `shadow` | Profondeur de l'ombre | `'none' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'none'` |
+| `rounded` | Rayon de bordure | `'none' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'none'` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise l'élément sémantique `<nav>` pour une sémantique de navigation appropriée
+- Prend en charge la navigation au clavier pour tous les éléments interactifs
+- Les boutons de menu mobile doivent avoir des étiquettes descriptives pour les lecteurs d'écran
+- Maintient la visibilité du focus pour les utilisateurs du clavier
+- Les menus déroulants suivent les meilleures pratiques ARIA pour les modèles de menu

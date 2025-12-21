@@ -1,0 +1,75 @@
+---
+title: Anchor
+description: Naviguer vers les sections de la page avec mise en évidence par défilement actif.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HorizontalDemo,
+  NestedDemo,
+} from '../../../../components/AnchorDemo'
+import AnchorDemoSource from '../../../../components/AnchorDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Naviguer vers les sections de la page avec mise en évidence par défilement actif.
+
+## Importation
+
+```tsx
+import { Anchor } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Basique" description="Navigation d'ancrage verticale avec défilement actif." source={AnchorDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Horizontal" description="Disposition horizontale pour la navigation supérieure." source={AnchorDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Liens imbriqués" description="Navigation hiérarchique avec liens imbriqués." source={AnchorDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Anchor`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `items` | Configuration des liens d'ancrage | `AnchorLinkItem[]` | - |
+| `direction` | Direction de disposition | `'horizontal' \| 'vertical'` | `'vertical'` |
+| `offsetTop` | Décalage depuis le haut lors du calcul de la position de défilement | `number` | `0` |
+| `bounds` | Distance de délimitation de la zone d'ancrage | `number` | `5` |
+| `getContainer` | Conteneur de défilement (par défaut : window) | `() => HTMLElement \| Window` | - |
+| `getCurrentAnchor` | Personnaliser la mise en évidence de l'ancrage | `(activeLink: string) => string` | - |
+| `activeLink` | Lien actuellement actif (contrôlé) | `string` | - |
+| `onChange` | Callback lorsque le lien actif change | `(activeLink: string) => void` | - |
+| `onClick` | Callback lorsqu'un lien est cliqué | `(e, link) => void` | - |
+| `affix` | Fixer l'ancrage lors du défilement | `boolean` | `false` |
+| `affixOffsetTop` | Décalage en pixels depuis le haut lorsque affix est true | `number` | `0` |
+| `replace` | Remplacer l'historique au lieu d'ajouter | `boolean` | `false` |
+| `className` | Classe CSS personnalisée | `string` | - |
+| `children` | Enfants Anchor.Link (alternative à items) | `React.ReactNode` | - |
+
+### `AnchorLinkItem`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `href` | ID de l'élément cible (sans #) | `string` | - |
+| `title` | Titre du lien | `React.ReactNode` | - |
+| `children` | Éléments de liens imbriqués | `AnchorLinkItem[]` | - |
+
+## Accessibilité
+
+- Utilise l'élément sémantique `<nav>` pour la navigation
+- Les liens sont accessibles au clavier
+- L'état actif est indiqué visuellement
+- Le défilement fluide respecte les préférences de mouvement de l'utilisateur

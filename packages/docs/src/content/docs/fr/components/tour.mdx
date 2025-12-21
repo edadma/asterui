@@ -1,0 +1,91 @@
+---
+title: Tour
+description: Visite guidée avec mise en évidence par projecteur et navigation par étapes.
+tableOfContents: false
+---
+
+import {
+  BasicTourDemo,
+  WithoutTargetDemo,
+  WithCoverDemo,
+  PlacementsDemo,
+} from '../../../../components/TourDemo'
+import TourDemoSource from '../../../../components/TourDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Visite guidée avec mise en évidence par projecteur et navigation par étapes.
+
+## Importation
+
+```tsx
+import { Tour } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Tour basique" description="Une visite guidée simple avec plusieurs étapes." source={TourDemoSource} fn="BasicTourDemo">
+  <BasicTourDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tour sans cible" description="Les étapes sans cible apparaissent centrées à l'écran." source={TourDemoSource} fn="WithoutTargetDemo">
+  <WithoutTargetDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec image de couverture" description="Ajoutez des images ou du contenu personnalisé au-dessus du titre de l'étape." source={TourDemoSource} fn="WithCoverDemo">
+  <WithCoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="Placements" description="Contrôlez l'emplacement du popover par rapport à la cible." source={TourDemoSource} fn="PlacementsDemo">
+  <PlacementsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tour`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `open` | Si le tour est visible | `boolean` | `false` |
+| `steps` | Configuration des étapes du tour | `TourStepProps[]` | `-` |
+| `current` | Indice de l'étape actuelle (contrôlé) | `number` | `-` |
+| `onChange` | Callback lorsque l'étape change | `(current: number) => void` | `-` |
+| `onClose` | Callback lorsque le tour se ferme | `() => void` | `-` |
+| `onFinish` | Callback lorsque le tour se termine | `() => void` | `-` |
+| `mask` | Afficher le masque de superposition avec projecteur | `boolean` | `true` |
+| `type` | Type de style de bouton | `'default' \| 'primary'` | `'default'` |
+| `gap` | Écart entre le projecteur et la cible [rayon, décalage] ou nombre | `number \| [number, number]` | `8` |
+| `showSkip` | Afficher le bouton ignorer | `boolean` | `true` |
+| `showIndicators` | Afficher les indicateurs d'étape | `boolean` | `true` |
+| `closeOnMaskClick` | Fermer au clic sur le masque | `boolean` | `true` |
+| `closeOnEscape` | Fermer avec la touche Échap | `boolean` | `true` |
+| `scrollIntoView` | Faire défiler la cible dans la vue | `boolean` | `true` |
+| `prevButtonText` | Texte pour le bouton précédent | `React.ReactNode` | `'Previous'` |
+| `nextButtonText` | Texte pour le bouton suivant | `React.ReactNode` | `'Next'` |
+| `finishButtonText` | Texte pour le bouton terminer | `React.ReactNode` | `'Finish'` |
+| `skipButtonText` | Texte pour le bouton ignorer | `React.ReactNode` | `'Skip'` |
+| `zIndex` | Z-index pour la superposition du tour | `number` | `1000` |
+
+### `TourStepProps`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `target` | Référence de l'élément cible ou fonction retournant l'élément | `RefObject<HTMLElement> \| (() => HTMLElement \| null) \| null` | `-` |
+| `title` | Titre de l'étape | `React.ReactNode` | `-` |
+| `description` | Description de l'étape | `React.ReactNode` | `-` |
+| `cover` | Image de couverture ou contenu au-dessus du titre | `React.ReactNode` | `-` |
+| `placement` | Placement du popover par rapport à la cible | `TourPlacement` | `'bottom'` |
+| `className` | Classe personnalisée pour le popover de l'étape | `string` | `-` |
+| `onOpen` | Appelé lorsque l'étape devient active | `() => void` | `-` |
+| `onClose` | Appelé lors de la sortie de l'étape | `() => void` | `-` |
+
+## Accessibilité
+
+- La boîte de dialogue du tour a role="dialog" et aria-modal="true"
+- Les touches fléchées permettent de naviguer entre les étapes
+- La touche Échap ferme le tour
+- Les indicateurs d'étape sont accessibles au clavier
+- Le focus est piégé dans le tour lorsqu'il est ouvert

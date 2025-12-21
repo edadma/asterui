@@ -1,0 +1,76 @@
+---
+title: FileInput
+description: Composant de saisie de fichier avec prise en charge de plusieurs fichiers, filtrage de type de fichier et divers styles.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AcceptTypesDemo,
+  MultipleDemo,
+  SizesDemo,
+  ColorsDemo,
+  StylesDemo,
+} from '../../../../components/FileInputDemo'
+import FileInputDemoSource from '../../../../components/FileInputDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de saisie de fichier avec prise en charge de plusieurs fichiers, filtrage de type de fichier et divers styles.
+
+## Importation
+
+```tsx
+import { FileInput } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="FileInput de base" description="Saisie de fichier simple." source={FileInputDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Types acceptés" description="Saisie de fichier qui accepte uniquement des types de fichiers spécifiques." source={FileInputDemoSource} fn="AcceptTypesDemo">
+  <AcceptTypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Fichiers multiples" description="Permettre la sélection de plusieurs fichiers." source={FileInputDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Différentes tailles de saisie de fichier." source={FileInputDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs" description="Différentes variantes de couleur." source={FileInputDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Styles" description="Styles avec bordure et fantôme." source={FileInputDemoSource} fn="StylesDemo">
+  <StylesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `FileInput`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `accept` | Types de fichiers à accepter | `string` | - |
+| `multiple` | Autoriser la sélection de plusieurs fichiers | `boolean` | `false` |
+| `onChange` | Gestionnaire de changement | `(e: ChangeEvent) => void` | - |
+| `disabled` | Désactiver le champ | `boolean` | `false` |
+| `size` | Taille du champ | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Couleur du champ | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `bordered` | Afficher la bordure | `boolean` | `false` |
+| `ghost` | Style fantôme | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilise `<input type="file">` natif pour une prise en charge complète du clavier
+- Toujours associer avec un `<label>` descriptif pour l'accessibilité
+- L'attribut `accept` aide les utilisateurs à sélectionner les fichiers appropriés

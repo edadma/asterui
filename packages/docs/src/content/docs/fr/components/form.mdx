@@ -1,0 +1,145 @@
+---
+title: Form
+description: Enveloppe de formulaire avec validation, options de mise en page et gestion des champs.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ValidationDemo,
+  TooltipExtraDemo,
+  FeedbackDemo,
+  LayoutsDemo,
+  InitialValuesDemo,
+  FloatingLabelDemo,
+  AddonsDemo,
+  FormListDemo,
+} from '../../../../components/FormDemo'
+import FormDemoSource from '../../../../components/FormDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Enveloppe de formulaire avec validation, options de mise en page et gestion des champs.
+
+## Importation
+
+```tsx
+import { Form } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Formulaire de base" description="Formulaire de connexion simple avec champs nom d'utilisateur et mot de passe." source={FormDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Validation de formulaire" description="Formulaire avec règles de validation pour les champs requis et le motif d'email." source={FormDemoSource} fn="ValidationDemo">
+  <ValidationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Infobulle et extra" description="Étiquettes avec icônes d'aide en infobulle et texte d'aide supplémentaire sous les champs." source={FormDemoSource} fn="TooltipExtraDemo">
+  <TooltipExtraDemo client:load slot="demo" />
+</Example>
+
+<Example title="Retour de validation" description="Afficher les icônes de validation à l'intérieur des champs avec la prop hasFeedback." source={FormDemoSource} fn="FeedbackDemo">
+  <FeedbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mises en page de formulaire" description="Différentes mises en page de formulaire : horizontale, verticale et en ligne." source={FormDemoSource} fn="LayoutsDemo">
+  <LayoutsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Valeurs initiales" description="Formulaire avec valeurs initiales pré-remplies." source={FormDemoSource} fn="InitialValuesDemo">
+  <InitialValuesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Étiquettes flottantes" description="Form.Item avec étiquettes flottantes qui s'animent au focus." source={FormDemoSource} fn="FloatingLabelDemo">
+  <FloatingLabelDemo client:load slot="demo" />
+</Example>
+
+<Example title="Addons de formulaire" description="Form.Item avec texte/éléments avant ou après les champs." source={FormDemoSource} fn="AddonsDemo">
+  <AddonsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Champs dynamiques (Form.List)" description="Ajouter et supprimer des champs de formulaire dynamiquement avec Form.List." source={FormDemoSource} fn="FormListDemo">
+  <FormListDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Form`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `onFinish` | Gestionnaire de succès (appelé lorsque la validation réussit) | `(values: any) => void` | - |
+| `onFinishFailed` | Gestionnaire d'échec (appelé lorsque la validation échoue) | `(errorInfo: any) => void` | - |
+| `initialValues` | Valeurs initiales des champs de formulaire | `Record<string, any>` | - |
+| `layout` | Orientation de la mise en page du formulaire | `'horizontal' \| 'vertical' \| 'inline'` | `'vertical'` |
+| `labelWidth` | Largeur de l'étiquette en pixels pour la mise en page horizontale | `number` | `60` |
+| `size` | Taille des contrôles de formulaire | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `disabled` | Désactiver tous les champs de formulaire | `boolean` | `false` |
+| `children` | Contenu du formulaire (éléments Form.Item) | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `Form.Item`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `name` | Nom du champ (requis pour la validation) | `string` | - |
+| `label` | Texte de l'étiquette du champ | `string` | - |
+| `floatingLabel` | Texte de l'étiquette flottante (alternative à label) | `string` | - |
+| `addonBefore` | Texte/élément avant le champ (à l'extérieur) | `React.ReactNode` | - |
+| `addonAfter` | Texte/élément après le champ (à l'extérieur) | `React.ReactNode` | - |
+| `rules` | Règles de validation | `ValidationRule[]` | - |
+| `required` | Marquer le champ comme requis (raccourci) | `boolean` | `false` |
+| `valuePropName` | Nom de la prop pour la valeur (par ex. "checked" pour les cases à cocher) | `string` | `'value'` |
+| `inline` | Rendre avec largeur automatique au lieu de largeur complète | `boolean` | `false` |
+| `tooltip` | Texte d'infobulle à afficher à côté de l'étiquette | `string` | - |
+| `extra` | Contenu supplémentaire sous le contrôle de formulaire | `React.ReactNode` | - |
+| `hasFeedback` | Afficher l'icône de retour de validation | `boolean` | `false` |
+| `dependencies` | Noms de champs qui déclenchent la revalidation lors du changement | `string[]` | - |
+| `validateTrigger` | Quand valider | `'onChange' \| 'onBlur' \| 'onSubmit' \| array` | `'onChange'` |
+| `initialValue` | Valeur initiale pour ce champ | `any` | - |
+| `hidden` | Masquer le champ mais toujours valider et soumettre | `boolean` | `false` |
+| `children` | Élément de contrôle de formulaire (Input, Select, etc.) | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `Form.ErrorList`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `fields` | Noms de champs spécifiques pour lesquels afficher les erreurs (affiche tous si non spécifié) | `string[]` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `Form.List`
+
+Gère les tableaux dynamiques de champs de formulaire.
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `name` | Nom du champ tableau | `string` | - |
+| `children` | Fonction de rendu | `(fields, operations) => ReactNode` | - |
+
+**Élément de tableau de champs :**
+- `id` - Identifiant unique pour le champ
+- `name` - Index du champ (à utiliser dans le nom `Form.Item` comme `[field.name, 'fieldKey']`)
+
+**Opérations :**
+- `add(value?)` - Ajouter un nouveau champ avec valeur initiale optionnelle
+- `remove(index)` - Supprimer le champ à l'index
+- `move(from, to)` - Déplacer le champ d'un index à un autre
+
+## Règles de validation
+
+La prop `rules` accepte un tableau de règles de validation :
+
+- `required: boolean` - Champ requis
+- `message: string` - Message d'erreur à afficher
+- `type: 'email' | 'url' | 'number'` - Validation de type intégrée
+- `min: number` - Longueur minimale pour les chaînes ou valeur minimale pour les nombres
+- `max: number` - Longueur maximale pour les chaînes ou valeur maximale pour les nombres
+- `pattern: RegExp` - Validation de motif regex personnalisé
+- `validate: (value) => boolean | string | Promise` - Fonction de validation personnalisée

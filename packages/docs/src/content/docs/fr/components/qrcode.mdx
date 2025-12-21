@@ -1,0 +1,102 @@
+---
+title: QRCode
+description: Générez des codes QR avec une apparence personnalisable, des icônes et des états de statut.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ColorsDemo,
+  IconDemo,
+  ErrorLevelDemo,
+  BorderDemo,
+  LoadingDemo,
+  ExpiredDemo,
+  DynamicDemo,
+} from '../../../../components/QRCodeDemo'
+import QRCodeDemoSource from '../../../../components/QRCodeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Générez des codes QR avec une apparence personnalisable, des icônes et des états de statut. Les couleurs s'adaptent automatiquement aux thèmes clair/sombre.
+
+## Installation
+
+Ce composant nécessite `qrcode` comme dépendance peer :
+
+```bash
+npm install qrcode
+```
+
+## Import
+
+```tsx
+import { QRCode } from 'asterui/qrcode'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Code QR basique" description="Code QR simple avec les paramètres par défaut." source={QRCodeDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Taille personnalisée" description="Différentes tailles de codes QR." source={QRCodeDemoSource} fn="SizesDemo">
+  <SizesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Couleurs personnalisées" description="Personnalisez la couleur de premier plan. L'arrière-plan s'adapte au thème par défaut." source={QRCodeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Avec icône" description="Code QR avec logo/icône centré." source={QRCodeDemoSource} fn="IconDemo">
+  <IconDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Niveau de correction d'erreur" description="Différents niveaux de correction d'erreur affectent la densité du code QR." source={QRCodeDemoSource} fn="ErrorLevelDemo">
+  <ErrorLevelDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Sans bordure" description="Supprimez la bordure pour une intégration transparente." source={QRCodeDemoSource} fn="BorderDemo">
+  <BorderDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="État de chargement" description="Affichez l'état de chargement lors de la génération ou de la récupération des données du code QR." source={QRCodeDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="État expiré" description="Affichez l'état expiré avec une fonctionnalité de rafraîchissement optionnelle." source={QRCodeDemoSource} fn="ExpiredDemo">
+  <ExpiredDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Code QR dynamique" description="Mettez à jour la valeur du code QR de manière dynamique." source={QRCodeDemoSource} fn="DynamicDemo">
+  <DynamicDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `QRCode`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | La valeur à encoder dans le code QR | `string` | - |
+| `size` | Taille du canvas du code QR en pixels | `number` | `160` |
+| `errorLevel` | Niveau de correction d'erreur | `'L' \| 'M' \| 'Q' \| 'H'` | `'M'` |
+| `icon` | URL de l'icône/logo à afficher au centre | `string` | - |
+| `iconSize` | Taille de l'icône centrale en pixels | `number` | `40` |
+| `type` | Type de rendu | `'canvas' \| 'svg'` | `'canvas'` |
+| `color` | Couleur de premier plan (couleur du code QR) | `string` | Adaptatif au thème |
+| `bgColor` | Couleur d'arrière-plan | `string` | Adaptatif au thème |
+| `bordered` | Afficher une bordure autour du code QR | `boolean` | `true` |
+| `status` | État du statut du code QR | `'active' \| 'loading' \| 'expired'` | `'active'` |
+| `onRefresh` | Callback lorsque le bouton de rafraîchissement est cliqué (statut expiré) | `() => void` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Les codes QR incluent `role="img"` avec une étiquette descriptive
+- Les états de chargement et d'expiration sont annoncés aux lecteurs d'écran
+- Le bouton de rafraîchissement est accessible au clavier

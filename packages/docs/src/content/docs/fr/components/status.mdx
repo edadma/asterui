@@ -1,0 +1,61 @@
+---
+title: Statut
+description: Petit point indicateur pour afficher le statut comme en ligne, hors ligne, erreur, etc.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  AnimatedDemo,
+  ColorsDemo,
+} from '../../../../components/StatusDemo'
+import StatusDemoSource from '../../../../components/StatusDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Petit point indicateur pour afficher le statut comme en ligne, hors ligne, erreur, etc.
+
+## Importation
+
+```tsx
+import { Status } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Basique" description="Indicateurs de statut simples pour différents états." source={StatusDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Variantes de tailles disponibles." source={StatusDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Animé" description="Effets d'animation ping et rebond." source={StatusDemoSource} fn="AnimatedDemo">
+  <AnimatedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Toutes les couleurs" description="Tous les types de couleurs disponibles." source={StatusDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `type` | Type de couleur du statut | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'neutral'` |
+| `size` | Taille du statut | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `ping` | Effet d'animation ping | `boolean` | `false` |
+| `bounce` | Effet d'animation rebond | `boolean` | `false` |
+| `label` | Label d'accessibilité | `string` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilisez la propriété `label` pour fournir un nom accessible
+- Envisagez d'associer du texte pour les utilisateurs de lecteurs d'écran
+- L'animation ping attire l'attention sur les changements de statut importants

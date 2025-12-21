@@ -1,0 +1,70 @@
+---
+title: Chat
+description: Bulles de message de chat pour afficher les conversations avec avatars et métadonnées.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AvatarsDemo,
+  HeadersDemo,
+  ColorsDemo,
+  FooterDemo,
+} from '../../../../components/ChatDemo'
+import ChatDemoSource from '../../../../components/ChatDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Bulles de message de chat pour afficher les conversations avec avatars et métadonnées.
+
+## Import
+
+```tsx
+import { Chat } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Chat de base" description="Bulles de chat simples avec différentes positions." source={ChatDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec avatars" description="Bulles de chat avec avatars d'utilisateur." source={ChatDemoSource} fn="AvatarsDemo">
+  <AvatarsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec en-têtes" description="Bulles de chat avec en-têtes de nom et d'horodatage." source={ChatDemoSource} fn="HeadersDemo">
+  <HeadersDemo client:load slot="demo" />
+</Example>
+
+<Example title="Bulles colorées" description="Bulles de chat avec différentes variantes de couleur." source={ChatDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec pied de page" description="Bulles de chat avec pied de page d'état de livraison." source={ChatDemoSource} fn="FooterDemo">
+  <FooterDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Chat`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `message` | Contenu du message | `React.ReactNode` | - |
+| `position` | Position de la bulle | `'start' \| 'end'` | `'start'` |
+| `avatar` | URL de l'image de l'avatar | `string` | - |
+| `avatarAlt` | Texte alternatif de l'avatar | `string` | - |
+| `header` | Contenu de l'en-tête (nom, heure) | `React.ReactNode` | - |
+| `footer` | Contenu du pied de page (statut) | `React.ReactNode` | - |
+| `color` | Variante de couleur de la bulle | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+## Accessibilité
+
+- Utilisez un texte alternatif significatif pour les images d'avatar
+- Le contenu du message est lisible par les lecteurs d'écran
+- Les classes de position aident à transmettre le flux de conversation

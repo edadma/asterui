@@ -1,0 +1,130 @@
+---
+title: Étiquette
+description: Labels pour catégoriser, marquer et organiser le contenu.
+tableOfContents: false
+---
+
+import {
+  BasicTagsDemo,
+  VariantsDemo,
+  ClosableTagsDemo,
+  TagsWithIconsDemo,
+  TagSizesDemo,
+  CustomColorsDemo,
+  LinkTagsDemo,
+  DisabledTagsDemo,
+  CheckableTagsDemo,
+  CheckableTagColorsDemo,
+  CheckableTagsWithIconsDemo,
+  UseCasesDemo,
+} from '../../../../components/TagDemo'
+import TagDemoSource from '../../../../components/TagDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Labels pour catégoriser, marquer et organiser le contenu.
+
+## Importation
+
+```tsx
+import { Tag } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Étiquettes de base" description="Étiquettes simples avec couleurs prédéfinies." source={TagDemoSource} fn="BasicTagsDemo">
+  <BasicTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes" description="Différentes variantes de style pour les étiquettes." source={TagDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Étiquettes fermables" description="Étiquettes qui peuvent être fermées par l'utilisateur." source={TagDemoSource} fn="ClosableTagsDemo">
+  <ClosableTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Étiquettes avec icônes" description="Ajouter des icônes aux étiquettes pour une meilleure communication visuelle." source={TagDemoSource} fn="TagsWithIconsDemo">
+  <TagsWithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles d'étiquettes" description="Cinq tailles disponibles pour les étiquettes." source={TagDemoSource} fn="TagSizesDemo">
+  <TagSizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs personnalisées" description="Utiliser des couleurs hexadécimales personnalisées pour un style unique." source={TagDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Étiquettes liens" description="Étiquettes qui naviguent vers des URLs." source={TagDemoSource} fn="LinkTagsDemo">
+  <LinkTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Étiquettes désactivées" description="Étiquettes avec état désactivé." source={TagDemoSource} fn="DisabledTagsDemo">
+  <DisabledTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Étiquettes cochables" description="Étiquettes qui peuvent être activées et désactivées." source={TagDemoSource} fn="CheckableTagsDemo">
+  <CheckableTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs d'étiquettes cochables" description="Étiquettes cochables avec différentes couleurs et tailles." source={TagDemoSource} fn="CheckableTagColorsDemo">
+  <CheckableTagColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Étiquettes cochables avec icônes" description="Ajouter des icônes aux étiquettes cochables." source={TagDemoSource} fn="CheckableTagsWithIconsDemo">
+  <CheckableTagsWithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cas d'utilisation" description="Exemples pratiques d'utilisation des étiquettes." source={TagDemoSource} fn="UseCasesDemo">
+  <UseCasesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tag`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `closable` | Afficher l'icône de fermeture et activer la fermeture | `boolean` | `false` |
+| `closeIcon` | Élément d'icône de fermeture personnalisé | `ReactNode` | `-` |
+| `onClose` | Callback lorsque l'étiquette est fermée | `() => void` | `-` |
+| `color` | Couleur de l'étiquette (prédéfinie ou hexadécimale personnalisée) | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'ghost' \| string` | `-` |
+| `icon` | Élément d'icône à afficher avant le texte | `ReactNode` | `-` |
+| `size` | Taille de l'étiquette | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `variant` | Variante de style de l'étiquette | `'filled' \| 'outlined' \| 'soft' \| 'dash'` | `'filled'` |
+| `visible` | État de visibilité contrôlé | `boolean` | `-` |
+| `disabled` | Désactiver les interactions | `boolean` | `false` |
+| `href` | Rendre l'étiquette comme un lien | `string` | `-` |
+| `target` | Cible du lien (lorsque href est défini) | `string` | `-` |
+| `children` | Contenu de l'étiquette | `ReactNode` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+| `data-testid` | ID de test pour le composant | `string` | `'tag'` |
+| `aria-label` | Label accessible (utilisé dans l'annonce du bouton de fermeture) | `string` | `-` |
+
+### `CheckableTag`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `checked` | Si l'étiquette est cochée | `boolean` | `false` |
+| `onChange` | Callback lorsque l'état coché change | `(checked: boolean) => void` | `-` |
+| `icon` | Élément d'icône à afficher avant le texte | `ReactNode` | `-` |
+| `size` | Taille de l'étiquette | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `color` | Couleur de l'étiquette lorsqu'elle est cochée | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'ghost'` | `'primary'` |
+| `disabled` | Désactiver les interactions | `boolean` | `false` |
+| `children` | Contenu de l'étiquette | `ReactNode` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+| `data-testid` | ID de test pour le composant | `string` | `'checkable-tag'` |
+
+## Accessibilité
+
+- Le bouton de fermeture inclut un `aria-label` descriptif (par ex., "Supprimer Étiquette 1")
+- CheckableTag utilise `role="checkbox"` avec un état `aria-checked` approprié
+- Accessible au clavier - les actions de fermeture et de bascule fonctionnent avec Entrée/Espace
+- Indicateurs de focus visibles sur tous les éléments interactifs
+- `TagLiveRegion` annonce les suppressions d'étiquettes aux lecteurs d'écran
+- Attribut `aria-disabled` défini lorsque désactivé
+- Le contraste des couleurs respecte les directives WCAG pour les couleurs prédéfinies

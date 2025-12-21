@@ -1,0 +1,92 @@
+---
+title: Drawer
+description: Un panneau qui glisse depuis le bord de l'écran. À utiliser pour les formulaires, détails ou panneaux de tâches.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PlacementDemo,
+  WithFooterDemo,
+  ExtraDemo,
+  SizesDemo,
+  LoadingDemo,
+  NestedDemo,
+  NoMaskDemo,
+} from '../../../../components/DrawerDemo'
+import DrawerDemoSource from '../../../../components/DrawerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Un panneau qui glisse depuis le bord de l'écran. À utiliser pour les formulaires, détails ou panneaux de tâches.
+
+## Importation
+
+```tsx
+import { Drawer } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Drawer de base" description="Simple tiroir depuis le côté droit." source={DrawerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Placement" description="Le tiroir peut glisser depuis n'importe quelle direction." source={DrawerDemoSource} fn="PlacementDemo">
+  <PlacementDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec pied de page" description="Tiroir avec boutons d'action dans le pied de page." source={DrawerDemoSource} fn="WithFooterDemo">
+  <WithFooterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenu d'en-tête supplémentaire" description="Tiroir avec actions supplémentaires dans l'en-tête." source={DrawerDemoSource} fn="ExtraDemo">
+  <ExtraDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles prédéfinies" description="Tailles prédéfinies par défaut (378px) et grande (736px)." source={DrawerDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="État de chargement" description="Tiroir avec état de chargement squelette." source={DrawerDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tiroirs imbriqués" description="Plusieurs tiroirs avec comportement de poussée." source={DrawerDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sans masque" description="Tiroir sans superposition d'arrière-plan." source={DrawerDemoSource} fn="NoMaskDemo">
+  <NoMaskDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Drawer`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu du tiroir | `React.ReactNode` | - |
+| `open` | État d'ouverture contrôlé | `boolean` | `false` |
+| `onClose` | Gestionnaire de fermeture | `(e?: React.MouseEvent \| React.KeyboardEvent) => void` | - |
+| `afterOpenChange` | Rappel après la fin de l'animation d'ouverture/fermeture | `(open: boolean) => void` | - |
+| `title` | Titre du tiroir | `React.ReactNode` | - |
+| `placement` | Position du tiroir | `'left' \| 'right' \| 'top' \| 'bottom'` | `'right'` |
+| `size` | Taille prédéfinie (378px ou 736px) ou nombre personnalisé | `'default' \| 'large' \| number` | `'default'` |
+| `width` | Largeur personnalisée (remplace size pour gauche/droite) | `string \| number` | - |
+| `height` | Hauteur personnalisée (remplace size pour haut/bas) | `string \| number` | - |
+| `closable` | Afficher le bouton de fermeture | `boolean` | `true` |
+| `mask` | Afficher le masque de superposition | `boolean` | `true` |
+| `maskClosable` | Fermer au clic sur le masque | `boolean` | `true` |
+| `keyboard` | Fermer à la touche ESC | `boolean` | `true` |
+| `footer` | Contenu du pied de page | `React.ReactNode` | - |
+| `extra` | Contenu supplémentaire dans l'en-tête (côté droit) | `React.ReactNode` | - |
+| `loading` | Afficher le squelette de chargement | `boolean` | `false` |
+| `destroyOnClose` | Détruire le contenu à la fermeture | `boolean` | `false` |
+| `forceRender` | Pré-rendre le contenu (garder dans le DOM lorsque fermé) | `boolean` | `false` |
+| `push` | Comportement de poussée du tiroir imbriqué | `boolean \| { distance: number }` | `{ distance: 180 }` |
+| `zIndex` | z-index du tiroir | `number` | `1000` |
+| `className` | Classe CSS pour le panneau du tiroir | `string` | - |

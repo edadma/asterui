@@ -1,0 +1,96 @@
+---
+title: Segmented
+description: Bascule en ligne pour basculer entre des options mutuellement exclusives
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DisabledItemsDemo,
+  SizesDemo,
+  BlockDemo,
+  DisabledDemo,
+  WithIconsDemo,
+} from '../../../../components/SegmentedDemo'
+import SegmentedDemoSource from '../../../../components/SegmentedDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Bascule en ligne pour basculer entre des options mutuellement exclusives.
+
+## Import
+
+```tsx
+import { Segmented } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Utilisation basique" description="Contrôle segmenté simple pour le basculement de vue." source={SegmentedDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Éléments désactivés" description="Les éléments individuels peuvent être désactivés." source={SegmentedDemoSource} fn="DisabledItemsDemo">
+  <DisabledItemsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tailles" description="Quatre options de taille disponibles." source={SegmentedDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mode bloc" description="Pleine largeur avec options de taille égale." source={SegmentedDemoSource} fn="BlockDemo">
+  <BlockDemo client:load slot="demo" />
+</Example>
+
+<Example title="Désactivé" description="État désactivé pour l'ensemble du contrôle." source={SegmentedDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avec icônes" description="Options avec icônes et étiquettes." source={SegmentedDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Segmented`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Valeur actuellement sélectionnée (contrôlée) | `string \| number` | - |
+| `defaultValue` | Valeur sélectionnée par défaut (non contrôlée) | `string \| number` | - |
+| `onChange` | Callback lorsque la sélection change | `(value: string \| number) => void` | - |
+| `size` | Taille du contrôle | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `block` | Prendre toute la largeur du conteneur | `boolean` | `false` |
+| `disabled` | Désactiver toutes les options | `boolean` | `false` |
+| `className` | Classe CSS supplémentaire | `string` | - |
+| `children` | Composants Segmented.Item | `ReactNode` | - |
+
+### `Segmented.Item`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Valeur de l'option (requise) | `string \| number` | - |
+| `disabled` | Désactiver cette option | `boolean` | `false` |
+| `icon` | Icône avant l'étiquette | `ReactNode` | - |
+| `children` | Contenu de l'étiquette | `ReactNode` | - |
+| `className` | Classe CSS supplémentaire | `string` | - |
+
+## Quand utiliser
+
+- **Bascules de vue** : Basculer entre les vues Liste/Grille/Tableau
+- **Périodes temporelles** : Filtres Jour/Semaine/Mois/Année
+- **Sélecteurs de taille** : Options S/M/L/XL
+- **Alignement** : Contrôles Gauche/Centre/Droite
+- **Bascules de mode** : Bascules de thème Clair/Sombre
+
+## Segmented vs Radio.Group
+
+| Segmented | Radio.Group |
+|-----------|-------------|
+| Changements d'état de l'interface utilisateur immédiats | Valeurs de champs de formulaire |
+| Apparence compacte, semblable à un bouton | Boutons radio traditionnels |
+| Options toujours visibles | Peut avoir de nombreuses options |
+| 2-5 options généralement | N'importe quel nombre d'options |

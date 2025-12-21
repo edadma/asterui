@@ -1,0 +1,140 @@
+---
+title: Chronologie
+description: Afficher les événements dans l'ordre chronologique avec des dispositions alternées ou verticales.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  HorizontalDemo,
+  CompactDemo,
+  SnapIconDemo,
+  ColorsDemo,
+  ModeStartDemo,
+  ModeEndDemo,
+  PendingDemo,
+  LoadingDemo,
+  ReverseDemo,
+  DeclarativeDemo,
+} from '../../../../components/TimelineDemo'
+import TimelineDemoSource from '../../../../components/TimelineDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Afficher les événements dans l'ordre chronologique avec des dispositions alternées ou verticales.
+
+## Importation
+
+```tsx
+import { Timeline } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Chronologie de base" description="Chronologie simple avec contenu alterné." source={TimelineDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Chronologie verticale" description="Empiler les éléments verticalement." source={TimelineDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Chronologie horizontale" description="Afficher les éléments horizontalement." source={TimelineDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Chronologie compacte" description="Tout le contenu d'un côté." source={TimelineDemoSource} fn="CompactDemo">
+  <CompactDemo client:load slot="demo" />
+</Example>
+
+<Example title="Icône alignée" description="Aligner les icônes au début au lieu du centre." source={TimelineDemoSource} fn="SnapIconDemo">
+  <SnapIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Couleurs" description="Appliquer différentes couleurs aux éléments de la chronologie." source={TimelineDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mode : Début" description="Tous les éléments alignés au début." source={TimelineDemoSource} fn="ModeStartDemo">
+  <ModeStartDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mode : Fin" description="Tous les éléments alignés à la fin." source={TimelineDemoSource} fn="ModeEndDemo">
+  <ModeEndDemo client:load slot="demo" />
+</Example>
+
+<Example title="État en attente" description="Afficher une activité en cours à la fin." source={TimelineDemoSource} fn="PendingDemo">
+  <PendingDemo client:load slot="demo" />
+</Example>
+
+<Example title="État de chargement" description="Afficher un spinner de chargement sur des éléments individuels." source={TimelineDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ordre inversé" description="Inverser l'ordre des éléments de la chronologie." source={TimelineDemoSource} fn="ReverseDemo">
+  <ReverseDemo client:load slot="demo" />
+</Example>
+
+<Example title="API déclarative" description="Utiliser la propriété items pour des chronologies pilotées par les données." source={TimelineDemoSource} fn="DeclarativeDemo">
+  <DeclarativeDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Timeline`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Éléments de chronologie (modèle composé) | `React.ReactNode` | `-` |
+| `items` | Éléments de chronologie (API déclarative) | `TimelineItemConfig[]` | `-` |
+| `vertical` | Orientation de disposition verticale | `boolean` | `false` |
+| `horizontal` | Disposition horizontale (par défaut) | `boolean` | `false` |
+| `compact` | Tous les éléments d'un côté | `boolean` | `false` |
+| `snapIcon` | Aligner l'icône au début au lieu du centre | `boolean` | `false` |
+| `mode` | Disposition de distribution des éléments | `'start' \| 'alternate' \| 'end'` | `'alternate'` |
+| `reverse` | Inverser l'ordre des éléments | `boolean` | `false` |
+| `pending` | Afficher l'indicateur en attente/chargement à la fin | `React.ReactNode` | `-` |
+| `pendingIcon` | Icône personnalisée pour l'élément en attente | `React.ReactNode` | `-` |
+| `data-testid` | ID de test pour le composant | `string` | `'timeline'` |
+| `aria-label` | Label accessible pour la chronologie | `string` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+### `Timeline.Item`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `start` | Contenu à la position de début (gauche/haut) | `React.ReactNode` | `-` |
+| `end` | Contenu à la position de fin (droite/bas) | `React.ReactNode` | `-` |
+| `icon` | Icône ou marqueur central | `React.ReactNode` | `-` |
+| `startBox` | Envelopper le contenu de début dans timeline-box | `boolean` | `false` |
+| `endBox` | Envelopper le contenu de fin dans timeline-box | `boolean` | `false` |
+| `color` | Couleur du point/connecteur de chronologie | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | `-` |
+| `loading` | Afficher un spinner de chargement au lieu de l'icône | `boolean` | `false` |
+| `data-testid` | ID de test pour cet élément | `string` | `-` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+### `TimelineItemConfig`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `key` | Clé unique pour l'élément | `React.Key` | `-` |
+| `start` | Contenu à la position de début | `React.ReactNode` | `-` |
+| `end` | Contenu à la position de fin | `React.ReactNode` | `-` |
+| `icon` | Icône ou marqueur central | `React.ReactNode` | `-` |
+| `startBox` | Envelopper le contenu de début dans timeline-box | `boolean` | `false` |
+| `endBox` | Envelopper le contenu de fin dans timeline-box | `boolean` | `false` |
+| `color` | Couleur du point/connecteur de chronologie | `TimelineColor` | `-` |
+| `loading` | Afficher un spinner de chargement | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | `-` |
+
+## Accessibilité
+
+- Utilise une structure de liste sémantique (`role="list"`) pour les lecteurs d'écran
+- Les éléments de chronologie sont annoncés dans l'ordre
+- Supporte `aria-label` pour décrire l'objectif de la chronologie
+- Les connecteurs sont décoratifs et cachés de la technologie d'assistance
+- Les états de chargement incluent des indicateurs de spinner visuels

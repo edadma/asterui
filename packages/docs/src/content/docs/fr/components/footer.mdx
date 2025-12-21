@@ -1,0 +1,58 @@
+---
+title: Footer
+description: Composant de pied de page avec prise en charge des liens, sections et mises en page centrées.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithSectionsDemo,
+  CenteredDemo,
+} from '../../../../components/FooterDemo'
+import FooterDemoSource from '../../../../components/FooterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Composant de pied de page avec prise en charge des liens, sections et mises en page centrées.
+
+## Importation
+
+```tsx
+import { Footer } from 'asterui'
+```
+
+## Exemples
+
+<div class="examples">
+
+<Example title="Footer de base" description="Pied de page simple aligné à gauche avec liens horizontaux." source={FooterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Footer avec sections" description="Pied de page avec sections titrées en colonnes." source={FooterDemoSource} fn="WithSectionsDemo">
+  <WithSectionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Footer centré" description="Pied de page avec contenu centré." source={FooterDemoSource} fn="CenteredDemo">
+  <CenteredDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Footer`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Contenu du pied de page | `React.ReactNode` | - |
+| `center` | Centrer le contenu du pied de page | `boolean` | `false` |
+| `horizontal` | Afficher les colonnes horizontalement | `boolean` | `false` |
+| `vertical` | Afficher les colonnes verticalement (par défaut) | `boolean` | `false` |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `Footer.Title`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `children` | Texte du titre | `React.ReactNode` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |

@@ -34,6 +34,11 @@ export default defineConfig({
     }),
     starlight({
       title: 'AsterUI',
+      locales: {
+        root: { label: 'English', lang: 'en' },
+        fr: { label: 'Français', lang: 'fr' },
+      },
+      defaultLocale: 'root',
       components: {
         SiteTitle: './src/components/SiteTitle.astro',
       },
@@ -53,7 +58,7 @@ export default defineConfig({
         },
         {
           tag: 'script',
-          content: `document.addEventListener('DOMContentLoaded',()=>{if(location.pathname.startsWith('/components/'))document.body.classList.add('component-page')})`,
+          content: `document.addEventListener('DOMContentLoaded',()=>{const p=location.pathname;if(p.startsWith('/components/')||p.match(/^\\/[a-z]{2}\\/components\\//))document.body.classList.add('component-page')})`,
         },
         // SEO meta tags
         {
