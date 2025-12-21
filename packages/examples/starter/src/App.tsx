@@ -1,23 +1,36 @@
-import { Navbar, ThemeController } from 'asterui'
+import { Button, useTheme } from 'asterui'
+
+function Logo() {
+  const { isDark } = useTheme()
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" className="h-12 w-auto">
+      <text
+        x="0"
+        y="30"
+        fontFamily="system-ui, -apple-system, sans-serif"
+        fontSize="28"
+        fontWeight="700"
+      >
+        <tspan fill={isDark ? '#818cf8' : '#6366f1'}>Aster</tspan>
+        <tspan fill={isDark ? '#f9fafb' : '#1f2937'}>UI</tspan>
+      </text>
+    </svg>
+  )
+}
 
 function App() {
   return (
-    <>
-      <Navbar
-        className="bg-base-100 shadow-lg"
-        start={<a className="text-xl font-bold">AsterUI App</a>}
-        end={<ThemeController.Swap className="scale-75" />}
-      />
-
-      <div className="p-6">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-4">Welcome to AsterUI</h1>
-          <p className="text-base-content/70">
-            Start building your app by editing <code className="bg-base-300 px-1 rounded">src/App.tsx</code>
-          </p>
-        </div>
+    <div className="min-h-screen flex items-center justify-center bg-base-200">
+      <div className="text-center space-y-6">
+        <Logo />
+        <p className="text-base-content/70">
+          100+ React components built with DaisyUI and Tailwind CSS
+        </p>
+        <Button color="primary" href="https://asterui.com">
+          View Documentation
+        </Button>
       </div>
-    </>
+    </div>
   )
 }
 
