@@ -54,6 +54,7 @@ const DEMO_CONFIG: Record<string, DemoConfig> = {
   'carousel': { demo: 2 },  // AutoplayDemo with autoplaySpeed={2000}
   'collapse': { click: '.collapse-title' },
   'countdown': { captureArea: true, padding: '0.5rem', center: true },
+  'hero': { demo: 3 },  // WithFigureDemo - Box Office News
   // These components have floating elements that are hard to capture cleanly
   // Just show them in their closed/default state
 }
