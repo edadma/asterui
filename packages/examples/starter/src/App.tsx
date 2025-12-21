@@ -1,21 +1,24 @@
-import { Button, useTheme, ThemeController, Hero, Space } from 'asterui'
+import { Button, useTheme, ThemeController, Hero, Space, Flex } from 'asterui'
 
 function Logo() {
-  const { colors } = useTheme()
+  const { isDark, colors } = useTheme()
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" className="h-12 w-auto">
-      <text
-        x="100"
-        y="30"
-        textAnchor="middle"
-        fontFamily="system-ui, -apple-system, sans-serif"
-        fontSize="28"
-        fontWeight="700"
-      >
-        <tspan fill={colors.primary}>Aster</tspan>
-        <tspan fill={colors.foreground}>UI</tspan>
-      </text>
-    </svg>
+    <Flex direction="column" align="center" gap="xs">
+      <img src="/logo.png" alt="" className="h-24 w-24" />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" className="h-12 w-auto">
+        <text
+          x="100"
+          y="30"
+          textAnchor="middle"
+          fontFamily="system-ui, -apple-system, sans-serif"
+          fontSize="28"
+          fontWeight="700"
+        >
+          <tspan fill="#8275BA">Aster</tspan>
+          <tspan fill={isDark ? '#FCFAFD' : `${colors.foreground}B3`}>UI</tspan>
+        </text>
+      </svg>
+    </Flex>
   )
 }
 
