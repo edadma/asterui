@@ -74,7 +74,7 @@ export function VariantsDemo() {
     <Demo>
       {/* @example-return */}
       <Space direction="horizontal" wrap size="md">
-        <Card title="Default" variant="default" style={{ width: '14rem' }}>
+        <Card title="Shadow" variant="shadow" style={{ width: '14rem' }}>
           Shadow style
         </Card>
         <Card title="Border" variant="border" style={{ width: '14rem' }}>
@@ -139,7 +139,7 @@ export function MetaDemo() {
     <Demo>
       {/* @example-return */}
       <Card
-        avatar={<Avatar src="/avatar-1.webp" />}
+        avatar={<Avatar src="/avatar-2.webp" />}
         title="John Doe"
         description="Software Engineer"
         style={{ width: '20rem' }}
