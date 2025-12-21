@@ -1,19 +1,25 @@
 ---
 import fs from 'node:fs'
 import path from 'node:path'
-import type { Props } from '@astrojs/starlight/props'
+import type { StarlightRouteData } from '@astrojs/starlight/route-data'
 
 const pkgPath = path.join(process.cwd(), 'node_modules/@aster-ui/prefixed/package.json')
 const { version } = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
+
+const route = Astro.locals.starlightRoute as StarlightRouteData
+const locale = route?.locale
+const isRoot = !locale
+const prefix = isRoot ? '' : `/${locale}`
+const label = locale === 'fr' ? 'Composants' : 'Components'
 ---
 
-<a href="/" class="site-title sl-flex">
+<a href={isRoot ? '/' : `/${locale}`} class="site-title sl-flex">
   <img src="/logo.png" alt="" class="logo" />
   <span>AsterUI</span>
   <span class="version">v{version}</span>
 </a>
 <nav class="nav-links">
-  <a href="/components">Components</a>
+  <a href={`${prefix}/components`}>{label}</a>
 </nav>
 
 <style>
