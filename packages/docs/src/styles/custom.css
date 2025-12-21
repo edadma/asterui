@@ -27,13 +27,13 @@
 }
 
 /* Wider content for component pages */
-body.component-page .sl-markdown-content,
-body.components-overview .sl-markdown-content {
+html.component-page .sl-markdown-content,
+.components-overview .sl-markdown-content {
   max-width: none;
 }
 
-body.component-page .content-panel,
-body.components-overview .content-panel {
+html.component-page .content-panel,
+.components-overview .content-panel {
   --sl-content-width: 100%;
   max-width: none;
 }
@@ -62,3 +62,7 @@ body.components-overview .content-panel {
 .light-only { display: block; }
 :root[data-theme="dark"] .dark-only { display: block; }
 :root[data-theme="dark"] .light-only { display: none; }
+
+/* Hide Starlight's title panel on changelog page (file has its own h1) */
+html.changelog-page .content-panel:has(#_top) { display: none; }
+

@@ -58,7 +58,7 @@ export default defineConfig({
         },
         {
           tag: 'script',
-          content: `document.addEventListener('DOMContentLoaded',()=>{const p=location.pathname;if(p.startsWith('/components/')||p.match(/^\\/[a-z]{2}\\/components\\//))document.body.classList.add('component-page')})`,
+          content: `(()=>{const p=location.pathname.replace(/\\/$/,'');if(p.startsWith('/components')||p.match(/^\\/[a-z]{2}\\/components/))document.documentElement.classList.add('component-page');if(p==='/changelog'||p.match(/^\\/[a-z]{2}\\/changelog$/))document.documentElement.classList.add('changelog-page')})()`,
         },
         // SEO meta tags
         {
@@ -127,6 +127,7 @@ export default defineConfig({
         },
       ],
       sidebar: [
+        { label: 'Changelog', slug: 'changelog' },
         {
           label: 'Start Here',
           items: [
