@@ -1,0 +1,69 @@
+---
+title: Window
+description: Componente de mockup de janela estilo OS para exibir código ou conteúdo.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithCodeDemo,
+  MultiLineDemo,
+  WithPrefixDemo,
+  StyledDemo,
+  ContentDemo,
+} from '../../../../components/WindowDemo'
+import WindowDemoSource from '../../../../components/WindowDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de mockup de janela estilo OS para exibir código ou conteúdo.
+
+## Importação
+
+```tsx
+import { Window } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Janela Básica" description="Mockup de janela simples com conteúdo." source={WindowDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Código" description="Janela contendo exibição de código." source={WindowDemoSource} fn="WithCodeDemo">
+  <WithCodeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Código Multilinha" description="Janela com múltiplas linhas de código." source={WindowDemoSource} fn="MultiLineDemo">
+  <MultiLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Prefixo" description="Linhas de código com prefixos de comando." source={WindowDemoSource} fn="WithPrefixDemo">
+  <WithPrefixDemo client:load slot="demo" />
+</Example>
+
+<Example title="Janela Estilizada" description="Janela com estilo personalizado com fundo diferente." source={WindowDemoSource} fn="StyledDemo">
+  <StyledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Conteúdo Personalizado" description="Janela com estilo de conteúdo personalizado." source={WindowDemoSource} fn="ContentDemo">
+  <ContentDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo da janela | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais para a janela | `string` | - |
+| `contentClassName` | Classes CSS adicionais para a área de conteúdo | `string` | - |
+
+## Acessibilidade
+
+- O chrome da janela é decorativo e marcado como apresentacional
+- A área de conteúdo mantém ordem de leitura adequada
+- Blocos de código são legíveis por leitores de tela
+- Os botões de semáforo são decorações não interativas

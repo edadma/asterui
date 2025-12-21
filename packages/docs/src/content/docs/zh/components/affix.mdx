@@ -1,0 +1,63 @@
+---
+title: Affix 固钉
+description: 滚动时让元素固定在视口中。适用于导航、工具栏或操作按钮。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CallbackDemo,
+  BottomDemo,
+  TargetDemo,
+} from '../../../../components/AffixDemo'
+import AffixDemoSource from '../../../../components/AffixDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+滚动时让元素固定在视口中。适用于导航、工具栏或操作按钮。
+
+## 引入
+
+```tsx
+import { Affix } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="滚动超过元素位置后变为固定定位。" source={AffixDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="回调函数" description="固定状态改变时收到通知。" source={AffixDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="固定到底部" description="将元素固定到视口底部。" source={AffixDemoSource} fn="BottomDemo">
+  <BottomDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义容器" description="在可滚动容器内固定。" source={AffixDemoSource} fn="TargetDemo">
+  <TargetDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Affix`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 要固定的内容 | `React.ReactNode` | - |
+| `offsetTop` | 固定时距离顶部的偏移量（像素） | `number` | - |
+| `offsetBottom` | 固定时距离底部的偏移量（像素） | `number` | - |
+| `target` | 滚动目标元素 | `() => HTMLElement \| Window` | - |
+| `onChange` | 固定状态改变时的回调函数 | `(affixed: boolean) => void` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用 CSS `position: sticky` 以获得更好的性能
+- 固定时不会捕获键盘焦点
+- 未固定时内容保持在文档流中

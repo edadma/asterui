@@ -1,0 +1,67 @@
+---
+title: Mention
+description: Componente de entrada para mencionar usuários, tags ou outras entidades com sugestões de autocompletar.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomPrefixDemo,
+  MultiTriggerDemo,
+} from '../../../../components/MentionDemo'
+import MentionDemoSource from '../../../../components/MentionDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de entrada para mencionar usuários, tags ou outras entidades com sugestões de autocompletar.
+
+## Importação
+
+```tsx
+import { Mention } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Mention Básico" description="Entrada de menção simples com acionador @." source={MentionDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Prefixo Personalizado" description="Usando prefixo # para menções de hashtag." source={MentionDemoSource} fn="CustomPrefixDemo">
+  <CustomPrefixDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Múltiplos Acionadores" description="Usando múltiplos componentes de menção com diferentes prefixos." source={MentionDemoSource} fn="MultiTriggerDemo">
+  <MultiTriggerDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Mention`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `options` | Array de opções de menção | `Array<{ value: string, label: string }>` | - |
+| `value` | Valor controlado | `string` | - |
+| `onChange` | Callback quando valor muda | `(value: string) => void` | - |
+| `prefix` | Caractere que aciona sugestões de menção | `string` | `'@'` |
+| `split` | Caractere usado para dividir menções na entrada | `string` | - |
+| `placeholder` | Texto placeholder da entrada | `string` | - |
+| `disabled` | Desabilitar a entrada de menção | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Navegação por Teclado
+
+- **↑** / **↓** - Navegar pelas sugestões de menção
+- **Enter** - Selecionar menção destacada
+- **Esc** - Fechar dropdown de menção
+
+## Acessibilidade
+
+- Suporte completo de navegação por teclado para selecionar menções
+- Atributos ARIA para leitores de tela anunciarem sugestões
+- Gerenciamento de foco quando dropdown abre e fecha
+- Indicadores visuais claros para itens selecionados e focados

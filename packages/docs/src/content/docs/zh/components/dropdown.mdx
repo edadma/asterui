@@ -1,0 +1,126 @@
+---
+title: Dropdown
+description: 用于显示操作和选项的下拉菜单组件。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ItemsPropDemo,
+  PositionDemo,
+  TriggerDemo,
+  WithIconsDemo,
+  WithDividerDemo,
+  ItemStatesDemo,
+  AlignDemo,
+  ContextMenuDemo,
+  SubmenuDemo,
+} from '../../../../components/DropdownDemo'
+import DropdownDemoSource from '../../../../components/DropdownDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于显示操作和选项的下拉菜单组件。
+
+## 导入
+
+```tsx
+import { Dropdown } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础下拉菜单" description="使用组合模式的简单下拉菜单。" source={DropdownDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="数据驱动（items 属性）" description="通过 items 属性而非组合组件定义菜单项。" source={DropdownDemoSource} fn="ItemsPropDemo">
+  <ItemsPropDemo client:load slot="demo" />
+</Example>
+
+<Example title="位置" description="下拉菜单可以定位在不同方向。" source={DropdownDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="触发模式" description="控制下拉菜单的打开方式：点击、悬停或两者。" source={DropdownDemoSource} fn="TriggerDemo">
+  <TriggerDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标" description="带图标的菜单项，提供更好的视觉上下文。" source={DropdownDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带分隔符" description="用分隔符分隔菜单部分。" source={DropdownDemoSource} fn="WithDividerDemo">
+  <WithDividerDemo client:load slot="demo" />
+</Example>
+
+<Example title="项目状态" description="项目可以是激活、禁用或样式为危险。" source={DropdownDemoSource} fn="ItemStatesDemo">
+  <ItemStatesDemo client:load slot="demo" />
+</Example>
+
+<Example title="对齐" description="将下拉菜单对齐到开始、中心或结尾。" source={DropdownDemoSource} fn="AlignDemo">
+  <AlignDemo client:load slot="demo" />
+</Example>
+
+<Example title="右键菜单" description="使用 contextMenu 触发器在右键点击时打开下拉菜单。" source={DropdownDemoSource} fn="ContextMenuDemo">
+  <ContextMenuDemo client:load slot="demo" />
+</Example>
+
+<Example title="带子菜单" description="用于分层选项的嵌套子菜单。" source={DropdownDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Dropdown`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 触发元素和下拉内容（组合模式） | `React.ReactNode` | - |
+| `items` | 菜单项（数据驱动模式） | `DropdownMenuItemType[]` | - |
+| `trigger` | 下拉菜单的触发模式 | `('click' \| 'hover' \| 'contextMenu')[]` | `['click']` |
+| `position` | 下拉菜单位置 | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` |
+| `align` | 下拉菜单对齐 | `'start' \| 'center' \| 'end'` | `'start'` |
+| `open` | 受控的打开状态 | `boolean` | - |
+| `onOpenChange` | 打开状态改变时的回调 | `(open: boolean, info?: { source }) => void` | - |
+| `disabled` | 禁用下拉菜单 | `boolean` | `false` |
+| `arrow` | 显示指向触发器的箭头 | `boolean \| { pointAtCenter?: boolean }` | `false` |
+| `mouseEnterDelay` | 悬停显示前的延迟（秒） | `number` | `0.15` |
+| `mouseLeaveDelay` | 鼠标离开隐藏前的延迟（秒） | `number` | `0.1` |
+| `destroyOnHidden` | 隐藏时销毁下拉菜单 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Dropdown.Item`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 项目的唯一键（React key 属性） | `string` | - |
+| `children` | 项目内容 | `React.ReactNode` | - |
+| `label` | 项目标签（children 的替代方案） | `React.ReactNode` | - |
+| `icon` | 在标签前显示的图标 | `React.ReactNode` | - |
+| `onClick` | 点击处理器 | `() => void` | - |
+| `active` | 激活/选中状态 | `boolean` | `false` |
+| `disabled` | 禁用项目 | `boolean` | `false` |
+| `danger` | 危险/破坏性样式 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Dropdown.SubMenu`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 子菜单的唯一键（React key 属性） | `string` | - |
+| `children` | 子菜单项 | `React.ReactNode` | - |
+| `title` | 子菜单标题/标签 | `React.ReactNode` | - |
+| `icon` | 在标题前显示的图标 | `React.ReactNode` | - |
+| `disabled` | 禁用子菜单 | `boolean` | `false` |
+
+## 无障碍
+
+- 支持 `Enter`、`Space` 和 `Escape` 键的键盘导航
+- 方向键浏览菜单项
+- 为屏幕阅读器提供正确的 ARIA 属性
+- 打开和关闭菜单时的焦点管理
+- 点击外部关闭行为

@@ -1,0 +1,114 @@
+---
+title: Tabs
+description: Organize conteúdo em visualizações separadas onde apenas uma é visível por vez.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SettingsDemo,
+  BoxDemo,
+  LiftDemo,
+  SizesDemo,
+  DisabledDemo,
+  DataDrivenDemo,
+  PositionDemo,
+} from '../../../../components/TabsDemo'
+import TabsDemoSource from '../../../../components/TabsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Organize conteúdo em visualizações separadas onde apenas uma é visível por vez.
+
+## Importação
+
+```tsx
+import { Tabs } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Uso Básico" description="Abas simples com troca de conteúdo automática." source={TabsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Página de Configurações" description="Página de configurações completa com formulários usando inputs com label flutuante." source={TabsDemoSource} fn="SettingsDemo">
+  <SettingsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variante Emoldurada" description="Abas com estilo de caixa fechada." source={TabsDemoSource} fn="BoxDemo">
+  <BoxDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variante Elevada" description="Abas com aparência elevada 3D." source={TabsDemoSource} fn="LiftDemo">
+  <LiftDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diferentes Tamanhos" description="Abas em vários tamanhos usando componentes Space e Typography." source={TabsDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Aba Desabilitada" description="Desabilite abas específicas." source={TabsDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Padrão Baseado em Dados" description="Use a prop items para abas baseadas em dados com ícones." source={TabsDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posição Inferior" description="Abas posicionadas abaixo do conteúdo." source={TabsDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tabs`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Painéis de aba (padrão composto) | `React.ReactNode` | `-` |
+| `items` | Itens de aba (padrão baseado em dados) | `TabItem[]` | `-` |
+| `activeKey` | Chave da aba ativa atual (controlado) | `string` | `-` |
+| `defaultActiveKey` | Chave da aba ativa padrão (não controlado) | `string` | `-` |
+| `onChange` | Callback quando a aba muda | `(key: string) => void` | `-` |
+| `variant` | Variante de estilo visual | `'box' \| 'border' \| 'lift'` | `-` |
+| `size` | Tamanho da aba | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
+| `position` | Posição da aba relativa ao conteúdo | `'top' \| 'bottom'` | `'top'` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+### `TabItem` (para prop items)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Identificador único | `string` | `-` |
+| `label` | Label do botão da aba | `React.ReactNode` | `-` |
+| `children` | Conteúdo do painel da aba | `React.ReactNode` | `-` |
+| `disabled` | Desabilitar a aba | `boolean` | `false` |
+| `icon` | Ícone da aba | `React.ReactNode` | `-` |
+
+### `Tabs.Panel` (padrão composto)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Identificador único para a aba (prop key do React) | `string` | `-` |
+| `tab` | Label do botão da aba | `React.ReactNode` | `-` |
+| `disabled` | Desabilitar a aba | `boolean` | `false` |
+| `icon` | Ícone da aba | `React.ReactNode` | `-` |
+| `children` | Conteúdo do painel da aba | `React.ReactNode` | `-` |
+
+## Acessibilidade
+
+- Usa roles ARIA adequados: `tablist`, `tab` e `tabpanel`
+- Navegação por teclado: Teclas de seta movem entre abas, tecla Tab move foco para o painel
+- Aba ativa é indicada com `aria-selected="true"`
+- Abas desabilitadas usam `aria-disabled` para comunicação adequada
+- Painéis de aba usam `aria-labelledby` para associar com sua aba
+
+## Dicas de Uso
+
+- Use `activeKey` para abas controladas, `defaultActiveKey` para não controladas
+- Use a prop `items` para abas baseadas em dados, `Tabs.Panel` para padrão composto
+- Use `position="bottom"` para colocar abas abaixo do conteúdo

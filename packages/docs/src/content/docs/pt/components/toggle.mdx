@@ -1,0 +1,75 @@
+---
+title: Toggle
+description: Controle de interruptor binário para estados ligado/desligado.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ColorsDemo,
+  DisabledDemo,
+  ControlledDemo,
+  FormDemo,
+} from '../../../../components/ToggleDemo'
+import ToggleDemoSource from '../../../../components/ToggleDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Controle de interruptor binário para estados ligado/desligado.
+
+## Importação
+
+```tsx
+import { Toggle } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Toggle Básico" description="Interruptor toggle simples." source={ToggleDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Quatro tamanhos disponíveis para toggles." source={ToggleDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores" description="Variantes de cor para diferentes contextos." source={ToggleDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Desabilitado" description="Toggles desabilitados não interativos." source={ToggleDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Controlado" description="Toggle com estado controlado." source={ToggleDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Em Formulário" description="Toggle integrado com componente Form usando valuePropName." source={ToggleDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Toggle`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `checked` | Estado marcado controlado | `boolean` | `-` |
+| `defaultChecked` | Estado marcado padrão (não controlado) | `boolean` | `false` |
+| `onChange` | Callback quando estado do toggle muda | `(e: ChangeEvent) => void` | `-` |
+| `size` | Tamanho do toggle | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Cor do toggle | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `disabled` | Desabilitar o toggle | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+## Acessibilidade
+
+- Usa input checkbox nativo para acessibilidade
+- Suporta ativação por teclado com tecla Space
+- Estado marcado/desmarcado é anunciado por leitores de tela
+- Estado desabilitado é comunicado corretamente

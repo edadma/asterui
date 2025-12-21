@@ -1,0 +1,49 @@
+---
+title: Join
+description: 通过删除它们之间的间距和边框，在视觉上将元素连接在一起。
+tableOfContents: false
+---
+
+import {
+  JoinedButtonsDemo,
+  VerticalJoinDemo,
+  JoinedInputAndButtonDemo,
+} from '../../../../components/JoinDemo'
+import JoinDemoSource from '../../../../components/JoinDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+通过删除它们之间的间距和边框，在视觉上将元素连接在一起。
+
+## 导入
+
+```tsx
+import { Join } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="连接的按钮" description="带按钮的基础水平连接。" source={JoinDemoSource} fn="JoinedButtonsDemo">
+  <JoinedButtonsDemo client:load slot="demo" />
+</Example>
+
+<Example title="垂直连接" description="垂直连接的元素。" source={JoinDemoSource} fn="VerticalJoinDemo">
+  <VerticalJoinDemo client:load slot="demo" />
+</Example>
+
+<Example title="连接的输入和按钮" description="将输入与按钮连接用于搜索或表单。" source={JoinDemoSource} fn="JoinedInputAndButtonDemo">
+  <JoinedInputAndButtonDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Join`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `direction` | 连接方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `children` | 要连接在一起的元素 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |

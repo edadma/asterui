@@ -1,0 +1,82 @@
+---
+title: Responsive 响应式
+description: 用于根据屏幕尺寸构建响应式布局的组件
+tableOfContents: false
+---
+
+import {
+  ShowAboveDemo,
+  HideBelowDemo,
+  ShowAtDemo,
+  ShowBetweenDemo,
+  ResponsiveLayoutDemo,
+} from '../../../../components/ResponsiveDemo'
+import ResponsiveDemoSource from '../../../../components/ResponsiveDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于根据屏幕尺寸显示/隐藏内容的组件。
+
+## 导入
+
+```tsx
+import { Show, Hide } from 'asterui'
+```
+
+## 断点
+
+使用与 Tailwind CSS 相同的断点:
+
+| 断点 | 最小宽度 |
+|------------|-----------|
+| `xs` | 0px |
+| `sm` | 640px |
+| `md` | 768px |
+| `lg` | 1024px |
+| `xl` | 1280px |
+| `2xl` | 1536px |
+
+## 示例
+
+<div class="examples">
+
+<Example title="在断点之上显示" description="仅在中等屏幕及以上显示内容。" source={ResponsiveDemoSource} fn="ShowAboveDemo">
+  <ShowAboveDemo client:load slot="demo" />
+</Example>
+
+<Example title="在断点之下隐藏" description="在小屏幕上隐藏内容。" source={ResponsiveDemoSource} fn="HideBelowDemo">
+  <HideBelowDemo client:load slot="demo" />
+</Example>
+
+<Example title="在特定断点显示" description="仅在特定断点显示内容。" source={ResponsiveDemoSource} fn="ShowAtDemo">
+  <ShowAtDemo client:load slot="demo" />
+</Example>
+
+<Example title="在断点之间显示" description="在一定范围的断点内显示内容。" source={ResponsiveDemoSource} fn="ShowBetweenDemo">
+  <ShowBetweenDemo client:load slot="demo" />
+</Example>
+
+<Example title="响应式布局" description="为移动和桌面构建不同的布局。" source={ResponsiveDemoSource} fn="ResponsiveLayoutDemo">
+  <ResponsiveLayoutDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Show` / `Hide`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 要显示/隐藏的内容 | `React.ReactNode` | - |
+| `above` | 在此断点及以上显示/隐藏 | `Breakpoint` | - |
+| `below` | 在此断点以下显示/隐藏 | `Breakpoint` | - |
+| `at` | 恰好在此断点显示/隐藏(或断点数组) | `Breakpoint \| Breakpoint[]` | - |
+| `between` | 在两个断点之间显示/隐藏(包括) | `[Breakpoint, Breakpoint]` | - |
+
+## 注意
+
+- 使用 JavaScript 检测断点,而不是 CSS 媒体查询
+- 一次只应使用一个条件属性(`above`、`below`、`at` 或 `between`)
+- 服务器端渲染默认为 1024px 宽度(lg 断点)
+
+另请参阅: [useBreakpoint](/hooks/usebreakpoint) hook 以编程方式访问断点信息。

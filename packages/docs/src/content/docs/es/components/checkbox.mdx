@@ -1,0 +1,131 @@
+---
+title: Checkbox
+description: Entrada de checkbox para seleccionar múltiples opciones de un conjunto
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ColorsDemo,
+  SizesDemo,
+  DisabledDemo,
+  IndeterminateDemo,
+  GroupDemo,
+  GroupOptionsDemo,
+  GroupDirectionDemo,
+  ControlledDemo,
+  SwapDemo,
+} from '../../../../components/CheckboxDemo'
+import CheckboxDemoSource from '../../../../components/CheckboxDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de checkbox para seleccionar múltiples opciones con varios estilos y soporte de grupo.
+
+## Importar
+
+```tsx
+import { Checkbox } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Uso Básico" description="Checkbox simple con etiqueta." source={CheckboxDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores" description="Diferentes colores de checkbox para varios contextos." source={CheckboxDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Cinco tamaños de checkbox desde xs hasta xl." source={CheckboxDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deshabilitado" description="Estados de checkbox deshabilitado." source={CheckboxDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Indeterminado" description="Estado indeterminado para funcionalidad de seleccionar todo." source={CheckboxDemoSource} fn="IndeterminateDemo">
+  <IndeterminateDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grupo de Checkbox" description="Agrupa múltiples checkboxes con estado compartido." source={CheckboxDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grupo con Opciones" description="Genera checkboxes desde array de opciones con soporte de deshabilitado." source={CheckboxDemoSource} fn="GroupOptionsDemo">
+  <GroupOptionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dirección del Grupo" description="Diseños de grupo horizontal y vertical." source={CheckboxDemoSource} fn="GroupDirectionDemo">
+  <GroupDirectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Controlado" description="Checkbox controlado con gestión de estado externa." source={CheckboxDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo Swap" description="Alterna entre dos estados visuales con efectos de animación." source={CheckboxDemoSource} fn="SwapDemo">
+  <SwapDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Checkbox`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `checked` | Estado marcado controlado | `boolean` | - |
+| `defaultChecked` | Estado marcado predeterminado | `boolean` | - |
+| `disabled` | Deshabilitar el checkbox | `boolean` | `false` |
+| `indeterminate` | Estado indeterminado (selección parcial) | `boolean` | `false` |
+| `size` | Tamaño del checkbox | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | Color del checkbox | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `swap` | Configuración del modo swap | `CheckboxSwapConfig` | - |
+| `value` | Valor cuando se usa en un grupo | `string \| number` | - |
+| `onChange` | Manejador de evento de cambio | `(e: ChangeEvent) => void` | - |
+| `name` | Atributo name HTML para el input | `string` | - |
+| `autoFocus` | Foco automático al montar | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+| `children` | Contenido de etiqueta (automáticamente envuelto en elemento label) | `ReactNode` | - |
+
+### `Checkbox.Group`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Valores seleccionados controlados | `(string \| number)[]` | - |
+| `defaultValue` | Valores seleccionados predeterminados | `(string \| number)[]` | - |
+| `onChange` | Callback de cambio de selección | `(values: (string \| number)[]) => void` | - |
+| `disabled` | Deshabilitar todos los checkboxes | `boolean` | `false` |
+| `options` | Opciones de checkbox | `(string \| number \| CheckboxOptionType)[]` | - |
+| `direction` | Dirección de diseño | `'horizontal' \| 'vertical'` | `'vertical'` |
+| `name` | Atributo name HTML para todos los checkboxes (para envío de formulario) | `string` | - |
+| `children` | Elementos de checkbox manuales | `ReactNode` | - |
+
+### `CheckboxSwapConfig`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `on` | Contenido mostrado cuando está marcado | `ReactNode` | - |
+| `off` | Contenido mostrado cuando está desmarcado | `ReactNode` | - |
+| `effect` | Efecto de animación | `'rotate' \| 'flip'` | - |
+
+### `CheckboxOptionType`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `label` | Etiqueta de opción | `ReactNode` | - |
+| `value` | Valor de opción | `string \| number` | - |
+| `disabled` | Deshabilitar esta opción | `boolean` | `false` |
+
+## Accesibilidad
+
+- Usa input de checkbox nativo para soporte de teclado y lector de pantalla
+- Asocia correctamente las etiquetas con los checkboxes
+- El estado indeterminado se comunica mediante la propiedad nativa indeterminate
+- El estado deshabilitado previene la interacción y se comunica a tecnologías de asistencia
+- Los estados de foco son visibles para navegación por teclado

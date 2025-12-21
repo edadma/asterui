@@ -1,0 +1,69 @@
+---
+title: Window
+description: Componente de maqueta de ventana estilo OS para mostrar código o contenido.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithCodeDemo,
+  MultiLineDemo,
+  WithPrefixDemo,
+  StyledDemo,
+  ContentDemo,
+} from '../../../../components/WindowDemo'
+import WindowDemoSource from '../../../../components/WindowDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de maqueta de ventana estilo OS para mostrar código o contenido.
+
+## Importación
+
+```tsx
+import { Window } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Ventana Básica" description="Maqueta de ventana simple con contenido." source={WindowDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Código" description="Ventana que contiene visualización de código." source={WindowDemoSource} fn="WithCodeDemo">
+  <WithCodeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Código Multilínea" description="Ventana con múltiples líneas de código." source={WindowDemoSource} fn="MultiLineDemo">
+  <MultiLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Prefijo" description="Líneas de código con prefijos de comando." source={WindowDemoSource} fn="WithPrefixDemo">
+  <WithPrefixDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ventana Estilizada" description="Ventana con estilo personalizado con diferente fondo." source={WindowDemoSource} fn="StyledDemo">
+  <StyledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenido Personalizado" description="Ventana con estilo de contenido personalizado." source={WindowDemoSource} fn="ContentDemo">
+  <ContentDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido de la ventana | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales para la ventana | `string` | - |
+| `contentClassName` | Clases CSS adicionales para el área de contenido | `string` | - |
+
+## Accesibilidad
+
+- El cromo de la ventana es decorativo y marcado como presentacional
+- El área de contenido mantiene el orden de lectura adecuado
+- Los bloques de código son legibles por lectores de pantalla
+- Los botones de semáforo son decoraciones no interactivas

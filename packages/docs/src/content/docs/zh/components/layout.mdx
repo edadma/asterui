@@ -1,0 +1,128 @@
+---
+title: Layout
+description: 用于构建应用程序布局的结构组件，包含头部、页脚、侧边栏和内容区域。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithSiderDemo,
+  SiderRightDemo,
+  CollapsibleDemo,
+  MenuNavigationDemo,
+  SubmenuDemo,
+} from '../../../../components/LayoutDemo'
+import LayoutDemoSource from '../../../../components/LayoutDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于构建应用程序布局的结构组件，包含头部、页脚、侧边栏和内容区域。
+
+## 导入
+
+```tsx
+import { Layout, Menu } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础布局" description="简单的头部、内容和页脚布局。" source={LayoutDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带侧边栏和菜单的布局" description="使用 Menu 组件的侧边导航布局。" source={LayoutDemoSource} fn="WithSiderDemo">
+  <WithSiderDemo client:load slot="demo" />
+</Example>
+
+<Example title="右侧侧边栏" description="使用 reverseArrow 的右侧侧边栏布局。" source={LayoutDemoSource} fn="SiderRightDemo">
+  <SiderRightDemo client:load slot="demo" />
+</Example>
+
+<Example title="可折叠侧边栏" description="带折叠/展开功能和内置触发器的侧边栏。" source={LayoutDemoSource} fn="CollapsibleDemo">
+  <CollapsibleDemo client:load slot="demo" />
+</Example>
+
+<Example title="菜单导航" description="选择项目时更改内容的交互式侧边栏菜单。" source={LayoutDemoSource} fn="MenuNavigationDemo">
+  <MenuNavigationDemo client:load slot="demo" />
+</Example>
+
+<Example title="带子菜单的内联菜单" description="使用内联模式的嵌套子菜单布局，用于可展开导航。" source={LayoutDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Layout`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 布局内容（Header、Sider、Content、Footer） | `React.ReactNode` | - |
+| `hasSider` | 是否包含 Sider（如果未指定则自动检测） | `boolean` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `React.CSSProperties` | - |
+| `data-testid` | 用于测试的测试 ID | `string` | - |
+
+### `Layout.Header`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 头部内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `React.CSSProperties` | - |
+| `data-testid` | 用于测试的测试 ID | `string` | - |
+
+### `Layout.Footer`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 页脚内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `React.CSSProperties` | - |
+| `data-testid` | 用于测试的测试 ID | `string` | - |
+
+### `Layout.Sider`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 侧边栏内容 | `React.ReactNode` | - |
+| `width` | 侧边栏的宽度 | `number \| string` | `200` |
+| `collapsedWidth` | 折叠时的宽度 | `number \| string` | `80` |
+| `collapsed` | 受控的折叠状态 | `boolean` | - |
+| `defaultCollapsed` | 初始折叠状态 | `boolean` | `false` |
+| `collapsible` | 侧边栏是否可以折叠 | `boolean` | `false` |
+| `onCollapse` | 折叠状态改变时的回调 | `(collapsed: boolean, type: 'clickTrigger' \| 'responsive') => void` | - |
+| `trigger` | 自定义触发器元素（null 隐藏） | `React.ReactNode \| null` | - |
+| `breakpoint` | 自动折叠的断点 | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | - |
+| `onBreakpoint` | 跨越断点时的回调 | `(broken: boolean) => void` | - |
+| `reverseArrow` | 反转箭头方向（用于右侧侧边栏） | `boolean` | `false` |
+| `theme` | 侧边栏的颜色主题 | `'light' \| 'dark'` | `'dark'` |
+| `zeroWidthTriggerStyle` | 零宽度触发器的样式 | `React.CSSProperties` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `React.CSSProperties` | - |
+| `data-testid` | 用于测试的测试 ID；触发器使用 `{id}-trigger` 后缀 | `string` | - |
+
+### `Layout.Content`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 内容区域内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `React.CSSProperties` | - |
+| `data-testid` | 用于测试的测试 ID | `string` | - |
+
+## 无障碍
+
+- 布局组件为您的应用程序提供语义结构
+- 使用 `Layout.Header` 作为顶部导航或品牌区域
+- 使用 `Layout.Footer` 作为底部页脚内容
+- 使用 `Layout.Sider` 作为侧边导航或辅助内容
+- 使用 `Layout.Content` 作为主内容区域
+- Layout 自动检测 Sider 组件并调整为水平布局
+- 布局可以嵌套以创建复杂的页面结构
+- 在 Sider 上使用 `collapsible` 属性以实现响应式导航
+- 对于右侧侧边栏使用 `reverseArrow`
+- 与 `Menu` 组件结合用于带可选择项目的导航
+- 所有组件转发 ref 并支持 `data-testid` 用于测试

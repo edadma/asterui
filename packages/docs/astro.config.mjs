@@ -37,6 +37,9 @@ export default defineConfig({
       locales: {
         root: { label: 'English', lang: 'en' },
         fr: { label: 'Français', lang: 'fr' },
+        zh: { label: '中文', lang: 'zh-CN' },
+        es: { label: 'Español', lang: 'es' },
+        pt: { label: 'Português', lang: 'pt-BR' },
       },
       defaultLocale: 'root',
       components: {
@@ -127,20 +130,88 @@ export default defineConfig({
         },
       ],
       sidebar: [
-        { label: 'Changelog', slug: 'changelog' },
+        {
+          label: 'Changelog',
+          slug: 'changelog',
+          translations: {
+            es: 'Registro de Cambios',
+            pt: 'Registro de Alterações',
+            'pt-BR': 'Registro de Alterações',
+            zh: '更新日志',
+            'zh-CN': '更新日志',
+            fr: 'Journal des modifications',
+          },
+        },
         {
           label: 'Start Here',
+          translations: {
+            es: 'Empezar Aquí',
+            pt: 'Comece Aqui',
+            'pt-BR': 'Comece Aqui',
+            zh: '从这里开始',
+            'zh-CN': '从这里开始',
+            fr: 'Commencer ici',
+          },
           items: [
-            { label: 'Getting Started', slug: 'getting-started' },
-            { label: 'Manual Setup', slug: 'manual-setup' },
+            {
+              label: 'Getting Started',
+              slug: 'getting-started',
+              translations: {
+                es: 'Primeros Pasos',
+                pt: 'Primeiros Passos',
+                'pt-BR': 'Primeiros Passos',
+                zh: '快速开始',
+                'zh-CN': '快速开始',
+                fr: 'Premiers pas',
+              },
+            },
+            {
+              label: 'Manual Setup',
+              slug: 'manual-setup',
+              translations: {
+                es: 'Configuración Manual',
+                pt: 'Configuração Manual',
+                'pt-BR': 'Configuração Manual',
+                zh: '手动配置',
+                'zh-CN': '手动配置',
+                fr: 'Configuration manuelle',
+              },
+            },
           ],
         },
         {
           label: 'Components',
+          translations: {
+            es: 'Componentes',
+            pt: 'Componentes',
+            'pt-BR': 'Componentes',
+            zh: '组件',
+            'zh-CN': '组件',
+            fr: 'Composants',
+          },
           items: [
-            { label: 'Overview', link: '/components' },
+            {
+              label: 'Overview',
+              link: '/components',
+              translations: {
+                es: 'Descripción General',
+                pt: 'Visão Geral',
+                'pt-BR': 'Visão Geral',
+                zh: '概览',
+                'zh-CN': '概览',
+                fr: 'Aperçu',
+              },
+            },
             {
               label: 'Actions',
+              translations: {
+                es: 'Acciones',
+                pt: 'Ações',
+                'pt-BR': 'Ações',
+                zh: '操作',
+                'zh-CN': '操作',
+                fr: 'Actions',
+              },
               items: [
                 { label: 'Button', slug: 'components/button' },
                 { label: 'CopyButton', slug: 'components/copybutton' },
@@ -151,6 +222,14 @@ export default defineConfig({
             {
               label: 'Data Display',
               collapsed: true,
+              translations: {
+                es: 'Visualización de Datos',
+                pt: 'Exibição de Dados',
+                'pt-BR': 'Exibição de Dados',
+                zh: '数据展示',
+                'zh-CN': '数据展示',
+                fr: 'Affichage des données',
+              },
               items: [
                 { label: 'Avatar', slug: 'components/avatar' },
                 { label: 'Badge', slug: 'components/badge' },
@@ -183,6 +262,14 @@ export default defineConfig({
             {
               label: 'Data Entry',
               collapsed: true,
+              translations: {
+                es: 'Entrada de Datos',
+                pt: 'Entrada de Dados',
+                'pt-BR': 'Entrada de Dados',
+                zh: '数据录入',
+                'zh-CN': '数据录入',
+                fr: 'Saisie de données',
+              },
               items: [
                 { label: 'Autocomplete', slug: 'components/autocomplete' },
                 { label: 'Cascader', slug: 'components/cascader' },
@@ -214,6 +301,14 @@ export default defineConfig({
             {
               label: 'Feedback',
               collapsed: true,
+              translations: {
+                es: 'Retroalimentación',
+                pt: 'Feedback',
+                'pt-BR': 'Feedback',
+                zh: '反馈',
+                'zh-CN': '反馈',
+                fr: 'Retour d\'information',
+              },
               items: [
                 { label: 'Alert', slug: 'components/alert' },
                 { label: 'Drawer', slug: 'components/drawer' },
@@ -231,6 +326,14 @@ export default defineConfig({
             {
               label: 'Navigation',
               collapsed: true,
+              translations: {
+                es: 'Navegación',
+                pt: 'Navegação',
+                'pt-BR': 'Navegação',
+                zh: '导航',
+                'zh-CN': '导航',
+                fr: 'Navigation',
+              },
               items: [
                 { label: 'Anchor', slug: 'components/anchor' },
                 { label: 'Breadcrumb', slug: 'components/breadcrumb' },
@@ -248,6 +351,14 @@ export default defineConfig({
             {
               label: 'Layout',
               collapsed: true,
+              translations: {
+                es: 'Diseño',
+                pt: 'Layout',
+                'pt-BR': 'Layout',
+                zh: '布局',
+                'zh-CN': '布局',
+                fr: 'Mise en page',
+              },
               items: [
                 { label: 'Container', slug: 'components/container' },
                 { label: 'Divider', slug: 'components/divider' },
@@ -266,6 +377,14 @@ export default defineConfig({
             {
               label: 'Other',
               collapsed: true,
+              translations: {
+                es: 'Otros',
+                pt: 'Outros',
+                'pt-BR': 'Outros',
+                zh: '其他',
+                'zh-CN': '其他',
+                fr: 'Autres',
+              },
               items: [
                 { label: 'Affix', slug: 'components/affix' },
                 { label: 'ConfigProvider', slug: 'components/configprovider' },
@@ -286,6 +405,14 @@ export default defineConfig({
         },
         {
           label: 'Hooks',
+          translations: {
+            es: 'Hooks',
+            pt: 'Hooks',
+            'pt-BR': 'Hooks',
+            zh: 'Hooks',
+            'zh-CN': 'Hooks',
+            fr: 'Hooks',
+          },
           items: [
             { label: 'useBreakpoint', slug: 'hooks/usebreakpoint' },
             { label: 'useClickOutside', slug: 'hooks/useclickoutside' },

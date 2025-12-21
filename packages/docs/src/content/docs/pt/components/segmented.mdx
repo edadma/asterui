@@ -1,0 +1,96 @@
+---
+title: Segmented
+description: Alternância inline para alternar entre opções mutuamente exclusivas
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DisabledItemsDemo,
+  SizesDemo,
+  BlockDemo,
+  DisabledDemo,
+  WithIconsDemo,
+} from '../../../../components/SegmentedDemo'
+import SegmentedDemoSource from '../../../../components/SegmentedDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Alternância inline para alternar entre opções mutuamente exclusivas.
+
+## Importação
+
+```tsx
+import { Segmented } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Uso Básico" description="Controle segmentado simples para alternar visualização." source={SegmentedDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Itens Desabilitados" description="Itens individuais podem ser desabilitados." source={SegmentedDemoSource} fn="DisabledItemsDemo">
+  <DisabledItemsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Quatro opções de tamanho disponíveis." source={SegmentedDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo Bloco" description="Largura total com opções de tamanho igual." source={SegmentedDemoSource} fn="BlockDemo">
+  <BlockDemo client:load slot="demo" />
+</Example>
+
+<Example title="Desabilitado" description="Estado desabilitado para todo o controle." source={SegmentedDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Ícones" description="Opções com ícones e rótulos." source={SegmentedDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Segmented`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `value` | Valor atualmente selecionado (controlado) | `string \| number` | - |
+| `defaultValue` | Valor padrão selecionado (não controlado) | `string \| number` | - |
+| `onChange` | Callback quando a seleção muda | `(value: string \| number) => void` | - |
+| `size` | Tamanho do controle | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `block` | Ocupar largura total do container | `boolean` | `false` |
+| `disabled` | Desabilitar todas as opções | `boolean` | `false` |
+| `className` | Classe CSS adicional | `string` | - |
+| `children` | Componentes Segmented.Item | `ReactNode` | - |
+
+### `Segmented.Item`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `value` | Valor da opção (obrigatório) | `string \| number` | - |
+| `disabled` | Desabilitar esta opção | `boolean` | `false` |
+| `icon` | Ícone antes do rótulo | `ReactNode` | - |
+| `children` | Conteúdo do rótulo | `ReactNode` | - |
+| `className` | Classe CSS adicional | `string` | - |
+
+## Quando Usar
+
+- **Alternância de visualização**: Alternar entre visualizações Lista/Grade/Tabela
+- **Períodos de tempo**: Filtros Dia/Semana/Mês/Ano
+- **Seletores de tamanho**: Opções P/M/G/GG
+- **Alinhamento**: Controles Esquerda/Centro/Direita
+- **Alternância de modo**: Alternâncias de tema Claro/Escuro
+
+## Segmented vs Radio.Group
+
+| Segmented | Radio.Group |
+|-----------|-------------|
+| Mudanças imediatas de estado da UI | Valores de campo de formulário |
+| Aparência compacta, tipo botão | Botões de rádio tradicionais |
+| Opções sempre visíveis | Pode ter muitas opções |
+| Tipicamente 2-5 opções | Qualquer número de opções |

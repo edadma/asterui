@@ -1,0 +1,49 @@
+---
+title: Join
+description: Junte elementos visualmente removendo espaçamento e bordas entre eles.
+tableOfContents: false
+---
+
+import {
+  JoinedButtonsDemo,
+  VerticalJoinDemo,
+  JoinedInputAndButtonDemo,
+} from '../../../../components/JoinDemo'
+import JoinDemoSource from '../../../../components/JoinDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Junte elementos visualmente removendo espaçamento e bordas entre eles.
+
+## Importação
+
+```tsx
+import { Join } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Botões Unidos" description="Join horizontal básico com botões." source={JoinDemoSource} fn="JoinedButtonsDemo">
+  <JoinedButtonsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Join Vertical" description="Elementos unidos verticalmente." source={JoinDemoSource} fn="VerticalJoinDemo">
+  <VerticalJoinDemo client:load slot="demo" />
+</Example>
+
+<Example title="Input e Botão Unidos" description="Una input com botão para pesquisa ou formulários." source={JoinDemoSource} fn="JoinedInputAndButtonDemo">
+  <JoinedInputAndButtonDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Join`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `direction` | Direção do join | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `children` | Elementos para unir | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |

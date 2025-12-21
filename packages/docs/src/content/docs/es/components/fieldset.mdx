@@ -1,0 +1,64 @@
+---
+title: Fieldset
+description: Agrupa controles de formulario relacionados con una leyenda opcional y estado deshabilitado.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithInputsDemo,
+  DisabledDemo,
+} from '../../../../components/FieldsetDemo'
+import FieldsetDemoSource from '../../../../components/FieldsetDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Agrupa controles de formulario relacionados con una leyenda opcional y estado deshabilitado.
+
+## Importar
+
+```tsx
+import { Fieldset } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Fieldset Básico" description="Fieldset simple con leyenda." source={FieldsetDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Entradas de Formulario" description="Fieldset que contiene entradas de formulario con etiquetas." source={FieldsetDemoSource} fn="WithInputsDemo">
+  <WithInputsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Fieldset Deshabilitado" description="Todos los controles de formulario dentro están deshabilitados." source={FieldsetDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Fieldset`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del fieldset | `React.ReactNode` | - |
+| `disabled` | Deshabilita todos los controles de formulario dentro | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Fieldset.Legend`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Texto o contenido de la leyenda | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Fieldset.Label`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Texto o contenido de la etiqueta | `React.ReactNode` | - |
+| `htmlFor` | ID del elemento de formulario para el que es la etiqueta | `string` | - |
+| `className` | Clases CSS adicionales | `string` | - |

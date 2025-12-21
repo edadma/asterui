@@ -1,0 +1,92 @@
+---
+title: Collapse 折叠面板
+description: 用于常见问题解答、手风琴和可展开部分的可折叠内容面板。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AccordionDemo,
+  BorderlessDemo,
+  NestedDemo,
+  GhostDemo,
+  PlusIconDemo,
+} from '../../../../components/CollapseDemo'
+import CollapseDemoSource from '../../../../components/CollapseDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于常见问题解答、手风琴和可展开部分的可折叠内容面板。
+
+## 引入
+
+```tsx
+import { Collapse } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本折叠" description="简单的可折叠面板。" source={CollapseDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="手风琴" description="一次只能打开一个面板。" source={CollapseDemoSource} fn="AccordionDemo">
+  <AccordionDemo client:load slot="demo" />
+</Example>
+
+<Example title="无边框" description="没有边框的折叠。" source={CollapseDemoSource} fn="BorderlessDemo">
+  <BorderlessDemo client:load slot="demo" />
+</Example>
+
+<Example title="嵌套内容" description="带丰富嵌套内容的折叠。" source={CollapseDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="幽灵模式" description="透明背景以获得简约外观。" source={CollapseDemoSource} fn="GhostDemo">
+  <GhostDemo client:load slot="demo" />
+</Example>
+
+<Example title="加减图标" description="使用加减图标代替箭头。" source={CollapseDemoSource} fn="PlusIconDemo">
+  <PlusIconDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Collapse`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `items` | 折叠面板项 | `CollapseItemType[]` | - |
+| `activeKey` | 受控的激活面板键 | `string \| number \| (string \| number)[]` | - |
+| `defaultActiveKey` | 初始激活面板键 | `string \| number \| (string \| number)[]` | - |
+| `accordion` | 一次只打开一个面板 | `boolean` | `false` |
+| `bordered` | 在面板周围显示边框 | `boolean` | `true` |
+| `ghost` | 透明背景样式 | `boolean` | `false` |
+| `size` | 尺寸变体 | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `icon` | 展开指示器的图标类型 | `'arrow' \| 'plus' \| 'none'` | `'arrow'` |
+| `expandIconPlacement` | 图标位置 | `'start' \| 'end'` | `'start'` |
+| `onChange` | 改变处理函数 | `(activeKey: (string \| number)[]) => void` | - |
+| `data-testid` | 组件的测试 ID | `string` | `'collapse'` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `CollapseItemType`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 面板的唯一标识符 | `string \| number` | - |
+| `label` | 面板标题内容 | `React.ReactNode` | - |
+| `children` | 面板主体内容 | `React.ReactNode` | - |
+| `extra` | 标题角落的额外元素 | `React.ReactNode` | - |
+| `showArrow` | 是否显示展开图标 | `boolean` | `true` |
+| `collapsible` | 可折叠模式 | `'header' \| 'icon' \| 'disabled'` | - |
+| `className` | 此面板的自定义类名 | `string` | - |
+
+## 无障碍
+
+- 面板标题可通过 Enter 和 Space 键访问
+- 使用 `aria-expanded` 指示面板状态
+- 对禁用面板使用 `aria-disabled`
+- 面板公开 `data-state` 用于测试和样式

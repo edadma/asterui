@@ -1,0 +1,91 @@
+---
+title: Popconfirm
+description: Un diálogo de confirmación simple activado por un clic.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DescriptionDemo,
+  PlacementsDemo,
+  CustomTextDemo,
+  AsyncDemo,
+  CustomIconDemo,
+  NoCancelDemo,
+  DisabledDemo,
+} from '../../../../components/PopconfirmDemo'
+import PopconfirmDemoSource from '../../../../components/PopconfirmDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Un diálogo de confirmación simple activado por un clic.
+
+## Importar
+
+```tsx
+import { Popconfirm } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Popconfirm simple con título." source={PopconfirmDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con descripción" description="Agrega una descripción para más contexto." source={PopconfirmDemoSource} fn="DescriptionDemo">
+  <DescriptionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posiciones" description="Popconfirm puede colocarse en diferentes posiciones." source={PopconfirmDemoSource} fn="PlacementsDemo">
+  <PlacementsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Texto personalizado" description="Personaliza el texto y tipos de botones." source={PopconfirmDemoSource} fn="CustomTextDemo">
+  <CustomTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Confirmación asíncrona" description="Maneja operaciones asíncronas con estado de carga." source={PopconfirmDemoSource} fn="AsyncDemo">
+  <AsyncDemo client:load slot="demo" />
+</Example>
+
+<Example title="Icono personalizado" description="Personaliza u oculta el icono." source={PopconfirmDemoSource} fn="CustomIconDemo">
+  <CustomIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sin botón de cancelar" description="Oculta el botón de cancelar para confirmaciones de solo reconocimiento." source={PopconfirmDemoSource} fn="NoCancelDemo">
+  <NoCancelDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deshabilitado" description="Popconfirm deshabilitado." source={PopconfirmDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Popconfirm`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Elemento activador | `React.ReactElement` | - |
+| `title` | Título de la confirmación | `React.ReactNode` | - |
+| `description` | Texto de descripción | `React.ReactNode` | - |
+| `onConfirm` | Callback cuando se confirma (soporta async) | `() => void \| Promise<void>` | - |
+| `onCancel` | Callback cuando se cancela | `() => void` | - |
+| `okText` | Texto para botón de confirmar | `string` | `'OK'` |
+| `cancelText` | Texto para botón de cancelar | `string` | `'Cancel'` |
+| `okType` | Tipo de botón para botón de confirmar | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'error' \| 'info'` | `'primary'` |
+| `cancelType` | Tipo de botón para botón de cancelar | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'error' \| 'info' \| 'ghost'` | `'ghost'` |
+| `placement` | Posición del popup de confirmación | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` |
+| `disabled` | Si el popconfirm está deshabilitado | `boolean` | `false` |
+| `icon` | Icono personalizado (null para ocultar el predeterminado) | `React.ReactNode` | - |
+| `showCancel` | Mostrar botón de cancelar | `boolean` | `true` |
+
+## Accesibilidad
+
+- El foco queda atrapado dentro del popconfirm cuando está abierto
+- La tecla Escape cierra el popconfirm
+- Los botones son accesibles por teclado
+- El estado de carga se comunica vía `aria-busy`

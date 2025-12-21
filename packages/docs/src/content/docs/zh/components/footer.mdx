@@ -1,0 +1,58 @@
+---
+title: Footer
+description: 页面页脚组件，支持链接、部分和居中布局。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithSectionsDemo,
+  CenteredDemo,
+} from '../../../../components/FooterDemo'
+import FooterDemoSource from '../../../../components/FooterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+页面页脚组件，支持链接、部分和居中布局。
+
+## 导入
+
+```tsx
+import { Footer } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础页脚" description="带水平链接的简单左对齐页脚。" source={FooterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带部分的页脚" description="带列中标题部分的页脚。" source={FooterDemoSource} fn="WithSectionsDemo">
+  <WithSectionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="居中页脚" description="带居中内容的页脚。" source={FooterDemoSource} fn="CenteredDemo">
+  <CenteredDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Footer`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 页脚内容 | `React.ReactNode` | - |
+| `center` | 居中页脚内容 | `boolean` | `false` |
+| `horizontal` | 水平显示列 | `boolean` | `false` |
+| `vertical` | 垂直显示列（默认） | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Footer.Title`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 标题文本 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |

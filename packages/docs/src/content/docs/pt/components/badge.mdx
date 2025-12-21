@@ -1,0 +1,125 @@
+---
+title: Badge
+description: Emblemas de notificação, indicadores de status e fitas para destacar conteúdo
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  OverflowDemo,
+  PositionDemo,
+  OffsetDemo,
+  StatusDemo,
+  RibbonDemo,
+  RibbonColorsDemo,
+  DotDemo,
+  ColorsDemo,
+  CustomColorsDemo,
+  SizesDemo,
+  ShowZeroDemo,
+  VariantsDemo,
+} from '../../../../components/BadgeDemo'
+import BadgeDemoSource from '../../../../components/BadgeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Emblemas de notificação, indicadores de status e fitas para destacar conteúdo.
+
+## Importação
+
+```tsx
+import { Badge } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Emblemas de Notificação Básicos" description="Exibir emblemas de contagem em elementos." source={BadgeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contagem de Overflow" description="Mostrar contagem+ ao exceder o limite de overflow." source={BadgeDemoSource} fn="OverflowDemo">
+  <OverflowDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posicionamento de Emblema" description="Posicionar emblemas em qualquer um dos 9 cantos." source={BadgeDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deslocamento de Emblema" description="Ajustar finamente a posição do emblema com deslocamentos de pixel." source={BadgeDemoSource} fn="OffsetDemo">
+  <OffsetDemo client:load slot="demo" />
+</Example>
+
+<Example title="Emblemas de Status" description="Indicadores de status com rótulos de texto opcionais." source={BadgeDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Emblemas de Fita" description="Emblemas decorativos em estilo de fita usando Badge.Ribbon." source={BadgeDemoSource} fn="RibbonDemo">
+  <RibbonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores de Fita" description="Fitas suportam diferentes tipos de cor e cores personalizadas." source={BadgeDemoSource} fn="RibbonColorsDemo">
+  <RibbonColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Emblemas de Ponto" description="Indicadores circulares pequenos para presença ou status." source={BadgeDemoSource} fn="DotDemo">
+  <DotDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores de Emblema" description="Emblemas de contagem independentes com cores diferentes." source={BadgeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores Personalizadas" description="Use a prop color para cores de emblema personalizadas." source={BadgeDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos de Emblema" description="Cinco tamanhos disponíveis para emblemas." source={BadgeDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar Zero" description="Exibir emblema mesmo quando a contagem é 0." source={BadgeDemoSource} fn="ShowZeroDemo">
+  <ShowZeroDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes de Emblema" description="Diferentes estilos visuais para emblemas." source={BadgeDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Badge`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `count` | Número para exibir no emblema | `number` | - |
+| `showZero` | Se deve exibir o emblema quando a contagem é 0 | `boolean` | `false` |
+| `overflowCount` | Contagem máxima para mostrar antes de exibir contagem+ | `number` | `99` |
+| `position` | Posição do emblema ao envolver filhos | `'top-start' \| 'top-center' \| 'top-end' \| 'middle-start' \| 'middle-center' \| 'middle-end' \| 'bottom-start' \| 'bottom-center' \| 'bottom-end'` | `'top-end'` |
+| `offset` | Deslocamento da posição padrão em pixels [x, y] | `[number, number]` | - |
+| `status` | Modo de emblema de status com ponto colorido | `'success' \| 'processing' \| 'error' \| 'default' \| 'warning'` | - |
+| `text` | Texto para exibir com emblema de status | `string` | - |
+| `dot` | Mostrar um pequeno ponto circular em vez de contagem | `boolean` | `false` |
+| `type` | Tipo de cor do emblema | `'default' \| 'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'error'` |
+| `size` | Tamanho do emblema | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `variant` | Variante de estilo do emblema | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost'` | `'solid'` |
+| `color` | Cor de fundo personalizada | `string` | - |
+| `children` | Elemento para envolver com emblema (modo de notificação) | `ReactNode` | - |
+
+### `Badge.Ribbon`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `text` | Conteúdo de texto da fita | `string` | obrigatório |
+| `placement` | Posicionamento da fita | `'start' \| 'end'` | `'end'` |
+| `type` | Tipo de cor da fita | Igual ao tipo Badge | `'primary'` |
+| `color` | Cor de fundo personalizada | `string` | - |
+| `children` | Elemento para envolver com fita | `ReactNode` | obrigatório |
+
+## Acessibilidade
+
+- Usa `role="status"` para emblemas de status
+- Fornece `aria-label` para leitores de tela com contagem ou status de notificação
+- Status de processamento inclui animação de pulso visual

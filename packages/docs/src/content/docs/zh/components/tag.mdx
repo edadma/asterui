@@ -1,0 +1,130 @@
+---
+title: Tag 标签
+description: 用于分类、标记和组织内容的标签。
+tableOfContents: false
+---
+
+import {
+  BasicTagsDemo,
+  VariantsDemo,
+  ClosableTagsDemo,
+  TagsWithIconsDemo,
+  TagSizesDemo,
+  CustomColorsDemo,
+  LinkTagsDemo,
+  DisabledTagsDemo,
+  CheckableTagsDemo,
+  CheckableTagColorsDemo,
+  CheckableTagsWithIconsDemo,
+  UseCasesDemo,
+} from '../../../../components/TagDemo'
+import TagDemoSource from '../../../../components/TagDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于分类、标记和组织内容的标签。
+
+## 导入
+
+```tsx
+import { Tag } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础标签" description="带有预设颜色的简单标签。" source={TagDemoSource} fn="BasicTagsDemo">
+  <BasicTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="变体" description="标签的不同样式变体。" source={TagDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="可关闭标签" description="用户可以关闭的标签。" source={TagDemoSource} fn="ClosableTagsDemo">
+  <ClosableTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标的标签" description="向标签添加图标以获得更好的视觉传达。" source={TagDemoSource} fn="TagsWithIconsDemo">
+  <TagsWithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="标签尺寸" description="标签有五种尺寸可用。" source={TagDemoSource} fn="TagSizesDemo">
+  <TagSizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义颜色" description="使用自定义十六进制颜色进行独特样式。" source={TagDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="链接标签" description="导航到 URL 的标签。" source={TagDemoSource} fn="LinkTagsDemo">
+  <LinkTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用标签" description="带有禁用状态的标签。" source={TagDemoSource} fn="DisabledTagsDemo">
+  <DisabledTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="可勾选标签" description="可以打开和关闭切换的标签。" source={TagDemoSource} fn="CheckableTagsDemo">
+  <CheckableTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="可勾选标签颜色" description="具有不同颜色和尺寸的可勾选标签。" source={TagDemoSource} fn="CheckableTagColorsDemo">
+  <CheckableTagColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标的可勾选标签" description="向可勾选标签添加图标。" source={TagDemoSource} fn="CheckableTagsWithIconsDemo">
+  <CheckableTagsWithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="使用案例" description="标签使用的实际示例。" source={TagDemoSource} fn="UseCasesDemo">
+  <UseCasesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tag`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `closable` | 显示关闭图标并启用关闭 | `boolean` | `false` |
+| `closeIcon` | 自定义关闭图标元素 | `ReactNode` | `-` |
+| `onClose` | 标签关闭时的回调 | `() => void` | `-` |
+| `color` | 标签颜色(预设或自定义十六进制) | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'ghost' \| string` | `-` |
+| `icon` | 文本前显示的图标元素 | `ReactNode` | `-` |
+| `size` | 标签大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `variant` | 标签样式变体 | `'filled' \| 'outlined' \| 'soft' \| 'dash'` | `'filled'` |
+| `visible` | 受控可见性状态 | `boolean` | `-` |
+| `disabled` | 禁用交互 | `boolean` | `false` |
+| `href` | 将标签渲染为链接 | `string` | `-` |
+| `target` | 链接目标(设置 href 时) | `string` | `-` |
+| `children` | 标签内容 | `ReactNode` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+| `data-testid` | 组件的测试 ID | `string` | `'tag'` |
+| `aria-label` | 可访问标签(在关闭按钮公告中使用) | `string` | `-` |
+
+### `CheckableTag`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `checked` | 标签是否勾选 | `boolean` | `false` |
+| `onChange` | 勾选状态更改时的回调 | `(checked: boolean) => void` | `-` |
+| `icon` | 文本前显示的图标元素 | `ReactNode` | `-` |
+| `size` | 标签大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `color` | 勾选时的标签颜色 | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'ghost'` | `'primary'` |
+| `disabled` | 禁用交互 | `boolean` | `false` |
+| `children` | 标签内容 | `ReactNode` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+| `data-testid` | 组件的测试 ID | `string` | `'checkable-tag'` |
+
+## 可访问性
+
+- 关闭按钮包含描述性的 `aria-label`(例如,"删除标签 1")
+- CheckableTag 使用带有正确 `aria-checked` 状态的 `role="checkbox"`
+- 可通过键盘访问 - 关闭和切换操作使用 Enter/Space 工作
+- 所有交互元素上的可见焦点指示器
+- `TagLiveRegion` 向屏幕阅读器宣布标签移除
+- 禁用时设置 `aria-disabled` 属性
+- 预设颜色的颜色对比度符合 WCAG 指南

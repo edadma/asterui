@@ -1,0 +1,61 @@
+---
+title: Divider
+description: Separador visual para seções de conteúdo com rótulos de texto opcionais.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithTextDemo,
+  PositionDemo,
+  VerticalDemo,
+  ColorsDemo,
+} from '../../../../components/DividerDemo'
+import DividerDemoSource from '../../../../components/DividerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Separador visual para seções de conteúdo com rótulos de texto opcionais.
+
+## Importação
+
+```tsx
+import { Divider } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Divider Básico" description="Divisor horizontal simples." source={DividerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Texto" description="Divisor com rótulo de texto." source={DividerDemoSource} fn="WithTextDemo">
+  <WithTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posição do Texto" description="Posicione o texto no início, centro ou fim." source={DividerDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Divider Vertical" description="Divisor vertical para conteúdo inline." source={DividerDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores" description="Divisores com diferentes tipos de cor." source={DividerDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Divider`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Texto ou conteúdo no divisor | `React.ReactNode` | - |
+| `orientation` | Orientação do divisor | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `position` | Posição do texto | `'start' \| 'center' \| 'end'` | `'center'` |
+| `type` | Tipo de cor | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `className` | Classes CSS adicionais | `string` | - |

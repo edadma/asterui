@@ -1,0 +1,100 @@
+---
+title: Range
+description: Selecciona valores numéricos usando un control deslizante interactivo.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ShowValueDemo,
+  ShowStepsDemo,
+  ControlledDemo,
+  CustomRangeDemo,
+  ColorsDemo,
+  SizesDemo,
+  DisabledDemo,
+  VolumeDemo,
+  FormDemo,
+} from '../../../../components/RangeDemo'
+import RangeDemoSource from '../../../../components/RangeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Selecciona valores numéricos usando un control deslizante interactivo.
+
+## Importar
+
+```tsx
+import { Range } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Range básico" description="Control deslizante de rango simple con configuración predeterminada." source={RangeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con visualización de valor" description="Control deslizante de rango mostrando el valor actual." source={RangeDemoSource} fn="ShowValueDemo">
+  <ShowValueDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con pasos" description="Control deslizante de rango con marcadores de pasos visibles." source={RangeDemoSource} fn="ShowStepsDemo">
+  <ShowStepsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Controlado" description="Control deslizante de rango controlado con gestión de estado." source={RangeDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Rango personalizado" description="Control deslizante de rango con valores mín, máx y paso personalizados." source={RangeDemoSource} fn="CustomRangeDemo">
+  <CustomRangeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores" description="Controles deslizantes de rango en varios colores de tema." source={RangeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Controles deslizantes de rango en varios tamaños." source={RangeDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deshabilitado" description="Control deslizante de rango deshabilitado." source={RangeDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ejemplo de control de volumen" description="Ejemplo del mundo real de un control de volumen." source={RangeDemoSource} fn="VolumeDemo">
+  <VolumeDemo client:load slot="demo" />
+</Example>
+
+<Example title="En formulario" description="Control deslizante de rango integrado con componente Form." source={RangeDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Range`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Valor controlado | `number` | - |
+| `defaultValue` | Valor predeterminado (no controlado) | `number` | `50` |
+| `onChange` | Callback cuando cambia el valor | `(value: number) => void` | - |
+| `min` | Valor mínimo | `number` | `0` |
+| `max` | Valor máximo | `number` | `100` |
+| `step` | Incremento de paso | `number` | `1` |
+| `size` | Tamaño del rango | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Tema de color del rango | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `disabled` | Deshabilitar la entrada de rango | `boolean` | `false` |
+| `showValue` | Mostrar valor actual debajo del rango | `boolean` | `false` |
+| `showSteps` | Mostrar marcadores de pasos debajo del rango | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa `<input type="range">` nativo para accesibilidad completa
+- El valor se anuncia por lectores de pantalla como porcentaje
+- Navegación por teclado con teclas de flecha soportada
+- Funciona con `showValue` para visualización de valor visual

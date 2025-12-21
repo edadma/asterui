@@ -1,0 +1,66 @@
+---
+title: Message
+description: 在屏幕顶部中央显示的轻量级反馈消息
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  LoadingDemo,
+  DurationDemo,
+  StackingDemo,
+} from '../../../../components/MessageDemo'
+import MessageDemoSource from '../../../../components/MessageDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+在屏幕顶部中央显示的轻量级反馈消息。
+
+## 导入
+
+```tsx
+import { message } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础消息" description="用于用户操作的轻量级反馈消息。" source={MessageDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="加载消息" description="显示可以通过编程方式关闭的加载消息。" source={MessageDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义持续时间" description="控制消息保持可见的时间。" source={MessageDemoSource} fn="DurationDemo">
+  <DurationDemo client:load slot="demo" />
+</Example>
+
+<Example title="堆叠消息" description="多个消息在屏幕顶部中央堆叠。" source={MessageDemoSource} fn="StackingDemo">
+  <StackingDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### 消息选项
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `content` | 消息文本（第一个参数） | `React.ReactNode` | - |
+| `duration` | 自动关闭持续时间（秒） | `number` | `3` |
+| `key` | 唯一标识符。使用相同键更新会更新现有消息 | `string` | - |
+| `icon` | 要显示的自定义图标 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `React.CSSProperties` | - |
+| `data-testid` | 用于测试框架的测试 ID | `string` | - |
+| `onClick` | 点击消息时的回调 | `() => void` | - |
+| `onClose` | 消息关闭时的回调 | `() => void` | - |
+
+## 无障碍
+
+- 消息通过实时区域向屏幕阅读器朗读
+- 图标提供视觉提示以及颜色表示消息类型
+- 消息自动关闭但可以配置为持续存在

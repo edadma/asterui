@@ -1,0 +1,70 @@
+---
+title: Chat 聊天
+description: 用于显示带头像和元数据的对话的聊天消息气泡。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AvatarsDemo,
+  HeadersDemo,
+  ColorsDemo,
+  FooterDemo,
+} from '../../../../components/ChatDemo'
+import ChatDemoSource from '../../../../components/ChatDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于显示带头像和元数据的对话的聊天消息气泡。
+
+## 引入
+
+```tsx
+import { Chat } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本聊天" description="不同位置的简单聊天气泡。" source={ChatDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带头像" description="带用户头像的聊天气泡。" source={ChatDemoSource} fn="AvatarsDemo">
+  <AvatarsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带标题" description="带姓名和时间戳标题的聊天气泡。" source={ChatDemoSource} fn="HeadersDemo">
+  <HeadersDemo client:load slot="demo" />
+</Example>
+
+<Example title="彩色气泡" description="不同颜色变体的聊天气泡。" source={ChatDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带页脚" description="带送达状态页脚的聊天气泡。" source={ChatDemoSource} fn="FooterDemo">
+  <FooterDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Chat`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `message` | 消息内容 | `React.ReactNode` | - |
+| `position` | 气泡位置 | `'start' \| 'end'` | `'start'` |
+| `avatar` | 头像图片 URL | `string` | - |
+| `avatarAlt` | 头像替代文本 | `string` | - |
+| `header` | 标题内容（姓名、时间） | `React.ReactNode` | - |
+| `footer` | 页脚内容（状态） | `React.ReactNode` | - |
+| `color` | 气泡颜色变体 | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 为头像图片使用有意义的替代文本
+- 消息内容可被屏幕阅读器读取
+- 位置类有助于传达对话流程

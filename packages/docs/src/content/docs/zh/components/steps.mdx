@@ -1,0 +1,110 @@
+---
+title: Steps 步骤条
+description: 显示顺序步骤的可视进度指示器。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  ColorsDemo,
+  CustomContentDemo,
+  ResponsiveDemo,
+  CurrentDemo,
+  DataDrivenDemo,
+  WithIconsDemo,
+} from '../../../../components/StepsDemo'
+import StepsDemoSource from '../../../../components/StepsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+显示顺序步骤的可视进度指示器。
+
+## 导入
+
+```tsx
+import { Steps } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础步骤" description="水平步骤进度。" source={StepsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="垂直步骤" description="垂直方向的步骤。" source={StepsDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="不同颜色" description="具有各种语义颜色的步骤。" source={StepsDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义内容" description="使用 dataContent 的自定义指示器。" source={StepsDemoSource} fn="CustomContentDemo">
+  <CustomContentDemo client:load slot="demo" />
+</Example>
+
+<Example title="响应式布局" description="移动设备上垂直,桌面上水平。" source={StepsDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控当前步骤" description="使用 current 属性控制步骤进度。" source={StepsDemoSource} fn="CurrentDemo">
+  <CurrentDemo client:load slot="demo" />
+</Example>
+
+<Example title="数据驱动模式" description="使用 items 属性进行数据驱动的步骤,支持点击导航。" source={StepsDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标" description="带有自定义图标的步骤。" source={StepsDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Steps`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 步骤项(复合模式) | `React.ReactNode` | `-` |
+| `items` | 步骤项(数据驱动模式) | `StepItem[]` | `-` |
+| `current` | 当前步骤索引(从 0 开始) | `number` | `-` |
+| `direction` | 布局方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `vertical` | 垂直布局(已弃用,使用 direction) | `boolean` | `false` |
+| `onChange` | 点击步骤时的回调 | `(current: number) => void` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+### `StepItem`(用于 items 属性)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 唯一标识符 | `string` | `-` |
+| `title` | 步骤标题 | `React.ReactNode` | `-` |
+| `description` | 步骤描述 | `React.ReactNode` | `-` |
+| `icon` | 步骤图标 | `React.ReactNode` | `-` |
+| `color` | 步骤颜色 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `disabled` | 步骤是否禁用 | `boolean` | `false` |
+
+### `Steps.Step`(复合模式)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 步骤内容 | `React.ReactNode` | `-` |
+| `title` | 步骤标题(替代 children) | `React.ReactNode` | `-` |
+| `description` | 步骤描述 | `React.ReactNode` | `-` |
+| `icon` | 步骤图标 | `React.ReactNode` | `-` |
+| `color` | 步骤颜色 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `dataContent` | 步骤指示器的自定义内容 | `string` | `-` |
+| `disabled` | 步骤是否禁用 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+使用提示:
+- 使用 `current` 属性控制哪个步骤处于活动状态
+- `current` 之前的步骤会自动标记为已完成
+- 使用 `onChange` 启用点击步骤进行导航
+- 使用响应式类进行移动友好布局

@@ -1,0 +1,120 @@
+---
+title: Rating
+description: Calificaciones con estrellas para comentarios de usuarios y reseñas.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ClearableDemo,
+  SizesDemo,
+  HalfDemo,
+  HeartDemo,
+  CustomColorsDemo,
+  DisabledDemo,
+  CountDemo,
+  ControlledDemo,
+  AltStarDemo,
+  FormDemo,
+} from '../../../../components/RatingDemo'
+import RatingDemoSource from '../../../../components/RatingDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Calificaciones con estrellas para comentarios de usuarios y reseñas.
+
+## Importar
+
+```tsx
+import { Rating } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Calificación básica" description="Calificación simple de 5 estrellas sin configuración necesaria." source={RatingDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Borrable" description="Haz clic en la misma estrella nuevamente para borrar la calificación." source={RatingDemoSource} fn="ClearableDemo">
+  <ClearableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diferentes tamaños" description="Calificación en varios tamaños." source={RatingDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Media estrella" description="Permite precisión de media estrella." source={RatingDemoSource} fn="HalfDemo">
+  <HalfDemo client:load slot="demo" />
+</Example>
+
+<Example title="Forma de corazón" description="Calificación con iconos de corazón." source={RatingDemoSource} fn="HeartDemo">
+  <HeartDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores personalizados" description="Diferentes colores para cada nivel de calificación usando Rating.Item." source={RatingDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deshabilitado" description="Muestra calificación sin interacción." source={RatingDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Conteo personalizado" description="Especifica un número diferente de estrellas." source={RatingDemoSource} fn="CountDemo">
+  <CountDemo client:load slot="demo" />
+</Example>
+
+<Example title="Calificación controlada" description="Controla el valor de calificación externamente." source={RatingDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estrella alternativa" description="Estilo de estrella diferente." source={RatingDemoSource} fn="AltStarDemo">
+  <AltStarDemo client:load slot="demo" />
+</Example>
+
+<Example title="Integración con formulario" description="Rating funciona con validación de Form." source={RatingDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Rating`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Componentes Rating.Item personalizados (opcional) | `React.ReactNode` | - |
+| `value` | Valor de calificación controlado | `number` | - |
+| `defaultValue` | Valor de calificación predeterminado (no controlado) | `number` | `0` |
+| `onChange` | Callback cuando cambia la calificación | `(value: number) => void` | - |
+| `onHoverChange` | Callback cuando cambia el valor de hover | `(value: number) => void` | - |
+| `count` | Número de estrellas | `number` | `5` |
+| `size` | Tamaño de calificación | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `gap` | Espacio entre estrellas | `'none' \| 'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Clase de color de fondo de Tailwind | `string` | `'bg-warning'` |
+| `mask` | Forma de los iconos de calificación | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `allowClear` | Permitir borrar calificación haciendo clic en el mismo valor | `boolean` | `true` |
+| `allowHalf` | Permitir selección de media estrella | `boolean` | `false` |
+| `disabled` | Estado deshabilitado (no interactivo) | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Rating.Item`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Valor de calificación que representa este elemento | `number` | - |
+| `mask` | Forma del icono de calificación | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `color` | Clase de color de fondo de Tailwind | `string` | `'bg-warning'` |
+| `hidden` | Elemento oculto para borrar calificación | `boolean` | `false` |
+| `half` | Posición de media estrella | `'first' \| 'second'` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa `role="radiogroup"` para semántica apropiada
+- Usa patrón de botón de radio para selección de calificación
+- Cada estrella tiene un `aria-label` describiendo su valor
+- Navegación por teclado entre opciones de calificación
+- La vista previa de hover muestra retroalimentación visual antes de la selección
+- El estado deshabilitado previene interacción mientras muestra el valor

@@ -1,0 +1,79 @@
+---
+title: Transfer
+description: Componente de transferencia de dos columnas para mover elementos entre listas.
+tableOfContents: false
+---
+
+import {
+  BasicTransferDemo,
+  SearchTransferDemo,
+  CustomRenderTransferDemo,
+  DisabledItemsTransferDemo,
+  TitlesTransferDemo,
+} from '../../../../components/TransferDemo'
+import TransferDemoSource from '../../../../components/TransferDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de transferencia de dos columnas para mover elementos entre listas.
+
+## Importación
+
+```tsx
+import { Transfer } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Transfer Básico" description="Mueve elementos entre dos columnas." source={TransferDemoSource} fn="BasicTransferDemo">
+  <BasicTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Búsqueda" description="Filtra elementos con entrada de búsqueda." source={TransferDemoSource} fn="SearchTransferDemo">
+  <SearchTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="Renderizado Personalizado" description="Renderizado personalizado de elementos con título y descripción." source={TransferDemoSource} fn="CustomRenderTransferDemo">
+  <CustomRenderTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="Elementos Deshabilitados" description="Algunos elementos pueden estar deshabilitados." source={TransferDemoSource} fn="DisabledItemsTransferDemo">
+  <DisabledItemsTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="Títulos Personalizados" description="Personaliza los encabezados de columna." source={TransferDemoSource} fn="TitlesTransferDemo">
+  <TitlesTransferDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Transfer`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `dataSource` | Array de origen de datos | `TransferItem[]` | `[]` |
+| `targetKeys` | Claves de elementos en la columna derecha | `string[]` | `[]` |
+| `onChange` | Callback cuando se transfieren elementos | `(targetKeys: string[]) => void` | `-` |
+| `render` | Función de renderizado personalizada para elementos | `(item: TransferItem) => React.ReactNode` | `-` |
+| `showSearch` | Mostrar entrada de búsqueda | `boolean` | `false` |
+| `titles` | Títulos para columnas izquierda y derecha | `[string, string]` | `['Source', 'Target']` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+### `TransferItem`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único | `string` | `-` |
+| `title` | Título de visualización | `string` | `-` |
+| `description` | Descripción opcional | `string` | `-` |
+| `disabled` | Si el elemento está deshabilitado | `boolean` | `false` |
+
+## Accesibilidad
+
+- Usa inputs de checkbox para selección de elementos
+- Navegación por teclado entre elementos
+- Los botones de transferencia son accesibles por teclado
+- Los elementos deshabilitados se anuncian correctamente

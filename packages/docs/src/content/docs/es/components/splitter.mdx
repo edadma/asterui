@@ -1,0 +1,111 @@
+---
+title: Splitter
+description: Crea paneles redimensionables divididos con divisores arrastrables.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  ControlledDemo,
+  MultiplePanelsDemo,
+  MinMaxDemo,
+  NestedDemo,
+  GutterDemo,
+  IdeDemo,
+  CollapsibleDemo,
+  NonResizableDemo,
+} from '../../../../components/SplitterDemo'
+import SplitterDemoSource from '../../../../components/SplitterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Crea paneles redimensionables divididos con divisores arrastrables.
+
+## Importar
+
+```tsx
+import { Splitter } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Splitter horizontal básico" description="Arrastra el divisor para redimensionar los paneles." source={SplitterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Splitter vertical" description="Divide paneles verticalmente." source={SplitterDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños controlados" description="Controla los tamaños de panel programáticamente." source={SplitterDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Múltiples paneles" description="Divide en más de dos paneles." source={SplitterDemoSource} fn="MultiplePanelsDemo">
+  <MultiplePanelsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con tamaños mín/máx" description="Restringe los tamaños de panel con valores mínimos y máximos." source={SplitterDemoSource} fn="MinMaxDemo">
+  <MinMaxDemo client:load slot="demo" />
+</Example>
+
+<Example title="Splitters anidados" description="Combina splitters horizontales y verticales." source={SplitterDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaño de canal personalizado" description="Ajusta el tamaño del canal (divisor)." source={SplitterDemoSource} fn="GutterDemo">
+  <GutterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diseño estilo IDE" description="Diseño complejo similar a un IDE." source={SplitterDemoSource} fn="IdeDemo">
+  <IdeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Paneles colapsables" description="Los paneles se pueden colapsar usando botones de flecha en el canal." source={SplitterDemoSource} fn="CollapsibleDemo">
+  <CollapsibleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Panel no redimensionable" description="Deshabilita el redimensionamiento para paneles específicos." source={SplitterDemoSource} fn="NonResizableDemo">
+  <NonResizableDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Splitter`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `direction` | Dirección del splitter | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `sizes` | Tamaños de panel controlados como porcentajes | `number[]` | `-` |
+| `defaultSizes` | Tamaños de panel predeterminados como porcentajes (no controlado) | `number[]` | `-` |
+| `onSizesChange` | Callback cuando cambian los tamaños | `(sizes: number[]) => void` | `-` |
+| `gutterSize` | Tamaño del canal arrastrable en píxeles | `number` | `8` |
+| `minSize` | Tamaño mínimo de panel predeterminado en píxeles | `number` | `50` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+### `Splitter.Panel`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del panel | `React.ReactNode` | `-` |
+| `defaultSize` | Porcentaje de tamaño predeterminado | `number` | `-` |
+| `size` | Porcentaje de tamaño controlado | `number` | `-` |
+| `minSize` | Tamaño mínimo en píxeles | `number` | `-` |
+| `maxSize` | Tamaño máximo en píxeles | `number` | `-` |
+| `collapsible` | Permitir que el panel se colapse | `boolean` | `false` |
+| `collapsed` | Estado colapsado controlado | `boolean` | `-` |
+| `defaultCollapsed` | Estado colapsado predeterminado | `boolean` | `false` |
+| `onCollapse` | Callback cuando cambia el estado de colapso | `(collapsed: boolean) => void` | `-` |
+| `resizable` | Permitir que el panel se redimensione | `boolean` | `true` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+## Accesibilidad
+
+- El canal es accesible por teclado con teclas de flecha
+- Los atributos ARIA anuncian los tamaños actuales de panel
+- Los indicadores de foco visibles en el canal
+- Aumenta gutterSize para interacción táctil más fácil

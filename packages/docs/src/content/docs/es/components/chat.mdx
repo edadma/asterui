@@ -1,0 +1,70 @@
+---
+title: Chat
+description: Burbujas de mensajes de chat para mostrar conversaciones con avatares y metadatos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AvatarsDemo,
+  HeadersDemo,
+  ColorsDemo,
+  FooterDemo,
+} from '../../../../components/ChatDemo'
+import ChatDemoSource from '../../../../components/ChatDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Burbujas de mensajes de chat para mostrar conversaciones con avatares y metadatos.
+
+## Importar
+
+```tsx
+import { Chat } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Chat Básico" description="Burbujas de chat simples con diferentes posiciones." source={ChatDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Avatares" description="Burbujas de chat con avatares de usuario." source={ChatDemoSource} fn="AvatarsDemo">
+  <AvatarsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Encabezados" description="Burbujas de chat con encabezados de nombre y marca de tiempo." source={ChatDemoSource} fn="HeadersDemo">
+  <HeadersDemo client:load slot="demo" />
+</Example>
+
+<Example title="Burbujas de Colores" description="Burbujas de chat con diferentes variantes de color." source={ChatDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Pie de Página" description="Burbujas de chat con pie de página de estado de entrega." source={ChatDemoSource} fn="FooterDemo">
+  <FooterDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Chat`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `message` | Contenido del mensaje | `React.ReactNode` | - |
+| `position` | Posición de la burbuja | `'start' \| 'end'` | `'start'` |
+| `avatar` | URL de imagen del avatar | `string` | - |
+| `avatarAlt` | Texto alternativo del avatar | `string` | - |
+| `header` | Contenido del encabezado (nombre, hora) | `React.ReactNode` | - |
+| `footer` | Contenido del pie de página (estado) | `React.ReactNode` | - |
+| `color` | Variante de color de la burbuja | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa texto alternativo significativo para las imágenes de avatar
+- El contenido del mensaje es legible por lectores de pantalla
+- Las clases de posición ayudan a transmitir el flujo de conversación

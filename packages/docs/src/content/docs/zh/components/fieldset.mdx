@@ -1,0 +1,64 @@
+---
+title: Fieldset
+description: 将相关的表单控件分组，支持可选的图例和禁用状态。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithInputsDemo,
+  DisabledDemo,
+} from '../../../../components/FieldsetDemo'
+import FieldsetDemoSource from '../../../../components/FieldsetDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+将相关的表单控件分组，支持可选的图例和禁用状态。
+
+## 导入
+
+```tsx
+import { Fieldset } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础 Fieldset" description="带图例的简单 fieldset。" source={FieldsetDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带表单输入" description="包含带标签的表单输入的 Fieldset。" source={FieldsetDemoSource} fn="WithInputsDemo">
+  <WithInputsDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用的 Fieldset" description="内部所有表单控件都被禁用。" source={FieldsetDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Fieldset`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | fieldset 的内容 | `React.ReactNode` | - |
+| `disabled` | 禁用内部所有表单控件 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Fieldset.Legend`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 图例文本或内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Fieldset.Label`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 标签文本或内容 | `React.ReactNode` | - |
+| `htmlFor` | 标签所针对的表单元素的 ID | `string` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |

@@ -1,0 +1,66 @@
+---
+title: Phone
+description: Exibe conteúdo em um mockup de moldura de telefone estilo iPhone
+tableOfContents: false
+---
+
+import {
+  BasicPhoneDemo,
+  ImagePhoneDemo,
+  ColorPhoneDemo,
+  AppPhoneDemo,
+  ChatPhoneDemo,
+} from '../../../../components/PhoneDemo'
+import PhoneDemoSource from '../../../../components/PhoneDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exibe conteúdo em um mockup de moldura de telefone estilo iPhone.
+
+## Importação
+
+```tsx
+import { Phone } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Phone Básico" description="Mockup de telefone simples com conteúdo centralizado." source={PhoneDemoSource} fn="BasicPhoneDemo">
+  <BasicPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Imagem" description="Exibe uma imagem como papel de parede." source={PhoneDemoSource} fn="ImagePhoneDemo">
+  <ImagePhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cor Personalizada" description="Customize a cor da moldura do telefone." source={PhoneDemoSource} fn="ColorPhoneDemo">
+  <ColorPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Interface de App" description="Mockup de layout de aplicativo mobile." source={PhoneDemoSource} fn="AppPhoneDemo">
+  <AppPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Interface de Chat" description="Mockup de layout de aplicativo de chat." source={PhoneDemoSource} fn="ChatPhoneDemo">
+  <ChatPhoneDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Phone`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo dentro da tela do telefone | `React.ReactNode` | - |
+| `color` | Cor customizada da moldura | `string` | - |
+| `className` | Classes para container do telefone | `string` | - |
+| `displayClassName` | Classes para área de exibição | `string` | - |
+
+## Acessibilidade
+
+- Mockup de telefone é decorativo - conteúdo interno deve ser acessível
+- Imagens internas devem ter texto `alt` apropriado
+- Elementos interativos internos permanecem totalmente acessíveis

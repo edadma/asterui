@@ -1,0 +1,39 @@
+---
+title: useWindowSize
+description: 跟踪窗口尺寸的 Hook。
+---
+
+跟踪当前窗口的宽度和高度，并在调整大小时更新。
+
+## 导入
+
+```tsx
+import { useWindowSize } from 'asterui'
+```
+
+## 用法
+
+```tsx
+function WindowSizeExample() {
+  const { width, height } = useWindowSize()
+
+  return (
+    <div>
+      <p>Window: {width} x {height}</p>
+      {width < 768 && <MobileLayout />}
+      {width >= 768 && <DesktopLayout />}
+    </div>
+  )
+}
+```
+
+## 返回值
+
+| 属性 | 类型 | 描述 |
+|----------|------|-------------|
+| `width` | `number` | 当前窗口宽度（像素） |
+| `height` | `number` | 当前窗口高度（像素） |
+
+## 注意
+
+对于基于断点的响应式逻辑，建议使用 [useBreakpoint](/zh/hooks/usebreakpoint)，它提供了 `isAbove()` 和 `isBelow()` 等辅助方法。

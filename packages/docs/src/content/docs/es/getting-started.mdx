@@ -1,0 +1,101 @@
+---
+title: Comenzar
+description: Comienza a construir con AsterUI, una biblioteca de componentes React construida sobre DaisyUI y Tailwind CSS.
+---
+
+import { Tabs, TabItem, Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+AsterUI es una biblioteca de componentes React construida sobre [DaisyUI](https://daisyui.com) y [Tailwind CSS v4](https://tailwindcss.com). Proporciona componentes hermosamente estilizados y accesibles con soporte de temas integrado.
+
+## Inicio Rápido
+
+<Steps>
+
+1. **Crea un nuevo proyecto**
+
+   Crea un nuevo proyecto AsterUI ejecutando el siguiente comando en tu terminal:
+
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+       npm create asterui@latest
+       ```
+     </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+       pnpm create asterui@latest
+       ```
+     </TabItem>
+     <TabItem label="yarn">
+       ```bash
+       yarn create asterui@latest
+       ```
+     </TabItem>
+   </Tabs>
+
+   Sigue las indicaciones para nombrar tu proyecto y seleccionar una plantilla.
+
+2. **Inicia el servidor de desarrollo**
+
+   Navega al directorio de tu proyecto e inicia el servidor de desarrollo:
+
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+       cd my-asterui-app
+       npm run dev
+       ```
+     </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+       cd my-asterui-app
+       pnpm dev
+       ```
+     </TabItem>
+     <TabItem label="yarn">
+       ```bash
+       cd my-asterui-app
+       yarn dev
+       ```
+     </TabItem>
+   </Tabs>
+
+   Verás un mensaje de confirmación en tu terminal con un enlace a tu vista previa local.
+
+3. **Comienza a construir**
+
+   Abre el proyecto en tu editor y comienza a usar los componentes de AsterUI:
+
+   ```tsx title="src/App.tsx"
+   import { Button, Space } from 'asterui'
+
+   function App() {
+     return (
+       <Space>
+         <Button>Default</Button>
+         <Button color="primary">Primary</Button>
+         <Button color="secondary">Secondary</Button>
+       </Space>
+     )
+   }
+   ```
+
+</Steps>
+
+<Aside type="tip">
+AsterUI está construido sobre DaisyUI que proporciona más de 30 temas listos para usar. Prueba cambiar temas agregando `data-theme="dark"` o `data-theme="cupcake"` a tu elemento HTML.
+</Aside>
+
+## Próximos Pasos
+
+- **Agregar a un proyecto existente**: Sigue la guía de [Configuración Manual](/es/manual-setup/) para agregar AsterUI a un proyecto React existente.
+
+## Solución de Problemas
+
+Si encuentras problemas, verifica lo siguiente:
+
+- Asegúrate de tener Node.js 18 o superior instalado
+- Verifica que Tailwind CSS v4 y DaisyUI v5 estén configurados correctamente
+- Comprueba que tu archivo CSS incluye las directivas requeridas
+
+Para más ayuda, visita el [repositorio de GitHub](https://github.com/edadma/asterui).

@@ -1,0 +1,92 @@
+---
+title: List
+description: 显示项目列表，支持分页和加载状态。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithAvatarDemo,
+  LoadingDemo,
+  PaginationDemo,
+} from '../../../../components/ListDemo'
+import ListDemoSource from '../../../../components/ListDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+显示项目列表，支持分页和加载状态。
+
+## 导入
+
+```tsx
+import { List } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础列表" description="带项目的简单列表。" source={ListDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带头像" description="带头像和描述的列表项。" source={ListDemoSource} fn="WithAvatarDemo">
+  <WithAvatarDemo client:load slot="demo" />
+</Example>
+
+<Example title="加载状态" description="带骨架的加载状态列表。" source={ListDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="带分页" description="带分页控件的列表。" source={ListDemoSource} fn="PaginationDemo">
+  <PaginationDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `List`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `dataSource` | 要渲染的数据项数组 | `T[]` | - |
+| `renderItem` | 渲染每个项目的函数 | `(item: T, index: number) => React.ReactNode` | - |
+| `header` | 列表头部内容 | `React.ReactNode` | - |
+| `footer` | 列表页脚内容 | `React.ReactNode` | - |
+| `loading` | 列表是否处于加载状态 | `boolean` | `false` |
+| `pagination` | 分页配置 | `ListPaginationConfig \| false` | `false` |
+| `grid` | 网格布局配置 | `ListGridConfig` | - |
+| `bordered` | 在列表周围显示边框 | `boolean` | `true` |
+| `split` | 在项目之间显示分隔符 | `boolean` | `true` |
+| `size` | 尺寸变体 | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `itemLayout` | 项目的布局方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `locale` | 国际化文本 | `{ emptyText?: React.ReactNode }` | - |
+| `loadMore` | 加载更多内容（例如按钮） | `React.ReactNode` | - |
+| `rowKey` | 项目的自定义键提取 | `keyof T \| ((item: T) => React.Key)` | - |
+| `data-testid` | 组件的测试 ID | `string` | `'list'` |
+| `aria-label` | 列表的可访问标签 | `string` | - |
+
+### `List.Item`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 项目内容 | `React.ReactNode` | - |
+| `actions` | 右侧显示的操作按钮 | `React.ReactNode[]` | - |
+| `extra` | 右侧的额外内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `List.Item.Meta`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `avatar` | 头像或图标元素 | `React.ReactNode` | - |
+| `title` | 标题内容 | `React.ReactNode` | - |
+| `description` | 描述内容 | `React.ReactNode` | - |
+
+## 无障碍
+
+- 使用 `aria-label` 为列表提供上下文
+- 列表项在语义化的 `<ul>` 或 `<ol>` 元素中渲染
+- 加载状态传达给屏幕阅读器
+- 分页控件支持键盘访问
+- 空状态内容正确朗读

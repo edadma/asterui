@@ -1,0 +1,113 @@
+---
+title: FloatButton
+description: Botão de ação flutuante que permanece fixo na página para acesso rápido a ações comuns.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithTooltipDemo,
+  TypesDemo,
+  ShapesDemo,
+  WithBadgeDemo,
+  GroupDemo,
+  BackTopDemo,
+} from '../../../../components/FloatButtonDemo'
+import FloatButtonDemoSource from '../../../../components/FloatButtonDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Botão de ação flutuante que permanece fixo na página para acesso rápido a ações comuns.
+
+## Importação
+
+```tsx
+import { FloatButton } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Botão de ação flutuante simples." source={FloatButtonDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Tooltip" description="Botão flutuante com tooltip ao passar o mouse." source={FloatButtonDemoSource} fn="WithTooltipDemo">
+  <WithTooltipDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tipos" description="Tipos de botão padrão e primário." source={FloatButtonDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Formas" description="Formas de botão círculo e quadrado." source={FloatButtonDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Badge" description="Botão flutuante com badge de notificação." source={FloatButtonDemoSource} fn="WithBadgeDemo">
+  <WithBadgeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grupo de FloatButton" description="Grupo de botões flutuantes que expandem ao clicar." source={FloatButtonDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="Voltar ao Topo" description="Botão de rolar para o topo que aparece após rolar para baixo." source={FloatButtonDemoSource} fn="BackTopDemo">
+  <BackTopDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `FloatButton`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `icon` | Ícone para exibir no botão | `React.ReactNode` | - |
+| `description` | Texto de descrição abaixo do ícone | `React.ReactNode` | - |
+| `type` | Tipo/cor do botão | `'default' \| 'primary'` | `'default'` |
+| `shape` | Forma do botão | `'circle' \| 'square'` | `'circle'` |
+| `tooltip` | Texto do tooltip ao passar o mouse | `string` | - |
+| `tooltipPlacement` | Posição do tooltip | `'left' \| 'right' \| 'top' \| 'bottom'` | `'left'` |
+| `badge` | Conteúdo do badge a mostrar | `number \| React.ReactNode` | - |
+| `href` | URL do link (renderiza como âncora) | `string` | - |
+| `target` | Alvo do link | `string` | - |
+| `onClick` | Manipulador de evento de clique | `() => void` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `FloatButton.Group`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Componentes FloatButton para agrupar | `React.ReactNode` | - |
+| `flower` | Organizar botões em layout de quarto de círculo (radial) | `boolean` | `false` |
+| `shape` | Forma do botão para filhos | `'circle' \| 'square'` | `'circle'` |
+| `icon` | Ícone do botão acionador principal | `React.ReactNode` | - |
+| `mainAction` | Ícone do botão de ação principal (substitui acionador quando aberto) | `React.ReactNode` | - |
+| `onMainAction` | Manipulador de clique para botão de ação principal | `() => void` | - |
+| `showClose` | Mostrar botão de fechar quando aberto | `boolean` | `false` |
+| `type` | Tipo/cor do botão | `'default' \| 'primary'` | `'default'` |
+| `position` | Posição na tela | `'bottom-right' \| 'bottom-left' \| 'top-right' \| 'top-left'` | `'bottom-right'` |
+| `offset` | Distância da borda em pixels | `number` | `24` |
+
+### `FloatButton.BackTop`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `visibilityHeight` | Distância de rolagem antes do botão aparecer (pixels) | `number` | `400` |
+| `target` | Elemento alvo de rolagem | `() => HTMLElement \| Window` | - |
+| `onClick` | Manipulador de evento de clique (chamado antes de rolar) | `() => void` | - |
+| `icon` | Ícone personalizado | `React.ReactNode` | - |
+| `duration` | Duração da animação de rolagem em ms | `number` | `450` |
+| `position` | Posição na tela | `'bottom-right' \| 'bottom-left'` | `'bottom-right'` |
+| `offset` | Distância da borda em pixels | `number` | `24` |
+
+## Acessibilidade
+
+- Usa elemento `<button>` nativo para suporte adequado de teclado
+- Suporta prop `href` para renderizar como âncora para funcionalidade de link
+- Tooltips fornecem contexto para leitores de tela quando presentes
+- Estados de foco são claramente visíveis para navegação por teclado
+- Expansão do grupo é acessível via teclado
+- Botão BackTop aparece/desaparece com base na posição de rolagem

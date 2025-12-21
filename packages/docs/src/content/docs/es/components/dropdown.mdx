@@ -1,0 +1,126 @@
+---
+title: Dropdown
+description: Componente de menú desplegable para mostrar acciones y opciones.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ItemsPropDemo,
+  PositionDemo,
+  TriggerDemo,
+  WithIconsDemo,
+  WithDividerDemo,
+  ItemStatesDemo,
+  AlignDemo,
+  ContextMenuDemo,
+  SubmenuDemo,
+} from '../../../../components/DropdownDemo'
+import DropdownDemoSource from '../../../../components/DropdownDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de menú desplegable para mostrar acciones y opciones.
+
+## Importar
+
+```tsx
+import { Dropdown } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Dropdown Básico" description="Menú desplegable simple con elementos usando patrón compuesto." source={DropdownDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Basado en Datos (prop items)" description="Define elementos del menú a través de la prop items en lugar de componentes compuestos." source={DropdownDemoSource} fn="ItemsPropDemo">
+  <ItemsPropDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posición" description="El menú desplegable puede posicionarse en diferentes direcciones." source={DropdownDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modos de Activación" description="Controla cómo se abre el desplegable: clic, hover o ambos." source={DropdownDemoSource} fn="TriggerDemo">
+  <TriggerDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Iconos" description="Elementos del menú con iconos para mejor contexto visual." source={DropdownDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Divisor" description="Separa secciones del menú con divisores." source={DropdownDemoSource} fn="WithDividerDemo">
+  <WithDividerDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estados de Elementos" description="Los elementos pueden estar activos, deshabilitados o con estilo de peligro." source={DropdownDemoSource} fn="ItemStatesDemo">
+  <ItemStatesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Alineación" description="Alinea el menú desplegable al inicio, centro o final." source={DropdownDemoSource} fn="AlignDemo">
+  <AlignDemo client:load slot="demo" />
+</Example>
+
+<Example title="Menú Contextual" description="Abre el desplegable con clic derecho usando el activador contextMenu." source={DropdownDemoSource} fn="ContextMenuDemo">
+  <ContextMenuDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Submenú" description="Submenús anidados para opciones jerárquicas." source={DropdownDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Dropdown`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Elemento activador y contenido del desplegable (patrón compuesto) | `React.ReactNode` | - |
+| `items` | Elementos del menú (patrón basado en datos) | `DropdownMenuItemType[]` | - |
+| `trigger` | Modo(s) de activación para el desplegable | `('click' \| 'hover' \| 'contextMenu')[]` | `['click']` |
+| `position` | Posición del menú desplegable | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` |
+| `align` | Alineación del menú desplegable | `'start' \| 'center' \| 'end'` | `'start'` |
+| `open` | Estado abierto controlado | `boolean` | - |
+| `onOpenChange` | Callback cuando cambia el estado abierto | `(open: boolean, info?: { source }) => void` | - |
+| `disabled` | Deshabilitar el desplegable | `boolean` | `false` |
+| `arrow` | Mostrar flecha apuntando al activador | `boolean \| { pointAtCenter?: boolean }` | `false` |
+| `mouseEnterDelay` | Retraso antes de mostrar al pasar el ratón (segundos) | `number` | `0.15` |
+| `mouseLeaveDelay` | Retraso antes de ocultar al salir el ratón (segundos) | `number` | `0.1` |
+| `destroyOnHidden` | Destruir desplegable cuando esté oculto | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Dropdown.Item`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Clave única para el elemento (prop key de React) | `string` | - |
+| `children` | Contenido del elemento | `React.ReactNode` | - |
+| `label` | Etiqueta del elemento (alternativa a children) | `React.ReactNode` | - |
+| `icon` | Icono a mostrar antes de la etiqueta | `React.ReactNode` | - |
+| `onClick` | Manejador de clic | `() => void` | - |
+| `active` | Estado activo/seleccionado | `boolean` | `false` |
+| `disabled` | Deshabilitar el elemento | `boolean` | `false` |
+| `danger` | Estilo de peligro/destructivo | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Dropdown.SubMenu`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Clave única para el submenú (prop key de React) | `string` | - |
+| `children` | Elementos del submenú | `React.ReactNode` | - |
+| `title` | Título/etiqueta del submenú | `React.ReactNode` | - |
+| `icon` | Icono a mostrar antes del título | `React.ReactNode` | - |
+| `disabled` | Deshabilitar el submenú | `boolean` | `false` |
+
+## Accesibilidad
+
+- Navegación por teclado con las teclas `Enter`, `Espacio` y `Escape`
+- Teclas de flecha para navegar por los elementos del menú
+- Atributos ARIA adecuados para lectores de pantalla
+- Gestión del foco al abrir y cerrar el menú
+- Comportamiento de clic fuera para cerrar

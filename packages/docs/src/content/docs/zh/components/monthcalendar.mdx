@@ -1,0 +1,82 @@
+---
+title: MonthCalendar
+description: 用于显示事件和选择日期的完整月份日历视图。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithEventsDemo,
+  DaySelectorDemo,
+  MaxEventsDemo,
+  StrikethroughDemo,
+  AllowPastInteractionDemo,
+} from '../../../../components/MonthCalendarDemo'
+import MonthCalendarDemoSource from '../../../../components/MonthCalendarDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于显示事件和选择日期的完整月份日历视图。
+
+## 导入
+
+```tsx
+import { MonthCalendar, type CalendarEvent, type CalendarLocale } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础日历" description="包装在 Card 中的简单月份日历。" source={MonthCalendarDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带事件" description="显示带彩色圆点事件的日历。" source={MonthCalendarDemoSource} fn="WithEventsDemo">
+  <WithEventsDemo client:load slot="demo" />
+</Example>
+
+<Example title="日期选择" description="启用带视觉反馈的日期选择。" source={MonthCalendarDemoSource} fn="DaySelectorDemo">
+  <DaySelectorDemo client:load slot="demo" />
+</Example>
+
+<Example title="每天最大事件数" description="使用 '+N more' 溢出限制可见事件。" source={MonthCalendarDemoSource} fn="MaxEventsDemo">
+  <MaxEventsDemo client:load slot="demo" />
+</Example>
+
+<Example title="删除线事件" description="显示带删除线样式的已取消事件。" source={MonthCalendarDemoSource} fn="StrikethroughDemo">
+  <StrikethroughDemo client:load slot="demo" />
+</Example>
+
+<Example title="允许过去交互" description="启用点击过去日期。" source={MonthCalendarDemoSource} fn="AllowPastInteractionDemo">
+  <AllowPastInteractionDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `MonthCalendar`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `date` | 要显示的日期（确定显示哪个月份） | `Date` | `new Date()` |
+| `events` | 要显示的日历事件数组 | `CalendarEvent[]` | `[]` |
+| `header` | 显示月份/年份头部 | `boolean` | `false` |
+| `daySelector` | 启用带视觉反馈的日期选择 | `boolean` | `false` |
+| `ellipsis` | 用省略号截断长事件标题 | `boolean` | `false` |
+| `maxEventsPerDay` | 在 "+N more" 之前每天显示的最大事件数 | `number` | `5` |
+| `allowPastInteraction` | 允许点击过去日期 | `boolean` | `false` |
+| `locale` | 日/月名称的区域设置配置 | `CalendarLocale` | - |
+| `onDayClick` | 点击日期单元格时的处理器 | `(date: Date) => void` | - |
+| `onEventClick` | 点击事件时的处理器 | `(event: CalendarEvent) => void` | - |
+| `onMoreEventsClick` | 点击 "+N more" 时的处理器 | `(date: Date, events: CalendarEvent[]) => void` | - |
+
+### `CalendarEvent`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `date` | 事件日期和时间 | `Date` | - |
+| `title` | 事件标题 | `string` | - |
+| `color` | 事件圆点颜色 | `string` | - |
+| `strikethrough` | 显示带删除线的事件（已取消） | `boolean` | - |
+| `style` | 事件的自定义内联样式 | `CSSProperties` | - |

@@ -1,0 +1,164 @@
+---
+title: Card
+description: Contenedor flexible para mostrar contenido con imágenes, acciones e información meta
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  BorderedDemo,
+  WithCoverDemo,
+  WithActionsDemo,
+  VariantsDemo,
+  SizesDemo,
+  ExtraContentDemo,
+  MetaDemo,
+  CardMetaDemo,
+  HoverableDemo,
+  LoadingDemo,
+  ImageFullDemo,
+  SideLayoutDemo,
+  InnerCardDemo,
+  TabsDemo,
+  GridDemo,
+} from '../../../../components/CardDemo'
+import CardDemoSource from '../../../../components/CardDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de tarjeta flexible para mostrar contenido agrupado con varios diseños.
+
+## Importar
+
+```tsx
+import { Card } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Card Básica" description="Tarjeta simple con título y contenido." source={CardDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Borde" description="Tarjeta con borde sólido en lugar de sombra." source={CardDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Imagen de Portada" description="Tarjeta con imagen de portada encima del contenido." source={CardDemoSource} fn="WithCoverDemo">
+  <WithCoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Acciones" description="Tarjeta con botones de acción en la parte inferior." source={CardDemoSource} fn="WithActionsDemo">
+  <WithActionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes" description="Diferentes variantes de estilo de tarjeta: shadow, border, dash, borderless." source={CardDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Tamaños de tarjeta desde xs hasta lg con relleno variable." source={CardDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenido Extra" description="Agrega contenido extra en el encabezado de la tarjeta con la prop extra." source={CardDemoSource} fn="ExtraContentDemo">
+  <ExtraContentDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diseño Meta" description="Diseño integrado de avatar, título y descripción." source={CardDemoSource} fn="MetaDemo">
+  <MetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="Componente Card.Meta" description="Componente meta independiente para posicionamiento flexible." source={CardDemoSource} fn="CardMetaDemo">
+  <CardMetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hoverable" description="Tarjeta con efecto de sombra al pasar el mouse." source={CardDemoSource} fn="HoverableDemo">
+  <HoverableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Carga" description="Estado de carga skeleton mientras se carga el contenido." source={CardDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Imagen Completa" description="El contenido se superpone sobre la imagen de portada." source={CardDemoSource} fn="ImageFullDemo">
+  <ImageFullDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diseño Lateral" description="Diseño horizontal con imagen en el lateral." source={CardDemoSource} fn="SideLayoutDemo">
+  <SideLayoutDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tarjeta Interna" description="Tarjetas anidadas con distinción de fondo sutil." source={CardDemoSource} fn="InnerCardDemo">
+  <InnerCardDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Pestañas" description="Tarjeta con navegación de contenido por pestañas." source={CardDemoSource} fn="TabsDemo">
+  <TabsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cuadrícula de Tarjeta" description="Diseño de cuadrícula dentro de tarjetas con celdas hoverable." source={CardDemoSource} fn="GridDemo">
+  <GridDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Card`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `title` | Título de la tarjeta | `ReactNode` | - |
+| `extra` | Contenido en la parte superior derecha del encabezado | `ReactNode` | - |
+| `cover` | Elemento de imagen de portada | `ReactNode` | - |
+| `actions` | Botones de acción en la parte inferior | `ReactNode` | - |
+| `size` | Tamaño de la tarjeta | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `variant` | Variante de estilo de tarjeta | `'shadow' \| 'border' \| 'dash' \| 'borderless'` | `'shadow'` |
+| `type` | Estilo de tarjeta interna para anidación | `'inner'` | - |
+| `side` | Diseño horizontal con imagen lateral | `boolean` | `false` |
+| `imageFull` | Contenido se superpone sobre imagen de portada | `boolean` | `false` |
+| `actionsJustify` | Alineación de acciones | `'start' \| 'center' \| 'end'` | `'end'` |
+| `loading` | Mostrar estado de carga skeleton | `boolean` | `false` |
+| `hoverable` | Agregar efecto de sombra al pasar el mouse | `boolean` | `false` |
+| `avatar` | Avatar para diseño meta | `ReactNode` | - |
+| `description` | Descripción para diseño meta | `ReactNode` | - |
+| `tabList` | Elementos de pestaña para pestañas de tarjeta | `CardTabItem[]` | - |
+| `activeTabKey` | Clave de pestaña activa (controlado) | `string` | - |
+| `defaultActiveTabKey` | Clave de pestaña activa predeterminada | `string` | - |
+| `onTabChange` | Callback de cambio de pestaña | `(key: string) => void` | - |
+| `tabBarExtraContent` | Contenido extra al lado de las pestañas | `ReactNode` | - |
+| `children` | Contenido del cuerpo de la tarjeta | `ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `bodyClassName` | Clases CSS adicionales para el elemento card-body | `string` | - |
+| `style` | Estilos en línea | `CSSProperties` | - |
+
+### `Card.Meta`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `avatar` | Elemento de avatar o icono | `ReactNode` | - |
+| `title` | Contenido del título | `ReactNode` | - |
+| `description` | Contenido de descripción | `ReactNode` | - |
+
+### `Card.Grid`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `hoverable` | Agregar efecto hover | `boolean` | `false` |
+| `children` | Contenido de celda de cuadrícula | `ReactNode` | - |
+
+### `CardTabItem`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único de pestaña | `string` | - |
+| `label` | Contenido de etiqueta de pestaña | `ReactNode` | - |
+| `disabled` | Deshabilitar la pestaña | `boolean` | `false` |
+
+## Accesibilidad
+
+- La estructura de la tarjeta usa HTML semántico
+- La navegación por pestañas usa roles y estados ARIA apropiados
+- El estado de carga proporciona retroalimentación visual
+- Los estados de foco son visibles para elementos interactivos

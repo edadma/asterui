@@ -1,0 +1,117 @@
+---
+title: ConfigProvider
+description: Proveedor de configuración global para locale, tamaño de componente, dirección y otras configuraciones.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizeDemo,
+  LocaleDemo,
+  DirectionDemo,
+  NestedDemo,
+} from '../../../../components/ConfigProviderDemo'
+import ConfigProviderDemoSource from '../../../../components/ConfigProviderDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Proveedor de configuración global para locale, tamaño de componente, dirección y otras configuraciones.
+
+## Importar
+
+```tsx
+import { ConfigProvider } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Uso Básico" description="Establecer tamaño de componente global para todos los componentes hijos." source={ConfigProviderDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaño de Componente" description="Cambiar entre tamaños small, middle y large globalmente." source={ConfigProviderDemoSource} fn="SizeDemo">
+  <SizeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Locale" description="Personalizar cadenas de locale para internacionalización." source={ConfigProviderDemoSource} fn="LocaleDemo">
+  <LocaleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dirección" description="Soporte para diseños LTR y RTL." source={ConfigProviderDemoSource} fn="DirectionDemo">
+  <DirectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Proveedores Anidados" description="Los ConfigProviders anidados heredan y sobrescriben las configuraciones del padre." source={ConfigProviderDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ConfigProvider`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `locale` | Objeto de configuración de locale | `Locale` | `enUS` |
+| `componentSize` | Tamaño predeterminado para todos los componentes | `'small' \| 'middle' \| 'large'` | `'middle'` |
+| `direction` | Dirección de diseño | `'ltr' \| 'rtl'` | `'ltr'` |
+| `prefixCls` | Prefijo para clases CSS | `string` | - |
+| `getPopupContainer` | Contenedor predeterminado para portales (modales, desplegables) | `(triggerNode?: HTMLElement) => HTMLElement` | - |
+| `children` | Componentes hijos | `React.ReactNode` | - |
+
+## Locales Disponibles
+
+Importa locales desde `asterui/locale`:
+
+```tsx
+import { zhCN, jaJP, koKR, deDE, frFR, esES, ptBR, enGB, enCA } from 'asterui/locale'
+```
+
+| Locale | Idioma |
+|--------|----------|
+| `enUS` | Inglés (EE.UU.) - predeterminado |
+| `enGB` | Inglés (Reino Unido) |
+| `enCA` | Inglés (Canadá) |
+| `zhCN` | Chino (Simplificado) |
+| `jaJP` | Japonés |
+| `koKR` | Coreano |
+| `deDE` | Alemán |
+| `frFR` | Francés |
+| `esES` | Español |
+| `ptBR` | Portugués (Brasil) |
+
+## Hooks
+
+### `useConfig`
+
+Accede a los valores de configuración actuales:
+
+```tsx
+import { useConfig } from 'asterui'
+
+function MyComponent() {
+  const { locale, componentSize, direction } = useConfig()
+  // ...
+}
+```
+
+### `useLocale`
+
+Accede al locale actual:
+
+```tsx
+import { useLocale } from 'asterui'
+
+function MyComponent() {
+  const locale = useLocale()
+  // ...
+}
+```
+
+## Accesibilidad
+
+- Usa `direction="rtl"` para idiomas de derecha a izquierda como árabe y hebreo
+- Las configuraciones de locale afectan el texto del lector de pantalla en componentes como Empty, Pagination, etc.
+- Los proveedores anidados permiten que diferentes regiones de tu aplicación tengan diferentes configuraciones

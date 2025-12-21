@@ -1,0 +1,101 @@
+---
+title: 开始使用
+description: 开始使用 AsterUI，一个基于 DaisyUI 和 Tailwind CSS 构建的 React 组件库。
+---
+
+import { Tabs, TabItem, Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+AsterUI 是一个基于 [DaisyUI](https://daisyui.com) 和 [Tailwind CSS v4](https://tailwindcss.com) 构建的 React 组件库。它提供了样式精美、易于访问的组件，并内置主题支持。
+
+## 快速开始
+
+<Steps>
+
+1. **创建新项目**
+
+   在终端中运行以下命令创建一个新的 AsterUI 项目：
+
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+       npm create asterui@latest
+       ```
+     </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+       pnpm create asterui@latest
+       ```
+     </TabItem>
+     <TabItem label="yarn">
+       ```bash
+       yarn create asterui@latest
+       ```
+     </TabItem>
+   </Tabs>
+
+   按照提示为您的项目命名并选择一个模板。
+
+2. **启动开发服务器**
+
+   进入项目目录并启动开发服务器：
+
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+       cd my-asterui-app
+       npm run dev
+       ```
+     </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+       cd my-asterui-app
+       pnpm dev
+       ```
+     </TabItem>
+     <TabItem label="yarn">
+       ```bash
+       cd my-asterui-app
+       yarn dev
+       ```
+     </TabItem>
+   </Tabs>
+
+   您将在终端中看到一条确认消息，其中包含指向本地预览的链接。
+
+3. **开始构建**
+
+   在编辑器中打开项目并开始使用 AsterUI 组件：
+
+   ```tsx title="src/App.tsx"
+   import { Button, Space } from 'asterui'
+
+   function App() {
+     return (
+       <Space>
+         <Button>Default</Button>
+         <Button color="primary">Primary</Button>
+         <Button color="secondary">Secondary</Button>
+       </Space>
+     )
+   }
+   ```
+
+</Steps>
+
+<Aside type="tip">
+AsterUI 基于 DaisyUI 构建，后者提供了 30+ 个开箱即用的主题。尝试通过在 HTML 元素上添加 `data-theme="dark"` 或 `data-theme="cupcake"` 来更改主题。
+</Aside>
+
+## 下一步
+
+- **添加到现有项目**：按照[手动设置](/zh/manual-setup/)指南将 AsterUI 添加到现有的 React 项目。
+
+## 故障排除
+
+如果您遇到问题，请检查以下事项：
+
+- 确保您已安装 Node.js 18 或更高版本
+- 确保正确配置了 Tailwind CSS v4 和 DaisyUI v5
+- 检查您的 CSS 文件是否包含必需的指令
+
+如需更多帮助，请访问 [GitHub 仓库](https://github.com/edadma/asterui)。

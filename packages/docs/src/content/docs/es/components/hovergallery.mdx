@@ -1,0 +1,56 @@
+---
+title: HoverGallery
+description: Revela múltiples imágenes al pasar el ratón horizontalmente. Ideal para galerías de productos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ProductCardDemo,
+  TwoImagesDemo,
+} from '../../../../components/HoverGalleryDemo'
+import HoverGalleryDemoSource from '../../../../components/HoverGalleryDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Revela múltiples imágenes al pasar el ratón horizontalmente. Ideal para galerías de productos.
+
+## Importar
+
+```tsx
+import { HoverGallery } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Galería Básica" description="Pasa el ratón horizontalmente para revelar diferentes imágenes." source={HoverGalleryDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tarjeta de Producto" description="Perfecto para displays de productos de e-commerce." source={HoverGalleryDemoSource} fn="ProductCardDemo">
+  <ProductCardDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dos Imágenes" description="Comparación simple antes/después o frontal/trasera." source={HoverGalleryDemoSource} fn="TwoImagesDemo">
+  <TwoImagesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `HoverGallery`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `images` | Array de URLs de imagen (2-10 imágenes) | `string[]` | - |
+| `alts` | Texto alt para cada imagen | `string[]` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Notas
+
+- Soporta hasta 10 imágenes
+- La primera imagen es visible por defecto
+- CSS puro - no se requiere JavaScript para el efecto hover
+- Funciona mejor con imágenes de la misma relación de aspecto

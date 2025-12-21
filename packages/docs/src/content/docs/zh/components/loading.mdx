@@ -1,0 +1,61 @@
+---
+title: Loading
+description: 显示带各种动画指示器的加载状态，以显示正在进行的过程。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TypesDemo,
+  SizesDemo,
+  ColorsDemo,
+} from '../../../../components/LoadingDemo'
+import LoadingDemoSource from '../../../../components/LoadingDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+显示带各种动画指示器的加载状态，以显示正在进行的过程。
+
+## 导入
+
+```tsx
+import { Loading } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础加载" description="默认的加载旋转器。" source={LoadingDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="加载类型" description="加载指示器的不同动画类型。" source={LoadingDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="控制加载指示器尺寸。" source={LoadingDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="加载指示器的不同颜色变体。" source={LoadingDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Loading`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `size` | 加载指示器尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `type` | 加载动画类型 | `'spinner' \| 'dots' \| 'ring' \| 'ball' \| 'bars' \| 'infinity'` | `'spinner'` |
+| `color` | 加载指示器颜色 | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用 `aria-label` 描述加载状态
+- 喜欢减少动画的用户可以暂停动画
+- 确保加载指示器在可能的情况下与文本配对供屏幕阅读器使用

@@ -1,0 +1,59 @@
+---
+title: TextRotate 文本轮播
+description: 循环展示多个选项的动画文本
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CenteredDemo,
+  StyledDemo,
+  FastDemo,
+} from '../../../../components/TextRotateDemo'
+import TextRotateDemoSource from '../../../../components/TextRotateDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+循环展示多个选项的动画文本。
+
+## 导入
+
+```tsx
+import { TextRotate } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础" description="带有多种语言的简单轮播文本。" source={TextRotateDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="居中" description="居中对齐的轮播文本。" source={TextRotateDemoSource} fn="CenteredDemo">
+  <CenteredDemo client:load slot="demo" />
+</Example>
+
+<Example title="样式项目" description="每个项目可以有自定义样式。" source={TextRotateDemoSource} fn="StyledDemo">
+  <StyledDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义持续时间" description="6 秒周期的更快轮播。" source={TextRotateDemoSource} fn="FastDemo">
+  <FastDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `items` | 要轮播的文本项目(最多 6 个) | `React.ReactNode[]` | - |
+| `duration` | 动画持续时间(毫秒) | `6000 \| 9000 \| 12000 \| 15000 \| 18000` | `10000` |
+| `centered` | 水平居中文本 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 悬停时动画暂停,以便更轻松地阅读
+- 支持减少动作偏好
+- 文本在所有动画状态下都保持可读

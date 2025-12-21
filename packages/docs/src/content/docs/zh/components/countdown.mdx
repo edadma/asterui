@@ -1,0 +1,76 @@
+---
+title: Countdown 倒计时
+description: 带可自定义格式和样式的倒计时器。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithDaysDemo,
+  SizesDemo,
+  WithLabelsDemo,
+  BoxedDemo,
+  CallbackDemo,
+} from '../../../../components/CountdownDemo'
+import CountdownDemoSource from '../../../../components/CountdownDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+带可自定义格式和样式的倒计时器。
+
+## 引入
+
+```tsx
+import { Countdown } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本倒计时" description="简单的倒计时器。" source={CountdownDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带天数" description="在倒计时中包含天数。" source={CountdownDemoSource} fn="WithDaysDemo">
+  <WithDaysDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="不同的尺寸变体。" source={CountdownDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="带标签" description="在每个单位下显示标签。" source={CountdownDemoSource} fn="WithLabelsDemo">
+  <WithLabelsDemo client:load slot="demo" />
+</Example>
+
+<Example title="盒装样式" description="每个单位在样式化的盒子中。" source={CountdownDemoSource} fn="BoxedDemo">
+  <BoxedDemo client:load slot="demo" />
+</Example>
+
+<Example title="带回调" description="倒计时完成时执行回调函数。" source={CountdownDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Countdown`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 目标时间戳（毫秒）或 Date 对象 | `number \| Date` | - |
+| `format` | 格式字符串：'D' 天、'H' 小时、'M' 分钟、'S' 秒 | `string` | `'HH:MM:SS'` |
+| `onFinish` | 倒计时达到零时的回调函数 | `() => void` | - |
+| `onChange` | 每次计时变化时的回调函数，带剩余时间 | `(value: number) => void` | - |
+| `size` | 尺寸变体 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `showLabels` | 在每个单位下显示标签 | `boolean` | `false` |
+| `labels` | 每个单位的自定义标签 | `{ days?: string, hours?: string, minutes?: string, seconds?: string }` | - |
+| `boxed` | 在每个单位周围显示盒装样式 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用 aria-live 宣布倒计时更新
+- 为每个倒计时单位提供 aria-label
+- 标签在视觉上与其值关联

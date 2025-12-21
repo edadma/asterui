@@ -1,0 +1,98 @@
+---
+title: TimePicker 时间选择器
+description: 使用交互式选择器界面选择时间。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TwelveHourDemo,
+  SecondsDemo,
+  ControlledDemo,
+  SizesDemo,
+  DisabledDemo,
+  StepsDemo,
+  FormDemo,
+} from '../../../../components/TimePickerDemo'
+import TimePickerDemoSource from '../../../../components/TimePickerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+使用交互式选择器界面选择时间。
+
+## 导入
+
+```tsx
+import { TimePicker } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础时间选择器" description="默认 24 小时格式的简单时间选择器。" source={TimePickerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="12 小时格式" description="带有 12 小时格式和 AM/PM 选择的时间选择器。" source={TimePickerDemoSource} fn="TwelveHourDemo">
+  <TwelveHourDemo client:load slot="demo" />
+</Example>
+
+<Example title="带秒" description="包含秒选择的时间选择器。" source={TimePickerDemoSource} fn="SecondsDemo">
+  <SecondsDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控" description="带有状态管理的受控时间选择器。" source={TimePickerDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="不同尺寸" description="各种尺寸的时间选择器。" source={TimePickerDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用" description="带有默认值的禁用时间选择器。" source={TimePickerDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="时间步长" description="带有自定义间隔的时间选择器(15 分钟步长)。" source={TimePickerDemoSource} fn="StepsDemo">
+  <StepsDemo client:load slot="demo" />
+</Example>
+
+<Example title="在表单中" description="使用 Row/Col 布局与 Form 组件集成的 TimePicker。" source={TimePickerDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `TimePicker`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 受控选定时间 | `Date \| null` | `-` |
+| `defaultValue` | 默认选定时间(非受控) | `Date \| null` | `-` |
+| `onChange` | 选择时间时的回调 | `(date: Date \| null) => void` | `-` |
+| `format` | 时间显示格式(12 小时或 24 小时) | `'12' \| '24'` | `'24'` |
+| `placeholder` | 输入占位符文本 | `string` | `"Select time"` |
+| `disabled` | 禁用时间选择器 | `boolean` | `false` |
+| `size` | 输入大小 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `showSeconds` | 在时间选择器中显示秒列 | `boolean` | `false` |
+| `allowClear` | 选择时间时显示清除按钮 | `boolean` | `true` |
+| `open` | 下拉菜单的受控打开状态 | `boolean` | `-` |
+| `onOpenChange` | 下拉菜单打开状态更改时的回调 | `(open: boolean) => void` | `-` |
+| `hourStep` | 选择器中小时之间的间隔 | `number` | `1` |
+| `minuteStep` | 选择器中分钟之间的间隔 | `number` | `1` |
+| `secondStep` | 选择器中秒之间的间隔 | `number` | `1` |
+| `status` | 验证状态 | `'error' \| 'warning'` | `-` |
+| `data-testid` | 子元素的测试 ID 前缀 | `string` | `"timepicker"` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+- 输入字段具有 `aria-haspopup` 和 `aria-expanded` 属性
+- 下拉菜单使用带有正确标签的 `role="dialog"`
+- 时间列使用带有 `aria-label` 的 `role="listbox"`
+- 时间选项使用带有 `aria-selected` 的 `role="option"`
+- 完整的键盘导航: 箭头键导航,Escape 关闭,Enter 确认
+- 清除按钮具有 `aria-label` 以供屏幕阅读器使用
+- 禁用状态正确传达给辅助技术

@@ -1,0 +1,82 @@
+---
+title: Responsive
+description: Componentes para construir layouts responsivos baseados no tamanho da tela
+tableOfContents: false
+---
+
+import {
+  ShowAboveDemo,
+  HideBelowDemo,
+  ShowAtDemo,
+  ShowBetweenDemo,
+  ResponsiveLayoutDemo,
+} from '../../../../components/ResponsiveDemo'
+import ResponsiveDemoSource from '../../../../components/ResponsiveDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componentes para mostrar/ocultar conteúdo baseado no tamanho da tela.
+
+## Importação
+
+```tsx
+import { Show, Hide } from 'asterui'
+```
+
+## Breakpoints
+
+Usa os mesmos breakpoints do Tailwind CSS:
+
+| Breakpoint | Largura Mín |
+|------------|-----------|
+| `xs` | 0px |
+| `sm` | 640px |
+| `md` | 768px |
+| `lg` | 1024px |
+| `xl` | 1280px |
+| `2xl` | 1536px |
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Mostrar Acima do Breakpoint" description="Mostra conteúdo apenas em telas médias e acima." source={ResponsiveDemoSource} fn="ShowAboveDemo">
+  <ShowAboveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ocultar Abaixo do Breakpoint" description="Oculta conteúdo em telas pequenas." source={ResponsiveDemoSource} fn="HideBelowDemo">
+  <HideBelowDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar em Breakpoints Específicos" description="Mostra conteúdo apenas em breakpoints específicos." source={ResponsiveDemoSource} fn="ShowAtDemo">
+  <ShowAtDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar Entre Breakpoints" description="Mostra conteúdo dentro de uma faixa de breakpoints." source={ResponsiveDemoSource} fn="ShowBetweenDemo">
+  <ShowBetweenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Layout Responsivo" description="Construa layouts diferentes para mobile e desktop." source={ResponsiveDemoSource} fn="ResponsiveLayoutDemo">
+  <ResponsiveLayoutDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Show` / `Hide`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo para mostrar/ocultar | `React.ReactNode` | - |
+| `above` | Mostrar/ocultar neste breakpoint e acima | `Breakpoint` | - |
+| `below` | Mostrar/ocultar abaixo deste breakpoint | `Breakpoint` | - |
+| `at` | Mostrar/ocultar exatamente neste breakpoint (ou array de breakpoints) | `Breakpoint \| Breakpoint[]` | - |
+| `between` | Mostrar/ocultar entre dois breakpoints (inclusivo) | `[Breakpoint, Breakpoint]` | - |
+
+## Notas
+
+- Usa JavaScript para detectar breakpoint, não media queries CSS
+- Apenas uma prop de condição (`above`, `below`, `at`, ou `between`) deve ser usada por vez
+- Renderização no servidor padrão é 1024px de largura (breakpoint lg)
+
+Veja também: hook [useBreakpoint](/hooks/usebreakpoint) para acesso programático a informações de breakpoint.

@@ -1,0 +1,82 @@
+---
+title: VirtualList
+description: Renderize listas grandes eficientemente renderizando apenas itens visíveis. Desenvolvido com @tanstack/react-virtual.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  StyledDemo,
+  GapDemo,
+  ScrollCallbackDemo,
+  VariableHeightDemo,
+} from '../../../../components/VirtualListDemo'
+import VirtualListDemoSource from '../../../../components/VirtualListDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Renderize listas grandes eficientemente renderizando apenas itens visíveis. Desenvolvido com @tanstack/react-virtual.
+
+## Instalação
+
+Este componente requer `@tanstack/react-virtual` como dependência peer:
+
+```bash
+npm install @tanstack/react-virtual
+```
+
+## Importação
+
+```tsx
+import { VirtualList } from 'asterui/virtuallist'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Uso Básico" description="Renderize eficientemente uma lista de 10.000 itens." source={VirtualListDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Lista Estilizada" description="Com estilo de cartão e efeitos hover." source={VirtualListDemoSource} fn="StyledDemo">
+  <StyledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Espaçamento" description="Itens espaçados com gap entre eles." source={VirtualListDemoSource} fn="GapDemo">
+  <GapDemo client:load slot="demo" />
+</Example>
+
+<Example title="Callback de Scroll" description="Rastreie posição de scroll para carregamento infinito ou analytics." source={VirtualListDemoSource} fn="ScrollCallbackDemo">
+  <ScrollCallbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="Altura Variável (Chat)" description="Mensagens de chat com diferentes comprimentos usando o componente Chat." source={VirtualListDemoSource} fn="VariableHeightDemo">
+  <VariableHeightDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `VirtualList`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `items` | Array de itens a renderizar | `T[]` | - |
+| `height` | Altura do container com scroll | `number \| string` | - |
+| `itemHeight` | Altura fixa, ou função retornando altura estimada por item para alturas variáveis | `number \| ((item: T, index: number) => number)` | - |
+| `renderItem` | Função de renderização para cada item | `(item: T, index: number) => ReactNode` | - |
+| `overscan` | Número de itens a renderizar fora da área visível | `number` | `5` |
+| `gap` | Espaço entre itens em pixels | `number` | `0` |
+| `width` | Largura do container | `number \| string` | - |
+| `className` | Classe adicional para o container de scroll | `string` | - |
+| `innerClassName` | Classe adicional para o container interno | `string` | - |
+| `itemClassName` | Classe adicional para cada wrapper de item | `string` | - |
+| `onScroll` | Callback quando posição de scroll muda | `(scrollTop: number) => void` | - |
+
+## Dicas de Performance
+
+- Use um `itemHeight` fixo quando possível para melhor performance
+- Memoize sua função `renderItem` se for cara
+- Aumente `overscan` se ver flickering durante scroll rápido
+- Mantenha componentes de itens simples - evite cálculos pesados no render

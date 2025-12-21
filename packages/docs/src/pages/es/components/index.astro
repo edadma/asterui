@@ -1,0 +1,230 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+
+// Helper to get image paths - returns both light and dark versions
+const getImages = (slug: string) => {
+  const animated = ['carousel', 'countdown', 'loading', 'textrotate']
+  const ext = animated.includes(slug) ? 'gif' : 'png'
+  return {
+    light: `/components/${slug}.${ext}`,
+    dark: `/components/${slug}-dark.${ext}`,
+  }
+}
+
+const categories = [
+  {
+    name: 'Acciones',
+    components: [
+      { name: 'Button', slug: 'button', description: 'Activar acciones con diferentes estilos y estados.' },
+      { name: 'CopyButton', slug: 'copybutton', description: 'Copiar al portapapeles con un clic.' },
+      { name: 'Dropdown', slug: 'dropdown', description: 'Menú desplegable para acciones o navegación.' },
+      { name: 'FloatButton', slug: 'floatbutton', description: 'Botón flotante para acciones principales.' },
+    ],
+  },
+  {
+    name: 'Visualización de datos',
+    components: [
+      { name: 'Avatar', slug: 'avatar', description: 'Mostrar imágenes de perfil o iniciales.' },
+      { name: 'Badge', slug: 'badge', description: 'Pequeños indicadores de estado y contadores.' },
+      { name: 'Card', slug: 'card', description: 'Contenedor para contenido y acciones relacionadas.' },
+      { name: 'Carousel', slug: 'carousel', description: 'Carrusel de imágenes o contenido.' },
+      { name: 'Chart', slug: 'chart', description: 'Visualización de datos con ApexCharts.' },
+      { name: 'Chat', slug: 'chat', description: 'Burbujas de chat para interfaces de mensajería.' },
+      { name: 'Collapse', slug: 'collapse', description: 'Paneles de contenido expandibles.' },
+      { name: 'Countdown', slug: 'countdown', description: 'Temporizador de cuenta regresiva animado.' },
+      { name: 'Descriptions', slug: 'descriptions', description: 'Mostrar pares clave-valor.' },
+      { name: 'Diff', slug: 'diff', description: 'Mostrar diferencias entre dos elementos.' },
+      { name: 'Empty', slug: 'empty', description: 'Marcador de posición para estados vacíos.' },
+      { name: 'HoverGallery', slug: 'hovergallery', description: 'Galería de imágenes con efectos hover.' },
+      { name: 'Image', slug: 'image', description: 'Imagen mejorada con vista previa y respaldo.' },
+      { name: 'List', slug: 'list', description: 'Mostrar colecciones de elementos.' },
+      { name: 'VirtualList', slug: 'virtuallist', description: 'Renderizar listas largas eficientemente.' },
+      { name: 'MonthCalendar', slug: 'monthcalendar', description: 'Vista de calendario mensual.' },
+      { name: 'Popover', slug: 'popover', description: 'Contenido flotante al pasar o hacer clic.' },
+      { name: 'QRCode', slug: 'qrcode', description: 'Generar códigos QR escaneables.' },
+      { name: 'Stat', slug: 'stat', description: 'Mostrar estadísticas y métricas.' },
+      { name: 'Status', slug: 'status', description: 'Mostrar estado en línea/fuera de línea.' },
+      { name: 'Table', slug: 'table', description: 'Mostrar datos tabulares con ordenación y selección.' },
+      { name: 'Tag', slug: 'tag', description: 'Categorizar contenido con etiquetas.' },
+      { name: 'Timeline', slug: 'timeline', description: 'Mostrar eventos cronológicamente.' },
+      { name: 'Tooltip', slug: 'tooltip', description: 'Mostrar información adicional al pasar.' },
+      { name: 'Tree', slug: 'tree', description: 'Visualización de datos jerárquicos.' },
+      { name: 'WeekCalendar', slug: 'weekcalendar', description: 'Vista de calendario semanal.' },
+    ],
+  },
+  {
+    name: 'Entrada de datos',
+    components: [
+      { name: 'Autocomplete', slug: 'autocomplete', description: 'Entrada con sugerencias desplegables.' },
+      { name: 'Cascader', slug: 'cascader', description: 'Selector multinivel.' },
+      { name: 'Checkbox', slug: 'checkbox', description: 'Control de selección múltiple.' },
+      { name: 'ColorPicker', slug: 'colorpicker', description: 'Seleccionar colores visualmente.' },
+      { name: 'DatePicker', slug: 'datepicker', description: 'Seleccionar fechas del calendario.' },
+      { name: 'Fieldset', slug: 'fieldset', description: 'Agrupar campos de formulario.' },
+      { name: 'FileInput', slug: 'fileinput', description: 'Entrada de selección de archivos.' },
+      { name: 'Filter', slug: 'filter', description: 'Filtrar datos con múltiples criterios.' },
+      { name: 'Form', slug: 'form', description: 'Manejo de formularios con validación.' },
+      { name: 'Input', slug: 'input', description: 'Campo de entrada de texto.' },
+      { name: 'InputNumber', slug: 'inputnumber', description: 'Entrada numérica con controles.' },
+      { name: 'Mention', slug: 'mention', description: 'Entrada con soporte para @menciones.' },
+      { name: 'OTPInput', slug: 'otpinput', description: 'Entrada de código de un solo uso.' },
+      { name: 'Radio', slug: 'radio', description: 'Selección única entre opciones.' },
+      { name: 'Range', slug: 'range', description: 'Seleccionar valor en un rango.' },
+      { name: 'Rating', slug: 'rating', description: 'Entrada de calificación por estrellas.' },
+      { name: 'RichTextEditor', slug: 'richtexteditor', description: 'Editor de texto WYSIWYG.' },
+      { name: 'Segmented', slug: 'segmented', description: 'Control segmentado para alternar.' },
+      { name: 'Select', slug: 'select', description: 'Selección desplegable.' },
+      { name: 'Textarea', slug: 'textarea', description: 'Entrada de texto multilínea.' },
+      { name: 'TimePicker', slug: 'timepicker', description: 'Seleccionar horas.' },
+      { name: 'Toggle', slug: 'toggle', description: 'Interruptor de encendido/apagado.' },
+      { name: 'Transfer', slug: 'transfer', description: 'Mover elementos entre listas.' },
+      { name: 'TreeSelect', slug: 'treeselect', description: 'Seleccionar de opciones jerárquicas.' },
+      { name: 'Upload', slug: 'upload', description: 'Subir archivos arrastrando.' },
+    ],
+  },
+  {
+    name: 'Retroalimentación',
+    components: [
+      { name: 'Alert', slug: 'alert', description: 'Mostrar mensajes importantes.' },
+      { name: 'Drawer', slug: 'drawer', description: 'Panel deslizante desde el borde.' },
+      { name: 'Loading', slug: 'loading', description: 'Indicadores de carga.' },
+      { name: 'Message', slug: 'message', description: 'Mensajes de retroalimentación breves.' },
+      { name: 'Modal', slug: 'modal', description: 'Diálogos superpuestos.' },
+      { name: 'Notification', slug: 'notification', description: 'Notificaciones toast.' },
+      { name: 'Popconfirm', slug: 'popconfirm', description: 'Confirmación antes de actuar.' },
+      { name: 'Progress', slug: 'progress', description: 'Mostrar progreso.' },
+      { name: 'RadialProgress', slug: 'radialprogress', description: 'Indicador de progreso circular.' },
+      { name: 'Result', slug: 'result', description: 'Mostrar resultados de operaciones.' },
+      { name: 'Skeleton', slug: 'skeleton', description: 'Formas de marcador de carga.' },
+    ],
+  },
+  {
+    name: 'Navegación',
+    components: [
+      { name: 'Anchor', slug: 'anchor', description: 'Navegar a secciones de la página.' },
+      { name: 'Breadcrumb', slug: 'breadcrumb', description: 'Mostrar jerarquía de navegación.' },
+      { name: 'Command', slug: 'command', description: 'Paleta de comandos para acciones rápidas.' },
+      { name: 'ContextMenu', slug: 'contextmenu', description: 'Menú de clic derecho.' },
+      { name: 'Dock', slug: 'dock', description: 'Navegación estilo dock de macOS.' },
+      { name: 'Menu', slug: 'menu', description: 'Menú de navegación vertical.' },
+      { name: 'Navbar', slug: 'navbar', description: 'Barra de navegación superior.' },
+      { name: 'Pagination', slug: 'pagination', description: 'Navegar entre páginas.' },
+      { name: 'ResponsiveDrawer', slug: 'responsivedrawer', description: 'Navegación lateral responsiva.' },
+      { name: 'Steps', slug: 'steps', description: 'Indicador de progreso por pasos.' },
+      { name: 'Tabs', slug: 'tabs', description: 'Navegación por pestañas.' },
+    ],
+  },
+  {
+    name: 'Diseño',
+    components: [
+      { name: 'Container', slug: 'container', description: 'Contenedor de contenido centrado.' },
+      { name: 'Divider', slug: 'divider', description: 'Separar secciones de contenido.' },
+      { name: 'Flex', slug: 'flex', description: 'Ayudante de diseño flexbox.' },
+      { name: 'Footer', slug: 'footer', description: 'Componente de pie de página.' },
+      { name: 'Grid', slug: 'grid', description: 'Diseño de cuadrícula responsiva.' },
+      { name: 'Hero', slug: 'hero', description: 'Sección hero para páginas de inicio.' },
+      { name: 'Join', slug: 'join', description: 'Agrupar elementos juntos.' },
+      { name: 'Layout', slug: 'layout', description: 'Estructura de diseño de página.' },
+      { name: 'Masonry', slug: 'masonry', description: 'Diseño estilo Pinterest.' },
+      { name: 'Responsive', slug: 'responsive', description: 'Mostrar/ocultar por punto de quiebre.' },
+      { name: 'Space', slug: 'space', description: 'Agregar espaciado consistente.' },
+      { name: 'Splitter', slug: 'splitter', description: 'Paneles redimensionables.' },
+    ],
+  },
+  {
+    name: 'Otros',
+    components: [
+      { name: 'Affix', slug: 'affix', description: 'Fijar elemento a la ventana.' },
+      { name: 'Browser', slug: 'browser', description: 'Maqueta de ventana de navegador.' },
+      { name: 'Code', slug: 'code', description: 'Mostrar fragmentos de código.' },
+      { name: 'ConfigProvider', slug: 'configprovider', description: 'Configuración global.' },
+      { name: 'Kbd', slug: 'kbd', description: 'Visualización de teclas.' },
+      { name: 'Mask', slug: 'mask', description: 'Aplicar máscaras de imagen.' },
+      { name: 'Phone', slug: 'phone', description: 'Maqueta de dispositivo telefónico.' },
+      { name: 'TextRotate', slug: 'textrotate', description: 'Texto rotativo animado.' },
+      { name: 'ThemeController', slug: 'themecontroller', description: 'Control de cambio de tema.' },
+      { name: 'Tour', slug: 'tour', description: 'Tours guiados del producto.' },
+      { name: 'Typography', slug: 'typography', description: 'Componentes de estilo de texto.' },
+      { name: 'Watermark', slug: 'watermark', description: 'Agregar marcas de agua al contenido.' },
+      { name: 'Window', slug: 'window', description: 'Maqueta de marco de ventana.' },
+    ],
+  },
+]
+
+const totalComponents = categories.reduce((acc, cat) => acc + cat.components.length, 0)
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Vista general',
+    description: `Explora los ${totalComponents} componentes de AsterUI.`,
+    tableOfContents: false,
+  }}
+>
+  <div class="sl-markdown-content">
+    <p class="text-lg mb-8">
+      AsterUI proporciona {totalComponents} componentes construidos sobre DaisyUI y Tailwind CSS.
+    </p>
+
+    <div class="search-box mb-8">
+      <input
+        type="text"
+        id="component-search"
+        placeholder="Buscar componentes..."
+        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-transparent"
+      />
+    </div>
+
+    {categories.map((category) => (
+      <section class="category-section mb-10" data-category={category.name}>
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          {category.name}
+          <span class="text-sm font-normal text-gray-500">({category.components.length})</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {category.components.map((comp) => (
+            <a
+              href={`/es/components/${comp.slug}`}
+              class="component-card block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition-all"
+              data-name={comp.name.toLowerCase()}
+              data-description={comp.description.toLowerCase()}
+            >
+              <h3 class="font-medium mb-1">{comp.name}</h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{comp.description}</p>
+              <div class="h-16 flex items-center justify-center">
+                <img src={getImages(comp.slug).light} alt={comp.name} class="max-h-full max-w-full object-contain light-only" />
+                <img src={getImages(comp.slug).dark} alt={comp.name} class="max-h-full max-w-full object-contain dark-only" />
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <script>
+    // Add wide layout class
+    document.body.classList.add('components-overview')
+
+    const searchInput = document.getElementById('component-search') as HTMLInputElement
+    const cards = document.querySelectorAll('.component-card')
+    const sections = document.querySelectorAll('.category-section')
+
+    searchInput?.addEventListener('input', (e) => {
+      const query = (e.target as HTMLInputElement).value.toLowerCase()
+
+      cards.forEach((card) => {
+        const name = card.getAttribute('data-name') || ''
+        const description = card.getAttribute('data-description') || ''
+        const matches = name.includes(query) || description.includes(query)
+        ;(card as HTMLElement).style.display = matches ? '' : 'none'
+      })
+
+      // Hide empty sections
+      sections.forEach((section) => {
+        const visibleCards = section.querySelectorAll('.component-card:not([style*="display: none"])')
+        ;(section as HTMLElement).style.display = visibleCards.length > 0 ? '' : 'none'
+      })
+    })
+  </script>
+</StarlightPage>

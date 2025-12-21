@@ -1,0 +1,71 @@
+---
+title: Progress 进度条
+description: 使用进度条显示任务完成或时间流逝。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ColorsDemo,
+  StatusDemo,
+  IndeterminateDemo,
+  SizesDemo,
+  LabelDemo,
+} from '../../../../components/ProgressDemo'
+import ProgressDemoSource from '../../../../components/ProgressDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+使用进度条显示任务完成或时间流逝。
+
+## 导入
+
+```tsx
+import { Progress } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础进度条" description="带有值的简单进度条。" source={ProgressDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色变体" description="进度条的不同配色方案。" source={ProgressDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="状态颜色" description="不同状态的语义颜色。" source={ProgressDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="不确定" description="没有特定值的进度条(动画)。" source={ProgressDemoSource} fn="IndeterminateDemo">
+  <IndeterminateDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="使用 Tailwind 类控制宽度。" source={ProgressDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="带标签" description="带有文本标签的进度。" source={ProgressDemoSource} fn="LabelDemo">
+  <LabelDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Progress`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 当前进度值(0-100)。省略以获得不确定状态 | `number` | - |
+| `max` | 最大值 | `number` | `100` |
+| `type` | 颜色变体 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 使用原生 `<progress>` 元素以获得可访问性
+- 值由屏幕阅读器宣布
+- 不确定状态得到正确传达

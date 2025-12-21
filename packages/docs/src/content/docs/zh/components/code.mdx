@@ -1,0 +1,73 @@
+---
+title: Code 代码
+description: 用于终端命令和代码片段的代码模型显示。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MultilineDemo,
+  LineNumbersDemo,
+  HighlightDemo,
+  CopyableDemo,
+  CopyableMultilineDemo,
+} from '../../../../components/CodeDemo'
+import CodeDemoSource from '../../../../components/CodeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于终端命令和代码片段的代码模型显示。
+
+## 引入
+
+```tsx
+import { Code } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本代码块" description="带命令前缀的简单代码模型。" source={CodeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="多行" description="带多行和不同前缀的代码块。" source={CodeDemoSource} fn="MultilineDemo">
+  <MultilineDemo client:load slot="demo" />
+</Example>
+
+<Example title="行号" description="带行号前缀的代码块。" source={CodeDemoSource} fn="LineNumbersDemo">
+  <LineNumbersDemo client:load slot="demo" />
+</Example>
+
+<Example title="高亮行" description="带高亮行以强调的代码块。" source={CodeDemoSource} fn="HighlightDemo">
+  <HighlightDemo client:load slot="demo" />
+</Example>
+
+<Example title="带复制按钮" description="使用 copyable 属性添加复制按钮。" source={CodeDemoSource} fn="CopyableDemo">
+  <CopyableDemo client:load slot="demo" />
+</Example>
+
+<Example title="复制按钮（多行）" description="复制按钮也适用于多行。" source={CodeDemoSource} fn="CopyableMultilineDemo">
+  <CopyableMultilineDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Code`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 代码行内容 | `React.ReactNode` | - |
+| `copyable` | 显示复制按钮。传递 true 自动提取文本，或传递字符串作为自定义复制文本 | `boolean \| string` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Code.Line`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 行内容 | `React.ReactNode` | - |
+| `prefix` | 行前缀（例如 $、>、行号） | `string` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `highlight` | 高亮此行 | `boolean` | `false` |

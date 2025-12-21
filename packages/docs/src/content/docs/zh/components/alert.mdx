@@ -1,0 +1,74 @@
+---
+title: Alert 警告提示
+description: 向用户显示重要消息和通知
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TypesDemo,
+  ActionDemo,
+  OutlineDemo,
+  DashDemo,
+  SoftDemo,
+} from '../../../../components/AlertDemo'
+import AlertDemoSource from '../../../../components/AlertDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+以不同的类型和样式向用户显示重要消息和通知。
+
+## 引入
+
+```tsx
+import { Alert } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="带图标和文本的简单警告提示。" source={AlertDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="警告类型" description="用于信息、成功、警告和错误状态的不同颜色变体。" source={AlertDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="带操作按钮" description="带关闭或操作按钮的警告提示。" source={AlertDemoSource} fn="ActionDemo">
+  <ActionDemo client:load slot="demo" />
+</Example>
+
+<Example title="描边样式" description="具有描边变体的警告提示，外观更轻。" source={AlertDemoSource} fn="OutlineDemo">
+  <OutlineDemo client:load slot="demo" />
+</Example>
+
+<Example title="虚线样式" description="带虚线边框变体的警告提示。" source={AlertDemoSource} fn="DashDemo">
+  <DashDemo client:load slot="demo" />
+</Example>
+
+<Example title="柔和样式" description="具有柔和背景色的警告提示。" source={AlertDemoSource} fn="SoftDemo">
+  <SoftDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Alert`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 警告提示内容 | `ReactNode` | - |
+| `type` | 警告类型的颜色变体 | `'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `outline` | 描边样式 | `boolean` | `false` |
+| `dash` | 虚线描边样式 | `boolean` | `false` |
+| `soft` | 柔和样式 | `boolean` | `false` |
+| `vertical` | 垂直布局 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用 `role="alert"` 供屏幕阅读器识别
+- 颜色不是唯一的指示符 - 图标提供了额外的上下文
+- 操作按钮可通过键盘访问

@@ -1,0 +1,71 @@
+---
+title: Image
+description: Exiba imagens com suporte para visualização e fallback.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  PreviewDemo,
+  FallbackDemo,
+} from '../../../../components/ImageDemo'
+import ImageDemoSource from '../../../../components/ImageDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exiba imagens com suporte para visualização e fallback.
+
+## Importação
+
+```tsx
+import { Image } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Imagem Básica" description="Exibição simples de imagem com props src e alt." source={ImageDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diferentes Tamanhos" description="Imagens com várias dimensões." source={ImageDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Visualização de Imagem" description="Clique na imagem para visualizar em tamanho completo." source={ImageDemoSource} fn="PreviewDemo">
+  <PreviewDemo client:load slot="demo" />
+</Example>
+
+<Example title="Imagem Fallback" description="Exibir imagem fallback quando a fonte falha ao carregar." source={ImageDemoSource} fn="FallbackDemo">
+  <FallbackDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Image`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `src` | URL da fonte da imagem | `string` | - |
+| `alt` | Texto alternativo para a imagem | `string` | `''` |
+| `width` | Largura da imagem | `number \| string` | - |
+| `height` | Altura da imagem | `number \| string` | - |
+| `preview` | Habilitar clique para visualizar imagem em lightbox | `boolean` | `true` |
+| `fallback` | URL da imagem fallback quando a fonte falha ao carregar | `string` | - |
+| `placeholder` | Conteúdo placeholder mostrado enquanto carrega | `React.ReactNode` | - |
+| `onLoad` | Callback quando imagem carrega com sucesso | `() => void` | - |
+| `onError` | Callback quando imagem falha ao carregar | `() => void` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+| `style` | Estilos inline | `React.CSSProperties` | - |
+
+## Acessibilidade
+
+- Sempre forneça texto `alt` significativo para leitores de tela
+- Use imagens fallback para garantir que o conteúdo esteja sempre visível
+- Visualização é acessível via teclado: pressione Enter ou Space para abrir, Escape para fechar
+- Imagens visualizáveis têm `role="button"` com aria-label apropriado
+- Modal de visualização tem `role="dialog"` e `aria-modal="true"`
+- Estado de erro inclui aria-label descrevendo a falha

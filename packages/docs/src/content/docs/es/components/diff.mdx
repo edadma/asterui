@@ -1,0 +1,54 @@
+---
+title: Diff
+description: Comparación lado a lado con un redimensionador interactivo.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TextDemo,
+  AspectDemo,
+} from '../../../../components/DiffDemo'
+import DiffDemoSource from '../../../../components/DiffDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Comparación lado a lado con un redimensionador interactivo.
+
+## Importar
+
+```tsx
+import { Diff } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Comparación de Imágenes" description="Compara dos imágenes con un control deslizante arrastrable." source={DiffDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Comparación de Texto" description="Compara texto con diferentes estilos." source={DiffDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Relación de Aspecto Personalizada" description="Usa diferentes relaciones de aspecto." source={DiffDemoSource} fn="AspectDemo">
+  <AspectDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `left` | Contenido del lado izquierdo (revelado al arrastrar) | `React.ReactNode` | - |
+| `right` | Contenido del lado derecho (oculto al arrastrar) | `React.ReactNode` | - |
+| `aspect` | Clase de relación de aspecto | `string` | `'aspect-16/9'` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Accesible mediante teclado con navegación por tabulación
+- Usa `role="img"` para significado semántico
+- Las teclas de flecha controlan la posición del redimensionador cuando está enfocado

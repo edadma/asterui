@@ -10,7 +10,13 @@ const route = Astro.locals.starlightRoute as StarlightRouteData
 const locale = route?.locale
 const isRoot = !locale
 const prefix = isRoot ? '' : `/${locale}`
-const label = locale === 'fr' ? 'Composants' : 'Components'
+const labels: Record<string, string> = {
+  fr: 'Composants',
+  zh: '组件',
+  es: 'Componentes',
+  pt: 'Componentes',
+}
+const label = labels[locale ?? ''] || 'Components'
 ---
 
 <a href={isRoot ? '/' : `/${locale}`} class="site-title sl-flex">

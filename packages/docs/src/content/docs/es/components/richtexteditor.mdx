@@ -1,0 +1,123 @@
+---
+title: RichTextEditor
+description: Un editor WYSIWYG con soporte de temas construido en Tiptap para edición de texto enriquecido con barra de herramientas personalizable.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ControlledDemo,
+  MinimalToolbarDemo,
+  FullToolbarDemo,
+  NoToolbarDemo,
+  SizesDemo,
+  MaxHeightDemo,
+  ReadOnlyDemo,
+  BorderlessDemo,
+  EditorInstanceDemo,
+} from '../../../../components/RichTextEditorDemo'
+import RichTextEditorDemoSource from '../../../../components/RichTextEditorDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Un editor WYSIWYG con soporte de temas construido en Tiptap para edición de texto enriquecido con barra de herramientas personalizable.
+
+## Instalación
+
+Este componente requiere paquetes `@tiptap` y `@aster-ui/icons` como dependencias de pares:
+
+```bash
+npm install @aster-ui/icons @tiptap/react @tiptap/starter-kit @tiptap/extension-link @tiptap/extension-placeholder @tiptap/extension-underline
+```
+
+## Importar
+
+```tsx
+import { RichTextEditor } from 'asterui/editor'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Editor básico" description="Editor de texto enriquecido simple con barra de herramientas predeterminada." source={RichTextEditorDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Editor controlado" description="Editor con valor controlado mostrando salida HTML." source={RichTextEditorDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Barra de herramientas mínima" description="Editor con solo opciones básicas de formato." source={RichTextEditorDemoSource} fn="MinimalToolbarDemo">
+  <MinimalToolbarDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Barra de herramientas completa" description="Editor con todas las opciones de barra de herramientas disponibles." source={RichTextEditorDemoSource} fn="FullToolbarDemo">
+  <FullToolbarDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Sin barra de herramientas" description="Escritura sin distracciones sin barra de herramientas." source={RichTextEditorDemoSource} fn="NoToolbarDemo">
+  <NoToolbarDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Diferentes variantes de tamaño de texto." source={RichTextEditorDemoSource} fn="SizesDemo">
+  <SizesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Altura máxima con scroll" description="Editor con altura máxima fija que hace scroll." source={RichTextEditorDemoSource} fn="MaxHeightDemo">
+  <MaxHeightDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Modo solo lectura" description="Muestra contenido formateado sin edición." source={RichTextEditorDemoSource} fn="ReadOnlyDemo">
+  <ReadOnlyDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Sin borde" description="Editor sin borde, útil dentro de tarjetas." source={RichTextEditorDemoSource} fn="BorderlessDemo">
+  <BorderlessDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Acceso a instancia del editor" description="Accede a la instancia del editor Tiptap para características avanzadas." source={RichTextEditorDemoSource} fn="EditorInstanceDemo">
+  <EditorInstanceDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `RichTextEditor`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Contenido HTML (controlado) | `string` | `''` |
+| `onChange` | Callback cuando cambia el contenido | `(html: string) => void` | - |
+| `placeholder` | Texto de marcador de posición | `string` | `'Start typing...'` |
+| `toolbar` | Elementos de barra de herramientas a mostrar | `ToolbarItem[]` | `[conjunto predeterminado]` |
+| `hideToolbar` | Ocultar la barra de herramientas | `boolean` | `false` |
+| `readOnly` | Hacer el editor solo lectura | `boolean` | `false` |
+| `autoFocus` | Auto-enfocar al montar | `boolean` | `false` |
+| `minHeight` | Altura mínima del editor | `string \| number` | `200` |
+| `maxHeight` | Altura máxima (habilita scroll) | `string \| number` | - |
+| `size` | Variante de tamaño de texto | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `bordered` | Mostrar borde alrededor del editor | `boolean` | `true` |
+| `onEditorReady` | Callback con instancia del editor Tiptap | `(editor: Editor) => void` | - |
+
+### `ToolbarItem`
+
+| Propiedad | Descripción |
+|----------|-------------|
+| `bold` | Texto en negrita |
+| `italic` | Texto en cursiva |
+| `underline` | Texto subrayado |
+| `strikethrough` | Texto tachado |
+| `code` | Código en línea |
+| `heading1` | Encabezado nivel 1 |
+| `heading2` | Encabezado nivel 2 |
+| `heading3` | Encabezado nivel 3 |
+| `bulletList` | Lista desordenada |
+| `orderedList` | Lista ordenada |
+| `blockquote` | Cita en bloque |
+| `codeBlock` | Bloque de código |
+| `horizontalRule` | Línea horizontal |
+| `link` | Insertar/editar enlace |
+| `undo` | Deshacer último cambio |
+| `redo` | Rehacer último cambio |
+| `\|` | Divisor de barra de herramientas |

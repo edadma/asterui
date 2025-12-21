@@ -1,0 +1,115 @@
+---
+title: Modal
+description: 用于用户交互和显示信息的对话框遮罩。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DefaultFooterDemo,
+  CustomFooterDemo,
+  StaticMethodsDemo,
+  ConfirmDemo,
+  CenteredDemo,
+  SizesDemo,
+  ResponsiveDemo,
+} from '../../../../components/ModalDemo'
+import ModalDemoSource from '../../../../components/ModalDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于用户交互和显示信息的对话框遮罩。
+
+## 导入
+
+```tsx
+import { Modal } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础模态框" description="带打开/关闭功能的简单模态框。" source={ModalDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="默认页脚" description="使用 onOk 和 onCancel 属性的内置确定/取消按钮模态框。" source={ModalDemoSource} fn="DefaultFooterDemo">
+  <DefaultFooterDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义页脚" description="带自定义页脚按钮的模态框。" source={ModalDemoSource} fn="CustomFooterDemo">
+  <CustomFooterDemo client:load slot="demo" />
+</Example>
+
+<Example title="静态方法" description="使用 Modal.info、Modal.success、Modal.warning 和 Modal.error 的快速对话框。" source={ModalDemoSource} fn="StaticMethodsDemo">
+  <StaticMethodsDemo client:load slot="demo" />
+</Example>
+
+<Example title="确认对话框" description="使用 Modal.confirm 的带确定和取消按钮的确认对话框。" source={ModalDemoSource} fn="ConfirmDemo">
+  <ConfirmDemo client:load slot="demo" />
+</Example>
+
+<Example title="居中模态框" description="垂直居中的模态框。" source={ModalDemoSource} fn="CenteredDemo">
+  <CenteredDemo client:load slot="demo" />
+</Example>
+
+<Example title="模态框尺寸" description="不同的模态框宽度。" source={ModalDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="响应式位置" description="模态框位置可以使用响应式位置对象根据屏幕尺寸改变。" source={ModalDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Modal`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `open` | 受控的打开状态 | `boolean` | `false` |
+| `title` | 模态框标题 | `React.ReactNode` | - |
+| `children` | 模态框内容 | `React.ReactNode` | - |
+| `footer` | 自定义页脚内容（设置为 null 隐藏） | `React.ReactNode` | - |
+| `onOk` | 确定按钮点击处理器（显示默认页脚） | `() => void \| Promise<void>` | - |
+| `onCancel` | 取消按钮点击处理器 | `() => void` | - |
+| `onClose` | 关闭处理器（onCancel 的别名） | `() => void` | - |
+| `okText` | 确定按钮文本 | `string` | `'OK'` |
+| `cancelText` | 取消按钮文本 | `string` | `'Cancel'` |
+| `width` | 模态框宽度 | `number \| string` | - |
+| `centered` | 垂直居中模态框 | `boolean` | `false` |
+| `position` | 模态框位置（支持响应式对象） | `'top' \| 'middle' \| 'bottom' \| { base?, sm?, md?, lg?, xl?, '2xl'? }` | - |
+| `align` | 模态框对齐 | `'start' \| 'end'` | - |
+| `maskClosable` | 点击背景关闭 | `boolean` | `true` |
+| `closable` | 显示关闭背景 | `boolean` | `true` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Modal.info/success/warning/error/confirm`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `title` | 模态框标题 | `React.ReactNode` | - |
+| `content` | 模态框内容 | `React.ReactNode` | - |
+| `onOk` | 确定按钮点击处理器 | `() => void \| Promise<void>` | - |
+| `onCancel` | 取消按钮点击处理器（仅限 confirm） | `() => void` | - |
+| `okText` | 确定按钮文本 | `string` | `'OK'` |
+| `cancelText` | 取消按钮文本（仅限 confirm） | `string` | `'Cancel'` |
+| `type` | 用于样式的模态框类型 | `'info' \| 'success' \| 'warning' \| 'error'` | - |
+
+### 静态方法
+
+- `Modal.info(config)` - 信息对话框
+- `Modal.success(config)` - 成功对话框
+- `Modal.warning(config)` - 警告对话框
+- `Modal.error(config)` - 错误对话框
+- `Modal.confirm(config)` - 带确定/取消的确认对话框
+
+## 无障碍
+
+- 使用原生 `<dialog>` 元素以获得正确的模态框行为
+- 打开时焦点被困在模态框内
+- 按 Escape 键关闭模态框
+- 关闭时焦点恢复到触发器元素
+- 为屏幕阅读器使用 `aria-labelledby` 和 `aria-describedby`

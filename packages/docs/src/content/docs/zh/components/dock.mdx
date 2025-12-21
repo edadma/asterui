@@ -1,0 +1,89 @@
+---
+title: Dock
+description: 移动端风格的底部导航栏。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  IconsOnlyDemo,
+  CustomStyleDemo,
+  ChildrenDemo,
+} from '../../../../components/DockDemo'
+import DockDemoSource from '../../../../components/DockDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+移动端风格的底部导航栏。
+
+## 导入
+
+```tsx
+import { Dock } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础 Dock" description="带图标和标签的移动端风格底部导航。（为演示内联显示；通常固定在底部）" source={DockDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="从 xs 到 lg 的不同 dock 尺寸。（为演示内联显示）" source={DockDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="仅图标" description="没有标签的 dock，呈现简洁外观。（为演示内联显示）" source={DockDemoSource} fn="IconsOnlyDemo">
+  <IconsOnlyDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义样式" description="为 dock 应用自定义颜色。（为演示内联显示）" source={DockDemoSource} fn="CustomStyleDemo">
+  <CustomStyleDemo client:load slot="demo" />
+</Example>
+
+<Example title="使用 Children" description="使用 Dock.Item 子元素获得更多控制。（为演示内联显示）" source={DockDemoSource} fn="ChildrenDemo">
+  <ChildrenDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Dock`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `items` | Dock 项目配置 | `DockItemConfig[]` | - |
+| `size` | 尺寸变体 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `activeIndex` | 受控的激活项目索引 | `number` | - |
+| `onChange` | 项目被点击时的回调 | `(index: number) => void` | - |
+| `children` | Dock.Item 子元素（items 的替代方案） | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `DockItemConfig` (用于 items 属性)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `icon` | 图标元素 | `React.ReactNode` | - |
+| `label` | 标签文本 | `string` | - |
+| `active` | 项目是否激活（非受控） | `boolean` | `false` |
+| `disabled` | 项目是否禁用 | `boolean` | `false` |
+| `onClick` | 点击处理器 | `() => void` | - |
+
+### `Dock.Item` (组合模式)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `active` | 此项目是否激活 | `boolean` | `false` |
+| `children` | 项目内容（图标和可选标签） | `React.ReactNode` | - |
+| `onClick` | 点击处理器 | `() => void` | - |
+| `disabled` | 项目是否禁用 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用语义化的 button 元素作为导航项
+- 支持键盘导航
+- 激活状态有视觉指示
+- 对于 iOS 安全区域支持，请在 viewport meta 标签中添加 `viewport-fit=cover`

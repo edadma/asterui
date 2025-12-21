@@ -1,0 +1,75 @@
+---
+title: Toggle 开关
+description: 用于开/关状态的二元切换控件。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ColorsDemo,
+  DisabledDemo,
+  ControlledDemo,
+  FormDemo,
+} from '../../../../components/ToggleDemo'
+import ToggleDemoSource from '../../../../components/ToggleDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于开/关状态的二元切换控件。
+
+## 导入
+
+```tsx
+import { Toggle } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础开关" description="简单的切换开关。" source={ToggleDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="开关可用的四种尺寸。" source={ToggleDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="不同上下文的颜色变体。" source={ToggleDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用" description="非交互式禁用开关。" source={ToggleDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控" description="带有受控状态的开关。" source={ToggleDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="在表单中" description="使用 valuePropName 与 Form 组件集成的开关。" source={ToggleDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Toggle`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `checked` | 受控勾选状态 | `boolean` | `-` |
+| `defaultChecked` | 默认勾选状态(非受控) | `boolean` | `false` |
+| `onChange` | 开关状态更改时的回调 | `(e: ChangeEvent) => void` | `-` |
+| `size` | 开关大小 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | 开关颜色 | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `disabled` | 禁用开关 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+- 使用原生复选框输入以获得可访问性
+- 支持使用空格键进行键盘激活
+- 勾选/未勾选状态由屏幕阅读器宣布
+- 禁用状态得到正确传达

@@ -1,0 +1,65 @@
+---
+title: Masonry
+description: Diseño de mampostería estilo Pinterest para mostrar elementos con alturas variables en una cuadrícula organizada.
+tableOfContents: false
+---
+
+import {
+  DynamicMasonryDemo,
+  BasicMasonryDemo,
+  ResponsiveMasonryDemo,
+  CustomGapDemo,
+} from '../../../../components/MasonryDemo'
+import MasonryDemoSource from '../../../../components/MasonryDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Diseño de mampostería estilo Pinterest para mostrar elementos con alturas variables en una cuadrícula organizada.
+
+## Importar
+
+```tsx
+import { Masonry } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Elementos Dinámicos" description="Añade y elimina elementos dinámicamente. Los nuevos elementos se colocan en la columna más corta." source={MasonryDemoSource} fn="DynamicMasonryDemo">
+  <DynamicMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="Masonry Básico" description="Cuadrícula de mampostería simple con elementos de altura variable." source={MasonryDemoSource} fn="BasicMasonryDemo">
+  <BasicMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="Columnas Responsivas" description="Número de columnas responsivo en diferentes puntos de interrupción." source={MasonryDemoSource} fn="ResponsiveMasonryDemo">
+  <ResponsiveMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="Gap Personalizado" description="Diferentes tamaños de espacio entre elementos." source={MasonryDemoSource} fn="CustomGapDemo">
+  <CustomGapDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Masonry`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `columns` | Número de columnas o configuración de columnas responsivas | `number \| { xs?: number, sm?: number, md?: number, lg?: number, xl?: number, '2xl'?: number }` | `3` |
+| `gap` | Espaciado entre elementos en píxeles | `number` | `16` |
+| `children` | Elementos a mostrar en diseño de mampostería | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Notas de Uso
+
+- El componente Masonry crea un diseño estilo Pinterest donde los elementos se organizan en columnas
+- Los elementos fluyen a la columna más corta para crear un diseño equilibrado
+- Usa la prop `columns` para establecer un número fijo de columnas o hacerlo responsivo
+- La prop `gap` controla el espaciado entre elementos en píxeles
+- Puntos de interrupción responsivos: xs (&lt;640px), sm (≥640px), md (≥768px), lg (≥1024px), xl (≥1280px), 2xl (≥1536px)
+- Los elementos pueden tener alturas variables - el diseño los distribuirá automáticamente de manera eficiente
+- Ideal para galerías de imágenes, cuadrículas de productos y tarjetas de contenido

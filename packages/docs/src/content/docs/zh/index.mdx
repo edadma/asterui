@@ -1,0 +1,41 @@
+---
+title: AsterUI
+description: 基于 DaisyUI 和 Tailwind CSS 构建的 React 组件库
+template: splash
+head:
+  - tag: title
+    content: AsterUI - 使用 DaisyUI 的 React 组件
+hero:
+  tagline: 精美的 React 组件，配备 DaisyUI 样式和开发者友好的 API。
+  actions:
+    - text: 开始使用
+      link: /zh/getting-started/
+      icon: right-arrow
+    - text: 在 GitHub 上查看
+      link: https://github.com/edadma/asterui
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="开发者友好" icon="puzzle">
+    您已经熟悉的直观 API 模式。Form.Item、Table columns、Modal 等等。
+  </Card>
+  <Card title="DaisyUI v5 样式" icon="star">
+    精美的、可主题化的组件，内置 30+ 个 DaisyUI 主题。
+  </Card>
+  <Card title="测试友好" icon="approve-check">
+    内置 data-testid、data-state 属性和 ARIA 角色，实现可靠的测试。
+  </Card>
+  <Card title="TypeScript 优先" icon="seti:typescript">
+    全面的类型安全，提供完整的属性类型和 IntelliSense 支持。
+  </Card>
+  <Card title="100+ 个组件" icon="list-format">
+    表单、表格、模态框、导航、图表以及您需要的一切。
+  </Card>
+  <Card title="轻量级" icon="rocket">
+    可树摇优化。仅打包您使用的内容。
+  </Card>
+</CardGrid>

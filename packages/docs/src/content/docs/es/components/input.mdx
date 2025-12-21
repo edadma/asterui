@@ -1,0 +1,126 @@
+---
+title: Input
+description: Campo de entrada de texto para entrada de datos del usuario con estados de validación y opciones de personalización.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ColorsDemo,
+  TypesDemo,
+  VariantsDemo,
+  MaskDemo,
+  ControlledDemo,
+  DisabledDemo,
+  AllowClearDemo,
+  PrefixSuffixDemo,
+  StatusDemo,
+  FloatingLabelDemo,
+  AddonsDemo,
+} from '../../../../components/InputDemo'
+import InputDemoSource from '../../../../components/InputDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Campo de entrada de texto para entrada de datos del usuario con estados de validación y opciones de personalización.
+
+## Importar
+
+```tsx
+import { Input } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Input Básico" description="Campo de entrada de texto simple." source={InputDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Cinco tamaños: xs, sm, md (predeterminado), lg y xl." source={InputDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores" description="Diferentes variantes de color para énfasis visual." source={InputDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tipos de Input" description="Diferentes tipos de input HTML." source={InputDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes" description="Estilos con borde y ghost." source={InputDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Máscara de Input" description="Entrada formateada con patrón de máscara." source={InputDemoSource} fn="MaskDemo">
+  <MaskDemo client:load slot="demo" />
+</Example>
+
+<Example title="Input Controlado" description="Input con estado controlado." source={InputDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deshabilitado" description="Estado de input deshabilitado." source={InputDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Permitir Limpiar" description="Input con botón de limpiar." source={InputDemoSource} fn="AllowClearDemo">
+  <AllowClearDemo client:load slot="demo" />
+</Example>
+
+<Example title="Prefijo y Sufijo" description="Input con iconos de prefijo y sufijo." source={InputDemoSource} fn="PrefixSuffixDemo">
+  <PrefixSuffixDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Validación" description="Input con estado de validación para retroalimentación de formulario." source={InputDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Etiqueta Flotante" description="Input con etiqueta flotante animada que se mueve arriba cuando está enfocado o lleno." source={InputDemoSource} fn="FloatingLabelDemo">
+  <FloatingLabelDemo client:load slot="demo" />
+</Example>
+
+<Example title="Complementos" description="Input con texto o elementos antes/después (fuera del campo de entrada)." source={InputDemoSource} fn="AddonsDemo">
+  <AddonsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Input`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `type` | Tipo de input HTML | `'text' \| 'password' \| 'email' \| 'number' \| 'date' \| 'datetime-local' \| 'week' \| 'month' \| 'tel' \| 'url' \| 'search' \| 'time'` | `'text'` |
+| `size` | Tamaño de input | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | Variante de color de input | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `status` | Estado de validación (establece aria-invalid) | `'error' \| 'warning'` | - |
+| `ghost` | Variante ghost (transparente) | `boolean` | `false` |
+| `bordered` | Mostrar borde (establece en false para eliminar) | `boolean` | `true` |
+| `allowClear` | Mostrar botón de limpiar cuando el input tiene valor | `boolean \| { clearIcon?: ReactNode }` | `false` |
+| `onClear` | Callback cuando se hace clic en el botón de limpiar | `() => void` | - |
+| `prefix` | Icono o elemento de prefijo (dentro del input) | `React.ReactNode` | - |
+| `suffix` | Icono o elemento de sufijo (dentro del input) | `React.ReactNode` | - |
+| `addonBefore` | Texto/elemento antes del input (fuera, usando label de DaisyUI) | `React.ReactNode` | - |
+| `addonAfter` | Texto/elemento después del input (fuera, usando label de DaisyUI) | `React.ReactNode` | - |
+| `floatingLabel` | Texto de etiqueta flotante (usa floating-label de DaisyUI) | `string` | - |
+| `mask` | Patrón de máscara de input. Usa # para dígitos, A para letras, * para alfanumérico | `string` | - |
+| `maskPlaceholder` | Carácter de marcador de posición mostrado en la máscara | `string` | `'_'` |
+| `errorId` | ID del elemento de mensaje de error (para aria-describedby) | `string` | - |
+| `disabled` | Estado deshabilitado | `boolean` | `false` |
+| `placeholder` | Texto de marcador de posición | `string` | - |
+| `value` | Valor del input | `string` | - |
+| `onChange` | Manejador de evento de cambio | `(e: React.ChangeEvent<HTMLInputElement>) => void` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa elemento `<input>` nativo para soporte de teclado adecuado
+- El estado deshabilitado se comunica apropiadamente a tecnologías asistivas
+- El botón de limpiar tiene `aria-label` para lectores de pantalla
+- Usa `status="error"` para establecer `aria-invalid` automáticamente
+- Usa `errorId` para vincular el input al mensaje de error a través de `aria-describedby`
+- Los estados de enfoque son claramente visibles para navegación por teclado

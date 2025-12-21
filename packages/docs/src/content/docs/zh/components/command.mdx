@@ -1,0 +1,124 @@
+---
+title: Command 命令面板
+description: 用于快速搜索和操作的命令面板（⌘K）。支持键盘导航、分组项、嵌套页面，以及数据驱动和复合组件模式。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CompoundDemo,
+  WithIconsDemo,
+  KeywordsDemo,
+  NestedPagesDemo,
+  DisabledItemsDemo,
+  CustomShortcutDemo,
+  CustomFilterDemo,
+} from '../../../../components/CommandDemo'
+import CommandDemoSource from '../../../../components/CommandDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于快速搜索和操作的命令面板（⌘K）。支持键盘导航、分组项、嵌套页面，以及数据驱动和复合组件模式。
+
+## 引入
+
+```tsx
+import { Command } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="带分组项的数据驱动命令面板。" source={CommandDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="复合组件" description="使用复合组件构建命令面板以获得更多控制。" source={CommandDemoSource} fn="CompoundDemo">
+  <CompoundDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="带图标" description="为命令项添加图标以提供视觉上下文。" source={CommandDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="搜索关键词" description="添加额外的关键词使项可以通过替代术语找到。" source={CommandDemoSource} fn="KeywordsDemo">
+  <KeywordsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="嵌套页面" description="导航到带返回导航支持的子页面。在搜索为空时按 Backspace 或点击返回箭头返回。" source={CommandDemoSource} fn="NestedPagesDemo">
+  <NestedPagesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="禁用项" description="禁用特定项以防止选择。" source={CommandDemoSource} fn="DisabledItemsDemo">
+  <DisabledItemsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="自定义快捷键" description="将全局键盘快捷键从 ⌘K 更改为另一个键。" source={CommandDemoSource} fn="CustomShortcutDemo">
+  <CustomShortcutDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="自定义过滤" description="提供自定义过滤函数以实现高级匹配逻辑。" source={CommandDemoSource} fn="CustomFilterDemo">
+  <CustomFilterDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Command`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `open` | 受控的打开状态 | `boolean` | - |
+| `onOpenChange` | 打开状态改变时的回调函数 | `(open: boolean) => void` | - |
+| `defaultOpen` | 默认打开状态（非受控） | `boolean` | `false` |
+| `items` | 数据驱动的项配置 | `CommandItemConfig[]` | - |
+| `filter` | 自定义过滤函数 | `(value: string, search: string, keywords?: string[]) => boolean` | - |
+| `loop` | 在边缘处循环键盘导航 | `boolean` | `true` |
+| `shortcut` | 全局键盘快捷键 | `string[]` | `['k']` |
+| `placeholder` | 搜索输入占位符 | `string` | `'输入命令或搜索...'` |
+| `emptyMessage` | 未找到结果时的消息 | `ReactNode` | `'未找到结果。'` |
+
+### `CommandItemConfig`
+
+使用数据驱动的 `items` 属性时：
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 项的唯一键 | `string` | - |
+| `label` | 显示标签 | `ReactNode` | - |
+| `group` | 分类的组名 | `string` | - |
+| `keywords` | 额外的搜索关键词 | `string[]` | - |
+| `disabled` | 禁用项 | `boolean` | `false` |
+| `onSelect` | 选择项时的回调函数 | `() => void` | - |
+| `icon` | 要显示的图标元素 | `ReactNode` | - |
+
+### 复合组件
+
+要获得更多控制，请使用复合组件：
+
+| 组件 | 描述 |
+|-----------|-------------|
+| `Command.List` | 组和项的容器 |
+| `Command.Group` | 带可选标题的分组项 |
+| `Command.Item` | 可选择的命令项 |
+| `Command.Empty` | 无匹配结果时显示 |
+| `Command.Page` | 用于导航的嵌套页面 |
+| `Command.Separator` | 部分之间的视觉分隔符 |
+
+## 无障碍
+
+- 使用原生 `<dialog>` 元素进行焦点捕获和 ESC 处理
+- 搜索输入具有 `role="combobox"` 及适当的 ARIA 属性
+- 列表使用 `role="listbox"` 及 `role="option"` 项
+- 方向键键盘导航，Enter 选择，Escape 关闭
+- `aria-activedescendant` 跟踪高亮的项
+- 组使用 `role="group"` 及 `aria-label`
+
+## 键盘快捷键
+
+- `⌘K` / `Ctrl+K` - 打开命令面板（可自定义）
+- `↑` `↓` - 导航项
+- `Enter` - 选择高亮的项
+- `Escape` - 关闭面板（或在嵌套页面上返回）
+- `Backspace` - 返回上一页（当搜索为空时）

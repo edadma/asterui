@@ -1,0 +1,61 @@
+---
+title: Divider
+description: Separador visual para secciones de contenido con etiquetas de texto opcionales.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithTextDemo,
+  PositionDemo,
+  VerticalDemo,
+  ColorsDemo,
+} from '../../../../components/DividerDemo'
+import DividerDemoSource from '../../../../components/DividerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Separador visual para secciones de contenido con etiquetas de texto opcionales.
+
+## Importar
+
+```tsx
+import { Divider } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Divider Básico" description="Divisor horizontal simple." source={DividerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Texto" description="Divisor con etiqueta de texto." source={DividerDemoSource} fn="WithTextDemo">
+  <WithTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posición del Texto" description="Posiciona el texto al inicio, centro o final." source={DividerDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Divider Vertical" description="Divisor vertical para contenido en línea." source={DividerDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores" description="Divisores con diferentes tipos de color." source={DividerDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Divider`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Texto o contenido en el divisor | `React.ReactNode` | - |
+| `orientation` | Orientación del divisor | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `position` | Posición del texto | `'start' \| 'center' \| 'end'` | `'center'` |
+| `type` | Tipo de color | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `className` | Clases CSS adicionales | `string` | - |

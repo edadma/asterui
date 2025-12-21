@@ -1,0 +1,61 @@
+---
+title: Status 状态指示器
+description: 显示在线、离线、错误等状态的小指示点
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  AnimatedDemo,
+  ColorsDemo,
+} from '../../../../components/StatusDemo'
+import StatusDemoSource from '../../../../components/StatusDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+显示在线、离线、错误等状态的小指示点。
+
+## 导入
+
+```tsx
+import { Status } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础" description="不同状态的简单状态指示器。" source={StatusDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="可用的尺寸变体。" source={StatusDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="动画" description="Ping 和弹跳动画效果。" source={StatusDemoSource} fn="AnimatedDemo">
+  <AnimatedDemo client:load slot="demo" />
+</Example>
+
+<Example title="所有颜色" description="所有可用的颜色类型。" source={StatusDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `type` | 状态颜色类型 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'neutral'` |
+| `size` | 状态大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `ping` | Ping 动画效果 | `boolean` | `false` |
+| `bounce` | 弹跳动画效果 | `boolean` | `false` |
+| `label` | 可访问性标签 | `string` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 使用 `label` 属性提供可访问的名称
+- 考虑将其与文本配对以供屏幕阅读器用户使用
+- Ping 动画吸引人们对重要状态更改的注意

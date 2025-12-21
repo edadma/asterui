@@ -1,0 +1,74 @@
+---
+title: Alert
+description: Muestra mensajes importantes y notificaciones a los usuarios
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TypesDemo,
+  ActionDemo,
+  OutlineDemo,
+  DashDemo,
+  SoftDemo,
+} from '../../../../components/AlertDemo'
+import AlertDemoSource from '../../../../components/AlertDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Muestra mensajes importantes y notificaciones a los usuarios con diferentes tipos y estilos.
+
+## Importar
+
+```tsx
+import { Alert } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Alert Básico" description="Alerta simple con icono y texto." source={AlertDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tipos de Alerta" description="Diferentes variantes de color para estados de información, éxito, advertencia y error." source={AlertDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Botón de Acción" description="Alerta con botón de descarte o acción." source={AlertDemoSource} fn="ActionDemo">
+  <ActionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estilo Outline" description="Alerta con variante de contorno para una apariencia más ligera." source={AlertDemoSource} fn="OutlineDemo">
+  <OutlineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estilo Dash" description="Alerta con variante de borde punteado." source={AlertDemoSource} fn="DashDemo">
+  <DashDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estilo Soft" description="Alerta con colores de fondo suaves." source={AlertDemoSource} fn="SoftDemo">
+  <SoftDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Alert`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido de la alerta | `ReactNode` | - |
+| `type` | Variante de color de la alerta | `'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `outline` | Estilo de contorno | `boolean` | `false` |
+| `dash` | Estilo de contorno punteado | `boolean` | `false` |
+| `soft` | Estilo suave | `boolean` | `false` |
+| `vertical` | Disposición vertical | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa `role="alert"` para lectores de pantalla
+- El color no es el único indicador - los iconos proporcionan contexto adicional
+- Los botones de acción son accesibles mediante teclado

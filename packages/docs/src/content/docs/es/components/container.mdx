@@ -1,0 +1,46 @@
+---
+title: Container
+description: Contenedor de contenido centrado con ancho máximo configurable para diseños de página.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PageLayoutDemo,
+} from '../../../../components/ContainerDemo'
+import ContainerDemoSource from '../../../../components/ContainerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Contenedor de contenido centrado con ancho máximo configurable para diseños de página.
+
+## Importar
+
+```tsx
+import { Container } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Uso Básico" description="Container proporciona contenido centrado con ancho máximo y relleno responsivo." source={ContainerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diseño de Página" description="Uso típico para contenido de página." source={ContainerDemoSource} fn="PageLayoutDemo">
+  <PageLayoutDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Container`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del contenedor | `React.ReactNode` | - |
+| `size` | Tamaño de ancho máximo | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| 'full'` | `'xl'` |
+| `centered` | Centrar contenedor horizontalmente | `boolean` | `true` |
+| `padding` | Agregar relleno horizontal | `boolean` | `true` |
+| `className` | Clases CSS adicionales | `string` | - |

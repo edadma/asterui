@@ -1,0 +1,91 @@
+---
+title: Popconfirm 气泡确认框
+description: 通过点击操作触发的简单确认对话框。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DescriptionDemo,
+  PlacementsDemo,
+  CustomTextDemo,
+  AsyncDemo,
+  CustomIconDemo,
+  NoCancelDemo,
+  DisabledDemo,
+} from '../../../../components/PopconfirmDemo'
+import PopconfirmDemoSource from '../../../../components/PopconfirmDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+通过点击操作触发的简单确认对话框。
+
+## 导入
+
+```tsx
+import { Popconfirm } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础" description="带标题的简单气泡确认框。" source={PopconfirmDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带描述" description="添加描述以获得更多上下文。" source={PopconfirmDemoSource} fn="DescriptionDemo">
+  <DescriptionDemo client:load slot="demo" />
+</Example>
+
+<Example title="位置" description="气泡确认框可以放置在不同的位置。" source={PopconfirmDemoSource} fn="PlacementsDemo">
+  <PlacementsDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义文本" description="自定义按钮文本和类型。" source={PopconfirmDemoSource} fn="CustomTextDemo">
+  <CustomTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="异步确认" description="使用加载状态处理异步操作。" source={PopconfirmDemoSource} fn="AsyncDemo">
+  <AsyncDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义图标" description="自定义或隐藏图标。" source={PopconfirmDemoSource} fn="CustomIconDemo">
+  <CustomIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="无取消按钮" description="隐藏取消按钮以进行仅确认的确认。" source={PopconfirmDemoSource} fn="NoCancelDemo">
+  <NoCancelDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用" description="禁用的气泡确认框。" source={PopconfirmDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Popconfirm`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 触发元素 | `React.ReactElement` | - |
+| `title` | 确认的标题 | `React.ReactNode` | - |
+| `description` | 描述文本 | `React.ReactNode` | - |
+| `onConfirm` | 确认时的回调(支持异步) | `() => void \| Promise<void>` | - |
+| `onCancel` | 取消时的回调 | `() => void` | - |
+| `okText` | 确认按钮的文本 | `string` | `'OK'` |
+| `cancelText` | 取消按钮的文本 | `string` | `'Cancel'` |
+| `okType` | 确认按钮的按钮类型 | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'error' \| 'info'` | `'primary'` |
+| `cancelType` | 取消按钮的按钮类型 | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'error' \| 'info' \| 'ghost'` | `'ghost'` |
+| `placement` | 确认弹出窗口的位置 | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` |
+| `disabled` | 气泡确认框是否禁用 | `boolean` | `false` |
+| `icon` | 自定义图标(null 隐藏默认图标) | `React.ReactNode` | - |
+| `showCancel` | 显示取消按钮 | `boolean` | `true` |
+
+## 可访问性
+
+- 打开时焦点被困在气泡确认框内
+- Escape 键关闭气泡确认框
+- 按钮可通过键盘访问
+- 加载状态通过 `aria-busy` 进行通信

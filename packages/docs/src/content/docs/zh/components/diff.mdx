@@ -1,0 +1,54 @@
+---
+title: Diff
+description: 带交互式调整器的并排对比。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TextDemo,
+  AspectDemo,
+} from '../../../../components/DiffDemo'
+import DiffDemoSource from '../../../../components/DiffDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+带交互式调整器的并排对比。
+
+## 导入
+
+```tsx
+import { Diff } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="图片对比" description="使用可拖动滑块对比两张图片。" source={DiffDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="文本对比" description="对比不同样式的文本。" source={DiffDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义宽高比" description="使用不同的宽高比。" source={DiffDemoSource} fn="AspectDemo">
+  <AspectDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `left` | 左侧内容（拖动时显示） | `React.ReactNode` | - |
+| `right` | 右侧内容（拖动时隐藏） | `React.ReactNode` | - |
+| `aspect` | 宽高比类名 | `string` | `'aspect-16/9'` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 支持 Tab 键进行键盘导航
+- 使用 `role="img"` 表示语义含义
+- 聚焦时可用方向键控制调整器位置

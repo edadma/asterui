@@ -1,0 +1,73 @@
+---
+title: Code
+description: Exibição de maquete de código para comandos de terminal e trechos de código.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MultilineDemo,
+  LineNumbersDemo,
+  HighlightDemo,
+  CopyableDemo,
+  CopyableMultilineDemo,
+} from '../../../../components/CodeDemo'
+import CodeDemoSource from '../../../../components/CodeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exibição de maquete de código para comandos de terminal e trechos de código.
+
+## Importação
+
+```tsx
+import { Code } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Bloco de Código Básico" description="Maquete de código simples com prefixo de comando." source={CodeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Múltiplas Linhas" description="Bloco de código com múltiplas linhas e prefixos diferentes." source={CodeDemoSource} fn="MultilineDemo">
+  <MultilineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Números de Linha" description="Bloco de código com prefixos de número de linha." source={CodeDemoSource} fn="LineNumbersDemo">
+  <LineNumbersDemo client:load slot="demo" />
+</Example>
+
+<Example title="Linhas Destacadas" description="Bloco de código com linhas destacadas para ênfase." source={CodeDemoSource} fn="HighlightDemo">
+  <HighlightDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Botão de Copiar" description="Adicionar um botão de copiar com a prop copyable." source={CodeDemoSource} fn="CopyableDemo">
+  <CopyableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Botão de Copiar (Multilinha)" description="Botão de copiar funciona também com múltiplas linhas." source={CodeDemoSource} fn="CopyableMultilineDemo">
+  <CopyableMultilineDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Code`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo das linhas de código | `React.ReactNode` | - |
+| `copyable` | Mostrar botão de copiar. Passe true para extrair texto automaticamente, ou uma string para texto de cópia personalizado | `boolean \| string` | `false` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `Code.Line`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo da linha | `React.ReactNode` | - |
+| `prefix` | Prefixo da linha (ex: $, >, número de linha) | `string` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+| `highlight` | Destacar esta linha | `boolean` | `false` |

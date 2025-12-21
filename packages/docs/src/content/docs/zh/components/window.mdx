@@ -1,0 +1,69 @@
+---
+title: Window 窗口
+description: 用于展示代码或内容的操作系统风格窗口模型组件。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithCodeDemo,
+  MultiLineDemo,
+  WithPrefixDemo,
+  StyledDemo,
+  ContentDemo,
+} from '../../../../components/WindowDemo'
+import WindowDemoSource from '../../../../components/WindowDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于展示代码或内容的操作系统风格窗口模型组件。
+
+## 导入
+
+```tsx
+import { Window } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础窗口" description="带有内容的简单窗口模型。" source={WindowDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带代码" description="包含代码显示的窗口。" source={WindowDemoSource} fn="WithCodeDemo">
+  <WithCodeDemo client:load slot="demo" />
+</Example>
+
+<Example title="多行代码" description="带有多行代码的窗口。" source={WindowDemoSource} fn="MultiLineDemo">
+  <MultiLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="带前缀" description="带有命令前缀的代码行。" source={WindowDemoSource} fn="WithPrefixDemo">
+  <WithPrefixDemo client:load slot="demo" />
+</Example>
+
+<Example title="样式窗口" description="具有不同背景的自定义样式窗口。" source={WindowDemoSource} fn="StyledDemo">
+  <StyledDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义内容" description="带有自定义内容样式的窗口。" source={WindowDemoSource} fn="ContentDemo">
+  <ContentDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 窗口内容 | `React.ReactNode` | - |
+| `className` | 窗口的额外 CSS 类 | `string` | - |
+| `contentClassName` | 内容区域的额外 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 窗口框架是装饰性的,标记为表现性
+- 内容区域保持正确的阅读顺序
+- 代码块可由屏幕阅读器读取
+- 交通灯按钮是非交互式装饰

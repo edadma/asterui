@@ -1,0 +1,125 @@
+---
+title: Badge 徽标
+description: 通知徽标、状态指示器和用于突出显示内容的缎带
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  OverflowDemo,
+  PositionDemo,
+  OffsetDemo,
+  StatusDemo,
+  RibbonDemo,
+  RibbonColorsDemo,
+  DotDemo,
+  ColorsDemo,
+  CustomColorsDemo,
+  SizesDemo,
+  ShowZeroDemo,
+  VariantsDemo,
+} from '../../../../components/BadgeDemo'
+import BadgeDemoSource from '../../../../components/BadgeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+通知徽标、状态指示器和用于突出显示内容的缎带。
+
+## 引入
+
+```tsx
+import { Badge } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本通知徽标" description="在元素上显示计数徽标。" source={BadgeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="溢出计数" description="超过溢出阈值时显示计数+。" source={BadgeDemoSource} fn="OverflowDemo">
+  <OverflowDemo client:load slot="demo" />
+</Example>
+
+<Example title="徽标位置" description="将徽标放置在 9 个角的任意位置。" source={BadgeDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="徽标偏移" description="使用像素偏移微调徽标位置。" source={BadgeDemoSource} fn="OffsetDemo">
+  <OffsetDemo client:load slot="demo" />
+</Example>
+
+<Example title="状态徽标" description="带可选文本标签的状态指示器。" source={BadgeDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="缎带徽标" description="使用 Badge.Ribbon 的装饰性缎带样式徽标。" source={BadgeDemoSource} fn="RibbonDemo">
+  <RibbonDemo client:load slot="demo" />
+</Example>
+
+<Example title="缎带颜色" description="缎带支持不同的颜色类型和自定义颜色。" source={BadgeDemoSource} fn="RibbonColorsDemo">
+  <RibbonColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="点徽标" description="用于在线状态或状态的小圆形指示器。" source={BadgeDemoSource} fn="DotDemo">
+  <DotDemo client:load slot="demo" />
+</Example>
+
+<Example title="徽标颜色" description="不同颜色的独立计数徽标。" source={BadgeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义颜色" description="使用 color 属性设置自定义徽标颜色。" source={BadgeDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="徽标尺寸" description="徽标有五种可用尺寸。" source={BadgeDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="显示零" description="即使计数为 0 也显示徽标。" source={BadgeDemoSource} fn="ShowZeroDemo">
+  <ShowZeroDemo client:load slot="demo" />
+</Example>
+
+<Example title="徽标变体" description="徽标的不同视觉样式。" source={BadgeDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Badge`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `count` | 在徽标中显示的数字 | `number` | - |
+| `showZero` | 计数为 0 时是否显示徽标 | `boolean` | `false` |
+| `overflowCount` | 显示计数+ 前的最大计数 | `number` | `99` |
+| `position` | 包裹子元素时徽标的位置 | `'top-start' \| 'top-center' \| 'top-end' \| 'middle-start' \| 'middle-center' \| 'middle-end' \| 'bottom-start' \| 'bottom-center' \| 'bottom-end'` | `'top-end'` |
+| `offset` | 距离默认位置的像素偏移 [x, y] | `[number, number]` | - |
+| `status` | 带彩色点的状态徽标模式 | `'success' \| 'processing' \| 'error' \| 'default' \| 'warning'` | - |
+| `text` | 与状态徽标一起显示的文本 | `string` | - |
+| `dot` | 显示小圆点而不是计数 | `boolean` | `false` |
+| `type` | 徽标颜色类型 | `'default' \| 'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'error'` |
+| `size` | 徽标大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `variant` | 徽标样式变体 | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost'` | `'solid'` |
+| `color` | 自定义背景颜色 | `string` | - |
+| `children` | 要用徽标包裹的元素（通知模式） | `ReactNode` | - |
+
+### `Badge.Ribbon`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `text` | 缎带文本内容 | `string` | 必填 |
+| `placement` | 缎带位置 | `'start' \| 'end'` | `'end'` |
+| `type` | 缎带颜色类型 | 与 Badge type 相同 | `'primary'` |
+| `color` | 自定义背景颜色 | `string` | - |
+| `children` | 要用缎带包裹的元素 | `ReactNode` | 必填 |
+
+## 无障碍
+
+- 状态徽标使用 `role="status"`
+- 为屏幕阅读器提供带计数或通知状态的 `aria-label`
+- 处理中状态包含视觉脉冲动画

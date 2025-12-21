@@ -1,0 +1,165 @@
+---
+title: Table
+description: Componente de tabela com recursos avançados para exibir dados tabulares.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomRenderDemo,
+  StripedDemo,
+  BorderedDemo,
+  SizeXsDemo,
+  SizeXlDemo,
+  EmptyDemo,
+  LoadingDemo,
+  PaginationDemo,
+  PaginationFeaturesDemo,
+  PinnedDemo,
+  SortingDemo,
+  ControlledSortDemo,
+  FilteringDemo,
+  SelectionDemo,
+  RadioSelectionDemo,
+  ExpandableDemo,
+  EllipsisDemo,
+  ScrollDemo,
+  CompleteDemo,
+} from '../../../../components/TableDemo'
+import TableDemoSource from '../../../../components/TableDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de tabela com recursos avançados para exibir dados tabulares.
+
+## Importação
+
+```tsx
+import { Table } from 'asterui'
+import type { ColumnType, RowSelection, ExpandableConfig, PaginationConfig } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Tabela Básica" description="Tabela simples com dados." source={TableDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Renderização Personalizada" description="Use funções de renderização para tags, botões e conteúdo personalizado." source={TableDemoSource} fn="CustomRenderDemo">
+  <CustomRenderDemo client:load slot="demo" />
+</Example>
+
+<Example title="Linhas Listradas" description="Listras zebra para melhor legibilidade." source={TableDemoSource} fn="StripedDemo">
+  <StripedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tabela com Bordas" description="Adicione bordas para uma aparência mais definida." source={TableDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanho Compacto" description="Tamanho extra pequeno para dados densos." source={TableDemoSource} fn="SizeXsDemo">
+  <SizeXsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanho Extra Grande" description="Tamanho extra grande para ênfase." source={TableDemoSource} fn="SizeXlDemo">
+  <SizeXlDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado Vazio" description="Mensagem de estado vazio personalizável." source={TableDemoSource} fn="EmptyDemo">
+  <EmptyDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Carregamento" description="Mostra spinner de carregamento enquanto busca dados." source={TableDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Paginação Básica" description="Pagine grandes conjuntos de dados." source={TableDemoSource} fn="PaginationDemo">
+  <PaginationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Paginação Avançada" description="Seletor de tamanho de página, salto rápido e exibição de total." source={TableDemoSource} fn="PaginationFeaturesDemo">
+  <PaginationFeaturesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cabeçalho Fixo" description="Mantém o cabeçalho visível ao rolar." source={TableDemoSource} fn="PinnedDemo">
+  <PinnedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ordenação de Colunas" description="Clique nos cabeçalhos das colunas para ordenar dados." source={TableDemoSource} fn="SortingDemo">
+  <SortingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ordenação Controlada" description="Controle externamente o estado de ordenação." source={TableDemoSource} fn="ControlledSortDemo">
+  <ControlledSortDemo client:load slot="demo" />
+</Example>
+
+<Example title="Filtragem de Colunas" description="Adicione dropdowns de filtro às colunas." source={TableDemoSource} fn="FilteringDemo">
+  <FilteringDemo client:load slot="demo" />
+</Example>
+
+<Example title="Seleção com Checkbox" description="Habilite seleção de linhas com checkboxes." source={TableDemoSource} fn="SelectionDemo">
+  <SelectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Seleção com Radio" description="Seleção de linha única com botões de rádio." source={TableDemoSource} fn="RadioSelectionDemo">
+  <RadioSelectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Linhas Expansíveis" description="Expanda linhas para mostrar conteúdo adicional." source={TableDemoSource} fn="ExpandableDemo">
+  <ExpandableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Texto com Elipse" description="Trunca texto longo com elipse." source={TableDemoSource} fn="EllipsisDemo">
+  <EllipsisDemo client:load slot="demo" />
+</Example>
+
+<Example title="Configuração de Scroll" description="Define largura e altura máxima com rolagem." source={TableDemoSource} fn="ScrollDemo">
+  <ScrollDemo client:load slot="demo" />
+</Example>
+
+<Example title="Exemplo Completo" description="Tabela com múltiplos recursos combinados." source={TableDemoSource} fn="CompleteDemo">
+  <CompleteDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Table`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `columns` | Configuração de colunas da tabela | `ColumnType<T>[]` | `-` |
+| `dataSource` | Dados a exibir na tabela | `T[]` | `-` |
+| `rowKey` | Chave única para cada linha | `keyof T \| ((record: T) => string)` | `'id'` |
+| `loading` | Estado de carregamento | `boolean` | `false` |
+| `size` | Tamanho da tabela | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `bordered` | Adicionar borda ao redor da tabela | `boolean` | `false` |
+| `hoverable` | Destacar linha ao passar o cursor | `boolean` | `true` |
+| `striped` | Cores de linha alternadas (listras zebra) | `boolean` | `false` |
+| `pinRows` | Fixar linhas de cabeçalho ao rolar | `boolean` | `false` |
+| `pinCols` | Fixar colunas ao rolar | `boolean` | `false` |
+| `pagination` | Configuração de paginação ou false para desabilitar | `false \| PaginationConfig` | `{ pageSize: 10 }` |
+| `rowSelection` | Configuração de seleção de linhas | `RowSelection<T>` | `-` |
+| `expandable` | Configuração de linhas expansíveis | `ExpandableConfig<T>` | `-` |
+| `scroll` | Configuração de scroll para dimensões fixas | `ScrollConfig` | `-` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+| `onRow` | Manipuladores de eventos de linha | `(record: T, index: number) => HTMLAttributes` | `-` |
+| `onChange` | Callback unificado para paginação, ordenação e filtragem | `(pagination, filters, sorter, extra) => void` | `-` |
+| `onSortChange` | Callback quando a ordenação muda | `(sorter: SorterResult<T>) => void` | `-` |
+| `onFilterChange` | Callback quando o filtro muda | `(filters: Record<string, ...>) => void` | `-` |
+| `locale` | Config de localização para texto vazio, labels de filtro | `{ emptyText?, filterConfirm?, filterReset?, selectAll? }` | `-` |
+| `data-testid` | ID de teste para o componente | `string` | `'table'` |
+| `aria-label` | Label acessível para a tabela | `string` | `-` |
+
+## Acessibilidade
+
+- Usa `<table>` semântica com `role="grid"`
+- Cabeçalhos de coluna incluem `role="columnheader"` e `aria-sort` para colunas ordenáveis
+- Checkboxes de seleção de linha têm `aria-label` apropriado
+- Controles de ordenação são acessíveis por teclado (Enter/Space para alternar)
+- Dropdowns de filtro suportam tecla Escape para fechar
+- Botões de paginação incluem `aria-label` e `aria-current`
+- Botões de expandir/recolher incluem `aria-expanded`
+- Estado de checkbox indeterminado para seleção parcial

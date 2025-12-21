@@ -1,0 +1,140 @@
+---
+title: Timeline 时间轴
+description: 按时间顺序显示事件,支持交替或垂直布局。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  HorizontalDemo,
+  CompactDemo,
+  SnapIconDemo,
+  ColorsDemo,
+  ModeStartDemo,
+  ModeEndDemo,
+  PendingDemo,
+  LoadingDemo,
+  ReverseDemo,
+  DeclarativeDemo,
+} from '../../../../components/TimelineDemo'
+import TimelineDemoSource from '../../../../components/TimelineDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+按时间顺序显示事件,支持交替或垂直布局。
+
+## 导入
+
+```tsx
+import { Timeline } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础时间轴" description="带有交替内容的简单时间轴。" source={TimelineDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="垂直时间轴" description="垂直堆叠项目。" source={TimelineDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="水平时间轴" description="水平显示项目。" source={TimelineDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="紧凑时间轴" description="所有内容都在一侧。" source={TimelineDemoSource} fn="CompactDemo">
+  <CompactDemo client:load slot="demo" />
+</Example>
+
+<Example title="对齐图标" description="将图标对齐到开始而不是居中。" source={TimelineDemoSource} fn="SnapIconDemo">
+  <SnapIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="对时间轴项目应用不同的颜色。" source={TimelineDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="模式: 开始" description="所有项目对齐到开始。" source={TimelineDemoSource} fn="ModeStartDemo">
+  <ModeStartDemo client:load slot="demo" />
+</Example>
+
+<Example title="模式: 结束" description="所有项目对齐到结束。" source={TimelineDemoSource} fn="ModeEndDemo">
+  <ModeEndDemo client:load slot="demo" />
+</Example>
+
+<Example title="待处理状态" description="在末尾显示正在进行的活动。" source={TimelineDemoSource} fn="PendingDemo">
+  <PendingDemo client:load slot="demo" />
+</Example>
+
+<Example title="加载状态" description="在单个项目上显示加载微调器。" source={TimelineDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="反向顺序" description="反转时间轴项目的顺序。" source={TimelineDemoSource} fn="ReverseDemo">
+  <ReverseDemo client:load slot="demo" />
+</Example>
+
+<Example title="声明式 API" description="使用 items 属性进行数据驱动的时间轴。" source={TimelineDemoSource} fn="DeclarativeDemo">
+  <DeclarativeDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Timeline`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 时间轴项目(复合模式) | `React.ReactNode` | `-` |
+| `items` | 时间轴项目(声明式 API) | `TimelineItemConfig[]` | `-` |
+| `vertical` | 垂直布局方向 | `boolean` | `false` |
+| `horizontal` | 水平布局(默认) | `boolean` | `false` |
+| `compact` | 所有项目在一侧 | `boolean` | `false` |
+| `snapIcon` | 将图标对齐到开始而不是居中 | `boolean` | `false` |
+| `mode` | 项目分布布局 | `'start' \| 'alternate' \| 'end'` | `'alternate'` |
+| `reverse` | 反转项目顺序 | `boolean` | `false` |
+| `pending` | 在末尾显示待处理/加载指示器 | `React.ReactNode` | `-` |
+| `pendingIcon` | 待处理项目的自定义图标 | `React.ReactNode` | `-` |
+| `data-testid` | 组件的测试 ID | `string` | `'timeline'` |
+| `aria-label` | 时间轴的可访问标签 | `string` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+### `Timeline.Item`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `start` | 开始位置的内容(左/上) | `React.ReactNode` | `-` |
+| `end` | 结束位置的内容(右/下) | `React.ReactNode` | `-` |
+| `icon` | 中央图标或标记 | `React.ReactNode` | `-` |
+| `startBox` | 在 timeline-box 中包装开始内容 | `boolean` | `false` |
+| `endBox` | 在 timeline-box 中包装结束内容 | `boolean` | `false` |
+| `color` | 时间轴点/连接器的颜色 | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | `-` |
+| `loading` | 显示加载微调器而不是图标 | `boolean` | `false` |
+| `data-testid` | 此项目的测试 ID | `string` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+### `TimelineItemConfig`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 项目的唯一键 | `React.Key` | `-` |
+| `start` | 开始位置的内容 | `React.ReactNode` | `-` |
+| `end` | 结束位置的内容 | `React.ReactNode` | `-` |
+| `icon` | 中央图标或标记 | `React.ReactNode` | `-` |
+| `startBox` | 在 timeline-box 中包装开始内容 | `boolean` | `false` |
+| `endBox` | 在 timeline-box 中包装结束内容 | `boolean` | `false` |
+| `color` | 时间轴点/连接器的颜色 | `TimelineColor` | `-` |
+| `loading` | 显示加载微调器 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+- 使用语义列表结构(`role="list"`)以供屏幕阅读器使用
+- 时间轴项目按顺序宣布
+- 支持 `aria-label` 以描述时间轴目的
+- 连接器是装饰性的,对辅助技术隐藏
+- 加载状态包含可视微调器指示器

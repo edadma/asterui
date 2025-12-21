@@ -1,0 +1,230 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro'
+
+// Helper to get image paths - returns both light and dark versions
+const getImages = (slug: string) => {
+  const animated = ['carousel', 'countdown', 'loading', 'textrotate']
+  const ext = animated.includes(slug) ? 'gif' : 'png'
+  return {
+    light: `/components/${slug}.${ext}`,
+    dark: `/components/${slug}-dark.${ext}`,
+  }
+}
+
+const categories = [
+  {
+    name: '操作',
+    components: [
+      { name: 'Button', slug: 'button', description: '触发不同样式和状态的操作。' },
+      { name: 'CopyButton', slug: 'copybutton', description: '一键复制到剪贴板。' },
+      { name: 'Dropdown', slug: 'dropdown', description: '用于操作或导航的下拉菜单。' },
+      { name: 'FloatButton', slug: 'floatbutton', description: '用于主要操作的悬浮按钮。' },
+    ],
+  },
+  {
+    name: '数据展示',
+    components: [
+      { name: 'Avatar', slug: 'avatar', description: '显示头像或首字母缩写。' },
+      { name: 'Badge', slug: 'badge', description: '小型状态指示器和计数器。' },
+      { name: 'Card', slug: 'card', description: '相关内容和操作的容器。' },
+      { name: 'Carousel', slug: 'carousel', description: '轮播图片或内容。' },
+      { name: 'Chart', slug: 'chart', description: '使用ApexCharts进行数据可视化。' },
+      { name: 'Chat', slug: 'chat', description: '消息界面的聊天气泡。' },
+      { name: 'Collapse', slug: 'collapse', description: '可展开的内容面板。' },
+      { name: 'Countdown', slug: 'countdown', description: '动画倒计时计时器。' },
+      { name: 'Descriptions', slug: 'descriptions', description: '显示键值对。' },
+      { name: 'Diff', slug: 'diff', description: '显示两个项目之间的差异。' },
+      { name: 'Empty', slug: 'empty', description: '空状态的占位符。' },
+      { name: 'HoverGallery', slug: 'hovergallery', description: '带悬停效果的图片画廊。' },
+      { name: 'Image', slug: 'image', description: '增强的图片组件，支持预览和回退。' },
+      { name: 'List', slug: 'list', description: '显示项目集合。' },
+      { name: 'VirtualList', slug: 'virtuallist', description: '高效渲染长列表。' },
+      { name: 'MonthCalendar', slug: 'monthcalendar', description: '月视图日历。' },
+      { name: 'Popover', slug: 'popover', description: '悬停或点击时的浮动内容。' },
+      { name: 'QRCode', slug: 'qrcode', description: '生成可扫描的二维码。' },
+      { name: 'Stat', slug: 'stat', description: '显示统计数据和指标。' },
+      { name: 'Status', slug: 'status', description: '显示在线/离线状态。' },
+      { name: 'Table', slug: 'table', description: '显示表格数据，支持排序和选择。' },
+      { name: 'Tag', slug: 'tag', description: '用标签对内容进行分类。' },
+      { name: 'Timeline', slug: 'timeline', description: '按时间顺序显示事件。' },
+      { name: 'Tooltip', slug: 'tooltip', description: '悬停时显示附加信息。' },
+      { name: 'Tree', slug: 'tree', description: '层级数据展示。' },
+      { name: 'WeekCalendar', slug: 'weekcalendar', description: '周视图日历。' },
+    ],
+  },
+  {
+    name: '数据录入',
+    components: [
+      { name: 'Autocomplete', slug: 'autocomplete', description: '带下拉建议的输入框。' },
+      { name: 'Cascader', slug: 'cascader', description: '多级选择器。' },
+      { name: 'Checkbox', slug: 'checkbox', description: '多选控件。' },
+      { name: 'ColorPicker', slug: 'colorpicker', description: '可视化选择颜色。' },
+      { name: 'DatePicker', slug: 'datepicker', description: '从日历选择日期。' },
+      { name: 'Fieldset', slug: 'fieldset', description: '分组表单字段。' },
+      { name: 'FileInput', slug: 'fileinput', description: '文件选择输入。' },
+      { name: 'Filter', slug: 'filter', description: '使用多个条件过滤数据。' },
+      { name: 'Form', slug: 'form', description: '带验证的表单处理。' },
+      { name: 'Input', slug: 'input', description: '文本输入框。' },
+      { name: 'InputNumber', slug: 'inputnumber', description: '带控件的数字输入。' },
+      { name: 'Mention', slug: 'mention', description: '支持@提及的输入框。' },
+      { name: 'OTPInput', slug: 'otpinput', description: '一次性密码输入。' },
+      { name: 'Radio', slug: 'radio', description: '在选项中单选。' },
+      { name: 'Range', slug: 'range', description: '在范围内选择值。' },
+      { name: 'Rating', slug: 'rating', description: '星级评分输入。' },
+      { name: 'RichTextEditor', slug: 'richtexteditor', description: '所见即所得文本编辑器。' },
+      { name: 'Segmented', slug: 'segmented', description: '分段切换控件。' },
+      { name: 'Select', slug: 'select', description: '下拉选择。' },
+      { name: 'Textarea', slug: 'textarea', description: '多行文本输入。' },
+      { name: 'TimePicker', slug: 'timepicker', description: '选择时间。' },
+      { name: 'Toggle', slug: 'toggle', description: '开/关切换开关。' },
+      { name: 'Transfer', slug: 'transfer', description: '在列表间移动项目。' },
+      { name: 'TreeSelect', slug: 'treeselect', description: '从层级选项中选择。' },
+      { name: 'Upload', slug: 'upload', description: '拖拽上传文件。' },
+    ],
+  },
+  {
+    name: '反馈',
+    components: [
+      { name: 'Alert', slug: 'alert', description: '显示重要消息。' },
+      { name: 'Drawer', slug: 'drawer', description: '从边缘滑出的面板。' },
+      { name: 'Loading', slug: 'loading', description: '加载指示器。' },
+      { name: 'Message', slug: 'message', description: '简短的反馈消息。' },
+      { name: 'Modal', slug: 'modal', description: '弹出对话框。' },
+      { name: 'Notification', slug: 'notification', description: 'Toast通知。' },
+      { name: 'Popconfirm', slug: 'popconfirm', description: '操作前确认。' },
+      { name: 'Progress', slug: 'progress', description: '显示进度。' },
+      { name: 'RadialProgress', slug: 'radialprogress', description: '圆形进度指示器。' },
+      { name: 'Result', slug: 'result', description: '显示操作结果。' },
+      { name: 'Skeleton', slug: 'skeleton', description: '加载占位形状。' },
+    ],
+  },
+  {
+    name: '导航',
+    components: [
+      { name: 'Anchor', slug: 'anchor', description: '导航到页面各部分。' },
+      { name: 'Breadcrumb', slug: 'breadcrumb', description: '显示导航层级。' },
+      { name: 'Command', slug: 'command', description: '快速操作的命令面板。' },
+      { name: 'ContextMenu', slug: 'contextmenu', description: '右键菜单。' },
+      { name: 'Dock', slug: 'dock', description: 'macOS风格的dock导航。' },
+      { name: 'Menu', slug: 'menu', description: '垂直导航菜单。' },
+      { name: 'Navbar', slug: 'navbar', description: '顶部导航栏。' },
+      { name: 'Pagination', slug: 'pagination', description: '页面间导航。' },
+      { name: 'ResponsiveDrawer', slug: 'responsivedrawer', description: '响应式侧边栏导航。' },
+      { name: 'Steps', slug: 'steps', description: '步骤进度指示器。' },
+      { name: 'Tabs', slug: 'tabs', description: '标签页导航。' },
+    ],
+  },
+  {
+    name: '布局',
+    components: [
+      { name: 'Container', slug: 'container', description: '居中内容包装器。' },
+      { name: 'Divider', slug: 'divider', description: '分隔内容区域。' },
+      { name: 'Flex', slug: 'flex', description: 'Flexbox布局助手。' },
+      { name: 'Footer', slug: 'footer', description: '页脚组件。' },
+      { name: 'Grid', slug: 'grid', description: '响应式网格布局。' },
+      { name: 'Hero', slug: 'hero', description: '首页Hero区域。' },
+      { name: 'Join', slug: 'join', description: '将元素组合在一起。' },
+      { name: 'Layout', slug: 'layout', description: '页面布局结构。' },
+      { name: 'Masonry', slug: 'masonry', description: 'Pinterest风格瀑布流布局。' },
+      { name: 'Responsive', slug: 'responsive', description: '按断点显示/隐藏。' },
+      { name: 'Space', slug: 'space', description: '添加一致的间距。' },
+      { name: 'Splitter', slug: 'splitter', description: '可调整大小的面板。' },
+    ],
+  },
+  {
+    name: '其他',
+    components: [
+      { name: 'Affix', slug: 'affix', description: '将元素固定到视口。' },
+      { name: 'Browser', slug: 'browser', description: '浏览器窗口模型。' },
+      { name: 'Code', slug: 'code', description: '显示代码片段。' },
+      { name: 'ConfigProvider', slug: 'configprovider', description: '全局配置。' },
+      { name: 'Kbd', slug: 'kbd', description: '键盘按键显示。' },
+      { name: 'Mask', slug: 'mask', description: '应用图片遮罩。' },
+      { name: 'Phone', slug: 'phone', description: '手机设备模型。' },
+      { name: 'TextRotate', slug: 'textrotate', description: '动画旋转文本。' },
+      { name: 'ThemeController', slug: 'themecontroller', description: '主题切换控制。' },
+      { name: 'Tour', slug: 'tour', description: '产品引导教程。' },
+      { name: 'Typography', slug: 'typography', description: '文本样式组件。' },
+      { name: 'Watermark', slug: 'watermark', description: '为内容添加水印。' },
+      { name: 'Window', slug: 'window', description: '窗口框架模型。' },
+    ],
+  },
+]
+
+const totalComponents = categories.reduce((acc, cat) => acc + cat.components.length, 0)
+---
+
+<StarlightPage
+  frontmatter={{
+    title: '组件总览',
+    description: `浏览AsterUI的${totalComponents}个组件。`,
+    tableOfContents: false,
+  }}
+>
+  <div class="sl-markdown-content">
+    <p class="text-lg mb-8">
+      AsterUI提供{totalComponents}个基于DaisyUI和Tailwind CSS构建的组件。
+    </p>
+
+    <div class="search-box mb-8">
+      <input
+        type="text"
+        id="component-search"
+        placeholder="搜索组件..."
+        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-transparent"
+      />
+    </div>
+
+    {categories.map((category) => (
+      <section class="category-section mb-10" data-category={category.name}>
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          {category.name}
+          <span class="text-sm font-normal text-gray-500">({category.components.length})</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {category.components.map((comp) => (
+            <a
+              href={`/zh/components/${comp.slug}`}
+              class="component-card block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition-all"
+              data-name={comp.name.toLowerCase()}
+              data-description={comp.description.toLowerCase()}
+            >
+              <h3 class="font-medium mb-1">{comp.name}</h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{comp.description}</p>
+              <div class="h-16 flex items-center justify-center">
+                <img src={getImages(comp.slug).light} alt={comp.name} class="max-h-full max-w-full object-contain light-only" />
+                <img src={getImages(comp.slug).dark} alt={comp.name} class="max-h-full max-w-full object-contain dark-only" />
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <script>
+    // Add wide layout class
+    document.body.classList.add('components-overview')
+
+    const searchInput = document.getElementById('component-search') as HTMLInputElement
+    const cards = document.querySelectorAll('.component-card')
+    const sections = document.querySelectorAll('.category-section')
+
+    searchInput?.addEventListener('input', (e) => {
+      const query = (e.target as HTMLInputElement).value.toLowerCase()
+
+      cards.forEach((card) => {
+        const name = card.getAttribute('data-name') || ''
+        const description = card.getAttribute('data-description') || ''
+        const matches = name.includes(query) || description.includes(query)
+        ;(card as HTMLElement).style.display = matches ? '' : 'none'
+      })
+
+      // Hide empty sections
+      sections.forEach((section) => {
+        const visibleCards = section.querySelectorAll('.component-card:not([style*="display: none"])')
+        ;(section as HTMLElement).style.display = visibleCards.length > 0 ? '' : 'none'
+      })
+    })
+  </script>
+</StarlightPage>

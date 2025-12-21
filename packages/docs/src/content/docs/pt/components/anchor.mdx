@@ -1,0 +1,75 @@
+---
+title: Anchor
+description: Navegar para seções da página com destaque de scroll spy.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HorizontalDemo,
+  NestedDemo,
+} from '../../../../components/AnchorDemo'
+import AnchorDemoSource from '../../../../components/AnchorDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Navegar para seções da página com destaque de scroll spy.
+
+## Importação
+
+```tsx
+import { Anchor } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Navegação de âncora vertical com scroll spy." source={AnchorDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Horizontal" description="Layout horizontal para navegação superior." source={AnchorDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Links Aninhados" description="Navegação hierárquica com links aninhados." source={AnchorDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Anchor`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `items` | Configuração dos links de âncora | `AnchorLinkItem[]` | - |
+| `direction` | Direção do layout | `'horizontal' \| 'vertical'` | `'vertical'` |
+| `offsetTop` | Deslocamento do topo ao calcular a posição de rolagem | `number` | `0` |
+| `bounds` | Distância limite da área de âncora | `number` | `5` |
+| `getContainer` | Contêiner de rolagem (padrão: window) | `() => HTMLElement \| Window` | - |
+| `getCurrentAnchor` | Personalizar o destaque de âncora | `(activeLink: string) => string` | - |
+| `activeLink` | Link atualmente ativo (controlado) | `string` | - |
+| `onChange` | Callback quando o link ativo muda | `(activeLink: string) => void` | - |
+| `onClick` | Callback quando um link é clicado | `(e, link) => void` | - |
+| `affix` | Fixar âncora durante a rolagem | `boolean` | `false` |
+| `affixOffsetTop` | Deslocamento de pixels do topo quando affix é true | `number` | `0` |
+| `replace` | Substituir histórico em vez de adicionar | `boolean` | `false` |
+| `className` | Classe CSS personalizada | `string` | - |
+| `children` | Filhos Anchor.Link (alternativa a items) | `React.ReactNode` | - |
+
+### `AnchorLinkItem`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `href` | ID do elemento alvo (sem #) | `string` | - |
+| `title` | Título do link | `React.ReactNode` | - |
+| `children` | Itens de link aninhados | `AnchorLinkItem[]` | - |
+
+## Acessibilidade
+
+- Usa o elemento semântico `<nav>` para navegação
+- Links são acessíveis via teclado
+- O estado ativo é indicado visualmente
+- A rolagem suave respeita as preferências de movimento do usuário

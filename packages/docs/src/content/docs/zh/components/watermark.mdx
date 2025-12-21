@@ -1,0 +1,64 @@
+---
+title: Watermark 水印
+description: 覆盖重复的文本或图像水印以保护内容,同时保持其交互性。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MultilineDemo,
+  ImageDemo,
+} from '../../../../components/WatermarkDemo'
+import WatermarkDemoSource from '../../../../components/WatermarkDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+覆盖重复的文本或图像水印以保护内容,同时保持其交互性。
+
+## 导入
+
+```tsx
+import { Watermark } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="文本水印" description="对卡片应用重复的文本水印。" source={WatermarkDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="多行" description="堆叠多行,带有自定义字体、间隙和旋转。" source={WatermarkDemoSource} fn="MultilineDemo">
+  <MultilineDemo client:load slot="demo" />
+</Example>
+
+<Example title="图像水印" description="使用数据 URI 或托管图像为内容添加水印。" source={WatermarkDemoSource} fn="ImageDemo">
+  <ImageDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Watermark`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `content` | 水印文本(字符串或行) | `string \| string[]` | `-` |
+| `image` | 要渲染的图像 URL 或数据 URI,代替文本 | `string` | `-` |
+| `gap` | 瓦片之间的水平和垂直间隙 | `[number, number]` | `[120, 120]` |
+| `offset` | 第一个瓦片的起始偏移 | `[number, number]` | `gap / 2` |
+| `width` | 瓦片宽度(像素) | `number` | `120` |
+| `height` | 瓦片高度(像素) | `number` | `64` |
+| `rotate` | 旋转角度(度) | `number` | `-22` |
+| `zIndex` | 覆盖层的 z-index | `number` | `1000` |
+| `font` | 文本水印的字体设置 | `WatermarkFontOptions` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+| `style` | 包装器的自定义样式 | `React.CSSProperties` | `-` |
+
+## 可访问性
+
+- 水印覆盖层使用 `pointer-events: none` 以确保内容保持交互性
+- 水印纯粹是装饰性的,不会干扰辅助技术
+- 水印下方的所有交互元素对键盘和屏幕阅读器用户保持完全可访问
+- 半透明渲染确保底层内容保持可见和可读

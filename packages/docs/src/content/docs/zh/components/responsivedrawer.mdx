@@ -1,0 +1,89 @@
+---
+title: ResponsiveDrawer 响应式抽屉
+description: 使用 DaisyUI 的抽屉的响应式侧边栏布局。用于在移动设备上切换但在大屏幕上始终可见的导航侧边栏。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ResponsiveDemo,
+  CustomWidthDemo,
+  EndDemo,
+  CustomSidebarDemo,
+} from '../../../../components/ResponsiveDrawerDemo'
+import ResponsiveDrawerDemoSource from '../../../../components/ResponsiveDrawerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+使用 DaisyUI 的抽屉的响应式侧边栏布局。用于在移动设备上切换但在大屏幕上始终可见的导航侧边栏。
+
+## 导入
+
+```tsx
+import { ResponsiveDrawer } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础响应式抽屉" description="在移动设备上切换的响应式侧边栏。" source={ResponsiveDrawerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="在桌面上始终打开" description="侧边栏在移动设备上切换,但在 lg 屏幕及以上始终可见。" source={ResponsiveDrawerDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义宽度" description="具有自定义宽度的侧边栏。" source={ResponsiveDrawerDemoSource} fn="CustomWidthDemo">
+  <CustomWidthDemo client:load slot="demo" />
+</Example>
+
+<Example title="右侧侧边栏" description="位于右侧的侧边栏。" source={ResponsiveDrawerDemoSource} fn="EndDemo">
+  <EndDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义侧边栏内容" description="具有自定义样式内容的侧边栏。" source={ResponsiveDrawerDemoSource} fn="CustomSidebarDemo">
+  <CustomSidebarDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ResponsiveDrawer`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 主内容区域 | `React.ReactNode` | - |
+| `sidebar` | 侧边栏内容 | `React.ReactNode` | - |
+| `open` | 受控打开状态 | `boolean` | `false` |
+| `onOpenChange` | 打开状态更改时的回调 | `(open: boolean) => void` | - |
+| `end` | 将侧边栏定位在右侧 | `boolean` | `false` |
+| `width` | 侧边栏的宽度 | `number \| string` | `320` |
+| `responsive` | 侧边栏变为始终可见的断点 | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | - |
+| `sidebarClassName` | 侧边栏容器的额外类 | `string` | - |
+| `contentClassName` | 内容区域的额外类 | `string` | - |
+| `overlayClassName` | 覆盖层的额外类 | `string` | - |
+| `id` | 抽屉的唯一 ID(如果未提供则自动生成) | `string` | - |
+| `className` | 抽屉包装器的额外 CSS 类 | `string` | - |
+| `data-testid` | 用于测试的测试 ID | `string` | - |
+
+## 使用注意事项
+
+- ResponsiveDrawer 包装了 DaisyUI 的 `drawer` 组件
+- 使用 `open` 和 `onOpenChange` 进行受控状态
+- 使用 `responsive` 属性使侧边栏在某个断点之上始终可见
+- 使用 `width` 自定义侧边栏宽度(默认: 320px)
+- 使用 `end` 属性将侧边栏定位在右侧
+- 对于在内容上滑动的面板抽屉(如表单或详细视图),请改用 [Drawer](/components/drawer) 组件
+
+## 对比
+
+| 功能 | ResponsiveDrawer | Drawer | Layout.Sider |
+|---------|------------------|--------|--------------|
+| 用例 | 响应式导航侧边栏 | 表单、详情的覆盖面板 | 永久可折叠侧边栏 |
+| 渲染 | 页面布局的一部分 | 传送到 document.body | Layout 结构的一部分 |
+| 覆盖层 | 是(移动设备) | 是(始终) | 否 |
+| 响应式 | 是(在断点自动打开) | 否 | 是(自动折叠) |
+| 位置 | 左或右 | 全部 4 个方向 | 左或右 |
+| 页眉/页脚 | 无内置 | 是(title、footer 属性) | 无内置 |

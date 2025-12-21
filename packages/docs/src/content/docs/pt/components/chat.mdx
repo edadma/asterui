@@ -1,0 +1,70 @@
+---
+title: Chat
+description: Bolhas de mensagem de chat para exibir conversas com avatares e metadados.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AvatarsDemo,
+  HeadersDemo,
+  ColorsDemo,
+  FooterDemo,
+} from '../../../../components/ChatDemo'
+import ChatDemoSource from '../../../../components/ChatDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Bolhas de mensagem de chat para exibir conversas com avatares e metadados.
+
+## Importação
+
+```tsx
+import { Chat } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Chat Básico" description="Bolhas de chat simples com posições diferentes." source={ChatDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Avatares" description="Bolhas de chat com avatares de usuário." source={ChatDemoSource} fn="AvatarsDemo">
+  <AvatarsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Cabeçalhos" description="Bolhas de chat com cabeçalhos de nome e timestamp." source={ChatDemoSource} fn="HeadersDemo">
+  <HeadersDemo client:load slot="demo" />
+</Example>
+
+<Example title="Bolhas Coloridas" description="Bolhas de chat com diferentes variantes de cor." source={ChatDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Rodapé" description="Bolhas de chat com rodapé de status de entrega." source={ChatDemoSource} fn="FooterDemo">
+  <FooterDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Chat`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `message` | Conteúdo da mensagem | `React.ReactNode` | - |
+| `position` | Posição da bolha | `'start' \| 'end'` | `'start'` |
+| `avatar` | URL da imagem do avatar | `string` | - |
+| `avatarAlt` | Texto alternativo do avatar | `string` | - |
+| `header` | Conteúdo do cabeçalho (nome, hora) | `React.ReactNode` | - |
+| `footer` | Conteúdo do rodapé (status) | `React.ReactNode` | - |
+| `color` | Variante de cor da bolha | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Use texto alternativo significativo para imagens de avatar
+- Conteúdo da mensagem é legível por leitores de tela
+- Classes de posição ajudam a transmitir o fluxo da conversa

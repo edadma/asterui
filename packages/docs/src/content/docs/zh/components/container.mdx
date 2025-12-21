@@ -1,0 +1,46 @@
+---
+title: Container 容器
+description: 用于页面布局的带可配置最大宽度的居中内容容器。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PageLayoutDemo,
+} from '../../../../components/ContainerDemo'
+import ContainerDemoSource from '../../../../components/ContainerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于页面布局的带可配置最大宽度的居中内容容器。
+
+## 引入
+
+```tsx
+import { Container } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="Container 提供带最大宽度和响应式内边距的居中内容。" source={ContainerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="页面布局" description="页面内容的典型用法。" source={ContainerDemoSource} fn="PageLayoutDemo">
+  <PageLayoutDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Container`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 容器内容 | `React.ReactNode` | - |
+| `size` | 最大宽度尺寸 | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| 'full'` | `'xl'` |
+| `centered` | 水平居中容器 | `boolean` | `true` |
+| `padding` | 添加横向内边距 | `boolean` | `true` |
+| `className` | 额外的 CSS 类名 | `string` | - |

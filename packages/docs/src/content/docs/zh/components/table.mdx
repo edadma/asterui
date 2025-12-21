@@ -1,0 +1,165 @@
+---
+title: Table 表格
+description: 功能丰富的表格组件,用于显示表格数据。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomRenderDemo,
+  StripedDemo,
+  BorderedDemo,
+  SizeXsDemo,
+  SizeXlDemo,
+  EmptyDemo,
+  LoadingDemo,
+  PaginationDemo,
+  PaginationFeaturesDemo,
+  PinnedDemo,
+  SortingDemo,
+  ControlledSortDemo,
+  FilteringDemo,
+  SelectionDemo,
+  RadioSelectionDemo,
+  ExpandableDemo,
+  EllipsisDemo,
+  ScrollDemo,
+  CompleteDemo,
+} from '../../../../components/TableDemo'
+import TableDemoSource from '../../../../components/TableDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+功能丰富的表格组件,用于显示表格数据。
+
+## 导入
+
+```tsx
+import { Table } from 'asterui'
+import type { ColumnType, RowSelection, ExpandableConfig, PaginationConfig } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础表格" description="带有数据的简单表格。" source={TableDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义渲染" description="使用渲染函数生成标签、按钮和自定义内容。" source={TableDemoSource} fn="CustomRenderDemo">
+  <CustomRenderDemo client:load slot="demo" />
+</Example>
+
+<Example title="条纹行" description="斑马条纹以提高可读性。" source={TableDemoSource} fn="StripedDemo">
+  <StripedDemo client:load slot="demo" />
+</Example>
+
+<Example title="带边框表格" description="添加边框以获得更明确的外观。" source={TableDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="紧凑尺寸" description="用于密集数据的超小尺寸。" source={TableDemoSource} fn="SizeXsDemo">
+  <SizeXsDemo client:load slot="demo" />
+</Example>
+
+<Example title="超大尺寸" description="用于强调的超大尺寸。" source={TableDemoSource} fn="SizeXlDemo">
+  <SizeXlDemo client:load slot="demo" />
+</Example>
+
+<Example title="空状态" description="可自定义的空状态消息。" source={TableDemoSource} fn="EmptyDemo">
+  <EmptyDemo client:load slot="demo" />
+</Example>
+
+<Example title="加载状态" description="在获取数据时显示加载微调器。" source={TableDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="基础分页" description="对大数据集进行分页。" source={TableDemoSource} fn="PaginationDemo">
+  <PaginationDemo client:load slot="demo" />
+</Example>
+
+<Example title="高级分页" description="页面大小更改器、快速跳转器和总数显示。" source={TableDemoSource} fn="PaginationFeaturesDemo">
+  <PaginationFeaturesDemo client:load slot="demo" />
+</Example>
+
+<Example title="固定表头" description="滚动时保持表头可见。" source={TableDemoSource} fn="PinnedDemo">
+  <PinnedDemo client:load slot="demo" />
+</Example>
+
+<Example title="列排序" description="点击列标题对数据进行排序。" source={TableDemoSource} fn="SortingDemo">
+  <SortingDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控排序" description="从外部控制排序状态。" source={TableDemoSource} fn="ControlledSortDemo">
+  <ControlledSortDemo client:load slot="demo" />
+</Example>
+
+<Example title="列过滤" description="向列添加过滤器下拉菜单。" source={TableDemoSource} fn="FilteringDemo">
+  <FilteringDemo client:load slot="demo" />
+</Example>
+
+<Example title="复选框选择" description="使用复选框启用行选择。" source={TableDemoSource} fn="SelectionDemo">
+  <SelectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="单选按钮选择" description="使用单选按钮进行单行选择。" source={TableDemoSource} fn="RadioSelectionDemo">
+  <RadioSelectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="可展开行" description="展开行以显示附加内容。" source={TableDemoSource} fn="ExpandableDemo">
+  <ExpandableDemo client:load slot="demo" />
+</Example>
+
+<Example title="文本省略" description="使用省略号截断长文本。" source={TableDemoSource} fn="EllipsisDemo">
+  <EllipsisDemo client:load slot="demo" />
+</Example>
+
+<Example title="滚动配置" description="设置最大宽度和高度并滚动。" source={TableDemoSource} fn="ScrollDemo">
+  <ScrollDemo client:load slot="demo" />
+</Example>
+
+<Example title="完整示例" description="组合多个功能的表格。" source={TableDemoSource} fn="CompleteDemo">
+  <CompleteDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Table`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `columns` | 表格列配置 | `ColumnType<T>[]` | `-` |
+| `dataSource` | 要在表格中显示的数据 | `T[]` | `-` |
+| `rowKey` | 每行的唯一键 | `keyof T \| ((record: T) => string)` | `'id'` |
+| `loading` | 加载状态 | `boolean` | `false` |
+| `size` | 表格大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `bordered` | 在表格周围添加边框 | `boolean` | `false` |
+| `hoverable` | 悬停时突出显示行 | `boolean` | `true` |
+| `striped` | 交替行颜色(斑马条纹) | `boolean` | `false` |
+| `pinRows` | 滚动时固定表头行 | `boolean` | `false` |
+| `pinCols` | 滚动时固定列 | `boolean` | `false` |
+| `pagination` | 分页配置或 false 以禁用 | `false \| PaginationConfig` | `{ pageSize: 10 }` |
+| `rowSelection` | 行选择配置 | `RowSelection<T>` | `-` |
+| `expandable` | 可展开行配置 | `ExpandableConfig<T>` | `-` |
+| `scroll` | 固定尺寸的滚动配置 | `ScrollConfig` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+| `onRow` | 行事件处理程序 | `(record: T, index: number) => HTMLAttributes` | `-` |
+| `onChange` | 分页、排序和过滤的统一回调 | `(pagination, filters, sorter, extra) => void` | `-` |
+| `onSortChange` | 排序更改时的回调 | `(sorter: SorterResult<T>) => void` | `-` |
+| `onFilterChange` | 过滤器更改时的回调 | `(filters: Record<string, ...>) => void` | `-` |
+| `locale` | 空文本、过滤器标签的本地化配置 | `{ emptyText?, filterConfirm?, filterReset?, selectAll? }` | `-` |
+| `data-testid` | 组件的测试 ID | `string` | `'table'` |
+| `aria-label` | 表格的可访问标签 | `string` | `-` |
+
+## 可访问性
+
+- 使用带有 `role="grid"` 的语义 `<table>`
+- 列标题包含 `role="columnheader"` 和用于可排序列的 `aria-sort`
+- 行选择复选框具有正确的 `aria-label`
+- 排序控件可通过键盘访问(Enter/Space 切换)
+- 过滤器下拉菜单支持 Escape 键关闭
+- 分页按钮包含 `aria-label` 和 `aria-current`
+- 展开/折叠按钮包含 `aria-expanded`
+- 部分选择的不确定复选框状态

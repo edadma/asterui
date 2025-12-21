@@ -1,0 +1,125 @@
+---
+title: Badge
+description: Insignias de notificación, indicadores de estado y cintas para resaltar contenido
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  OverflowDemo,
+  PositionDemo,
+  OffsetDemo,
+  StatusDemo,
+  RibbonDemo,
+  RibbonColorsDemo,
+  DotDemo,
+  ColorsDemo,
+  CustomColorsDemo,
+  SizesDemo,
+  ShowZeroDemo,
+  VariantsDemo,
+} from '../../../../components/BadgeDemo'
+import BadgeDemoSource from '../../../../components/BadgeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Insignias de notificación, indicadores de estado y cintas para resaltar contenido.
+
+## Importar
+
+```tsx
+import { Badge } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Insignias de Notificación Básicas" description="Muestra insignias de conteo en elementos." source={BadgeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Conteo de Desbordamiento" description="Muestra conteo+ cuando se excede el umbral de desbordamiento." source={BadgeDemoSource} fn="OverflowDemo">
+  <OverflowDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posicionamiento de Insignia" description="Posiciona las insignias en cualquiera de las 9 esquinas." source={BadgeDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Desplazamiento de Insignia" description="Ajusta finamente la posición de la insignia con desplazamientos en píxeles." source={BadgeDemoSource} fn="OffsetDemo">
+  <OffsetDemo client:load slot="demo" />
+</Example>
+
+<Example title="Insignias de Estado" description="Indicadores de estado con etiquetas de texto opcionales." source={BadgeDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Insignias de Cinta" description="Insignias decorativas estilo cinta usando Badge.Ribbon." source={BadgeDemoSource} fn="RibbonDemo">
+  <RibbonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores de Cinta" description="Las cintas admiten diferentes tipos de color y colores personalizados." source={BadgeDemoSource} fn="RibbonColorsDemo">
+  <RibbonColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Insignias de Punto" description="Pequeños indicadores circulares para presencia o estado." source={BadgeDemoSource} fn="DotDemo">
+  <DotDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores de Insignia" description="Insignias de conteo independientes con diferentes colores." source={BadgeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores Personalizados" description="Usa la prop color para colores de insignia personalizados." source={BadgeDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños de Insignia" description="Cinco tamaños disponibles para insignias." source={BadgeDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar Cero" description="Muestra la insignia incluso cuando el conteo es 0." source={BadgeDemoSource} fn="ShowZeroDemo">
+  <ShowZeroDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes de Insignia" description="Diferentes estilos visuales para insignias." source={BadgeDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Badge`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `count` | Número a mostrar en la insignia | `number` | - |
+| `showZero` | Si mostrar la insignia cuando el conteo es 0 | `boolean` | `false` |
+| `overflowCount` | Conteo máximo a mostrar antes de mostrar conteo+ | `number` | `99` |
+| `position` | Posición de la insignia al envolver children | `'top-start' \| 'top-center' \| 'top-end' \| 'middle-start' \| 'middle-center' \| 'middle-end' \| 'bottom-start' \| 'bottom-center' \| 'bottom-end'` | `'top-end'` |
+| `offset` | Desplazamiento desde la posición predeterminada en píxeles [x, y] | `[number, number]` | - |
+| `status` | Modo de insignia de estado con punto de color | `'success' \| 'processing' \| 'error' \| 'default' \| 'warning'` | - |
+| `text` | Texto a mostrar con insignia de estado | `string` | - |
+| `dot` | Mostrar un pequeño punto circular en lugar de conteo | `boolean` | `false` |
+| `type` | Tipo de color de insignia | `'default' \| 'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'error'` |
+| `size` | Tamaño de insignia | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `variant` | Variante de estilo de insignia | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost'` | `'solid'` |
+| `color` | Color de fondo personalizado | `string` | - |
+| `children` | Elemento a envolver con insignia (modo notificación) | `ReactNode` | - |
+
+### `Badge.Ribbon`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `text` | Contenido de texto de la cinta | `string` | requerido |
+| `placement` | Ubicación de la cinta | `'start' \| 'end'` | `'end'` |
+| `type` | Tipo de color de cinta | Igual que tipo de Badge | `'primary'` |
+| `color` | Color de fondo personalizado | `string` | - |
+| `children` | Elemento a envolver con cinta | `ReactNode` | requerido |
+
+## Accesibilidad
+
+- Usa `role="status"` para insignias de estado
+- Proporciona `aria-label` para lectores de pantalla con conteo o estado de notificación
+- El estado de procesamiento incluye animación de pulso visual

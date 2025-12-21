@@ -1,0 +1,50 @@
+---
+title: useBreakpoint
+description: 检测当前响应式断点的 Hook。
+---
+
+根据窗口宽度跟踪当前的 Tailwind CSS 断点。
+
+## 导入
+
+```tsx
+import { useBreakpoint } from 'asterui'
+```
+
+## 用法
+
+```tsx
+function ResponsiveComponent() {
+  const { breakpoint, isAbove, isBelow } = useBreakpoint()
+
+  return (
+    <div>
+      <p>Current breakpoint: {breakpoint}</p>
+      {isBelow('md') && <MobileNav />}
+      {isAbove('md') && <DesktopNav />}
+    </div>
+  )
+}
+```
+
+## 返回值
+
+| 属性 | 类型 | 描述 |
+|----------|------|-------------|
+| `breakpoint` | `Breakpoint` | 当前断点：`'xs'` \| `'sm'` \| `'md'` \| `'lg'` \| `'xl'` \| `'2xl'` |
+| `width` | `number` | 当前窗口宽度（像素） |
+| `isAbove(bp)` | `(bp: Breakpoint) => boolean` | 如果当前断点在 `bp` 或之上则为 true |
+| `isBelow(bp)` | `(bp: Breakpoint) => boolean` | 如果当前断点在 `bp` 之下则为 true |
+| `isAt(bp)` | `(bp: Breakpoint) => boolean` | 如果当前断点等于 `bp` 则为 true |
+| `isBetween(min, max)` | `(min: Breakpoint, max: Breakpoint) => boolean` | 如果当前断点在 `min` 和 `max` 之间则为 true |
+
+## 断点
+
+| 名称 | 最小宽度 |
+|------|-----------|
+| `xs` | 0px |
+| `sm` | 640px |
+| `md` | 768px |
+| `lg` | 1024px |
+| `xl` | 1280px |
+| `2xl` | 1536px |

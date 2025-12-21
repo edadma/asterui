@@ -1,0 +1,120 @@
+---
+title: Rating 评分
+description: 用于用户反馈和评论的星级评分。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ClearableDemo,
+  SizesDemo,
+  HalfDemo,
+  HeartDemo,
+  CustomColorsDemo,
+  DisabledDemo,
+  CountDemo,
+  ControlledDemo,
+  AltStarDemo,
+  FormDemo,
+} from '../../../../components/RatingDemo'
+import RatingDemoSource from '../../../../components/RatingDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于用户反馈和评论的星级评分。
+
+## 导入
+
+```tsx
+import { Rating } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础评分" description="无需配置的简单 5 星评分。" source={RatingDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="可清除" description="再次点击相同的星星以清除评分。" source={RatingDemoSource} fn="ClearableDemo">
+  <ClearableDemo client:load slot="demo" />
+</Example>
+
+<Example title="不同尺寸" description="各种尺寸的评分。" source={RatingDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="半星" description="允许半星精度。" source={RatingDemoSource} fn="HalfDemo">
+  <HalfDemo client:load slot="demo" />
+</Example>
+
+<Example title="心形" description="带有心形图标的评分。" source={RatingDemoSource} fn="HeartDemo">
+  <HeartDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义颜色" description="使用 Rating.Item 为每个评分级别设置不同的颜色。" source={RatingDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用" description="显示评分而不交互。" source={RatingDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义数量" description="指定不同数量的星星。" source={RatingDemoSource} fn="CountDemo">
+  <CountDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控评分" description="从外部控制评分值。" source={RatingDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="替代星星" description="不同的星星样式。" source={RatingDemoSource} fn="AltStarDemo">
+  <AltStarDemo client:load slot="demo" />
+</Example>
+
+<Example title="表单集成" description="评分与表单验证配合使用。" source={RatingDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Rating`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 自定义 Rating.Item 组件(可选) | `React.ReactNode` | - |
+| `value` | 受控评分值 | `number` | - |
+| `defaultValue` | 默认评分值(非受控) | `number` | `0` |
+| `onChange` | 评分更改时的回调 | `(value: number) => void` | - |
+| `onHoverChange` | 悬停值更改时的回调 | `(value: number) => void` | - |
+| `count` | 星星数量 | `number` | `5` |
+| `size` | 评分大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `gap` | 星星之间的间距 | `'none' \| 'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Tailwind 背景颜色类 | `string` | `'bg-warning'` |
+| `mask` | 评分图标的形状 | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `allowClear` | 允许通过点击相同值清除评分 | `boolean` | `true` |
+| `allowHalf` | 允许半星选择 | `boolean` | `false` |
+| `disabled` | 禁用状态(非交互式) | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+### `Rating.Item`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 此项目代表的评分值 | `number` | - |
+| `mask` | 评分图标的形状 | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `color` | Tailwind 背景颜色类 | `string` | `'bg-warning'` |
+| `hidden` | 用于清除评分的隐藏项目 | `boolean` | `false` |
+| `half` | 半星位置 | `'first' \| 'second'` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 使用 `role="radiogroup"` 以获得正确的语义
+- 使用单选按钮模式进行评分选择
+- 每个星星都有描述其值的 `aria-label`
+- 评分选项之间的键盘导航
+- 悬停预览在选择之前显示视觉反馈
+- 禁用状态在显示值时阻止交互

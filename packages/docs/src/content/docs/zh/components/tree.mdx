@@ -1,0 +1,134 @@
+---
+title: Tree 树形控件
+description: 用于显示嵌套数据的分层树结构。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CheckableDemo,
+  SelectableDemo,
+  MultipleDemo,
+  ShowLineDemo,
+  ShowIconDemo,
+  CompoundDemo,
+  CheckboxColorsDemo,
+  CheckStrictlyDemo,
+  AsyncLoadDemo,
+} from '../../../../components/TreeDemo'
+import TreeDemoSource from '../../../../components/TreeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于显示嵌套数据的分层树结构。
+
+## 导入
+
+```tsx
+import { Tree } from 'asterui'
+import type { TreeDataNode } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础树" description="带有可展开节点的简单树。" source={TreeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="可勾选" description="带有复选框选择的树。" source={TreeDemoSource} fn="CheckableDemo">
+  <CheckableDemo client:load slot="demo" />
+</Example>
+
+<Example title="可选择" description="带有节点选择的树。" source={TreeDemoSource} fn="SelectableDemo">
+  <SelectableDemo client:load slot="demo" />
+</Example>
+
+<Example title="多选" description="允许选择多个节点。" source={TreeDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="显示连接线" description="显示节点之间的连接线。" source={TreeDemoSource} fn="ShowLineDemo">
+  <ShowLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="显示图标" description="显示节点的自定义图标。" source={TreeDemoSource} fn="ShowIconDemo">
+  <ShowIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="复合模式" description="使用 Tree.Node 进行声明式树结构。" source={TreeDemoSource} fn="CompoundDemo">
+  <CompoundDemo client:load slot="demo" />
+</Example>
+
+<Example title="复选框颜色" description="使用 DaisyUI 颜色自定义复选框外观。" source={TreeDemoSource} fn="CheckboxColorsDemo">
+  <CheckboxColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="严格勾选" description="解耦父子复选框关系。" source={TreeDemoSource} fn="CheckStrictlyDemo">
+  <CheckStrictlyDemo client:load slot="demo" />
+</Example>
+
+<Example title="异步加载" description="展开时异步加载子节点。" source={TreeDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tree`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `treeData` | 树数据结构(复合模式的替代) | `TreeDataNode[]` | `[]` |
+| `children` | 复合模式的 Tree.Node 子元素 | `React.ReactNode` | `-` |
+| `checkable` | 为每个节点显示复选框 | `boolean` | `false` |
+| `checkboxColor` | 复选框颜色(DaisyUI) | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` |
+| `checkboxSize` | 复选框大小(DaisyUI) | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |
+| `checkedKeys` | 受控的已勾选键 | `string[]` | `-` |
+| `defaultCheckedKeys` | 默认已勾选键 | `string[]` | `[]` |
+| `checkStrictly` | 解耦父子复选框关系 | `boolean` | `false` |
+| `onCheck` | 节点勾选时的回调 | `(keys: string[], info: { node, checked }) => void` | `-` |
+| `selectable` | 启用节点选择 | `boolean` | `true` |
+| `selectedKeys` | 受控的已选择键 | `string[]` | `-` |
+| `defaultSelectedKeys` | 默认已选择键 | `string[]` | `[]` |
+| `onSelect` | 节点选择时的回调 | `(keys: string[], info: { node, selected }) => void` | `-` |
+| `multiple` | 允许多选 | `boolean` | `false` |
+| `expandedKeys` | 受控的已展开键 | `string[]` | `-` |
+| `defaultExpandedKeys` | 默认已展开键 | `string[]` | `[]` |
+| `defaultExpandAll` | 默认展开所有节点 | `boolean` | `false` |
+| `autoExpandParent` | 自动展开父节点 | `boolean` | `true` |
+| `onExpand` | 节点展开时的回调 | `(keys: string[], info: { node, expanded }) => void` | `-` |
+| `showLine` | 显示连接线 | `boolean` | `false` |
+| `showIcon` | 显示节点图标 | `boolean` | `false` |
+| `blockNode` | 使节点填充水平空间 | `boolean` | `false` |
+| `switcherIcon` | 自定义展开/折叠图标 | `ReactNode \| ((expanded: boolean) => ReactNode)` | `-` |
+| `titleRender` | 自定义标题渲染函数 | `(node: TreeDataNode) => ReactNode` | `-` |
+| `filterTreeNode` | 过滤函数以高亮节点 | `(node: TreeDataNode) => boolean` | `-` |
+| `loadData` | 异步数据加载函数 | `(node: TreeDataNode) => Promise<void>` | `-` |
+| `onRightClick` | 右键点击处理程序 | `(info: { event, node }) => void` | `-` |
+| `fieldNames` | 数据映射的自定义字段名称 | `{ key?: string; title?: string; children?: string }` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+Tree 组件实现完整的 WAI-ARIA 树模式:
+
+- 容器上使用 `role="tree"`,节点上使用 `role="treeitem"`
+- `aria-expanded` 指示节点展开状态
+- `aria-selected` 指示选择状态
+- `aria-checked` 指示复选框状态(带有不确定的 `"mixed"`)
+- `aria-disabled` 指示禁用状态
+- `aria-level` 指示嵌套深度
+
+### 键盘导航
+
+| 键 | 操作 |
+|-----|--------|
+| <kbd>↓</kbd> | 将焦点移至下一个可见节点 |
+| <kbd>↑</kbd> | 将焦点移至上一个可见节点 |
+| <kbd>→</kbd> | 展开折叠的节点,或移至第一个子节点 |
+| <kbd>←</kbd> | 折叠展开的节点 |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | 切换复选框、选择节点或展开/折叠 |
+| <kbd>Home</kbd> | 将焦点移至第一个节点 |
+| <kbd>End</kbd> | 将焦点移至最后一个可见节点 |

@@ -1,0 +1,82 @@
+---
+title: Popover 气泡卡片
+description: 触发时显示附加信息的卡片
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TitleDemo,
+  TriggersDemo,
+  PlacementTopDemo,
+  PlacementBottomDemo,
+  PlacementLeftDemo,
+  PlacementRightDemo,
+} from '../../../../components/PopoverDemo'
+import PopoverDemoSource from '../../../../components/PopoverDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+触发时显示附加信息的卡片。
+
+## 导入
+
+```tsx
+import { Popover } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础用法" description="悬停触发的简单气泡卡片。" source={PopoverDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带标题" description="带有标题和内容的气泡卡片。" source={PopoverDemoSource} fn="TitleDemo">
+  <TitleDemo client:load slot="demo" />
+</Example>
+
+<Example title="触发类型" description="气泡卡片的不同触发模式。" source={PopoverDemoSource} fn="TriggersDemo">
+  <TriggersDemo client:load slot="demo" />
+</Example>
+
+<Example title="位置 - 顶部" description="顶部位置变体。" source={PopoverDemoSource} fn="PlacementTopDemo">
+  <PlacementTopDemo client:load slot="demo" />
+</Example>
+
+<Example title="位置 - 底部" description="底部位置变体。" source={PopoverDemoSource} fn="PlacementBottomDemo">
+  <PlacementBottomDemo client:load slot="demo" />
+</Example>
+
+<Example title="位置 - 左侧" description="左侧位置变体。" source={PopoverDemoSource} fn="PlacementLeftDemo">
+  <PlacementLeftDemo client:load slot="demo" />
+</Example>
+
+<Example title="位置 - 右侧" description="右侧位置变体。" source={PopoverDemoSource} fn="PlacementRightDemo">
+  <PlacementRightDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Popover`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 触发元素 | `React.ReactNode` | - |
+| `content` | 气泡卡片的内容 | `React.ReactNode` | - |
+| `title` | 气泡卡片的标题 | `React.ReactNode` | - |
+| `trigger` | 气泡卡片的触发方式 | `'hover' \| 'click' \| 'focus'` | `'hover'` |
+| `placement` | 气泡卡片的位置 | `'top' \| 'topLeft' \| 'topRight' \| 'bottom' \| 'bottomLeft' \| 'bottomRight' \| 'left' \| 'leftTop' \| 'leftBottom' \| 'right' \| 'rightTop' \| 'rightBottom'` | `'top'` |
+| `open` | 气泡卡片是否可见(受控模式) | `boolean` | - |
+| `onOpenChange` | 可见性更改时的回调 | `(open: boolean) => void` | - |
+| `className` | 包装器的额外 CSS 类 | `string` | - |
+| `overlayClassName` | 气泡卡片覆盖层的额外 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 气泡卡片使用正确的 ARIA 属性进行工具提示
+- 点击和焦点触发器可通过键盘访问
+- 显示时内容会向屏幕阅读器宣布
+- Escape 键关闭点击触发的气泡卡片

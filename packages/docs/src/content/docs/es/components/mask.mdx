@@ -1,0 +1,56 @@
+---
+title: Mask
+description: Aplica máscaras CSS para recortar contenido en varias formas.
+tableOfContents: false
+---
+
+import {
+  BasicShapesDemo,
+  AllShapesDemo,
+  HalfMasksDemo,
+} from '../../../../components/MaskDemo'
+import MaskDemoSource from '../../../../components/MaskDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Aplica máscaras CSS para recortar contenido en varias formas.
+
+## Importar
+
+```tsx
+import { Mask } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Formas Básicas" description="Aplica diferentes formas de máscara a imágenes." source={MaskDemoSource} fn="BasicShapesDemo">
+  <BasicShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Todas las Formas" description="Las 15 formas de máscara disponibles." source={MaskDemoSource} fn="AllShapesDemo">
+  <AllShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Máscaras de Mitad" description="Muestra solo la mitad del contenido enmascarado." source={MaskDemoSource} fn="HalfMasksDemo">
+  <HalfMasksDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Mask`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `shape` | Forma de la máscara | `'squircle' \| 'heart' \| 'hexagon' \| 'hexagon-2' \| 'decagon' \| 'pentagon' \| 'diamond' \| 'square' \| 'circle' \| 'star' \| 'star-2' \| 'triangle' \| 'triangle-2' \| 'triangle-3' \| 'triangle-4'` | - |
+| `half` | Mostrar solo la mitad de la máscara | `'half-1' \| 'half-2'` | - |
+| `children` | Contenido a enmascarar (típicamente una imagen) | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa elemento div semántico
+- Asegura que las imágenes enmascaradas tengan texto alt apropiado
+- Pasa a través de atributos HTML al contenedor

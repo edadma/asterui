@@ -1,0 +1,66 @@
+---
+title: Message
+description: Mensagens de feedback leves exibidas no topo central da tela
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  LoadingDemo,
+  DurationDemo,
+  StackingDemo,
+} from '../../../../components/MessageDemo'
+import MessageDemoSource from '../../../../components/MessageDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Mensagens de feedback leves exibidas no topo central da tela.
+
+## Importação
+
+```tsx
+import { message } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Mensagens Básicas" description="Mensagens de feedback leves para ações do usuário." source={MessageDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mensagem de Carregamento" description="Mostre uma mensagem de carregamento que pode ser dispensada programaticamente." source={MessageDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Duração Personalizada" description="Controle quanto tempo as mensagens permanecem visíveis." source={MessageDemoSource} fn="DurationDemo">
+  <DurationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Empilhamento de Mensagens" description="Múltiplas mensagens empilham no topo central da tela." source={MessageDemoSource} fn="StackingDemo">
+  <StackingDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### Opções de Message
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `content` | Texto da mensagem (primeiro argumento) | `React.ReactNode` | - |
+| `duration` | Duração de fechamento automático em segundos | `number` | `3` |
+| `key` | Identificador único. Atualizar com mesma chave atualiza mensagem existente | `string` | - |
+| `icon` | Ícone personalizado para exibir | `React.ReactNode` | - |
+| `className` | Classe CSS adicional | `string` | - |
+| `style` | Estilos inline | `React.CSSProperties` | - |
+| `data-testid` | ID de teste para frameworks de teste | `string` | - |
+| `onClick` | Callback quando mensagem é clicada | `() => void` | - |
+| `onClose` | Callback quando mensagem é fechada | `() => void` | - |
+
+## Acessibilidade
+
+- Mensagens são anunciadas para leitores de tela via regiões live
+- Ícones fornecem pistas visuais juntamente com cor para tipo de mensagem
+- Mensagens dispensam automaticamente mas podem ser configuradas para persistir

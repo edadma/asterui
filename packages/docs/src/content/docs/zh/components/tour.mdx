@@ -1,0 +1,91 @@
+---
+title: Tour 引导
+description: 带有聚光灯高亮和步骤导航的引导式导览。
+tableOfContents: false
+---
+
+import {
+  BasicTourDemo,
+  WithoutTargetDemo,
+  WithCoverDemo,
+  PlacementsDemo,
+} from '../../../../components/TourDemo'
+import TourDemoSource from '../../../../components/TourDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+带有聚光灯高亮和步骤导航的引导式导览。
+
+## 导入
+
+```tsx
+import { Tour } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础导览" description="带有多个步骤的简单引导式导览。" source={TourDemoSource} fn="BasicTourDemo">
+  <BasicTourDemo client:load slot="demo" />
+</Example>
+
+<Example title="无目标导览" description="没有目标的步骤出现在屏幕中央。" source={TourDemoSource} fn="WithoutTargetDemo">
+  <WithoutTargetDemo client:load slot="demo" />
+</Example>
+
+<Example title="带封面图片" description="在步骤标题上方添加图片或自定义内容。" source={TourDemoSource} fn="WithCoverDemo">
+  <WithCoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="位置" description="控制气泡相对于目标出现的位置。" source={TourDemoSource} fn="PlacementsDemo">
+  <PlacementsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tour`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `open` | 导览是否可见 | `boolean` | `false` |
+| `steps` | 导览步骤配置 | `TourStepProps[]` | `-` |
+| `current` | 当前步骤索引(受控) | `number` | `-` |
+| `onChange` | 步骤更改时的回调 | `(current: number) => void` | `-` |
+| `onClose` | 导览关闭时的回调 | `() => void` | `-` |
+| `onFinish` | 导览完成时的回调 | `() => void` | `-` |
+| `mask` | 显示带有聚光灯的遮罩覆盖层 | `boolean` | `true` |
+| `type` | 按钮样式类型 | `'default' \| 'primary'` | `'default'` |
+| `gap` | 聚光灯与目标之间的间隙 [半径, 偏移] 或数字 | `number \| [number, number]` | `8` |
+| `showSkip` | 显示跳过按钮 | `boolean` | `true` |
+| `showIndicators` | 显示步骤指示器 | `boolean` | `true` |
+| `closeOnMaskClick` | 点击遮罩时关闭 | `boolean` | `true` |
+| `closeOnEscape` | 按 Escape 键时关闭 | `boolean` | `true` |
+| `scrollIntoView` | 将目标滚动到视图中 | `boolean` | `true` |
+| `prevButtonText` | 上一步按钮的文本 | `React.ReactNode` | `'Previous'` |
+| `nextButtonText` | 下一步按钮的文本 | `React.ReactNode` | `'Next'` |
+| `finishButtonText` | 完成按钮的文本 | `React.ReactNode` | `'Finish'` |
+| `skipButtonText` | 跳过按钮的文本 | `React.ReactNode` | `'Skip'` |
+| `zIndex` | 导览覆盖层的 z-index | `number` | `1000` |
+
+### `TourStepProps`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `target` | 目标元素 ref 或返回元素的函数 | `RefObject<HTMLElement> \| (() => HTMLElement \| null) \| null` | `-` |
+| `title` | 步骤标题 | `React.ReactNode` | `-` |
+| `description` | 步骤描述 | `React.ReactNode` | `-` |
+| `cover` | 标题上方的封面图片或内容 | `React.ReactNode` | `-` |
+| `placement` | 气泡相对于目标的位置 | `TourPlacement` | `'bottom'` |
+| `className` | 步骤气泡的自定义类 | `string` | `-` |
+| `onOpen` | 步骤变为活动状态时调用 | `() => void` | `-` |
+| `onClose` | 离开步骤时调用 | `() => void` | `-` |
+
+## 可访问性
+
+- 导览对话框具有 role="dialog" 和 aria-modal="true"
+- 箭头键在步骤之间导航
+- Escape 键关闭导览
+- 步骤指示器可通过键盘访问
+- 打开时焦点被困在导览内

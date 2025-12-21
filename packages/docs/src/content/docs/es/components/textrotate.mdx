@@ -1,0 +1,59 @@
+---
+title: TextRotate
+description: Texto animado que rota a través de múltiples opciones en un bucle
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CenteredDemo,
+  StyledDemo,
+  FastDemo,
+} from '../../../../components/TextRotateDemo'
+import TextRotateDemoSource from '../../../../components/TextRotateDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Texto animado que rota a través de múltiples opciones en un bucle.
+
+## Importación
+
+```tsx
+import { TextRotate } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Texto rotativo simple con múltiples idiomas." source={TextRotateDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Centrado" description="Texto rotativo alineado al centro." source={TextRotateDemoSource} fn="CenteredDemo">
+  <CenteredDemo client:load slot="demo" />
+</Example>
+
+<Example title="Elementos Estilizados" description="Cada elemento puede tener estilo personalizado." source={TextRotateDemoSource} fn="StyledDemo">
+  <StyledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Duración Personalizada" description="Rotación más rápida con ciclo de 6 segundos." source={TextRotateDemoSource} fn="FastDemo">
+  <FastDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `items` | Elementos de texto a rotar (máximo 6) | `React.ReactNode[]` | - |
+| `duration` | Duración de la animación en ms | `6000 \| 9000 \| 12000 \| 15000 \| 18000` | `10000` |
+| `centered` | Centrar texto horizontalmente | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- La animación se pausa al pasar el cursor para facilitar la lectura
+- Soporta preferencias de movimiento reducido
+- El texto permanece legible en todos los estados de animación

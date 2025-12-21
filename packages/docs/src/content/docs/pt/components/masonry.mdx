@@ -1,0 +1,65 @@
+---
+title: Masonry
+description: Layout masonry estilo Pinterest para exibir itens com alturas variadas em uma grade organizada.
+tableOfContents: false
+---
+
+import {
+  DynamicMasonryDemo,
+  BasicMasonryDemo,
+  ResponsiveMasonryDemo,
+  CustomGapDemo,
+} from '../../../../components/MasonryDemo'
+import MasonryDemoSource from '../../../../components/MasonryDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Layout masonry estilo Pinterest para exibir itens com alturas variadas em uma grade organizada.
+
+## Importação
+
+```tsx
+import { Masonry } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Itens Dinâmicos" description="Adicione e remova itens dinamicamente. Novos itens são colocados na coluna mais curta." source={MasonryDemoSource} fn="DynamicMasonryDemo">
+  <DynamicMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="Masonry Básico" description="Grade masonry simples com itens de altura variada." source={MasonryDemoSource} fn="BasicMasonryDemo">
+  <BasicMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colunas Responsivas" description="Contagem de colunas responsiva em diferentes breakpoints." source={MasonryDemoSource} fn="ResponsiveMasonryDemo">
+  <ResponsiveMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="Gap Personalizado" description="Diferentes tamanhos de gap entre itens." source={MasonryDemoSource} fn="CustomGapDemo">
+  <CustomGapDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Masonry`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `columns` | Número de colunas ou configuração de colunas responsivas | `number \| { xs?: number, sm?: number, md?: number, lg?: number, xl?: number, '2xl'?: number }` | `3` |
+| `gap` | Espaçamento entre itens em pixels | `number` | `16` |
+| `children` | Itens para exibir em layout masonry | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Notas de Uso
+
+- O componente Masonry cria um layout estilo Pinterest onde os itens são organizados em colunas
+- Itens fluem para a coluna mais curta para criar um layout balanceado
+- Use a prop `columns` para definir um número fixo de colunas ou torná-la responsiva
+- A prop `gap` controla o espaçamento entre itens em pixels
+- Breakpoints responsivos: xs (&lt;640px), sm (≥640px), md (≥768px), lg (≥1024px), xl (≥1280px), 2xl (≥1536px)
+- Itens podem ter alturas variadas - o layout irá distribuí-los automaticamente de forma eficiente
+- Ótimo para galerias de imagens, grades de produtos e cards de conteúdo

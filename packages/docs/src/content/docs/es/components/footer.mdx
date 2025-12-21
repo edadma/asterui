@@ -1,0 +1,58 @@
+---
+title: Footer
+description: Componente de pie de página con soporte para enlaces, secciones y diseños centrados.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithSectionsDemo,
+  CenteredDemo,
+} from '../../../../components/FooterDemo'
+import FooterDemoSource from '../../../../components/FooterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de pie de página con soporte para enlaces, secciones y diseños centrados.
+
+## Importar
+
+```tsx
+import { Footer } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Footer Básico" description="Pie de página simple alineado a la izquierda con enlaces horizontales." source={FooterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Footer con Secciones" description="Pie de página con secciones tituladas en columnas." source={FooterDemoSource} fn="WithSectionsDemo">
+  <WithSectionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Footer Centrado" description="Pie de página con contenido centrado." source={FooterDemoSource} fn="CenteredDemo">
+  <CenteredDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Footer`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del pie de página | `React.ReactNode` | - |
+| `center` | Centra el contenido del pie de página | `boolean` | `false` |
+| `horizontal` | Muestra columnas horizontalmente | `boolean` | `false` |
+| `vertical` | Muestra columnas verticalmente (predeterminado) | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Footer.Title`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Texto del título | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |

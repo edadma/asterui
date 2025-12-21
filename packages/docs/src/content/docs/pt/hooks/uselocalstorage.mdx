@@ -1,0 +1,54 @@
+---
+title: useLocalStorage
+description: Hook para persistir estado no localStorage.
+---
+
+Persiste estado no localStorage com sincronização automática entre abas.
+
+## Importação
+
+```tsx
+import { useLocalStorage } from 'asterui'
+```
+
+## Uso
+
+```tsx
+function SettingsExample() {
+  const [theme, setTheme] = useLocalStorage('theme', 'light')
+  const [user, setUser, removeUser] = useLocalStorage('user', null)
+
+  return (
+    <>
+      <Select value={theme} onChange={setTheme}>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </Select>
+      <Button onClick={removeUser}>Logout</Button>
+    </>
+  )
+}
+```
+
+## Parâmetros
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-------------|
+| `key` | `string` | Chave do localStorage |
+| `initialValue` | `T` | Valor inicial se a chave não existir |
+
+## Valor de Retorno
+
+Retorna uma tupla `[value, setValue, removeValue]`:
+
+| Índice | Tipo | Descrição |
+|-------|------|-------------|
+| `0` | `T` | Valor armazenado atual |
+| `1` | `(value: T \| (prev: T) => T) => void` | Atualizar o valor |
+| `2` | `() => void` | Remover do localStorage e redefinir para o inicial |
+
+## Recursos
+
+- Sincroniza entre abas/janelas via evento `storage`
+- Seguro para SSR (lida com `window` sendo undefined)
+- Suporta atualizações funcionais como `useState`

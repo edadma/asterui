@@ -1,0 +1,81 @@
+---
+title: Result
+description: Exibe páginas de resultado para estados de sucesso, erro ou informativos.
+tableOfContents: false
+---
+
+import {
+  SuccessResultDemo,
+  ErrorResultDemo,
+  InfoResultDemo,
+  WarningResultDemo,
+  NotFoundResultDemo,
+  ForbiddenResultDemo,
+  ServerErrorResultDemo,
+} from '../../../../components/ResultDemo'
+import ResultDemoSource from '../../../../components/ResultDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exibe páginas de resultado para estados de sucesso, erro ou informativos.
+
+## Importação
+
+```tsx
+import { Result } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Resultado de Sucesso" description="Mostra estado de sucesso com botões de ação." source={ResultDemoSource} fn="SuccessResultDemo">
+  <SuccessResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="Resultado de Erro" description="Mostra estado de erro com ação de tentar novamente." source={ResultDemoSource} fn="ErrorResultDemo">
+  <ErrorResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="Resultado Informativo" description="Mostra mensagem informativa." source={ResultDemoSource} fn="InfoResultDemo">
+  <InfoResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="Resultado de Aviso" description="Mostra estado de aviso." source={ResultDemoSource} fn="WarningResultDemo">
+  <WarningResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="404 Página Não Encontrada" description="Mostra página de erro 404." source={ResultDemoSource} fn="NotFoundResultDemo">
+  <NotFoundResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="403 Proibido" description="Mostra página de acesso negado." source={ResultDemoSource} fn="ForbiddenResultDemo">
+  <ForbiddenResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="500 Erro do Servidor" description="Mostra página de erro do servidor." source={ResultDemoSource} fn="ServerErrorResultDemo">
+  <ServerErrorResultDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Result`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `status` | Tipo de status do resultado | `'success' \| 'error' \| 'info' \| 'warning' \| '404' \| '403' \| '500'` | `'info'` |
+| `title` | Título do resultado | `React.ReactNode` | - |
+| `subTitle` | Subtítulo do resultado | `React.ReactNode` | - |
+| `icon` | Ícone customizado (substitui ícone de status padrão) | `React.ReactNode` | - |
+| `extra` | Elementos de ação adicionais (tipicamente botões) | `React.ReactNode` | - |
+| `children` | Conteúdo adicional entre subtítulo e ações | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+| `style` | Estilos inline | `React.CSSProperties` | - |
+
+## Acessibilidade
+
+- Ícones de status têm rótulos ARIA apropriados
+- Estrutura de cabeçalho semântico para título e subtítulo
+- Botões de ação são acessíveis por teclado
+- Cor não é o único indicador de status

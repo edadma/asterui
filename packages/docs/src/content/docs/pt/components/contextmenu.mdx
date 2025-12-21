@@ -1,0 +1,105 @@
+---
+title: ContextMenu
+description: Menu de contexto de clique direito com submenus aninhados e ícones.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DataDrivenDemo,
+  IconsDemo,
+  DividersDemo,
+  SubmenuDemo,
+  DisabledDemo,
+} from '../../../../components/ContextMenuDemo'
+import ContextMenuDemoSource from '../../../../components/ContextMenuDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Menu de contexto de clique direito com submenus aninhados e ícones.
+
+## Importação
+
+```tsx
+import { ContextMenu } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Menu de Contexto Básico" description="Clique com o botão direito no elemento para mostrar o menu." source={ContextMenuDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Padrão Orientado a Dados" description="Use a prop items para menus orientados a dados." source={ContextMenuDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Ícones" description="Itens de menu com ícones." source={ContextMenuDemoSource} fn="IconsDemo">
+  <IconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Divisores" description="Separar seções do menu com divisores." source={ContextMenuDemoSource} fn="DividersDemo">
+  <DividersDemo client:load slot="demo" />
+</Example>
+
+<Example title="Submenu Aninhado" description="Itens de menu com submenus aninhados." source={ContextMenuDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+<Example title="Itens Desabilitados" description="Alguns itens do menu podem ser desabilitados." source={ContextMenuDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ContextMenu`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Elemento que aciona o menu de contexto ao clicar com o botão direito | `React.ReactNode` | - |
+| `items` | Itens do menu | `ContextMenuItem[]` | - |
+| `onSelect` | Callback quando um item é selecionado | `(key: string) => void` | - |
+| `disabled` | Se o menu de contexto está desabilitado | `boolean` | `false` |
+| `className` | Classes CSS adicionais para o menu | `string` | - |
+
+### `ContextMenuItem` (para prop items)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Identificador único para o item | `string` | - |
+| `label` | Rótulo de exibição | `React.ReactNode` | - |
+| `icon` | Elemento de ícone | `React.ReactNode` | - |
+| `disabled` | Estado desabilitado | `boolean` | `false` |
+| `danger` | Mostrar como ação de perigo/destrutiva | `boolean` | `false` |
+| `divider` | Renderizar como um divisor | `boolean` | `false` |
+| `children` | Itens de submenu | `ContextMenuItem[]` | - |
+
+### `ContextMenu.Item` (padrão composto)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Chave única para o item (prop key do React) | `string` | - |
+| `children` | Conteúdo do item | `React.ReactNode` | - |
+| `icon` | Ícone para exibir antes do rótulo | `React.ReactNode` | - |
+| `disabled` | Se o item está desabilitado | `boolean` | `false` |
+| `danger` | Mostrar como ação de perigo/destrutiva | `boolean` | `false` |
+
+### `ContextMenu.SubMenu` (padrão composto)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Chave única para o submenu (prop key do React) | `string` | - |
+| `label` | Rótulo do submenu | `React.ReactNode` | - |
+| `icon` | Ícone para exibir antes do rótulo | `React.ReactNode` | - |
+| `disabled` | Se o submenu está desabilitado | `boolean` | `false` |
+| `children` | Itens do submenu | `React.ReactNode` | - |
+
+## Acessibilidade
+
+- Menu fecha ao pressionar a tecla Escape
+- Menu fecha ao clicar fora
+- Itens do menu são navegáveis por teclado
+- Itens desabilitados são anunciados adequadamente

@@ -1,0 +1,76 @@
+---
+title: FileInput
+description: 文件输入组件，支持多个文件、文件类型过滤和各种样式。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AcceptTypesDemo,
+  MultipleDemo,
+  SizesDemo,
+  ColorsDemo,
+  StylesDemo,
+} from '../../../../components/FileInputDemo'
+import FileInputDemoSource from '../../../../components/FileInputDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+文件输入组件，支持多个文件、文件类型过滤和各种样式。
+
+## 导入
+
+```tsx
+import { FileInput } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础文件输入" description="简单的文件输入。" source={FileInputDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="接受类型" description="仅接受特定文件类型的文件输入。" source={FileInputDemoSource} fn="AcceptTypesDemo">
+  <AcceptTypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="多个文件" description="允许选择多个文件。" source={FileInputDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="不同的文件输入尺寸。" source={FileInputDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="不同的颜色变体。" source={FileInputDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="样式" description="带边框和幽灵样式。" source={FileInputDemoSource} fn="StylesDemo">
+  <StylesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `FileInput`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `accept` | 接受的文件类型 | `string` | - |
+| `multiple` | 允许多文件选择 | `boolean` | `false` |
+| `onChange` | 变化处理器 | `(e: ChangeEvent) => void` | - |
+| `disabled` | 禁用输入 | `boolean` | `false` |
+| `size` | 输入尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | 输入颜色 | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `bordered` | 显示边框 | `boolean` | `false` |
+| `ghost` | 幽灵样式 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用原生 `<input type="file">` 以获得完整的键盘支持
+- 始终与描述性的 `<label>` 配对以提高可访问性
+- `accept` 属性帮助用户选择适当的文件

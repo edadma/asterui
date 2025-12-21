@@ -1,0 +1,71 @@
+---
+title: Progress
+description: Exibe conclusão de tarefa ou passagem de tempo com barras de progresso.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ColorsDemo,
+  StatusDemo,
+  IndeterminateDemo,
+  SizesDemo,
+  LabelDemo,
+} from '../../../../components/ProgressDemo'
+import ProgressDemoSource from '../../../../components/ProgressDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exibe conclusão de tarefa ou passagem de tempo com barras de progresso.
+
+## Importação
+
+```tsx
+import { Progress } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Progresso Básico" description="Barra de progresso simples com valor." source={ProgressDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes de Cores" description="Diferentes esquemas de cores para barras de progresso." source={ProgressDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores de Status" description="Cores semânticas para diferentes estados." source={ProgressDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Indeterminado" description="Barra de progresso sem valor específico (animada)." source={ProgressDemoSource} fn="IndeterminateDemo">
+  <IndeterminateDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Controle a largura com classes Tailwind." source={ProgressDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Rótulo" description="Progresso com rótulo de texto." source={ProgressDemoSource} fn="LabelDemo">
+  <LabelDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Progress`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `value` | Valor de progresso atual (0-100). Omita para estado indeterminado | `number` | - |
+| `max` | Valor máximo | `number` | `100` |
+| `type` | Variante de cor | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa elemento nativo `<progress>` para acessibilidade
+- Valor é anunciado por leitores de tela
+- Estado indeterminado é comunicado apropriadamente

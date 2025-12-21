@@ -1,0 +1,62 @@
+---
+title: Empty
+description: 当没有数据可显示时显示占位符内容。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomDescriptionDemo,
+  CustomImageDemo,
+  WithActionDemo,
+  SimpleImageDemo,
+} from '../../../../components/EmptyDemo'
+import EmptyDemoSource from '../../../../components/EmptyDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+当没有数据可显示时显示占位符内容。
+
+## 导入
+
+```tsx
+import { Empty } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础空状态" description="带默认图片的简单空状态。" source={EmptyDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义描述" description="带自定义描述文本的空状态。" source={EmptyDemoSource} fn="CustomDescriptionDemo">
+  <CustomDescriptionDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义图片" description="带自定义图片或图标的空状态。" source={EmptyDemoSource} fn="CustomImageDemo">
+  <CustomImageDemo client:load slot="demo" />
+</Example>
+
+<Example title="带操作按钮" description="带操作按钮的空状态。" source={EmptyDemoSource} fn="WithActionDemo">
+  <WithActionDemo client:load slot="demo" />
+</Example>
+
+<Example title="简单图片" description="带较小图片的最小空状态。" source={EmptyDemoSource} fn="SimpleImageDemo">
+  <SimpleImageDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Empty`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `description` | 作为描述显示的文本或节点 | `React.ReactNode` | `'No Data'` |
+| `image` | 自定义图片或图标；设置为 null 隐藏 | `React.ReactNode` | `Empty.PRESENTED_IMAGE_DEFAULT` |
+| `imageStyle` | 应用于图片容器的样式 | `React.CSSProperties` | - |
+| `children` | 额外内容，如按钮或操作 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `data-testid` | 组件的测试 ID | `string` | `'empty'` |

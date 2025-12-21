@@ -1,0 +1,145 @@
+---
+title: Form
+description: 带验证、布局选项和字段管理的表单包装器。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ValidationDemo,
+  TooltipExtraDemo,
+  FeedbackDemo,
+  LayoutsDemo,
+  InitialValuesDemo,
+  FloatingLabelDemo,
+  AddonsDemo,
+  FormListDemo,
+} from '../../../../components/FormDemo'
+import FormDemoSource from '../../../../components/FormDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+带验证、布局选项和字段管理的表单包装器。
+
+## 导入
+
+```tsx
+import { Form } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础表单" description="带用户名和密码字段的简单登录表单。" source={FormDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="表单验证" description="带必填字段和电子邮件模式验证规则的表单。" source={FormDemoSource} fn="ValidationDemo">
+  <ValidationDemo client:load slot="demo" />
+</Example>
+
+<Example title="提示和额外内容" description="带提示帮助图标的标签和字段下方的额外辅助文本。" source={FormDemoSource} fn="TooltipExtraDemo">
+  <TooltipExtraDemo client:load slot="demo" />
+</Example>
+
+<Example title="验证反馈" description="使用 hasFeedback 属性在输入框内显示验证图标。" source={FormDemoSource} fn="FeedbackDemo">
+  <FeedbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="表单布局" description="不同的表单布局：水平、垂直和内联。" source={FormDemoSource} fn="LayoutsDemo">
+  <LayoutsDemo client:load slot="demo" />
+</Example>
+
+<Example title="初始值" description="带预填充初始值的表单。" source={FormDemoSource} fn="InitialValuesDemo">
+  <InitialValuesDemo client:load slot="demo" />
+</Example>
+
+<Example title="浮动标签" description="带浮动标签的 Form.Item，聚焦时动画。" source={FormDemoSource} fn="FloatingLabelDemo">
+  <FloatingLabelDemo client:load slot="demo" />
+</Example>
+
+<Example title="表单插件" description="带输入框前后文本/元素的 Form.Item。" source={FormDemoSource} fn="AddonsDemo">
+  <AddonsDemo client:load slot="demo" />
+</Example>
+
+<Example title="动态字段（Form.List）" description="使用 Form.List 动态添加和删除表单字段。" source={FormDemoSource} fn="FormListDemo">
+  <FormListDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Form`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `onFinish` | 成功处理器（验证通过时调用） | `(values: any) => void` | - |
+| `onFinishFailed` | 失败处理器（验证失败时调用） | `(errorInfo: any) => void` | - |
+| `initialValues` | 初始表单字段值 | `Record<string, any>` | - |
+| `layout` | 表单布局方向 | `'horizontal' \| 'vertical' \| 'inline'` | `'vertical'` |
+| `labelWidth` | 水平布局的标签宽度（像素） | `number` | `60` |
+| `size` | 表单控件的尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `disabled` | 禁用所有表单字段 | `boolean` | `false` |
+| `children` | 表单内容（Form.Item 元素） | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Form.Item`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `name` | 字段名称（验证所需） | `string` | - |
+| `label` | 字段标签文本 | `string` | - |
+| `floatingLabel` | 浮动标签文本（label 的替代方案） | `string` | - |
+| `addonBefore` | 输入框前的文本/元素（外部） | `React.ReactNode` | - |
+| `addonAfter` | 输入框后的文本/元素（外部） | `React.ReactNode` | - |
+| `rules` | 验证规则 | `ValidationRule[]` | - |
+| `required` | 标记字段为必填（简写） | `boolean` | `false` |
+| `valuePropName` | 值的属性名称（例如复选框的 "checked"） | `string` | `'value'` |
+| `inline` | 使用自动宽度而非全宽渲染 | `boolean` | `false` |
+| `tooltip` | 在标签旁显示的提示文本 | `string` | - |
+| `extra` | 表单控件下方的额外内容 | `React.ReactNode` | - |
+| `hasFeedback` | 显示验证反馈图标 | `boolean` | `false` |
+| `dependencies` | 更改时触发重新验证的字段名称 | `string[]` | - |
+| `validateTrigger` | 何时验证 | `'onChange' \| 'onBlur' \| 'onSubmit' \| array` | `'onChange'` |
+| `initialValue` | 此字段的初始值 | `any` | - |
+| `hidden` | 隐藏字段但仍验证和提交 | `boolean` | `false` |
+| `children` | 表单控件元素（Input、Select 等） | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Form.ErrorList`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `fields` | 要显示错误的特定字段名称（如果未指定则显示所有） | `string[]` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Form.List`
+
+管理表单字段的动态数组。
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `name` | 数组字段的名称 | `string` | - |
+| `children` | 渲染函数 | `(fields, operations) => ReactNode` | - |
+
+**字段数组项：**
+- `id` - 字段的唯一标识符
+- `name` - 字段的索引（在 `Form.Item` name 中使用为 `[field.name, 'fieldKey']`）
+
+**操作：**
+- `add(value?)` - 添加带可选初始值的新字段
+- `remove(index)` - 删除索引处的字段
+- `move(from, to)` - 将字段从一个索引移动到另一个索引
+
+## 验证规则
+
+`rules` 属性接受验证规则数组：
+
+- `required: boolean` - 字段为必填
+- `message: string` - 要显示的错误消息
+- `type: 'email' | 'url' | 'number'` - 内置类型验证
+- `min: number` - 字符串的最小长度或数字的最小值
+- `max: number` - 字符串的最大长度或数字的最大值
+- `pattern: RegExp` - 自定义正则表达式模式验证
+- `validate: (value) => boolean | string | Promise` - 自定义验证函数

@@ -1,0 +1,120 @@
+---
+title: Rating
+description: Avaliações por estrelas para feedback do usuário e reviews.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ClearableDemo,
+  SizesDemo,
+  HalfDemo,
+  HeartDemo,
+  CustomColorsDemo,
+  DisabledDemo,
+  CountDemo,
+  ControlledDemo,
+  AltStarDemo,
+  FormDemo,
+} from '../../../../components/RatingDemo'
+import RatingDemoSource from '../../../../components/RatingDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Avaliações por estrelas para feedback do usuário e reviews.
+
+## Importação
+
+```tsx
+import { Rating } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Rating Básico" description="Avaliação simples de 5 estrelas sem configuração necessária." source={RatingDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Limpável" description="Clique na mesma estrela novamente para limpar a avaliação." source={RatingDemoSource} fn="ClearableDemo">
+  <ClearableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diferentes Tamanhos" description="Avaliação em vários tamanhos." source={RatingDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Meia Estrela" description="Permite precisão de meia estrela." source={RatingDemoSource} fn="HalfDemo">
+  <HalfDemo client:load slot="demo" />
+</Example>
+
+<Example title="Formato de Coração" description="Avaliação com ícones de coração." source={RatingDemoSource} fn="HeartDemo">
+  <HeartDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores Customizadas" description="Diferentes cores para cada nível de avaliação usando Rating.Item." source={RatingDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Desabilitado" description="Exibe avaliação sem interação." source={RatingDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contagem Customizada" description="Especifica um número diferente de estrelas." source={RatingDemoSource} fn="CountDemo">
+  <CountDemo client:load slot="demo" />
+</Example>
+
+<Example title="Rating Controlado" description="Controla valor de avaliação externamente." source={RatingDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estrela Alternativa" description="Estilo de estrela diferente." source={RatingDemoSource} fn="AltStarDemo">
+  <AltStarDemo client:load slot="demo" />
+</Example>
+
+<Example title="Integração com Formulário" description="Rating funciona com validação de Form." source={RatingDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Rating`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Componentes Rating.Item customizados (opcional) | `React.ReactNode` | - |
+| `value` | Valor de avaliação controlado | `number` | - |
+| `defaultValue` | Valor de avaliação padrão (não controlado) | `number` | `0` |
+| `onChange` | Callback quando avaliação muda | `(value: number) => void` | - |
+| `onHoverChange` | Callback quando valor de hover muda | `(value: number) => void` | - |
+| `count` | Número de estrelas | `number` | `5` |
+| `size` | Tamanho da avaliação | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `gap` | Espaço entre estrelas | `'none' \| 'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Classe de cor de fundo Tailwind | `string` | `'bg-warning'` |
+| `mask` | Formato dos ícones de avaliação | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `allowClear` | Permite limpar avaliação clicando no mesmo valor | `boolean` | `true` |
+| `allowHalf` | Permite seleção de meia estrela | `boolean` | `false` |
+| `disabled` | Estado desabilitado (não interativo) | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `Rating.Item`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `value` | Valor de avaliação que este item representa | `number` | - |
+| `mask` | Formato do ícone de avaliação | `'star' \| 'star-2' \| 'heart'` | `'star-2'` |
+| `color` | Classe de cor de fundo Tailwind | `string` | `'bg-warning'` |
+| `hidden` | Item oculto para limpar avaliação | `boolean` | `false` |
+| `half` | Posição de meia estrela | `'first' \| 'second'` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa `role="radiogroup"` para semântica apropriada
+- Usa padrão de botão de rádio para seleção de avaliação
+- Cada estrela tem um `aria-label` descrevendo seu valor
+- Navegação por teclado entre opções de avaliação
+- Preview de hover mostra feedback visual antes da seleção
+- Estado desabilitado previne interação enquanto exibe valor

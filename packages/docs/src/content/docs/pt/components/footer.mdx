@@ -1,0 +1,58 @@
+---
+title: Footer
+description: Componente de rodapé de página com suporte para links, seções e layouts centralizados.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithSectionsDemo,
+  CenteredDemo,
+} from '../../../../components/FooterDemo'
+import FooterDemoSource from '../../../../components/FooterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de rodapé de página com suporte para links, seções e layouts centralizados.
+
+## Importação
+
+```tsx
+import { Footer } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Footer Básico" description="Rodapé simples alinhado à esquerda com links horizontais." source={FooterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Footer com Seções" description="Rodapé com seções tituladas em colunas." source={FooterDemoSource} fn="WithSectionsDemo">
+  <WithSectionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Footer Centralizado" description="Rodapé com conteúdo centralizado." source={FooterDemoSource} fn="CenteredDemo">
+  <CenteredDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Footer`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo do rodapé | `React.ReactNode` | - |
+| `center` | Centralizar o conteúdo do rodapé | `boolean` | `false` |
+| `horizontal` | Exibir colunas horizontalmente | `boolean` | `false` |
+| `vertical` | Exibir colunas verticalmente (padrão) | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `Footer.Title`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Texto do título | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |

@@ -1,0 +1,70 @@
+---
+title: Kbd
+description: 显示键盘按键和快捷键。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  CombinationDemo,
+  InTextDemo,
+  ArrowsDemo,
+  FullKeyboardDemo,
+} from '../../../../components/KbdDemo'
+import KbdDemoSource from '../../../../components/KbdDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+显示键盘按键和快捷键。
+
+## 导入
+
+```tsx
+import { Kbd } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础" description="简单的键盘按键显示。" source={KbdDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="用于各种上下文的不同尺寸。" source={KbdDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="按键组合" description="显示键盘快捷键。" source={KbdDemoSource} fn="CombinationDemo">
+  <CombinationDemo client:load slot="demo" />
+</Example>
+
+<Example title="文本中" description="在文本中内联使用 kbd。" source={KbdDemoSource} fn="InTextDemo">
+  <InTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="方向键" description="用于导航说明的方向键显示。" source={KbdDemoSource} fn="ArrowsDemo">
+  <ArrowsDemo client:load slot="demo" />
+</Example>
+
+<Example title="完整键盘" description="完整键盘布局示例。" source={KbdDemoSource} fn="FullKeyboardDemo">
+  <FullKeyboardDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Kbd`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `size` | kbd 的尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `children` | 按键内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用语义化的 `<kbd>` HTML 元素
+- 屏幕阅读器适当地朗读键盘按键
+- 高对比度样式确保可见性

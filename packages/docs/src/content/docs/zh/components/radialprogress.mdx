@@ -1,0 +1,84 @@
+---
+title: Radial Progress 径向进度
+description: 具有可自定义外观的圆形进度指示器
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ValuesDemo,
+  ColorsDemo,
+  SizesDemo,
+  ThicknessDemo,
+  CustomContentDemo,
+  NoValueDemo,
+  BackgroundDemo,
+} from '../../../../components/RadialProgressDemo'
+import RadialProgressDemoSource from '../../../../components/RadialProgressDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+具有可自定义外观的圆形进度指示器。
+
+## 导入
+
+```tsx
+import { RadialProgress } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础" description="带有值的简单径向进度。" source={RadialProgressDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="不同值" description="具有各种完成百分比的径向进度。" source={RadialProgressDemoSource} fn="ValuesDemo">
+  <ValuesDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="具有不同颜色的径向进度。" source={RadialProgressDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义尺寸" description="使用 size 属性调整尺寸。" source={RadialProgressDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义厚度" description="调整环的厚度。" source={RadialProgressDemoSource} fn="ThicknessDemo">
+  <ThicknessDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义内容" description="显示自定义内容而不是百分比。" source={RadialProgressDemoSource} fn="CustomContentDemo">
+  <CustomContentDemo client:load slot="demo" />
+</Example>
+
+<Example title="不显示值" description="隐藏百分比文本。" source={RadialProgressDemoSource} fn="NoValueDemo">
+  <NoValueDemo client:load slot="demo" />
+</Example>
+
+<Example title="带背景" description="添加背景和边框样式。" source={RadialProgressDemoSource} fn="BackgroundDemo">
+  <BackgroundDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `RadialProgress`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 进度值(0-100) | `number` | - |
+| `size` | 以 rem 单位或 CSS 字符串表示的大小 | `string \| number` | `5rem` |
+| `thickness` | 以像素或 CSS 字符串表示的环厚度 | `string \| number` | 尺寸的 10% |
+| `color` | 进度颜色 | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'error' \| 'info' \| 'neutral'` | - |
+| `showValue` | 显示百分比文本 | `boolean` | `true` |
+| `children` | 要显示的自定义内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 使用带有正确 ARIA 属性的 `role="progressbar"`
+- 值以百分比形式向屏幕阅读器宣布
+- 自定义内容可以包含额外的可访问标签

@@ -1,0 +1,146 @@
+---
+title: Cascader
+description: Caixa de seleção em cascata para dados hierárquicos como localizações ou categorias.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HoverDemo,
+  SizesDemo,
+  DisabledDemo,
+  SearchDemo,
+  ChangeOnSelectDemo,
+  AsyncLoadDemo,
+  StatusDemo,
+  MultipleDemo,
+} from '../../../../components/CascaderDemo'
+import CascaderDemoSource from '../../../../components/CascaderDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Caixa de seleção em cascata para dados hierárquicos como localizações ou categorias.
+
+## Importação
+
+```tsx
+import { Cascader } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Seleção hierárquica simples." source={CascaderDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Expandir ao Passar Mouse" description="Expandir submenus ao passar o mouse." source={CascaderDemoSource} fn="HoverDemo">
+  <HoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Diferentes tamanhos de cascader." source={CascaderDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Desabilitado" description="Estado de cascader desabilitado." source={CascaderDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pesquisa" description="Habilitar funcionalidade de pesquisa/filtro." source={CascaderDemoSource} fn="SearchDemo">
+  <SearchDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mudar ao Selecionar" description="Permitir seleção de qualquer nível, não apenas nós folha." source={CascaderDemoSource} fn="ChangeOnSelectDemo">
+  <ChangeOnSelectDemo client:load slot="demo" />
+</Example>
+
+<Example title="Carregamento Assíncrono" description="Carregar opções dinamicamente ao expandir." source={CascaderDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+<Example title="Status de Validação" description="Mostrar estado de validação de erro ou aviso." source={CascaderDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Seleção Múltipla" description="Selecionar múltiplos valores folha." source={CascaderDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Cascader`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `options` | Dados de opções hierárquicas | `CascaderOption[]` | `[]` |
+| `value` | Caminho de valor selecionado controlado | `string[]` | - |
+| `defaultValue` | Valor selecionado padrão (não controlado) | `string[]` | `[]` |
+| `onChange` | Callback quando a seleção muda | `(value: string[], selectedOptions: CascaderOption[]) => void` | - |
+| `placeholder` | Texto placeholder do input | `string` | `'Please select'` |
+| `disabled` | Desabilitar o cascader | `boolean` | `false` |
+| `allowClear` | Mostrar botão de limpar | `boolean` | `true` |
+| `expandTrigger` | Como expandir submenus | `'click' \| 'hover'` | `'click'` |
+| `changeOnSelect` | Permitir seleção de qualquer nível, não apenas folhas | `boolean` | `false` |
+| `displayRender` | Função de renderização de exibição personalizada | `(labels: ReactNode[], selectedOptions: CascaderOption[]) => ReactNode` | - |
+| `size` | Tamanho do input | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Cor do anel de foco | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `status` | Status de validação | `'error' \| 'warning'` | - |
+| `showSearch` | Habilitar funcionalidade de pesquisa | `boolean \| { filter?, render?, matchInputWidth? }` | `false` |
+| `notFoundContent` | Conteúdo quando não há resultados de pesquisa | `ReactNode` | `'No results found'` |
+| `loadData` | Função de carregamento de dados assíncrono | `(selectedOptions: CascaderOption[]) => Promise<void>` | - |
+| `fieldNames` | Nomes de campo personalizados para mapeamento de dados | `{ label?: string; value?: string; children?: string }` | - |
+| `open` | Estado aberto controlado do dropdown | `boolean` | - |
+| `onDropdownVisibleChange` | Callback quando a visibilidade do dropdown muda | `(open: boolean) => void` | - |
+| `popupClassName` | Nome de classe para dropdown | `string` | - |
+| `dropdownRender` | Renderização de wrapper de dropdown personalizada | `(menu: ReactNode) => ReactNode` | - |
+| `multiple` | Habilitar modo de seleção múltipla | `boolean` | `false` |
+| `maxTagCount` | Máximo de tags para mostrar no modo múltiplo | `number \| 'responsive'` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `CascaderOption`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `value` | Identificador único | `string` | - |
+| `label` | Rótulo de exibição | `ReactNode` | - |
+| `children` | Opções filhas | `CascaderOption[]` | - |
+| `disabled` | Desabilitar esta opção | `boolean` | `false` |
+| `isLeaf` | Forçar como nó folha (sem expandir, sem carregamento assíncrono) | `boolean` | - |
+
+## Acessibilidade
+
+O componente Cascader segue o padrão de combobox WAI-ARIA:
+
+- Usa `role="combobox"` no gatilho com `aria-expanded`, `aria-haspopup`
+- `aria-activedescendant` rastreia a opção focada para leitores de tela
+- `aria-selected` indica o estado selecionado nas opções
+- `aria-disabled` indica o estado desabilitado
+- Botão de limpar tem `aria-label="Clear selection"`
+
+### Navegação por Teclado
+
+| Tecla | Ação |
+|-----|--------|
+| Baixo | Abrir dropdown ou mover para próxima opção |
+| Cima | Mover para opção anterior |
+| Direita | Mover para próxima coluna (expandir) |
+| Esquerda | Mover para coluna anterior |
+| Enter | Selecionar opção focada ou abrir dropdown |
+| Espaço | Alternar dropdown (quando não está pesquisando) |
+| Escape | Fechar dropdown |
+| Home | Mover para primeira opção |
+| End | Mover para última opção |
+
+### Testes
+
+O componente inclui atributos de dados para testes:
+
+- `data-testid="cascader"` no contêiner raiz
+- `data-testid="cascader-dropdown"` no dropdown
+- `data-testid="cascader-option-{value}"` em cada opção
+- `data-testid="cascader-clear"` no botão de limpar
+- `data-state="open|closed"` na raiz indica o estado do dropdown
+- `data-state="selected|hovered"` nas opções indica o estado
+- `data-value="{value}"` nas opções fornece o valor

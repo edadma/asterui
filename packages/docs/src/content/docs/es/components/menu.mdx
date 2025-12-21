@@ -1,0 +1,128 @@
+---
+title: Menu
+description: Componente de menú de navegación para mostrar elementos de navegación jerárquicos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HorizontalDemo,
+  WithIconsDemo,
+  SubmenuDemo,
+  SizesDemo,
+  DataDrivenDemo,
+} from '../../../../components/MenuDemo'
+import MenuDemoSource from '../../../../components/MenuDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de menú de navegación para mostrar elementos de navegación jerárquicos.
+
+## Importar
+
+```tsx
+import { Menu } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Menu Básico" description="Menú vertical simple con elementos seleccionables." source={MenuDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Menu Horizontal" description="Menú mostrado horizontalmente." source={MenuDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Iconos" description="Elementos de menú con iconos para mejor contexto visual." source={MenuDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Submenú" description="Menú con submenús anidados." source={MenuDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Menú en diferentes tamaños." source={MenuDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Patrón Basado en Datos" description="Usa la prop items para menús basados en datos." source={MenuDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Menu`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Elementos del menú (patrón compuesto) | `React.ReactNode` | - |
+| `items` | Elementos del menú (patrón basado en datos) | `MenuItem[]` | - |
+| `mode` | Modo de visualización del menú | `'vertical' \| 'horizontal' \| 'inline'` | `'vertical'` |
+| `size` | Tamaño del menú | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `selectedKeys` | Claves de elementos seleccionados controlados | `string[]` | - |
+| `defaultSelectedKeys` | Claves seleccionadas predeterminadas (no controlado) | `string[]` | `[]` |
+| `openKeys` | Claves de submenú abierto controladas | `string[]` | - |
+| `defaultOpenKeys` | Claves de submenú abierto predeterminadas (no controlado) | `string[]` | `[]` |
+| `onSelect` | Callback cuando se selecciona un elemento | `(key: string) => void` | - |
+| `onOpenChange` | Callback cuando cambia el estado abierto del submenú | `(openKeys: string[]) => void` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `MenuItem` (para la prop items)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único | `string` | - |
+| `label` | Etiqueta del elemento | `React.ReactNode` | - |
+| `icon` | Elemento de icono | `React.ReactNode` | - |
+| `disabled` | Si el elemento está deshabilitado | `boolean` | `false` |
+| `children` | Elementos del submenú | `MenuItem[]` | - |
+| `divider` | Renderizar como divisor | `boolean` | `false` |
+| `title` | Renderizar como título de sección | `boolean` | `false` |
+
+### `Menu.Item` (patrón compuesto)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Clave única para selección (prop key de React) | `string` | - |
+| `children` | Contenido del elemento | `React.ReactNode` | - |
+| `icon` | Elemento de icono | `React.ReactNode` | - |
+| `disabled` | Si el elemento está deshabilitado | `boolean` | `false` |
+| `onClick` | Manejador de clic | `() => void` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Menu.SubMenu` (patrón compuesto)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Clave única para estado abierto (prop key de React) | `string` | - |
+| `label` | Etiqueta del submenú | `React.ReactNode` | - |
+| `icon` | Elemento de icono | `React.ReactNode` | - |
+| `disabled` | Si el submenú está deshabilitado | `boolean` | `false` |
+| `children` | Elementos del submenú | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Menu.Title`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del título | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Menu.Divider`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa patrones de navegación semánticos con atributos ARIA apropiados
+- Soporte de navegación por teclado con teclas de flecha para recorrido del menú
+- Los elementos seleccionados están marcados apropiadamente para lectores de pantalla
+- Los estados abierto/cerrado de submenú se comunican a tecnologías asistivas
+- Los elementos de menú deshabilitados están marcados apropiadamente y no son enfocables
+- Los estados de enfoque son visibles para navegación por teclado

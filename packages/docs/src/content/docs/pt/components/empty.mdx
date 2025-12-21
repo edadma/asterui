@@ -1,0 +1,62 @@
+---
+title: Empty
+description: Exiba conteúdo de placeholder quando não há dados para mostrar.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomDescriptionDemo,
+  CustomImageDemo,
+  WithActionDemo,
+  SimpleImageDemo,
+} from '../../../../components/EmptyDemo'
+import EmptyDemoSource from '../../../../components/EmptyDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exiba conteúdo de placeholder quando não há dados para mostrar.
+
+## Importação
+
+```tsx
+import { Empty } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Empty Básico" description="Estado vazio simples com imagem padrão." source={EmptyDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Descrição Personalizada" description="Estado vazio com texto de descrição personalizado." source={EmptyDemoSource} fn="CustomDescriptionDemo">
+  <CustomDescriptionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Imagem Personalizada" description="Estado vazio com imagem ou ícone personalizado." source={EmptyDemoSource} fn="CustomImageDemo">
+  <CustomImageDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Botão de Ação" description="Estado vazio com botão de ação." source={EmptyDemoSource} fn="WithActionDemo">
+  <WithActionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Imagem Simples" description="Estado vazio minimalista com imagem menor." source={EmptyDemoSource} fn="SimpleImageDemo">
+  <SimpleImageDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Empty`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `description` | Texto ou nó para exibir como descrição | `React.ReactNode` | `'No Data'` |
+| `image` | Imagem ou ícone personalizado; defina como null para ocultar | `React.ReactNode` | `Empty.PRESENTED_IMAGE_DEFAULT` |
+| `imageStyle` | Estilo aplicado ao container da imagem | `React.CSSProperties` | - |
+| `children` | Conteúdo extra como botões ou ações | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+| `data-testid` | ID de teste para o componente | `string` | `'empty'` |

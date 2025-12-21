@@ -1,0 +1,80 @@
+---
+title: Select 选择器
+description: 用于从选项列表中选择的下拉选择组件。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DefaultValueDemo,
+  SizesDemo,
+  ColorsDemo,
+  GhostDemo,
+  DisabledDemo,
+  FormDemo,
+} from '../../../../components/SelectDemo'
+import SelectDemoSource from '../../../../components/SelectDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于从选项列表中选择的下拉选择组件。
+
+## 导入
+
+```tsx
+import { Select } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础选择器" description="简单的选择下拉菜单。" source={SelectDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带默认值" description="带有预选选项的选择器。" source={SelectDemoSource} fn="DefaultValueDemo">
+  <DefaultValueDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="五种尺寸: xs、sm、md、lg 和 xl。" source={SelectDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="不同状态的颜色变体。" source={SelectDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="幽灵变体" description="透明背景样式。" source={SelectDemoSource} fn="GhostDemo">
+  <GhostDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用状态" description="非交互式禁用选择器。" source={SelectDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="在表单中" description="带有表单验证的选择器。" source={SelectDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Select`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `size` | 选择器大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | 选择器颜色主题 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `ghost` | 幽灵样式变体 | `boolean` | `false` |
+| `bordered` | 显示边框 | `boolean` | `true` |
+| `disabled` | 禁用状态 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | - |
+| `children` | 选项元素 | `React.ReactNode` | - |
+
+## 可访问性
+
+- 使用原生 `<select>` 以获得完全的可访问性
+- 使用箭头键和 Enter 进行键盘导航
+- 与标准表单标签配合使用
+- 禁用状态得到正确传达

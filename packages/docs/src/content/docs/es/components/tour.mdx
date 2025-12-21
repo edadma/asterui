@@ -1,0 +1,91 @@
+---
+title: Tour
+description: Tour guiado con resaltado de foco y navegación por pasos.
+tableOfContents: false
+---
+
+import {
+  BasicTourDemo,
+  WithoutTargetDemo,
+  WithCoverDemo,
+  PlacementsDemo,
+} from '../../../../components/TourDemo'
+import TourDemoSource from '../../../../components/TourDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Tour guiado con resaltado de foco y navegación por pasos.
+
+## Importación
+
+```tsx
+import { Tour } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Tour Básico" description="Un tour guiado simple con múltiples pasos." source={TourDemoSource} fn="BasicTourDemo">
+  <BasicTourDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tour Sin Objetivo" description="Los pasos sin objetivo aparecen centrados en la pantalla." source={TourDemoSource} fn="WithoutTargetDemo">
+  <WithoutTargetDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Imagen de Portada" description="Añade imágenes o contenido personalizado sobre el título del paso." source={TourDemoSource} fn="WithCoverDemo">
+  <WithCoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posiciones" description="Controla dónde aparece el popover relativo al objetivo." source={TourDemoSource} fn="PlacementsDemo">
+  <PlacementsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tour`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `open` | Si el tour es visible | `boolean` | `false` |
+| `steps` | Configuración de pasos del tour | `TourStepProps[]` | `-` |
+| `current` | Índice del paso actual (controlado) | `number` | `-` |
+| `onChange` | Callback cuando cambia el paso | `(current: number) => void` | `-` |
+| `onClose` | Callback cuando se cierra el tour | `() => void` | `-` |
+| `onFinish` | Callback cuando termina el tour | `() => void` | `-` |
+| `mask` | Mostrar superposición de máscara con foco | `boolean` | `true` |
+| `type` | Tipo de estilo de botón | `'default' \| 'primary'` | `'default'` |
+| `gap` | Espacio entre el foco y el objetivo [radio, desplazamiento] o número | `number \| [number, number]` | `8` |
+| `showSkip` | Mostrar botón de omitir | `boolean` | `true` |
+| `showIndicators` | Mostrar indicadores de paso | `boolean` | `true` |
+| `closeOnMaskClick` | Cerrar al hacer clic en la máscara | `boolean` | `true` |
+| `closeOnEscape` | Cerrar con tecla Escape | `boolean` | `true` |
+| `scrollIntoView` | Desplazar objetivo a la vista | `boolean` | `true` |
+| `prevButtonText` | Texto para botón anterior | `React.ReactNode` | `'Previous'` |
+| `nextButtonText` | Texto para botón siguiente | `React.ReactNode` | `'Next'` |
+| `finishButtonText` | Texto para botón finalizar | `React.ReactNode` | `'Finish'` |
+| `skipButtonText` | Texto para botón omitir | `React.ReactNode` | `'Skip'` |
+| `zIndex` | z-index para superposición del tour | `number` | `1000` |
+
+### `TourStepProps`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `target` | Ref del elemento objetivo o función que devuelve elemento | `RefObject<HTMLElement> \| (() => HTMLElement \| null) \| null` | `-` |
+| `title` | Título del paso | `React.ReactNode` | `-` |
+| `description` | Descripción del paso | `React.ReactNode` | `-` |
+| `cover` | Imagen de portada o contenido sobre el título | `React.ReactNode` | `-` |
+| `placement` | Posición del popover relativa al objetivo | `TourPlacement` | `'bottom'` |
+| `className` | Clase personalizada para el popover del paso | `string` | `-` |
+| `onOpen` | Llamado cuando el paso se activa | `() => void` | `-` |
+| `onClose` | Llamado al salir del paso | `() => void` | `-` |
+
+## Accesibilidad
+
+- El diálogo del tour tiene role="dialog" y aria-modal="true"
+- Las teclas de flecha navegan entre pasos
+- La tecla Escape cierra el tour
+- Los indicadores de paso son accesibles por teclado
+- El foco queda atrapado dentro del tour cuando está abierto

@@ -1,0 +1,114 @@
+---
+title: Tabs 标签页
+description: 将内容组织到单独的视图中,一次只显示一个。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SettingsDemo,
+  BoxDemo,
+  LiftDemo,
+  SizesDemo,
+  DisabledDemo,
+  DataDrivenDemo,
+  PositionDemo,
+} from '../../../../components/TabsDemo'
+import TabsDemoSource from '../../../../components/TabsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+将内容组织到单独的视图中,一次只显示一个。
+
+## 导入
+
+```tsx
+import { Tabs } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础用法" description="自动处理内容切换的简单标签页。" source={TabsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="设置页面" description="使用浮动标签输入的完整设置页面。" source={TabsDemoSource} fn="SettingsDemo">
+  <SettingsDemo client:load slot="demo" />
+</Example>
+
+<Example title="盒装变体" description="带有封闭盒样式的标签页。" source={TabsDemoSource} fn="BoxDemo">
+  <BoxDemo client:load slot="demo" />
+</Example>
+
+<Example title="凸起变体" description="带有 3D 凸起外观的标签页。" source={TabsDemoSource} fn="LiftDemo">
+  <LiftDemo client:load slot="demo" />
+</Example>
+
+<Example title="不同尺寸" description="使用 Space 和 Typography 组件的各种尺寸的标签页。" source={TabsDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用标签" description="禁用特定标签。" source={TabsDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="数据驱动模式" description="使用 items 属性的数据驱动标签页,带有图标。" source={TabsDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="底部位置" description="位于内容下方的标签页。" source={TabsDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tabs`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 标签面板(复合模式) | `React.ReactNode` | `-` |
+| `items` | 标签项(数据驱动模式) | `TabItem[]` | `-` |
+| `activeKey` | 当前活动的标签键(受控) | `string` | `-` |
+| `defaultActiveKey` | 默认活动的标签键(非受控) | `string` | `-` |
+| `onChange` | 标签更改时的回调 | `(key: string) => void` | `-` |
+| `variant` | 视觉样式变体 | `'box' \| 'border' \| 'lift'` | `-` |
+| `size` | 标签大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
+| `position` | 标签相对于内容的位置 | `'top' \| 'bottom'` | `'top'` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+### `TabItem`(用于 items 属性)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 唯一标识符 | `string` | `-` |
+| `label` | 标签按钮标签 | `React.ReactNode` | `-` |
+| `children` | 标签面板内容 | `React.ReactNode` | `-` |
+| `disabled` | 禁用标签 | `boolean` | `false` |
+| `icon` | 标签图标 | `React.ReactNode` | `-` |
+
+### `Tabs.Panel`(复合模式)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 标签的唯一标识符(React key 属性) | `string` | `-` |
+| `tab` | 标签按钮标签 | `React.ReactNode` | `-` |
+| `disabled` | 禁用标签 | `boolean` | `false` |
+| `icon` | 标签图标 | `React.ReactNode` | `-` |
+| `children` | 标签面板内容 | `React.ReactNode` | `-` |
+
+## 可访问性
+
+- 使用正确的 ARIA 角色: `tablist`、`tab` 和 `tabpanel`
+- 键盘导航: 箭头键在标签之间移动,Tab 键将焦点移入面板
+- 活动标签用 `aria-selected="true"` 指示
+- 禁用的标签使用 `aria-disabled` 进行正确的通信
+- 标签面板使用 `aria-labelledby` 与其标签关联
+
+## 使用提示
+
+- 使用 `activeKey` 进行受控标签,`defaultActiveKey` 进行非受控
+- 使用 `items` 属性进行数据驱动的标签,`Tabs.Panel` 进行复合模式
+- 使用 `position="bottom"` 将标签放在内容下方

@@ -1,0 +1,16 @@
+{
+  "sidebar.changelog": "更新日志",
+  "sidebar.startHere": "从这里开始",
+  "sidebar.gettingStarted": "快速开始",
+  "sidebar.manualSetup": "手动配置",
+  "sidebar.components": "组件",
+  "sidebar.overview": "概览",
+  "sidebar.actions": "操作",
+  "sidebar.dataDisplay": "数据展示",
+  "sidebar.dataEntry": "数据录入",
+  "sidebar.feedback": "反馈",
+  "sidebar.navigation": "导航",
+  "sidebar.layout": "布局",
+  "sidebar.other": "其他",
+  "sidebar.hooks": "Hooks"
+}

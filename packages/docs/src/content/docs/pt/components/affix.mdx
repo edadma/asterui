@@ -1,0 +1,63 @@
+---
+title: Affix
+description: Fixar um elemento na janela de visualização durante a rolagem. Útil para navegação, barras de ferramentas ou botões de ação.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CallbackDemo,
+  BottomDemo,
+  TargetDemo,
+} from '../../../../components/AffixDemo'
+import AffixDemoSource from '../../../../components/AffixDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Fixar um elemento na janela de visualização durante a rolagem. Útil para navegação, barras de ferramentas ou botões de ação.
+
+## Importação
+
+```tsx
+import { Affix } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Affix Básico" description="O elemento fica fixo quando rolado além de sua posição." source={AffixDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Callback" description="Seja notificado quando o estado do affix muda." source={AffixDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="Affix na Parte Inferior" description="Fixar elemento na parte inferior da janela de visualização." source={AffixDemoSource} fn="BottomDemo">
+  <BottomDemo client:load slot="demo" />
+</Example>
+
+<Example title="Alvo Personalizado" description="Affix dentro de um contêiner com rolagem." source={AffixDemoSource} fn="TargetDemo">
+  <TargetDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Affix`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo a ser fixado | `React.ReactNode` | - |
+| `offsetTop` | Deslocamento do topo quando fixo (pixels) | `number` | - |
+| `offsetBottom` | Deslocamento da parte inferior quando fixo (pixels) | `number` | - |
+| `target` | Elemento alvo da rolagem | `() => HTMLElement \| Window` | - |
+| `onChange` | Callback quando o estado do affix muda | `(affixed: boolean) => void` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa CSS `position: sticky` para melhor desempenho
+- Não captura o foco do teclado quando fixado
+- O conteúdo permanece no fluxo do documento quando não está fixado

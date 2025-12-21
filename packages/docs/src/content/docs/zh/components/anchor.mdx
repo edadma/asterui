@@ -1,0 +1,75 @@
+---
+title: Anchor 锚点
+description: 导航到页面各部分，带有滚动监听高亮显示。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HorizontalDemo,
+  NestedDemo,
+} from '../../../../components/AnchorDemo'
+import AnchorDemoSource from '../../../../components/AnchorDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+导航到页面各部分，带有滚动监听高亮显示。
+
+## 引入
+
+```tsx
+import { Anchor } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="带滚动监听的垂直锚点导航。" source={AnchorDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="横向布局" description="顶部导航的横向布局。" source={AnchorDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="嵌套链接" description="带嵌套链接的层级导航。" source={AnchorDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Anchor`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `items` | 锚点链接配置 | `AnchorLinkItem[]` | - |
+| `direction` | 布局方向 | `'horizontal' \| 'vertical'` | `'vertical'` |
+| `offsetTop` | 计算滚动位置时距离顶部的偏移量 | `number` | `0` |
+| `bounds` | 锚点区域的边界距离 | `number` | `5` |
+| `getContainer` | 滚动容器（默认：window） | `() => HTMLElement \| Window` | - |
+| `getCurrentAnchor` | 自定义锚点高亮 | `(activeLink: string) => string` | - |
+| `activeLink` | 当前激活的链接（受控） | `string` | - |
+| `onChange` | 激活链接改变时的回调函数 | `(activeLink: string) => void` | - |
+| `onClick` | 点击链接时的回调函数 | `(e, link) => void` | - |
+| `affix` | 滚动时固定锚点 | `boolean` | `false` |
+| `affixOffsetTop` | affix 为 true 时距离顶部的像素偏移量 | `number` | `0` |
+| `replace` | 替换历史记录而不是推入 | `boolean` | `false` |
+| `className` | 自定义 CSS 类名 | `string` | - |
+| `children` | Anchor.Link 子元素（items 的替代方案） | `React.ReactNode` | - |
+
+### `AnchorLinkItem`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `href` | 目标元素 id（不带 #） | `string` | - |
+| `title` | 链接标题 | `React.ReactNode` | - |
+| `children` | 嵌套链接项 | `AnchorLinkItem[]` | - |
+
+## 无障碍
+
+- 使用语义化的 `<nav>` 元素表示导航
+- 链接可通过键盘访问
+- 激活状态在视觉上有明确指示
+- 平滑滚动遵循用户的动作偏好

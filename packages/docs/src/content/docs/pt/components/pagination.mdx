@@ -1,0 +1,98 @@
+---
+title: Pagination
+description: Navegue através de páginas de dados com controles customizáveis.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizeChangerDemo,
+  ShowTotalDemo,
+  CustomTotalDemo,
+  QuickJumperDemo,
+  AllFeaturesDemo,
+  SimpleDemo,
+  SizesDemo,
+  DisabledDemo,
+} from '../../../../components/PaginationDemo'
+import PaginationDemoSource from '../../../../components/PaginationDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Navegue através de páginas de dados com controles customizáveis.
+
+## Importação
+
+```tsx
+import { Pagination } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Paginação Básica" description="Paginação simples com números de página." source={PaginationDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Alterador de Tamanho" description="Permite aos usuários alterar o tamanho da página." source={PaginationDemoSource} fn="SizeChangerDemo">
+  <SizeChangerDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar Total" description="Exibe contagem total de itens." source={PaginationDemoSource} fn="ShowTotalDemo">
+  <ShowTotalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Total Customizado" description="Renderização customizada da contagem total." source={PaginationDemoSource} fn="CustomTotalDemo">
+  <CustomTotalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Salto Rápido" description="Permite aos usuários pular para uma página específica." source={PaginationDemoSource} fn="QuickJumperDemo">
+  <QuickJumperDemo client:load slot="demo" />
+</Example>
+
+<Example title="Todos os Recursos" description="Paginação com todos os recursos habilitados." source={PaginationDemoSource} fn="AllFeaturesDemo">
+  <AllFeaturesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo Simples" description="Paginação mínima com apenas controles anterior/próximo." source={PaginationDemoSource} fn="SimpleDemo">
+  <SimpleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Diferentes tamanhos para controles de paginação." source={PaginationDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Desabilitado" description="Estado desabilitado para paginação." source={PaginationDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Pagination`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `current` | Número da página atual (controlado) | `number` | - |
+| `defaultCurrent` | Número da página inicial padrão | `number` | `1` |
+| `total` | Número total de itens | `number` | - |
+| `pageSize` | Número de itens por página (controlado) | `number` | - |
+| `defaultPageSize` | Número padrão de itens por página | `number` | `10` |
+| `pageSizeOptions` | Opções para seletor de tamanho de página | `number[]` | `[10, 20, 50, 100]` |
+| `onChange` | Callback quando página ou pageSize muda | `(page: number, pageSize: number) => void` | - |
+| `onShowSizeChange` | Callback quando pageSize muda | `(current: number, size: number) => void` | - |
+| `showSizeChanger` | Mostrar seletor de tamanho de página | `boolean` | `false` |
+| `showQuickJumper` | Mostrar entrada de salto rápido para página | `boolean` | `false` |
+| `showTotal` | Mostrar contagem total ou função de renderização customizada | `boolean \| ((total: number, range: [number, number]) => ReactNode)` | `false` |
+| `simple` | Modo simples com controles mínimos | `boolean` | `false` |
+| `size` | Tamanho dos botões de paginação | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `disabled` | Desabilitar todos os controles de paginação | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa elemento `nav` com `aria-label="Pagination"`
+- Página atual é marcada com `aria-current="page"`
+- Botões desabilitados têm estado `aria-disabled` apropriado
+- Entrada de salto rápido tem rótulo acessível

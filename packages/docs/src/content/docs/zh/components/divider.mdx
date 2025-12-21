@@ -1,0 +1,61 @@
+---
+title: Divider
+description: 用于内容区域的视觉分隔符，支持可选的文本标签。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithTextDemo,
+  PositionDemo,
+  VerticalDemo,
+  ColorsDemo,
+} from '../../../../components/DividerDemo'
+import DividerDemoSource from '../../../../components/DividerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于内容区域的视觉分隔符，支持可选的文本标签。
+
+## 导入
+
+```tsx
+import { Divider } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础分隔符" description="简单的水平分隔符。" source={DividerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带文本" description="带文本标签的分隔符。" source={DividerDemoSource} fn="WithTextDemo">
+  <WithTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="文本位置" description="将文本定位在开始、中心或结尾。" source={DividerDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+<Example title="垂直分隔符" description="用于内联内容的垂直分隔符。" source={DividerDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="不同颜色类型的分隔符。" source={DividerDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Divider`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 分隔符中的文本或内容 | `React.ReactNode` | - |
+| `orientation` | 分隔符方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `position` | 文本位置 | `'start' \| 'center' \| 'end'` | `'center'` |
+| `type` | 颜色类型 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |

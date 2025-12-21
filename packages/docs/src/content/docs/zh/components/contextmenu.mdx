@@ -1,0 +1,105 @@
+---
+title: ContextMenu 右键菜单
+description: 带嵌套子菜单和图标的右键上下文菜单。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DataDrivenDemo,
+  IconsDemo,
+  DividersDemo,
+  SubmenuDemo,
+  DisabledDemo,
+} from '../../../../components/ContextMenuDemo'
+import ContextMenuDemoSource from '../../../../components/ContextMenuDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+带嵌套子菜单和图标的右键上下文菜单。
+
+## 引入
+
+```tsx
+import { ContextMenu } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本右键菜单" description="右键点击元素以显示菜单。" source={ContextMenuDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="数据驱动模式" description="使用 items 属性实现数据驱动的菜单。" source={ContextMenuDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标" description="带图标的菜单项。" source={ContextMenuDemoSource} fn="IconsDemo">
+  <IconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带分隔符" description="使用分隔符分隔菜单部分。" source={ContextMenuDemoSource} fn="DividersDemo">
+  <DividersDemo client:load slot="demo" />
+</Example>
+
+<Example title="嵌套子菜单" description="带嵌套子菜单的菜单项。" source={ContextMenuDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用项" description="某些菜单项可以被禁用。" source={ContextMenuDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ContextMenu`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 右键点击时触发上下文菜单的元素 | `React.ReactNode` | - |
+| `items` | 菜单项 | `ContextMenuItem[]` | - |
+| `onSelect` | 选择项时的回调函数 | `(key: string) => void` | - |
+| `disabled` | 上下文菜单是否被禁用 | `boolean` | `false` |
+| `className` | 菜单的额外 CSS 类名 | `string` | - |
+
+### `ContextMenuItem`（用于 items 属性）
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 项的唯一标识符 | `string` | - |
+| `label` | 显示标签 | `React.ReactNode` | - |
+| `icon` | 图标元素 | `React.ReactNode` | - |
+| `disabled` | 禁用状态 | `boolean` | `false` |
+| `danger` | 显示为危险/破坏性操作 | `boolean` | `false` |
+| `divider` | 渲染为分隔符 | `boolean` | `false` |
+| `children` | 子菜单项 | `ContextMenuItem[]` | - |
+
+### `ContextMenu.Item`（复合模式）
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 项的唯一键（React key 属性） | `string` | - |
+| `children` | 项内容 | `React.ReactNode` | - |
+| `icon` | 标签前显示的图标 | `React.ReactNode` | - |
+| `disabled` | 项是否被禁用 | `boolean` | `false` |
+| `danger` | 显示为危险/破坏性操作 | `boolean` | `false` |
+
+### `ContextMenu.SubMenu`（复合模式）
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 子菜单的唯一键（React key 属性） | `string` | - |
+| `label` | 子菜单标签 | `React.ReactNode` | - |
+| `icon` | 标签前显示的图标 | `React.ReactNode` | - |
+| `disabled` | 子菜单是否被禁用 | `boolean` | `false` |
+| `children` | 子菜单项 | `React.ReactNode` | - |
+
+## 无障碍
+
+- 按 Escape 键关闭菜单
+- 在外部点击时关闭菜单
+- 菜单项可通过键盘导航
+- 禁用的项会正确宣布

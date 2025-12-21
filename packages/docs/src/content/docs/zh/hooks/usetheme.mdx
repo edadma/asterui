@@ -1,0 +1,73 @@
+---
+title: useTheme
+description: 检测当前主题并获取计算颜色的 Hook。
+---
+
+检测当前主题并从 DaisyUI CSS 变量提供计算的颜色值。适用于无法直接使用 CSS 变量的基于 Canvas 的组件。
+
+## 导入
+
+```tsx
+import { useTheme } from 'asterui'
+```
+
+## 用法
+
+```tsx
+function ThemeAwareComponent() {
+  const { isDark, colors } = useTheme()
+
+  return (
+    <div style={{
+      background: colors.background,
+      color: colors.foreground
+    }}>
+      Current theme: {isDark ? 'Dark' : 'Light'}
+    </div>
+  )
+}
+```
+
+### Canvas 示例
+
+```tsx
+function CanvasComponent() {
+  const { colors } = useTheme()
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const ctx = canvasRef.current?.getContext('2d')
+    if (!ctx) return
+    ctx.fillStyle = colors.background
+    ctx.fillRect(0, 0, 100, 100)
+    ctx.fillStyle = colors.foreground
+    ctx.fillText('Hello', 10, 50)
+  }, [colors])
+
+  return <canvas ref={canvasRef} />
+}
+```
+
+## 返回值
+
+| 属性 | 类型 | 描述 |
+|----------|------|-------------|
+| `isDark` | `boolean` | 如果启用深色模式则为 `true` |
+| `colors` | `ThemeColors` | 计算的主题颜色（十六进制值） |
+
+### ThemeColors
+
+| 属性 | 类型 | 描述 |
+|----------|------|-------------|
+| `background` | `string` | 基础背景色（DaisyUI `base-100`） |
+| `foreground` | `string` | 基础文本色（DaisyUI `base-content`） |
+| `primary` | `string` | 主色 |
+| `primaryContent` | `string` | 主色内容色 |
+
+## 工作原理
+
+1. 检查 `<html>` 元素的 `data-theme` 属性（DaisyUI 约定）
+2. 如果未设置属性，则回退到 `prefers-color-scheme: dark` 媒体查询
+3. 读取 DaisyUI CSS 变量并将 oklch 颜色转换为十六进制
+4. 使用 MutationObserver 响应主题更改
+5. 主题更改时自动更新颜色

@@ -1,0 +1,56 @@
+---
+title: Mask
+description: 应用 CSS 遮罩将内容裁剪为各种形状。
+tableOfContents: false
+---
+
+import {
+  BasicShapesDemo,
+  AllShapesDemo,
+  HalfMasksDemo,
+} from '../../../../components/MaskDemo'
+import MaskDemoSource from '../../../../components/MaskDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+应用 CSS 遮罩将内容裁剪为各种形状。
+
+## 导入
+
+```tsx
+import { Mask } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础形状" description="对图片应用不同的遮罩形状。" source={MaskDemoSource} fn="BasicShapesDemo">
+  <BasicShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="所有形状" description="所有 15 种可用的遮罩形状。" source={MaskDemoSource} fn="AllShapesDemo">
+  <AllShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="半遮罩" description="仅显示遮罩内容的一半。" source={MaskDemoSource} fn="HalfMasksDemo">
+  <HalfMasksDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Mask`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `shape` | 遮罩的形状 | `'squircle' \| 'heart' \| 'hexagon' \| 'hexagon-2' \| 'decagon' \| 'pentagon' \| 'diamond' \| 'square' \| 'circle' \| 'star' \| 'star-2' \| 'triangle' \| 'triangle-2' \| 'triangle-3' \| 'triangle-4'` | - |
+| `half` | 仅显示遮罩的一半 | `'half-1' \| 'half-2'` | - |
+| `children` | 要遮罩的内容（通常是图片） | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用语义化的 div 元素
+- 确保遮罩图片有适当的 alt 文本
+- 将 HTML 属性传递给容器

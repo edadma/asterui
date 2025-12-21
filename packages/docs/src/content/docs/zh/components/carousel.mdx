@@ -1,0 +1,107 @@
+---
+title: Carousel 轮播图
+description: 带导航控件、指示器和自动播放支持的旋转内容轮播图。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AutoplayDemo,
+  FadeDemo,
+  VerticalDemo,
+  NoControlsDemo,
+  DotPlacementDemo,
+  CustomContentDemo,
+} from '../../../../components/CarouselDemo'
+import CarouselDemoSource from '../../../../components/CarouselDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+带导航控件、指示器和自动播放支持的旋转内容轮播图。
+
+## 引入
+
+```tsx
+import { Carousel } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本轮播图" description="带导航控件和指示器的简单轮播图。" source={CarouselDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="自动播放" description="自动推进幻灯片的轮播图。悬停时暂停。" source={CarouselDemoSource} fn="AutoplayDemo">
+  <AutoplayDemo client:load slot="demo" />
+</Example>
+
+<Example title="淡入淡出效果" description="使用淡入淡出过渡而不是滑动的轮播图。" source={CarouselDemoSource} fn="FadeDemo">
+  <FadeDemo client:load slot="demo" />
+</Example>
+
+<Example title="垂直轮播图" description="垂直方向的轮播图。" source={CarouselDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="无箭头" description="隐藏箭头的轮播图，仅使用点导航。" source={CarouselDemoSource} fn="NoControlsDemo">
+  <NoControlsDemo client:load slot="demo" />
+</Example>
+
+<Example title="点位置" description="在不同位置放置指示器点。" source={CarouselDemoSource} fn="DotPlacementDemo">
+  <DotPlacementDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义内容" description="带卡片等自定义幻灯片内容的轮播图。" source={CarouselDemoSource} fn="CustomContentDemo">
+  <CustomContentDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Carousel`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 轮播图幻灯片（Carousel.Item 组件） | `ReactNode` | - |
+| `activeIndex` | 当前幻灯片索引（受控模式） | `number` | - |
+| `defaultActiveIndex` | 默认幻灯片索引（非受控模式） | `number` | `0` |
+| `autoplay` | 自动推进幻灯片 | `boolean` | `false` |
+| `autoplaySpeed` | 自动播放间隔（毫秒） | `number` | `3000` |
+| `speed` | 动画持续时间（毫秒） | `number` | `500` |
+| `arrows` | 显示上一个/下一个导航箭头 | `boolean` | `true` |
+| `dots` | 显示幻灯片指示器点 | `boolean \| { className?: string }` | `true` |
+| `dotPlacement` | 指示器点的位置 | `'top' \| 'bottom' \| 'start' \| 'end'` | `'bottom'` |
+| `effect` | 过渡效果 | `'scrollx' \| 'fade'` | `'scrollx'` |
+| `infinite` | 启用无限循环 | `boolean` | `true` |
+| `pauseOnHover` | 悬停时暂停自动播放 | `boolean` | `true` |
+| `vertical` | 垂直轮播图方向 | `boolean` | `false` |
+| `beforeChange` | 幻灯片改变前的回调函数 | `(current: number, next: number) => void` | - |
+| `afterChange` | 幻灯片改变后的回调函数 | `(current: number) => void` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `data-testid` | 测试 ID；子元素使用此作为前缀 | `string` | - |
+
+### `Carousel.Item`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 幻灯片内容 | `ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `data-testid` | 测试 ID | `string` | - |
+
+### `CarouselRef` 方法
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `goTo` | 导航到特定幻灯片 | `(index: number, animate?: boolean) => void` | - |
+| `next` | 转到下一张幻灯片 | `() => void` | - |
+| `prev` | 转到上一张幻灯片 | `() => void` | - |
+
+## 使用提示
+
+- 使用 `Carousel.Item` 包裹每张幻灯片
+- 在 Carousel 上设置固定高度以获得一致的布局
+- 自动播放在悬停时暂停以获得更好的用户体验
+- 轮播图获得焦点时使用方向键导航
+- 通过 ref 访问 `goTo`、`next`、`prev` 方法

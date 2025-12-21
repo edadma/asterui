@@ -1,0 +1,89 @@
+---
+title: ResponsiveDrawer
+description: Um layout de barra lateral responsivo usando o drawer do DaisyUI. Use para barras laterais de navegação que alternam em mobile mas podem estar sempre visíveis em telas maiores.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ResponsiveDemo,
+  CustomWidthDemo,
+  EndDemo,
+  CustomSidebarDemo,
+} from '../../../../components/ResponsiveDrawerDemo'
+import ResponsiveDrawerDemoSource from '../../../../components/ResponsiveDrawerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Um layout de barra lateral responsivo usando o drawer do DaisyUI. Use para barras laterais de navegação que alternam em mobile mas podem estar sempre visíveis em telas maiores.
+
+## Importação
+
+```tsx
+import { ResponsiveDrawer } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="ResponsiveDrawer Básico" description="Barra lateral responsiva que alterna em mobile." source={ResponsiveDrawerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sempre Aberto no Desktop" description="Barra lateral alterna em mobile mas está sempre visível em telas lg e acima." source={ResponsiveDrawerDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Largura Customizada" description="Barra lateral com largura customizada." source={ResponsiveDrawerDemoSource} fn="CustomWidthDemo">
+  <CustomWidthDemo client:load slot="demo" />
+</Example>
+
+<Example title="Barra Lateral à Direita" description="Barra lateral posicionada no lado direito." source={ResponsiveDrawerDemoSource} fn="EndDemo">
+  <EndDemo client:load slot="demo" />
+</Example>
+
+<Example title="Conteúdo de Barra Lateral Customizado" description="Barra lateral com conteúdo estilizado customizado." source={ResponsiveDrawerDemoSource} fn="CustomSidebarDemo">
+  <CustomSidebarDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ResponsiveDrawer`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Área de conteúdo principal | `React.ReactNode` | - |
+| `sidebar` | Conteúdo da barra lateral | `React.ReactNode` | - |
+| `open` | Estado aberto controlado | `boolean` | `false` |
+| `onOpenChange` | Callback quando estado aberto muda | `(open: boolean) => void` | - |
+| `end` | Posiciona barra lateral no lado direito | `boolean` | `false` |
+| `width` | Largura da barra lateral | `number \| string` | `320` |
+| `responsive` | Breakpoint no qual barra lateral se torna sempre visível | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | - |
+| `sidebarClassName` | Classes adicionais para container da barra lateral | `string` | - |
+| `contentClassName` | Classes adicionais para área de conteúdo | `string` | - |
+| `overlayClassName` | Classes adicionais para o overlay | `string` | - |
+| `id` | ID único para o drawer (auto-gerado se não fornecido) | `string` | - |
+| `className` | Classes CSS adicionais para wrapper do drawer | `string` | - |
+| `data-testid` | ID de teste para testing | `string` | - |
+
+## Notas de Uso
+
+- ResponsiveDrawer envolve o componente `drawer` do DaisyUI
+- Use `open` e `onOpenChange` para estado controlado
+- Use prop `responsive` para tornar barra lateral sempre visível acima de um breakpoint
+- Use `width` para customizar largura da barra lateral (padrão: 320px)
+- Use prop `end` para posicionar barra lateral no lado direito
+- Para drawers de painel que deslizam sobre conteúdo (como formulários ou visualizações de detalhes), use o componente [Drawer](/components/drawer) em vez disso
+
+## Comparação
+
+| Recurso | ResponsiveDrawer | Drawer | Layout.Sider |
+|---------|------------------|--------|--------------|
+| Caso de Uso | Barras laterais de navegação responsivas | Painéis overlay para formulários, detalhes | Barras laterais recolhíveis permanentes |
+| Renderização | Parte do layout da página | Portal para document.body | Parte da estrutura de Layout |
+| Overlay | Sim (mobile) | Sim (sempre) | Não |
+| Responsivo | Sim (auto-abre no breakpoint) | Não | Sim (auto-recolhe) |
+| Posicionamento | Esquerda ou direita | Todos os 4 lados | Esquerda ou direita |
+| Cabeçalho/Rodapé | Sem built-in | Sim (props title, footer) | Sem built-in |

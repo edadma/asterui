@@ -1,0 +1,66 @@
+---
+title: Phone
+description: Muestra contenido en un marco de teléfono estilo iPhone
+tableOfContents: false
+---
+
+import {
+  BasicPhoneDemo,
+  ImagePhoneDemo,
+  ColorPhoneDemo,
+  AppPhoneDemo,
+  ChatPhoneDemo,
+} from '../../../../components/PhoneDemo'
+import PhoneDemoSource from '../../../../components/PhoneDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Muestra contenido en un marco de teléfono estilo iPhone.
+
+## Importar
+
+```tsx
+import { Phone } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Teléfono básico" description="Mockup de teléfono simple con contenido centrado." source={PhoneDemoSource} fn="BasicPhoneDemo">
+  <BasicPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con imagen" description="Muestra una imagen como fondo de pantalla." source={PhoneDemoSource} fn="ImagePhoneDemo">
+  <ImagePhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Color personalizado" description="Personaliza el color del marco del teléfono." source={PhoneDemoSource} fn="ColorPhoneDemo">
+  <ColorPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Interfaz de aplicación" description="Simula el diseño de una aplicación móvil." source={PhoneDemoSource} fn="AppPhoneDemo">
+  <AppPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="Interfaz de chat" description="Simula el diseño de una aplicación de chat." source={PhoneDemoSource} fn="ChatPhoneDemo">
+  <ChatPhoneDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Phone`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido dentro de la pantalla del teléfono | `React.ReactNode` | - |
+| `color` | Color personalizado del marco | `string` | - |
+| `className` | Clases para contenedor del teléfono | `string` | - |
+| `displayClassName` | Clases para área de visualización | `string` | - |
+
+## Accesibilidad
+
+- El mockup del teléfono es decorativo - el contenido interior debe ser accesible
+- Las imágenes dentro deben tener texto `alt` apropiado
+- Los elementos interactivos dentro permanecen completamente accesibles

@@ -1,0 +1,164 @@
+---
+title: Card
+description: Contêiner flexível para exibir conteúdo com imagens, ações e meta informações
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  BorderedDemo,
+  WithCoverDemo,
+  WithActionsDemo,
+  VariantsDemo,
+  SizesDemo,
+  ExtraContentDemo,
+  MetaDemo,
+  CardMetaDemo,
+  HoverableDemo,
+  LoadingDemo,
+  ImageFullDemo,
+  SideLayoutDemo,
+  InnerCardDemo,
+  TabsDemo,
+  GridDemo,
+} from '../../../../components/CardDemo'
+import CardDemoSource from '../../../../components/CardDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de card flexível para exibir conteúdo agrupado com vários layouts.
+
+## Importação
+
+```tsx
+import { Card } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Card Básico" description="Card simples com título e conteúdo." source={CardDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Borda" description="Card com borda sólida em vez de sombra." source={CardDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Imagem de Capa" description="Card com imagem de capa acima do conteúdo." source={CardDemoSource} fn="WithCoverDemo">
+  <WithCoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Ações" description="Card com botões de ação na parte inferior." source={CardDemoSource} fn="WithActionsDemo">
+  <WithActionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes" description="Diferentes variantes de estilo de card: shadow, border, dash, borderless." source={CardDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Tamanhos de card de xs a lg com padding variável." source={CardDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Conteúdo Extra" description="Adicionar conteúdo extra no cabeçalho do card com a prop extra." source={CardDemoSource} fn="ExtraContentDemo">
+  <ExtraContentDemo client:load slot="demo" />
+</Example>
+
+<Example title="Layout Meta" description="Layout integrado de avatar, título e descrição." source={CardDemoSource} fn="MetaDemo">
+  <MetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="Componente Card.Meta" description="Componente meta independente para posicionamento flexível." source={CardDemoSource} fn="CardMetaDemo">
+  <CardMetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hoverable" description="Card com efeito de sombra ao passar o mouse." source={CardDemoSource} fn="HoverableDemo">
+  <HoverableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Carregamento" description="Estado de carregamento de esqueleto enquanto o conteúdo carrega." source={CardDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Imagem Completa" description="Conteúdo sobreposto na imagem de capa." source={CardDemoSource} fn="ImageFullDemo">
+  <ImageFullDemo client:load slot="demo" />
+</Example>
+
+<Example title="Layout Lateral" description="Layout horizontal com imagem na lateral." source={CardDemoSource} fn="SideLayoutDemo">
+  <SideLayoutDemo client:load slot="demo" />
+</Example>
+
+<Example title="Card Interno" description="Cards aninhados com distinção de fundo sutil." source={CardDemoSource} fn="InnerCardDemo">
+  <InnerCardDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Abas" description="Card com navegação de conteúdo por abas." source={CardDemoSource} fn="TabsDemo">
+  <TabsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grade de Card" description="Layout de grade dentro de cards com células hoverable." source={CardDemoSource} fn="GridDemo">
+  <GridDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Card`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `title` | Título do card | `ReactNode` | - |
+| `extra` | Conteúdo no canto superior direito do cabeçalho | `ReactNode` | - |
+| `cover` | Elemento de imagem de capa | `ReactNode` | - |
+| `actions` | Botões de ação na parte inferior | `ReactNode` | - |
+| `size` | Tamanho do card | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `variant` | Variante de estilo do card | `'shadow' \| 'border' \| 'dash' \| 'borderless'` | `'shadow'` |
+| `type` | Estilo de card interno para aninhamento | `'inner'` | - |
+| `side` | Layout horizontal com imagem lateral | `boolean` | `false` |
+| `imageFull` | Conteúdo sobreposto na imagem de capa | `boolean` | `false` |
+| `actionsJustify` | Alinhamento de ações | `'start' \| 'center' \| 'end'` | `'end'` |
+| `loading` | Mostrar estado de carregamento de esqueleto | `boolean` | `false` |
+| `hoverable` | Adicionar efeito de sombra ao passar o mouse | `boolean` | `false` |
+| `avatar` | Avatar para layout meta | `ReactNode` | - |
+| `description` | Descrição para layout meta | `ReactNode` | - |
+| `tabList` | Itens de aba para abas de card | `CardTabItem[]` | - |
+| `activeTabKey` | Chave de aba ativa (controlada) | `string` | - |
+| `defaultActiveTabKey` | Chave de aba ativa padrão | `string` | - |
+| `onTabChange` | Callback de mudança de aba | `(key: string) => void` | - |
+| `tabBarExtraContent` | Conteúdo extra ao lado das abas | `ReactNode` | - |
+| `children` | Conteúdo do corpo do card | `ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+| `bodyClassName` | Classes CSS adicionais para o elemento card-body | `string` | - |
+| `style` | Estilos inline | `CSSProperties` | - |
+
+### `Card.Meta`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `avatar` | Elemento de avatar ou ícone | `ReactNode` | - |
+| `title` | Conteúdo do título | `ReactNode` | - |
+| `description` | Conteúdo da descrição | `ReactNode` | - |
+
+### `Card.Grid`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `hoverable` | Adicionar efeito hover | `boolean` | `false` |
+| `children` | Conteúdo da célula da grade | `ReactNode` | - |
+
+### `CardTabItem`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Identificador único da aba | `string` | - |
+| `label` | Conteúdo do rótulo da aba | `ReactNode` | - |
+| `disabled` | Desabilitar a aba | `boolean` | `false` |
+
+## Acessibilidade
+
+- Estrutura de card usa HTML semântico
+- Navegação por abas usa roles e states ARIA apropriados
+- Estado de carregamento fornece feedback visual
+- Estados de foco são visíveis para elementos interativos

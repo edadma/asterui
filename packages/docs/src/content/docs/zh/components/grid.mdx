@@ -1,0 +1,88 @@
+---
+title: Grid
+description: 带 Row 和 Col 组件的灵活网格系统。支持 24 列（默认）和 120 列模式以实现精确布局。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  GutterDemo,
+  OffsetDemo,
+  ResponsiveDemo,
+  Cols120Demo,
+} from '../../../../components/GridDemo'
+import GridDemoSource from '../../../../components/GridDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+带 Row 和 Col 组件的灵活网格系统。支持 24 列（默认）和 120 列模式以实现精确布局。
+
+## 导入
+
+```tsx
+import { Row, Col } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础网格" description="基础 24 列网格系统。" source={GridDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="网格间距" description="自定义列之间的间距。默认为 16px；推荐值为 16、24、32、40、48。" source={GridDemoSource} fn="GutterDemo">
+  <GutterDemo client:load slot="demo" />
+</Example>
+
+<Example title="列偏移" description="使用 offset 属性偏移列。" source={GridDemoSource} fn="OffsetDemo">
+  <OffsetDemo client:load slot="demo" />
+</Example>
+
+<Example title="响应式列" description="在不同断点下的不同列跨度。" source={GridDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="120 列网格" description="120 列的细粒度控制，实现精确布局。" source={GridDemoSource} fn="Cols120Demo">
+  <Cols120Demo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Row`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `cols` | 网格列数 | `24 \| 120` | `24` |
+| `gutter` | 列之间的间距（px） | `number \| [number, number]` | `16` |
+| `justify` | 网格项的水平对齐 | `'start' \| 'end' \| 'center' \| 'between' \| 'around' \| 'evenly'` | - |
+| `align` | 网格项的垂直对齐 | `'start' \| 'end' \| 'center' \| 'stretch' \| 'baseline'` | - |
+| `children` | 列组件 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Col`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `span` | 要跨越的列数（24 或 120 中的） | `number` | `24` |
+| `offset` | 要偏移的列数 | `number` | `0` |
+| `order` | 列的视觉顺序（1-12） | `number` | - |
+| `xs` | 超小屏幕的响应式跨度（&lt;640px） | `number` | - |
+| `sm` | 小屏幕的响应式跨度（≥640px） | `number` | - |
+| `md` | 中等屏幕的响应式跨度（≥768px） | `number` | - |
+| `lg` | 大屏幕的响应式跨度（≥1024px） | `number` | - |
+| `xl` | 超大屏幕的响应式跨度（≥1280px） | `number` | - |
+| `xxl` | 2 倍超大屏幕的响应式跨度（≥1536px） | `number` | - |
+| `children` | 列内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 使用说明
+
+- 默认为 24 列布局；使用 `cols={120}` 进行更精细的控制
+- 使用 `Row` 作为容器，`Col` 用于列
+- 在 Row 上设置 `gutter` 以在列之间添加间距
+- 使用响应式属性（xs、sm、md、lg、xl、xxl）在不同屏幕尺寸下设置不同的列跨度
+- 列跨度必须加起来等于或小于每行的总列数（24 或 120）
+- 使用 `offset` 在列之前创建空白空间
+- 120 列模式对于需要比率如 1:3、2:3 或百分比如 25%、37.5% 的布局很有用

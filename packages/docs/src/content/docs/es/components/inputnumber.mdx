@@ -1,0 +1,89 @@
+---
+title: InputNumber
+description: Campo de entrada numérico con controles de incremento/decremento y restricciones de valor.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MinMaxDemo,
+  StepDemo,
+  PrecisionDemo,
+  SizesDemo,
+  NoControlsDemo,
+  DisabledDemo,
+} from '../../../../components/InputNumberDemo'
+import InputNumberDemoSource from '../../../../components/InputNumberDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Campo de entrada numérico con controles de incremento/decremento y restricciones de valor.
+
+## Importar
+
+```tsx
+import { InputNumber } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="InputNumber Básico" description="Entrada numérica simple con controles de incremento/decremento." source={InputNumberDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Límites Mín/Máx" description="Entrada numérica con restricciones de valor mínimo y máximo." source={InputNumberDemoSource} fn="MinMaxDemo">
+  <MinMaxDemo client:load slot="demo" />
+</Example>
+
+<Example title="Paso Personalizado" description="Entrada numérica con valor de paso de incremento/decremento personalizado." source={InputNumberDemoSource} fn="StepDemo">
+  <StepDemo client:load slot="demo" />
+</Example>
+
+<Example title="Precisión Decimal" description="Entrada numérica con control de precisión decimal." source={InputNumberDemoSource} fn="PrecisionDemo">
+  <PrecisionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Cinco tamaños: xs, sm, md, lg y xl." source={InputNumberDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sin Controles" description="Entrada numérica sin botones de incremento/decremento." source={InputNumberDemoSource} fn="NoControlsDemo">
+  <NoControlsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deshabilitado" description="Estado de entrada numérica deshabilitado." source={InputNumberDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `InputNumber`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Valor numérico actual (controlado) | `number` | - |
+| `defaultValue` | Valor inicial (no controlado) | `number` | - |
+| `onChange` | Callback cuando cambia el valor | `(value: number \| null) => void` | - |
+| `min` | Valor mínimo | `number` | `-Infinity` |
+| `max` | Valor máximo | `number` | `Infinity` |
+| `step` | Paso de incremento/decremento de valor | `number` | `1` |
+| `precision` | Precisión decimal para visualización | `number` | - |
+| `formatter` | Formatea valor de visualización | `(value: number \| undefined) => string` | - |
+| `parser` | Analiza valor de visualización a número | `(displayValue: string) => number` | - |
+| `controls` | Mostrar botones de incremento/decremento | `boolean` | `true` |
+| `disabled` | Estado deshabilitado | `boolean` | `false` |
+| `size` | Tamaño de input | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `block` | Input de ancho completo | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa `role="spinbutton"` con `inputMode="decimal"` para semántica adecuada
+- Expone `aria-valuemin`, `aria-valuemax` y `aria-valuenow` para lectores de pantalla
+- Los botones de incremento/decremento tienen `aria-label` para usuarios de lectores de pantalla
+- El estado deshabilitado se anuncia apropiadamente a lectores de pantalla
+- Los estados de enfoque son claramente visibles para navegación por teclado
+- Las teclas de flecha se pueden usar para incrementar/decrementar valores

@@ -1,0 +1,111 @@
+---
+title: Splitter 分割面板
+description: 使用可拖动分隔符创建可调整大小的分割面板。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  ControlledDemo,
+  MultiplePanelsDemo,
+  MinMaxDemo,
+  NestedDemo,
+  GutterDemo,
+  IdeDemo,
+  CollapsibleDemo,
+  NonResizableDemo,
+} from '../../../../components/SplitterDemo'
+import SplitterDemoSource from '../../../../components/SplitterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+使用可拖动分隔符创建可调整大小的分割面板。
+
+## 导入
+
+```tsx
+import { Splitter } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础水平分割器" description="拖动分隔符以调整面板大小。" source={SplitterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="垂直分割器" description="垂直分割面板。" source={SplitterDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控尺寸" description="以编程方式控制面板尺寸。" source={SplitterDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="多个面板" description="分割为两个以上的面板。" source={SplitterDemoSource} fn="MultiplePanelsDemo">
+  <MultiplePanelsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带最小/最大尺寸" description="使用 min 和 max 值约束面板尺寸。" source={SplitterDemoSource} fn="MinMaxDemo">
+  <MinMaxDemo client:load slot="demo" />
+</Example>
+
+<Example title="嵌套分割器" description="组合水平和垂直分割器。" source={SplitterDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义分隔符大小" description="调整分隔符(分隔线)大小。" source={SplitterDemoSource} fn="GutterDemo">
+  <GutterDemo client:load slot="demo" />
+</Example>
+
+<Example title="IDE 样式布局" description="类似于 IDE 的复杂布局。" source={SplitterDemoSource} fn="IdeDemo">
+  <IdeDemo client:load slot="demo" />
+</Example>
+
+<Example title="可折叠面板" description="可以使用分隔符上的箭头按钮折叠面板。" source={SplitterDemoSource} fn="CollapsibleDemo">
+  <CollapsibleDemo client:load slot="demo" />
+</Example>
+
+<Example title="不可调整大小的面板" description="禁用特定面板的调整大小。" source={SplitterDemoSource} fn="NonResizableDemo">
+  <NonResizableDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Splitter`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `direction` | 分割器的方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `sizes` | 受控面板尺寸(百分比) | `number[]` | `-` |
+| `defaultSizes` | 默认面板尺寸(百分比)(非受控) | `number[]` | `-` |
+| `onSizesChange` | 尺寸更改时的回调 | `(sizes: number[]) => void` | `-` |
+| `gutterSize` | 可拖动分隔符的大小(像素) | `number` | `8` |
+| `minSize` | 默认最小面板尺寸(像素) | `number` | `50` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+### `Splitter.Panel`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 面板内容 | `React.ReactNode` | `-` |
+| `defaultSize` | 默认尺寸百分比 | `number` | `-` |
+| `size` | 受控尺寸百分比 | `number` | `-` |
+| `minSize` | 最小尺寸(像素) | `number` | `-` |
+| `maxSize` | 最大尺寸(像素) | `number` | `-` |
+| `collapsible` | 允许折叠面板 | `boolean` | `false` |
+| `collapsed` | 受控折叠状态 | `boolean` | `-` |
+| `defaultCollapsed` | 默认折叠状态 | `boolean` | `false` |
+| `onCollapse` | 折叠状态更改时的回调 | `(collapsed: boolean) => void` | `-` |
+| `resizable` | 允许调整面板大小 | `boolean` | `true` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+- 分隔符可通过箭头键访问
+- ARIA 属性宣布当前面板尺寸
+- 分隔符上的焦点指示器可见
+- 增加 gutterSize 以获得更轻松的触摸交互

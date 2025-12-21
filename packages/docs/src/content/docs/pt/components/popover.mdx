@@ -1,0 +1,82 @@
+---
+title: Popover
+description: Um card que exibe informações adicionais quando acionado
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TitleDemo,
+  TriggersDemo,
+  PlacementTopDemo,
+  PlacementBottomDemo,
+  PlacementLeftDemo,
+  PlacementRightDemo,
+} from '../../../../components/PopoverDemo'
+import PopoverDemoSource from '../../../../components/PopoverDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Um card que exibe informações adicionais quando acionado.
+
+## Importação
+
+```tsx
+import { Popover } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Uso Básico" description="Popover simples acionado ao passar o mouse." source={PopoverDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Título" description="Popover com título e conteúdo." source={PopoverDemoSource} fn="TitleDemo">
+  <TitleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tipos de Gatilho" description="Diferentes modos de gatilho para o popover." source={PopoverDemoSource} fn="TriggersDemo">
+  <TriggersDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posicionamento - Topo" description="Variações de posicionamento no topo." source={PopoverDemoSource} fn="PlacementTopDemo">
+  <PlacementTopDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posicionamento - Base" description="Variações de posicionamento na base." source={PopoverDemoSource} fn="PlacementBottomDemo">
+  <PlacementBottomDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posicionamento - Esquerda" description="Variações de posicionamento à esquerda." source={PopoverDemoSource} fn="PlacementLeftDemo">
+  <PlacementLeftDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posicionamento - Direita" description="Variações de posicionamento à direita." source={PopoverDemoSource} fn="PlacementRightDemo">
+  <PlacementRightDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Popover`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Elemento gatilho | `React.ReactNode` | - |
+| `content` | Conteúdo do popover | `React.ReactNode` | - |
+| `title` | Título do popover | `React.ReactNode` | - |
+| `trigger` | Como o popover é acionado | `'hover' \| 'click' \| 'focus'` | `'hover'` |
+| `placement` | Posição do popover | `'top' \| 'topLeft' \| 'topRight' \| 'bottom' \| 'bottomLeft' \| 'bottomRight' \| 'left' \| 'leftTop' \| 'leftBottom' \| 'right' \| 'rightTop' \| 'rightBottom'` | `'top'` |
+| `open` | Se o popover está visível (modo controlado) | `boolean` | - |
+| `onOpenChange` | Callback quando visibilidade muda | `(open: boolean) => void` | - |
+| `className` | Classes CSS adicionais para wrapper | `string` | - |
+| `overlayClassName` | Classes CSS adicionais para overlay do popover | `string` | - |
+
+## Acessibilidade
+
+- Popover usa atributos ARIA apropriados para tooltips
+- Gatilhos de clique e foco são acessíveis por teclado
+- Conteúdo é anunciado aos leitores de tela quando mostrado
+- Tecla Escape fecha popovers acionados por clique

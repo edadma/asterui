@@ -1,0 +1,89 @@
+---
+title: InputNumber
+description: 带增减控件和值约束的数字输入字段。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MinMaxDemo,
+  StepDemo,
+  PrecisionDemo,
+  SizesDemo,
+  NoControlsDemo,
+  DisabledDemo,
+} from '../../../../components/InputNumberDemo'
+import InputNumberDemoSource from '../../../../components/InputNumberDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+带增减控件和值约束的数字输入字段。
+
+## 导入
+
+```tsx
+import { InputNumber } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础数字输入" description="带增减控件的简单数字输入。" source={InputNumberDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="最小/最大限制" description="带最小和最大值约束的数字输入。" source={InputNumberDemoSource} fn="MinMaxDemo">
+  <MinMaxDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义步长" description="带自定义增减步长值的数字输入。" source={InputNumberDemoSource} fn="StepDemo">
+  <StepDemo client:load slot="demo" />
+</Example>
+
+<Example title="小数精度" description="带小数精度控制的数字输入。" source={InputNumberDemoSource} fn="PrecisionDemo">
+  <PrecisionDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="五种尺寸：xs、sm、md、lg 和 xl。" source={InputNumberDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="无控件" description="没有增减按钮的数字输入。" source={InputNumberDemoSource} fn="NoControlsDemo">
+  <NoControlsDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用" description="禁用的数字输入状态。" source={InputNumberDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `InputNumber`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 当前数字值（受控） | `number` | - |
+| `defaultValue` | 初始值（非受控） | `number` | - |
+| `onChange` | 值变化时的回调 | `(value: number \| null) => void` | - |
+| `min` | 最小值 | `number` | `-Infinity` |
+| `max` | 最大值 | `number` | `Infinity` |
+| `step` | 值增减步长 | `number` | `1` |
+| `precision` | 显示的小数精度 | `number` | - |
+| `formatter` | 格式化显示值 | `(value: number \| undefined) => string` | - |
+| `parser` | 解析显示值为数字 | `(displayValue: string) => number` | - |
+| `controls` | 显示增减按钮 | `boolean` | `true` |
+| `disabled` | 禁用状态 | `boolean` | `false` |
+| `size` | 输入尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `block` | 全宽输入 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用 `role="spinbutton"` 和 `inputMode="decimal"` 以获得正确的语义
+- 为屏幕阅读器暴露 `aria-valuemin`、`aria-valuemax` 和 `aria-valuenow`
+- 增减按钮有 `aria-label` 供屏幕阅读器使用
+- 禁用状态正确传达给屏幕阅读器
+- 键盘导航的焦点状态清晰可见
+- 方向键可用于增减值

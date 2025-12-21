@@ -1,0 +1,98 @@
+---
+title: Pagination
+description: Navega a través de páginas de datos con controles personalizables.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizeChangerDemo,
+  ShowTotalDemo,
+  CustomTotalDemo,
+  QuickJumperDemo,
+  AllFeaturesDemo,
+  SimpleDemo,
+  SizesDemo,
+  DisabledDemo,
+} from '../../../../components/PaginationDemo'
+import PaginationDemoSource from '../../../../components/PaginationDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Navega a través de páginas de datos con controles personalizables.
+
+## Importar
+
+```tsx
+import { Pagination } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Paginación básica" description="Paginación simple con números de página." source={PaginationDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con cambiador de tamaño" description="Permite a los usuarios cambiar el tamaño de página." source={PaginationDemoSource} fn="SizeChangerDemo">
+  <SizeChangerDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar total" description="Muestra el conteo total de elementos." source={PaginationDemoSource} fn="ShowTotalDemo">
+  <ShowTotalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Total personalizado" description="Renderizado personalizado del conteo total." source={PaginationDemoSource} fn="CustomTotalDemo">
+  <CustomTotalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Salto rápido" description="Permite a los usuarios saltar a una página específica." source={PaginationDemoSource} fn="QuickJumperDemo">
+  <QuickJumperDemo client:load slot="demo" />
+</Example>
+
+<Example title="Todas las características" description="Paginación con todas las características habilitadas." source={PaginationDemoSource} fn="AllFeaturesDemo">
+  <AllFeaturesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo simple" description="Paginación mínima con solo controles anterior/siguiente." source={PaginationDemoSource} fn="SimpleDemo">
+  <SimpleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Diferentes tamaños para controles de paginación." source={PaginationDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deshabilitado" description="Estado deshabilitado para paginación." source={PaginationDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Pagination`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `current` | Número de página actual (controlado) | `number` | - |
+| `defaultCurrent` | Número de página inicial predeterminado | `number` | `1` |
+| `total` | Número total de elementos | `number` | - |
+| `pageSize` | Número de elementos por página (controlado) | `number` | - |
+| `defaultPageSize` | Número predeterminado de elementos por página | `number` | `10` |
+| `pageSizeOptions` | Opciones para selector de tamaño de página | `number[]` | `[10, 20, 50, 100]` |
+| `onChange` | Callback cuando cambia la página o pageSize | `(page: number, pageSize: number) => void` | - |
+| `onShowSizeChange` | Callback cuando cambia pageSize | `(current: number, size: number) => void` | - |
+| `showSizeChanger` | Mostrar selector de tamaño de página | `boolean` | `false` |
+| `showQuickJumper` | Mostrar entrada de salto rápido a página | `boolean` | `false` |
+| `showTotal` | Mostrar conteo total o función de renderizado personalizada | `boolean \| ((total: number, range: [number, number]) => ReactNode)` | `false` |
+| `simple` | Modo simple con controles mínimos | `boolean` | `false` |
+| `size` | Tamaño de los botones de paginación | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `disabled` | Deshabilitar todos los controles de paginación | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa elemento `nav` con `aria-label="Pagination"`
+- La página actual está marcada con `aria-current="page"`
+- Los botones deshabilitados tienen el estado `aria-disabled` apropiado
+- La entrada de salto rápido tiene etiqueta accesible

@@ -1,0 +1,92 @@
+---
+title: Drawer
+description: 从屏幕边缘滑入的面板。用于表单、详情或任务面板。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PlacementDemo,
+  WithFooterDemo,
+  ExtraDemo,
+  SizesDemo,
+  LoadingDemo,
+  NestedDemo,
+  NoMaskDemo,
+} from '../../../../components/DrawerDemo'
+import DrawerDemoSource from '../../../../components/DrawerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+从屏幕边缘滑入的面板。用于表单、详情或任务面板。
+
+## 导入
+
+```tsx
+import { Drawer } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础抽屉" description="从右侧滑入的简单抽屉。" source={DrawerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="位置" description="抽屉可以从任何方向滑入。" source={DrawerDemoSource} fn="PlacementDemo">
+  <PlacementDemo client:load slot="demo" />
+</Example>
+
+<Example title="带页脚" description="页脚中带操作按钮的抽屉。" source={DrawerDemoSource} fn="WithFooterDemo">
+  <WithFooterDemo client:load slot="demo" />
+</Example>
+
+<Example title="额外头部内容" description="在头部带额外操作的抽屉。" source={DrawerDemoSource} fn="ExtraDemo">
+  <ExtraDemo client:load slot="demo" />
+</Example>
+
+<Example title="预设尺寸" description="默认（378px）和大（736px）预设尺寸。" source={DrawerDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="加载状态" description="带骨架加载状态的抽屉。" source={DrawerDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="嵌套抽屉" description="带推动行为的多个抽屉。" source={DrawerDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="无遮罩" description="没有背景遮罩的抽屉。" source={DrawerDemoSource} fn="NoMaskDemo">
+  <NoMaskDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Drawer`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 抽屉内容 | `React.ReactNode` | - |
+| `open` | 受控的打开状态 | `boolean` | `false` |
+| `onClose` | 关闭处理器 | `(e?: React.MouseEvent \| React.KeyboardEvent) => void` | - |
+| `afterOpenChange` | 打开/关闭动画完成后的回调 | `(open: boolean) => void` | - |
+| `title` | 抽屉标题 | `React.ReactNode` | - |
+| `placement` | 抽屉位置 | `'left' \| 'right' \| 'top' \| 'bottom'` | `'right'` |
+| `size` | 预设尺寸（378px 或 736px）或自定义数字 | `'default' \| 'large' \| number` | `'default'` |
+| `width` | 自定义宽度（覆盖左/右的 size） | `string \| number` | - |
+| `height` | 自定义高度（覆盖上/下的 size） | `string \| number` | - |
+| `closable` | 显示关闭按钮 | `boolean` | `true` |
+| `mask` | 显示遮罩层 | `boolean` | `true` |
+| `maskClosable` | 点击遮罩层关闭 | `boolean` | `true` |
+| `keyboard` | ESC 键关闭 | `boolean` | `true` |
+| `footer` | 页脚内容 | `React.ReactNode` | - |
+| `extra` | 头部额外内容（右侧） | `React.ReactNode` | - |
+| `loading` | 显示加载骨架 | `boolean` | `false` |
+| `destroyOnClose` | 关闭时销毁内容 | `boolean` | `false` |
+| `forceRender` | 预渲染内容（关闭时保留在 DOM 中） | `boolean` | `false` |
+| `push` | 嵌套抽屉推动行为 | `boolean \| { distance: number }` | `{ distance: 180 }` |
+| `zIndex` | 抽屉的 z-index | `number` | `1000` |
+| `className` | 抽屉面板的 CSS 类名 | `string` | - |

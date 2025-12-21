@@ -1,0 +1,130 @@
+---
+title: Tag
+description: Labels para categorizar, marcar e organizar conteúdo.
+tableOfContents: false
+---
+
+import {
+  BasicTagsDemo,
+  VariantsDemo,
+  ClosableTagsDemo,
+  TagsWithIconsDemo,
+  TagSizesDemo,
+  CustomColorsDemo,
+  LinkTagsDemo,
+  DisabledTagsDemo,
+  CheckableTagsDemo,
+  CheckableTagColorsDemo,
+  CheckableTagsWithIconsDemo,
+  UseCasesDemo,
+} from '../../../../components/TagDemo'
+import TagDemoSource from '../../../../components/TagDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Labels para categorizar, marcar e organizar conteúdo.
+
+## Importação
+
+```tsx
+import { Tag } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Tags Básicas" description="Tags simples com cores predefinidas." source={TagDemoSource} fn="BasicTagsDemo">
+  <BasicTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes" description="Diferentes variantes de estilo para tags." source={TagDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tags Fecháveis" description="Tags que podem ser fechadas pelo usuário." source={TagDemoSource} fn="ClosableTagsDemo">
+  <ClosableTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tags com Ícones" description="Adicione ícones às tags para melhor comunicação visual." source={TagDemoSource} fn="TagsWithIconsDemo">
+  <TagsWithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos de Tag" description="Cinco tamanhos disponíveis para tags." source={TagDemoSource} fn="TagSizesDemo">
+  <TagSizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores Personalizadas" description="Use cores hex personalizadas para estilo único." source={TagDemoSource} fn="CustomColorsDemo">
+  <CustomColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tags como Links" description="Tags que navegam para URLs." source={TagDemoSource} fn="LinkTagsDemo">
+  <LinkTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tags Desabilitadas" description="Tags com estado desabilitado." source={TagDemoSource} fn="DisabledTagsDemo">
+  <DisabledTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tags Selecionáveis" description="Tags que podem ser ativadas e desativadas." source={TagDemoSource} fn="CheckableTagsDemo">
+  <CheckableTagsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores de Tags Selecionáveis" description="Tags selecionáveis com diferentes cores e tamanhos." source={TagDemoSource} fn="CheckableTagColorsDemo">
+  <CheckableTagColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tags Selecionáveis com Ícones" description="Adicione ícones a tags selecionáveis." source={TagDemoSource} fn="CheckableTagsWithIconsDemo">
+  <CheckableTagsWithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Casos de Uso" description="Exemplos práticos de uso de tags." source={TagDemoSource} fn="UseCasesDemo">
+  <UseCasesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tag`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `closable` | Mostrar ícone de fechar e habilitar fechamento | `boolean` | `false` |
+| `closeIcon` | Elemento de ícone de fechar personalizado | `ReactNode` | `-` |
+| `onClose` | Callback quando a tag é fechada | `() => void` | `-` |
+| `color` | Cor da tag (predefinida ou hex personalizado) | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'ghost' \| string` | `-` |
+| `icon` | Elemento de ícone a exibir antes do texto | `ReactNode` | `-` |
+| `size` | Tamanho da tag | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `variant` | Variante de estilo da tag | `'filled' \| 'outlined' \| 'soft' \| 'dash'` | `'filled'` |
+| `visible` | Estado de visibilidade controlado | `boolean` | `-` |
+| `disabled` | Desabilitar interações | `boolean` | `false` |
+| `href` | Renderizar tag como link | `string` | `-` |
+| `target` | Destino do link (quando href está definido) | `string` | `-` |
+| `children` | Conteúdo da tag | `ReactNode` | `-` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+| `data-testid` | ID de teste para o componente | `string` | `'tag'` |
+| `aria-label` | Label acessível (usado no anúncio do botão fechar) | `string` | `-` |
+
+### `CheckableTag`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `checked` | Se a tag está marcada | `boolean` | `false` |
+| `onChange` | Callback quando o estado marcado muda | `(checked: boolean) => void` | `-` |
+| `icon` | Elemento de ícone a exibir antes do texto | `ReactNode` | `-` |
+| `size` | Tamanho da tag | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `color` | Cor da tag quando marcada | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'ghost'` | `'primary'` |
+| `disabled` | Desabilitar interações | `boolean` | `false` |
+| `children` | Conteúdo da tag | `ReactNode` | `-` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+| `data-testid` | ID de teste para o componente | `string` | `'checkable-tag'` |
+
+## Acessibilidade
+
+- Botão de fechar inclui `aria-label` descritivo (ex. "Remover Tag 1")
+- CheckableTag usa `role="checkbox"` com estado `aria-checked` adequado
+- Acessível por teclado - ações de fechar e alternar funcionam com Enter/Space
+- Indicadores de foco visíveis em todos os elementos interativos
+- `TagLiveRegion` anuncia remoções de tags para leitores de tela
+- Atributo `aria-disabled` definido quando desabilitado
+- Contraste de cor atende às diretrizes WCAG para cores predefinidas

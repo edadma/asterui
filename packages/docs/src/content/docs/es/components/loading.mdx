@@ -1,0 +1,61 @@
+---
+title: Loading
+description: Muestra estados de carga con varios indicadores animados para mostrar procesos en curso.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TypesDemo,
+  SizesDemo,
+  ColorsDemo,
+} from '../../../../components/LoadingDemo'
+import LoadingDemoSource from '../../../../components/LoadingDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Muestra estados de carga con varios indicadores animados para mostrar procesos en curso.
+
+## Importar
+
+```tsx
+import { Loading } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Loading Básico" description="Spinner de carga predeterminado." source={LoadingDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tipos de Loading" description="Diferentes tipos de animación para indicadores de carga." source={LoadingDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Controla el tamaño del indicador de carga." source={LoadingDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores" description="Diferentes variantes de color para indicadores de carga." source={LoadingDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Loading`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `size` | Tamaño del indicador de carga | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `type` | Tipo de animación de carga | `'spinner' \| 'dots' \| 'ring' \| 'ball' \| 'bars' \| 'infinity'` | `'spinner'` |
+| `color` | Color del indicador de carga | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa `aria-label` para describir el estado de carga
+- La animación puede ser pausada por usuarios que prefieren movimiento reducido
+- Asegura que los indicadores de carga estén emparejados con texto para lectores de pantalla cuando sea posible

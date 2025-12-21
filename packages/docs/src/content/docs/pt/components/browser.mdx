@@ -1,0 +1,55 @@
+---
+title: Browser
+description: Exibir conteúdo em uma maquete de janela de navegador com barra de endereço.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PreviewDemo,
+  GradientDemo,
+  DashboardDemo,
+} from '../../../../components/BrowserDemo'
+import BrowserDemoSource from '../../../../components/BrowserDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exibir conteúdo em uma maquete de janela de navegador com barra de endereço.
+
+## Importação
+
+```tsx
+import { Browser } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Browser Básico" description="Janela de navegador com barra de URL." source={BrowserDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pré-visualização de Website" description="Pré-visualizar um layout de website." source={BrowserDemoSource} fn="PreviewDemo">
+  <PreviewDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Fundo" description="Cor de fundo personalizada." source={BrowserDemoSource} fn="GradientDemo">
+  <GradientDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pré-visualização de Dashboard" description="Simular uma UI de dashboard." source={BrowserDemoSource} fn="DashboardDemo">
+  <DashboardDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Browser`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo dentro da janela de visualização do navegador | `React.ReactNode` | - |
+| `url` | URL mostrada na barra de endereço | `string` | `'https://example.com'` |
+| `className` | Classes para o contêiner do navegador | `string` | - |
+| `contentClassName` | Classes para a área de conteúdo | `string` | - |

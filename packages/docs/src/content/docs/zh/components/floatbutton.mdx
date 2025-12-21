@@ -1,0 +1,113 @@
+---
+title: FloatButton
+description: 固定在页面上的浮动操作按钮，用于快速访问常用操作。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithTooltipDemo,
+  TypesDemo,
+  ShapesDemo,
+  WithBadgeDemo,
+  GroupDemo,
+  BackTopDemo,
+} from '../../../../components/FloatButtonDemo'
+import FloatButtonDemoSource from '../../../../components/FloatButtonDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+固定在页面上的浮动操作按钮，用于快速访问常用操作。
+
+## 导入
+
+```tsx
+import { FloatButton } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础" description="简单的浮动操作按钮。" source={FloatButtonDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带提示" description="悬停时显示提示的浮动按钮。" source={FloatButtonDemoSource} fn="WithTooltipDemo">
+  <WithTooltipDemo client:load slot="demo" />
+</Example>
+
+<Example title="类型" description="默认和主要按钮类型。" source={FloatButtonDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="形状" description="圆形和方形按钮形状。" source={FloatButtonDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="带徽章" description="带通知徽章的浮动按钮。" source={FloatButtonDemoSource} fn="WithBadgeDemo">
+  <WithBadgeDemo client:load slot="demo" />
+</Example>
+
+<Example title="浮动按钮组" description="点击时展开的浮动按钮组。" source={FloatButtonDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="回到顶部" description="向下滚动后出现的滚动到顶部按钮。" source={FloatButtonDemoSource} fn="BackTopDemo">
+  <BackTopDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `FloatButton`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `icon` | 在按钮中显示的图标 | `React.ReactNode` | - |
+| `description` | 图标下方的描述文本 | `React.ReactNode` | - |
+| `type` | 按钮类型/颜色 | `'default' \| 'primary'` | `'default'` |
+| `shape` | 按钮形状 | `'circle' \| 'square'` | `'circle'` |
+| `tooltip` | 悬停时显示的提示文本 | `string` | - |
+| `tooltipPlacement` | 提示位置 | `'left' \| 'right' \| 'top' \| 'bottom'` | `'left'` |
+| `badge` | 要显示的徽章内容 | `number \| React.ReactNode` | - |
+| `href` | 链接 URL（渲染为锚点） | `string` | - |
+| `target` | 链接目标 | `string` | - |
+| `onClick` | 点击事件处理器 | `() => void` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `FloatButton.Group`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 要分组的 FloatButton 组件 | `React.ReactNode` | - |
+| `flower` | 以四分之一圆（径向）布局排列按钮 | `boolean` | `false` |
+| `shape` | 子按钮的形状 | `'circle' \| 'square'` | `'circle'` |
+| `icon` | 主触发按钮图标 | `React.ReactNode` | - |
+| `mainAction` | 主操作按钮图标（打开时替换触发器） | `React.ReactNode` | - |
+| `onMainAction` | 主操作按钮的点击处理器 | `() => void` | - |
+| `showClose` | 打开时显示关闭按钮 | `boolean` | `false` |
+| `type` | 按钮类型/颜色 | `'default' \| 'primary'` | `'default'` |
+| `position` | 屏幕上的位置 | `'bottom-right' \| 'bottom-left' \| 'top-right' \| 'top-left'` | `'bottom-right'` |
+| `offset` | 距边缘的距离（像素） | `number` | `24` |
+
+### `FloatButton.BackTop`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `visibilityHeight` | 按钮出现前的滚动距离（像素） | `number` | `400` |
+| `target` | 滚动目标元素 | `() => HTMLElement \| Window` | - |
+| `onClick` | 点击事件处理器（在滚动前调用） | `() => void` | - |
+| `icon` | 自定义图标 | `React.ReactNode` | - |
+| `duration` | 滚动动画持续时间（毫秒） | `number` | `450` |
+| `position` | 屏幕上的位置 | `'bottom-right' \| 'bottom-left'` | `'bottom-right'` |
+| `offset` | 距边缘的距离（像素） | `number` | `24` |
+
+## 无障碍
+
+- 使用原生 `<button>` 元素以获得正确的键盘支持
+- 支持 `href` 属性以渲染为锚点以实现链接功能
+- 提示在存在时为屏幕阅读器提供上下文
+- 键盘导航的焦点状态清晰可见
+- 组展开支持键盘访问
+- BackTop 按钮根据滚动位置出现/消失

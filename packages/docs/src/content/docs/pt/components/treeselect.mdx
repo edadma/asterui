@@ -1,0 +1,119 @@
+---
+title: TreeSelect
+description: Seleção de árvore dropdown para dados hierárquicos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MultipleDemo,
+  CheckableDemo,
+  SearchableDemo,
+  SizesDemo,
+  StatusDemo,
+  AsyncLoadDemo,
+  MaxTagDemo,
+  TreeLineDemo,
+  DisabledItemsDemo,
+} from '../../../../components/TreeSelectDemo'
+import TreeSelectDemoSource from '../../../../components/TreeSelectDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Seleção de árvore dropdown para dados hierárquicos.
+
+## Importação
+
+```tsx
+import { TreeSelect } from 'asterui'
+import type { TreeDataNode } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="TreeSelect Básico" description="Selecione um único valor de uma estrutura de árvore." source={TreeSelectDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Seleção Múltipla" description="Selecione múltiplos valores da árvore." source={TreeSelectDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Checkbox" description="Use checkboxes para seleção com associação pai-filho." source={TreeSelectDemoSource} fn="CheckableDemo">
+  <CheckableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Buscável" description="Filtre nós da árvore com busca." source={TreeSelectDemoSource} fn="SearchableDemo">
+  <SearchableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="TreeSelect vem em vários tamanhos." source={TreeSelectDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Validação" description="Mostre estados de erro ou aviso." source={TreeSelectDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Carregamento Assíncrono" description="Carregue nós da árvore assincronamente ao expandir." source={TreeSelectDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+<Example title="Limite de Tags" description="Limite o número de tags visíveis." source={TreeSelectDemoSource} fn="MaxTagDemo">
+  <MaxTagDemo client:load slot="demo" />
+</Example>
+
+<Example title="Linha da Árvore" description="Mostre linhas conectando nós da árvore." source={TreeSelectDemoSource} fn="TreeLineDemo">
+  <TreeLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Itens Desabilitados" description="Alguns nós da árvore podem ser desabilitados." source={TreeSelectDemoSource} fn="DisabledItemsDemo">
+  <DisabledItemsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `TreeSelect`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `treeData` | Estrutura de dados da árvore | `TreeDataNode[]` | `[]` |
+| `value` | Valor(es) selecionado(s) | `string \| string[]` | `-` |
+| `defaultValue` | Valor(es) selecionado(s) padrão | `string \| string[]` | `[]` |
+| `onChange` | Callback quando a seleção muda | `(value: string \| string[], labels: ReactNode[]) => void` | `-` |
+| `multiple` | Permitir seleção múltipla | `boolean` | `false` |
+| `treeCheckable` | Mostrar checkbox para nós da árvore | `boolean` | `false` |
+| `treeCheckStrictly` | Marcar sem associação pai-filho | `boolean` | `false` |
+| `showCheckedStrategy` | Como exibir itens marcados | `'SHOW_ALL' \| 'SHOW_PARENT' \| 'SHOW_CHILD'` | `'SHOW_ALL'` |
+| `showSearch` | Habilitar funcionalidade de busca | `boolean` | `false` |
+| `placeholder` | Texto de placeholder | `string` | `'Please select'` |
+| `allowClear` | Mostrar botão de limpar | `boolean` | `true` |
+| `disabled` | Desabilitar o select | `boolean` | `false` |
+| `size` | Tamanho do input | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `status` | Estado de validação | `'error' \| 'warning'` | `-` |
+| `maxTagCount` | Número máximo de tags a mostrar | `number \| 'responsive'` | `-` |
+| `treeLine` | Mostrar linhas conectando | `boolean` | `false` |
+| `treeDefaultExpandAll` | Expandir todos os nós da árvore por padrão | `boolean` | `false` |
+| `loadData` | Carregar dados assincronamente | `(node: TreeDataNode) => Promise<void>` | `-` |
+| `data-testid` | ID de teste para o componente | `string` | `'treeselect'` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+## Acessibilidade
+
+O componente TreeSelect segue os padrões de combobox e árvore WAI-ARIA com atributos ARIA adequados e navegação por teclado.
+
+### Navegação por Teclado
+
+| Tecla | Ação |
+|-----|--------|
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Abre dropdown ou seleciona item focado |
+| <kbd>Escape</kbd> | Fecha dropdown |
+| <kbd>↓</kbd> | Abre dropdown ou move foco para baixo |
+| <kbd>↑</kbd> | Move foco para cima |
+| <kbd>→</kbd> | Expande nó da árvore focado |
+| <kbd>←</kbd> | Recolhe nó da árvore focado ou move para pai |
+| <kbd>Home</kbd> | Move foco para primeiro item |
+| <kbd>End</kbd> | Move foco para último item |

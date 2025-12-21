@@ -1,0 +1,70 @@
+---
+title: Kbd
+description: Muestra teclas del teclado y atajos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  CombinationDemo,
+  InTextDemo,
+  ArrowsDemo,
+  FullKeyboardDemo,
+} from '../../../../components/KbdDemo'
+import KbdDemoSource from '../../../../components/KbdDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Muestra teclas del teclado y atajos.
+
+## Importar
+
+```tsx
+import { Kbd } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Visualización simple de tecla del teclado." source={KbdDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Diferentes tamaños para varios contextos." source={KbdDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Combinación de Teclas" description="Muestra atajos de teclado." source={KbdDemoSource} fn="CombinationDemo">
+  <CombinationDemo client:load slot="demo" />
+</Example>
+
+<Example title="En Texto" description="Usa kbd en línea con texto." source={KbdDemoSource} fn="InTextDemo">
+  <InTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Teclas de Flecha" description="Visualización de teclas de flecha para instrucciones de navegación." source={KbdDemoSource} fn="ArrowsDemo">
+  <ArrowsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Teclado Completo" description="Ejemplo de diseño de teclado completo." source={KbdDemoSource} fn="FullKeyboardDemo">
+  <FullKeyboardDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Kbd`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `size` | Tamaño del kbd | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `children` | Contenido de la tecla | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa elemento HTML semántico `<kbd>`
+- Los lectores de pantalla anuncian las teclas del teclado apropiadamente
+- El estilo de alto contraste asegura visibilidad

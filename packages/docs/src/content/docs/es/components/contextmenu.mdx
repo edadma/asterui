@@ -1,0 +1,105 @@
+---
+title: ContextMenu
+description: Menú contextual de clic derecho con submenús anidados e iconos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DataDrivenDemo,
+  IconsDemo,
+  DividersDemo,
+  SubmenuDemo,
+  DisabledDemo,
+} from '../../../../components/ContextMenuDemo'
+import ContextMenuDemoSource from '../../../../components/ContextMenuDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Menú contextual de clic derecho con submenús anidados e iconos.
+
+## Importar
+
+```tsx
+import { ContextMenu } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Menú Contextual Básico" description="Haz clic derecho en el elemento para mostrar el menú." source={ContextMenuDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Patrón Basado en Datos" description="Usa la prop items para menús basados en datos." source={ContextMenuDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Iconos" description="Elementos de menú con iconos." source={ContextMenuDemoSource} fn="IconsDemo">
+  <IconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Divisores" description="Separa secciones del menú con divisores." source={ContextMenuDemoSource} fn="DividersDemo">
+  <DividersDemo client:load slot="demo" />
+</Example>
+
+<Example title="Submenú Anidado" description="Elementos de menú con submenús anidados." source={ContextMenuDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+<Example title="Elementos Deshabilitados" description="Algunos elementos del menú pueden ser deshabilitados." source={ContextMenuDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ContextMenu`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Elemento que activa el menú contextual al hacer clic derecho | `React.ReactNode` | - |
+| `items` | Elementos del menú | `ContextMenuItem[]` | - |
+| `onSelect` | Callback cuando se selecciona un elemento | `(key: string) => void` | - |
+| `disabled` | Si el menú contextual está deshabilitado | `boolean` | `false` |
+| `className` | Clases CSS adicionales para el menú | `string` | - |
+
+### `ContextMenuItem` (para prop items)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único para el elemento | `string` | - |
+| `label` | Etiqueta de visualización | `React.ReactNode` | - |
+| `icon` | Elemento de icono | `React.ReactNode` | - |
+| `disabled` | Estado deshabilitado | `boolean` | `false` |
+| `danger` | Mostrar como acción peligrosa/destructiva | `boolean` | `false` |
+| `divider` | Renderizar como divisor | `boolean` | `false` |
+| `children` | Elementos de submenú | `ContextMenuItem[]` | - |
+
+### `ContextMenu.Item` (patrón compuesto)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Clave única para el elemento (prop key de React) | `string` | - |
+| `children` | Contenido del elemento | `React.ReactNode` | - |
+| `icon` | Icono a mostrar antes de la etiqueta | `React.ReactNode` | - |
+| `disabled` | Si el elemento está deshabilitado | `boolean` | `false` |
+| `danger` | Mostrar como acción peligrosa/destructiva | `boolean` | `false` |
+
+### `ContextMenu.SubMenu` (patrón compuesto)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Clave única para el submenú (prop key de React) | `string` | - |
+| `label` | Etiqueta del submenú | `React.ReactNode` | - |
+| `icon` | Icono a mostrar antes de la etiqueta | `React.ReactNode` | - |
+| `disabled` | Si el submenú está deshabilitado | `boolean` | `false` |
+| `children` | Elementos del submenú | `React.ReactNode` | - |
+
+## Accesibilidad
+
+- El menú se cierra al presionar la tecla Escape
+- El menú se cierra al hacer clic fuera
+- Los elementos del menú son navegables por teclado
+- Los elementos deshabilitados se anuncian correctamente

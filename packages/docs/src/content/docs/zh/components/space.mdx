@@ -1,0 +1,82 @@
+---
+title: Space 间距
+description: 在组件之间设置一致的间距。
+tableOfContents: false
+---
+
+import {
+  HorizontalDemo,
+  VerticalDemo,
+  SizesDemo,
+  AlignmentDemo,
+  WrapDemo,
+  NestedDemo,
+  JustifyDemo,
+  SplitDemo,
+} from '../../../../components/SpaceDemo'
+import SpaceDemoSource from '../../../../components/SpaceDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+在组件之间设置一致的间距。
+
+## 导入
+
+```tsx
+import { Space } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="水平间距" description="元素之间的默认水平间距。" source={SpaceDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="垂直间距" description="元素之间的垂直间距。" source={SpaceDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="不同尺寸" description="使用 size 属性控制间距大小。" source={SpaceDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="对齐" description="在空间内对齐项目。" source={SpaceDemoSource} fn="AlignmentDemo">
+  <AlignmentDemo client:load slot="demo" />
+</Example>
+
+<Example title="换行项目" description="允许项目换行到下一行。" source={SpaceDemoSource} fn="WrapDemo">
+  <WrapDemo client:load slot="demo" />
+</Example>
+
+<Example title="嵌套空间" description="组合垂直和水平间距。" source={SpaceDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="对齐内容" description="控制项目沿主轴的分布方式。" source={SpaceDemoSource} fn="JustifyDemo">
+  <JustifyDemo client:load slot="demo" />
+</Example>
+
+<Example title="分隔符" description="在子元素之间插入分隔符元素。" source={SpaceDemoSource} fn="SplitDemo">
+  <SplitDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `direction` | 布局方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `size` | 子元素之间的间距大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| number` | `'sm'` |
+| `align` | 项目对齐 | `'start' \| 'end' \| 'center' \| 'baseline' \| 'stretch'` | `-` |
+| `justify` | 沿主轴对齐项目 | `'start' \| 'end' \| 'center' \| 'between' \| 'around' \| 'evenly'` | `-` |
+| `wrap` | 是否换行项目 | `boolean` | `false` |
+| `split` | 子元素之间的分隔符元素 | `React.ReactNode` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+- Space 是一个布局实用程序,没有特定的可访问性要求
+- 维护子元素的语义结构
+- 尺寸映射到 Tailwind 间距: xs=1, sm=2, md=4, lg=6, xl=8

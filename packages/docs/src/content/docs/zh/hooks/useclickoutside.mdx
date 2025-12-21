@@ -1,0 +1,41 @@
+---
+title: useClickOutside
+description: 检测引用元素外部点击的 Hook。
+---
+
+检测元素外部的点击。适用于关闭下拉菜单、模态框或菜单。
+
+## 导入
+
+```tsx
+import { useClickOutside } from 'asterui'
+```
+
+## 用法
+
+```tsx
+function DropdownExample() {
+  const [isOpen, setIsOpen] = useState(false)
+  const ref = useClickOutside<HTMLDivElement>(() => setIsOpen(false))
+
+  return (
+    <div ref={ref}>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      {isOpen && <DropdownMenu>...</DropdownMenu>}
+    </div>
+  )
+}
+```
+
+## 参数
+
+| 参数 | 类型 | 默认值 | 描述 |
+|-----------|------|---------|-------------|
+| `handler` | `(event: MouseEvent \| TouchEvent) => void` | - | 外部点击时的回调 |
+| `enabled` | `boolean` | `true` | 监听器是否激活 |
+
+## 返回值
+
+| 类型 | 描述 |
+|------|-------------|
+| `RefObject<T>` | 要附加到元素的 Ref |

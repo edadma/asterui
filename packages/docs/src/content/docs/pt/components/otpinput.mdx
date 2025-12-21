@@ -1,0 +1,92 @@
+---
+title: OTPInput
+description: Entrada de senha única com foco automático e suporte a colar.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  FourDigitDemo,
+  SizesDemo,
+  MaskedDemo,
+  AlphanumericDemo,
+  ErrorDemo,
+  DisabledDemo,
+} from '../../../../components/OTPInputDemo'
+import OTPInputDemoSource from '../../../../components/OTPInputDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Entrada de senha única com foco automático e suporte a colar.
+
+## Importação
+
+```tsx
+import { OTPInput } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="OTP Input Básico" description="Entrada OTP simples de 6 dígitos." source={OTPInputDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Quatro Dígitos" description="Entrada OTP com comprimento customizado." source={OTPInputDemoSource} fn="FourDigitDemo">
+  <FourDigitDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Diferentes variantes de tamanho." source={OTPInputDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Entrada Mascarada" description="Oculta valores inseridos com pontos." source={OTPInputDemoSource} fn="MaskedDemo">
+  <MaskedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Alfanumérico" description="Aceita letras e números." source={OTPInputDemoSource} fn="AlphanumericDemo">
+  <AlphanumericDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Erro" description="Mostra estilo de erro para entrada inválida." source={OTPInputDemoSource} fn="ErrorDemo">
+  <ErrorDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado Desabilitado" description="Entrada desabilitada não interativa." source={OTPInputDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `OTPInput`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `length` | Número de campos de entrada | `number` | `6` |
+| `value` | Valor atual | `string` | - |
+| `onChange` | Callback quando o valor muda | `(value: string) => void` | - |
+| `onComplete` | Callback quando todos os campos estão preenchidos | `(value: string) => void` | - |
+| `size` | Tamanho da entrada | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `type` | Tipo de entrada - somente número ou alfanumérico | `'number' \| 'text'` | `'number'` |
+| `mask` | Mascarar entrada (mostrar pontos em vez de caracteres) | `boolean` | `false` |
+| `disabled` | Estado desabilitado | `boolean` | `false` |
+| `error` | Estado de erro | `boolean` | `false` |
+| `autoFocus` | Focar automaticamente na primeira entrada ao montar | `boolean` | `false` |
+| `placeholder` | Caractere placeholder | `string` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### Métodos Ref
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `focus` | Focar a primeira entrada | `() => void` | - |
+| `clear` | Limpar todas as entradas e focar a primeira | `() => void` | - |
+
+## Acessibilidade
+
+- Cada entrada tem um aria-label indicando sua posição
+- Suporta navegação por teclado com teclas de seta
+- Backspace move o foco para a entrada anterior
+- Suporta colar códigos OTP completos

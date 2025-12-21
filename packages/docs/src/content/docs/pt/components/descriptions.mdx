@@ -1,0 +1,153 @@
+---
+title: Descriptions
+description: Exiba pares chave-valor em um formato estruturado e legível.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  BorderedDemo,
+  SizesDemo,
+  VerticalDemo,
+  ColumnsDemo,
+  WithSpanDemo,
+  FilledSpanDemo,
+  TitleExtraDemo,
+  NoColonDemo,
+  CustomStylesDemo,
+  CompoundDemo,
+  ResponsiveDemo,
+} from '../../../../components/DescriptionsDemo'
+import DescriptionsDemoSource from '../../../../components/DescriptionsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exiba pares chave-valor em um formato estruturado e legível.
+
+## Importação
+
+```tsx
+import { Descriptions } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Descriptions Básico" description="Exibição simples de chave-valor." source={DescriptionsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Bordas" description="Descriptions com bordas." source={DescriptionsDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Diferentes variantes de tamanho." source={DescriptionsDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Título com Extra" description="Título e conteúdo extra no cabeçalho." source={DescriptionsDemoSource} fn="TitleExtraDemo">
+  <TitleExtraDemo client:load slot="demo" />
+</Example>
+
+<Example title="Layout Vertical" description="Layout de rótulo e conteúdo vertical." source={DescriptionsDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colunas Personalizadas" description="Controle o número de colunas." source={DescriptionsDemoSource} fn="ColumnsDemo">
+  <ColumnsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colunas Responsivas" description="Colunas se ajustam com base na largura da viewport." source={DescriptionsDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Extensão de Coluna" description="Itens que ocupam várias colunas." source={DescriptionsDemoSource} fn="WithSpanDemo">
+  <WithSpanDemo client:load slot="demo" />
+</Example>
+
+<Example title="Extensão Preenchida" description="Itens que preenchem o espaço restante da linha." source={DescriptionsDemoSource} fn="FilledSpanDemo">
+  <FilledSpanDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sem Dois-pontos" description="Ocultar os dois-pontos após os rótulos." source={DescriptionsDemoSource} fn="NoColonDemo">
+  <NoColonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estilos Personalizados" description="Aplicar estilos e classes personalizadas às partes semânticas." source={DescriptionsDemoSource} fn="CustomStylesDemo">
+  <CustomStylesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Padrão Composto" description="Use filhos Descriptions.Item em vez da prop items." source={DescriptionsDemoSource} fn="CompoundDemo">
+  <CompoundDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Descriptions`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `items` | Itens de descrição (alternativa a children) | `DescriptionsItemConfig[]` | - |
+| `title` | Título do bloco de descrições | `React.ReactNode` | - |
+| `extra` | Conteúdo extra no canto superior direito | `React.ReactNode` | - |
+| `column` | Número de colunas (ou configuração responsiva) | `number \| { xs?, sm?, md?, lg?, xl?, 2xl? }` | `3` |
+| `bordered` | Mostrar bordas ao redor das células | `boolean` | `false` |
+| `layout` | Direção do layout | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `size` | Variante de tamanho | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `colon` | Mostrar dois-pontos após rótulos | `boolean` | `true` |
+| `styles` | Estilos semânticos para partes do componente | `Partial<Record<SemanticDOM, CSSProperties>>` | - |
+| `classNames` | ClassNames semânticos para partes do componente | `Partial<Record<SemanticDOM, string>>` | - |
+| `labelStyle` | Estilos de rótulo padrão (obsoleto, use styles.label) | `React.CSSProperties` | - |
+| `contentStyle` | Estilos de conteúdo padrão (obsoleto, use styles.content) | `React.CSSProperties` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+| `style` | Estilos inline para elemento raiz | `React.CSSProperties` | - |
+| `data-testid` | ID de teste para o componente | `string` | `'descriptions'` |
+
+### `DescriptionsItemConfig`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Chave única para o item (usada para IDs de teste e chaves React) | `string` | - |
+| `label` | Rótulo para o item | `React.ReactNode` | - |
+| `children` | Conteúdo do item | `React.ReactNode` | - |
+| `span` | Número de colunas a ocupar, ou 'filled' para preencher espaço restante | `number \| 'filled'` | `1` |
+| `labelStyle` | Estilos de rótulo personalizados | `React.CSSProperties` | - |
+| `contentStyle` | Estilos de conteúdo personalizados | `React.CSSProperties` | - |
+| `labelClassName` | Classe de rótulo personalizada | `string` | - |
+| `contentClassName` | Classe de conteúdo personalizada | `string` | - |
+
+### `Descriptions.Item` (composto)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Chave React, extraída pelo pai | `string` | - |
+| `itemKey` | Chave explícita (alternativa à chave React) | `string` | - |
+| `label` | Rótulo para o item | `React.ReactNode` | - |
+| `children` | Conteúdo do item | `React.ReactNode` | - |
+| `span` | Número de colunas a ocupar, ou 'filled' | `number \| 'filled'` | `1` |
+| `labelStyle` | Estilos de rótulo personalizados | `React.CSSProperties` | - |
+| `contentStyle` | Estilos de conteúdo personalizados | `React.CSSProperties` | - |
+| `labelClassName` | Classe de rótulo personalizada | `string` | - |
+| `contentClassName` | Classe de conteúdo personalizada | `string` | - |
+
+### Chaves `SemanticDOM`
+
+| Propriedade | Descrição | Tipo |
+|----------|-------------|------|
+| `root` | Elemento container raiz | - |
+| `header` | Cabeçalho contendo título e extra | - |
+| `title` | Elemento de título | - |
+| `extra` | Elemento de conteúdo extra | - |
+| `table` | Elemento de tabela | - |
+| `label` | Células de rótulo (elementos th) | - |
+| `content` | Células de conteúdo (elementos td) | - |
+
+## Acessibilidade
+
+- Usa marcação semântica `<table>` para estrutura adequada
+- Células de cabeçalho usam atributo `scope` para leitores de tela
+- Tabela tem elemento `<caption>` (visualmente oculto) quando o título é fornecido
+- Células de conteúdo têm `aria-labelledby` vinculando a seus rótulos
+- Dois-pontos após rótulos são marcados com `aria-hidden` para evitar anúncios redundantes

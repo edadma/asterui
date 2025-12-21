@@ -1,0 +1,153 @@
+---
+title: Descriptions
+description: 以结构化、易读的格式显示键值对。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  BorderedDemo,
+  SizesDemo,
+  VerticalDemo,
+  ColumnsDemo,
+  WithSpanDemo,
+  FilledSpanDemo,
+  TitleExtraDemo,
+  NoColonDemo,
+  CustomStylesDemo,
+  CompoundDemo,
+  ResponsiveDemo,
+} from '../../../../components/DescriptionsDemo'
+import DescriptionsDemoSource from '../../../../components/DescriptionsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+以结构化、易读的格式显示键值对。
+
+## 导入
+
+```tsx
+import { Descriptions } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础描述列表" description="简单的键值对显示。" source={DescriptionsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带边框" description="带边框的描述列表。" source={DescriptionsDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="不同的尺寸变体。" source={DescriptionsDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="带标题和额外内容" description="在头部显示标题和额外内容。" source={DescriptionsDemoSource} fn="TitleExtraDemo">
+  <TitleExtraDemo client:load slot="demo" />
+</Example>
+
+<Example title="垂直布局" description="标签和内容垂直布局。" source={DescriptionsDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义列数" description="控制列的数量。" source={DescriptionsDemoSource} fn="ColumnsDemo">
+  <ColumnsDemo client:load slot="demo" />
+</Example>
+
+<Example title="响应式列数" description="列数根据视口宽度调整。" source={DescriptionsDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="列跨度" description="跨越多列的项目。" source={DescriptionsDemoSource} fn="WithSpanDemo">
+  <WithSpanDemo client:load slot="demo" />
+</Example>
+
+<Example title="填充跨度" description="填充剩余行空间的项目。" source={DescriptionsDemoSource} fn="FilledSpanDemo">
+  <FilledSpanDemo client:load slot="demo" />
+</Example>
+
+<Example title="无冒号" description="隐藏标签后的冒号。" source={DescriptionsDemoSource} fn="NoColonDemo">
+  <NoColonDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义样式" description="为语义部分应用自定义样式和类名。" source={DescriptionsDemoSource} fn="CustomStylesDemo">
+  <CustomStylesDemo client:load slot="demo" />
+</Example>
+
+<Example title="组合模式" description="使用 Descriptions.Item 子元素代替 items 属性。" source={DescriptionsDemoSource} fn="CompoundDemo">
+  <CompoundDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Descriptions`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `items` | 描述项目（children 的替代方案） | `DescriptionsItemConfig[]` | - |
+| `title` | 描述列表的标题 | `React.ReactNode` | - |
+| `extra` | 右上角的额外内容 | `React.ReactNode` | - |
+| `column` | 列数（或响应式配置） | `number \| { xs?, sm?, md?, lg?, xl?, 2xl? }` | `3` |
+| `bordered` | 在单元格周围显示边框 | `boolean` | `false` |
+| `layout` | 布局方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `size` | 尺寸变体 | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `colon` | 在标签后显示冒号 | `boolean` | `true` |
+| `styles` | 组件部分的语义样式 | `Partial<Record<SemanticDOM, CSSProperties>>` | - |
+| `classNames` | 组件部分的语义类名 | `Partial<Record<SemanticDOM, string>>` | - |
+| `labelStyle` | 默认标签样式（已弃用，使用 styles.label） | `React.CSSProperties` | - |
+| `contentStyle` | 默认内容样式（已弃用，使用 styles.content） | `React.CSSProperties` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 根元素的内联样式 | `React.CSSProperties` | - |
+| `data-testid` | 组件的测试 ID | `string` | `'descriptions'` |
+
+### `DescriptionsItemConfig`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 项目的唯一键（用于测试 ID 和 React 键） | `string` | - |
+| `label` | 项目的标签 | `React.ReactNode` | - |
+| `children` | 项目的内容 | `React.ReactNode` | - |
+| `span` | 跨越的列数，或 'filled' 填充剩余空间 | `number \| 'filled'` | `1` |
+| `labelStyle` | 自定义标签样式 | `React.CSSProperties` | - |
+| `contentStyle` | 自定义内容样式 | `React.CSSProperties` | - |
+| `labelClassName` | 自定义标签类名 | `string` | - |
+| `contentClassName` | 自定义内容类名 | `string` | - |
+
+### `Descriptions.Item` (组合模式)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | React 键，由父组件提取 | `string` | - |
+| `itemKey` | 显式键（React key 的替代方案） | `string` | - |
+| `label` | 项目的标签 | `React.ReactNode` | - |
+| `children` | 项目的内容 | `React.ReactNode` | - |
+| `span` | 跨越的列数，或 'filled' | `number \| 'filled'` | `1` |
+| `labelStyle` | 自定义标签样式 | `React.CSSProperties` | - |
+| `contentStyle` | 自定义内容样式 | `React.CSSProperties` | - |
+| `labelClassName` | 自定义标签类名 | `string` | - |
+| `contentClassName` | 自定义内容类名 | `string` | - |
+
+### `SemanticDOM` 键
+
+| 属性 | 描述 | 类型 |
+|----------|-------------|------|
+| `root` | 根容器元素 | - |
+| `header` | 包含标题和额外内容的头部 | - |
+| `title` | 标题元素 | - |
+| `extra` | 额外内容元素 | - |
+| `table` | 表格元素 | - |
+| `label` | 标签单元格（th 元素） | - |
+| `content` | 内容单元格（td 元素） | - |
+
+## 无障碍
+
+- 使用语义化的 `<table>` 标记确保正确的结构
+- 头部单元格使用 `scope` 属性，方便屏幕阅读器使用
+- 当提供标题时，表格有 `<caption>` 元素（视觉上隐藏）
+- 内容单元格通过 `aria-labelledby` 链接到其标签
+- 标签后的冒号用 `aria-hidden` 标记，以避免重复朗读

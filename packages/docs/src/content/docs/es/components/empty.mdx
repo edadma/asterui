@@ -1,0 +1,62 @@
+---
+title: Empty
+description: Muestra contenido de marcador de posición cuando no hay datos para mostrar.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomDescriptionDemo,
+  CustomImageDemo,
+  WithActionDemo,
+  SimpleImageDemo,
+} from '../../../../components/EmptyDemo'
+import EmptyDemoSource from '../../../../components/EmptyDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Muestra contenido de marcador de posición cuando no hay datos para mostrar.
+
+## Importar
+
+```tsx
+import { Empty } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Empty Básico" description="Estado vacío simple con imagen predeterminada." source={EmptyDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Descripción Personalizada" description="Estado vacío con texto de descripción personalizado." source={EmptyDemoSource} fn="CustomDescriptionDemo">
+  <CustomDescriptionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Imagen Personalizada" description="Estado vacío con imagen o icono personalizado." source={EmptyDemoSource} fn="CustomImageDemo">
+  <CustomImageDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Botón de Acción" description="Estado vacío con botón de acción." source={EmptyDemoSource} fn="WithActionDemo">
+  <WithActionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Imagen Simple" description="Estado vacío minimalista con imagen más pequeña." source={EmptyDemoSource} fn="SimpleImageDemo">
+  <SimpleImageDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Empty`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `description` | Texto o nodo a mostrar como descripción | `React.ReactNode` | `'No Data'` |
+| `image` | Imagen o icono personalizado; establece en null para ocultar | `React.ReactNode` | `Empty.PRESENTED_IMAGE_DEFAULT` |
+| `imageStyle` | Estilo aplicado al contenedor de imagen | `React.CSSProperties` | - |
+| `children` | Contenido adicional como botones o acciones | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `data-testid` | ID de prueba para el componente | `string` | `'empty'` |

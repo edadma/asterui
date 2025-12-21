@@ -1,0 +1,92 @@
+---
+title: OTPInput 验证码输入
+description: 具有自动对焦和粘贴支持的一次性密码输入。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  FourDigitDemo,
+  SizesDemo,
+  MaskedDemo,
+  AlphanumericDemo,
+  ErrorDemo,
+  DisabledDemo,
+} from '../../../../components/OTPInputDemo'
+import OTPInputDemoSource from '../../../../components/OTPInputDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+具有自动对焦和粘贴支持的一次性密码输入。
+
+## 导入
+
+```tsx
+import { OTPInput } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础验证码输入" description="简单的 6 位数字验证码输入。" source={OTPInputDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="四位数字" description="自定义长度的验证码输入。" source={OTPInputDemoSource} fn="FourDigitDemo">
+  <FourDigitDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="不同的尺寸变体。" source={OTPInputDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="遮罩输入" description="用点隐藏输入的值。" source={OTPInputDemoSource} fn="MaskedDemo">
+  <MaskedDemo client:load slot="demo" />
+</Example>
+
+<Example title="字母数字" description="接受字母和数字。" source={OTPInputDemoSource} fn="AlphanumericDemo">
+  <AlphanumericDemo client:load slot="demo" />
+</Example>
+
+<Example title="错误状态" description="显示无效输入的错误样式。" source={OTPInputDemoSource} fn="ErrorDemo">
+  <ErrorDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用状态" description="非交互式禁用输入。" source={OTPInputDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `OTPInput`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `length` | 输入框数量 | `number` | `6` |
+| `value` | 当前值 | `string` | - |
+| `onChange` | 值更改时的回调 | `(value: string) => void` | - |
+| `onComplete` | 所有字段填充完成时的回调 | `(value: string) => void` | - |
+| `size` | 输入尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `type` | 输入类型 - 仅数字或字母数字 | `'number' \| 'text'` | `'number'` |
+| `mask` | 遮罩输入(显示点而不是字符) | `boolean` | `false` |
+| `disabled` | 禁用状态 | `boolean` | `false` |
+| `error` | 错误状态 | `boolean` | `false` |
+| `autoFocus` | 挂载时自动对焦第一个输入 | `boolean` | `false` |
+| `placeholder` | 占位符字符 | `string` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+### Ref 方法
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `focus` | 对焦第一个输入 | `() => void` | - |
+| `clear` | 清除所有输入并对焦第一个 | `() => void` | - |
+
+## 可访问性
+
+- 每个输入都有一个 aria-label 指示其位置
+- 支持使用箭头键进行键盘导航
+- Backspace 将焦点移至上一个输入
+- 支持粘贴完整的验证码

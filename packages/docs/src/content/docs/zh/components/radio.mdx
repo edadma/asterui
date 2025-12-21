@@ -1,0 +1,87 @@
+---
+title: Radio 单选框
+description: 从一组中选择一个选项的单选按钮。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HorizontalDemo,
+  SizesDemo,
+  ColorsDemo,
+  DisabledDemo,
+  FormDemo,
+} from '../../../../components/RadioDemo'
+import RadioDemoSource from '../../../../components/RadioDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+从一组中选择一个选项的单选按钮。
+
+## 导入
+
+```tsx
+import { Radio } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础用法" description="使用 Radio.Group 管理单选选择。" source={RadioDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="水平布局" description="水平排列的单选按钮。" source={RadioDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="不同尺寸" description="各种尺寸的单选按钮。" source={RadioDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="彩色单选按钮变体。" source={RadioDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用状态" description="禁用的单选按钮。" source={RadioDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="在表单中" description="带有验证的表单中的单选组。" source={RadioDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Radio.Group`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | Radio 组件 | `React.ReactNode` | - |
+| `value` | 当前选中的值(受控) | `string \| number` | - |
+| `defaultValue` | 默认选中的值(非受控) | `string \| number` | - |
+| `onChange` | 选择更改时的回调 | `(e: { target: { value: string \| number, name?: string } }) => void` | - |
+| `name` | 组中所有单选输入的名称 | `string` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+### `Radio`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 单选值(在 Radio.Group 中时必需) | `string \| number` | - |
+| `children` | 标签内容(包装在 label 元素中) | `React.ReactNode` | - |
+| `size` | 单选按钮尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | 单选按钮颜色变体 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `disabled` | 禁用状态 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 使用原生 `<input type="radio">` 元素以获得完全的可访问性
+- Radio.Group 使用 `role="radiogroup"` 以获得正确的语义
+- 单选输入在组内共享 `name` 属性
+- 标签正确连接以进行点击定位
+- 使用箭头键在组内进行键盘导航
+- 禁用状态正确传达给辅助技术

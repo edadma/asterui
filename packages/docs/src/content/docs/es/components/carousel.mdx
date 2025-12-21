@@ -1,0 +1,107 @@
+---
+title: Carousel
+description: Carrusel de contenido rotativo con controles de navegación, indicadores y soporte para reproducción automática.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AutoplayDemo,
+  FadeDemo,
+  VerticalDemo,
+  NoControlsDemo,
+  DotPlacementDemo,
+  CustomContentDemo,
+} from '../../../../components/CarouselDemo'
+import CarouselDemoSource from '../../../../components/CarouselDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Carrusel de contenido rotativo con controles de navegación, indicadores y soporte para reproducción automática.
+
+## Importar
+
+```tsx
+import { Carousel } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Carrusel Básico" description="Carrusel simple con controles de navegación e indicadores." source={CarouselDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Reproducción Automática" description="Carrusel con avance automático de diapositivas. Se pausa al pasar el mouse." source={CarouselDemoSource} fn="AutoplayDemo">
+  <AutoplayDemo client:load slot="demo" />
+</Example>
+
+<Example title="Efecto de Fundido" description="Carrusel con transición de fundido en lugar de deslizamiento." source={CarouselDemoSource} fn="FadeDemo">
+  <FadeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Carrusel Vertical" description="Carrusel con orientación vertical." source={CarouselDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sin Flechas" description="Carrusel con flechas ocultas, navegación solo por puntos." source={CarouselDemoSource} fn="NoControlsDemo">
+  <NoControlsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ubicación de Puntos" description="Posiciona los puntos indicadores en diferentes ubicaciones." source={CarouselDemoSource} fn="DotPlacementDemo">
+  <DotPlacementDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenido Personalizado" description="Carrusel con contenido personalizado de diapositivas como tarjetas." source={CarouselDemoSource} fn="CustomContentDemo">
+  <CustomContentDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Carousel`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Diapositivas del carrusel (componentes Carousel.Item) | `ReactNode` | - |
+| `activeIndex` | Índice de diapositiva actual (modo controlado) | `number` | - |
+| `defaultActiveIndex` | Índice de diapositiva predeterminado (modo no controlado) | `number` | `0` |
+| `autoplay` | Avanzar diapositivas automáticamente | `boolean` | `false` |
+| `autoplaySpeed` | Intervalo de reproducción automática en milisegundos | `number` | `3000` |
+| `speed` | Duración de animación en milisegundos | `number` | `500` |
+| `arrows` | Mostrar flechas de navegación prev/next | `boolean` | `true` |
+| `dots` | Mostrar puntos indicadores de diapositiva | `boolean \| { className?: string }` | `true` |
+| `dotPlacement` | Posición de los puntos indicadores | `'top' \| 'bottom' \| 'start' \| 'end'` | `'bottom'` |
+| `effect` | Efecto de transición | `'scrollx' \| 'fade'` | `'scrollx'` |
+| `infinite` | Habilitar bucle infinito | `boolean` | `true` |
+| `pauseOnHover` | Pausar reproducción automática al pasar el mouse | `boolean` | `true` |
+| `vertical` | Orientación vertical del carrusel | `boolean` | `false` |
+| `beforeChange` | Callback antes del cambio de diapositiva | `(current: number, next: number) => void` | - |
+| `afterChange` | Callback después del cambio de diapositiva | `(current: number) => void` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `data-testid` | ID de prueba para testing; elementos hijos usan esto como prefijo | `string` | - |
+
+### `Carousel.Item`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido de la diapositiva | `ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `data-testid` | ID de prueba para testing | `string` | - |
+
+### Métodos de `CarouselRef`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `goTo` | Navegar a una diapositiva específica | `(index: number, animate?: boolean) => void` | - |
+| `next` | Ir a la siguiente diapositiva | `() => void` | - |
+| `prev` | Ir a la diapositiva anterior | `() => void` | - |
+
+## Consejos de Uso
+
+- Usa `Carousel.Item` para envolver cada diapositiva
+- Establece una altura fija en el Carousel para un diseño consistente
+- La reproducción automática se pausa al pasar el mouse para mejor UX
+- Usa las teclas de flecha para navegar cuando el carrusel tiene foco
+- Accede a los métodos `goTo`, `next`, `prev` mediante ref

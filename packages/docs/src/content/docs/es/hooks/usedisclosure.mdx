@@ -1,0 +1,45 @@
+---
+title: useDisclosure
+description: Hook para gestionar el estado de apertura/cierre de modales, cajones, etc.
+---
+
+Gestiona el estado de apertura/cierre para modales, cajones, menús desplegables y componentes similares.
+
+## Importar
+
+```tsx
+import { useDisclosure } from 'asterui'
+```
+
+## Uso
+
+```tsx
+function ModalExample() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  return (
+    <>
+      <Button onClick={onOpen}>Open Modal</Button>
+      <Modal open={isOpen} onClose={onClose}>
+        Modal content here
+      </Modal>
+    </>
+  )
+}
+```
+
+## Parámetros
+
+| Parámetro | Tipo | Predeterminado | Descripción |
+|-----------|------|----------------|-------------|
+| `defaultIsOpen` | `boolean` | `false` | Estado de apertura inicial |
+
+## Valor de Retorno
+
+| Propiedad | Tipo | Descripción |
+|----------|------|-------------|
+| `isOpen` | `boolean` | Estado de apertura actual |
+| `onOpen` | `() => void` | Abre (establece el estado a `true`) |
+| `onClose` | `() => void` | Cierra (establece el estado a `false`) |
+| `onToggle` | `() => void` | Alterna el estado |
+| `setIsOpen` | `(value: boolean) => void` | Establece el estado directamente |

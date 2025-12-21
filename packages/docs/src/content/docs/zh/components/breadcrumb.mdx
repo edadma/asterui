@@ -1,0 +1,85 @@
+---
+title: Breadcrumb 面包屑
+description: 显示层级位置的导航面包屑路径。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  IconsDemo,
+  SeparatorDemo,
+  ItemsDemo,
+  ScrollDemo,
+} from '../../../../components/BreadcrumbDemo'
+import BreadcrumbDemoSource from '../../../../components/BreadcrumbDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+显示层级位置的导航面包屑路径。
+
+## 引入
+
+```tsx
+import { Breadcrumb } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="简单的面包屑导航。" source={BreadcrumbDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标" description="带图标的面包屑。" source={BreadcrumbDemoSource} fn="IconsDemo">
+  <IconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义分隔符" description="使用字符串或 React 节点作为分隔符。" source={BreadcrumbDemoSource} fn="SeparatorDemo">
+  <SeparatorDemo client:load slot="demo" />
+</Example>
+
+<Example title="数据驱动" description="使用 items 属性实现数据驱动的面包屑。" source={BreadcrumbDemoSource} fn="ItemsDemo">
+  <ItemsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带滚动的最大宽度" description="带溢出滚动的面包屑。" source={BreadcrumbDemoSource} fn="ScrollDemo">
+  <ScrollDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Breadcrumb`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | Breadcrumb.Item 组件（复合模式） | `React.ReactNode` | - |
+| `items` | 面包屑项数据（数据驱动模式） | `BreadcrumbItemType[]` | - |
+| `separator` | 项之间的自定义分隔符 | `React.ReactNode` | `"/"` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `BreadcrumbItemType`（用于 items 属性）
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `title` | 项标题/标签 | `React.ReactNode` | - |
+| `href` | 链接 URL | `string` | - |
+| `onClick` | 点击处理函数 | `() => void` | - |
+| `className` | 自定义 CSS 类名 | `string` | - |
+
+### `Breadcrumb.Item`（复合模式）
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 项内容（文本或元素） | `React.ReactNode` | - |
+| `href` | 链接 URL（使项可点击） | `string` | - |
+| `onClick` | 点击处理函数（使项可点击） | `() => void` | - |
+| `icon` | 标签前显示的图标 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 使用提示
+
+- 在最后一项省略 href/onClick 以显示当前位置
+- 使用 max-width 类来启用横向滚动
+- 使用 Breadcrumb.Item 的 icon 属性添加图标

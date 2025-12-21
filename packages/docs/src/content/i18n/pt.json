@@ -1,0 +1,16 @@
+{
+  "sidebar.changelog": "Registro de Alterações",
+  "sidebar.startHere": "Comece Aqui",
+  "sidebar.gettingStarted": "Primeiros Passos",
+  "sidebar.manualSetup": "Configuração Manual",
+  "sidebar.components": "Componentes",
+  "sidebar.overview": "Visão Geral",
+  "sidebar.actions": "Ações",
+  "sidebar.dataDisplay": "Exibição de Dados",
+  "sidebar.dataEntry": "Entrada de Dados",
+  "sidebar.feedback": "Feedback",
+  "sidebar.navigation": "Navegação",
+  "sidebar.layout": "Layout",
+  "sidebar.other": "Outros",
+  "sidebar.hooks": "Hooks"
+}

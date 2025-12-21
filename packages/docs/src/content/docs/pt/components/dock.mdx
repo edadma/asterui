@@ -1,0 +1,89 @@
+---
+title: Dock
+description: Barra de navegação inferior no estilo móvel.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  IconsOnlyDemo,
+  CustomStyleDemo,
+  ChildrenDemo,
+} from '../../../../components/DockDemo'
+import DockDemoSource from '../../../../components/DockDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Barra de navegação inferior no estilo móvel.
+
+## Importação
+
+```tsx
+import { Dock } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Dock Básico" description="Navegação inferior no estilo móvel com ícones e rótulos. (Mostrado inline para demonstração; normalmente fixado na parte inferior)" source={DockDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Diferentes tamanhos de dock de xs a lg. (Mostrado inline para demonstração)" source={DockDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Apenas Ícones" description="Dock sem rótulos para um visual minimalista. (Mostrado inline para demonstração)" source={DockDemoSource} fn="IconsOnlyDemo">
+  <IconsOnlyDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estilo Personalizado" description="Aplique cores personalizadas ao dock. (Mostrado inline para demonstração)" source={DockDemoSource} fn="CustomStyleDemo">
+  <CustomStyleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Usando Children" description="Use filhos Dock.Item para mais controle. (Mostrado inline para demonstração)" source={DockDemoSource} fn="ChildrenDemo">
+  <ChildrenDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Dock`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `items` | Configuração dos itens do dock | `DockItemConfig[]` | - |
+| `size` | Variante de tamanho | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `activeIndex` | Índice do item ativo controlado | `number` | - |
+| `onChange` | Callback quando item é clicado | `(index: number) => void` | - |
+| `children` | Filhos Dock.Item (alternativa a items) | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `DockItemConfig` (para prop items)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `icon` | Elemento de ícone | `React.ReactNode` | - |
+| `label` | Texto do rótulo | `string` | - |
+| `active` | Se o item está ativo (não controlado) | `boolean` | `false` |
+| `disabled` | Se o item está desabilitado | `boolean` | `false` |
+| `onClick` | Manipulador de clique | `() => void` | - |
+
+### `Dock.Item` (padrão composto)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `active` | Se este item está ativo | `boolean` | `false` |
+| `children` | Conteúdo do item (ícone e rótulo opcional) | `React.ReactNode` | - |
+| `onClick` | Manipulador de clique | `() => void` | - |
+| `disabled` | Se o item está desabilitado | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa elementos button semânticos para itens de navegação
+- Suporta navegação por teclado
+- Estado ativo é indicado visualmente
+- Para suporte à área segura do iOS, adicione `viewport-fit=cover` à sua meta tag viewport

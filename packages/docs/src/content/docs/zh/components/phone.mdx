@@ -1,0 +1,66 @@
+---
+title: Phone 手机框架
+description: 在 iPhone 样式的手机框架模型中显示内容
+tableOfContents: false
+---
+
+import {
+  BasicPhoneDemo,
+  ImagePhoneDemo,
+  ColorPhoneDemo,
+  AppPhoneDemo,
+  ChatPhoneDemo,
+} from '../../../../components/PhoneDemo'
+import PhoneDemoSource from '../../../../components/PhoneDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+在 iPhone 样式的手机框架模型中显示内容。
+
+## 导入
+
+```tsx
+import { Phone } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础手机" description="带有居中内容的简单手机模型。" source={PhoneDemoSource} fn="BasicPhoneDemo">
+  <BasicPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图片" description="显示图片作为壁纸。" source={PhoneDemoSource} fn="ImagePhoneDemo">
+  <ImagePhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义颜色" description="自定义手机框架颜色。" source={PhoneDemoSource} fn="ColorPhoneDemo">
+  <ColorPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="应用界面" description="模拟移动应用布局。" source={PhoneDemoSource} fn="AppPhoneDemo">
+  <AppPhoneDemo client:load slot="demo" />
+</Example>
+
+<Example title="聊天界面" description="模拟聊天应用布局。" source={PhoneDemoSource} fn="ChatPhoneDemo">
+  <ChatPhoneDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Phone`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 手机屏幕内的内容 | `React.ReactNode` | - |
+| `color` | 自定义框架颜色 | `string` | - |
+| `className` | 手机容器的类 | `string` | - |
+| `displayClassName` | 显示区域的类 | `string` | - |
+
+## 可访问性
+
+- 手机模型是装饰性的 - 内部内容应该是可访问的
+- 内部的图片应该有适当的 `alt` 文本
+- 内部的交互元素保持完全可访问

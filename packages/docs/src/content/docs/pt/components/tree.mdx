@@ -1,0 +1,129 @@
+---
+title: Tree
+description: Estrutura de árvore hierárquica para exibir dados aninhados.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CheckableDemo,
+  SelectableDemo,
+  MultipleDemo,
+  ShowLineDemo,
+  ShowIconDemo,
+  CompoundDemo,
+  CheckboxColorsDemo,
+  CheckStrictlyDemo,
+  AsyncLoadDemo,
+} from '../../../../components/TreeDemo'
+import TreeDemoSource from '../../../../components/TreeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Estrutura de árvore hierárquica para exibir dados aninhados.
+
+## Importação
+
+```tsx
+import { Tree } from 'asterui'
+import type { TreeDataNode } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Árvore Básica" description="Árvore simples com nós expansíveis." source={TreeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Checkbox" description="Árvore com seleção por checkbox." source={TreeDemoSource} fn="CheckableDemo">
+  <CheckableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Selecionável" description="Árvore com seleção de nós." source={TreeDemoSource} fn="SelectableDemo">
+  <SelectableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Seleção Múltipla" description="Permite selecionar múltiplos nós." source={TreeDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar Linhas" description="Exibe linhas conectando os nós." source={TreeDemoSource} fn="ShowLineDemo">
+  <ShowLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar Ícone" description="Exibe ícones personalizados para nós." source={TreeDemoSource} fn="ShowIconDemo">
+  <ShowIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Padrão Composto" description="Use Tree.Node para estrutura de árvore declarativa." source={TreeDemoSource} fn="CompoundDemo">
+  <CompoundDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores de Checkbox" description="Personalize a aparência do checkbox com cores DaisyUI." source={TreeDemoSource} fn="CheckboxColorsDemo">
+  <CheckboxColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Seleção Estrita" description="Desacopla a relação pai-filho do checkbox." source={TreeDemoSource} fn="CheckStrictlyDemo">
+  <CheckStrictlyDemo client:load slot="demo" />
+</Example>
+
+<Example title="Carregamento Assíncrono" description="Carrega nós filhos assincronamente ao expandir." source={TreeDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tree`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `treeData` | Estrutura de dados da árvore (alternativa ao padrão composto) | `TreeDataNode[]` | `[]` |
+| `children` | Filhos Tree.Node para padrão composto | `React.ReactNode` | `-` |
+| `checkable` | Mostrar checkbox para cada nó | `boolean` | `false` |
+| `checkboxColor` | Cor do checkbox (DaisyUI) | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` |
+| `checkboxSize` | Tamanho do checkbox (DaisyUI) | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |
+| `checkedKeys` | Chaves marcadas controladas | `string[]` | `-` |
+| `defaultCheckedKeys` | Chaves marcadas padrão | `string[]` | `[]` |
+| `checkStrictly` | Desacoplar relação pai-filho do checkbox | `boolean` | `false` |
+| `onCheck` | Callback quando nó é marcado | `(keys: string[], info: { node, checked }) => void` | `-` |
+| `selectable` | Habilitar seleção de nós | `boolean` | `true` |
+| `selectedKeys` | Chaves selecionadas controladas | `string[]` | `-` |
+| `defaultSelectedKeys` | Chaves selecionadas padrão | `string[]` | `[]` |
+| `onSelect` | Callback quando nó é selecionado | `(keys: string[], info: { node, selected }) => void` | `-` |
+| `multiple` | Permitir seleção múltipla | `boolean` | `false` |
+| `expandedKeys` | Chaves expandidas controladas | `string[]` | `-` |
+| `defaultExpandedKeys` | Chaves expandidas padrão | `string[]` | `[]` |
+| `defaultExpandAll` | Expandir todos os nós por padrão | `boolean` | `false` |
+| `autoExpandParent` | Auto expandir nós pai | `boolean` | `true` |
+| `onExpand` | Callback quando nó é expandido | `(keys: string[], info: { node, expanded }) => void` | `-` |
+| `showLine` | Mostrar linhas conectando | `boolean` | `false` |
+| `showIcon` | Mostrar ícones dos nós | `boolean` | `false` |
+| `blockNode` | Fazer nós ocuparem espaço horizontal | `boolean` | `false` |
+| `loadData` | Função de carregamento de dados assíncrono | `(node: TreeDataNode) => Promise<void>` | `-` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+## Acessibilidade
+
+O componente Tree implementa o padrão completo de árvore WAI-ARIA:
+
+- `role="tree"` no container e `role="treeitem"` nos nós
+- `aria-expanded` indica estado de expansão do nó
+- `aria-selected` indica estado de seleção
+- `aria-checked` indica estado do checkbox (com `"mixed"` para indeterminado)
+- `aria-disabled` indica estado desabilitado
+- `aria-level` indica profundidade de aninhamento
+
+### Navegação por Teclado
+
+| Tecla | Ação |
+|-----|--------|
+| <kbd>↓</kbd> | Move foco para próximo nó visível |
+| <kbd>↑</kbd> | Move foco para nó visível anterior |
+| <kbd>→</kbd> | Expande nó recolhido, ou move para primeiro filho |
+| <kbd>←</kbd> | Recolhe nó expandido |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Alterna checkbox, seleciona nó, ou expande/recolhe |
+| <kbd>Home</kbd> | Move foco para primeiro nó |
+| <kbd>End</kbd> | Move foco para último nó visível |

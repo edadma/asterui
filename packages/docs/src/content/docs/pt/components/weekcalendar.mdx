@@ -1,0 +1,81 @@
+---
+title: WeekCalendar
+description: Visualização de calendário semanal com slots de hora para exibir e agendar eventos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithEventsDemo,
+  SlotSelectionDemo,
+  StrikethroughDemo,
+  CustomHoursDemo,
+  AllowPastInteractionDemo,
+} from '../../../../components/WeekCalendarDemo'
+import WeekCalendarDemoSource from '../../../../components/WeekCalendarDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Visualização de calendário semanal com slots de hora para exibir e agendar eventos.
+
+## Importação
+
+```tsx
+import { WeekCalendar, type CalendarEvent, type CalendarLocale } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Calendário Básico" description="Calendário semanal simples mostrando slots de hora." source={WeekCalendarDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Eventos" description="Calendário exibindo eventos em seus horários agendados." source={WeekCalendarDemoSource} fn="WithEventsDemo">
+  <WithEventsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Seleção de Slot" description="Clique em slots de hora vazios para selecioná-los." source={WeekCalendarDemoSource} fn="SlotSelectionDemo">
+  <SlotSelectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Eventos Riscados" description="Mostre eventos cancelados com estilo riscado." source={WeekCalendarDemoSource} fn="StrikethroughDemo">
+  <StrikethroughDemo client:load slot="demo" />
+</Example>
+
+<Example title="Horas Personalizadas" description="Mostre apenas horas da manhã (6h-12h) usando startHour e endHour." source={WeekCalendarDemoSource} fn="CustomHoursDemo">
+  <CustomHoursDemo client:load slot="demo" />
+</Example>
+
+<Example title="Permitir Interação Passada" description="Habilite clique em slots de hora passados." source={WeekCalendarDemoSource} fn="AllowPastInteractionDemo">
+  <AllowPastInteractionDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `WeekCalendar`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `date` | A data a exibir (determina qual semana é mostrada) | `Date` | `new Date()` |
+| `events` | Array de eventos do calendário a exibir | `CalendarEvent[]` | `[]` |
+| `startHour` | Hora de início para a grade de tempo (0-23) | `number` | `9` |
+| `endHour` | Hora de fim para a grade de tempo (0-23) | `number` | `17` |
+| `allowPastInteraction` | Permitir clique em slots de hora passados | `boolean` | `false` |
+| `fitContainer` | Ajustar linhas à altura do container em vez de rolar | `boolean` | `false` |
+| `locale` | Configuração de localização para nomes de dias e formato de hora | `CalendarLocale` | `-` |
+| `onDayClick` | Manipulador quando um cabeçalho de dia é clicado | `(date: Date) => void` | `-` |
+| `onEventClick` | Manipulador quando um evento é clicado | `(event: CalendarEvent) => void` | `-` |
+| `onSelectSlot` | Manipulador quando um slot de hora é clicado | `(slotInfo: { start: Date; end: Date }) => void` | `-` |
+
+### `CalendarEvent`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `date` | Data e hora do evento (hora determina qual linha) | `Date` | `-` |
+| `title` | Título do evento | `string` | `-` |
+| `color` | Cor do ponto do evento | `string` | `-` |
+| `strikethrough` | Mostrar evento com riscado (cancelado) | `boolean` | `-` |
+| `style` | Estilos inline personalizados para o evento | `CSSProperties` | `-` |

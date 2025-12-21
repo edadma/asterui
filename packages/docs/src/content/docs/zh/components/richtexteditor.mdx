@@ -1,0 +1,123 @@
+---
+title: RichTextEditor 富文本编辑器
+description: 基于 Tiptap 构建的主题感知所见即所得编辑器,用于富文本编辑,具有可自定义的工具栏。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ControlledDemo,
+  MinimalToolbarDemo,
+  FullToolbarDemo,
+  NoToolbarDemo,
+  SizesDemo,
+  MaxHeightDemo,
+  ReadOnlyDemo,
+  BorderlessDemo,
+  EditorInstanceDemo,
+} from '../../../../components/RichTextEditorDemo'
+import RichTextEditorDemoSource from '../../../../components/RichTextEditorDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+基于 Tiptap 构建的主题感知所见即所得编辑器,用于富文本编辑,具有可自定义的工具栏。
+
+## 安装
+
+此组件需要 `@tiptap` 包和 `@aster-ui/icons` 作为对等依赖:
+
+```bash
+npm install @aster-ui/icons @tiptap/react @tiptap/starter-kit @tiptap/extension-link @tiptap/extension-placeholder @tiptap/extension-underline
+```
+
+## 导入
+
+```tsx
+import { RichTextEditor } from 'asterui/editor'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础编辑器" description="带有默认工具栏的简单富文本编辑器。" source={RichTextEditorDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="受控编辑器" description="带有显示 HTML 输出的受控值的编辑器。" source={RichTextEditorDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="最小工具栏" description="仅带有基本格式选项的编辑器。" source={RichTextEditorDemoSource} fn="MinimalToolbarDemo">
+  <MinimalToolbarDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="完整工具栏" description="带有所有可用工具栏选项的编辑器。" source={RichTextEditorDemoSource} fn="FullToolbarDemo">
+  <FullToolbarDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="无工具栏" description="无工具栏的无干扰写作。" source={RichTextEditorDemoSource} fn="NoToolbarDemo">
+  <NoToolbarDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="尺寸" description="不同的文本大小变体。" source={RichTextEditorDemoSource} fn="SizesDemo">
+  <SizesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="带滚动的最大高度" description="具有固定最大高度的编辑器,可滚动。" source={RichTextEditorDemoSource} fn="MaxHeightDemo">
+  <MaxHeightDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="只读模式" description="显示格式化内容而不编辑。" source={RichTextEditorDemoSource} fn="ReadOnlyDemo">
+  <ReadOnlyDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="无边框" description="无边框的编辑器,在卡片内很有用。" source={RichTextEditorDemoSource} fn="BorderlessDemo">
+  <BorderlessDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="编辑器实例访问" description="访问 Tiptap 编辑器实例以获得高级功能。" source={RichTextEditorDemoSource} fn="EditorInstanceDemo">
+  <EditorInstanceDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `RichTextEditor`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | HTML 内容(受控) | `string` | `''` |
+| `onChange` | 内容更改时的回调 | `(html: string) => void` | - |
+| `placeholder` | 占位符文本 | `string` | `'Start typing...'` |
+| `toolbar` | 要显示的工具栏项目 | `ToolbarItem[]` | `[default set]` |
+| `hideToolbar` | 隐藏工具栏 | `boolean` | `false` |
+| `readOnly` | 使编辑器只读 | `boolean` | `false` |
+| `autoFocus` | 挂载时自动聚焦 | `boolean` | `false` |
+| `minHeight` | 编辑器的最小高度 | `string \| number` | `200` |
+| `maxHeight` | 最大高度(启用滚动) | `string \| number` | - |
+| `size` | 文本大小变体 | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `bordered` | 在编辑器周围显示边框 | `boolean` | `true` |
+| `onEditorReady` | 带有 Tiptap 编辑器实例的回调 | `(editor: Editor) => void` | - |
+
+### `ToolbarItem`
+
+| 属性 | 描述 |
+|----------|-------------|
+| `bold` | 粗体文本 |
+| `italic` | 斜体文本 |
+| `underline` | 下划线文本 |
+| `strikethrough` | 删除线文本 |
+| `code` | 内联代码 |
+| `heading1` | 标题级别 1 |
+| `heading2` | 标题级别 2 |
+| `heading3` | 标题级别 3 |
+| `bulletList` | 无序列表 |
+| `orderedList` | 有序列表 |
+| `blockquote` | 块引用 |
+| `codeBlock` | 代码块 |
+| `horizontalRule` | 水平线 |
+| `link` | 插入/编辑链接 |
+| `undo` | 撤销上次更改 |
+| `redo` | 重做上次更改 |
+| `\|` | 工具栏分隔符 |

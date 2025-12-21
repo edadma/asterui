@@ -1,0 +1,107 @@
+---
+title: 手动设置
+description: 如何在现有的 React 项目中手动安装 AsterUI。
+---
+
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+本指南将引导您在现有的 React 项目中添加 AsterUI。AsterUI 需要 [Tailwind CSS v4](https://tailwindcss.com) 和 [DaisyUI v5](https://daisyui.com)。
+
+## 前置条件
+
+开始之前，请确保您已具备：
+
+- 一个 React 项目（推荐使用 Vite）
+- Node.js 18 或更高版本
+
+## 安装
+
+<Steps>
+
+1. **安装前置依赖**
+
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+       npm install -D tailwindcss @tailwindcss/vite daisyui
+       ```
+     </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+       pnpm add -D tailwindcss @tailwindcss/vite daisyui
+       ```
+     </TabItem>
+     <TabItem label="yarn">
+       ```bash
+       yarn add -D tailwindcss @tailwindcss/vite daisyui
+       ```
+     </TabItem>
+   </Tabs>
+
+2. **配置 Vite**
+
+   将 Tailwind 插件添加到您的 `vite.config.ts`：
+
+   ```ts title="vite.config.ts"
+   import { defineConfig } from 'vite'
+   import react from '@vitejs/plugin-react'
+   import tailwindcss from '@tailwindcss/vite'
+
+   export default defineConfig({
+     plugins: [react(), tailwindcss()],
+   })
+   ```
+
+3. **配置 CSS**
+
+   将这些指令添加到您的 CSS 文件（例如 `src/index.css`）：
+
+   ```css title="src/index.css"
+   @import "tailwindcss";
+   @plugin "daisyui";
+   @source "../node_modules/asterui";
+   ```
+
+   `@source` 指令告诉 Tailwind 扫描 AsterUI 的类名。
+
+4. **安装 AsterUI**
+
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+       npm install asterui
+       ```
+     </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+       pnpm add asterui
+       ```
+     </TabItem>
+     <TabItem label="yarn">
+       ```bash
+       yarn add asterui
+       ```
+     </TabItem>
+   </Tabs>
+
+</Steps>
+
+## 验证安装
+
+创建一个简单的组件来验证一切正常：
+
+```tsx
+import { Button, Space } from 'asterui'
+
+function App() {
+  return (
+    <Space>
+      <Button>Default</Button>
+      <Button color="primary">Primary</Button>
+      <Button color="secondary">Secondary</Button>
+    </Space>
+  )
+}
+```
+
+如果您看到样式化的按钮，那么一切就绪！

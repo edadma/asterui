@@ -1,0 +1,64 @@
+---
+title: Tooltip
+description: Exibe informações adicionais ao passar o cursor.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PositionsDemo,
+  ColorsDemo,
+  OpenStateDemo,
+} from '../../../../components/TooltipDemo'
+import TooltipDemoSource from '../../../../components/TooltipDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exibe informações adicionais ao passar o cursor.
+
+## Importação
+
+```tsx
+import { Tooltip } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Tooltip Básico" description="Tooltip simples que aparece ao passar o cursor." source={TooltipDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posições" description="Tooltips podem aparecer em diferentes posições." source={TooltipDemoSource} fn="PositionsDemo">
+  <PositionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores" description="Variantes de cor para diferentes contextos." source={TooltipDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sempre Aberto" description="Force o tooltip a permanecer visível." source={TooltipDemoSource} fn="OpenStateDemo">
+  <OpenStateDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tooltip`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `tip` | Conteúdo de texto do tooltip | `string` | `-` |
+| `position` | Posição do tooltip | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` |
+| `color` | Cor do tooltip | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `open` | Forçar tooltip a ser visível | `boolean` | `false` |
+| `children` | Elemento que ativa o tooltip | `React.ReactNode` | `-` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+## Acessibilidade
+
+- Conteúdo do tooltip é exposto via aria-describedby
+- Tooltips aparecem no foco assim como ao passar o cursor
+- Contraste de cor suficiente em todas as variantes de cor
+- Teclas de seta podem ser usadas quando tooltip contém elementos focáveis

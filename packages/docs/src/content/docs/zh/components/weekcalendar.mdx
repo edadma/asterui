@@ -1,0 +1,81 @@
+---
+title: WeekCalendar 周日历
+description: 用于显示和安排事件的带有每小时时间槽的每周日历视图。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithEventsDemo,
+  SlotSelectionDemo,
+  StrikethroughDemo,
+  CustomHoursDemo,
+  AllowPastInteractionDemo,
+} from '../../../../components/WeekCalendarDemo'
+import WeekCalendarDemoSource from '../../../../components/WeekCalendarDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于显示和安排事件的带有每小时时间槽的每周日历视图。
+
+## 导入
+
+```tsx
+import { WeekCalendar, type CalendarEvent, type CalendarLocale } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础日历" description="显示每小时时间槽的简单周日历。" source={WeekCalendarDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带事件" description="在其预定时间显示事件的日历。" source={WeekCalendarDemoSource} fn="WithEventsDemo">
+  <WithEventsDemo client:load slot="demo" />
+</Example>
+
+<Example title="时间槽选择" description="点击空时间槽以选择它们。" source={WeekCalendarDemoSource} fn="SlotSelectionDemo">
+  <SlotSelectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="删除线事件" description="显示带有删除线样式的已取消事件。" source={WeekCalendarDemoSource} fn="StrikethroughDemo">
+  <StrikethroughDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义小时" description="使用 startHour 和 endHour 仅显示上午时间(6am-12pm)。" source={WeekCalendarDemoSource} fn="CustomHoursDemo">
+  <CustomHoursDemo client:load slot="demo" />
+</Example>
+
+<Example title="允许过去交互" description="启用点击过去的时间槽。" source={WeekCalendarDemoSource} fn="AllowPastInteractionDemo">
+  <AllowPastInteractionDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `WeekCalendar`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `date` | 要显示的日期(确定显示哪一周) | `Date` | `new Date()` |
+| `events` | 要显示的日历事件数组 | `CalendarEvent[]` | `[]` |
+| `startHour` | 时间网格的开始小时(0-23) | `number` | `9` |
+| `endHour` | 时间网格的结束小时(0-23) | `number` | `17` |
+| `allowPastInteraction` | 允许点击过去的时间槽 | `boolean` | `false` |
+| `fitContainer` | 将行适应容器高度而不是滚动 | `boolean` | `false` |
+| `locale` | 日期名称和时间格式的区域设置配置 | `CalendarLocale` | `-` |
+| `onDayClick` | 点击日期标题时的处理程序 | `(date: Date) => void` | `-` |
+| `onEventClick` | 点击事件时的处理程序 | `(event: CalendarEvent) => void` | `-` |
+| `onSelectSlot` | 点击时间槽时的处理程序 | `(slotInfo: { start: Date; end: Date }) => void` | `-` |
+
+### `CalendarEvent`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `date` | 事件日期和时间(小时确定哪一行) | `Date` | `-` |
+| `title` | 事件标题 | `string` | `-` |
+| `color` | 事件点颜色 | `string` | `-` |
+| `strikethrough` | 显示带有删除线的事件(已取消) | `boolean` | `-` |
+| `style` | 事件的自定义内联样式 | `CSSProperties` | `-` |

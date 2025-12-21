@@ -1,0 +1,64 @@
+---
+title: Watermark
+description: Superpone marcas de agua de texto o imagen repetidas para proteger el contenido manteniéndolo interactivo.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MultilineDemo,
+  ImageDemo,
+} from '../../../../components/WatermarkDemo'
+import WatermarkDemoSource from '../../../../components/WatermarkDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Superpone marcas de agua de texto o imagen repetidas para proteger el contenido manteniéndolo interactivo.
+
+## Importación
+
+```tsx
+import { Watermark } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Marca de Agua de Texto" description="Aplica una marca de agua de texto repetida a una tarjeta." source={WatermarkDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Múltiples Líneas" description="Apila múltiples líneas con fuente, espacio y rotación personalizados." source={WatermarkDemoSource} fn="MultilineDemo">
+  <MultilineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Marca de Agua de Imagen" description="Usa un URI de datos o imagen alojada para marcar el contenido." source={WatermarkDemoSource} fn="ImageDemo">
+  <ImageDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Watermark`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `content` | Texto de marca de agua (cadena o líneas) | `string \| string[]` | `-` |
+| `image` | URL de imagen o URI de datos para renderizar en lugar de texto | `string` | `-` |
+| `gap` | Espacio horizontal y vertical entre mosaicos | `[number, number]` | `[120, 120]` |
+| `offset` | Desplazamiento inicial para el primer mosaico | `[number, number]` | `gap / 2` |
+| `width` | Ancho del mosaico en píxeles | `number` | `120` |
+| `height` | Alto del mosaico en píxeles | `number` | `64` |
+| `rotate` | Ángulo de rotación en grados | `number` | `-22` |
+| `zIndex` | z-index para la superposición | `number` | `1000` |
+| `font` | Configuración de fuente para marcas de agua de texto | `WatermarkFontOptions` | `-` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+| `style` | Estilos personalizados para el envoltorio | `React.CSSProperties` | `-` |
+
+## Accesibilidad
+
+- La superposición de marca de agua usa `pointer-events: none` para asegurar que el contenido permanezca interactivo
+- La marca de agua es puramente decorativa y no interfiere con tecnologías asistivas
+- Todos los elementos interactivos debajo de la marca de agua permanecen completamente accesibles para usuarios de teclado y lectores de pantalla
+- El renderizado semitransparente asegura que el contenido subyacente permanezca visible y legible

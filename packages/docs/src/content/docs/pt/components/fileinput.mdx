@@ -1,0 +1,76 @@
+---
+title: FileInput
+description: Componente de entrada de arquivo com suporte para múltiplos arquivos, filtragem de tipo de arquivo e vários estilos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AcceptTypesDemo,
+  MultipleDemo,
+  SizesDemo,
+  ColorsDemo,
+  StylesDemo,
+} from '../../../../components/FileInputDemo'
+import FileInputDemoSource from '../../../../components/FileInputDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de entrada de arquivo com suporte para múltiplos arquivos, filtragem de tipo de arquivo e vários estilos.
+
+## Importação
+
+```tsx
+import { FileInput } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="FileInput Básico" description="Entrada de arquivo simples." source={FileInputDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tipos Aceitos" description="Entrada de arquivo que aceita apenas tipos de arquivo específicos." source={FileInputDemoSource} fn="AcceptTypesDemo">
+  <AcceptTypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Múltiplos Arquivos" description="Permitir seleção de múltiplos arquivos." source={FileInputDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Diferentes tamanhos de entrada de arquivo." source={FileInputDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores" description="Diferentes variantes de cor." source={FileInputDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estilos" description="Estilos com borda e ghost." source={FileInputDemoSource} fn="StylesDemo">
+  <StylesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `FileInput`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `accept` | Tipos de arquivo a aceitar | `string` | - |
+| `multiple` | Permitir seleção de múltiplos arquivos | `boolean` | `false` |
+| `onChange` | Manipulador de mudança | `(e: ChangeEvent) => void` | - |
+| `disabled` | Desabilitar a entrada | `boolean` | `false` |
+| `size` | Tamanho da entrada | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | Cor da entrada | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `bordered` | Mostrar borda | `boolean` | `false` |
+| `ghost` | Estilo ghost | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa `<input type="file">` nativo para suporte completo de teclado
+- Sempre combine com um `<label>` descritivo para acessibilidade
+- O atributo `accept` ajuda os usuários a selecionar arquivos apropriados

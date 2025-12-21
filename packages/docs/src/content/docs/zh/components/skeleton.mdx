@@ -1,0 +1,84 @@
+---
+title: Skeleton 骨架屏
+description: 用于内容的动画加载占位符。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CircleDemo,
+  TextDemo,
+  DimensionsDemo,
+  AvatarTextDemo,
+  CardDemo,
+  ListDemo,
+  ComplexDemo,
+} from '../../../../components/SkeletonDemo'
+import SkeletonDemoSource from '../../../../components/SkeletonDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于内容的动画加载占位符。
+
+## 导入
+
+```tsx
+import { Skeleton } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础" description="具有不同尺寸的简单骨架形状。" source={SkeletonDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="圆形" description="用于头像的圆形骨架。" source={SkeletonDemoSource} fn="CircleDemo">
+  <CircleDemo client:load slot="demo" />
+</Example>
+
+<Example title="文本变体" description="为文本颜色而不是背景制作动画的骨架。" source={SkeletonDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="宽度和高度属性" description="使用宽度和高度属性进行精确调整大小。" source={SkeletonDemoSource} fn="DimensionsDemo">
+  <DimensionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带文本的头像" description="用户配置文件的常见模式。" source={SkeletonDemoSource} fn="AvatarTextDemo">
+  <AvatarTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="卡片骨架" description="卡片内容的加载占位符。" source={SkeletonDemoSource} fn="CardDemo">
+  <CardDemo client:load slot="demo" />
+</Example>
+
+<Example title="列表骨架" description="列表项的加载占位符。" source={SkeletonDemoSource} fn="ListDemo">
+  <ListDemo client:load slot="demo" />
+</Example>
+
+<Example title="复杂布局" description="更复杂内容布局的骨架。" source={SkeletonDemoSource} fn="ComplexDemo">
+  <ComplexDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Skeleton`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `width` | 以像素或 CSS 字符串表示的宽度 | `string \| number` | - |
+| `height` | 以像素或 CSS 字符串表示的高度 | `string \| number` | - |
+| `circle` | 使骨架为圆形 | `boolean` | `false` |
+| `variant` | 骨架变体 | `'default' \| 'text'` | `'default'` |
+| `className` | 额外的 CSS 类 | `string` | - |
+| `children` | 内容(用于文本变体) | `React.ReactNode` | - |
+
+## 可访问性
+
+- 骨架默认对屏幕阅读器隐藏
+- 与加载状态一起使用以通知用户内容正在加载
+- 将骨架形状与实际内容布局匹配
+- 与 ARIA live 区域结合以进行加载公告

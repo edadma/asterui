@@ -1,0 +1,41 @@
+---
+title: useClickOutside
+description: Hook que detecta cliques fora de um elemento referenciado.
+---
+
+Detecta cliques fora de um elemento. Útil para fechar dropdowns, modais ou menus.
+
+## Importação
+
+```tsx
+import { useClickOutside } from 'asterui'
+```
+
+## Uso
+
+```tsx
+function DropdownExample() {
+  const [isOpen, setIsOpen] = useState(false)
+  const ref = useClickOutside<HTMLDivElement>(() => setIsOpen(false))
+
+  return (
+    <div ref={ref}>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      {isOpen && <DropdownMenu>...</DropdownMenu>}
+    </div>
+  )
+}
+```
+
+## Parâmetros
+
+| Parâmetro | Tipo | Padrão | Descrição |
+|-----------|------|---------|-------------|
+| `handler` | `(event: MouseEvent \| TouchEvent) => void` | - | Callback quando clicar fora |
+| `enabled` | `boolean` | `true` | Se o ouvinte está ativo |
+
+## Valor de Retorno
+
+| Tipo | Descrição |
+|------|-------------|
+| `RefObject<T>` | Ref para anexar ao elemento |

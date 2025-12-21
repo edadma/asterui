@@ -1,0 +1,96 @@
+---
+title: Avatar
+description: Exibir imagens de perfil de usuário, iniciais ou ícones com indicadores de status
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ShapesDemo,
+  StatusDemo,
+  TextDemo,
+  IconDemo,
+  GroupDemo,
+  GroupMaxDemo,
+} from '../../../../components/AvatarDemo'
+import AvatarDemoSource from '../../../../components/AvatarDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exibir imagens de perfil de usuário, iniciais, ícones ou gráficos placeholder com indicadores de status.
+
+## Importação
+
+```tsx
+import { Avatar } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Avatar Básico" description="Avatar simples com imagem usando a prop src." source={AvatarDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Controlar o tamanho do avatar com a prop size." source={AvatarDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Formas" description="Avatares circulares ou quadrados." source={AvatarDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Indicadores de Status" description="Mostrar presença online ou offline." source={AvatarDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avatares de Texto" description="Exibir iniciais ou conteúdo de texto." source={AvatarDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Avatares de Ícone" description="Exibir ícones em vez de imagens." source={AvatarDemoSource} fn="IconDemo">
+  <IconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grupo de Avatar" description="Agrupar vários avatares com sobreposição." source={AvatarDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grupo de Avatar com Contagem Máxima" description="Mostrar contagem de overflow ao exceder o máximo." source={AvatarDemoSource} fn="GroupMaxDemo">
+  <GroupMaxDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Avatar`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `src` | URL da fonte da imagem | `string` | - |
+| `alt` | Texto alternativo da imagem | `string` | `'avatar'` |
+| `icon` | Elemento de ícone para exibir | `ReactNode` | - |
+| `children` | Conteúdo de texto (ex: iniciais) ou conteúdo personalizado | `ReactNode` | - |
+| `size` | Tamanho do avatar | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `shape` | Forma do avatar | `'circle' \| 'square'` | `'circle'` |
+| `status` | Indicador de status de presença | `'online' \| 'offline'` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+| `style` | Estilos inline | `CSSProperties` | - |
+
+### `Avatar.Group`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Múltiplos componentes Avatar | `ReactNode` | - |
+| `max` | Máximo de avatares para mostrar antes do overflow +N | `number` | - |
+| `size` | Tamanho para todos os avatares no grupo | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+| `style` | Estilos inline | `CSSProperties` | - |
+
+## Acessibilidade
+
+- Imagens têm texto `alt` para leitores de tela
+- Indicadores de status usam cor e posição para visibilidade
+- Avatares de texto são legíveis por leitores de tela

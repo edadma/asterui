@@ -1,0 +1,82 @@
+---
+title: VirtualList 虚拟列表
+description: 仅渲染可见项目来高效渲染大型列表。由 @tanstack/react-virtual 提供支持。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  StyledDemo,
+  GapDemo,
+  ScrollCallbackDemo,
+  VariableHeightDemo,
+} from '../../../../components/VirtualListDemo'
+import VirtualListDemoSource from '../../../../components/VirtualListDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+仅渲染可见项目来高效渲染大型列表。由 @tanstack/react-virtual 提供支持。
+
+## 安装
+
+此组件需要 `@tanstack/react-virtual` 作为对等依赖:
+
+```bash
+npm install @tanstack/react-virtual
+```
+
+## 导入
+
+```tsx
+import { VirtualList } from 'asterui/virtuallist'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础用法" description="高效渲染 10,000 个项目的列表。" source={VirtualListDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="样式列表" description="带有卡片样式和悬停效果。" source={VirtualListDemoSource} fn="StyledDemo">
+  <StyledDemo client:load slot="demo" />
+</Example>
+
+<Example title="带间隙" description="项目之间有间隙。" source={VirtualListDemoSource} fn="GapDemo">
+  <GapDemo client:load slot="demo" />
+</Example>
+
+<Example title="滚动回调" description="跟踪滚动位置以进行无限加载或分析。" source={VirtualListDemoSource} fn="ScrollCallbackDemo">
+  <ScrollCallbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="可变高度(聊天)" description="使用 Chat 组件的不同长度的聊天消息。" source={VirtualListDemoSource} fn="VariableHeightDemo">
+  <VariableHeightDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `VirtualList`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `items` | 要渲染的项目数组 | `T[]` | - |
+| `height` | 可滚动容器的高度 | `number \| string` | - |
+| `itemHeight` | 固定高度,或返回可变高度的每项预估高度的函数 | `number \| ((item: T, index: number) => number)` | - |
+| `renderItem` | 每个项目的渲染函数 | `(item: T, index: number) => ReactNode` | - |
+| `overscan` | 在可见区域外渲染的项目数 | `number` | `5` |
+| `gap` | 项目之间的间隙(像素) | `number` | `0` |
+| `width` | 容器的宽度 | `number \| string` | - |
+| `className` | 滚动容器的额外类 | `string` | - |
+| `innerClassName` | 内部容器的额外类 | `string` | - |
+| `itemClassName` | 每个项目包装器的额外类 | `string` | - |
+| `onScroll` | 滚动位置更改时的回调 | `(scrollTop: number) => void` | - |
+
+## 性能提示
+
+- 尽可能使用固定的 `itemHeight` 以获得最佳性能
+- 如果 `renderItem` 函数开销很大,请将其记忆化
+- 如果在快速滚动时看到闪烁,请增加 `overscan`
+- 保持项目组件简单 - 避免在渲染中进行繁重的计算

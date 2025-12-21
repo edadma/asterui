@@ -1,0 +1,61 @@
+---
+title: Status
+description: Pequeno ponto indicador para mostrar status como online, offline, erro, etc
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  AnimatedDemo,
+  ColorsDemo,
+} from '../../../../components/StatusDemo'
+import StatusDemoSource from '../../../../components/StatusDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Pequeno ponto indicador para mostrar status como online, offline, erro, etc.
+
+## Importação
+
+```tsx
+import { Status } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Indicadores de status simples para diferentes estados." source={StatusDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Variantes de tamanho disponíveis." source={StatusDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Animado" description="Efeitos de animação ping e bounce." source={StatusDemoSource} fn="AnimatedDemo">
+  <AnimatedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Todas as Cores" description="Todos os tipos de cor disponíveis." source={StatusDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `type` | Tipo de cor do status | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'neutral'` |
+| `size` | Tamanho do status | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `ping` | Efeito de animação ping | `boolean` | `false` |
+| `bounce` | Efeito de animação bounce | `boolean` | `false` |
+| `label` | Label de acessibilidade | `string` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Use a prop `label` para fornecer um nome acessível
+- Considere parear com texto para usuários de leitores de tela
+- Animação ping chama atenção para mudanças de status importantes

@@ -1,0 +1,45 @@
+---
+title: useDisclosure
+description: 用于管理模态框、抽屉等的打开/关闭状态的 Hook。
+---
+
+管理模态框、抽屉、下拉菜单和类似组件的打开/关闭状态。
+
+## 导入
+
+```tsx
+import { useDisclosure } from 'asterui'
+```
+
+## 用法
+
+```tsx
+function ModalExample() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  return (
+    <>
+      <Button onClick={onOpen}>Open Modal</Button>
+      <Modal open={isOpen} onClose={onClose}>
+        Modal content here
+      </Modal>
+    </>
+  )
+}
+```
+
+## 参数
+
+| 参数 | 类型 | 默认值 | 描述 |
+|-----------|------|---------|-------------|
+| `defaultIsOpen` | `boolean` | `false` | 初始打开状态 |
+
+## 返回值
+
+| 属性 | 类型 | 描述 |
+|----------|------|-------------|
+| `isOpen` | `boolean` | 当前打开状态 |
+| `onOpen` | `() => void` | 打开（设置状态为 `true`） |
+| `onClose` | `() => void` | 关闭（设置状态为 `false`） |
+| `onToggle` | `() => void` | 切换状态 |
+| `setIsOpen` | `(value: boolean) => void` | 直接设置状态 |

@@ -1,0 +1,66 @@
+---
+title: Notification
+description: Exibe mensagens de notificação globais nos cantos da tela.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PlacementsDemo,
+  DurationDemo,
+} from '../../../../components/NotificationDemo'
+import NotificationDemoSource from '../../../../components/NotificationDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exibe mensagens de notificação globais nos cantos da tela.
+
+## Importação
+
+```tsx
+import { notification } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Notificações Básicas" description="Diferentes tipos de notificação com mensagens simples." source={NotificationDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posicionamento" description="Mostra notificações em diferentes posições de canto." source={NotificationDemoSource} fn="PlacementsDemo">
+  <PlacementsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Duração Personalizada" description="Controla quanto tempo as notificações permanecem visíveis." source={NotificationDemoSource} fn="DurationDemo">
+  <DurationDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### Objeto de Configuração
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `message` | Título da notificação | `React.ReactNode` | - |
+| `description` | Conteúdo da notificação | `React.ReactNode` | - |
+| `duration` | Duração de fechamento automático em segundos | `number` | `4.5` |
+| `placement` | Posição da notificação | `'topLeft' \| 'topRight' \| 'bottomLeft' \| 'bottomRight'` | `'topRight'` |
+| `type` | Tipo de notificação (para notification.open) | `'success' \| 'error' \| 'info' \| 'warning'` | - |
+
+### Métodos
+
+- `notification.success(config)` - Notificação de sucesso
+- `notification.error(config)` - Notificação de erro
+- `notification.info(config)` - Notificação informativa
+- `notification.warning(config)` - Notificação de aviso
+- `notification.open(config)` - Notificação genérica com tipo customizado
+
+## Acessibilidade
+
+- Usa `role="alert"` para anúncios de leitor de tela
+- Notificações são acessíveis por teclado e podem ser dispensadas com tecla Escape
+- Cor e ícones fornecem informações redundantes para acessibilidade
+- Duração definida como 0 cria notificações persistentes que requerem dispensa manual

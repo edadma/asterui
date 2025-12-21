@@ -1,0 +1,111 @@
+---
+title: Splitter
+description: Crie painéis redimensionáveis divididos com divisores arrastáveis.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  ControlledDemo,
+  MultiplePanelsDemo,
+  MinMaxDemo,
+  NestedDemo,
+  GutterDemo,
+  IdeDemo,
+  CollapsibleDemo,
+  NonResizableDemo,
+} from '../../../../components/SplitterDemo'
+import SplitterDemoSource from '../../../../components/SplitterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Crie painéis redimensionáveis divididos com divisores arrastáveis.
+
+## Importação
+
+```tsx
+import { Splitter } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Splitter Horizontal Básico" description="Arraste o divisor para redimensionar os painéis." source={SplitterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Splitter Vertical" description="Divide painéis verticalmente." source={SplitterDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos Controlados" description="Controle tamanhos de painel programaticamente." source={SplitterDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Múltiplos Painéis" description="Divida em mais de dois painéis." source={SplitterDemoSource} fn="MultiplePanelsDemo">
+  <MultiplePanelsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Tamanhos Min/Max" description="Restrinja tamanhos de painel com valores min e max." source={SplitterDemoSource} fn="MinMaxDemo">
+  <MinMaxDemo client:load slot="demo" />
+</Example>
+
+<Example title="Splitters Aninhados" description="Combine splitters horizontais e verticais." source={SplitterDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanho de Gutter Personalizado" description="Ajuste o tamanho do gutter (divisor)." source={SplitterDemoSource} fn="GutterDemo">
+  <GutterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Layout Estilo IDE" description="Layout complexo similar a uma IDE." source={SplitterDemoSource} fn="IdeDemo">
+  <IdeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Painéis Recolhíveis" description="Painéis podem ser recolhidos usando botões de seta no gutter." source={SplitterDemoSource} fn="CollapsibleDemo">
+  <CollapsibleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Painel Não Redimensionável" description="Desabilite redimensionamento para painéis específicos." source={SplitterDemoSource} fn="NonResizableDemo">
+  <NonResizableDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Splitter`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `direction` | Direção do splitter | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `sizes` | Tamanhos de painel controlados como porcentagens | `number[]` | `-` |
+| `defaultSizes` | Tamanhos de painel padrão como porcentagens (não controlado) | `number[]` | `-` |
+| `onSizesChange` | Callback quando tamanhos mudam | `(sizes: number[]) => void` | `-` |
+| `gutterSize` | Tamanho do gutter arrastável em pixels | `number` | `8` |
+| `minSize` | Tamanho mínimo padrão do painel em pixels | `number` | `50` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+### `Splitter.Panel`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo do painel | `React.ReactNode` | `-` |
+| `defaultSize` | Porcentagem de tamanho padrão | `number` | `-` |
+| `size` | Porcentagem de tamanho controlado | `number` | `-` |
+| `minSize` | Tamanho mínimo em pixels | `number` | `-` |
+| `maxSize` | Tamanho máximo em pixels | `number` | `-` |
+| `collapsible` | Permitir que o painel seja recolhido | `boolean` | `false` |
+| `collapsed` | Estado recolhido controlado | `boolean` | `-` |
+| `defaultCollapsed` | Estado recolhido padrão | `boolean` | `false` |
+| `onCollapse` | Callback quando o estado recolhido muda | `(collapsed: boolean) => void` | `-` |
+| `resizable` | Permitir que o painel seja redimensionado | `boolean` | `true` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+## Acessibilidade
+
+- Gutter é acessível por teclado com teclas de seta
+- Atributos ARIA anunciam tamanhos atuais dos painéis
+- Indicadores de foco visíveis no gutter
+- Aumente gutterSize para interação de toque mais fácil

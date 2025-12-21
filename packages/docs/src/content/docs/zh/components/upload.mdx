@@ -1,0 +1,83 @@
+---
+title: Upload 上传
+description: 支持拖放的文件上传组件。
+tableOfContents: false
+---
+
+import {
+  BasicUploadDemo,
+  DragUploadDemo,
+  PictureCardUploadDemo,
+  ControlledUploadDemo,
+  MaxSizeUploadDemo,
+  AcceptUploadDemo,
+  FormUploadDemo,
+} from '../../../../components/UploadDemo'
+import UploadDemoSource from '../../../../components/UploadDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+支持拖放的文件上传组件。
+
+## 导入
+
+```tsx
+import { Upload } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础上传" description="带按钮触发器的简单文件上传。" source={UploadDemoSource} fn="BasicUploadDemo">
+  <BasicUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="拖放" description="将文件拖到上传区域。" source={UploadDemoSource} fn="DragUploadDemo">
+  <DragUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="图片卡片" description="将上传的图片显示为卡片。" source={UploadDemoSource} fn="PictureCardUploadDemo">
+  <PictureCardUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="受控上传" description="使用状态和自定义请求控制文件列表。" source={UploadDemoSource} fn="ControlledUploadDemo">
+  <ControlledUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="最大文件大小" description="使用验证限制文件大小。" source={UploadDemoSource} fn="MaxSizeUploadDemo">
+  <MaxSizeUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="接受文件类型" description="限制可以上传的文件类型。" source={UploadDemoSource} fn="AcceptUploadDemo">
+  <AcceptUploadDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="在表单中" description="与 Form 组件集成的上传。" source={UploadDemoSource} fn="FormUploadDemo">
+  <FormUploadDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Upload`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `fileList` | 受控的已上传文件列表 | `UploadFile[]` | `-` |
+| `onChange` | 文件列表更改时的回调 | `({ fileList }) => void` | `-` |
+| `customRequest` | 自定义上传请求处理程序 | `({ file, onSuccess, onError }) => void` | `-` |
+| `listType` | 文件列表的显示样式 | `'text' \| 'picture' \| 'picture-card'` | `'text'` |
+| `maxCount` | 最大文件数 | `number` | `-` |
+| `maxSize` | 最大文件大小(字节) | `number` | `-` |
+| `accept` | 接受的文件类型 | `string` | `-` |
+| `disabled` | 禁用上传 | `boolean` | `false` |
+| `children` | 上传触发器元素 | `React.ReactNode` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+- 文件输入正确标记
+- 拖放区域支持键盘
+- 上传进度向屏幕阅读器宣布
+- 删除按钮可通过键盘访问

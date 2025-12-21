@@ -1,0 +1,61 @@
+---
+title: Hero
+description: 创建具有英雄横幅和背景的引人注目的着陆页部分。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithButtonDemo,
+  WithFigureDemo,
+  OverlayDemo,
+} from '../../../../components/HeroDemo'
+import HeroDemoSource from '../../../../components/HeroDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+创建具有英雄横幅和背景的引人注目的着陆页部分。
+
+## 导入
+
+```tsx
+import { Hero } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础 Hero" description="带标题和副标题的简单英雄部分。" source={HeroDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带 CTA 按钮的 Hero" description="带行动召唤按钮的英雄部分。" source={HeroDemoSource} fn="WithButtonDemo">
+  <WithButtonDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图形的 Hero" description="带侧边图片或图形元素的 Hero。" source={HeroDemoSource} fn="WithFigureDemo">
+  <WithFigureDemo client:load slot="demo" />
+</Example>
+
+<Example title="带背景遮罩的 Hero" description="带背景图片和遮罩效果的 Hero。" source={HeroDemoSource} fn="OverlayDemo">
+  <OverlayDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | Hero 内容 | `React.ReactNode` | - |
+| `overlay` | 显示遮罩效果（用于背景图片） | `boolean` | `false` |
+| `contentClassName` | 内容包装器的 CSS 类名 | `string` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式（对背景图片有用） | `React.CSSProperties` | - |
+
+## 无障碍
+
+- 为 hero 标题使用语义标题元素（h1、h2）
+- 确保文本和背景之间有足够的颜色对比度
+- 为 hero 图片提供替代文本
+- 使 CTA 按钮支持键盘访问

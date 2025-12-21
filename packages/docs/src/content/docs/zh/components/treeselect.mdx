@@ -1,0 +1,135 @@
+---
+title: TreeSelect 树选择
+description: 用于分层数据的下拉树选择。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  MultipleDemo,
+  CheckableDemo,
+  SearchableDemo,
+  SizesDemo,
+  StatusDemo,
+  AsyncLoadDemo,
+  MaxTagDemo,
+  TreeLineDemo,
+  DisabledItemsDemo,
+} from '../../../../components/TreeSelectDemo'
+import TreeSelectDemoSource from '../../../../components/TreeSelectDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于分层数据的下拉树选择。
+
+## 导入
+
+```tsx
+import { TreeSelect } from 'asterui'
+import type { TreeDataNode } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础树选择" description="从树结构中选择单个值。" source={TreeSelectDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="多选" description="从树中选择多个值。" source={TreeSelectDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="可勾选" description="使用复选框进行选择,带有父子关联。" source={TreeSelectDemoSource} fn="CheckableDemo">
+  <CheckableDemo client:load slot="demo" />
+</Example>
+
+<Example title="可搜索" description="使用搜索过滤树节点。" source={TreeSelectDemoSource} fn="SearchableDemo">
+  <SearchableDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="TreeSelect 有各种尺寸。" source={TreeSelectDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="验证状态" description="显示错误或警告状态。" source={TreeSelectDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="异步加载" description="展开时异步加载树节点。" source={TreeSelectDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+<Example title="最大标签数" description="限制可见标签的数量。" source={TreeSelectDemoSource} fn="MaxTagDemo">
+  <MaxTagDemo client:load slot="demo" />
+</Example>
+
+<Example title="树连接线" description="显示树节点之间的连接线。" source={TreeSelectDemoSource} fn="TreeLineDemo">
+  <TreeLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用项目" description="某些树节点可以被禁用。" source={TreeSelectDemoSource} fn="DisabledItemsDemo">
+  <DisabledItemsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `TreeSelect`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `treeData` | 树数据结构 | `TreeDataNode[]` | `[]` |
+| `value` | 选定的值 | `string \| string[]` | `-` |
+| `defaultValue` | 默认选定的值 | `string \| string[]` | `[]` |
+| `onChange` | 选择更改时的回调 | `(value: string \| string[], labels: ReactNode[]) => void` | `-` |
+| `multiple` | 允许多选 | `boolean` | `false` |
+| `treeCheckable` | 显示树节点的复选框 | `boolean` | `false` |
+| `treeCheckStrictly` | 无父子关联地勾选 | `boolean` | `false` |
+| `showCheckedStrategy` | 如何显示已勾选项目 | `'SHOW_ALL' \| 'SHOW_PARENT' \| 'SHOW_CHILD'` | `'SHOW_ALL'` |
+| `showSearch` | 启用搜索功能 | `boolean` | `false` |
+| `searchValue` | 受控搜索输入值 | `string` | `-` |
+| `onSearch` | 搜索输入更改时的回调 | `(value: string) => void` | `-` |
+| `filterTreeNode` | 自定义过滤函数 | `(searchValue: string, node: TreeDataNode) => boolean` | `-` |
+| `placeholder` | 占位符文本 | `string` | `'Please select'` |
+| `allowClear` | 显示清除按钮 | `boolean` | `true` |
+| `disabled` | 禁用选择 | `boolean` | `false` |
+| `size` | 输入的大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `color` | 颜色主题 | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `status` | 验证状态 | `'error' \| 'warning'` | `-` |
+| `maxTagCount` | 要显示的最大标签数 | `number \| 'responsive'` | `-` |
+| `maxTagPlaceholder` | 隐藏标签的内容 | `ReactNode \| ((omittedValues: string[]) => ReactNode)` | `-` |
+| `treeLine` | 显示连接线 | `boolean` | `false` |
+| `treeDefaultExpandAll` | 默认展开所有树节点 | `boolean` | `false` |
+| `treeDefaultExpandedKeys` | 默认展开的树节点键 | `string[]` | `[]` |
+| `treeExpandedKeys` | 受控的已展开树节点键 | `string[]` | `-` |
+| `onTreeExpand` | 树节点展开/折叠时的回调 | `(expandedKeys: string[]) => void` | `-` |
+| `loadData` | 异步加载数据 | `(node: TreeDataNode) => Promise<void>` | `-` |
+| `fieldNames` | 自定义字段名称 | `{ label?: string; value?: string; children?: string }` | `-` |
+| `open` | 受控的下拉菜单可见性 | `boolean` | `-` |
+| `onDropdownVisibleChange` | 下拉菜单可见性更改时的回调 | `(open: boolean) => void` | `-` |
+| `suffixIcon` | 自定义后缀图标 | `ReactNode` | `-` |
+| `switcherIcon` | 自定义展开/折叠图标 | `ReactNode \| ((props: { expanded: boolean }) => ReactNode)` | `-` |
+| `notFoundContent` | 无结果时的内容 | `ReactNode` | `'No results found'` |
+| `dropdownRender` | 自定义下拉内容渲染器 | `(menu: ReactNode) => ReactNode` | `-` |
+| `popupClassName` | 下拉菜单的类 | `string` | `-` |
+| `data-testid` | 组件的测试 ID | `string` | `'treeselect'` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+TreeSelect 组件遵循 WAI-ARIA 组合框和树模式,具有正确的 ARIA 属性和键盘导航。
+
+### 键盘导航
+
+| 键 | 操作 |
+|-----|--------|
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | 打开下拉菜单或选择聚焦的项目 |
+| <kbd>Escape</kbd> | 关闭下拉菜单 |
+| <kbd>↓</kbd> | 打开下拉菜单或向下移动焦点 |
+| <kbd>↑</kbd> | 向上移动焦点 |
+| <kbd>→</kbd> | 展开聚焦的树节点 |
+| <kbd>←</kbd> | 折叠聚焦的树节点或移至父节点 |
+| <kbd>Home</kbd> | 将焦点移至第一个项目 |
+| <kbd>End</kbd> | 将焦点移至最后一个项目 |

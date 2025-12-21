@@ -1,0 +1,162 @@
+---
+title: Button
+description: Botones clicables con variantes, colores, tamaños y estados
+tableOfContents: false
+---
+
+import {
+  BrandColorsDemo,
+  StateColorsDemo,
+  VariantsDemo,
+  SizesDemo,
+  OutlineDemo,
+  DashDemo,
+  SoftDemo,
+  StatesDemo,
+  ShapesDemo,
+  WideDemo,
+  BlockDemo,
+  LoadingDemo,
+  LinkButtonsDemo,
+  WithIconsDemo,
+  IconSizesDemo,
+  DangerDemo,
+  RoundDemo,
+  ToggleDemo,
+  NoAnimationDemo,
+  FormSubmitDemo,
+  EventHandlingDemo,
+} from '../../../../components/ButtonDemo'
+import ButtonDemoSource from '../../../../components/ButtonDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de botón versátil con estilo de DaisyUI y muchas variantes.
+
+## Importar
+
+```tsx
+import { Button } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Colores de Marca" description="Colores de marca primarios para acciones comunes." source={ButtonDemoSource} fn="BrandColorsDemo">
+  <BrandColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores de Estado" description="Colores semánticos para diferentes estados y retroalimentación." source={ButtonDemoSource} fn="StateColorsDemo">
+  <StateColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes" description="Diferentes variantes de estilo: solid (predeterminado), outline, dash, soft, ghost y link." source={ButtonDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Cinco tamaños: xs, sm, md (predeterminado), lg y xl." source={ButtonDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Outline" description="Variante outline con fondo transparente." source={ButtonDemoSource} fn="OutlineDemo">
+  <OutlineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Borde Punteado" description="Botones con estilo de borde punteado." source={ButtonDemoSource} fn="DashDemo">
+  <DashDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores Suaves" description="Fondos de color apagados para énfasis sutil." source={ButtonDemoSource} fn="SoftDemo">
+  <SoftDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estados" description="Estados activo, cargando y deshabilitado." source={ButtonDemoSource} fn="StatesDemo">
+  <StatesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Formas" description="Formas cuadradas y circulares para botones de icono." source={ButtonDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Wide" description="Botones extra anchos para énfasis." source={ButtonDemoSource} fn="WideDemo">
+  <WideDemo client:load slot="demo" />
+</Example>
+
+<Example title="Block" description="Botones de ancho completo." source={ButtonDemoSource} fn="BlockDemo">
+  <BlockDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estados de Carga" description="Spinner de carga con diferentes colores." source={ButtonDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Botones de Enlace" description="Botones que navegan a URLs. Se renderiza como elemento anchor cuando se proporciona href." source={ButtonDemoSource} fn="LinkButtonsDemo">
+  <LinkButtonsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Iconos" description="Botones con iconos usando la prop icon para espaciado automático." source={ButtonDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Iconos con Tamaño Automático" description="Los iconos de @aster-ui/icons coinciden automáticamente con el tamaño del botón." source={ButtonDemoSource} fn="IconSizesDemo">
+  <IconSizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Botón de Peligro" description="Estilo de peligro semántico para acciones destructivas." source={ButtonDemoSource} fn="DangerDemo">
+  <DangerDemo client:load slot="demo" />
+</Example>
+
+<Example title="Forma Redonda" description="Botones en forma de píldora con extremos completamente redondeados." source={ButtonDemoSource} fn="RoundDemo">
+  <RoundDemo client:load slot="demo" />
+</Example>
+
+<Example title="Botón de Alternancia" description="Botones de alternancia usando la prop pressed para accesibilidad." source={ButtonDemoSource} fn="ToggleDemo">
+  <ToggleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sin Animación" description="Deshabilita el efecto de animación de clic." source={ButtonDemoSource} fn="NoAnimationDemo">
+  <NoAnimationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Envío de Formulario" description="Botón con htmlType='submit' dentro del componente Form de AsterUI." source={ButtonDemoSource} fn="FormSubmitDemo">
+  <FormSubmitDemo client:load slot="demo" />
+</Example>
+
+<Example title="Manejo de Eventos" description="Botones con manejadores onClick y gestión de estado." source={ButtonDemoSource} fn="EventHandlingDemo">
+  <EventHandlingDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Button`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `color` | Color del botón | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | - |
+| `variant` | Variante de estilo del botón | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link'` | - |
+| `size` | Tamaño del botón | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `active` | Estado visual activo/presionado | `boolean` | `false` |
+| `loading` | Mostrar spinner de carga y deshabilitar botón | `boolean` | `false` |
+| `shape` | Forma del botón | `'square' \| 'circle' \| 'wide' \| 'block' \| 'round'` | - |
+| `icon` | Elemento de icono a mostrar | `ReactNode` | - |
+| `iconPosition` | Posición del icono | `'start' \| 'end'` | `'start'` |
+| `danger` | Aplica estilo de error/peligro (atajo para color="error") | `boolean` | `false` |
+| `pressed` | Estado presionado del botón de alternancia (establece aria-pressed) | `boolean` | - |
+| `noAnimation` | Deshabilitar animación de clic | `boolean` | `false` |
+| `disabled` | Estado deshabilitado | `boolean` | `false` |
+| `href` | URL a la que navegar (renderiza como elemento anchor) | `string` | - |
+| `target` | Dónde abrir la URL enlazada (cuando se establece href) | `string` | - |
+| `htmlType` | Tipo de botón HTML (solo cuando href no está establecido) | `'button' \| 'submit' \| 'reset'` | `'button'` |
+| `className` | Clases CSS adicionales | `string` | - |
+| `children` | Contenido del botón | `ReactNode` | - |
+
+## Accesibilidad
+
+- Usa el elemento nativo `<button>` para soporte adecuado de teclado
+- Se renderiza como elemento `<a>` cuando se proporciona `href` para semántica adecuada de enlace
+- El estado de carga establece `aria-busy="true"` y deshabilita el botón
+- Los botones de alternancia usan `aria-pressed` para soporte de lector de pantalla
+- El estado deshabilitado se comunica adecuadamente a tecnologías de asistencia
+- Los estados de foco son visibles para navegación por teclado

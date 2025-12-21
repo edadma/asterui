@@ -1,0 +1,114 @@
+---
+title: Tabs
+description: Organiza el contenido en vistas separadas donde solo una es visible a la vez.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SettingsDemo,
+  BoxDemo,
+  LiftDemo,
+  SizesDemo,
+  DisabledDemo,
+  DataDrivenDemo,
+  PositionDemo,
+} from '../../../../components/TabsDemo'
+import TabsDemoSource from '../../../../components/TabsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Organiza el contenido en vistas separadas donde solo una es visible a la vez.
+
+## Importación
+
+```tsx
+import { Tabs } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Uso Básico" description="Pestañas simples con cambio de contenido automático." source={TabsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Página de Configuración" description="Página de configuración completa con formularios usando inputs con etiqueta flotante." source={TabsDemoSource} fn="SettingsDemo">
+  <SettingsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variante Enmarcada" description="Pestañas con estilo de caja cerrada." source={TabsDemoSource} fn="BoxDemo">
+  <BoxDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variante Elevada" description="Pestañas con apariencia elevada 3D." source={TabsDemoSource} fn="LiftDemo">
+  <LiftDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diferentes Tamaños" description="Pestañas en varios tamaños usando los componentes Space y Typography." source={TabsDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Pestaña Deshabilitada" description="Deshabilita pestañas específicas." source={TabsDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Patrón Basado en Datos" description="Usa la prop items para pestañas basadas en datos con iconos." source={TabsDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posición Inferior" description="Pestañas posicionadas debajo del contenido." source={TabsDemoSource} fn="PositionDemo">
+  <PositionDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tabs`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Paneles de pestañas (patrón compuesto) | `React.ReactNode` | `-` |
+| `items` | Elementos de pestaña (patrón basado en datos) | `TabItem[]` | `-` |
+| `activeKey` | Clave de pestaña activa actual (controlado) | `string` | `-` |
+| `defaultActiveKey` | Clave de pestaña activa predeterminada (no controlado) | `string` | `-` |
+| `onChange` | Callback cuando cambia la pestaña | `(key: string) => void` | `-` |
+| `variant` | Variante de estilo visual | `'box' \| 'border' \| 'lift'` | `-` |
+| `size` | Tamaño de pestaña | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
+| `position` | Posición de pestaña relativa al contenido | `'top' \| 'bottom'` | `'top'` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+### `TabItem` (para prop items)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único | `string` | `-` |
+| `label` | Etiqueta del botón de pestaña | `React.ReactNode` | `-` |
+| `children` | Contenido del panel de pestaña | `React.ReactNode` | `-` |
+| `disabled` | Deshabilitar la pestaña | `boolean` | `false` |
+| `icon` | Icono de pestaña | `React.ReactNode` | `-` |
+
+### `Tabs.Panel` (patrón compuesto)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único para la pestaña (prop key de React) | `string` | `-` |
+| `tab` | Etiqueta del botón de pestaña | `React.ReactNode` | `-` |
+| `disabled` | Deshabilitar la pestaña | `boolean` | `false` |
+| `icon` | Icono de pestaña | `React.ReactNode` | `-` |
+| `children` | Contenido del panel de pestaña | `React.ReactNode` | `-` |
+
+## Accesibilidad
+
+- Usa roles ARIA adecuados: `tablist`, `tab` y `tabpanel`
+- Navegación por teclado: Las teclas de flecha se mueven entre pestañas, la tecla Tab mueve el foco al panel
+- La pestaña activa se indica con `aria-selected="true"`
+- Las pestañas deshabilitadas usan `aria-disabled` para comunicación adecuada
+- Los paneles de pestañas usan `aria-labelledby` para asociarse con su pestaña
+
+## Consejos de Uso
+
+- Usa `activeKey` para pestañas controladas, `defaultActiveKey` para no controladas
+- Usa la prop `items` para pestañas basadas en datos, `Tabs.Panel` para patrón compuesto
+- Usa `position="bottom"` para colocar las pestañas debajo del contenido

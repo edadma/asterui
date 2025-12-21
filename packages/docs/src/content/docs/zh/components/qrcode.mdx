@@ -1,0 +1,102 @@
+---
+title: QRCode 二维码
+description: 生成具有可自定义外观、图标和状态的二维码。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ColorsDemo,
+  IconDemo,
+  ErrorLevelDemo,
+  BorderDemo,
+  LoadingDemo,
+  ExpiredDemo,
+  DynamicDemo,
+} from '../../../../components/QRCodeDemo'
+import QRCodeDemoSource from '../../../../components/QRCodeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+生成具有可自定义外观、图标和状态的二维码。颜色自动适应明暗主题。
+
+## 安装
+
+此组件需要 `qrcode` 作为对等依赖:
+
+```bash
+npm install qrcode
+```
+
+## 导入
+
+```tsx
+import { QRCode } from 'asterui/qrcode'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础二维码" description="具有默认设置的简单二维码。" source={QRCodeDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="自定义尺寸" description="不同的二维码尺寸。" source={QRCodeDemoSource} fn="SizesDemo">
+  <SizesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="自定义颜色" description="自定义前景色。背景默认适应主题。" source={QRCodeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="带图标" description="带有居中徽标/图标的二维码。" source={QRCodeDemoSource} fn="IconDemo">
+  <IconDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="纠错级别" description="不同的纠错级别会影响二维码密度。" source={QRCodeDemoSource} fn="ErrorLevelDemo">
+  <ErrorLevelDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="无边框" description="移除边框以实现无缝集成。" source={QRCodeDemoSource} fn="BorderDemo">
+  <BorderDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="加载状态" description="在生成或获取二维码数据时显示加载状态。" source={QRCodeDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="过期状态" description="显示过期状态及可选的刷新功能。" source={QRCodeDemoSource} fn="ExpiredDemo">
+  <ExpiredDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="动态二维码" description="动态更新二维码值。" source={QRCodeDemoSource} fn="DynamicDemo">
+  <DynamicDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `QRCode`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 要编码在二维码中的值 | `string` | - |
+| `size` | 二维码画布大小(像素) | `number` | `160` |
+| `errorLevel` | 纠错级别 | `'L' \| 'M' \| 'Q' \| 'H'` | `'M'` |
+| `icon` | 要在中心显示的图标/徽标的 URL | `string` | - |
+| `iconSize` | 中心图标的大小(像素) | `number` | `40` |
+| `type` | 渲染类型 | `'canvas' \| 'svg'` | `'canvas'` |
+| `color` | 前景色(二维码颜色) | `string` | 主题感知 |
+| `bgColor` | 背景颜色 | `string` | 主题感知 |
+| `bordered` | 在二维码周围显示边框 | `boolean` | `true` |
+| `status` | 二维码状态 | `'active' \| 'loading' \| 'expired'` | `'active'` |
+| `onRefresh` | 点击刷新按钮时的回调(过期状态) | `() => void` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 二维码包含带有描述性标签的 `role="img"`
+- 加载和过期状态会向屏幕阅读器宣布
+- 刷新按钮可通过键盘访问

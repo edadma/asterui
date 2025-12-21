@@ -1,0 +1,110 @@
+---
+title: Steps
+description: Indicador visual de progresso mostrando etapas sequenciais.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  ColorsDemo,
+  CustomContentDemo,
+  ResponsiveDemo,
+  CurrentDemo,
+  DataDrivenDemo,
+  WithIconsDemo,
+} from '../../../../components/StepsDemo'
+import StepsDemoSource from '../../../../components/StepsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Indicador visual de progresso mostrando etapas sequenciais.
+
+## Importação
+
+```tsx
+import { Steps } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Steps Básico" description="Progressão de etapas horizontal." source={StepsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Steps Vertical" description="Etapas em orientação vertical." source={StepsDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diferentes Cores" description="Etapas com várias cores semânticas." source={StepsDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Conteúdo Personalizado" description="Indicadores personalizados usando dataContent." source={StepsDemoSource} fn="CustomContentDemo">
+  <CustomContentDemo client:load slot="demo" />
+</Example>
+
+<Example title="Layout Responsivo" description="Vertical no mobile, horizontal no desktop." source={StepsDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Etapa Atual Controlada" description="Use a prop current para controlar o progresso da etapa." source={StepsDemoSource} fn="CurrentDemo">
+  <CurrentDemo client:load slot="demo" />
+</Example>
+
+<Example title="Padrão Baseado em Dados" description="Use a prop items para etapas baseadas em dados com navegação por clique." source={StepsDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Ícones" description="Etapas com ícones personalizados." source={StepsDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Steps`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Itens de etapa (padrão composto) | `React.ReactNode` | `-` |
+| `items` | Itens de etapa (padrão baseado em dados) | `StepItem[]` | `-` |
+| `current` | Índice da etapa atual (base 0) | `number` | `-` |
+| `direction` | Direção do layout | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `vertical` | Layout vertical (depreciado, use direction) | `boolean` | `false` |
+| `onChange` | Callback quando etapa é clicada | `(current: number) => void` | `-` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+### `StepItem` (para prop items)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Identificador único | `string` | `-` |
+| `title` | Título da etapa | `React.ReactNode` | `-` |
+| `description` | Descrição da etapa | `React.ReactNode` | `-` |
+| `icon` | Ícone da etapa | `React.ReactNode` | `-` |
+| `color` | Cor da etapa | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `disabled` | Se a etapa está desabilitada | `boolean` | `false` |
+
+### `Steps.Step` (padrão composto)
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo da etapa | `React.ReactNode` | `-` |
+| `title` | Título da etapa (alternativa a children) | `React.ReactNode` | `-` |
+| `description` | Descrição da etapa | `React.ReactNode` | `-` |
+| `icon` | Ícone da etapa | `React.ReactNode` | `-` |
+| `color` | Cor da etapa | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `dataContent` | Conteúdo personalizado para indicador da etapa | `string` | `-` |
+| `disabled` | Se a etapa está desabilitada | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+## Acessibilidade
+
+Dicas de Uso:
+- Use a prop `current` para controlar qual etapa está ativa
+- Etapas antes de `current` são automaticamente marcadas como concluídas
+- Use `onChange` para habilitar clique nas etapas para navegação
+- Use classes responsivas para layouts amigáveis para mobile

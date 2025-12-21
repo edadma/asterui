@@ -1,0 +1,128 @@
+---
+title: Layout
+description: Componentes estructurales para construir diseños de aplicación con áreas de encabezado, pie de página, barra lateral y contenido.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithSiderDemo,
+  SiderRightDemo,
+  CollapsibleDemo,
+  MenuNavigationDemo,
+  SubmenuDemo,
+} from '../../../../components/LayoutDemo'
+import LayoutDemoSource from '../../../../components/LayoutDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componentes estructurales para construir diseños de aplicación con áreas de encabezado, pie de página, barra lateral y contenido.
+
+## Importar
+
+```tsx
+import { Layout, Menu } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Layout Básico" description="Diseño simple de encabezado, contenido y pie de página." source={LayoutDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Layout con Sider y Menu" description="Diseño con navegación lateral usando el componente Menu." source={LayoutDemoSource} fn="WithSiderDemo">
+  <WithSiderDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sider a la Derecha" description="Diseño con barra lateral en el lado derecho usando reverseArrow." source={LayoutDemoSource} fn="SiderRightDemo">
+  <SiderRightDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sider Plegable" description="Sider con funcionalidad de colapsar/expandir y activador integrado." source={LayoutDemoSource} fn="CollapsibleDemo">
+  <CollapsibleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Navegación con Menu" description="Sider interactivo con Menu que cambia el contenido cuando se seleccionan elementos." source={LayoutDemoSource} fn="MenuNavigationDemo">
+  <MenuNavigationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Menu Inline con Submenus" description="Diseño con submenús anidados usando modo inline para navegación expandible." source={LayoutDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Layout`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del layout (Header, Sider, Content, Footer) | `React.ReactNode` | - |
+| `hasSider` | Si contiene Sider (auto-detectado si no se especifica) | `boolean` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `style` | Estilos en línea | `React.CSSProperties` | - |
+| `data-testid` | ID de prueba para testing | `string` | - |
+
+### `Layout.Header`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del encabezado | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `style` | Estilos en línea | `React.CSSProperties` | - |
+| `data-testid` | ID de prueba para testing | `string` | - |
+
+### `Layout.Footer`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del pie de página | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `style` | Estilos en línea | `React.CSSProperties` | - |
+| `data-testid` | ID de prueba para testing | `string` | - |
+
+### `Layout.Sider`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del sider | `React.ReactNode` | - |
+| `width` | Ancho del sider | `number \| string` | `200` |
+| `collapsedWidth` | Ancho cuando está colapsado | `number \| string` | `80` |
+| `collapsed` | Estado colapsado controlado | `boolean` | - |
+| `defaultCollapsed` | Estado colapsado inicial | `boolean` | `false` |
+| `collapsible` | Si el sider puede ser colapsado | `boolean` | `false` |
+| `onCollapse` | Callback cuando cambia el estado de colapso | `(collapsed: boolean, type: 'clickTrigger' \| 'responsive') => void` | - |
+| `trigger` | Elemento activador personalizado (null para ocultar) | `React.ReactNode \| null` | - |
+| `breakpoint` | Punto de interrupción para auto-colapso | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | - |
+| `onBreakpoint` | Callback cuando se cruza el punto de interrupción | `(broken: boolean) => void` | - |
+| `reverseArrow` | Invertir dirección de la flecha (para sider del lado derecho) | `boolean` | `false` |
+| `theme` | Tema de color del sider | `'light' \| 'dark'` | `'dark'` |
+| `zeroWidthTriggerStyle` | Estilo para activador de ancho cero | `React.CSSProperties` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `style` | Estilos en línea | `React.CSSProperties` | - |
+| `data-testid` | ID de prueba para testing; el activador usa sufijo `{id}-trigger` | `string` | - |
+
+### `Layout.Content`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del área de contenido | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `style` | Estilos en línea | `React.CSSProperties` | - |
+| `data-testid` | ID de prueba para testing | `string` | - |
+
+## Accesibilidad
+
+- Los componentes Layout proporcionan una estructura semántica para tu aplicación
+- Usa `Layout.Header` para el área de navegación superior o branding
+- Usa `Layout.Footer` para el contenido del pie de página inferior
+- Usa `Layout.Sider` para navegación lateral o contenido auxiliar
+- Usa `Layout.Content` para el área de contenido principal
+- El Layout detecta automáticamente componentes Sider y se ajusta al diseño horizontal
+- Los layouts se pueden anidar para crear estructuras de página complejas
+- Usa la prop `collapsible` en Sider para navegación responsiva
+- Usa `reverseArrow` para siders del lado derecho
+- Combina con el componente `Menu` para navegación con elementos seleccionables
+- Todos los componentes reenvían refs y soportan `data-testid` para testing

@@ -1,0 +1,100 @@
+---
+title: Range 滑块
+description: 使用交互式滑块选择数值。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ShowValueDemo,
+  ShowStepsDemo,
+  ControlledDemo,
+  CustomRangeDemo,
+  ColorsDemo,
+  SizesDemo,
+  DisabledDemo,
+  VolumeDemo,
+  FormDemo,
+} from '../../../../components/RangeDemo'
+import RangeDemoSource from '../../../../components/RangeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+使用交互式滑块选择数值。
+
+## 导入
+
+```tsx
+import { Range } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础滑块" description="具有默认设置的简单范围滑块。" source={RangeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="显示值" description="显示当前值的范围滑块。" source={RangeDemoSource} fn="ShowValueDemo">
+  <ShowValueDemo client:load slot="demo" />
+</Example>
+
+<Example title="显示步骤" description="带有可见步骤标记的范围滑块。" source={RangeDemoSource} fn="ShowStepsDemo">
+  <ShowStepsDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控" description="带有状态管理的受控范围滑块。" source={RangeDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义范围" description="具有自定义最小值、最大值和步长值的范围滑块。" source={RangeDemoSource} fn="CustomRangeDemo">
+  <CustomRangeDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="各种主题颜色的范围滑块。" source={RangeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="各种尺寸的范围滑块。" source={RangeDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用" description="禁用的范围滑块。" source={RangeDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="音量控制示例" description="音量控制的真实示例。" source={RangeDemoSource} fn="VolumeDemo">
+  <VolumeDemo client:load slot="demo" />
+</Example>
+
+<Example title="在表单中" description="与 Form 组件集成的范围滑块。" source={RangeDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Range`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 受控值 | `number` | - |
+| `defaultValue` | 默认值(非受控) | `number` | `50` |
+| `onChange` | 值更改时的回调 | `(value: number) => void` | - |
+| `min` | 最小值 | `number` | `0` |
+| `max` | 最大值 | `number` | `100` |
+| `step` | 步长增量 | `number` | `1` |
+| `size` | 范围大小 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | 范围颜色主题 | `'primary' \| 'secondary' \| 'accent' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `disabled` | 禁用范围输入 | `boolean` | `false` |
+| `showValue` | 在范围下方显示当前值 | `boolean` | `false` |
+| `showSteps` | 在范围下方显示步骤标记 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 使用原生 `<input type="range">` 以获得完全的可访问性
+- 值以百分比形式由屏幕阅读器宣布
+- 支持使用箭头键进行键盘导航
+- 使用 `showValue` 进行可视值显示

@@ -1,0 +1,162 @@
+---
+title: Button 按钮
+description: 可点击的按钮，带有变体、颜色、尺寸和状态
+tableOfContents: false
+---
+
+import {
+  BrandColorsDemo,
+  StateColorsDemo,
+  VariantsDemo,
+  SizesDemo,
+  OutlineDemo,
+  DashDemo,
+  SoftDemo,
+  StatesDemo,
+  ShapesDemo,
+  WideDemo,
+  BlockDemo,
+  LoadingDemo,
+  LinkButtonsDemo,
+  WithIconsDemo,
+  IconSizesDemo,
+  DangerDemo,
+  RoundDemo,
+  ToggleDemo,
+  NoAnimationDemo,
+  FormSubmitDemo,
+  EventHandlingDemo,
+} from '../../../../components/ButtonDemo'
+import ButtonDemoSource from '../../../../components/ButtonDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+多功能按钮组件，带有 DaisyUI 样式和多种变体。
+
+## 引入
+
+```tsx
+import { Button } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="品牌颜色" description="用于常见操作的主要品牌颜色。" source={ButtonDemoSource} fn="BrandColorsDemo">
+  <BrandColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="状态颜色" description="用于不同状态和反馈的语义颜色。" source={ButtonDemoSource} fn="StateColorsDemo">
+  <StateColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="变体" description="不同的样式变体：solid（默认）、outline、dash、soft、ghost 和 link。" source={ButtonDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="五种尺寸：xs、sm、md（默认）、lg 和 xl。" source={ButtonDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="描边" description="带透明背景的描边变体。" source={ButtonDemoSource} fn="OutlineDemo">
+  <OutlineDemo client:load slot="demo" />
+</Example>
+
+<Example title="虚线边框" description="带虚线边框样式的按钮。" source={ButtonDemoSource} fn="DashDemo">
+  <DashDemo client:load slot="demo" />
+</Example>
+
+<Example title="柔和颜色" description="用于细微强调的柔和色彩背景。" source={ButtonDemoSource} fn="SoftDemo">
+  <SoftDemo client:load slot="demo" />
+</Example>
+
+<Example title="状态" description="激活、加载和禁用状态。" source={ButtonDemoSource} fn="StatesDemo">
+  <StatesDemo client:load slot="demo" />
+</Example>
+
+<Example title="形状" description="用于图标按钮的方形和圆形形状。" source={ButtonDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="加宽" description="用于强调的超宽按钮。" source={ButtonDemoSource} fn="WideDemo">
+  <WideDemo client:load slot="demo" />
+</Example>
+
+<Example title="块级" description="全宽按钮。" source={ButtonDemoSource} fn="BlockDemo">
+  <BlockDemo client:load slot="demo" />
+</Example>
+
+<Example title="加载状态" description="带不同颜色的加载旋转器。" source={ButtonDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="链接按钮" description="导航到 URL 的按钮。提供 href 时渲染为锚元素。" source={ButtonDemoSource} fn="LinkButtonsDemo">
+  <LinkButtonsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标" description="使用 icon 属性自动设置间距的带图标按钮。" source={ButtonDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="自动调整大小的图标" description="来自 @aster-ui/icons 的图标会自动匹配按钮大小。" source={ButtonDemoSource} fn="IconSizesDemo">
+  <IconSizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="危险按钮" description="用于破坏性操作的语义危险样式。" source={ButtonDemoSource} fn="DangerDemo">
+  <DangerDemo client:load slot="demo" />
+</Example>
+
+<Example title="圆角形状" description="完全圆角的胶囊形按钮。" source={ButtonDemoSource} fn="RoundDemo">
+  <RoundDemo client:load slot="demo" />
+</Example>
+
+<Example title="切换按钮" description="使用 pressed 属性实现无障碍的切换按钮。" source={ButtonDemoSource} fn="ToggleDemo">
+  <ToggleDemo client:load slot="demo" />
+</Example>
+
+<Example title="无动画" description="禁用点击动画效果。" source={ButtonDemoSource} fn="NoAnimationDemo">
+  <NoAnimationDemo client:load slot="demo" />
+</Example>
+
+<Example title="表单提交" description="在 AsterUI Form 组件内使用 htmlType='submit' 的按钮。" source={ButtonDemoSource} fn="FormSubmitDemo">
+  <FormSubmitDemo client:load slot="demo" />
+</Example>
+
+<Example title="事件处理" description="带 onClick 处理函数和状态管理的按钮。" source={ButtonDemoSource} fn="EventHandlingDemo">
+  <EventHandlingDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Button`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `color` | 按钮颜色 | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | - |
+| `variant` | 按钮样式变体 | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link'` | - |
+| `size` | 按钮大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `active` | 激活/按下的视觉状态 | `boolean` | `false` |
+| `loading` | 显示加载旋转器并禁用按钮 | `boolean` | `false` |
+| `shape` | 按钮形状 | `'square' \| 'circle' \| 'wide' \| 'block' \| 'round'` | - |
+| `icon` | 要显示的图标元素 | `ReactNode` | - |
+| `iconPosition` | 图标的位置 | `'start' \| 'end'` | `'start'` |
+| `danger` | 应用错误/危险样式（color="error" 的简写） | `boolean` | `false` |
+| `pressed` | 切换按钮的按下状态（设置 aria-pressed） | `boolean` | - |
+| `noAnimation` | 禁用点击动画 | `boolean` | `false` |
+| `disabled` | 禁用状态 | `boolean` | `false` |
+| `href` | 要导航到的 URL（渲染为锚元素） | `string` | - |
+| `target` | 打开链接 URL 的位置（当设置 href 时） | `string` | - |
+| `htmlType` | HTML 按钮类型（仅当未设置 href 时） | `'button' \| 'submit' \| 'reset'` | `'button'` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `children` | 按钮内容 | `ReactNode` | - |
+
+## 无障碍
+
+- 使用原生 `<button>` 元素以获得适当的键盘支持
+- 提供 `href` 时渲染为 `<a>` 元素以获得适当的链接语义
+- 加载状态设置 `aria-busy="true"` 并禁用按钮
+- 切换按钮使用 `aria-pressed` 以支持屏幕阅读器
+- 禁用状态会正确传达给辅助技术
+- 焦点状态对键盘导航可见

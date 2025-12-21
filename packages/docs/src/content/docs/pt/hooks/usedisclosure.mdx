@@ -1,0 +1,45 @@
+---
+title: useDisclosure
+description: Hook para gerenciar estado aberto/fechado de modais, gavetas, etc.
+---
+
+Gerencia estado aberto/fechado para modais, gavetas, dropdowns e componentes similares.
+
+## Importação
+
+```tsx
+import { useDisclosure } from 'asterui'
+```
+
+## Uso
+
+```tsx
+function ModalExample() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  return (
+    <>
+      <Button onClick={onOpen}>Open Modal</Button>
+      <Modal open={isOpen} onClose={onClose}>
+        Modal content here
+      </Modal>
+    </>
+  )
+}
+```
+
+## Parâmetros
+
+| Parâmetro | Tipo | Padrão | Descrição |
+|-----------|------|---------|-------------|
+| `defaultIsOpen` | `boolean` | `false` | Estado inicial aberto |
+
+## Valor de Retorno
+
+| Propriedade | Tipo | Descrição |
+|----------|------|-------------|
+| `isOpen` | `boolean` | Estado atual aberto |
+| `onOpen` | `() => void` | Abre (define estado como `true`) |
+| `onClose` | `() => void` | Fecha (define estado como `false`) |
+| `onToggle` | `() => void` | Alterna estado |
+| `setIsOpen` | `(value: boolean) => void` | Define estado diretamente |

@@ -1,0 +1,81 @@
+---
+title: ColorPicker 颜色选择器
+description: 带预设和多种格式支持的颜色选择控件。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ShowTextDemo,
+  PresetsDemo,
+  SizesDemo,
+  ControlledDemo,
+  ModesDemo,
+} from '../../../../components/ColorPickerDemo'
+import ColorPickerDemoSource from '../../../../components/ColorPickerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+带预设和多种格式支持的颜色选择控件。
+
+## 引入
+
+```tsx
+import { ColorPicker } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本颜色选择器" description="带饱和度/亮度面板和色调滑块的简单颜色选择器。" source={ColorPickerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带文本显示" description="在选择器下方显示十六进制值的颜色选择器。" source={ColorPickerDemoSource} fn="ShowTextDemo">
+  <ShowTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义预设" description="带自定义预设颜色色板的颜色选择器。" source={ColorPickerDemoSource} fn="PresetsDemo">
+  <PresetsDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="不同尺寸的颜色选择器。" source={ColorPickerDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控模式" description="带状态管理的受控颜色选择器。" source={ColorPickerDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="显示模式" description="仅选择器、仅色板或两者都有。" source={ColorPickerDemoSource} fn="ModesDemo">
+  <ModesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ColorPicker`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 受控的颜色值（hex） | `string` | - |
+| `defaultValue` | 初始颜色值（非受控） | `string` | `'#000000'` |
+| `onChange` | 颜色改变时的回调函数 | `(color: string) => void` | - |
+| `mode` | 显示模式 | `'swatches' \| 'picker' \| 'both'` | `'both'` |
+| `presets` | 预设颜色色板 | `string[]` | 默认调色板 |
+| `showText` | 在选择器下方显示十六进制值 | `boolean` | `false` |
+| `allowClear` | 显示清除按钮以重置颜色 | `boolean` | `false` |
+| `disabled` | 禁用选择器 | `boolean` | `false` |
+| `size` | 选择器大小 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `data-testid` | 子元素的测试 ID 前缀 | `string` | `'colorpicker'` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 饱和度/亮度面板具有 `role="slider"` 和 `aria-valuetext`
+- 色调滑块具有 `role="slider"` 及 `aria-valuemin`、`aria-valuemax` 和 `aria-valuenow`
+- 颜色预设使用 `role="listbox"` 和 `role="option"` 及 `aria-selected`
+- 完整的键盘导航：方向键调整颜色值，Shift+方向键进行更大步长调整
+- 交互元素上的可见焦点指示器
+- 所有交互元素都有描述性的 `aria-label` 属性

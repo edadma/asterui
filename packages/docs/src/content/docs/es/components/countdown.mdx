@@ -1,0 +1,76 @@
+---
+title: Countdown
+description: Temporizador de cuenta regresiva con formato y estilo personalizables.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithDaysDemo,
+  SizesDemo,
+  WithLabelsDemo,
+  BoxedDemo,
+  CallbackDemo,
+} from '../../../../components/CountdownDemo'
+import CountdownDemoSource from '../../../../components/CountdownDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Temporizador de cuenta regresiva con formato y estilo personalizables.
+
+## Importar
+
+```tsx
+import { Countdown } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Cuenta Regresiva Básica" description="Temporizador de cuenta regresiva simple." source={CountdownDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Días" description="Incluye días en la cuenta regresiva." source={CountdownDemoSource} fn="WithDaysDemo">
+  <WithDaysDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Diferentes variantes de tamaño." source={CountdownDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Etiquetas" description="Muestra etiquetas debajo de cada unidad." source={CountdownDemoSource} fn="WithLabelsDemo">
+  <WithLabelsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estilo con Cajas" description="Cada unidad en una caja con estilo." source={CountdownDemoSource} fn="BoxedDemo">
+  <BoxedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Callback" description="Ejecuta callback cuando la cuenta regresiva termina." source={CountdownDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Countdown`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Marca de tiempo objetivo en milisegundos u objeto Date | `number \| Date` | - |
+| `format` | Cadena de formato: 'D' días, 'H' horas, 'M' minutos, 'S' segundos | `string` | `'HH:MM:SS'` |
+| `onFinish` | Callback cuando la cuenta regresiva llega a cero | `() => void` | - |
+| `onChange` | Callback en cada tick con tiempo restante | `(value: number) => void` | - |
+| `size` | Variante de tamaño | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `showLabels` | Mostrar etiquetas debajo de cada unidad | `boolean` | `false` |
+| `labels` | Etiquetas personalizadas para cada unidad | `{ days?: string, hours?: string, minutes?: string, seconds?: string }` | - |
+| `boxed` | Mostrar estilo de caja alrededor de cada unidad | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa aria-live para anunciar actualizaciones de cuenta regresiva
+- Proporciona aria-label para cada unidad de cuenta regresiva
+- Las etiquetas están asociadas visualmente con sus valores

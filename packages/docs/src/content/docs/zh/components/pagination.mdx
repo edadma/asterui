@@ -1,0 +1,98 @@
+---
+title: Pagination 分页
+description: 使用可自定义的控件浏览数据页面。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizeChangerDemo,
+  ShowTotalDemo,
+  CustomTotalDemo,
+  QuickJumperDemo,
+  AllFeaturesDemo,
+  SimpleDemo,
+  SizesDemo,
+  DisabledDemo,
+} from '../../../../components/PaginationDemo'
+import PaginationDemoSource from '../../../../components/PaginationDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+使用可自定义的控件浏览数据页面。
+
+## 导入
+
+```tsx
+import { Pagination } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础分页" description="带有页码的简单分页。" source={PaginationDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带尺寸更改器" description="允许用户更改每页大小。" source={PaginationDemoSource} fn="SizeChangerDemo">
+  <SizeChangerDemo client:load slot="demo" />
+</Example>
+
+<Example title="显示总数" description="显示项目总数。" source={PaginationDemoSource} fn="ShowTotalDemo">
+  <ShowTotalDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义总数" description="自定义总数的渲染。" source={PaginationDemoSource} fn="CustomTotalDemo">
+  <CustomTotalDemo client:load slot="demo" />
+</Example>
+
+<Example title="快速跳转" description="允许用户跳转到特定页面。" source={PaginationDemoSource} fn="QuickJumperDemo">
+  <QuickJumperDemo client:load slot="demo" />
+</Example>
+
+<Example title="所有功能" description="启用所有功能的分页。" source={PaginationDemoSource} fn="AllFeaturesDemo">
+  <AllFeaturesDemo client:load slot="demo" />
+</Example>
+
+<Example title="简单模式" description="仅带有上一页/下一页控件的最小分页。" source={PaginationDemoSource} fn="SimpleDemo">
+  <SimpleDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="分页控件的不同尺寸。" source={PaginationDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用" description="分页的禁用状态。" source={PaginationDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Pagination`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `current` | 当前页码(受控) | `number` | - |
+| `defaultCurrent` | 默认初始页码 | `number` | `1` |
+| `total` | 项目总数 | `number` | - |
+| `pageSize` | 每页项目数(受控) | `number` | - |
+| `defaultPageSize` | 默认每页项目数 | `number` | `10` |
+| `pageSizeOptions` | 页面大小选择器的选项 | `number[]` | `[10, 20, 50, 100]` |
+| `onChange` | 页面或 pageSize 更改时的回调 | `(page: number, pageSize: number) => void` | - |
+| `onShowSizeChange` | pageSize 更改时的回调 | `(current: number, size: number) => void` | - |
+| `showSizeChanger` | 显示页面大小选择器 | `boolean` | `false` |
+| `showQuickJumper` | 显示快速跳转到页面的输入 | `boolean` | `false` |
+| `showTotal` | 显示总数或自定义渲染函数 | `boolean \| ((total: number, range: [number, number]) => ReactNode)` | `false` |
+| `simple` | 简单模式,带有最少的控件 | `boolean` | `false` |
+| `size` | 分页按钮的尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `disabled` | 禁用所有分页控件 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- 使用带有 `aria-label="Pagination"` 的 `nav` 元素
+- 当前页面用 `aria-current="page"` 标记
+- 禁用的按钮具有正确的 `aria-disabled` 状态
+- 快速跳转输入具有可访问的标签

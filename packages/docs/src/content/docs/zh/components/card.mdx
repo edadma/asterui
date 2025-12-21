@@ -1,0 +1,164 @@
+---
+title: Card 卡片
+description: 用于显示带图片、操作和元信息的内容的灵活容器
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  BorderedDemo,
+  WithCoverDemo,
+  WithActionsDemo,
+  VariantsDemo,
+  SizesDemo,
+  ExtraContentDemo,
+  MetaDemo,
+  CardMetaDemo,
+  HoverableDemo,
+  LoadingDemo,
+  ImageFullDemo,
+  SideLayoutDemo,
+  InnerCardDemo,
+  TabsDemo,
+  GridDemo,
+} from '../../../../components/CardDemo'
+import CardDemoSource from '../../../../components/CardDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于显示分组内容的灵活卡片组件，支持各种布局。
+
+## 引入
+
+```tsx
+import { Card } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本卡片" description="带标题和内容的简单卡片。" source={CardDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="边框" description="带实线边框而不是阴影的卡片。" source={CardDemoSource} fn="BorderedDemo">
+  <BorderedDemo client:load slot="demo" />
+</Example>
+
+<Example title="带封面图片" description="内容上方带封面图片的卡片。" source={CardDemoSource} fn="WithCoverDemo">
+  <WithCoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="带操作按钮" description="底部带操作按钮的卡片。" source={CardDemoSource} fn="WithActionsDemo">
+  <WithActionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="变体" description="不同的卡片样式变体：shadow、border、dash、borderless。" source={CardDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="从 xs 到 lg 的卡片尺寸，内边距不同。" source={CardDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="额外内容" description="使用 extra 属性在卡片标题中添加额外内容。" source={CardDemoSource} fn="ExtraContentDemo">
+  <ExtraContentDemo client:load slot="demo" />
+</Example>
+
+<Example title="元信息布局" description="内置的头像、标题和描述布局。" source={CardDemoSource} fn="MetaDemo">
+  <MetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="Card.Meta 组件" description="用于灵活定位的独立 meta 组件。" source={CardDemoSource} fn="CardMetaDemo">
+  <CardMetaDemo client:load slot="demo" />
+</Example>
+
+<Example title="可悬停" description="带悬停阴影效果的卡片。" source={CardDemoSource} fn="HoverableDemo">
+  <HoverableDemo client:load slot="demo" />
+</Example>
+
+<Example title="加载状态" description="内容加载时的骨架屏加载状态。" source={CardDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="全图片" description="内容叠加在封面图片上。" source={CardDemoSource} fn="ImageFullDemo">
+  <ImageFullDemo client:load slot="demo" />
+</Example>
+
+<Example title="侧边布局" description="图片在侧边的横向布局。" source={CardDemoSource} fn="SideLayoutDemo">
+  <SideLayoutDemo client:load slot="demo" />
+</Example>
+
+<Example title="内嵌卡片" description="具有细微背景区别的嵌套卡片。" source={CardDemoSource} fn="InnerCardDemo">
+  <InnerCardDemo client:load slot="demo" />
+</Example>
+
+<Example title="带标签页" description="带标签页内容导航的卡片。" source={CardDemoSource} fn="TabsDemo">
+  <TabsDemo client:load slot="demo" />
+</Example>
+
+<Example title="卡片网格" description="卡片内的网格布局，带可悬停单元格。" source={CardDemoSource} fn="GridDemo">
+  <GridDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Card`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `title` | 卡片标题 | `ReactNode` | - |
+| `extra` | 标题右上角的内容 | `ReactNode` | - |
+| `cover` | 封面图片元素 | `ReactNode` | - |
+| `actions` | 底部的操作按钮 | `ReactNode` | - |
+| `size` | 卡片大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `variant` | 卡片样式变体 | `'shadow' \| 'border' \| 'dash' \| 'borderless'` | `'shadow'` |
+| `type` | 嵌套的内嵌卡片样式 | `'inner'` | - |
+| `side` | 带侧边图片的横向布局 | `boolean` | `false` |
+| `imageFull` | 内容叠加在封面图片上 | `boolean` | `false` |
+| `actionsJustify` | 操作按钮对齐方式 | `'start' \| 'center' \| 'end'` | `'end'` |
+| `loading` | 显示骨架屏加载状态 | `boolean` | `false` |
+| `hoverable` | 添加悬停阴影效果 | `boolean` | `false` |
+| `avatar` | meta 布局的头像 | `ReactNode` | - |
+| `description` | meta 布局的描述 | `ReactNode` | - |
+| `tabList` | 卡片标签页项 | `CardTabItem[]` | - |
+| `activeTabKey` | 激活的标签页键（受控） | `string` | - |
+| `defaultActiveTabKey` | 默认激活的标签页键 | `string` | - |
+| `onTabChange` | 标签页改变回调函数 | `(key: string) => void` | - |
+| `tabBarExtraContent` | 标签页旁的额外内容 | `ReactNode` | - |
+| `children` | 卡片主体内容 | `ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `bodyClassName` | card-body 元素的额外 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `CSSProperties` | - |
+
+### `Card.Meta`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `avatar` | 头像或图标元素 | `ReactNode` | - |
+| `title` | 标题内容 | `ReactNode` | - |
+| `description` | 描述内容 | `ReactNode` | - |
+
+### `Card.Grid`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `hoverable` | 添加悬停效果 | `boolean` | `false` |
+| `children` | 网格单元格内容 | `ReactNode` | - |
+
+### `CardTabItem`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 唯一标签页标识符 | `string` | - |
+| `label` | 标签页标签内容 | `ReactNode` | - |
+| `disabled` | 禁用标签页 | `boolean` | `false` |
+
+## 无障碍
+
+- 卡片结构使用语义化 HTML
+- 标签页导航使用适当的 ARIA 角色和状态
+- 加载状态提供视觉反馈
+- 交互元素的焦点状态可见

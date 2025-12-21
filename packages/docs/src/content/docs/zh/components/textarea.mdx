@@ -1,0 +1,79 @@
+---
+title: Textarea 文本域
+description: 用于较长文本内容的多行文本输入组件。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  RowsDemo,
+  SizesDemo,
+  ColorsDemo,
+  GhostDemo,
+  DisabledDemo,
+  FormDemo,
+} from '../../../../components/TextareaDemo'
+import TextareaDemoSource from '../../../../components/TextareaDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于较长文本内容的多行文本输入组件。
+
+## 导入
+
+```tsx
+import { Textarea } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础文本域" description="带占位符的简单文本域。" source={TextareaDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带行数" description="使用 rows 属性控制高度。" source={TextareaDemoSource} fn="RowsDemo">
+  <RowsDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="五种尺寸: xs、sm、md、lg 和 xl。" source={TextareaDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="不同状态的颜色变体。" source={TextareaDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="幽灵变体" description="透明背景样式。" source={TextareaDemoSource} fn="GhostDemo">
+  <GhostDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用状态" description="非交互式禁用文本域。" source={TextareaDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="在表单中" description="带有表单验证的文本域。" source={TextareaDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `size` | 文本域大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
+| `color` | 文本域颜色主题 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `ghost` | 幽灵样式变体 | `boolean` | `false` |
+| `bordered` | 显示边框 | `boolean` | `true` |
+| `disabled` | 禁用状态 | `boolean` | `false` |
+| `placeholder` | 占位符文本 | `string` | `-` |
+| `rows` | 可见文本行数 | `number` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+- 使用原生 `<textarea>` 以获得完全的可访问性
+- 与标准表单标签配合使用
+- 禁用状态得到正确传达
+- 默认情况下可调整大小以提高用户舒适度

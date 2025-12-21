@@ -1,0 +1,41 @@
+---
+title: useClipboard
+description: 将文本复制到剪贴板并带有成功/错误状态的 Hook。
+---
+
+将文本复制到剪贴板并跟踪成功/错误状态。
+
+## 导入
+
+```tsx
+import { useClipboard } from 'asterui'
+```
+
+## 用法
+
+```tsx
+function CopyExample() {
+  const { copy, copied } = useClipboard()
+
+  return (
+    <Button onClick={() => copy('Hello, World!')}>
+      {copied ? 'Copied!' : 'Copy to Clipboard'}
+    </Button>
+  )
+}
+```
+
+## 参数
+
+| 参数 | 类型 | 默认值 | 描述 |
+|-----------|------|---------|-------------|
+| `timeout` | `number` | `2000` | 显示已复制状态的持续时间（毫秒） |
+
+## 返回值
+
+| 属性 | 类型 | 描述 |
+|----------|------|-------------|
+| `copy` | `(text: string) => Promise<boolean>` | 复制文本，返回成功状态 |
+| `copied` | `boolean` | 如果最近成功复制则为 true |
+| `error` | `Error \| null` | 如果复制失败则为错误 |
+| `reset` | `() => void` | 重置已复制和错误状态 |

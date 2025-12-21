@@ -1,0 +1,110 @@
+---
+title: Steps
+description: Indicador de progreso visual mostrando pasos secuenciales.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  ColorsDemo,
+  CustomContentDemo,
+  ResponsiveDemo,
+  CurrentDemo,
+  DataDrivenDemo,
+  WithIconsDemo,
+} from '../../../../components/StepsDemo'
+import StepsDemoSource from '../../../../components/StepsDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Indicador de progreso visual mostrando pasos secuenciales.
+
+## Importar
+
+```tsx
+import { Steps } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Steps básicos" description="Progresión de pasos horizontal." source={StepsDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Steps verticales" description="Pasos en orientación vertical." source={StepsDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diferentes colores" description="Pasos con varios colores semánticos." source={StepsDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenido personalizado" description="Indicadores personalizados usando dataContent." source={StepsDemoSource} fn="CustomContentDemo">
+  <CustomContentDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diseño responsivo" description="Vertical en móvil, horizontal en escritorio." source={StepsDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Paso actual controlado" description="Usa la prop current para controlar el progreso del paso." source={StepsDemoSource} fn="CurrentDemo">
+  <CurrentDemo client:load slot="demo" />
+</Example>
+
+<Example title="Patrón basado en datos" description="Usa la prop items para pasos basados en datos con navegación por clic." source={StepsDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con iconos" description="Pasos con iconos personalizados." source={StepsDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Steps`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Elementos de paso (patrón compuesto) | `React.ReactNode` | `-` |
+| `items` | Elementos de paso (patrón basado en datos) | `StepItem[]` | `-` |
+| `current` | Índice del paso actual (basado en 0) | `number` | `-` |
+| `direction` | Dirección del diseño | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| `vertical` | Diseño vertical (obsoleto, usa direction) | `boolean` | `false` |
+| `onChange` | Callback cuando se hace clic en un paso | `(current: number) => void` | `-` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+### `StepItem` (para prop items)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único | `string` | `-` |
+| `title` | Título del paso | `React.ReactNode` | `-` |
+| `description` | Descripción del paso | `React.ReactNode` | `-` |
+| `icon` | Icono del paso | `React.ReactNode` | `-` |
+| `color` | Color del paso | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `disabled` | Si el paso está deshabilitado | `boolean` | `false` |
+
+### `Steps.Step` (patrón compuesto)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del paso | `React.ReactNode` | `-` |
+| `title` | Título del paso (alternativa a children) | `React.ReactNode` | `-` |
+| `description` | Descripción del paso | `React.ReactNode` | `-` |
+| `icon` | Icono del paso | `React.ReactNode` | `-` |
+| `color` | Color del paso | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `dataContent` | Contenido personalizado para indicador de paso | `string` | `-` |
+| `disabled` | Si el paso está deshabilitado | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+## Accesibilidad
+
+Consejos de uso:
+- Usa la prop `current` para controlar qué paso está activo
+- Los pasos antes de `current` se marcan automáticamente como completados
+- Usa `onChange` para habilitar el clic en pasos para navegación
+- Usa clases responsivas para diseños amigables para móviles

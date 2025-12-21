@@ -1,0 +1,56 @@
+---
+title: HoverGallery
+description: 通过水平悬停显示多张图片。适用于产品画廊。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ProductCardDemo,
+  TwoImagesDemo,
+} from '../../../../components/HoverGalleryDemo'
+import HoverGalleryDemoSource from '../../../../components/HoverGalleryDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+通过水平悬停显示多张图片。适用于产品画廊。
+
+## 导入
+
+```tsx
+import { HoverGallery } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础画廊" description="水平悬停以显示不同的图片。" source={HoverGalleryDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="产品卡" description="完美适用于电子商务产品展示。" source={HoverGalleryDemoSource} fn="ProductCardDemo">
+  <ProductCardDemo client:load slot="demo" />
+</Example>
+
+<Example title="两张图片" description="简单的前后或正反面对比。" source={HoverGalleryDemoSource} fn="TwoImagesDemo">
+  <TwoImagesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `HoverGallery`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `images` | 图片 URL 数组（2-10 张图片） | `string[]` | - |
+| `alts` | 每张图片的替代文本 | `string[]` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 注意
+
+- 支持最多 10 张图片
+- 默认显示第一张图片
+- 纯 CSS - 悬停效果不需要 JavaScript
+- 最好使用相同宽高比的图片

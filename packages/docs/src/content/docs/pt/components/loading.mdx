@@ -1,0 +1,61 @@
+---
+title: Loading
+description: Exiba estados de carregamento com vários indicadores animados para mostrar processos em andamento.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TypesDemo,
+  SizesDemo,
+  ColorsDemo,
+} from '../../../../components/LoadingDemo'
+import LoadingDemoSource from '../../../../components/LoadingDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exiba estados de carregamento com vários indicadores animados para mostrar processos em andamento.
+
+## Importação
+
+```tsx
+import { Loading } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Loading Básico" description="Spinner de carregamento padrão." source={LoadingDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tipos de Loading" description="Diferentes tipos de animação para indicadores de carregamento." source={LoadingDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Controle o tamanho do indicador de carregamento." source={LoadingDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores" description="Diferentes variantes de cor para indicadores de carregamento." source={LoadingDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Loading`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `size` | Tamanho do indicador de carregamento | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `type` | Tipo de animação de carregamento | `'spinner' \| 'dots' \| 'ring' \| 'ball' \| 'bars' \| 'infinity'` | `'spinner'` |
+| `color` | Cor do indicador de carregamento | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa `aria-label` para descrever o estado de carregamento
+- Animação pode ser pausada por usuários que preferem movimento reduzido
+- Garanta que indicadores de carregamento sejam pareados com texto para leitores de tela quando possível

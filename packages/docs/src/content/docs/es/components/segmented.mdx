@@ -1,0 +1,96 @@
+---
+title: Segmented
+description: Alternador en línea para cambiar entre opciones mutuamente exclusivas
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DisabledItemsDemo,
+  SizesDemo,
+  BlockDemo,
+  DisabledDemo,
+  WithIconsDemo,
+} from '../../../../components/SegmentedDemo'
+import SegmentedDemoSource from '../../../../components/SegmentedDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Alternador en línea para cambiar entre opciones mutuamente exclusivas.
+
+## Importar
+
+```tsx
+import { Segmented } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Uso básico" description="Control segmentado simple para cambio de vista." source={SegmentedDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Elementos deshabilitados" description="Los elementos individuales pueden deshabilitarse." source={SegmentedDemoSource} fn="DisabledItemsDemo">
+  <DisabledItemsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Cuatro opciones de tamaño disponibles." source={SegmentedDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo bloque" description="Ancho completo con opciones de tamaño igual." source={SegmentedDemoSource} fn="BlockDemo">
+  <BlockDemo client:load slot="demo" />
+</Example>
+
+<Example title="Deshabilitado" description="Estado deshabilitado para el control completo." source={SegmentedDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con iconos" description="Opciones con iconos y etiquetas." source={SegmentedDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Segmented`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Valor seleccionado actualmente (controlado) | `string \| number` | - |
+| `defaultValue` | Valor seleccionado predeterminado (no controlado) | `string \| number` | - |
+| `onChange` | Callback cuando cambia la selección | `(value: string \| number) => void` | - |
+| `size` | Tamaño del control | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `block` | Tomar ancho completo del contenedor | `boolean` | `false` |
+| `disabled` | Deshabilitar todas las opciones | `boolean` | `false` |
+| `className` | Clase CSS adicional | `string` | - |
+| `children` | Componentes Segmented.Item | `ReactNode` | - |
+
+### `Segmented.Item`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Valor de opción (requerido) | `string \| number` | - |
+| `disabled` | Deshabilitar esta opción | `boolean` | `false` |
+| `icon` | Icono antes de la etiqueta | `ReactNode` | - |
+| `children` | Contenido de etiqueta | `ReactNode` | - |
+| `className` | Clase CSS adicional | `string` | - |
+
+## Cuándo usar
+
+- **Alternar vistas**: Cambiar entre vistas Lista/Cuadrícula/Tabla
+- **Períodos de tiempo**: Filtros Día/Semana/Mes/Año
+- **Selectores de tamaño**: Opciones S/M/L/XL
+- **Alineación**: Controles Izquierda/Centro/Derecha
+- **Cambios de modo**: Alternadores de tema Claro/Oscuro
+
+## Segmented vs Radio.Group
+
+| Segmented | Radio.Group |
+|-----------|-------------|
+| Cambios inmediatos de estado de UI | Valores de campo de formulario |
+| Apariencia compacta tipo botón | Botones de radio tradicionales |
+| Opciones siempre visibles | Puede tener muchas opciones |
+| Típicamente 2-5 opciones | Cualquier número de opciones |

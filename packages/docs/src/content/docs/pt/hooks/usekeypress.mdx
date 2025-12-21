@@ -1,0 +1,70 @@
+---
+title: useKeyPress
+description: Hook que detecta quando uma tecla específica é pressionada.
+---
+
+Detecta pressionamentos de tecla do teclado com suporte opcional a callback.
+
+## Importação
+
+```tsx
+import { useKeyPress, useKeyPressCallback } from 'asterui'
+```
+
+## Uso
+
+### Baseado em Estado
+
+```tsx
+function KeyPressExample() {
+  const escapePressed = useKeyPress('Escape')
+
+  useEffect(() => {
+    if (escapePressed) closeModal()
+  }, [escapePressed])
+
+  return <div>{escapePressed ? 'Escape pressed!' : 'Press Escape'}</div>
+}
+```
+
+### Baseado em Callback
+
+```tsx
+function CallbackExample() {
+  useKeyPressCallback('Escape', () => closeModal())
+  useKeyPressCallback('Enter', () => submitForm(), { preventDefault: true })
+
+  return <Form>...</Form>
+}
+```
+
+## Parâmetros
+
+### useKeyPress
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-------------|
+| `targetKey` | `string` | Tecla para detectar (ex: `'Enter'`, `'Escape'`, `'a'`) |
+| `options` | `UseKeyPressOptions` | Opções de configuração |
+
+### useKeyPressCallback
+
+| Parâmetro | Tipo | Descrição |
+|-----------|------|-------------|
+| `targetKey` | `string` | Tecla para detectar |
+| `callback` | `(event: KeyboardEvent) => void` | Função para chamar |
+| `options` | `UseKeyPressOptions` | Opções de configuração |
+
+## Opções
+
+| Propriedade | Tipo | Padrão | Descrição |
+|----------|------|---------|-------------|
+| `target` | `HTMLElement \| Window` | `window` | Elemento alvo para o ouvinte |
+| `event` | `'keydown' \| 'keyup'` | `'keydown'` | Tipo de evento para ouvir |
+| `preventDefault` | `boolean` | `false` | Prevenir comportamento padrão do navegador |
+
+## Valor de Retorno (useKeyPress)
+
+| Tipo | Descrição |
+|------|-------------|
+| `boolean` | Verdadeiro enquanto a tecla está pressionada |

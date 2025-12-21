@@ -1,0 +1,70 @@
+---
+title: useKeyPress
+description: 检测特定按键被按下的 Hook。
+---
+
+检测键盘按键，支持可选的回调。
+
+## 导入
+
+```tsx
+import { useKeyPress, useKeyPressCallback } from 'asterui'
+```
+
+## 用法
+
+### 基于状态
+
+```tsx
+function KeyPressExample() {
+  const escapePressed = useKeyPress('Escape')
+
+  useEffect(() => {
+    if (escapePressed) closeModal()
+  }, [escapePressed])
+
+  return <div>{escapePressed ? 'Escape pressed!' : 'Press Escape'}</div>
+}
+```
+
+### 基于回调
+
+```tsx
+function CallbackExample() {
+  useKeyPressCallback('Escape', () => closeModal())
+  useKeyPressCallback('Enter', () => submitForm(), { preventDefault: true })
+
+  return <Form>...</Form>
+}
+```
+
+## 参数
+
+### useKeyPress
+
+| 参数 | 类型 | 描述 |
+|-----------|------|-------------|
+| `targetKey` | `string` | 要检测的键（例如 `'Enter'`、`'Escape'`、`'a'`） |
+| `options` | `UseKeyPressOptions` | 配置选项 |
+
+### useKeyPressCallback
+
+| 参数 | 类型 | 描述 |
+|-----------|------|-------------|
+| `targetKey` | `string` | 要检测的键 |
+| `callback` | `(event: KeyboardEvent) => void` | 要调用的函数 |
+| `options` | `UseKeyPressOptions` | 配置选项 |
+
+## 选项
+
+| 属性 | 类型 | 默认值 | 描述 |
+|----------|------|---------|-------------|
+| `target` | `HTMLElement \| Window` | `window` | 监听器的目标元素 |
+| `event` | `'keydown' \| 'keyup'` | `'keydown'` | 要监听的事件类型 |
+| `preventDefault` | `boolean` | `false` | 阻止默认浏览器行为 |
+
+## 返回值 (useKeyPress)
+
+| 类型 | 描述 |
+|------|-------------|
+| `boolean` | 按键被按下时为 true |

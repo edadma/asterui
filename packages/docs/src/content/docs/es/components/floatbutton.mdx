@@ -1,0 +1,113 @@
+---
+title: FloatButton
+description: Botón de acción flotante que permanece fijo en la página para acceso rápido a acciones comunes.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithTooltipDemo,
+  TypesDemo,
+  ShapesDemo,
+  WithBadgeDemo,
+  GroupDemo,
+  BackTopDemo,
+} from '../../../../components/FloatButtonDemo'
+import FloatButtonDemoSource from '../../../../components/FloatButtonDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Botón de acción flotante que permanece fijo en la página para acceso rápido a acciones comunes.
+
+## Importar
+
+```tsx
+import { FloatButton } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Botón de acción flotante simple." source={FloatButtonDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Tooltip" description="Botón flotante con tooltip al pasar el ratón." source={FloatButtonDemoSource} fn="WithTooltipDemo">
+  <WithTooltipDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tipos" description="Tipos de botón predeterminado y primario." source={FloatButtonDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Formas" description="Formas de botón circulares y cuadradas." source={FloatButtonDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Badge" description="Botón flotante con insignia de notificación." source={FloatButtonDemoSource} fn="WithBadgeDemo">
+  <WithBadgeDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grupo de Botones Flotantes" description="Grupo de botones flotantes que se expanden al hacer clic." source={FloatButtonDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="Volver Arriba" description="Botón de desplazamiento hacia arriba que aparece después de desplazarse hacia abajo." source={FloatButtonDemoSource} fn="BackTopDemo">
+  <BackTopDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `FloatButton`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `icon` | Icono a mostrar en el botón | `React.ReactNode` | - |
+| `description` | Texto de descripción debajo del icono | `React.ReactNode` | - |
+| `type` | Tipo/color del botón | `'default' \| 'primary'` | `'default'` |
+| `shape` | Forma del botón | `'circle' \| 'square'` | `'circle'` |
+| `tooltip` | Texto de tooltip al pasar el ratón | `string` | - |
+| `tooltipPlacement` | Posición del tooltip | `'left' \| 'right' \| 'top' \| 'bottom'` | `'left'` |
+| `badge` | Contenido de la insignia a mostrar | `number \| React.ReactNode` | - |
+| `href` | URL del enlace (renderiza como ancla) | `string` | - |
+| `target` | Target del enlace | `string` | - |
+| `onClick` | Manejador de evento de clic | `() => void` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `FloatButton.Group`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Componentes FloatButton a agrupar | `React.ReactNode` | - |
+| `flower` | Organiza botones en diseño de cuarto de círculo (radial) | `boolean` | `false` |
+| `shape` | Forma del botón para los hijos | `'circle' \| 'square'` | `'circle'` |
+| `icon` | Icono del botón activador principal | `React.ReactNode` | - |
+| `mainAction` | Icono del botón de acción principal (reemplaza activador cuando está abierto) | `React.ReactNode` | - |
+| `onMainAction` | Manejador de clic para el botón de acción principal | `() => void` | - |
+| `showClose` | Mostrar botón de cierre cuando está abierto | `boolean` | `false` |
+| `type` | Tipo/color del botón | `'default' \| 'primary'` | `'default'` |
+| `position` | Posición en pantalla | `'bottom-right' \| 'bottom-left' \| 'top-right' \| 'top-left'` | `'bottom-right'` |
+| `offset` | Distancia desde el borde en píxeles | `number` | `24` |
+
+### `FloatButton.BackTop`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `visibilityHeight` | Distancia de desplazamiento antes de que aparezca el botón (píxeles) | `number` | `400` |
+| `target` | Elemento objetivo de desplazamiento | `() => HTMLElement \| Window` | - |
+| `onClick` | Manejador de evento de clic (llamado antes de desplazarse) | `() => void` | - |
+| `icon` | Icono personalizado | `React.ReactNode` | - |
+| `duration` | Duración de la animación de desplazamiento en ms | `number` | `450` |
+| `position` | Posición en pantalla | `'bottom-right' \| 'bottom-left'` | `'bottom-right'` |
+| `offset` | Distancia desde el borde en píxeles | `number` | `24` |
+
+## Accesibilidad
+
+- Usa elemento `<button>` nativo para soporte de teclado adecuado
+- Soporta prop `href` para renderizar como ancla para funcionalidad de enlace
+- Los tooltips proporcionan contexto para lectores de pantalla cuando están presentes
+- Los estados de enfoque son claramente visibles para navegación por teclado
+- La expansión del grupo es accesible por teclado
+- El botón BackTop aparece/desaparece según la posición de desplazamiento

@@ -1,0 +1,131 @@
+---
+title: Checkbox 复选框
+description: 用于从集合中选择多个选项的复选框输入
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ColorsDemo,
+  SizesDemo,
+  DisabledDemo,
+  IndeterminateDemo,
+  GroupDemo,
+  GroupOptionsDemo,
+  GroupDirectionDemo,
+  ControlledDemo,
+  SwapDemo,
+} from '../../../../components/CheckboxDemo'
+import CheckboxDemoSource from '../../../../components/CheckboxDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于选择多个选项的复选框组件，支持各种样式和分组功能。
+
+## 引入
+
+```tsx
+import { Checkbox } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="带标签的简单复选框。" source={CheckboxDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="用于各种上下文的不同复选框颜色。" source={CheckboxDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="从 xs 到 xl 的五种复选框尺寸。" source={CheckboxDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用状态" description="禁用的复选框状态。" source={CheckboxDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="不确定状态" description="用于全选功能的不确定状态。" source={CheckboxDemoSource} fn="IndeterminateDemo">
+  <IndeterminateDemo client:load slot="demo" />
+</Example>
+
+<Example title="复选框组" description="使用共享状态分组多个复选框。" source={CheckboxDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="带选项的组" description="从选项数组生成复选框，支持禁用。" source={CheckboxDemoSource} fn="GroupOptionsDemo">
+  <GroupOptionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="组方向" description="横向和纵向组布局。" source={CheckboxDemoSource} fn="GroupDirectionDemo">
+  <GroupDirectionDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控模式" description="带外部状态管理的受控复选框。" source={CheckboxDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="交换模式" description="使用动画效果在两个视觉状态之间切换。" source={CheckboxDemoSource} fn="SwapDemo">
+  <SwapDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Checkbox`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `checked` | 受控的选中状态 | `boolean` | - |
+| `defaultChecked` | 默认选中状态 | `boolean` | - |
+| `disabled` | 禁用复选框 | `boolean` | `false` |
+| `indeterminate` | 不确定状态（部分选择） | `boolean` | `false` |
+| `size` | 复选框大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | 复选框颜色 | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'success' \| 'warning' \| 'info' \| 'error'` | - |
+| `swap` | 交换模式配置 | `CheckboxSwapConfig` | - |
+| `value` | 在组中使用时的值 | `string \| number` | - |
+| `onChange` | 改变事件处理函数 | `(e: ChangeEvent) => void` | - |
+| `name` | 输入的 HTML name 属性 | `string` | - |
+| `autoFocus` | 挂载时自动聚焦 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `children` | 标签内容（自动包裹在 label 元素中） | `ReactNode` | - |
+
+### `Checkbox.Group`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 受控的选中值 | `(string \| number)[]` | - |
+| `defaultValue` | 默认选中值 | `(string \| number)[]` | - |
+| `onChange` | 选择改变回调函数 | `(values: (string \| number)[]) => void` | - |
+| `disabled` | 禁用所有复选框 | `boolean` | `false` |
+| `options` | 复选框选项 | `(string \| number \| CheckboxOptionType)[]` | - |
+| `direction` | 布局方向 | `'horizontal' \| 'vertical'` | `'vertical'` |
+| `name` | 所有复选框的 HTML name 属性（用于表单提交） | `string` | - |
+| `children` | 手动复选框元素 | `ReactNode` | - |
+
+### `CheckboxSwapConfig`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `on` | 选中时显示的内容 | `ReactNode` | - |
+| `off` | 未选中时显示的内容 | `ReactNode` | - |
+| `effect` | 动画效果 | `'rotate' \| 'flip'` | - |
+
+### `CheckboxOptionType`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `label` | 选项标签 | `ReactNode` | - |
+| `value` | 选项值 | `string \| number` | - |
+| `disabled` | 禁用此选项 | `boolean` | `false` |
+
+## 无障碍
+
+- 使用原生复选框输入以获得键盘和屏幕阅读器支持
+- 正确地将标签与复选框关联
+- 不确定状态通过原生 indeterminate 属性传达
+- 禁用状态防止交互并传达给辅助技术
+- 焦点状态对键盘导航可见

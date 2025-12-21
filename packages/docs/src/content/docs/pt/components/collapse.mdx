@@ -1,0 +1,92 @@
+---
+title: Collapse
+description: Painéis de conteúdo recolhíveis para FAQs, acordeões e seções expansíveis.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AccordionDemo,
+  BorderlessDemo,
+  NestedDemo,
+  GhostDemo,
+  PlusIconDemo,
+} from '../../../../components/CollapseDemo'
+import CollapseDemoSource from '../../../../components/CollapseDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Painéis de conteúdo recolhíveis para FAQs, acordeões e seções expansíveis.
+
+## Importação
+
+```tsx
+import { Collapse } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Collapse Básico" description="Painéis recolhíveis simples." source={CollapseDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Acordeão" description="Apenas um painel pode estar aberto por vez." source={CollapseDemoSource} fn="AccordionDemo">
+  <AccordionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sem Borda" description="Collapse sem bordas." source={CollapseDemoSource} fn="BorderlessDemo">
+  <BorderlessDemo client:load slot="demo" />
+</Example>
+
+<Example title="Conteúdo Aninhado" description="Collapse com conteúdo aninhado rico." source={CollapseDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo Ghost" description="Fundo transparente para aparência mínima." source={CollapseDemoSource} fn="GhostDemo">
+  <GhostDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ícone Plus/Minus" description="Use ícones plus/minus em vez de setas." source={CollapseDemoSource} fn="PlusIconDemo">
+  <PlusIconDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Collapse`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `items` | Itens de painel do collapse | `CollapseItemType[]` | - |
+| `activeKey` | Chaves de painel ativo controladas | `string \| number \| (string \| number)[]` | - |
+| `defaultActiveKey` | Chaves de painel ativo iniciais | `string \| number \| (string \| number)[]` | - |
+| `accordion` | Apenas um painel aberto por vez | `boolean` | `false` |
+| `bordered` | Mostrar borda ao redor dos painéis | `boolean` | `true` |
+| `ghost` | Estilo de fundo transparente | `boolean` | `false` |
+| `size` | Variante de tamanho | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `icon` | Tipo de ícone para indicador de expansão | `'arrow' \| 'plus' \| 'none'` | `'arrow'` |
+| `expandIconPlacement` | Posicionamento do ícone | `'start' \| 'end'` | `'start'` |
+| `onChange` | Handler de mudança | `(activeKey: (string \| number)[]) => void` | - |
+| `data-testid` | ID de teste para o componente | `string` | `'collapse'` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `CollapseItemType`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `key` | Identificador único para o painel | `string \| number` | - |
+| `label` | Conteúdo do cabeçalho do painel | `React.ReactNode` | - |
+| `children` | Conteúdo do corpo do painel | `React.ReactNode` | - |
+| `extra` | Elemento extra no canto do cabeçalho | `React.ReactNode` | - |
+| `showArrow` | Se deve mostrar o ícone de expansão | `boolean` | `true` |
+| `collapsible` | Modo recolhível | `'header' \| 'icon' \| 'disabled'` | - |
+| `className` | Nome de classe personalizado para este painel | `string` | - |
+
+## Acessibilidade
+
+- Cabeçalhos de painel são acessíveis via teclado com Enter e Espaço
+- Usa `aria-expanded` para indicar o estado do painel
+- Usa `aria-disabled` para painéis desabilitados
+- Painéis expõem `data-state` para testes e estilização

@@ -1,0 +1,64 @@
+---
+title: Fieldset
+description: Agrupe controles de formulário relacionados com uma legenda opcional e estado desabilitado.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithInputsDemo,
+  DisabledDemo,
+} from '../../../../components/FieldsetDemo'
+import FieldsetDemoSource from '../../../../components/FieldsetDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Agrupe controles de formulário relacionados com uma legenda opcional e estado desabilitado.
+
+## Importação
+
+```tsx
+import { Fieldset } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Fieldset Básico" description="Fieldset simples com legenda." source={FieldsetDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Campos de Formulário" description="Fieldset contendo campos de formulário com rótulos." source={FieldsetDemoSource} fn="WithInputsDemo">
+  <WithInputsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Fieldset Desabilitado" description="Todos os controles de formulário dentro são desabilitados." source={FieldsetDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Fieldset`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo do fieldset | `React.ReactNode` | - |
+| `disabled` | Desabilita todos os controles de formulário dentro | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `Fieldset.Legend`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Texto ou conteúdo da legenda | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `Fieldset.Label`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Texto ou conteúdo do rótulo | `React.ReactNode` | - |
+| `htmlFor` | ID do elemento de formulário ao qual o rótulo se refere | `string` | - |
+| `className` | Classes CSS adicionais | `string` | - |

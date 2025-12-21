@@ -1,0 +1,41 @@
+---
+title: usePrevious
+description: Hook que devuelve el valor anterior de una variable.
+---
+
+Devuelve el valor del renderizado anterior. Útil para comparar valores.
+
+## Importar
+
+```tsx
+import { usePrevious } from 'asterui'
+```
+
+## Uso
+
+```tsx
+function CounterExample() {
+  const [count, setCount] = useState(0)
+  const prevCount = usePrevious(count)
+
+  return (
+    <div>
+      <p>Current: {count}</p>
+      <p>Previous: {prevCount ?? 'N/A'}</p>
+      <Button onClick={() => setCount(c => c + 1)}>Increment</Button>
+    </div>
+  )
+}
+```
+
+## Parámetros
+
+| Parámetro | Tipo | Descripción |
+|-----------|------|-------------|
+| `value` | `T` | Valor actual a rastrear |
+
+## Valor de Retorno
+
+| Tipo | Descripción |
+|------|-------------|
+| `T \| undefined` | Valor anterior (undefined en el primer renderizado) |

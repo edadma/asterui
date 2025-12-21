@@ -1,0 +1,76 @@
+---
+title: Countdown
+description: Temporizador de contagem regressiva com formato e estilização personalizáveis.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithDaysDemo,
+  SizesDemo,
+  WithLabelsDemo,
+  BoxedDemo,
+  CallbackDemo,
+} from '../../../../components/CountdownDemo'
+import CountdownDemoSource from '../../../../components/CountdownDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Temporizador de contagem regressiva com formato e estilização personalizáveis.
+
+## Importação
+
+```tsx
+import { Countdown } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Countdown Básico" description="Temporizador de contagem regressiva simples." source={CountdownDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Dias" description="Incluir dias na contagem regressiva." source={CountdownDemoSource} fn="WithDaysDemo">
+  <WithDaysDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Diferentes variantes de tamanho." source={CountdownDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Rótulos" description="Mostrar rótulos abaixo de cada unidade." source={CountdownDemoSource} fn="WithLabelsDemo">
+  <WithLabelsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estilo em Caixa" description="Cada unidade em uma caixa estilizada." source={CountdownDemoSource} fn="BoxedDemo">
+  <BoxedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Callback" description="Executar callback quando a contagem regressiva terminar." source={CountdownDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Countdown`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `value` | Timestamp alvo em milissegundos ou objeto Date | `number \| Date` | - |
+| `format` | String de formato: 'D' dias, 'H' horas, 'M' minutos, 'S' segundos | `string` | `'HH:MM:SS'` |
+| `onFinish` | Callback quando a contagem regressiva chega a zero | `() => void` | - |
+| `onChange` | Callback em cada tick com tempo restante | `(value: number) => void` | - |
+| `size` | Variante de tamanho | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `showLabels` | Mostrar rótulos abaixo de cada unidade | `boolean` | `false` |
+| `labels` | Rótulos personalizados para cada unidade | `{ days?: string, hours?: string, minutes?: string, seconds?: string }` | - |
+| `boxed` | Mostrar estilo de caixa ao redor de cada unidade | `boolean` | `false` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa aria-live para anunciar atualizações da contagem regressiva
+- Fornece aria-label para cada unidade de contagem regressiva
+- Rótulos são visualmente associados com seus valores

@@ -1,0 +1,102 @@
+---
+title: QRCode
+description: Genera códigos QR con apariencia personalizable, iconos y estados de estado.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ColorsDemo,
+  IconDemo,
+  ErrorLevelDemo,
+  BorderDemo,
+  LoadingDemo,
+  ExpiredDemo,
+  DynamicDemo,
+} from '../../../../components/QRCodeDemo'
+import QRCodeDemoSource from '../../../../components/QRCodeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Genera códigos QR con apariencia personalizable, iconos y estados de estado. Los colores se adaptan automáticamente a temas claros/oscuros.
+
+## Instalación
+
+Este componente requiere `qrcode` como dependencia de pares:
+
+```bash
+npm install qrcode
+```
+
+## Importar
+
+```tsx
+import { QRCode } from 'asterui/qrcode'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Código QR básico" description="Código QR simple con configuración predeterminada." source={QRCodeDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Tamaño personalizado" description="Diferentes tamaños de código QR." source={QRCodeDemoSource} fn="SizesDemo">
+  <SizesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Colores personalizados" description="Personaliza el color del primer plano. El fondo se adapta al tema por defecto." source={QRCodeDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Con icono" description="Código QR con logo/icono centrado." source={QRCodeDemoSource} fn="IconDemo">
+  <IconDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Nivel de corrección de error" description="Diferentes niveles de corrección de error afectan la densidad del código QR." source={QRCodeDemoSource} fn="ErrorLevelDemo">
+  <ErrorLevelDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Sin borde" description="Elimina el borde para integración perfecta." source={QRCodeDemoSource} fn="BorderDemo">
+  <BorderDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Estado de carga" description="Muestra estado de carga mientras se genera o se obtienen datos del código QR." source={QRCodeDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Estado expirado" description="Muestra estado expirado con funcionalidad de actualización opcional." source={QRCodeDemoSource} fn="ExpiredDemo">
+  <ExpiredDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Código QR dinámico" description="Actualiza el valor del código QR dinámicamente." source={QRCodeDemoSource} fn="DynamicDemo">
+  <DynamicDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `QRCode`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | El valor a codificar en el código QR | `string` | - |
+| `size` | Tamaño del canvas del código QR en píxeles | `number` | `160` |
+| `errorLevel` | Nivel de corrección de error | `'L' \| 'M' \| 'Q' \| 'H'` | `'M'` |
+| `icon` | URL del icono/logo a mostrar en el centro | `string` | - |
+| `iconSize` | Tamaño del icono central en píxeles | `number` | `40` |
+| `type` | Tipo de renderizado | `'canvas' \| 'svg'` | `'canvas'` |
+| `color` | Color del primer plano (color del código QR) | `string` | Adaptable al tema |
+| `bgColor` | Color de fondo | `string` | Adaptable al tema |
+| `bordered` | Mostrar borde alrededor del código QR | `boolean` | `true` |
+| `status` | Estado del código QR | `'active' \| 'loading' \| 'expired'` | `'active'` |
+| `onRefresh` | Callback cuando se hace clic en el botón de actualizar (estado expirado) | `() => void` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Los códigos QR incluyen `role="img"` con etiqueta descriptiva
+- Los estados de carga y expirado se anuncian a lectores de pantalla
+- El botón de actualizar es accesible por teclado

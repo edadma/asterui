@@ -1,0 +1,63 @@
+---
+title: Affix
+description: Hace que un elemento se fije al viewport al desplazarse. Útil para navegación, barras de herramientas o botones de acción.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CallbackDemo,
+  BottomDemo,
+  TargetDemo,
+} from '../../../../components/AffixDemo'
+import AffixDemoSource from '../../../../components/AffixDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Hace que un elemento se fije al viewport al desplazarse. Útil para navegación, barras de herramientas o botones de acción.
+
+## Importar
+
+```tsx
+import { Affix } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Affix Básico" description="El elemento se fija cuando se desplaza más allá de su posición." source={AffixDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Callback" description="Recibe notificaciones cuando cambia el estado del affix." source={AffixDemoSource} fn="CallbackDemo">
+  <CallbackDemo client:load slot="demo" />
+</Example>
+
+<Example title="Affix al Fondo" description="Fija el elemento al fondo del viewport." source={AffixDemoSource} fn="BottomDemo">
+  <BottomDemo client:load slot="demo" />
+</Example>
+
+<Example title="Objetivo Personalizado" description="Affix dentro de un contenedor desplazable." source={AffixDemoSource} fn="TargetDemo">
+  <TargetDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Affix`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido para hacer fijo | `React.ReactNode` | - |
+| `offsetTop` | Desplazamiento desde arriba cuando está fijo (píxeles) | `number` | - |
+| `offsetBottom` | Desplazamiento desde abajo cuando está fijo (píxeles) | `number` | - |
+| `target` | Elemento objetivo de desplazamiento | `() => HTMLElement \| Window` | - |
+| `onChange` | Callback cuando cambia el estado del affix | `(affixed: boolean) => void` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa CSS `position: sticky` para mejor rendimiento
+- No atrapa el foco del teclado cuando está fijado
+- El contenido permanece en el flujo del documento cuando no está fijado

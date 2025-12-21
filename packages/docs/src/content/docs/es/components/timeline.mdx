@@ -1,0 +1,140 @@
+---
+title: Timeline
+description: Muestra eventos en orden cronológico con diseños alternados o verticales.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  HorizontalDemo,
+  CompactDemo,
+  SnapIconDemo,
+  ColorsDemo,
+  ModeStartDemo,
+  ModeEndDemo,
+  PendingDemo,
+  LoadingDemo,
+  ReverseDemo,
+  DeclarativeDemo,
+} from '../../../../components/TimelineDemo'
+import TimelineDemoSource from '../../../../components/TimelineDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Muestra eventos en orden cronológico con diseños alternados o verticales.
+
+## Importación
+
+```tsx
+import { Timeline } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Línea de Tiempo Básica" description="Línea de tiempo simple con contenido alternado." source={TimelineDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Línea de Tiempo Vertical" description="Apila elementos verticalmente." source={TimelineDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Línea de Tiempo Horizontal" description="Muestra elementos horizontalmente." source={TimelineDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Línea de Tiempo Compacta" description="Todo el contenido en un lado." source={TimelineDemoSource} fn="CompactDemo">
+  <CompactDemo client:load slot="demo" />
+</Example>
+
+<Example title="Icono Ajustado" description="Ajusta los iconos al inicio en lugar del centro." source={TimelineDemoSource} fn="SnapIconDemo">
+  <SnapIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores" description="Aplica diferentes colores a los elementos de la línea de tiempo." source={TimelineDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo: Inicio" description="Todos los elementos alineados al inicio." source={TimelineDemoSource} fn="ModeStartDemo">
+  <ModeStartDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo: Fin" description="Todos los elementos alineados al final." source={TimelineDemoSource} fn="ModeEndDemo">
+  <ModeEndDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado Pendiente" description="Muestra una actividad en curso al final." source={TimelineDemoSource} fn="PendingDemo">
+  <PendingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Carga" description="Muestra spinner de carga en elementos individuales." source={TimelineDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Orden Inverso" description="Invierte el orden de los elementos de la línea de tiempo." source={TimelineDemoSource} fn="ReverseDemo">
+  <ReverseDemo client:load slot="demo" />
+</Example>
+
+<Example title="API Declarativa" description="Usa la prop items para líneas de tiempo basadas en datos." source={TimelineDemoSource} fn="DeclarativeDemo">
+  <DeclarativeDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Timeline`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Elementos de línea de tiempo (patrón compuesto) | `React.ReactNode` | `-` |
+| `items` | Elementos de línea de tiempo (API declarativa) | `TimelineItemConfig[]` | `-` |
+| `vertical` | Orientación de diseño vertical | `boolean` | `false` |
+| `horizontal` | Diseño horizontal (predeterminado) | `boolean` | `false` |
+| `compact` | Todos los elementos en un lado | `boolean` | `false` |
+| `snapIcon` | Ajustar icono al inicio en lugar del centro | `boolean` | `false` |
+| `mode` | Diseño de distribución de elementos | `'start' \| 'alternate' \| 'end'` | `'alternate'` |
+| `reverse` | Invertir orden de elementos | `boolean` | `false` |
+| `pending` | Mostrar indicador pendiente/cargando al final | `React.ReactNode` | `-` |
+| `pendingIcon` | Icono personalizado para elemento pendiente | `React.ReactNode` | `-` |
+| `data-testid` | ID de prueba para el componente | `string` | `'timeline'` |
+| `aria-label` | Etiqueta accesible para la línea de tiempo | `string` | `-` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+### `Timeline.Item`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `start` | Contenido en posición inicial (izquierda/arriba) | `React.ReactNode` | `-` |
+| `end` | Contenido en posición final (derecha/abajo) | `React.ReactNode` | `-` |
+| `icon` | Icono o marcador central | `React.ReactNode` | `-` |
+| `startBox` | Envolver contenido inicial en timeline-box | `boolean` | `false` |
+| `endBox` | Envolver contenido final en timeline-box | `boolean` | `false` |
+| `color` | Color del punto/conector de línea de tiempo | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | `-` |
+| `loading` | Mostrar spinner de carga en lugar de icono | `boolean` | `false` |
+| `data-testid` | ID de prueba para este elemento | `string` | `-` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+### `TimelineItemConfig`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Clave única para el elemento | `React.Key` | `-` |
+| `start` | Contenido en posición inicial | `React.ReactNode` | `-` |
+| `end` | Contenido en posición final | `React.ReactNode` | `-` |
+| `icon` | Icono o marcador central | `React.ReactNode` | `-` |
+| `startBox` | Envolver contenido inicial en timeline-box | `boolean` | `false` |
+| `endBox` | Envolver contenido final en timeline-box | `boolean` | `false` |
+| `color` | Color del punto/conector de línea de tiempo | `TimelineColor` | `-` |
+| `loading` | Mostrar spinner de carga | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+## Accesibilidad
+
+- Usa estructura de lista semántica (`role="list"`) para lectores de pantalla
+- Los elementos de línea de tiempo se anuncian en orden
+- Soporta `aria-label` para describir el propósito de la línea de tiempo
+- Los conectores son decorativos y están ocultos de la tecnología asistiva
+- Los estados de carga incluyen indicadores de spinner visuales

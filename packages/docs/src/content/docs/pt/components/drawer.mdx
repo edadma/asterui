@@ -1,0 +1,92 @@
+---
+title: Drawer
+description: Um painel que desliza da borda da tela. Use para formulários, detalhes ou painéis de tarefas.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PlacementDemo,
+  WithFooterDemo,
+  ExtraDemo,
+  SizesDemo,
+  LoadingDemo,
+  NestedDemo,
+  NoMaskDemo,
+} from '../../../../components/DrawerDemo'
+import DrawerDemoSource from '../../../../components/DrawerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Um painel que desliza da borda da tela. Use para formulários, detalhes ou painéis de tarefas.
+
+## Importação
+
+```tsx
+import { Drawer } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Drawer Básico" description="Drawer simples do lado direito." source={DrawerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posicionamento" description="Drawer pode deslizar de qualquer direção." source={DrawerDemoSource} fn="PlacementDemo">
+  <PlacementDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Rodapé" description="Drawer com botões de ação no rodapé." source={DrawerDemoSource} fn="WithFooterDemo">
+  <WithFooterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Conteúdo Extra no Cabeçalho" description="Drawer com ações extras no cabeçalho." source={DrawerDemoSource} fn="ExtraDemo">
+  <ExtraDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos Predefinidos" description="Tamanhos padrão (378px) e grande (736px) predefinidos." source={DrawerDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Carregamento" description="Drawer com estado de carregamento skeleton." source={DrawerDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Drawers Aninhados" description="Múltiplos drawers com comportamento de empurrar." source={DrawerDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sem Máscara" description="Drawer sem sobreposição de fundo." source={DrawerDemoSource} fn="NoMaskDemo">
+  <NoMaskDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Drawer`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo do drawer | `React.ReactNode` | - |
+| `open` | Estado aberto controlado | `boolean` | `false` |
+| `onClose` | Manipulador de fechamento | `(e?: React.MouseEvent \| React.KeyboardEvent) => void` | - |
+| `afterOpenChange` | Callback após animação de abrir/fechar completar | `(open: boolean) => void` | - |
+| `title` | Título do drawer | `React.ReactNode` | - |
+| `placement` | Posição do drawer | `'left' \| 'right' \| 'top' \| 'bottom'` | `'right'` |
+| `size` | Tamanho predefinido (378px ou 736px) ou número personalizado | `'default' \| 'large' \| number` | `'default'` |
+| `width` | Largura personalizada (substitui size para esquerda/direita) | `string \| number` | - |
+| `height` | Altura personalizada (substitui size para topo/baixo) | `string \| number` | - |
+| `closable` | Mostrar botão de fechar | `boolean` | `true` |
+| `mask` | Mostrar máscara de sobreposição | `boolean` | `true` |
+| `maskClosable` | Fechar ao clicar na máscara | `boolean` | `true` |
+| `keyboard` | Fechar com tecla ESC | `boolean` | `true` |
+| `footer` | Conteúdo do rodapé | `React.ReactNode` | - |
+| `extra` | Conteúdo extra no cabeçalho (lado direito) | `React.ReactNode` | - |
+| `loading` | Mostrar skeleton de carregamento | `boolean` | `false` |
+| `destroyOnClose` | Destruir conteúdo ao fechar | `boolean` | `false` |
+| `forceRender` | Pré-renderizar conteúdo (manter no DOM quando fechado) | `boolean` | `false` |
+| `push` | Comportamento de empurrar drawer aninhado | `boolean \| { distance: number }` | `{ distance: 180 }` |
+| `zIndex` | z-index do drawer | `number` | `1000` |
+| `className` | Classe CSS para painel do drawer | `string` | - |

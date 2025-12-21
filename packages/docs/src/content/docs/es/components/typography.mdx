@@ -1,0 +1,97 @@
+---
+title: Typography
+description: Componentes de texto semántico para títulos, párrafos y formato de texto.
+tableOfContents: false
+---
+
+import {
+  TitlesDemo,
+  ParagraphDemo,
+  TextDemo,
+  TextStylesDemo,
+  LinksDemo,
+  CopyableDemo,
+  EllipsisDemo,
+  EditableDemo,
+} from '../../../../components/TypographyDemo'
+import TypographyDemoSource from '../../../../components/TypographyDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componentes de texto semántico para títulos, párrafos y formato de texto.
+
+## Importación
+
+```tsx
+import { Typography } from 'asterui'
+
+const { Title, Paragraph, Text, Link } = Typography
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Títulos" description="Niveles de encabezado de h1 a h5." source={TypographyDemoSource} fn="TitlesDemo">
+  <TitlesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Párrafo" description="Contenido de texto a nivel de bloque." source={TypographyDemoSource} fn="ParagraphDemo">
+  <ParagraphDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tipos de Texto" description="Diferentes tipos de texto para varios contextos." source={TypographyDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estilos de Texto" description="Varias opciones de formato de texto." source={TypographyDemoSource} fn="TextStylesDemo">
+  <TextStylesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Enlaces" description="Elementos de ancla estilizados." source={TypographyDemoSource} fn="LinksDemo">
+  <LinksDemo client:load slot="demo" />
+</Example>
+
+<Example title="Copiable" description="Copia texto al portapapeles con un clic." source={TypographyDemoSource} fn="CopyableDemo">
+  <CopyableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Elipsis" description="Trunca texto largo con elipsis." source={TypographyDemoSource} fn="EllipsisDemo">
+  <EllipsisDemo client:load slot="demo" />
+</Example>
+
+<Example title="Editable" description="Texto editable en línea." source={TypographyDemoSource} fn="EditableDemo">
+  <EditableDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `level` | Nivel de encabezado (h1-h5) - solo Title | `1 \| 2 \| 3 \| 4 \| 5` | `1` |
+| `copyable` | Habilitar copiar al portapapeles - Title y Paragraph | `boolean \| { text?: string }` | `false` |
+| `ellipsis` | Truncar con elipsis - Title y Paragraph | `boolean \| { rows?: number }` | `false` |
+| `editable` | Habilitar edición en línea - solo Title | `boolean` | `false` |
+| `type` | Tipo de texto para estilizado - Text y Link | `'secondary' \| 'success' \| 'warning' \| 'danger'` | - |
+| `disabled` | Estilo deshabilitado - solo Text | `boolean` | `false` |
+| `strong` | Texto en negrita - solo Text | `boolean` | `false` |
+| `italic` | Texto en cursiva - solo Text | `boolean` | `false` |
+| `underline` | Texto subrayado - solo Text | `boolean` | `false` |
+| `delete` | Texto tachado - solo Text | `boolean` | `false` |
+| `code` | Estilo de código - solo Text | `boolean` | `false` |
+| `mark` | Texto resaltado - solo Text | `boolean` | `false` |
+| `keyboard` | Estilo de teclado - solo Text | `boolean` | `false` |
+| `size` | Tamaño del texto - Paragraph y Link | `'sm' \| 'base' \| 'lg' \| 'xl' \| '2xl'` | - |
+| `align` | Alineación del texto - solo Paragraph | `'left' \| 'center' \| 'right'` | - |
+| `href` | URL del enlace - solo Link | `string` | `'#'` |
+| `external` | Abrir en nueva pestaña con icono externo - solo Link | `boolean` | `false` |
+
+## Accesibilidad
+
+- Usa elementos HTML semánticos (h1-h5, p, span, a)
+- Se mantiene la jerarquía adecuada de encabezados
+- Los enlaces tienen etiquetas accesibles
+- Las acciones de copiar y editar son accesibles por teclado

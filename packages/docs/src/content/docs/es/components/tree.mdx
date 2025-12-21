@@ -1,0 +1,171 @@
+---
+title: Tree
+description: Estructura de árbol jerárquico para mostrar datos anidados.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CheckableDemo,
+  SelectableDemo,
+  MultipleDemo,
+  ShowLineDemo,
+  ShowIconDemo,
+  CompoundDemo,
+  CheckboxColorsDemo,
+  CheckStrictlyDemo,
+  AsyncLoadDemo,
+} from '../../../../components/TreeDemo'
+import TreeDemoSource from '../../../../components/TreeDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Estructura de árbol jerárquico para mostrar datos anidados.
+
+## Importación
+
+```tsx
+import { Tree } from 'asterui'
+import type { TreeDataNode } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Árbol Básico" description="Árbol simple con nodos expandibles." source={TreeDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Checkbox" description="Árbol con selección por checkbox." source={TreeDemoSource} fn="CheckableDemo">
+  <CheckableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Seleccionable" description="Árbol con selección de nodos." source={TreeDemoSource} fn="SelectableDemo">
+  <SelectableDemo client:load slot="demo" />
+</Example>
+
+<Example title="Selección Múltiple" description="Permite seleccionar múltiples nodos." source={TreeDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar Líneas" description="Muestra líneas conectoras entre nodos." source={TreeDemoSource} fn="ShowLineDemo">
+  <ShowLineDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mostrar Icono" description="Muestra iconos personalizados para nodos." source={TreeDemoSource} fn="ShowIconDemo">
+  <ShowIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Patrón Compuesto" description="Usa Tree.Node para estructura de árbol declarativa." source={TreeDemoSource} fn="CompoundDemo">
+  <CompoundDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores de Checkbox" description="Personaliza la apariencia del checkbox con colores de DaisyUI." source={TreeDemoSource} fn="CheckboxColorsDemo">
+  <CheckboxColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Selección Estricta" description="Desacopla la relación padre-hijo del checkbox." source={TreeDemoSource} fn="CheckStrictlyDemo">
+  <CheckStrictlyDemo client:load slot="demo" />
+</Example>
+
+<Example title="Carga Asíncrona" description="Carga nodos hijos asincrónicamente al expandir." source={TreeDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tree`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `treeData` | Estructura de datos del árbol (alternativa al patrón compuesto) | `TreeDataNode[]` | `[]` |
+| `children` | Hijos Tree.Node para patrón compuesto | `React.ReactNode` | `-` |
+| `checkable` | Mostrar checkbox para cada nodo | `boolean` | `false` |
+| `checkboxColor` | Color del checkbox (DaisyUI) | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` |
+| `checkboxSize` | Tamaño del checkbox (DaisyUI) | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'sm'` |
+| `checkedKeys` | Claves marcadas controladas | `string[]` | `-` |
+| `defaultCheckedKeys` | Claves marcadas predeterminadas | `string[]` | `[]` |
+| `checkStrictly` | Desacoplar relación padre-hijo del checkbox | `boolean` | `false` |
+| `onCheck` | Callback cuando se marca un nodo | `(keys: string[], info: { node, checked }) => void` | `-` |
+| `selectable` | Habilitar selección de nodos | `boolean` | `true` |
+| `selectedKeys` | Claves seleccionadas controladas | `string[]` | `-` |
+| `defaultSelectedKeys` | Claves seleccionadas predeterminadas | `string[]` | `[]` |
+| `onSelect` | Callback cuando se selecciona un nodo | `(keys: string[], info: { node, selected }) => void` | `-` |
+| `multiple` | Permitir selección múltiple | `boolean` | `false` |
+| `expandedKeys` | Claves expandidas controladas | `string[]` | `-` |
+| `defaultExpandedKeys` | Claves expandidas predeterminadas | `string[]` | `[]` |
+| `defaultExpandAll` | Expandir todos los nodos por defecto | `boolean` | `false` |
+| `autoExpandParent` | Auto expandir nodos padre | `boolean` | `true` |
+| `onExpand` | Callback cuando se expande un nodo | `(keys: string[], info: { node, expanded }) => void` | `-` |
+| `showLine` | Mostrar líneas conectoras | `boolean` | `false` |
+| `showIcon` | Mostrar iconos de nodo | `boolean` | `false` |
+| `blockNode` | Hacer que los nodos ocupen el espacio horizontal | `boolean` | `false` |
+| `switcherIcon` | Icono personalizado de expandir/contraer | `ReactNode \| ((expanded: boolean) => ReactNode)` | `-` |
+| `titleRender` | Función de renderizado de título personalizada | `(node: TreeDataNode) => ReactNode` | `-` |
+| `filterTreeNode` | Función de filtro para resaltar nodos | `(node: TreeDataNode) => boolean` | `-` |
+| `loadData` | Función de carga de datos asíncrona | `(node: TreeDataNode) => Promise<void>` | `-` |
+| `onRightClick` | Manejador de clic derecho | `(info: { event, node }) => void` | `-` |
+| `fieldNames` | Nombres de campo personalizados para mapeo de datos | `{ key?: string; title?: string; children?: string }` | `-` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+### `TreeDataNode`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único | `string` | `-` |
+| `title` | Título de visualización | `React.ReactNode` | `-` |
+| `children` | Nodos hijos | `TreeDataNode[]` | `-` |
+| `icon` | Icono personalizado | `React.ReactNode` | `-` |
+| `disabled` | Deshabilitar el nodo | `boolean` | `false` |
+| `disableCheckbox` | Deshabilitar checkbox para el nodo | `boolean` | `false` |
+| `selectable` | Si el nodo puede ser seleccionado | `boolean` | `true` |
+| `checkable` | Si el nodo muestra checkbox | `boolean` | `true` |
+| `isLeaf` | Forzar que el nodo sea una hoja (sin icono de expansión) | `boolean` | `-` |
+
+### `Tree.Node`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único (prop key de React) | `string` | `-` |
+| `title` | Título de visualización | `React.ReactNode` | `-` |
+| `children` | Elementos Tree.Node hijos | `React.ReactNode` | `-` |
+| `icon` | Icono personalizado | `React.ReactNode` | `-` |
+| `disabled` | Deshabilitar el nodo | `boolean` | `false` |
+| `disableCheckbox` | Deshabilitar checkbox para el nodo | `boolean` | `false` |
+| `selectable` | Si el nodo puede ser seleccionado | `boolean` | `true` |
+| `checkable` | Si el nodo muestra checkbox | `boolean` | `true` |
+| `isLeaf` | Forzar que el nodo sea una hoja (sin icono de expansión) | `boolean` | `-` |
+
+## Accesibilidad
+
+El componente Tree implementa el patrón completo de árbol WAI-ARIA:
+
+- `role="tree"` en el contenedor y `role="treeitem"` en los nodos
+- `aria-expanded` indica el estado de expansión del nodo
+- `aria-selected` indica el estado de selección
+- `aria-checked` indica el estado del checkbox (con `"mixed"` para indeterminado)
+- `aria-disabled` indica el estado deshabilitado
+- `aria-level` indica la profundidad de anidamiento
+
+### Navegación por Teclado
+
+| Tecla | Acción |
+|-----|--------|
+| <kbd>↓</kbd> | Mover foco al siguiente nodo visible |
+| <kbd>↑</kbd> | Mover foco al nodo visible anterior |
+| <kbd>→</kbd> | Expandir nodo contraído, o mover al primer hijo |
+| <kbd>←</kbd> | Contraer nodo expandido |
+| <kbd>Enter</kbd> / <kbd>Space</kbd> | Alternar checkbox, seleccionar nodo, o expandir/contraer |
+| <kbd>Home</kbd> | Mover foco al primer nodo |
+| <kbd>End</kbd> | Mover foco al último nodo visible |
+
+### Pruebas
+
+El componente incluye atributos de datos para pruebas:
+
+- `data-testid="tree"` en el contenedor del árbol
+- `data-testid="tree-node-{key}"` en cada nodo
+- `data-state="selected|expanded|collapsed"` indica el estado del nodo
+- `data-key="{key}"` proporciona la clave del nodo

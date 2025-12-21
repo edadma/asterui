@@ -1,0 +1,39 @@
+---
+title: useWindowSize
+description: Hook que rastreia as dimensões da janela.
+---
+
+Rastreia largura e altura atual da janela, atualizando no redimensionamento.
+
+## Importação
+
+```tsx
+import { useWindowSize } from 'asterui'
+```
+
+## Uso
+
+```tsx
+function WindowSizeExample() {
+  const { width, height } = useWindowSize()
+
+  return (
+    <div>
+      <p>Window: {width} x {height}</p>
+      {width < 768 && <MobileLayout />}
+      {width >= 768 && <DesktopLayout />}
+    </div>
+  )
+}
+```
+
+## Valor de Retorno
+
+| Propriedade | Tipo | Descrição |
+|----------|------|-------------|
+| `width` | `number` | Largura atual da janela em pixels |
+| `height` | `number` | Altura atual da janela em pixels |
+
+## Nota
+
+Para lógica responsiva baseada em breakpoints, considere usar [useBreakpoint](/pt/hooks/usebreakpoint) em vez disso, que fornece métodos auxiliares como `isAbove()` e `isBelow()`.

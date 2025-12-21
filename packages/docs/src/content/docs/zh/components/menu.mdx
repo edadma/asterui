@@ -1,0 +1,128 @@
+---
+title: Menu
+description: 用于显示分层导航项的导航菜单组件。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HorizontalDemo,
+  WithIconsDemo,
+  SubmenuDemo,
+  SizesDemo,
+  DataDrivenDemo,
+} from '../../../../components/MenuDemo'
+import MenuDemoSource from '../../../../components/MenuDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于显示分层导航项的导航菜单组件。
+
+## 导入
+
+```tsx
+import { Menu } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础菜单" description="带可选择项的简单垂直菜单。" source={MenuDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="水平菜单" description="水平显示的菜单。" source={MenuDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标" description="带图标的菜单项，提供更好的视觉上下文。" source={MenuDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="带子菜单" description="带嵌套子菜单的菜单。" source={MenuDemoSource} fn="SubmenuDemo">
+  <SubmenuDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="不同尺寸的菜单。" source={MenuDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="数据驱动模式" description="使用 items 属性的数据驱动菜单。" source={MenuDemoSource} fn="DataDrivenDemo">
+  <DataDrivenDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Menu`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 菜单项（组合模式） | `React.ReactNode` | - |
+| `items` | 菜单项（数据驱动模式） | `MenuItem[]` | - |
+| `mode` | 菜单显示模式 | `'vertical' \| 'horizontal' \| 'inline'` | `'vertical'` |
+| `size` | 菜单尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `selectedKeys` | 受控的选中项目键 | `string[]` | - |
+| `defaultSelectedKeys` | 默认选中键（非受控） | `string[]` | `[]` |
+| `openKeys` | 受控的打开子菜单键 | `string[]` | - |
+| `defaultOpenKeys` | 默认打开子菜单键（非受控） | `string[]` | `[]` |
+| `onSelect` | 选择项目时的回调 | `(key: string) => void` | - |
+| `onOpenChange` | 子菜单打开状态改变时的回调 | `(openKeys: string[]) => void` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `MenuItem` (用于 items 属性)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 唯一标识符 | `string` | - |
+| `label` | 项目标签 | `React.ReactNode` | - |
+| `icon` | 图标元素 | `React.ReactNode` | - |
+| `disabled` | 项目是否禁用 | `boolean` | `false` |
+| `children` | 子菜单项 | `MenuItem[]` | - |
+| `divider` | 渲染为分隔符 | `boolean` | `false` |
+| `title` | 渲染为部分标题 | `boolean` | `false` |
+
+### `Menu.Item` (组合模式)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 用于选择的唯一键（React key 属性） | `string` | - |
+| `children` | 项目内容 | `React.ReactNode` | - |
+| `icon` | 图标元素 | `React.ReactNode` | - |
+| `disabled` | 项目是否禁用 | `boolean` | `false` |
+| `onClick` | 点击处理器 | `() => void` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Menu.SubMenu` (组合模式)
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 用于打开状态的唯一键（React key 属性） | `string` | - |
+| `label` | 子菜单标签 | `React.ReactNode` | - |
+| `icon` | 图标元素 | `React.ReactNode` | - |
+| `disabled` | 子菜单是否禁用 | `boolean` | `false` |
+| `children` | 子菜单项 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Menu.Title`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 标题内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `Menu.Divider`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用语义导航模式和正确的 ARIA 属性
+- 支持方向键进行菜单遍历的键盘导航
+- 选中的项目为屏幕阅读器正确标记
+- 子菜单打开/关闭状态传达给辅助技术
+- 禁用的菜单项正确标记且不可聚焦
+- 键盘导航的焦点状态可见

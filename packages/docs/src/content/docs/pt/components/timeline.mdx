@@ -1,0 +1,126 @@
+---
+title: Timeline
+description: Exiba eventos em ordem cronológica com layouts alternados ou verticais.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  VerticalDemo,
+  HorizontalDemo,
+  CompactDemo,
+  SnapIconDemo,
+  ColorsDemo,
+  ModeStartDemo,
+  ModeEndDemo,
+  PendingDemo,
+  LoadingDemo,
+  ReverseDemo,
+  DeclarativeDemo,
+} from '../../../../components/TimelineDemo'
+import TimelineDemoSource from '../../../../components/TimelineDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exiba eventos em ordem cronológica com layouts alternados ou verticais.
+
+## Importação
+
+```tsx
+import { Timeline } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Linha do Tempo Básica" description="Linha do tempo simples com conteúdo alternado." source={TimelineDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Linha do Tempo Vertical" description="Empilhe itens verticalmente." source={TimelineDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Linha do Tempo Horizontal" description="Exiba itens horizontalmente." source={TimelineDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Linha do Tempo Compacta" description="Todo o conteúdo em um lado." source={TimelineDemoSource} fn="CompactDemo">
+  <CompactDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ícone Ajustado" description="Ajuste ícones ao início em vez do centro." source={TimelineDemoSource} fn="SnapIconDemo">
+  <SnapIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cores" description="Aplique diferentes cores aos itens da linha do tempo." source={TimelineDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo: Início" description="Todos os itens alinhados ao início." source={TimelineDemoSource} fn="ModeStartDemo">
+  <ModeStartDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo: Fim" description="Todos os itens alinhados ao fim." source={TimelineDemoSource} fn="ModeEndDemo">
+  <ModeEndDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado Pendente" description="Mostre uma atividade em andamento no final." source={TimelineDemoSource} fn="PendingDemo">
+  <PendingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Carregamento" description="Mostre spinner de carregamento em itens individuais." source={TimelineDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ordem Reversa" description="Inverta a ordem dos itens da linha do tempo." source={TimelineDemoSource} fn="ReverseDemo">
+  <ReverseDemo client:load slot="demo" />
+</Example>
+
+<Example title="API Declarativa" description="Use a prop items para linhas do tempo baseadas em dados." source={TimelineDemoSource} fn="DeclarativeDemo">
+  <DeclarativeDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Timeline`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Itens da linha do tempo (padrão composto) | `React.ReactNode` | `-` |
+| `items` | Itens da linha do tempo (API declarativa) | `TimelineItemConfig[]` | `-` |
+| `vertical` | Orientação de layout vertical | `boolean` | `false` |
+| `horizontal` | Layout horizontal (padrão) | `boolean` | `false` |
+| `compact` | Todos os itens em um lado | `boolean` | `false` |
+| `snapIcon` | Ajustar ícone ao início em vez do centro | `boolean` | `false` |
+| `mode` | Layout de distribuição de itens | `'start' \| 'alternate' \| 'end'` | `'alternate'` |
+| `reverse` | Inverter ordem dos itens | `boolean` | `false` |
+| `pending` | Mostrar indicador pendente/carregando no final | `React.ReactNode` | `-` |
+| `pendingIcon` | Ícone personalizado para item pendente | `React.ReactNode` | `-` |
+| `data-testid` | ID de teste para o componente | `string` | `'timeline'` |
+| `aria-label` | Label acessível para a linha do tempo | `string` | `-` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+### `Timeline.Item`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `start` | Conteúdo na posição inicial (esquerda/topo) | `React.ReactNode` | `-` |
+| `end` | Conteúdo na posição final (direita/baixo) | `React.ReactNode` | `-` |
+| `icon` | Ícone ou marcador central | `React.ReactNode` | `-` |
+| `startBox` | Envolver conteúdo inicial em timeline-box | `boolean` | `false` |
+| `endBox` | Envolver conteúdo final em timeline-box | `boolean` | `false` |
+| `color` | Cor do ponto/conector da linha do tempo | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | `-` |
+| `loading` | Mostrar spinner de carregamento em vez de ícone | `boolean` | `false` |
+| `data-testid` | ID de teste para este item | `string` | `-` |
+| `className` | Classes CSS adicionais | `string` | `-` |
+
+## Acessibilidade
+
+- Usa estrutura de lista semântica (`role="list"`) para leitores de tela
+- Itens da linha do tempo são anunciados em ordem
+- Suporta `aria-label` para descrever o propósito da linha do tempo
+- Conectores são decorativos e ocultos da tecnologia assistiva
+- Estados de carregamento incluem indicadores de spinner visuais

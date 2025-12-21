@@ -1,0 +1,71 @@
+---
+title: Image
+description: Muestra imágenes con soporte de vista previa y respaldo.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  PreviewDemo,
+  FallbackDemo,
+} from '../../../../components/ImageDemo'
+import ImageDemoSource from '../../../../components/ImageDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Muestra imágenes con soporte de vista previa y respaldo.
+
+## Importar
+
+```tsx
+import { Image } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Imagen Básica" description="Visualización simple de imagen con props src y alt." source={ImageDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diferentes Tamaños" description="Imágenes con varias dimensiones." source={ImageDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Vista Previa de Imagen" description="Haz clic en la imagen para previsualizar en tamaño completo." source={ImageDemoSource} fn="PreviewDemo">
+  <PreviewDemo client:load slot="demo" />
+</Example>
+
+<Example title="Imagen de Respaldo" description="Muestra imagen de respaldo cuando falla la carga de la fuente." source={ImageDemoSource} fn="FallbackDemo">
+  <FallbackDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Image`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `src` | URL de fuente de imagen | `string` | - |
+| `alt` | Texto alternativo para la imagen | `string` | `''` |
+| `width` | Ancho de imagen | `number \| string` | - |
+| `height` | Altura de imagen | `number \| string` | - |
+| `preview` | Habilita clic para previsualizar imagen en lightbox | `boolean` | `true` |
+| `fallback` | URL de imagen de respaldo cuando falla la carga de la fuente | `string` | - |
+| `placeholder` | Contenido de marcador de posición mostrado durante la carga | `React.ReactNode` | - |
+| `onLoad` | Callback cuando la imagen se carga exitosamente | `() => void` | - |
+| `onError` | Callback cuando falla la carga de la imagen | `() => void` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+| `style` | Estilos en línea | `React.CSSProperties` | - |
+
+## Accesibilidad
+
+- Siempre proporciona texto `alt` significativo para lectores de pantalla
+- Usa imágenes de respaldo para asegurar que el contenido siempre sea visible
+- La vista previa es accesible por teclado: presiona Enter o Espacio para abrir, Escape para cerrar
+- Las imágenes previsualizables tienen `role="button"` con aria-label apropiado
+- El modal de vista previa tiene `role="dialog"` y `aria-modal="true"`
+- El estado de error incluye aria-label describiendo el fallo

@@ -1,0 +1,107 @@
+---
+title: Configuração Manual
+description: Como instalar manualmente o AsterUI em um projeto React existente.
+---
+
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
+
+Este guia orienta você na adição do AsterUI a um projeto React existente. AsterUI requer [Tailwind CSS v4](https://tailwindcss.com) e [DaisyUI v5](https://daisyui.com).
+
+## Pré-requisitos
+
+Antes de começar, certifique-se de ter:
+
+- Um projeto React (Vite recomendado)
+- Node.js 18 ou superior
+
+## Instalação
+
+<Steps>
+
+1. **Instale os pré-requisitos**
+
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+       npm install -D tailwindcss @tailwindcss/vite daisyui
+       ```
+     </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+       pnpm add -D tailwindcss @tailwindcss/vite daisyui
+       ```
+     </TabItem>
+     <TabItem label="yarn">
+       ```bash
+       yarn add -D tailwindcss @tailwindcss/vite daisyui
+       ```
+     </TabItem>
+   </Tabs>
+
+2. **Configure o Vite**
+
+   Adicione o plugin Tailwind ao seu `vite.config.ts`:
+
+   ```ts title="vite.config.ts"
+   import { defineConfig } from 'vite'
+   import react from '@vitejs/plugin-react'
+   import tailwindcss from '@tailwindcss/vite'
+
+   export default defineConfig({
+     plugins: [react(), tailwindcss()],
+   })
+   ```
+
+3. **Configure o CSS**
+
+   Adicione estas diretivas ao seu arquivo CSS (por exemplo, `src/index.css`):
+
+   ```css title="src/index.css"
+   @import "tailwindcss";
+   @plugin "daisyui";
+   @source "../node_modules/asterui";
+   ```
+
+   A diretiva `@source` diz ao Tailwind para escanear AsterUI em busca de classes.
+
+4. **Instale o AsterUI**
+
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+       npm install asterui
+       ```
+     </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+       pnpm add asterui
+       ```
+     </TabItem>
+     <TabItem label="yarn">
+       ```bash
+       yarn add asterui
+       ```
+     </TabItem>
+   </Tabs>
+
+</Steps>
+
+## Verifique a Instalação
+
+Crie um componente simples para verificar se tudo funciona:
+
+```tsx
+import { Button, Space } from 'asterui'
+
+function App() {
+  return (
+    <Space>
+      <Button>Default</Button>
+      <Button color="primary">Primary</Button>
+      <Button color="secondary">Secondary</Button>
+    </Space>
+  )
+}
+```
+
+Se você ver botões estilizados, está tudo pronto!

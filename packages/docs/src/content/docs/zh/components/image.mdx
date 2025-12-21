@@ -1,0 +1,71 @@
+---
+title: Image
+description: 显示带预览和后备支持的图片。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  PreviewDemo,
+  FallbackDemo,
+} from '../../../../components/ImageDemo'
+import ImageDemoSource from '../../../../components/ImageDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+显示带预览和后备支持的图片。
+
+## 导入
+
+```tsx
+import { Image } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础图片" description="带 src 和 alt 属性的简单图片显示。" source={ImageDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="不同尺寸" description="各种尺寸的图片。" source={ImageDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="图片预览" description="点击图片以全尺寸预览。" source={ImageDemoSource} fn="PreviewDemo">
+  <PreviewDemo client:load slot="demo" />
+</Example>
+
+<Example title="后备图片" description="当源加载失败时显示后备图片。" source={ImageDemoSource} fn="FallbackDemo">
+  <FallbackDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Image`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `src` | 图片源 URL | `string` | - |
+| `alt` | 图片的替代文本 | `string` | `''` |
+| `width` | 图片宽度 | `number \| string` | - |
+| `height` | 图片高度 | `number \| string` | - |
+| `preview` | 启用点击在灯箱中预览图片 | `boolean` | `true` |
+| `fallback` | 源加载失败时的后备图片 URL | `string` | - |
+| `placeholder` | 加载时显示的占位符内容 | `React.ReactNode` | - |
+| `onLoad` | 图片成功加载时的回调 | `() => void` | - |
+| `onError` | 图片加载失败时的回调 | `() => void` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `React.CSSProperties` | - |
+
+## 无障碍
+
+- 始终为屏幕阅读器提供有意义的 `alt` 文本
+- 使用后备图片确保内容始终可见
+- 预览支持键盘访问：按 Enter 或 Space 打开，Escape 关闭
+- 可预览的图片具有 `role="button"` 和适当的 aria-label
+- 预览模态框具有 `role="dialog"` 和 `aria-modal="true"`
+- 错误状态包括描述失败的 aria-label

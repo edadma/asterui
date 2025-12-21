@@ -1,0 +1,47 @@
+---
+title: useDebounce
+description: 延迟更新值直到指定延迟之后的 Hook。
+---
+
+延迟值的更新以减少过多的操作，例如 API 调用。
+
+## 导入
+
+```tsx
+import { useDebounce } from 'asterui'
+```
+
+## 用法
+
+```tsx
+function SearchExample() {
+  const [search, setSearch] = useState('')
+  const debouncedSearch = useDebounce(search, 500)
+
+  useEffect(() => {
+    // 仅在用户停止输入 500ms 后运行
+    fetchResults(debouncedSearch)
+  }, [debouncedSearch])
+
+  return (
+    <Input
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      placeholder="Search..."
+    />
+  )
+}
+```
+
+## 参数
+
+| 参数 | 类型 | 默认值 | 描述 |
+|-----------|------|---------|-------------|
+| `value` | `T` | - | 要防抖的值 |
+| `delay` | `number` | `300` | 延迟（毫秒） |
+
+## 返回值
+
+| 类型 | 描述 |
+|------|-------------|
+| `T` | 防抖后的值（在延迟后更新） |

@@ -1,0 +1,79 @@
+---
+title: Textarea
+description: Componente de entrada de texto multilínea para contenido de texto más largo.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  RowsDemo,
+  SizesDemo,
+  ColorsDemo,
+  GhostDemo,
+  DisabledDemo,
+  FormDemo,
+} from '../../../../components/TextareaDemo'
+import TextareaDemoSource from '../../../../components/TextareaDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de entrada de texto multilínea para contenido de texto más largo.
+
+## Importación
+
+```tsx
+import { Textarea } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Textarea Básico" description="Textarea simple con placeholder." source={TextareaDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Filas" description="Controla la altura con el atributo rows." source={TextareaDemoSource} fn="RowsDemo">
+  <RowsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Cinco tamaños: xs, sm, md, lg y xl." source={TextareaDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores" description="Variantes de color para diferentes estados." source={TextareaDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variante Fantasma" description="Estilo con fondo transparente." source={TextareaDemoSource} fn="GhostDemo">
+  <GhostDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado Deshabilitado" description="Textarea deshabilitado no interactivo." source={TextareaDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="En Formulario" description="Textarea con validación de formulario." source={TextareaDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `size` | Tamaño del textarea | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `-` |
+| `color` | Tema de color del textarea | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `ghost` | Variante de estilo fantasma | `boolean` | `false` |
+| `bordered` | Mostrar borde | `boolean` | `true` |
+| `disabled` | Estado deshabilitado | `boolean` | `false` |
+| `placeholder` | Texto de placeholder | `string` | `-` |
+| `rows` | Número de filas de texto visibles | `number` | `-` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+## Accesibilidad
+
+- Usa `<textarea>` nativo para accesibilidad completa
+- Funciona con etiquetas de formulario estándar
+- El estado deshabilitado se comunica correctamente
+- Redimensionable por defecto para comodidad del usuario

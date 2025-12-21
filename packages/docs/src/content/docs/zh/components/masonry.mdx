@@ -1,0 +1,65 @@
+---
+title: Masonry
+description: Pinterest 风格的瀑布流布局，用于在有组织的网格中显示高度不同的项目。
+tableOfContents: false
+---
+
+import {
+  DynamicMasonryDemo,
+  BasicMasonryDemo,
+  ResponsiveMasonryDemo,
+  CustomGapDemo,
+} from '../../../../components/MasonryDemo'
+import MasonryDemoSource from '../../../../components/MasonryDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Pinterest 风格的瀑布流布局，用于在有组织的网格中显示高度不同的项目。
+
+## 导入
+
+```tsx
+import { Masonry } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="动态项目" description="动态添加和删除项目。新项目被放置在最短的列中。" source={MasonryDemoSource} fn="DynamicMasonryDemo">
+  <DynamicMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="基础瀑布流" description="带不同高度项目的简单瀑布流网格。" source={MasonryDemoSource} fn="BasicMasonryDemo">
+  <BasicMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="响应式列" description="在不同断点下的响应式列数。" source={MasonryDemoSource} fn="ResponsiveMasonryDemo">
+  <ResponsiveMasonryDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义间距" description="项目之间的不同间距尺寸。" source={MasonryDemoSource} fn="CustomGapDemo">
+  <CustomGapDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Masonry`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `columns` | 列数或响应式列配置 | `number \| { xs?: number, sm?: number, md?: number, lg?: number, xl?: number, '2xl'?: number }` | `3` |
+| `gap` | 项目之间的间距（像素） | `number` | `16` |
+| `children` | 在瀑布流布局中显示的项目 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 使用说明
+
+- Masonry 组件创建 Pinterest 风格的布局，其中项目排列在列中
+- 项目流入最短的列以创建平衡的布局
+- 使用 `columns` 属性设置固定列数或使其响应式
+- `gap` 属性控制项目之间的间距（像素）
+- 响应式断点：xs（&lt;640px）、sm（≥640px）、md（≥768px）、lg（≥1024px）、xl（≥1280px）、2xl（≥1536px）
+- 项目可以有不同的高度 - 布局将自动高效地分配它们
+- 非常适合图片画廊、产品网格和内容卡片

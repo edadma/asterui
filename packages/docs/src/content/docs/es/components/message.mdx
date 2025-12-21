@@ -1,0 +1,66 @@
+---
+title: Message
+description: Mensajes de retroalimentación ligeros mostrados en el centro superior de la pantalla
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  LoadingDemo,
+  DurationDemo,
+  StackingDemo,
+} from '../../../../components/MessageDemo'
+import MessageDemoSource from '../../../../components/MessageDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Mensajes de retroalimentación ligeros mostrados en el centro superior de la pantalla.
+
+## Importar
+
+```tsx
+import { message } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Mensajes Básicos" description="Mensajes de retroalimentación ligeros para acciones del usuario." source={MessageDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Mensaje de Carga" description="Muestra un mensaje de carga que puede ser descartado programáticamente." source={MessageDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Duración Personalizada" description="Controla cuánto tiempo permanecen visibles los mensajes." source={MessageDemoSource} fn="DurationDemo">
+  <DurationDemo client:load slot="demo" />
+</Example>
+
+<Example title="Apilamiento de Mensajes" description="Múltiples mensajes se apilan en el centro superior de la pantalla." source={MessageDemoSource} fn="StackingDemo">
+  <StackingDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### Opciones de Message
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `content` | Texto del mensaje (primer argumento) | `React.ReactNode` | - |
+| `duration` | Duración de cierre automático en segundos | `number` | `3` |
+| `key` | Identificador único. Actualizar con la misma clave actualiza el mensaje existente | `string` | - |
+| `icon` | Icono personalizado a mostrar | `React.ReactNode` | - |
+| `className` | Clase CSS adicional | `string` | - |
+| `style` | Estilos en línea | `React.CSSProperties` | - |
+| `data-testid` | ID de prueba para frameworks de testing | `string` | - |
+| `onClick` | Callback cuando se hace clic en el mensaje | `() => void` | - |
+| `onClose` | Callback cuando se cierra el mensaje | `() => void` | - |
+
+## Accesibilidad
+
+- Los mensajes se anuncian a lectores de pantalla a través de regiones en vivo
+- Los iconos proporcionan señales visuales junto con el color para el tipo de mensaje
+- Los mensajes se descartan automáticamente pero pueden configurarse para persistir

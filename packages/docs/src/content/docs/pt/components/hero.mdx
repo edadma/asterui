@@ -1,0 +1,61 @@
+---
+title: Hero
+description: Crie seções de página de destino impactantes com banners hero e fundos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithButtonDemo,
+  WithFigureDemo,
+  OverlayDemo,
+} from '../../../../components/HeroDemo'
+import HeroDemoSource from '../../../../components/HeroDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Crie seções de página de destino impactantes com banners hero e fundos.
+
+## Importação
+
+```tsx
+import { Hero } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Hero Básico" description="Seção hero simples com título e subtítulo." source={HeroDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hero com Botão CTA" description="Seção hero com botão de chamada para ação." source={HeroDemoSource} fn="WithButtonDemo">
+  <WithButtonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hero com Figura" description="Hero com imagem lateral ou elemento figure." source={HeroDemoSource} fn="WithFigureDemo">
+  <WithFigureDemo client:load slot="demo" />
+</Example>
+
+<Example title="Hero com Sobreposição de Fundo" description="Hero com imagem de fundo e efeito de sobreposição." source={HeroDemoSource} fn="OverlayDemo">
+  <OverlayDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo do hero | `React.ReactNode` | - |
+| `overlay` | Mostrar efeito de sobreposição (para imagens de fundo) | `boolean` | `false` |
+| `contentClassName` | Classes CSS para o wrapper de conteúdo | `string` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+| `style` | Estilos inline (útil para imagens de fundo) | `React.CSSProperties` | - |
+
+## Acessibilidade
+
+- Use elementos de cabeçalho semânticos (h1, h2) para títulos hero
+- Garanta contraste de cor suficiente entre texto e fundo
+- Forneça texto alternativo para imagens hero
+- Torne botões CTA acessíveis via teclado

@@ -1,0 +1,61 @@
+---
+title: Status
+description: Punto indicador pequeño para mostrar estado como en línea, fuera de línea, error, etc
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  AnimatedDemo,
+  ColorsDemo,
+} from '../../../../components/StatusDemo'
+import StatusDemoSource from '../../../../components/StatusDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Punto indicador pequeño para mostrar estado como en línea, fuera de línea, error, etc.
+
+## Importar
+
+```tsx
+import { Status } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Indicadores de estado simples para diferentes estados." source={StatusDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Variantes de tamaño disponibles." source={StatusDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Animado" description="Efectos de animación ping y bounce." source={StatusDemoSource} fn="AnimatedDemo">
+  <AnimatedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Todos los colores" description="Todos los tipos de color disponibles." source={StatusDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `type` | Tipo de color de estado | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'neutral'` |
+| `size` | Tamaño de estado | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `ping` | Efecto de animación ping | `boolean` | `false` |
+| `bounce` | Efecto de animación bounce | `boolean` | `false` |
+| `label` | Etiqueta de accesibilidad | `string` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa la prop `label` para proporcionar un nombre accesible
+- Considera emparejar con texto para usuarios de lectores de pantalla
+- La animación ping llama la atención a cambios de estado importantes

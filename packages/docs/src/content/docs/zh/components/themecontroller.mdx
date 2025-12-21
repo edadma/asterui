@@ -1,0 +1,104 @@
+---
+title: ThemeController 主题控制器
+description: 用于在 daisyUI 主题之间切换的组件。
+tableOfContents: false
+---
+
+import {
+  SwapDemo,
+  CustomThemesDemo,
+  SwapCallbackDemo,
+  DropdownDemo,
+  DropdownDefaultDemo,
+  DropdownCallbackDemo,
+  ToggleDemo,
+  ToggleSizesDemo,
+} from '../../../../components/ThemeControllerDemo'
+import ThemeControllerDemoSource from '../../../../components/ThemeControllerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于在 daisyUI 主题之间切换的组件。
+
+## 导入
+
+```tsx
+import { ThemeController } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="切换(太阳/月亮)" description="使用动画图标在明暗主题之间切换。" source={ThemeControllerDemoSource} fn="SwapDemo">
+  <SwapDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="自定义主题" description="为明暗模式使用自定义主题名称。" source={ThemeControllerDemoSource} fn="CustomThemesDemo">
+  <CustomThemesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="带 onChange 回调" description="使用回调处理主题更改。" source={ThemeControllerDemoSource} fn="SwapCallbackDemo">
+  <SwapCallbackDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="下拉菜单(多个主题)" description="使用下拉菜单从多个主题中选择。" source={ThemeControllerDemoSource} fn="DropdownDemo">
+  <DropdownDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="带默认主题的下拉菜单" description="为下拉菜单设置默认选定的主题。" source={ThemeControllerDemoSource} fn="DropdownDefaultDemo">
+  <DropdownDefaultDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="带 onChange 的下拉菜单" description="处理主题选择更改。" source={ThemeControllerDemoSource} fn="DropdownCallbackDemo">
+  <DropdownCallbackDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="切换开关" description="用于明/暗主题的简单切换开关。" source={ThemeControllerDemoSource} fn="ToggleDemo">
+  <ToggleDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="切换尺寸" description="不同尺寸的切换开关。" source={ThemeControllerDemoSource} fn="ToggleSizesDemo">
+  <ToggleSizesDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ThemeController.Swap`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `lightTheme` | 亮色模式的主题名称 | `string` | `'light'` |
+| `darkTheme` | 暗色模式的主题名称 | `string` | `'dark'` |
+| `defaultChecked` | 初始勾选(暗色主题) | `boolean` | - |
+| `onChange` | 主题更改时的回调 | `(theme: string) => void` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+### `ThemeController.Dropdown`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `themes` | 可用主题名称数组 | `string[]` | - |
+| `defaultTheme` | 初始选定的主题 | `string` | - |
+| `onChange` | 主题更改时的回调 | `(theme: string) => void` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+### `ThemeController.Toggle`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `lightTheme` | 亮色模式的主题名称 | `string` | `'light'` |
+| `darkTheme` | 暗色模式的主题名称 | `string` | `'dark'` |
+| `defaultChecked` | 初始勾选(暗色主题) | `boolean` | - |
+| `onChange` | 主题更改时的回调 | `(theme: string) => void` | - |
+| `size` | 切换大小 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 可访问性
+
+- Swap 使用带有动画太阳/月亮图标的复选框模式
+- Toggle 使用带有 aria-label 的复选框以供屏幕阅读器使用
+- Dropdown 为每个主题选项使用带有 aria-label 的单选输入
+- 主题更改立即在所有组件中可见
+- 所有变体都可通过键盘访问

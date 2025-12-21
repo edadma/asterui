@@ -1,0 +1,92 @@
+---
+title: Drawer
+description: Un panel que se desliza desde el borde de la pantalla. Úsalo para formularios, detalles o paneles de tareas.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PlacementDemo,
+  WithFooterDemo,
+  ExtraDemo,
+  SizesDemo,
+  LoadingDemo,
+  NestedDemo,
+  NoMaskDemo,
+} from '../../../../components/DrawerDemo'
+import DrawerDemoSource from '../../../../components/DrawerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Un panel que se desliza desde el borde de la pantalla. Úsalo para formularios, detalles o paneles de tareas.
+
+## Importar
+
+```tsx
+import { Drawer } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Drawer Básico" description="Cajón simple desde el lado derecho." source={DrawerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ubicación" description="El cajón puede deslizarse desde cualquier dirección." source={DrawerDemoSource} fn="PlacementDemo">
+  <PlacementDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Pie de Página" description="Cajón con botones de acción en el pie de página." source={DrawerDemoSource} fn="WithFooterDemo">
+  <WithFooterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenido Extra en el Encabezado" description="Cajón con acciones adicionales en el encabezado." source={DrawerDemoSource} fn="ExtraDemo">
+  <ExtraDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños Predefinidos" description="Tamaños predefinidos predeterminado (378px) y grande (736px)." source={DrawerDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado de Carga" description="Cajón con estado de carga de esqueleto." source={DrawerDemoSource} fn="LoadingDemo">
+  <LoadingDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cajones Anidados" description="Múltiples cajones con comportamiento de empuje." source={DrawerDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sin Máscara" description="Cajón sin superposición de fondo." source={DrawerDemoSource} fn="NoMaskDemo">
+  <NoMaskDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Drawer`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del cajón | `React.ReactNode` | - |
+| `open` | Estado abierto controlado | `boolean` | `false` |
+| `onClose` | Manejador de cierre | `(e?: React.MouseEvent \| React.KeyboardEvent) => void` | - |
+| `afterOpenChange` | Callback después de que se complete la animación de abrir/cerrar | `(open: boolean) => void` | - |
+| `title` | Título del cajón | `React.ReactNode` | - |
+| `placement` | Posición del cajón | `'left' \| 'right' \| 'top' \| 'bottom'` | `'right'` |
+| `size` | Tamaño predefinido (378px o 736px) o número personalizado | `'default' \| 'large' \| number` | `'default'` |
+| `width` | Ancho personalizado (anula size para izquierda/derecha) | `string \| number` | - |
+| `height` | Altura personalizada (anula size para arriba/abajo) | `string \| number` | - |
+| `closable` | Mostrar botón de cierre | `boolean` | `true` |
+| `mask` | Mostrar máscara de superposición | `boolean` | `true` |
+| `maskClosable` | Cerrar al hacer clic en la máscara | `boolean` | `true` |
+| `keyboard` | Cerrar con la tecla ESC | `boolean` | `true` |
+| `footer` | Contenido del pie de página | `React.ReactNode` | - |
+| `extra` | Contenido adicional en el encabezado (lado derecho) | `React.ReactNode` | - |
+| `loading` | Mostrar esqueleto de carga | `boolean` | `false` |
+| `destroyOnClose` | Destruir contenido cuando esté cerrado | `boolean` | `false` |
+| `forceRender` | Pre-renderizar contenido (mantener en DOM cuando esté cerrado) | `boolean` | `false` |
+| `push` | Comportamiento de empuje de cajón anidado | `boolean \| { distance: number }` | `{ distance: 180 }` |
+| `zIndex` | z-index del cajón | `number` | `1000` |
+| `className` | Clase CSS para el panel del cajón | `string` | - |

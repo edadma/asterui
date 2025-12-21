@@ -1,0 +1,75 @@
+---
+title: Filter
+description: Um grupo de botões de rádio para filtragem de opção única. Selecionar uma opção oculta as outras e mostra um botão de reset.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ObjectOptionsDemo,
+  NoResetDemo,
+} from '../../../../components/FilterDemo'
+import FilterDemoSource from '../../../../components/FilterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Um grupo de botões de rádio para filtragem de opção única. Selecionar uma opção oculta as outras e mostra um botão de reset.
+
+## Importação
+
+```tsx
+import { Filter } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Filtro simples com opções de string. Clique em uma opção para selecionar, clique em reset para limpar." source={FilterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Variantes de tamanho disponíveis." source={FilterDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Opções de Objeto" description="Use objetos para opções com rótulos, valores e estado desabilitado personalizados." source={FilterDemoSource} fn="ObjectOptionsDemo">
+  <ObjectOptionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sem Botão de Reset" description="Oculte o botão de reset quando quiser exigir uma seleção." source={FilterDemoSource} fn="NoResetDemo">
+  <NoResetDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Filter`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `options` | Opções de filtro | `(string \| FilterOption)[]` | - |
+| `value` | Valor selecionado controlado | `string` | - |
+| `defaultValue` | Valor padrão para modo não controlado | `string` | - |
+| `onChange` | Chamado quando a seleção muda | `(value: string \| undefined) => void` | - |
+| `name` | Nome do grupo de rádio (gerado automaticamente se não fornecido) | `string` | - |
+| `size` | Tamanho do botão | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `showReset` | Mostrar botão de reset | `boolean` | `true` |
+| `resetLabel` | Rótulo do botão de reset | `React.ReactNode` | `'×'` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `FilterOption`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `label` | Texto de exibição para a opção | `string` | - |
+| `value` | Valor da opção | `string` | - |
+| `disabled` | Se a opção está desabilitada | `boolean` | `false` |
+
+## Acessibilidade
+
+- Usa inputs de rádio nativos para suporte de teclado e leitor de tela
+- Opções usam `aria-label` para nomes acessíveis
+- Botão de reset tem `aria-label="Reset filter"`
+- Suporta navegação por teclado com Tab e Space/Enter

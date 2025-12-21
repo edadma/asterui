@@ -1,0 +1,147 @@
+---
+title: Autocomplete 自动完成
+description: 搜索并从选项列表中选择，支持键盘导航和过滤。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ObjectsDemo,
+  ControlledDemo,
+  AllowClearDemo,
+  NoCustomDemo,
+  FilterDemo,
+  SizesDemo,
+  ColorsDemo,
+  StatusDemo,
+  DisabledDemo,
+  DisabledOptionsDemo,
+  NotFoundDemo,
+  EmailDemo,
+  FormDemo,
+} from '../../../../components/AutocompleteDemo'
+import AutocompleteDemoSource from '../../../../components/AutocompleteDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+搜索并从选项列表中选择，支持键盘导航和过滤。
+
+## 引入
+
+```tsx
+import { Autocomplete } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="带字符串数组选项的简单自动完成。" source={AutocompleteDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="对象选项" description="带值/标签对象选项的自动完成。" source={AutocompleteDemoSource} fn="ObjectsDemo">
+  <ObjectsDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控模式" description="带状态管理的受控自动完成。" source={AutocompleteDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="允许清除" description="带清除按钮的自动完成。" source={AutocompleteDemoSource} fn="AllowClearDemo">
+  <AllowClearDemo client:load slot="demo" />
+</Example>
+
+<Example title="不允许自定义值" description="仅允许从选项中选择的自动完成。" source={AutocompleteDemoSource} fn="NoCustomDemo">
+  <NoCustomDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义过滤" description="带自定义过滤逻辑（以...开头）的自动完成。" source={AutocompleteDemoSource} fn="FilterDemo">
+  <FilterDemo client:load slot="demo" />
+</Example>
+
+<Example title="不同尺寸" description="各种尺寸的自动完成。" source={AutocompleteDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="不同的颜色变体。" source={AutocompleteDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="验证状态" description="用于表单反馈的带验证状态的自动完成。" source={AutocompleteDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用状态" description="禁用的自动完成。" source={AutocompleteDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用选项" description="单个选项可以被禁用。" source={AutocompleteDemoSource} fn="DisabledOptionsDemo">
+  <DisabledOptionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义未找到内容" description="无结果时带自定义消息的自动完成。" source={AutocompleteDemoSource} fn="NotFoundDemo">
+  <NotFoundDemo client:load slot="demo" />
+</Example>
+
+<Example title="邮箱域名自动完成" description="带邮箱域名建议的实用示例。" source={AutocompleteDemoSource} fn="EmailDemo">
+  <EmailDemo client:load slot="demo" />
+</Example>
+
+<Example title="在表单中" description="与 Form 组件集成的自动完成。" source={AutocompleteDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Autocomplete`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 受控的值 | `string` | - |
+| `defaultValue` | 默认值（非受控） | `string` | `''` |
+| `onChange` | 值改变时的回调函数 | `(value: string) => void` | - |
+| `onSelect` | 选择选项时的回调函数 | `(value: string, option: AutocompleteOption) => void` | - |
+| `onSearch` | 输入值改变时的回调函数（用于异步过滤） | `(value: string) => void` | - |
+| `options` | 要显示的选项数组 | `string[] \| AutocompleteOption[]` | - |
+| `placeholder` | 输入占位符文本 | `string` | `"Type to search..."` |
+| `disabled` | 禁用自动完成 | `boolean` | `false` |
+| `size` | 输入框大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `color` | 输入框颜色变体 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `status` | 验证状态（设置 aria-invalid） | `'error' \| 'warning'` | - |
+| `allowCustomValue` | 允许用户输入不在选项中的自定义值 | `boolean` | `true` |
+| `filterOption` | 自定义过滤函数 | `(option: AutocompleteOption, inputValue: string) => boolean` | - |
+| `notFoundContent` | 无匹配选项时显示的内容 | `React.ReactNode` | `"No results found"` |
+| `allowClear` | 输入框有值时显示清除按钮 | `boolean \| { clearIcon?: ReactNode }` | `false` |
+| `onClear` | 点击清除按钮时的回调函数 | `() => void` | - |
+| `open` | 受控的下拉框打开状态 | `boolean` | - |
+| `defaultOpen` | 默认打开状态（非受控） | `boolean` | `false` |
+| `onOpenChange` | 打开状态改变时的回调函数 | `(open: boolean) => void` | - |
+| `defaultActiveFirstOption` | 过滤时默认激活第一个选项 | `boolean` | `true` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `AutocompleteOption`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 选项的值 | `string` | - |
+| `label` | 选项的显示文本 | `string` | - |
+| `disabled` | 选项是否被禁用 | `boolean` | - |
+
+## 键盘导航
+
+- 上 / 下 - 浏览选项
+- 回车 - 选择高亮的选项
+- Esc - 关闭下拉框并失焦
+
+## 无障碍
+
+- 使用 `role="combobox"` 及适当的 ARIA 属性
+- 下拉框使用 `role="listbox"` 及 `role="option"` 项
+- `aria-expanded` 指示下拉框打开状态
+- `aria-activedescendant` 跟踪高亮的选项
+- `aria-selected` 指示当前高亮的选项
+- 使用 `status="error"` 自动设置 `aria-invalid`
+- 禁用的选项使用 `aria-disabled`
+- 清除按钮为屏幕阅读器提供 `aria-label`

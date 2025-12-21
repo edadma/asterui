@@ -1,0 +1,73 @@
+---
+title: useTheme
+description: Hook para detectar el tema actual y obtener colores calculados.
+---
+
+Detecta el tema actual y proporciona valores de color calculados desde las variables CSS de DaisyUI. Útil para componentes basados en canvas que no pueden usar variables CSS directamente.
+
+## Importar
+
+```tsx
+import { useTheme } from 'asterui'
+```
+
+## Uso
+
+```tsx
+function ThemeAwareComponent() {
+  const { isDark, colors } = useTheme()
+
+  return (
+    <div style={{
+      background: colors.background,
+      color: colors.foreground
+    }}>
+      Current theme: {isDark ? 'Dark' : 'Light'}
+    </div>
+  )
+}
+```
+
+### Ejemplo con Canvas
+
+```tsx
+function CanvasComponent() {
+  const { colors } = useTheme()
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const ctx = canvasRef.current?.getContext('2d')
+    if (!ctx) return
+    ctx.fillStyle = colors.background
+    ctx.fillRect(0, 0, 100, 100)
+    ctx.fillStyle = colors.foreground
+    ctx.fillText('Hello', 10, 50)
+  }, [colors])
+
+  return <canvas ref={canvasRef} />
+}
+```
+
+## Valor de Retorno
+
+| Propiedad | Tipo | Descripción |
+|----------|------|-------------|
+| `isDark` | `boolean` | `true` si el modo oscuro está activo |
+| `colors` | `ThemeColors` | Colores del tema calculados como valores hexadecimales |
+
+### ThemeColors
+
+| Propiedad | Tipo | Descripción |
+|----------|------|-------------|
+| `background` | `string` | Color de fondo base (DaisyUI `base-100`) |
+| `foreground` | `string` | Color de texto base (DaisyUI `base-content`) |
+| `primary` | `string` | Color primario |
+| `primaryContent` | `string` | Color de contenido primario |
+
+## Cómo Funciona
+
+1. Verifica el atributo `data-theme` en el elemento `<html>` (convención de DaisyUI)
+2. Vuelve a la media query `prefers-color-scheme: dark` si no hay atributo establecido
+3. Lee las variables CSS de DaisyUI y convierte los colores oklch a hexadecimal
+4. Usa MutationObserver para reaccionar a los cambios de tema
+5. Actualiza automáticamente los colores cuando cambia el tema

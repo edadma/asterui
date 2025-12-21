@@ -1,0 +1,104 @@
+---
+title: ThemeController
+description: Componentes para alternar entre temas do daisyUI.
+tableOfContents: false
+---
+
+import {
+  SwapDemo,
+  CustomThemesDemo,
+  SwapCallbackDemo,
+  DropdownDemo,
+  DropdownDefaultDemo,
+  DropdownCallbackDemo,
+  ToggleDemo,
+  ToggleSizesDemo,
+} from '../../../../components/ThemeControllerDemo'
+import ThemeControllerDemoSource from '../../../../components/ThemeControllerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componentes para alternar entre temas do daisyUI.
+
+## Importação
+
+```tsx
+import { ThemeController } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Troca (Sol/Lua)" description="Alterne entre temas claro e escuro com ícones animados." source={ThemeControllerDemoSource} fn="SwapDemo">
+  <SwapDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Temas Personalizados" description="Use nomes de tema personalizados para modos claro e escuro." source={ThemeControllerDemoSource} fn="CustomThemesDemo">
+  <CustomThemesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Com Callback onChange" description="Manipule mudanças de tema com um callback." source={ThemeControllerDemoSource} fn="SwapCallbackDemo">
+  <SwapCallbackDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Dropdown (Múltiplos Temas)" description="Selecione entre múltiplos temas usando um menu dropdown." source={ThemeControllerDemoSource} fn="DropdownDemo">
+  <DropdownDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Dropdown com Tema Padrão" description="Defina um tema padrão selecionado para o dropdown." source={ThemeControllerDemoSource} fn="DropdownDefaultDemo">
+  <DropdownDefaultDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Dropdown com onChange" description="Manipule mudanças de seleção de tema." source={ThemeControllerDemoSource} fn="DropdownCallbackDemo">
+  <DropdownCallbackDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Interruptor Toggle" description="Interruptor toggle simples para tema claro/escuro." source={ThemeControllerDemoSource} fn="ToggleDemo">
+  <ToggleDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Tamanhos de Toggle" description="Interruptores toggle em diferentes tamanhos." source={ThemeControllerDemoSource} fn="ToggleSizesDemo">
+  <ToggleSizesDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ThemeController.Swap`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `lightTheme` | Nome do tema para modo claro | `string` | `'light'` |
+| `darkTheme` | Nome do tema para modo escuro | `string` | `'dark'` |
+| `defaultChecked` | Inicialmente marcado (tema escuro) | `boolean` | - |
+| `onChange` | Callback quando o tema muda | `(theme: string) => void` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `ThemeController.Dropdown`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `themes` | Array de nomes de tema disponíveis | `string[]` | - |
+| `defaultTheme` | Tema selecionado inicialmente | `string` | - |
+| `onChange` | Callback quando o tema muda | `(theme: string) => void` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `ThemeController.Toggle`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `lightTheme` | Nome do tema para modo claro | `string` | `'light'` |
+| `darkTheme` | Nome do tema para modo escuro | `string` | `'dark'` |
+| `defaultChecked` | Inicialmente marcado (tema escuro) | `boolean` | - |
+| `onChange` | Callback quando o tema muda | `(theme: string) => void` | - |
+| `size` | Tamanho do toggle | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Swap usa padrão de checkbox com ícones animados de sol/lua
+- Toggle usa checkbox com aria-label para leitores de tela
+- Dropdown usa inputs de rádio com aria-label para cada opção de tema
+- Mudanças de tema são imediatamente visíveis em todos os componentes
+- Todas as variantes são acessíveis por teclado

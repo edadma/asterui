@@ -1,0 +1,97 @@
+---
+title: Typography 排版
+description: 用于标题、段落和文本格式的语义文本组件。
+tableOfContents: false
+---
+
+import {
+  TitlesDemo,
+  ParagraphDemo,
+  TextDemo,
+  TextStylesDemo,
+  LinksDemo,
+  CopyableDemo,
+  EllipsisDemo,
+  EditableDemo,
+} from '../../../../components/TypographyDemo'
+import TypographyDemoSource from '../../../../components/TypographyDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于标题、段落和文本格式的语义文本组件。
+
+## 导入
+
+```tsx
+import { Typography } from 'asterui'
+
+const { Title, Paragraph, Text, Link } = Typography
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="标题" description="从 h1 到 h5 的标题级别。" source={TypographyDemoSource} fn="TitlesDemo">
+  <TitlesDemo client:load slot="demo" />
+</Example>
+
+<Example title="段落" description="块级文本内容。" source={TypographyDemoSource} fn="ParagraphDemo">
+  <ParagraphDemo client:load slot="demo" />
+</Example>
+
+<Example title="文本类型" description="用于各种上下文的不同文本类型。" source={TypographyDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="文本样式" description="各种文本格式选项。" source={TypographyDemoSource} fn="TextStylesDemo">
+  <TextStylesDemo client:load slot="demo" />
+</Example>
+
+<Example title="链接" description="样式化的锚元素。" source={TypographyDemoSource} fn="LinksDemo">
+  <LinksDemo client:load slot="demo" />
+</Example>
+
+<Example title="可复制" description="单击即可将文本复制到剪贴板。" source={TypographyDemoSource} fn="CopyableDemo">
+  <CopyableDemo client:load slot="demo" />
+</Example>
+
+<Example title="省略" description="使用省略号截断长文本。" source={TypographyDemoSource} fn="EllipsisDemo">
+  <EllipsisDemo client:load slot="demo" />
+</Example>
+
+<Example title="可编辑" description="内联可编辑文本。" source={TypographyDemoSource} fn="EditableDemo">
+  <EditableDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+| `level` | 标题级别 (h1-h5) - 仅 Title | `1 \| 2 \| 3 \| 4 \| 5` | `1` |
+| `copyable` | 启用复制到剪贴板 - Title 和 Paragraph | `boolean \| { text?: string }` | `false` |
+| `ellipsis` | 使用省略号截断 - Title 和 Paragraph | `boolean \| { rows?: number }` | `false` |
+| `editable` | 启用内联编辑 - 仅 Title | `boolean` | `false` |
+| `type` | 用于样式的文本类型 - Text 和 Link | `'secondary' \| 'success' \| 'warning' \| 'danger'` | - |
+| `disabled` | 禁用样式 - 仅 Text | `boolean` | `false` |
+| `strong` | 粗体文本 - 仅 Text | `boolean` | `false` |
+| `italic` | 斜体文本 - 仅 Text | `boolean` | `false` |
+| `underline` | 下划线文本 - 仅 Text | `boolean` | `false` |
+| `delete` | 删除线文本 - 仅 Text | `boolean` | `false` |
+| `code` | 代码样式 - 仅 Text | `boolean` | `false` |
+| `mark` | 高亮文本 - 仅 Text | `boolean` | `false` |
+| `keyboard` | 键盘样式 - 仅 Text | `boolean` | `false` |
+| `size` | 文本大小 - Paragraph 和 Link | `'sm' \| 'base' \| 'lg' \| 'xl' \| '2xl'` | - |
+| `align` | 文本对齐 - 仅 Paragraph | `'left' \| 'center' \| 'right'` | - |
+| `href` | 链接 URL - 仅 Link | `string` | `'#'` |
+| `external` | 在新标签页中打开并带有外部图标 - 仅 Link | `boolean` | `false` |
+
+## 可访问性
+
+- 使用语义 HTML 元素 (h1-h5, p, span, a)
+- 保持正确的标题层次结构
+- 链接具有可访问的标签
+- 复制和编辑操作可通过键盘访问

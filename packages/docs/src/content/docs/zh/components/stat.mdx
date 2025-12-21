@@ -1,0 +1,87 @@
+---
+title: Stats 统计数据
+description: 在组织的块中显示统计数据和数据,用于仪表板和分析。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DescDemo,
+  MultipleDemo,
+  IconsDemo,
+  ColoredDemo,
+  VerticalDemo,
+  ActionsDemo,
+} from '../../../../components/StatDemo'
+import StatDemoSource from '../../../../components/StatDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+在组织的块中显示统计数据和数据,用于仪表板和分析。
+
+## 导入
+
+```tsx
+import { Stats } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础统计" description="带有标题和值的简单统计。" source={StatDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="带描述" description="使用 desc 属性添加描述。" source={StatDemoSource} fn="DescDemo">
+  <DescDemo client:load slot="demo" />
+</Example>
+
+<Example title="多个统计" description="水平显示多个统计。" source={StatDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标" description="使用 figure 属性添加图标。" source={StatDemoSource} fn="IconsDemo">
+  <IconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="彩色值" description="使用 className 设置彩色值。" source={StatDemoSource} fn="ColoredDemo">
+  <ColoredDemo client:load slot="demo" />
+</Example>
+
+<Example title="垂直布局" description="垂直堆叠统计。" source={StatDemoSource} fn="VerticalDemo">
+  <VerticalDemo client:load slot="demo" />
+</Example>
+
+<Example title="带操作" description="使用 actions 属性添加按钮。" source={StatDemoSource} fn="ActionsDemo">
+  <ActionsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Stats`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 要显示的统计项目 | `React.ReactNode` | `-` |
+| `vertical` | 垂直堆叠统计 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+### `Stats.Stat`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `title` | 统计标题 | `React.ReactNode` | `-` |
+| `value` | 统计值 | `React.ReactNode` | `-` |
+| `desc` | 描述文本 | `React.ReactNode` | `-` |
+| `figure` | 图标或图像图形 | `React.ReactNode` | `-` |
+| `actions` | 操作按钮或元素 | `React.ReactNode` | `-` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+## 可访问性
+
+- 统计标题的语义标题结构
+- 值可以包含用于上下文的 ARIA 标签
+- 使用图像时图形具有适当的 alt 文本
+- 操作按钮可通过键盘访问

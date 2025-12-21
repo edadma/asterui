@@ -1,0 +1,96 @@
+---
+title: Segmented 分段控制器
+description: 用于在互斥选项之间切换的内联切换
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  DisabledItemsDemo,
+  SizesDemo,
+  BlockDemo,
+  DisabledDemo,
+  WithIconsDemo,
+} from '../../../../components/SegmentedDemo'
+import SegmentedDemoSource from '../../../../components/SegmentedDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于在互斥选项之间切换的内联切换。
+
+## 导入
+
+```tsx
+import { Segmented } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础用法" description="用于视图切换的简单分段控制。" source={SegmentedDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用项目" description="可以禁用单个项目。" source={SegmentedDemoSource} fn="DisabledItemsDemo">
+  <DisabledItemsDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="四种尺寸选项可用。" source={SegmentedDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="块模式" description="具有相同大小选项的全宽。" source={SegmentedDemoSource} fn="BlockDemo">
+  <BlockDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用" description="整个控件的禁用状态。" source={SegmentedDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="带图标" description="带有图标和标签的选项。" source={SegmentedDemoSource} fn="WithIconsDemo">
+  <WithIconsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Segmented`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 当前选中的值(受控) | `string \| number` | - |
+| `defaultValue` | 默认选中的值(非受控) | `string \| number` | - |
+| `onChange` | 选择更改时的回调 | `(value: string \| number) => void` | - |
+| `size` | 控件的大小 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `block` | 占用容器的全宽 | `boolean` | `false` |
+| `disabled` | 禁用所有选项 | `boolean` | `false` |
+| `className` | 额外的 CSS 类 | `string` | - |
+| `children` | Segmented.Item 组件 | `ReactNode` | - |
+
+### `Segmented.Item`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 选项值(必需) | `string \| number` | - |
+| `disabled` | 禁用此选项 | `boolean` | `false` |
+| `icon` | 标签前的图标 | `ReactNode` | - |
+| `children` | 标签内容 | `ReactNode` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+
+## 何时使用
+
+- **视图切换**: 在列表/网格/表格视图之间切换
+- **时间段**: 日/周/月/年过滤器
+- **尺寸选择器**: S/M/L/XL 选项
+- **对齐**: 左/中/右控件
+- **模式切换**: 明/暗主题切换
+
+## Segmented 与 Radio.Group 对比
+
+| Segmented | Radio.Group |
+|-----------|-------------|
+| 即时 UI 状态更改 | 表单字段值 |
+| 紧凑的按钮式外观 | 传统单选按钮 |
+| 始终可见的选项 | 可以有许多选项 |
+| 通常 2-5 个选项 | 任意数量的选项 |

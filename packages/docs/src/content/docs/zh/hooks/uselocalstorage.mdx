@@ -1,0 +1,54 @@
+---
+title: useLocalStorage
+description: 将状态持久化到 localStorage 的 Hook。
+---
+
+将状态持久化到 localStorage，并自动在标签页间同步。
+
+## 导入
+
+```tsx
+import { useLocalStorage } from 'asterui'
+```
+
+## 用法
+
+```tsx
+function SettingsExample() {
+  const [theme, setTheme] = useLocalStorage('theme', 'light')
+  const [user, setUser, removeUser] = useLocalStorage('user', null)
+
+  return (
+    <>
+      <Select value={theme} onChange={setTheme}>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </Select>
+      <Button onClick={removeUser}>Logout</Button>
+    </>
+  )
+}
+```
+
+## 参数
+
+| 参数 | 类型 | 描述 |
+|-----------|------|-------------|
+| `key` | `string` | localStorage 键 |
+| `initialValue` | `T` | 键不存在时的初始值 |
+
+## 返回值
+
+返回一个元组 `[value, setValue, removeValue]`：
+
+| 索引 | 类型 | 描述 |
+|-------|------|-------------|
+| `0` | `T` | 当前存储的值 |
+| `1` | `(value: T \| (prev: T) => T) => void` | 更新值 |
+| `2` | `() => void` | 从 localStorage 中删除并重置为初始值 |
+
+## 特性
+
+- 通过 `storage` 事件在标签页/窗口间同步
+- SSR 安全（处理 `window` 未定义的情况）
+- 支持函数式更新，类似于 `useState`

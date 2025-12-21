@@ -1,0 +1,92 @@
+---
+title: Collapse
+description: Paneles de contenido plegables para FAQs, acordeones y secciones expandibles.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  AccordionDemo,
+  BorderlessDemo,
+  NestedDemo,
+  GhostDemo,
+  PlusIconDemo,
+} from '../../../../components/CollapseDemo'
+import CollapseDemoSource from '../../../../components/CollapseDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Paneles de contenido plegables para FAQs, acordeones y secciones expandibles.
+
+## Importar
+
+```tsx
+import { Collapse } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Collapse Básico" description="Paneles plegables simples." source={CollapseDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Acordeón" description="Solo un panel puede estar abierto a la vez." source={CollapseDemoSource} fn="AccordionDemo">
+  <AccordionDemo client:load slot="demo" />
+</Example>
+
+<Example title="Sin Bordes" description="Collapse sin bordes." source={CollapseDemoSource} fn="BorderlessDemo">
+  <BorderlessDemo client:load slot="demo" />
+</Example>
+
+<Example title="Contenido Anidado" description="Collapse con contenido anidado enriquecido." source={CollapseDemoSource} fn="NestedDemo">
+  <NestedDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modo Ghost" description="Fondo transparente para apariencia mínima." source={CollapseDemoSource} fn="GhostDemo">
+  <GhostDemo client:load slot="demo" />
+</Example>
+
+<Example title="Icono Plus/Minus" description="Usa iconos de más/menos en lugar de flechas." source={CollapseDemoSource} fn="PlusIconDemo">
+  <PlusIconDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Collapse`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `items` | Elementos de panel de collapse | `CollapseItemType[]` | - |
+| `activeKey` | Claves de panel activo controladas | `string \| number \| (string \| number)[]` | - |
+| `defaultActiveKey` | Claves de panel activo iniciales | `string \| number \| (string \| number)[]` | - |
+| `accordion` | Solo un panel abierto a la vez | `boolean` | `false` |
+| `bordered` | Mostrar borde alrededor de los paneles | `boolean` | `true` |
+| `ghost` | Estilo de fondo transparente | `boolean` | `false` |
+| `size` | Variante de tamaño | `'sm' \| 'md' \| 'lg'` | `'md'` |
+| `icon` | Tipo de icono para indicador de expandir | `'arrow' \| 'plus' \| 'none'` | `'arrow'` |
+| `expandIconPlacement` | Ubicación del icono | `'start' \| 'end'` | `'start'` |
+| `onChange` | Manejador de cambio | `(activeKey: (string \| number)[]) => void` | - |
+| `data-testid` | ID de prueba para el componente | `string` | `'collapse'` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `CollapseItemType`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `key` | Identificador único para el panel | `string \| number` | - |
+| `label` | Contenido del encabezado del panel | `React.ReactNode` | - |
+| `children` | Contenido del cuerpo del panel | `React.ReactNode` | - |
+| `extra` | Elemento extra en la esquina del encabezado | `React.ReactNode` | - |
+| `showArrow` | Si mostrar el icono de expandir | `boolean` | `true` |
+| `collapsible` | Modo plegable | `'header' \| 'icon' \| 'disabled'` | - |
+| `className` | Nombre de clase personalizado para este panel | `string` | - |
+
+## Accesibilidad
+
+- Los encabezados de panel son accesibles por teclado con Enter y Espacio
+- Usa `aria-expanded` para indicar el estado del panel
+- Usa `aria-disabled` para paneles deshabilitados
+- Los paneles exponen `data-state` para testing y estilizado

@@ -1,0 +1,36 @@
+---
+title: useHover
+description: Hook que rastreia o estado de hover de um elemento.
+---
+
+Rastreia se o mouse está sobre um elemento.
+
+## Importação
+
+```tsx
+import { useHover } from 'asterui'
+```
+
+## Uso
+
+```tsx
+function HoverExample() {
+  const { ref, isHovered } = useHover<HTMLDivElement>()
+
+  return (
+    <div
+      ref={ref}
+      className={isHovered ? 'bg-blue-500' : 'bg-gray-500'}
+    >
+      {isHovered ? 'Hovering!' : 'Hover me'}
+    </div>
+  )
+}
+```
+
+## Valor de Retorno
+
+| Propriedade | Tipo | Descrição |
+|----------|------|-------------|
+| `ref` | `RefObject<T>` | Ref para anexar ao elemento |
+| `isHovered` | `boolean` | Verdadeiro quando o mouse está sobre o elemento |

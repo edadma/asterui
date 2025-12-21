@@ -1,0 +1,54 @@
+---
+title: Diff
+description: Comparação lado a lado com um redimensionador interativo.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  TextDemo,
+  AspectDemo,
+} from '../../../../components/DiffDemo'
+import DiffDemoSource from '../../../../components/DiffDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Comparação lado a lado com um redimensionador interativo.
+
+## Importação
+
+```tsx
+import { Diff } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Comparação de Imagens" description="Compare duas imagens com um controle deslizante arrastável." source={DiffDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Comparação de Texto" description="Compare texto com diferentes estilos." source={DiffDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Proporção Personalizada" description="Use diferentes proporções de aspecto." source={DiffDemoSource} fn="AspectDemo">
+  <AspectDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `left` | Conteúdo do lado esquerdo (revelado ao arrastar) | `React.ReactNode` | - |
+| `right` | Conteúdo do lado direito (oculto ao arrastar) | `React.ReactNode` | - |
+| `aspect` | Classe de proporção de aspecto | `string` | `'aspect-16/9'` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Acessível via teclado com navegação por tab
+- Usa `role="img"` para significado semântico
+- Teclas de seta controlam a posição do redimensionador quando em foco

@@ -1,0 +1,46 @@
+---
+title: Container
+description: Contêiner de conteúdo centralizado com largura máxima configurável para layouts de página.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PageLayoutDemo,
+} from '../../../../components/ContainerDemo'
+import ContainerDemoSource from '../../../../components/ContainerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Contêiner de conteúdo centralizado com largura máxima configurável para layouts de página.
+
+## Importação
+
+```tsx
+import { Container } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Uso Básico" description="Container fornece conteúdo centralizado com largura máxima e padding responsivo." source={ContainerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Layout de Página" description="Uso típico para conteúdo de página." source={ContainerDemoSource} fn="PageLayoutDemo">
+  <PageLayoutDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Container`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `children` | Conteúdo do container | `React.ReactNode` | - |
+| `size` | Tamanho de largura máxima | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| 'full'` | `'xl'` |
+| `centered` | Centralizar container horizontalmente | `boolean` | `true` |
+| `padding` | Adicionar padding horizontal | `boolean` | `true` |
+| `className` | Classes CSS adicionais | `string` | - |

@@ -1,0 +1,146 @@
+---
+title: Cascader 级联选择
+description: 用于位置或类别等层级数据的级联选择框。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HoverDemo,
+  SizesDemo,
+  DisabledDemo,
+  SearchDemo,
+  ChangeOnSelectDemo,
+  AsyncLoadDemo,
+  StatusDemo,
+  MultipleDemo,
+} from '../../../../components/CascaderDemo'
+import CascaderDemoSource from '../../../../components/CascaderDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于位置或类别等层级数据的级联选择框。
+
+## 引入
+
+```tsx
+import { Cascader } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="简单的层级选择。" source={CascaderDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="悬停展开" description="悬停时展开子菜单。" source={CascaderDemoSource} fn="HoverDemo">
+  <HoverDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="不同的级联选择器尺寸。" source={CascaderDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用状态" description="禁用的级联选择器状态。" source={CascaderDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="搜索" description="启用搜索/过滤功能。" source={CascaderDemoSource} fn="SearchDemo">
+  <SearchDemo client:load slot="demo" />
+</Example>
+
+<Example title="选择即改变" description="允许选择任何级别，而不仅是叶子节点。" source={CascaderDemoSource} fn="ChangeOnSelectDemo">
+  <ChangeOnSelectDemo client:load slot="demo" />
+</Example>
+
+<Example title="异步加载" description="展开时动态加载选项。" source={CascaderDemoSource} fn="AsyncLoadDemo">
+  <AsyncLoadDemo client:load slot="demo" />
+</Example>
+
+<Example title="验证状态" description="显示错误或警告验证状态。" source={CascaderDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="多选" description="选择多个叶子值。" source={CascaderDemoSource} fn="MultipleDemo">
+  <MultipleDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Cascader`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `options` | 层级选项数据 | `CascaderOption[]` | `[]` |
+| `value` | 受控的选择值路径 | `string[]` | - |
+| `defaultValue` | 默认选择值（非受控） | `string[]` | `[]` |
+| `onChange` | 选择改变时的回调函数 | `(value: string[], selectedOptions: CascaderOption[]) => void` | - |
+| `placeholder` | 输入占位符文本 | `string` | `'请选择'` |
+| `disabled` | 禁用级联选择器 | `boolean` | `false` |
+| `allowClear` | 显示清除按钮 | `boolean` | `true` |
+| `expandTrigger` | 如何展开子菜单 | `'click' \| 'hover'` | `'click'` |
+| `changeOnSelect` | 允许选择任何级别，而不仅是叶子 | `boolean` | `false` |
+| `displayRender` | 自定义显示渲染函数 | `(labels: ReactNode[], selectedOptions: CascaderOption[]) => ReactNode` | - |
+| `size` | 输入框大小 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `color` | 焦点环颜色 | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `status` | 验证状态 | `'error' \| 'warning'` | - |
+| `showSearch` | 启用搜索功能 | `boolean \| { filter?, render?, matchInputWidth? }` | `false` |
+| `notFoundContent` | 无搜索结果时的内容 | `ReactNode` | `'未找到结果'` |
+| `loadData` | 异步数据加载函数 | `(selectedOptions: CascaderOption[]) => Promise<void>` | - |
+| `fieldNames` | 数据映射的自定义字段名 | `{ label?: string; value?: string; children?: string }` | - |
+| `open` | 受控的下拉框打开状态 | `boolean` | - |
+| `onDropdownVisibleChange` | 下拉框可见性改变时的回调函数 | `(open: boolean) => void` | - |
+| `popupClassName` | 下拉框的类名 | `string` | - |
+| `dropdownRender` | 自定义下拉框包装渲染 | `(menu: ReactNode) => ReactNode` | - |
+| `multiple` | 启用多选模式 | `boolean` | `false` |
+| `maxTagCount` | 多选模式下显示的最大标签数 | `number \| 'responsive'` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `CascaderOption`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 唯一标识符 | `string` | - |
+| `label` | 显示标签 | `ReactNode` | - |
+| `children` | 子选项 | `CascaderOption[]` | - |
+| `disabled` | 禁用此选项 | `boolean` | `false` |
+| `isLeaf` | 强制作为叶子节点（不展开，不异步加载） | `boolean` | - |
+
+## 无障碍
+
+Cascader 组件遵循 WAI-ARIA combobox 模式：
+
+- 在触发器上使用 `role="combobox"`，带有 `aria-expanded`、`aria-haspopup`
+- `aria-activedescendant` 为屏幕阅读器跟踪聚焦的选项
+- `aria-selected` 指示选项的选中状态
+- `aria-disabled` 指示禁用状态
+- 清除按钮有 `aria-label="清除选择"`
+
+### 键盘导航
+
+| 按键 | 操作 |
+|-----|--------|
+| 下 | 打开下拉框或移动到下一个选项 |
+| 上 | 移动到上一个选项 |
+| 右 | 移动到下一列（展开） |
+| 左 | 移动到上一列 |
+| 回车 | 选择聚焦的选项或打开下拉框 |
+| 空格 | 切换下拉框（非搜索时） |
+| Esc | 关闭下拉框 |
+| Home | 移动到第一个选项 |
+| End | 移动到最后一个选项 |
+
+### 测试
+
+组件包含用于测试的数据属性：
+
+- 根容器上的 `data-testid="cascader"`
+- 下拉框上的 `data-testid="cascader-dropdown"`
+- 每个选项上的 `data-testid="cascader-option-{value}"`
+- 清除按钮上的 `data-testid="cascader-clear"`
+- 根上的 `data-state="open|closed"` 指示下拉框状态
+- 选项上的 `data-state="selected|hovered"` 指示状态
+- 选项上的 `data-value="{value}"` 提供值

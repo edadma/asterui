@@ -1,0 +1,75 @@
+---
+title: Filter
+description: 一组用于单选过滤的单选按钮。选择一个选项会隐藏其他选项并显示重置按钮。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ObjectOptionsDemo,
+  NoResetDemo,
+} from '../../../../components/FilterDemo'
+import FilterDemoSource from '../../../../components/FilterDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+一组用于单选过滤的单选按钮。选择一个选项会隐藏其他选项并显示重置按钮。
+
+## 导入
+
+```tsx
+import { Filter } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础" description="带字符串选项的简单过滤器。点击选项选择，点击重置清除。" source={FilterDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="可用的尺寸变体。" source={FilterDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="对象选项" description="使用对象作为选项，支持自定义标签、值和禁用状态。" source={FilterDemoSource} fn="ObjectOptionsDemo">
+  <ObjectOptionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="无重置按钮" description="当你想要求选择时，隐藏重置按钮。" source={FilterDemoSource} fn="NoResetDemo">
+  <NoResetDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Filter`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `options` | 过滤器选项 | `(string \| FilterOption)[]` | - |
+| `value` | 受控的选中值 | `string` | - |
+| `defaultValue` | 非受控模式的默认值 | `string` | - |
+| `onChange` | 选择改变时调用 | `(value: string \| undefined) => void` | - |
+| `name` | 单选组名称（如果未提供则自动生成） | `string` | - |
+| `size` | 按钮尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `showReset` | 显示重置按钮 | `boolean` | `true` |
+| `resetLabel` | 重置按钮标签 | `React.ReactNode` | `'×'` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `FilterOption`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `label` | 选项的显示文本 | `string` | - |
+| `value` | 选项的值 | `string` | - |
+| `disabled` | 选项是否禁用 | `boolean` | `false` |
+
+## 无障碍
+
+- 使用原生单选输入以支持键盘和屏幕阅读器
+- 选项使用 `aria-label` 提供可访问名称
+- 重置按钮有 `aria-label="Reset filter"`
+- 支持 Tab 和 Space/Enter 键盘导航

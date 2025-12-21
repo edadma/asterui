@@ -1,0 +1,67 @@
+---
+title: Mention
+description: 用于提及用户、标签或其他实体的输入组件，带自动完成建议。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CustomPrefixDemo,
+  MultiTriggerDemo,
+} from '../../../../components/MentionDemo'
+import MentionDemoSource from '../../../../components/MentionDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于提及用户、标签或其他实体的输入组件，带自动完成建议。
+
+## 导入
+
+```tsx
+import { Mention } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础提及" description="带 @ 触发器的简单提及输入。" source={MentionDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="自定义前缀" description="使用 # 前缀进行标签提及。" source={MentionDemoSource} fn="CustomPrefixDemo">
+  <CustomPrefixDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="多个触发器" description="使用不同前缀的多个提及组件。" source={MentionDemoSource} fn="MultiTriggerDemo">
+  <MultiTriggerDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Mention`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `options` | 提及选项数组 | `Array<{ value: string, label: string }>` | - |
+| `value` | 受控值 | `string` | - |
+| `onChange` | 值改变时的回调 | `(value: string) => void` | - |
+| `prefix` | 触发提及建议的字符 | `string` | `'@'` |
+| `split` | 用于在输入中分隔提及的字符 | `string` | - |
+| `placeholder` | 输入占位符文本 | `string` | - |
+| `disabled` | 禁用提及输入 | `boolean` | `false` |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 键盘导航
+
+- **↑** / **↓** - 浏览提及建议
+- **Enter** - 选择高亮显示的提及
+- **Esc** - 关闭提及下拉菜单
+
+## 无障碍
+
+- 完整的键盘导航支持以选择提及
+- ARIA 属性，供屏幕阅读器朗读建议
+- 下拉菜单打开和关闭时的焦点管理
+- 选中和聚焦项目的清晰视觉指示器

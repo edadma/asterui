@@ -1,0 +1,81 @@
+---
+title: ColorPicker
+description: Control de selección de color con presets y soporte de múltiples formatos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ShowTextDemo,
+  PresetsDemo,
+  SizesDemo,
+  ControlledDemo,
+  ModesDemo,
+} from '../../../../components/ColorPickerDemo'
+import ColorPickerDemoSource from '../../../../components/ColorPickerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Control de selección de color con presets y soporte de múltiples formatos.
+
+## Importar
+
+```tsx
+import { ColorPicker } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="ColorPicker Básico" description="Selector de color simple con panel de saturación/luminosidad y deslizador de tono." source={ColorPickerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Visualización de Texto" description="Selector de color mostrando el valor hexadecimal debajo del selector." source={ColorPickerDemoSource} fn="ShowTextDemo">
+  <ShowTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Presets Personalizados" description="Selector de color con muestras de color preset personalizadas." source={ColorPickerDemoSource} fn="PresetsDemo">
+  <PresetsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamaños" description="Selectores de color en diferentes tamaños." source={ColorPickerDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Controlado" description="Selector de color controlado con gestión de estado." source={ColorPickerDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Modos de Visualización" description="Solo selector, solo muestras, o ambos." source={ColorPickerDemoSource} fn="ModesDemo">
+  <ModesDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `ColorPicker`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Valor de color controlado (hex) | `string` | - |
+| `defaultValue` | Valor de color inicial (no controlado) | `string` | `'#000000'` |
+| `onChange` | Callback cuando cambia el color | `(color: string) => void` | - |
+| `mode` | Modo de visualización | `'swatches' \| 'picker' \| 'both'` | `'both'` |
+| `presets` | Muestras de color preset | `string[]` | Paleta predeterminada |
+| `showText` | Mostrar valor hex debajo del selector | `boolean` | `false` |
+| `allowClear` | Mostrar botón de limpiar para reiniciar color | `boolean` | `false` |
+| `disabled` | Deshabilitar el selector | `boolean` | `false` |
+| `size` | Tamaño del selector | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `data-testid` | Prefijo de ID de prueba para elementos hijos | `string` | `'colorpicker'` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- El panel de saturación/luminosidad tiene `role="slider"` con `aria-valuetext`
+- El deslizador de tono tiene `role="slider"` con `aria-valuemin`, `aria-valuemax` y `aria-valuenow`
+- Los presets de color usan `role="listbox"` y `role="option"` con `aria-selected`
+- Navegación completa por teclado: Teclas de flecha ajustan valores de color, Shift+Flecha para pasos más grandes
+- Indicadores de foco visibles en elementos interactivos
+- Todos los elementos interactivos tienen atributos `aria-label` descriptivos

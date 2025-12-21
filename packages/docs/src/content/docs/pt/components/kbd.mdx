@@ -1,0 +1,70 @@
+---
+title: Kbd
+description: Exiba teclas e atalhos de teclado.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  CombinationDemo,
+  InTextDemo,
+  ArrowsDemo,
+  FullKeyboardDemo,
+} from '../../../../components/KbdDemo'
+import KbdDemoSource from '../../../../components/KbdDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Exiba teclas e atalhos de teclado.
+
+## Importação
+
+```tsx
+import { Kbd } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Básico" description="Exibição simples de tecla de teclado." source={KbdDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Diferentes tamanhos para vários contextos." source={KbdDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Combinação de Teclas" description="Exiba atalhos de teclado." source={KbdDemoSource} fn="CombinationDemo">
+  <CombinationDemo client:load slot="demo" />
+</Example>
+
+<Example title="No Texto" description="Use kbd inline com texto." source={KbdDemoSource} fn="InTextDemo">
+  <InTextDemo client:load slot="demo" />
+</Example>
+
+<Example title="Teclas de Seta" description="Exibição de teclas de seta para instruções de navegação." source={KbdDemoSource} fn="ArrowsDemo">
+  <ArrowsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Teclado Completo" description="Exemplo de layout de teclado completo." source={KbdDemoSource} fn="FullKeyboardDemo">
+  <FullKeyboardDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Kbd`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `size` | Tamanho do kbd | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `children` | Conteúdo da tecla | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa elemento HTML `<kbd>` semântico
+- Leitores de tela anunciam teclas de teclado apropriadamente
+- Estilo de alto contraste garante visibilidade

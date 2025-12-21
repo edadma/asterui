@@ -1,0 +1,126 @@
+---
+title: Input
+description: 用于用户数据输入的文本输入字段，带验证状态和自定义选项。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ColorsDemo,
+  TypesDemo,
+  VariantsDemo,
+  MaskDemo,
+  ControlledDemo,
+  DisabledDemo,
+  AllowClearDemo,
+  PrefixSuffixDemo,
+  StatusDemo,
+  FloatingLabelDemo,
+  AddonsDemo,
+} from '../../../../components/InputDemo'
+import InputDemoSource from '../../../../components/InputDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于用户数据输入的文本输入字段，带验证状态和自定义选项。
+
+## 导入
+
+```tsx
+import { Input } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础输入" description="简单的文本输入字段。" source={InputDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="五种尺寸：xs、sm、md（默认）、lg 和 xl。" source={InputDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="颜色" description="用于视觉强调的不同颜色变体。" source={InputDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="输入类型" description="不同的 HTML 输入类型。" source={InputDemoSource} fn="TypesDemo">
+  <TypesDemo client:load slot="demo" />
+</Example>
+
+<Example title="变体" description="带边框和幽灵样式。" source={InputDemoSource} fn="VariantsDemo">
+  <VariantsDemo client:load slot="demo" />
+</Example>
+
+<Example title="输入掩码" description="带掩码模式的格式化输入。" source={InputDemoSource} fn="MaskDemo">
+  <MaskDemo client:load slot="demo" />
+</Example>
+
+<Example title="受控输入" description="带受控状态的输入。" source={InputDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用" description="禁用的输入状态。" source={InputDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="允许清除" description="带清除按钮的输入。" source={InputDemoSource} fn="AllowClearDemo">
+  <AllowClearDemo client:load slot="demo" />
+</Example>
+
+<Example title="前缀和后缀" description="带前缀和后缀图标的输入。" source={InputDemoSource} fn="PrefixSuffixDemo">
+  <PrefixSuffixDemo client:load slot="demo" />
+</Example>
+
+<Example title="验证状态" description="带表单反馈验证状态的输入。" source={InputDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="浮动标签" description="带动画浮动标签的输入，聚焦或填充时移到上方。" source={InputDemoSource} fn="FloatingLabelDemo">
+  <FloatingLabelDemo client:load slot="demo" />
+</Example>
+
+<Example title="插件" description="带输入字段前/后文本或元素（外部）的输入。" source={InputDemoSource} fn="AddonsDemo">
+  <AddonsDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Input`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `type` | HTML 输入类型 | `'text' \| 'password' \| 'email' \| 'number' \| 'date' \| 'datetime-local' \| 'week' \| 'month' \| 'tel' \| 'url' \| 'search' \| 'time'` | `'text'` |
+| `size` | 输入尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | 输入颜色变体 | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `status` | 验证状态（设置 aria-invalid） | `'error' \| 'warning'` | - |
+| `ghost` | 幽灵变体（透明） | `boolean` | `false` |
+| `bordered` | 显示边框（设置为 false 移除） | `boolean` | `true` |
+| `allowClear` | 输入有值时显示清除按钮 | `boolean \| { clearIcon?: ReactNode }` | `false` |
+| `onClear` | 点击清除按钮时的回调 | `() => void` | - |
+| `prefix` | 前缀图标或元素（输入内部） | `React.ReactNode` | - |
+| `suffix` | 后缀图标或元素（输入内部） | `React.ReactNode` | - |
+| `addonBefore` | 输入前的文本/元素（外部，使用 DaisyUI label） | `React.ReactNode` | - |
+| `addonAfter` | 输入后的文本/元素（外部，使用 DaisyUI label） | `React.ReactNode` | - |
+| `floatingLabel` | 浮动标签文本（使用 DaisyUI floating-label） | `string` | - |
+| `mask` | 输入掩码模式。使用 # 表示数字，A 表示字母，* 表示字母数字 | `string` | - |
+| `maskPlaceholder` | 掩码中显示的占位符字符 | `string` | `'_'` |
+| `errorId` | 错误消息元素的 ID（用于 aria-describedby） | `string` | - |
+| `disabled` | 禁用状态 | `boolean` | `false` |
+| `placeholder` | 占位符文本 | `string` | - |
+| `value` | 输入值 | `string` | - |
+| `onChange` | 变化事件处理器 | `(e: React.ChangeEvent<HTMLInputElement>) => void` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+## 无障碍
+
+- 使用原生 `<input>` 元素以获得正确的键盘支持
+- 禁用状态正确传达给辅助技术
+- 清除按钮有 `aria-label` 供屏幕阅读器使用
+- 使用 `status="error"` 自动设置 `aria-invalid`
+- 使用 `errorId` 通过 `aria-describedby` 将输入链接到错误消息
+- 键盘导航的焦点状态清晰可见

@@ -1,0 +1,81 @@
+---
+title: Result 结果
+description: 显示成功、错误或信息状态的结果页面。
+tableOfContents: false
+---
+
+import {
+  SuccessResultDemo,
+  ErrorResultDemo,
+  InfoResultDemo,
+  WarningResultDemo,
+  NotFoundResultDemo,
+  ForbiddenResultDemo,
+  ServerErrorResultDemo,
+} from '../../../../components/ResultDemo'
+import ResultDemoSource from '../../../../components/ResultDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+显示成功、错误或信息状态的结果页面。
+
+## 导入
+
+```tsx
+import { Result } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="成功结果" description="显示带有操作按钮的成功状态。" source={ResultDemoSource} fn="SuccessResultDemo">
+  <SuccessResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="错误结果" description="显示带有重试操作的错误状态。" source={ResultDemoSource} fn="ErrorResultDemo">
+  <ErrorResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="信息结果" description="显示信息性消息。" source={ResultDemoSource} fn="InfoResultDemo">
+  <InfoResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="警告结果" description="显示警告状态。" source={ResultDemoSource} fn="WarningResultDemo">
+  <WarningResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="404 页面未找到" description="显示 404 错误页面。" source={ResultDemoSource} fn="NotFoundResultDemo">
+  <NotFoundResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="403 禁止访问" description="显示访问被拒绝页面。" source={ResultDemoSource} fn="ForbiddenResultDemo">
+  <ForbiddenResultDemo client:load slot="demo" />
+</Example>
+
+<Example title="500 服务器错误" description="显示服务器错误页面。" source={ResultDemoSource} fn="ServerErrorResultDemo">
+  <ServerErrorResultDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Result`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `status` | 结果的状态类型 | `'success' \| 'error' \| 'info' \| 'warning' \| '404' \| '403' \| '500'` | `'info'` |
+| `title` | 结果的标题 | `React.ReactNode` | - |
+| `subTitle` | 结果的副标题 | `React.ReactNode` | - |
+| `icon` | 自定义图标(覆盖默认状态图标) | `React.ReactNode` | - |
+| `extra` | 额外的操作元素(通常是按钮) | `React.ReactNode` | - |
+| `children` | 副标题和操作之间的额外内容 | `React.ReactNode` | - |
+| `className` | 额外的 CSS 类 | `string` | - |
+| `style` | 内联样式 | `React.CSSProperties` | - |
+
+## 可访问性
+
+- 状态图标具有适当的 ARIA 标签
+- 标题和副标题的语义标题结构
+- 操作按钮可通过键盘访问
+- 颜色不是状态的唯一指示器

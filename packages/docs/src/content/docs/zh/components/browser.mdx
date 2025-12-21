@@ -1,0 +1,55 @@
+---
+title: Browser 浏览器
+description: 在带地址栏的浏览器窗口模型中显示内容。
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PreviewDemo,
+  GradientDemo,
+  DashboardDemo,
+} from '../../../../components/BrowserDemo'
+import BrowserDemoSource from '../../../../components/BrowserDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+在带地址栏的浏览器窗口模型中显示内容。
+
+## 引入
+
+```tsx
+import { Browser } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="带 URL 栏的浏览器窗口。" source={BrowserDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="网站预览" description="预览网站布局。" source={BrowserDemoSource} fn="PreviewDemo">
+  <PreviewDemo client:load slot="demo" />
+</Example>
+
+<Example title="带背景" description="自定义背景颜色。" source={BrowserDemoSource} fn="GradientDemo">
+  <GradientDemo client:load slot="demo" />
+</Example>
+
+<Example title="仪表盘预览" description="模拟仪表盘 UI。" source={BrowserDemoSource} fn="DashboardDemo">
+  <DashboardDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Browser`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 浏览器视口内的内容 | `React.ReactNode` | - |
+| `url` | 地址栏中显示的 URL | `string` | `'https://example.com'` |
+| `className` | 浏览器容器的类名 | `string` | - |
+| `contentClassName` | 内容区域的类名 | `string` | - |

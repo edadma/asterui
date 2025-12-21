@@ -1,0 +1,64 @@
+---
+title: Tooltip
+description: Muestra información adicional al pasar el cursor.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  PositionsDemo,
+  ColorsDemo,
+  OpenStateDemo,
+} from '../../../../components/TooltipDemo'
+import TooltipDemoSource from '../../../../components/TooltipDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Muestra información adicional al pasar el cursor.
+
+## Importación
+
+```tsx
+import { Tooltip } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Tooltip Básico" description="Tooltip simple que aparece al pasar el cursor." source={TooltipDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Posiciones" description="Los tooltips pueden aparecer en diferentes posiciones." source={TooltipDemoSource} fn="PositionsDemo">
+  <PositionsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores" description="Variantes de color para diferentes contextos." source={TooltipDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Siempre Abierto" description="Fuerza al tooltip a permanecer visible." source={TooltipDemoSource} fn="OpenStateDemo">
+  <OpenStateDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Tooltip`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `tip` | Contenido de texto del tooltip | `string` | `-` |
+| `position` | Posición del tooltip | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` |
+| `color` | Color del tooltip | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
+| `open` | Forzar al tooltip a ser visible | `boolean` | `false` |
+| `children` | Elemento que activa el tooltip | `React.ReactNode` | `-` |
+| `className` | Clases CSS adicionales | `string` | `-` |
+
+## Accesibilidad
+
+- El contenido del tooltip se expone mediante aria-describedby
+- Los tooltips aparecen en focus además de al pasar el cursor
+- Contraste de color suficiente en todas las variantes de color
+- Las teclas de flecha se pueden usar cuando el tooltip contiene elementos enfocables

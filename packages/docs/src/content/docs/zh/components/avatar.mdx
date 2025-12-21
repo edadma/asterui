@@ -1,0 +1,96 @@
+---
+title: Avatar 头像
+description: 显示用户头像图片、缩写或图标，带状态指示器
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  SizesDemo,
+  ShapesDemo,
+  StatusDemo,
+  TextDemo,
+  IconDemo,
+  GroupDemo,
+  GroupMaxDemo,
+} from '../../../../components/AvatarDemo'
+import AvatarDemoSource from '../../../../components/AvatarDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+显示用户头像图片、缩写、图标或占位符图形，带状态指示器。
+
+## 引入
+
+```tsx
+import { Avatar } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基本用法" description="使用 src 属性的简单头像。" source={AvatarDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="尺寸" description="使用 size 属性控制头像大小。" source={AvatarDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="形状" description="圆形或方形头像。" source={AvatarDemoSource} fn="ShapesDemo">
+  <ShapesDemo client:load slot="demo" />
+</Example>
+
+<Example title="状态指示器" description="显示在线或离线状态。" source={AvatarDemoSource} fn="StatusDemo">
+  <StatusDemo client:load slot="demo" />
+</Example>
+
+<Example title="文本头像" description="显示缩写或文本内容。" source={AvatarDemoSource} fn="TextDemo">
+  <TextDemo client:load slot="demo" />
+</Example>
+
+<Example title="图标头像" description="显示图标而不是图片。" source={AvatarDemoSource} fn="IconDemo">
+  <IconDemo client:load slot="demo" />
+</Example>
+
+<Example title="头像组" description="使用重叠效果组合多个头像。" source={AvatarDemoSource} fn="GroupDemo">
+  <GroupDemo client:load slot="demo" />
+</Example>
+
+<Example title="带最大数量的头像组" description="超过最大数量时显示溢出计数。" source={AvatarDemoSource} fn="GroupMaxDemo">
+  <GroupMaxDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Avatar`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `src` | 图片源 URL | `string` | - |
+| `alt` | 图片替代文本 | `string` | `'avatar'` |
+| `icon` | 要显示的图标元素 | `ReactNode` | - |
+| `children` | 文本内容（如缩写）或自定义内容 | `ReactNode` | - |
+| `size` | 头像大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `shape` | 头像形状 | `'circle' \| 'square'` | `'circle'` |
+| `status` | 在线状态指示器 | `'online' \| 'offline'` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `CSSProperties` | - |
+
+### `Avatar.Group`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `children` | 多个 Avatar 组件 | `ReactNode` | - |
+| `max` | 显示 +N 溢出前的最大头像数 | `number` | - |
+| `size` | 组内所有头像的大小 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+| `style` | 内联样式 | `CSSProperties` | - |
+
+## 无障碍
+
+- 图片有供屏幕阅读器使用的 `alt` 文本
+- 状态指示器使用颜色和位置来提高可见性
+- 文本头像可被屏幕阅读器读取

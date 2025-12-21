@@ -1,0 +1,85 @@
+---
+title: Breadcrumb
+description: Rastro de navegación breadcrumb que muestra la ubicación jerárquica.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  IconsDemo,
+  SeparatorDemo,
+  ItemsDemo,
+  ScrollDemo,
+} from '../../../../components/BreadcrumbDemo'
+import BreadcrumbDemoSource from '../../../../components/BreadcrumbDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Rastro de navegación breadcrumb que muestra la ubicación jerárquica.
+
+## Importar
+
+```tsx
+import { Breadcrumb } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Breadcrumb Básico" description="Navegación breadcrumb simple." source={BreadcrumbDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Iconos" description="Breadcrumb con iconos." source={BreadcrumbDemoSource} fn="IconsDemo">
+  <IconsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Separador Personalizado" description="Usa una cadena o nodo de React como separador." source={BreadcrumbDemoSource} fn="SeparatorDemo">
+  <SeparatorDemo client:load slot="demo" />
+</Example>
+
+<Example title="Basado en Datos" description="Usa la prop items para breadcrumbs basados en datos." source={BreadcrumbDemoSource} fn="ItemsDemo">
+  <ItemsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Ancho Máximo con Scroll" description="Breadcrumb con desplazamiento de desbordamiento." source={BreadcrumbDemoSource} fn="ScrollDemo">
+  <ScrollDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Breadcrumb`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Componentes Breadcrumb.Item (patrón compuesto) | `React.ReactNode` | - |
+| `items` | Datos de elementos de breadcrumb (patrón basado en datos) | `BreadcrumbItemType[]` | - |
+| `separator` | Separador personalizado entre elementos | `React.ReactNode` | `"/"` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `BreadcrumbItemType` (para prop items)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `title` | Título/etiqueta del elemento | `React.ReactNode` | - |
+| `href` | URL del enlace | `string` | - |
+| `onClick` | Manejador de clic | `() => void` | - |
+| `className` | Clase CSS personalizada | `string` | - |
+
+### `Breadcrumb.Item` (patrón compuesto)
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Contenido del elemento (texto o elementos) | `React.ReactNode` | - |
+| `href` | URL del enlace (hace que el elemento sea clicable) | `string` | - |
+| `onClick` | Manejador de clic (hace que el elemento sea clicable) | `() => void` | - |
+| `icon` | Icono a mostrar antes de la etiqueta | `React.ReactNode` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Consejos de Uso
+
+- Omite href/onClick en el último elemento para mostrar la ubicación actual
+- Usa clases de ancho máximo para habilitar el desplazamiento horizontal
+- Agrega iconos usando la prop icon en Breadcrumb.Item

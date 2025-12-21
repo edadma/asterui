@@ -1,0 +1,41 @@
+---
+title: usePrevious
+description: 返回变量先前值的 Hook。
+---
+
+返回上一次渲染时的值。适用于比较值。
+
+## 导入
+
+```tsx
+import { usePrevious } from 'asterui'
+```
+
+## 用法
+
+```tsx
+function CounterExample() {
+  const [count, setCount] = useState(0)
+  const prevCount = usePrevious(count)
+
+  return (
+    <div>
+      <p>Current: {count}</p>
+      <p>Previous: {prevCount ?? 'N/A'}</p>
+      <Button onClick={() => setCount(c => c + 1)}>Increment</Button>
+    </div>
+  )
+}
+```
+
+## 参数
+
+| 参数 | 类型 | 描述 |
+|-----------|------|-------------|
+| `value` | `T` | 要跟踪的当前值 |
+
+## 返回值
+
+| 类型 | 描述 |
+|------|-------------|
+| `T \| undefined` | 先前的值（首次渲染时为 undefined） |

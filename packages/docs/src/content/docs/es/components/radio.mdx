@@ -1,0 +1,87 @@
+---
+title: Radio
+description: Botones de radio para seleccionar una opción de un conjunto.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  HorizontalDemo,
+  SizesDemo,
+  ColorsDemo,
+  DisabledDemo,
+  FormDemo,
+} from '../../../../components/RadioDemo'
+import RadioDemoSource from '../../../../components/RadioDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Botones de radio para seleccionar una opción de un conjunto.
+
+## Importar
+
+```tsx
+import { Radio } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Uso básico" description="Usa Radio.Group para gestionar la selección de radio." source={RadioDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diseño horizontal" description="Botones de radio en una fila horizontal." source={RadioDemoSource} fn="HorizontalDemo">
+  <HorizontalDemo client:load slot="demo" />
+</Example>
+
+<Example title="Diferentes tamaños" description="Botones de radio en varios tamaños." source={RadioDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colores" description="Variantes de botones de radio coloreados." source={RadioDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Estado deshabilitado" description="Botones de radio deshabilitados." source={RadioDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+<Example title="En formulario" description="Grupo de radio en un formulario con validación." source={RadioDemoSource} fn="FormDemo">
+  <FormDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Radio.Group`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `children` | Componentes Radio | `React.ReactNode` | - |
+| `value` | Valor seleccionado actual (controlado) | `string \| number` | - |
+| `defaultValue` | Valor seleccionado predeterminado (no controlado) | `string \| number` | - |
+| `onChange` | Callback cuando cambia la selección | `(e: { target: { value: string \| number, name?: string } }) => void` | - |
+| `name` | Nombre para todas las entradas de radio en el grupo | `string` | - |
+| `className` | Clases CSS adicionales | `string` | - |
+
+### `Radio`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `value` | Valor del radio (requerido cuando está en Radio.Group) | `string \| number` | - |
+| `children` | Contenido de etiqueta (envuelve en elemento label) | `React.ReactNode` | - |
+| `size` | Tamaño del botón de radio | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | - |
+| `color` | Variante de color del botón de radio | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
+| `disabled` | Estado deshabilitado | `boolean` | `false` |
+| `className` | Clases CSS adicionales | `string` | - |
+
+## Accesibilidad
+
+- Usa elementos nativos `<input type="radio">` para accesibilidad completa
+- Radio.Group usa `role="radiogroup"` para semántica apropiada
+- Las entradas de radio comparten el atributo `name` dentro de un grupo
+- Las etiquetas están conectadas apropiadamente para apuntar al hacer clic
+- Navegación por teclado con teclas de flecha dentro de grupos
+- El estado deshabilitado se comunica apropiadamente a tecnologías asistivas

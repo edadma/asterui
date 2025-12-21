@@ -1,0 +1,78 @@
+---
+title: Navbar
+description: Componente de barra de navegação com layout flexível para cabeçalhos e barras de aplicativos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithDropdownDemo,
+  WithMenuIconDemo,
+  ColorsDemo,
+  ShadowDemo,
+  RoundedDemo,
+} from '../../../../components/NavbarDemo'
+import NavbarDemoSource from '../../../../components/NavbarDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de barra de navegação com layout flexível para cabeçalhos e barras de aplicativos.
+
+## Importação
+
+```tsx
+import { Navbar } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Navbar Básica" description="Navbar simples com título e botões de navegação." source={NavbarDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Menu Dropdown" description="Navbar com menu dropdown para opções adicionais." source={NavbarDemoSource} fn="WithDropdownDemo">
+  <WithDropdownDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Ícone de Menu" description="Navbar com dropdown de menu hamburguer." source={NavbarDemoSource} fn="WithMenuIconDemo">
+  <WithMenuIconDemo client:load slot="demo" />
+</Example>
+
+<Example title="Variantes de Cores" description="Navbar com diferentes variantes de cor de fundo." source={NavbarDemoSource} fn="ColorsDemo">
+  <ColorsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Com Sombra" description="Navbar com sombra para aparência elevada." source={NavbarDemoSource} fn="ShadowDemo">
+  <ShadowDemo client:load slot="demo" />
+</Example>
+
+<Example title="Cantos Arredondados" description="Navbar com cantos arredondados para uma aparência mais suave." source={NavbarDemoSource} fn="RoundedDemo">
+  <RoundedDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Navbar`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `start` | Conteúdo para a seção inicial da navbar (tipicamente logo/marca) | `React.ReactNode` | - |
+| `center` | Conteúdo para a seção central da navbar | `React.ReactNode` | - |
+| `end` | Conteúdo para a seção final da navbar (tipicamente ações/menu) | `React.ReactNode` | - |
+| `children` | Conteúdo customizado que substitui o layout de três seções | `React.ReactNode` | - |
+| `color` | Variante de cor de fundo | `'base' \| 'neutral' \| 'primary' \| 'secondary' \| 'accent'` | `'base'` |
+| `sticky` | Tornar navbar fixa no topo | `boolean` | `false` |
+| `shadow` | Profundidade da sombra | `'none' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'none'` |
+| `rounded` | Raio da borda | `'none' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'none'` |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Acessibilidade
+
+- Usa elemento semântico `<nav>` para semântica de navegação adequada
+- Suporta navegação por teclado para todos os elementos interativos
+- Botões de menu mobile devem ter rótulos descritivos para leitores de tela
+- Mantém visibilidade de foco para usuários de teclado
+- Menus dropdown seguem as melhores práticas ARIA para padrões de menu

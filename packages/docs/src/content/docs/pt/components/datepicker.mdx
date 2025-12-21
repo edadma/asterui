@@ -1,0 +1,69 @@
+---
+title: DatePicker
+description: Componente de seleção de data com popup de calendário.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ControlledDemo,
+  DefaultValueDemo,
+  FormatDemo,
+  SizesDemo,
+  DisabledDemo,
+} from '../../../../components/DatePickerDemo'
+import DatePickerDemoSource from '../../../../components/DatePickerDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Componente de seleção de data com popup de calendário.
+
+## Importação
+
+```tsx
+import { DatePicker } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="DatePicker Básico" description="Seleção simples de data." source={DatePickerDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Controlado" description="Seletor de data controlado com manipulador onChange." source={DatePickerDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:load slot="demo" />
+</Example>
+
+<Example title="Valor Padrão" description="Seletor de data com valor inicial." source={DatePickerDemoSource} fn="DefaultValueDemo">
+  <DefaultValueDemo client:load slot="demo" />
+</Example>
+
+<Example title="Formatos de Data" description="Diferentes formatos de exibição de data." source={DatePickerDemoSource} fn="FormatDemo">
+  <FormatDemo client:load slot="demo" />
+</Example>
+
+<Example title="Tamanhos" description="Diferentes tamanhos de entrada." source={DatePickerDemoSource} fn="SizesDemo">
+  <SizesDemo client:load slot="demo" />
+</Example>
+
+<Example title="Desabilitado" description="Seletor de data desabilitado." source={DatePickerDemoSource} fn="DisabledDemo">
+  <DisabledDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `DatePicker`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `value` | Valor de data controlado | `Date \| null` | - |
+| `defaultValue` | Valor de data inicial | `Date \| null` | - |
+| `onChange` | Manipulador de mudança | `(date: Date \| null) => void` | - |
+| `format` | String de formato de exibição | `string` | `'MM/DD/YYYY'` |
+| `placeholder` | Placeholder do campo de entrada | `string` | `'Select date'` |
+| `disabled` | Desabilitar o seletor | `boolean` | `false` |
+| `size` | Tamanho do campo de entrada | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `className` | Classes CSS adicionais | `string` | - |

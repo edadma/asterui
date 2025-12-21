@@ -1,0 +1,82 @@
+---
+title: MonthCalendar
+description: Una vista de calendario de mes completo para mostrar eventos y seleccionar fechas.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  WithEventsDemo,
+  DaySelectorDemo,
+  MaxEventsDemo,
+  StrikethroughDemo,
+  AllowPastInteractionDemo,
+} from '../../../../components/MonthCalendarDemo'
+import MonthCalendarDemoSource from '../../../../components/MonthCalendarDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Una vista de calendario de mes completo para mostrar eventos y seleccionar fechas.
+
+## Importar
+
+```tsx
+import { MonthCalendar, type CalendarEvent, type CalendarLocale } from 'asterui'
+```
+
+## Ejemplos
+
+<div class="examples">
+
+<Example title="Calendario Básico" description="Calendario de mes simple envuelto en una Card." source={MonthCalendarDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Con Eventos" description="Calendario mostrando eventos con puntos de colores." source={MonthCalendarDemoSource} fn="WithEventsDemo">
+  <WithEventsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Selección de Día" description="Habilita la selección de día con retroalimentación visual." source={MonthCalendarDemoSource} fn="DaySelectorDemo">
+  <DaySelectorDemo client:load slot="demo" />
+</Example>
+
+<Example title="Máximo de Eventos por Día" description="Limita eventos visibles con desbordamiento '+N más'." source={MonthCalendarDemoSource} fn="MaxEventsDemo">
+  <MaxEventsDemo client:load slot="demo" />
+</Example>
+
+<Example title="Eventos Tachados" description="Muestra eventos cancelados con estilo tachado." source={MonthCalendarDemoSource} fn="StrikethroughDemo">
+  <StrikethroughDemo client:load slot="demo" />
+</Example>
+
+<Example title="Permitir Interacción Pasada" description="Habilita hacer clic en fechas pasadas." source={MonthCalendarDemoSource} fn="AllowPastInteractionDemo">
+  <AllowPastInteractionDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `MonthCalendar`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `date` | La fecha a mostrar (determina qué mes se muestra) | `Date` | `new Date()` |
+| `events` | Array de eventos de calendario a mostrar | `CalendarEvent[]` | `[]` |
+| `header` | Mostrar encabezado de mes/año | `boolean` | `false` |
+| `daySelector` | Habilitar selección de día con retroalimentación visual | `boolean` | `false` |
+| `ellipsis` | Truncar títulos de eventos largos con puntos suspensivos | `boolean` | `false` |
+| `maxEventsPerDay` | Máximo de eventos a mostrar por día antes de "+N más" | `number` | `5` |
+| `allowPastInteraction` | Permitir hacer clic en fechas pasadas | `boolean` | `false` |
+| `locale` | Configuración de idioma para nombres de día/mes | `CalendarLocale` | - |
+| `onDayClick` | Manejador cuando se hace clic en una celda de día | `(date: Date) => void` | - |
+| `onEventClick` | Manejador cuando se hace clic en un evento | `(event: CalendarEvent) => void` | - |
+| `onMoreEventsClick` | Manejador cuando se hace clic en "+N más" | `(date: Date, events: CalendarEvent[]) => void` | - |
+
+### `CalendarEvent`
+
+| Propiedad | Descripción | Tipo | Predeterminado |
+|----------|-------------|------|---------|
+| `date` | Fecha y hora del evento | `Date` | - |
+| `title` | Título del evento | `string` | - |
+| `color` | Color del punto del evento | `string` | - |
+| `strikethrough` | Mostrar evento con tachado (cancelado) | `boolean` | - |
+| `style` | Estilos en línea personalizados para el evento | `CSSProperties` | - |

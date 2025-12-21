@@ -1,0 +1,79 @@
+---
+title: Transfer 穿梭框
+description: 用于在列表之间移动项目的双列穿梭框组件。
+tableOfContents: false
+---
+
+import {
+  BasicTransferDemo,
+  SearchTransferDemo,
+  CustomRenderTransferDemo,
+  DisabledItemsTransferDemo,
+  TitlesTransferDemo,
+} from '../../../../components/TransferDemo'
+import TransferDemoSource from '../../../../components/TransferDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+用于在列表之间移动项目的双列穿梭框组件。
+
+## 导入
+
+```tsx
+import { Transfer } from 'asterui'
+```
+
+## 示例
+
+<div class="examples">
+
+<Example title="基础穿梭框" description="在两列之间移动项目。" source={TransferDemoSource} fn="BasicTransferDemo">
+  <BasicTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="带搜索" description="使用搜索输入过滤项目。" source={TransferDemoSource} fn="SearchTransferDemo">
+  <SearchTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义渲染" description="带有标题和描述的自定义项目渲染。" source={TransferDemoSource} fn="CustomRenderTransferDemo">
+  <CustomRenderTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="禁用项目" description="某些项目可以被禁用。" source={TransferDemoSource} fn="DisabledItemsTransferDemo">
+  <DisabledItemsTransferDemo client:load slot="demo" />
+</Example>
+
+<Example title="自定义标题" description="自定义列标题。" source={TransferDemoSource} fn="TitlesTransferDemo">
+  <TitlesTransferDemo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Transfer`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `dataSource` | 数据源数组 | `TransferItem[]` | `[]` |
+| `targetKeys` | 右列中的项目键 | `string[]` | `[]` |
+| `onChange` | 项目传输时的回调 | `(targetKeys: string[]) => void` | `-` |
+| `render` | 项目的自定义渲染函数 | `(item: TransferItem) => React.ReactNode` | `-` |
+| `showSearch` | 显示搜索输入 | `boolean` | `false` |
+| `titles` | 左右列的标题 | `[string, string]` | `['Source', 'Target']` |
+| `className` | 额外的 CSS 类 | `string` | `-` |
+
+### `TransferItem`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `key` | 唯一标识符 | `string` | `-` |
+| `title` | 显示标题 | `string` | `-` |
+| `description` | 可选描述 | `string` | `-` |
+| `disabled` | 项目是否禁用 | `boolean` | `false` |
+
+## 可访问性
+
+- 使用复选框输入进行项目选择
+- 项目之间的键盘导航
+- 传输按钮可通过键盘访问
+- 禁用的项目被正确宣布

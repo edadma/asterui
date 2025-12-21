@@ -1,0 +1,88 @@
+---
+title: Grid
+description: Sistema de grade flexível com componentes Row e Col. Suporta modos de 24 colunas (padrão) e 120 colunas para layouts precisos.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  GutterDemo,
+  OffsetDemo,
+  ResponsiveDemo,
+  Cols120Demo,
+} from '../../../../components/GridDemo'
+import GridDemoSource from '../../../../components/GridDemo.tsx?raw'
+import Example from '../../../../components/Example.astro'
+
+Sistema de grade flexível com componentes Row e Col. Suporta modos de 24 colunas (padrão) e 120 colunas para layouts precisos.
+
+## Importação
+
+```tsx
+import { Row, Col } from 'asterui'
+```
+
+## Exemplos
+
+<div class="examples">
+
+<Example title="Grade Básica" description="Sistema de grade básico de 24 colunas." source={GridDemoSource} fn="BasicDemo">
+  <BasicDemo client:load slot="demo" />
+</Example>
+
+<Example title="Gutter da Grade" description="Personalize o espaçamento entre colunas. O padrão é 16px; valores recomendados são 16, 24, 32, 40, 48." source={GridDemoSource} fn="GutterDemo">
+  <GutterDemo client:load slot="demo" />
+</Example>
+
+<Example title="Offset de Coluna" description="Desloque colunas usando a prop offset." source={GridDemoSource} fn="OffsetDemo">
+  <OffsetDemo client:load slot="demo" />
+</Example>
+
+<Example title="Colunas Responsivas" description="Diferentes extensões de coluna em diferentes breakpoints." source={GridDemoSource} fn="ResponsiveDemo">
+  <ResponsiveDemo client:load slot="demo" />
+</Example>
+
+<Example title="Grade de 120 Colunas" description="Controle refinado com 120 colunas para layouts precisos." source={GridDemoSource} fn="Cols120Demo">
+  <Cols120Demo client:load slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Row`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `cols` | Número de colunas da grade | `24 \| 120` | `24` |
+| `gutter` | Espaçamento entre colunas (px) | `number \| [number, number]` | `16` |
+| `justify` | Alinhamento horizontal dos itens da grade | `'start' \| 'end' \| 'center' \| 'between' \| 'around' \| 'evenly'` | - |
+| `align` | Alinhamento vertical dos itens da grade | `'start' \| 'end' \| 'center' \| 'stretch' \| 'baseline'` | - |
+| `children` | Componentes de coluna | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `Col`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `span` | Número de colunas a ocupar (de 24 ou 120) | `number` | `24` |
+| `offset` | Número de colunas a deslocar | `number` | `0` |
+| `order` | Ordem visual da coluna (1-12) | `number` | - |
+| `xs` | Extensão responsiva para telas extra pequenas (&lt;640px) | `number` | - |
+| `sm` | Extensão responsiva para telas pequenas (≥640px) | `number` | - |
+| `md` | Extensão responsiva para telas médias (≥768px) | `number` | - |
+| `lg` | Extensão responsiva para telas grandes (≥1024px) | `number` | - |
+| `xl` | Extensão responsiva para telas extra grandes (≥1280px) | `number` | - |
+| `xxl` | Extensão responsiva para telas 2x extra grandes (≥1536px) | `number` | - |
+| `children` | Conteúdo da coluna | `React.ReactNode` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+## Notas de Uso
+
+- O padrão é um layout de 24 colunas; use `cols={120}` para controle mais refinado
+- Use `Row` como container e `Col` para colunas
+- Defina `gutter` em Row para adicionar espaçamento entre colunas
+- Use props responsivas (xs, sm, md, lg, xl, xxl) para diferentes extensões de coluna em diferentes tamanhos de tela
+- As extensões de coluna devem somar até o total de colunas (24 ou 120) ou menos por linha
+- Use `offset` para criar espaço vazio antes de uma coluna
+- Modo de 120 colunas é útil para layouts que precisam de proporções como 1:3, 2:3, ou porcentagens como 25%, 37.5%
