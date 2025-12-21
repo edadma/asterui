@@ -19,11 +19,11 @@
 
 /* Tighter splash page spacing */
 .hero {
-  padding-block: 2rem !important;
+  padding-block: 1rem !important;
 }
 
 .hero .actions {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Wider content for component pages */
