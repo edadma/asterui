@@ -1,5 +1,4 @@
 import React, { useState, useRef, DragEvent, ChangeEvent, forwardRef } from 'react'
-import { useConfig } from './ConfigProvider'
 
 // DaisyUI classes
 const dLoading = 'd-loading'
@@ -70,14 +69,10 @@ export const Upload = forwardRef<HTMLDivElement, UploadProps>(function Upload(
   },
   ref
 ) {
-  const { locale } = useConfig()
   const [internalFileList, setInternalFileList] = useState<UploadFile[]>(defaultFileList)
 
   // Helper for test IDs
   const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
-
-  // Note: Upload locale strings could be expanded in the future
-  const uploadFailedText = 'Upload failed'
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const uidCounter = useRef(0)
@@ -354,7 +349,7 @@ export const Upload = forwardRef<HTMLDivElement, UploadProps>(function Upload(
                 </div>
               )}
               {file.status === 'error' && (
-                <div className="text-xs text-error mt-1">{uploadFailedText}</div>
+                <div className="text-xs text-error mt-1">Upload failed</div>
               )}
             </div>
             <button
