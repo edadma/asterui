@@ -8,6 +8,27 @@ description: All notable changes to AsterUI
 All notable changes to AsterUI are documented here.
 
 
+## v0.12.60 (2025-12-22)
+
+### ConfigProvider Enhancements
+
+- **New Props**: Added `componentDisabled` for globally disabling all interactive components, and `renderEmpty` for custom empty state rendering
+- **Documentation**: Added examples for global disabled state, custom empty states, and combining ConfigProvider with ThemeProvider
+
+### Component ConfigProvider Integration
+
+Added `useConfig()` integration to 8 additional components for consistent global configuration:
+
+- **Cascader**: Now respects `componentSize`, `componentDisabled`, and `renderEmpty`
+- **Dropdown**: Now respects `componentDisabled` and `getPopupContainer`
+- **Transfer**: Now respects `componentDisabled` and `renderEmpty`
+- **TreeSelect**: Now respects `componentSize`, `componentDisabled`, and `renderEmpty`
+- **Drawer**: Now falls back to global `getPopupContainer` when `getContainer` not specified
+- **Tour**: Now falls back to global `getPopupContainer`
+- **ContextMenu**: Now respects `getPopupContainer`
+- **Mention**: Now respects `componentDisabled`, `renderEmpty`, and `getPopupContainer`
+
+
 ## v0.12.59 (2025-12-22)
 
 ### Table Component QA Fixes

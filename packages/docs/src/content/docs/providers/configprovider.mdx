@@ -117,6 +117,61 @@ Specify where modals, dropdowns, and other portals render:
 </ConfigProvider>
 ```
 
+### Global Disabled State
+
+Disable all interactive components at once, useful during form submission or loading:
+
+```tsx
+function App() {
+  const [submitting, setSubmitting] = useState(false)
+
+  return (
+    <ConfigProvider componentDisabled={submitting}>
+      <Input placeholder="Username" />
+      <Input placeholder="Password" type="password" />
+      <Button onClick={handleSubmit}>
+        {submitting ? 'Submitting...' : 'Submit'}
+      </Button>
+    </ConfigProvider>
+  )
+}
+```
+
+### Custom Empty States
+
+Provide a custom renderer for empty states across components:
+
+```tsx
+<ConfigProvider
+  renderEmpty={(componentName) => (
+    <div className="text-center py-8">
+      <Icon name="inbox" className="text-4xl text-base-content/30" />
+      <p className="mt-2 text-base-content/50">
+        {componentName === 'Table' ? 'No records found' : 'Nothing here'}
+      </p>
+    </div>
+  )}
+>
+  <Table dataSource={[]} columns={columns} />
+  <Select options={[]} />
+</ConfigProvider>
+```
+
+### Combining with ThemeProvider
+
+Use both providers together for full customization:
+
+```tsx
+import { ConfigProvider, ThemeProvider } from 'asterui'
+import { zhCN } from 'asterui/locale'
+
+<ThemeProvider theme="dark">
+  <ConfigProvider locale={zhCN} componentSize="sm">
+    <App />
+  </ConfigProvider>
+</ThemeProvider>
+```
+
 ## API
 
 ### ConfigProvider Props
@@ -128,6 +183,8 @@ Specify where modals, dropdowns, and other portals render:
 | `direction` | `'ltr' \| 'rtl'` | `'ltr'` | Layout direction. |
 | `prefixCls` | `string` | - | Prefix for CSS classes. |
 | `getPopupContainer` | `(triggerNode?: HTMLElement) => HTMLElement` | - | Default container for portals. |
+| `componentDisabled` | `boolean` | - | Globally disable all interactive components. |
+| `renderEmpty` | `(componentName: string) => ReactNode` | - | Custom empty state renderer. |
 | `children` | `React.ReactNode` | - | Child components. |
 
 ### useConfig Return Value
@@ -138,6 +195,8 @@ Specify where modals, dropdowns, and other portals render:
 | `componentSize` | `string` | Current global component size. |
 | `direction` | `'ltr' \| 'rtl'` | Current layout direction. |
 | `getPopupContainer` | `function` | Current portal container function. |
+| `componentDisabled` | `boolean` | Current global disabled state. |
+| `renderEmpty` | `function` | Current empty state renderer. |
 
 ```tsx
 import { useConfig } from 'asterui'

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback, createContext, useContext } from 'react'
 import { createPortal } from 'react-dom'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dMenu = 'd-menu'
@@ -253,6 +254,7 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
   disabled = false,
   className = '',
 }) => {
+  const { getPopupContainer } = useConfig()
   const [visible, setVisible] = useState(false)
   const [position, setPosition] = useState<MenuPosition>({ x: 0, y: 0 })
   const menuRef = useRef<HTMLUListElement>(null)
@@ -385,7 +387,7 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
                 : menuChildren}
             </ul>
           </ContextMenuContext.Provider>,
-          document.body
+          getPopupContainer ? getPopupContainer(document.body) : document.body
         )}
     </>
   )

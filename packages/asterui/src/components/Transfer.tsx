@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useMemo } from 'react'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dCheckbox = 'checkbox'
@@ -47,6 +48,7 @@ interface TransferListProps {
   listStyle?: React.CSSProperties
   direction: 'left' | 'right'
   testId?: string
+  emptyContent?: React.ReactNode
 }
 
 function TransferList({
@@ -61,6 +63,7 @@ function TransferList({
   disabled,
   listStyle,
   testId,
+  emptyContent = 'No data',
 }: TransferListProps) {
   const [searchValue, setSearchValue] = useState('')
 
@@ -165,7 +168,7 @@ function TransferList({
           ))
         ) : (
           <div className="flex items-center justify-center h-full text-base-content/50 text-sm">
-            No data
+            {emptyContent}
           </div>
         )}
       </div>
@@ -187,12 +190,16 @@ export function Transfer({
     return title.toLowerCase().includes(inputValue.toLowerCase())
   },
   showSelectAll = true,
-  disabled = false,
+  disabled,
   listStyle,
   className = '',
   'data-testid': testId,
   ...rest
 }: TransferProps) {
+  const { componentDisabled, renderEmpty } = useConfig()
+  const effectiveDisabled = disabled ?? componentDisabled ?? false
+  const emptyContent = renderEmpty?.('Transfer') ?? 'No data'
+
   // Helper for test IDs
   const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
   const [internalTargetKeys, setInternalTargetKeys] = useState<string[]>(defaultTargetKeys)
@@ -229,7 +236,7 @@ export function Transfer({
   )
 
   const moveToTarget = useCallback(() => {
-    if (disabled || sourceSelectedKeys.length === 0) return
+    if (effectiveDisabled || sourceSelectedKeys.length === 0) return
 
     // Filter out disabled items
     const movableKeys = sourceSelectedKeys.filter((key) => {
@@ -247,10 +254,10 @@ export function Transfer({
 
     setSourceSelectedKeys([])
     onChange?.(newTargetKeys, 'right', movableKeys)
-  }, [disabled, sourceSelectedKeys, targetKeys, controlledTargetKeys, onChange, dataSource])
+  }, [effectiveDisabled, sourceSelectedKeys, targetKeys, controlledTargetKeys, onChange, dataSource])
 
   const moveToSource = useCallback(() => {
-    if (disabled || targetSelectedKeys.length === 0) return
+    if (effectiveDisabled || targetSelectedKeys.length === 0) return
 
     // Filter out disabled items
     const movableKeys = targetSelectedKeys.filter((key) => {
@@ -268,7 +275,7 @@ export function Transfer({
 
     setTargetSelectedKeys([])
     onChange?.(newTargetKeys, 'left', movableKeys)
-  }, [disabled, targetSelectedKeys, targetKeys, controlledTargetKeys, onChange, dataSource])
+  }, [effectiveDisabled, targetSelectedKeys, targetKeys, controlledTargetKeys, onChange, dataSource])
 
   const canMoveToTarget = sourceSelectedKeys.some((key) => {
     const item = dataSource.find((i) => i.key === key)
@@ -292,10 +299,11 @@ export function Transfer({
         filterOption={filterOption}
         render={render}
         showSelectAll={showSelectAll}
-        disabled={disabled}
+        disabled={effectiveDisabled}
         listStyle={listStyle}
         direction="left"
         testId={getTestId('source')}
+        emptyContent={emptyContent}
       />
 
       {/* Actions */}
@@ -304,7 +312,7 @@ export function Transfer({
           type="button"
           className={`${dBtn} ${dBtnSm} ${dBtnOutline}`}
           onClick={moveToTarget}
-          disabled={disabled || !canMoveToTarget}
+          disabled={effectiveDisabled || !canMoveToTarget}
           aria-label="Move to target"
           data-testid={getTestId('move-right')}
         >
@@ -316,7 +324,7 @@ export function Transfer({
           type="button"
           className={`${dBtn} ${dBtnSm} ${dBtnOutline}`}
           onClick={moveToSource}
-          disabled={disabled || !canMoveToSource}
+          disabled={effectiveDisabled || !canMoveToSource}
           aria-label="Move to source"
           data-testid={getTestId('move-left')}
         >
@@ -336,10 +344,11 @@ export function Transfer({
         filterOption={filterOption}
         render={render}
         showSelectAll={showSelectAll}
-        disabled={disabled}
+        disabled={effectiveDisabled}
         listStyle={listStyle}
         direction="right"
         testId={getTestId('target')}
+        emptyContent={emptyContent}
       />
     </div>
   )

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useId, useRef, useState, useCallback, useEffect, forwardRef, useImperativeHandle } from 'react'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dDropdown = 'dropdown'
@@ -144,7 +145,7 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownProps>(function Dropdown
     align = 'start',
     open: controlledOpen,
     onOpenChange,
-    disabled = false,
+    disabled,
     arrow = false,
     mouseEnterDelay = 0.15,
     mouseLeaveDelay = 0.1,
@@ -157,6 +158,10 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownProps>(function Dropdown
   },
   ref
 ) {
+  const { componentDisabled, getPopupContainer: globalGetPopupContainer } = useConfig()
+  const effectiveDisabled = disabled ?? componentDisabled ?? false
+  const effectiveGetPopupContainer = getPopupContainer ?? globalGetPopupContainer
+
   const menuId = useId()
   const triggerId = useId()
   const [internalOpen, setInternalOpen] = useState(false)
@@ -180,7 +185,7 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownProps>(function Dropdown
   const isOpen = isControlled ? controlledOpen : internalOpen
 
   const setIsOpen = useCallback((open: boolean, source: 'trigger' | 'menu' = 'trigger') => {
-    if (disabled) return
+    if (effectiveDisabled) return
     if (!isControlled) {
       setInternalOpen(open)
     }
@@ -188,7 +193,7 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownProps>(function Dropdown
       setShouldRender(true)
     }
     onOpenChange?.(open, { source })
-  }, [disabled, isControlled, onOpenChange])
+  }, [effectiveDisabled, isControlled, onOpenChange])
 
   const closeDropdown = useCallback(() => {
     setIsOpen(false, 'menu')
@@ -367,7 +372,7 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownProps>(function Dropdown
         registerItem,
         itemCount,
         setItemCount,
-        disabled,
+        disabled: effectiveDisabled,
         arrow: showArrow,
         closeDropdown,
         getTestId,
@@ -378,7 +383,7 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownProps>(function Dropdown
         className={dropdownClasses}
         data-state={isOpen ? 'open' : 'closed'}
         data-testid={testId}
-        aria-disabled={disabled || undefined}
+        aria-disabled={effectiveDisabled || undefined}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onContextMenu={handleContextMenu}

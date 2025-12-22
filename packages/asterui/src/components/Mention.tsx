@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dTextarea = 'textarea'
@@ -49,16 +50,20 @@ export const Mention: React.FC<MentionProps> = ({
   prefix = '@',
   split = ' ',
   placeholder,
-  disabled = false,
+  disabled,
   readOnly = false,
   rows = 3,
   autoSize = false,
-  notFoundContent = 'No matches found',
+  notFoundContent,
   filterOption = true,
   className = '',
   dropdownClassName = '',
   ...rest
 }) => {
+  const { componentDisabled, renderEmpty, getPopupContainer } = useConfig()
+  const effectiveDisabled = disabled ?? componentDisabled ?? false
+  const effectiveNotFoundContent = notFoundContent ?? renderEmpty?.('Mention') ?? 'No matches found'
+
   const [internalValue, setInternalValue] = useState(defaultValue)
   const currentValue = value !== undefined ? value : internalValue
 
@@ -305,7 +310,7 @@ export const Mention: React.FC<MentionProps> = ({
         </div>
       ) : filtered.length === 0 ? (
         <div className="p-3 text-center text-base-content/60 text-sm">
-          {notFoundContent}
+          {effectiveNotFoundContent}
         </div>
       ) : (
         <ul className={`${dMenu} ${dMenuSm} p-1`}>
@@ -356,13 +361,13 @@ export const Mention: React.FC<MentionProps> = ({
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        disabled={disabled}
+        disabled={effectiveDisabled}
         readOnly={readOnly}
         rows={typeof autoSize === 'object' ? autoSize.minRows || rows : autoSize ? 1 : rows}
         className={`${dTextarea} ${dTextareaBordered} w-full resize-none`}
       />
 
-      {createPortal(dropdown, document.body)}
+      {createPortal(dropdown, getPopupContainer ? getPopupContainer(document.body) : document.body)}
     </div>
   )
 }

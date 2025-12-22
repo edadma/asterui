@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback, useId, forwardRef, useMemo } from 'react'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dInput = 'd-input'
@@ -103,16 +104,16 @@ export const Cascader = forwardRef<HTMLDivElement, CascaderProps>(({
   defaultValue,
   onChange,
   placeholder = 'Please select',
-  disabled = false,
+  disabled,
   allowClear = true,
   expandTrigger = 'click',
   changeOnSelect = false,
   displayRender,
-  size = 'md',
+  size,
   color,
   status,
   showSearch = false,
-  notFoundContent = 'No results found',
+  notFoundContent,
   loadData,
   fieldNames,
   open: controlledOpen,
@@ -126,6 +127,11 @@ export const Cascader = forwardRef<HTMLDivElement, CascaderProps>(({
   'data-testid': testId,
   ...rest
 }, ref) => {
+  const { componentSize, componentDisabled, renderEmpty } = useConfig()
+  const effectiveSize = size ?? (componentSize === 'xl' ? 'lg' : componentSize as CascaderSize) ?? 'md'
+  const effectiveDisabled = disabled ?? componentDisabled ?? false
+  const effectiveNotFoundContent = notFoundContent ?? renderEmpty?.('Cascader') ?? 'No results found'
+
   const baseTestId = testId ?? 'cascader'
   const isControlledOpen = controlledOpen !== undefined
   const [internalOpen, setInternalOpen] = useState(false)
@@ -396,7 +402,7 @@ export const Cascader = forwardRef<HTMLDivElement, CascaderProps>(({
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (disabled) return
+    if (effectiveDisabled) return
 
     switch (e.key) {
       case 'Enter':
@@ -528,6 +534,8 @@ export const Cascader = forwardRef<HTMLDivElement, CascaderProps>(({
     lg: 'text-lg',
   }
 
+  const currentSize = effectiveSize
+
   // Color and status classes
   const colorClasses: Record<CascaderColor, string> = {
     primary: 'border-primary focus:border-primary',
@@ -599,7 +607,7 @@ export const Cascader = forwardRef<HTMLDivElement, CascaderProps>(({
     if (filteredPaths.length === 0) {
       return (
         <div className="p-4 text-center text-base-content/50">
-          {notFoundContent}
+          {effectiveNotFoundContent}
         </div>
       )
     }
@@ -740,13 +748,13 @@ export const Cascader = forwardRef<HTMLDivElement, CascaderProps>(({
         aria-controls={listboxId}
         aria-activedescendant={getActiveDescendant()}
         aria-label={ariaLabel}
-        aria-disabled={disabled}
-        tabIndex={disabled ? -1 : 0}
-        className={`${dInput} w-full flex items-center justify-between cursor-pointer gap-1 ${sizeClasses[size]} ${
-          disabled ? `${dInputDisabled} cursor-not-allowed` : ''
+        aria-disabled={effectiveDisabled}
+        tabIndex={effectiveDisabled ? -1 : 0}
+        className={`${dInput} w-full flex items-center justify-between cursor-pointer gap-1 ${sizeClasses[currentSize]} ${
+          effectiveDisabled ? `${dInputDisabled} cursor-not-allowed` : ''
         } ${getColorClass()}`}
         onClick={() => {
-          if (!disabled) {
+          if (!effectiveDisabled) {
             setIsOpen(!isOpen)
             if (showSearch && !isOpen) {
               setTimeout(() => inputRef.current?.focus(), 0)
@@ -774,7 +782,7 @@ export const Cascader = forwardRef<HTMLDivElement, CascaderProps>(({
           </span>
         )}
         <div className="flex items-center gap-1 shrink-0">
-          {allowClear && hasValue && !disabled && (
+          {allowClear && hasValue && !effectiveDisabled && (
             <button
               type="button"
               className={`${dBtn} ${dBtnGhost} ${dBtnXs} ${dBtnCircle}`}
@@ -804,7 +812,7 @@ export const Cascader = forwardRef<HTMLDivElement, CascaderProps>(({
         <div
           ref={dropdownRef}
           id={listboxId}
-          className={`absolute z-50 mt-1 bg-base-100 border border-base-300 rounded-lg shadow-lg ${dropdownSizeClasses[size]} ${popupClassName}`}
+          className={`absolute z-50 mt-1 bg-base-100 border border-base-300 rounded-lg shadow-lg ${dropdownSizeClasses[currentSize]} ${popupClassName}`}
           data-testid={`${baseTestId}-dropdown`}
         >
           {renderDropdownContent()}

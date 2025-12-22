@@ -7,6 +7,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { createPortal } from 'react-dom'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dBtn = 'btn'
@@ -307,6 +308,9 @@ export const Tour = forwardRef<TourRef, TourProps>(
     },
     ref
   ) => {
+    const { getPopupContainer: globalGetPopupContainer } = useConfig()
+    const effectiveGetPopupContainer = getPopupContainer ?? globalGetPopupContainer
+
     const [internalCurrent, setInternalCurrent] = useState(0)
     const [targetRect, setTargetRect] = useState<DOMRect | null>(null)
     const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 })
@@ -757,8 +761,8 @@ export const Tour = forwardRef<TourRef, TourProps>(
     )
 
     // Get container for portal
-    const container = getPopupContainer
-      ? getPopupContainer(document.body)
+    const container = effectiveGetPopupContainer
+      ? effectiveGetPopupContainer(document.body)
       : document.body
 
     return createPortal(content, container)

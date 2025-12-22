@@ -16,6 +16,10 @@ export interface ConfigContextValue {
   prefixCls?: string
   /** Default container for portals (modals, dropdowns, etc.) */
   getPopupContainer?: (triggerNode?: HTMLElement) => HTMLElement
+  /** Globally disable all interactive components */
+  componentDisabled?: boolean
+  /** Custom empty state renderer */
+  renderEmpty?: (componentName: string) => React.ReactNode
 }
 
 export interface ConfigProviderProps {
@@ -29,6 +33,10 @@ export interface ConfigProviderProps {
   prefixCls?: string
   /** Default container for portals */
   getPopupContainer?: (triggerNode?: HTMLElement) => HTMLElement
+  /** Globally disable all interactive components */
+  componentDisabled?: boolean
+  /** Custom empty state renderer */
+  renderEmpty?: (componentName: string) => React.ReactNode
   /** Child components */
   children?: React.ReactNode
 }
@@ -86,6 +94,8 @@ export const ConfigProvider: React.FC<ConfigProviderProps> = ({
   direction,
   prefixCls,
   getPopupContainer,
+  componentDisabled,
+  renderEmpty,
   children,
 }) => {
   // Get parent config if nested
@@ -98,8 +108,10 @@ export const ConfigProvider: React.FC<ConfigProviderProps> = ({
       direction: direction ?? parentConfig.direction,
       prefixCls: prefixCls ?? parentConfig.prefixCls,
       getPopupContainer: getPopupContainer ?? parentConfig.getPopupContainer,
+      componentDisabled: componentDisabled ?? parentConfig.componentDisabled,
+      renderEmpty: renderEmpty ?? parentConfig.renderEmpty,
     }),
-    [locale, componentSize, direction, prefixCls, getPopupContainer, parentConfig]
+    [locale, componentSize, direction, prefixCls, getPopupContainer, componentDisabled, renderEmpty, parentConfig]
   )
 
   return <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>

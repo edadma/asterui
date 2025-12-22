@@ -8,6 +8,7 @@ import React, {
   useId,
 } from 'react'
 import type { TreeDataNode } from './Tree'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dCheckbox = 'checkbox'
@@ -476,7 +477,7 @@ export const TreeSelect = forwardRef<HTMLDivElement, TreeSelectProps>(
       onDropdownVisibleChange,
       suffixIcon,
       switcherIcon,
-      notFoundContent = 'No results found',
+      notFoundContent,
       dropdownRender,
       popupClassName = '',
       className = '',
@@ -485,6 +486,11 @@ export const TreeSelect = forwardRef<HTMLDivElement, TreeSelectProps>(
     },
     ref
   ) => {
+    const { componentSize, componentDisabled, renderEmpty } = useConfig()
+    const effectiveSize = size ?? (componentSize as TreeSelectSize) ?? 'md'
+    const effectiveDisabled = disabled ?? componentDisabled ?? false
+    const effectiveNotFoundContent = notFoundContent ?? renderEmpty?.('TreeSelect') ?? 'No results found'
+
     const baseTestId = testId ?? 'treeselect'
     const instanceId = useId()
     const listboxId = `${instanceId}-listbox`
@@ -856,7 +862,7 @@ export const TreeSelect = forwardRef<HTMLDivElement, TreeSelectProps>(
     }
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
-      if (disabled) return
+      if (effectiveDisabled) return
 
       switch (e.key) {
         case 'Enter':
@@ -1073,7 +1079,7 @@ export const TreeSelect = forwardRef<HTMLDivElement, TreeSelectProps>(
           const node = findNode(treeData, key, fieldNames)
           const title = node ? getFieldValue(node, 'title', fieldNames) : key
           const label = title as React.ReactNode
-          const closable = !disabled
+          const closable = !effectiveDisabled
           const onClose = () => {
             const fakeEvent = { stopPropagation: () => {} } as React.MouseEvent
             removeTag(key, fakeEvent)
@@ -1155,7 +1161,7 @@ export const TreeSelect = forwardRef<HTMLDivElement, TreeSelectProps>(
       maxTagPlaceholder,
       baseTestId,
       fieldNames,
-      disabled,
+      effectiveDisabled,
       tagRender,
     ])
 
@@ -1171,7 +1177,7 @@ export const TreeSelect = forwardRef<HTMLDivElement, TreeSelectProps>(
             className="px-4 py-2 text-base-content/50 text-sm text-center"
             data-testid={`${baseTestId}-empty`}
           >
-            {notFoundContent}
+            {effectiveNotFoundContent}
           </div>
         )}
       </div>
@@ -1190,7 +1196,7 @@ export const TreeSelect = forwardRef<HTMLDivElement, TreeSelectProps>(
         className={`relative ${className}`}
         data-testid={baseTestId}
         data-state={open ? 'open' : 'closed'}
-        data-disabled={disabled || undefined}
+        data-disabled={effectiveDisabled || undefined}
         onKeyDown={handleKeyDown}
         {...rest}
       >
@@ -1202,20 +1208,20 @@ export const TreeSelect = forwardRef<HTMLDivElement, TreeSelectProps>(
           aria-haspopup="tree"
           aria-owns={open ? listboxId : undefined}
           aria-activedescendant={open && focusedKey ? `${instanceId}-option-${focusedKey}` : undefined}
-          aria-disabled={disabled}
-          tabIndex={disabled ? -1 : 0}
+          aria-disabled={effectiveDisabled}
+          tabIndex={effectiveDisabled ? -1 : 0}
           className={[
             dInput,
             'flex items-center gap-2 cursor-pointer flex-wrap',
-            sizeClasses[size],
+            sizeClasses[effectiveSize],
             variantClass,
             borderClass,
-            disabled && `${dInputDisabled} opacity-50 cursor-not-allowed`,
+            effectiveDisabled && `${dInputDisabled} opacity-50 cursor-not-allowed`,
             open && !borderClass && 'border-primary',
           ]
             .filter(Boolean)
             .join(' ')}
-          onClick={() => !disabled && setOpen(!open)}
+          onClick={() => !effectiveDisabled && setOpen(!open)}
           data-testid={`${baseTestId}-trigger`}
         >
           <div className="flex-1 flex flex-wrap items-center gap-1 min-w-0">
@@ -1223,7 +1229,7 @@ export const TreeSelect = forwardRef<HTMLDivElement, TreeSelectProps>(
           </div>
 
           {/* Clear button */}
-          {allowClear && value.length > 0 && !disabled && (
+          {allowClear && value.length > 0 && !effectiveDisabled && (
             <button
               type="button"
               className="hover:text-error flex-shrink-0"

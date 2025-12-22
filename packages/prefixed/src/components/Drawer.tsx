@@ -11,6 +11,7 @@ import React, {
 } from 'react'
 import { createPortal } from 'react-dom'
 import { Skeleton } from './Skeleton'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dBtn = 'd-btn'
@@ -151,6 +152,8 @@ export const Drawer = forwardRef<DrawerRef, DrawerProps>(
     },
     ref
   ) => {
+    const { getPopupContainer: globalGetPopupContainer } = useConfig()
+
     const drawerRef = useRef<HTMLDivElement>(null)
     const closeButtonRef = useRef<HTMLButtonElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
@@ -334,6 +337,10 @@ export const Drawer = forwardRef<DrawerRef, DrawerProps>(
       if (getContainer === false) return null
       if (typeof getContainer === 'function') return getContainer()
       if (getContainer) return getContainer
+      // Use global getPopupContainer from ConfigProvider as fallback
+      if (globalGetPopupContainer && typeof document !== 'undefined') {
+        return globalGetPopupContainer(document.body)
+      }
       return typeof document !== 'undefined' ? document.body : null
     }
 
