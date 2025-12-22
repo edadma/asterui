@@ -46,8 +46,8 @@ export type { CarouselProps, CarouselItemProps, CarouselRef, CarouselEffect, Car
 export { Cascader } from './components/Cascader'
 export type { CascaderProps, CascaderOption } from './components/Cascader'
 
-export { ConfigProvider, useConfig, useLocale, useComponentLocale, ConfigContext } from './components/ConfigProvider'
-export type { ConfigProviderProps, ConfigContextValue, ComponentSize, Direction } from './components/ConfigProvider'
+export { ConfigProvider, useConfig, useLocale, useComponentLocale, ConfigContext } from './providers/ConfigProvider'
+export type { ConfigProviderProps, ConfigContextValue, ComponentSize, Direction } from './providers/ConfigProvider'
 
 // Locales
 export type { Locale } from './locale'
@@ -286,8 +286,8 @@ export type { TagProps, CheckableTagProps, TagSize, TagColor, TagVariant } from 
 export { ThemeController } from './components/ThemeController'
 export type { ThemeControllerSwapProps, ThemeControllerDropdownProps, ThemeControllerToggleProps } from './components/ThemeController'
 
-export { ThemeProvider, useThemeContext, useHasThemeProvider } from './components/ThemeProvider'
-export type { ThemeProviderProps, ThemeContextValue } from './components/ThemeProvider'
+export { ThemeProvider, useThemeContext, useHasThemeProvider } from './providers/ThemeProvider'
+export type { ThemeProviderProps, ThemeContextValue } from './providers/ThemeProvider'
 
 export { TimePicker } from './components/TimePicker'
 export type { TimePickerProps } from './components/TimePicker'

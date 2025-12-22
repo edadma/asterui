@@ -1,5 +1,5 @@
 import React, { useState, useCallback, createContext, useContext } from 'react'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dJoin = 'd-join'

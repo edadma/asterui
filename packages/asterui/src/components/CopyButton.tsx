@@ -1,7 +1,7 @@
 import React from 'react'
 import { useClipboard } from '../hooks/useClipboard'
 import { SizeProvider, useSize } from '../contexts/SizeContext'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dBtn = 'btn'

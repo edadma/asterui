@@ -1,5 +1,5 @@
 import React, { forwardRef, useState, useCallback, useRef, useEffect } from 'react'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dInput = 'input'

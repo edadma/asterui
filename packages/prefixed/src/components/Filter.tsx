@@ -1,5 +1,5 @@
 import React, { useState, useId } from 'react'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dFilter = 'd-filter'

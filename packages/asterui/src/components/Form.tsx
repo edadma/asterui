@@ -1,6 +1,6 @@
 import React, { createContext, useContext, cloneElement, isValidElement, useId, useEffect, useRef } from 'react'
 import { useForm, UseFormReturn, FieldValues, SubmitHandler, UseFormProps, Controller, useFieldArray, FieldArrayPath, FieldArray, useWatch } from 'react-hook-form'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dInput = 'input'

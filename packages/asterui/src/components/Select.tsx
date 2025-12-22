@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef } from 'react'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dSelect = 'select'

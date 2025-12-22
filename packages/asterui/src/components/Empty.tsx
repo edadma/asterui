@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { useComponentLocale } from './ConfigProvider'
+import { useComponentLocale } from '../providers/ConfigProvider'
 
 export interface EmptyProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Extra content like buttons or actions */

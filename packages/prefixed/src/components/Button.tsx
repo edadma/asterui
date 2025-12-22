@@ -1,6 +1,6 @@
 import React from 'react'
 import { SizeProvider } from '../contexts/SizeContext'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dBtn = 'd-btn'

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { Pagination } from './Pagination'
 import { Loading } from './Loading'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dList = 'list'

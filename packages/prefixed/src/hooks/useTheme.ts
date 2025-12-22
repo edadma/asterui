@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
-import { useHasThemeProvider, useThemeContext, type ThemeColors } from '../components/ThemeProvider'
+import { useHasThemeProvider, useThemeContext, type ThemeColors } from '../providers/ThemeProvider'
 
 export type { ThemeColors }
 

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, forwardRef } from 'react'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dBtn = 'btn'

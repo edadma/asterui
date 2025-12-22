@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useId } from 'react'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 import { useTheme } from '../hooks/useTheme'
 
 // DaisyUI classes

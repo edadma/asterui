@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useId } from 'react'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dDropdown = 'dropdown'

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useId, forwardRef, useImperativeHandle } from 'react'
 import { createRoot } from 'react-dom/client'
-import { useConfig } from './ConfigProvider'
+import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dModal = 'modal'

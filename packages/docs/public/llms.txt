@@ -4,7 +4,7 @@
 
 ## Overview
 
-AsterUI provides 100+ production-ready React components with:
+AsterUI provides 101 production-ready React components with:
 - Familiar, intuitive API patterns (Form.Item, Table columns, etc.)
 - DaisyUI v5 styling and theming
 - Full TypeScript support
@@ -152,7 +152,13 @@ npm install asterui
   - `useKeyPress` / `useKeyPressCallback` - Detect key presses
   - `useWindowSize` - Track window dimensions
   - `useBreakpoint` - Responsive breakpoint detection
-  - `useTheme` + `ThemeProvider` - Theme detection, system preference support, and computed colors
+  - `useTheme` - Theme detection, system preference support, and computed colors
+
+### Providers
+
+- [ConfigProvider](https://asterui.com/providers/configprovider) - Global configuration for locale, size, direction
+- [ThemeProvider](https://asterui.com/providers/themeprovider) - Theme management with system preference support
+- [SizeProvider](https://asterui.com/providers/sizeprovider) - Global component size configuration
 
 ## Quick Start
 

@@ -162,9 +162,9 @@ import { VirtualList } from 'asterui/virtuallist'
 
 This is a pnpm monorepo with the following packages:
 
-- `packages/asterui` - The component library
+- `packages/asterui` - The component library (101 components)
 - `packages/create-asterui` - Project scaffolding CLI
-- `packages/site` - Documentation website (asterui.com)
+- `packages/docs` - Documentation website (asterui.com)
 - `packages/examples` - Example apps for testing components
 
 ### Setup
