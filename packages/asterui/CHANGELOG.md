@@ -8,6 +8,12 @@ description: All notable changes to AsterUI
 All notable changes to AsterUI are documented here.
 
 
+## v0.12.61 (2025-12-22)
+
+### Dependencies
+
+- **react-hook-form**: Moved from peer dependency to regular dependency for transparency - npm now correctly shows "1 dependency" instead of "0 dependencies"
+
 ## v0.12.60 (2025-12-22)
 
 ### ConfigProvider Enhancements

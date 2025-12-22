@@ -1,6 +1,6 @@
 {
   "name": "asterui",
-  "version": "0.12.60",
+  "version": "0.12.61",
   "description": "React UI component library with DaisyUI",
   "homepage": "https://asterui.com",
   "repository": {
@@ -45,6 +45,9 @@
     "dev": "vite build --watch",
     "prepublishOnly": "pnpm build"
   },
+  "dependencies": {
+    "react-hook-form": "^7.0.0"
+  },
   "peerDependencies": {
     "@tanstack/react-virtual": "^3.0.0",
     "@tiptap/extension-link": "^2.0.0",
@@ -55,8 +58,7 @@
     "apexcharts": "^5.3.6",
     "qrcode": "^1.5.4",
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0",
-    "react-hook-form": "^7.0.0"
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "peerDependenciesMeta": {
     "@tanstack/react-virtual": {
