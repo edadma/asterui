@@ -21,7 +21,11 @@ const label = labels[locale ?? ''] || 'Components'
 
 <a href={isRoot ? '/' : `/${locale}`} class="site-title sl-flex">
   <img src="/logo.png" alt="" class="logo" />
-  <span>AsterUI</span>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 24" class="title-svg">
+    <text x="0" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600">
+      <tspan fill="#8275BA">Aster</tspan><tspan class="ui-text">UI</tspan>
+    </text>
+  </svg>
   <span class="version">v{version}</span>
 </a>
 <nav class="nav-links">
@@ -32,15 +36,25 @@ const label = labels[locale ?? ''] || 'Components'
   .site-title {
     align-items: center;
     gap: var(--sl-nav-gap);
-    font-size: var(--sl-text-h4);
-    font-weight: 600;
-    color: var(--sl-color-text-accent);
     text-decoration: none;
   }
 
   .logo {
     height: 2rem;
     width: auto;
+  }
+
+  .title-svg {
+    height: 1.85rem;
+    width: auto;
+  }
+
+  .ui-text {
+    fill: var(--sl-color-white);
+  }
+
+  :global(:root[data-theme='light']) .ui-text {
+    fill: var(--sl-color-gray-1);
   }
 
   .version {
