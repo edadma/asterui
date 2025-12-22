@@ -23,8 +23,11 @@ const { title, description, source, fn } = Astro.props
 //
 //   return (
 //     <Demo>
+//       {/* @example-show
+//       <IdealComponent /> // This code is shown but doesn't render
+//       @example-show-end */}
 //       {/* @example-return */}
-//       <Component items={items} />
+//       <Component items={items} /> // This actually renders
 //       {/* @example-return-end */}
 //     </Demo>
 //   )
@@ -67,12 +70,42 @@ if (source && fn) {
     }
     const includeCode = includeBlocks.join('\n\n')
 
-    // Extract @example-return block
+    // Extract all @example-show blocks (code to display, inside JSX comments)
+    // Preserve raw content without dedenting - like @example-include
+    const showRegex = /\{\/\* @example-show\n([\s\S]*?)@example-show-end \*\/\}/g
+    const showMatches: string[] = []
+    let showMatch
+    while ((showMatch = showRegex.exec(fnBody)) !== null) {
+      // Trim leading/trailing whitespace on each line but preserve indentation structure
+      showMatches.push(showMatch[1].replace(/^\n/, '').trimEnd())
+    }
+
+    // Extract @example-return block (code that actually renders)
     const returnRegex = /\{\/\* @example-return \*\/\}([\s\S]*?)\{\/\* @example-return-end \*\/\}/
     const returnMatch = fnBody.match(returnRegex)
 
-    if (returnMatch) {
-      const returnJsx = dedent(returnMatch[1])
+    // Combine: first @example-show + @example-return + remaining @example-show blocks
+    let combinedJsx = ''
+    if (showMatches.length > 0 && returnMatch) {
+      // Preserve raw content for @example-return, trim leading newline
+      const returnContent = returnMatch[1].replace(/^\n/, '').trimEnd()
+      // First show block, then return content, then remaining show blocks
+      combinedJsx = showMatches[0] + '\n' + returnContent
+      if (showMatches.length > 1) {
+        combinedJsx += '\n' + showMatches.slice(1).join('\n')
+      }
+    } else if (showMatches.length > 0) {
+      combinedJsx = showMatches.join('\n')
+    } else if (returnMatch) {
+      combinedJsx = dedent(returnMatch[1])
+    }
+    // Dedent the final result
+    if (combinedJsx) {
+      combinedJsx = dedent(combinedJsx)
+    }
+
+    if (combinedJsx) {
+      const returnJsx = combinedJsx
 
       // Build the example code
       let body = ''
