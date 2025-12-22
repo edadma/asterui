@@ -8,6 +8,17 @@ description: All notable changes to AsterUI
 All notable changes to AsterUI are documented here.
 
 
+## v0.12.58 (2025-12-22)
+
+### Bug Fixes
+
+- **Form**: Fix Form.Item to preserve child's original onChange handler, allowing custom onChange handlers on inputs inside Form.Item to work correctly
+
+### New Features
+
+- **Blocks**: Add Signup Form block with password strength meter, password confirmation validation, and terms acceptance
+- **Examples**: Add signup-form example demonstrating Form validation patterns
+
 ## v0.12.54 (2025-12-20)
 
 ## What's New
