@@ -19,39 +19,43 @@ const App: React.FC = () => (
 export default App
 ```
 
-### With Time Selection
+### Controlled
 
-Date picker with time selection.
+Controlled date picker with onChange handler.
+
+```tsx
+import React, { useState } from 'react'
+import { DatePicker } from 'asterui'
+
+const App: React.FC = () => {
+  const [date, setDate] = useState<Date | null>(null)
+
+  return (
+    <DatePicker value={date} onChange={setDate} placeholder="Select date" />
+  )
+}
+
+export default App
+```
+
+### Default Value
+
+Date picker with initial value.
 
 ```tsx
 import React from 'react'
 import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
-  <DatePicker showTime placeholder="Select date and time" />
+  <DatePicker defaultValue={new Date()} placeholder="Select date" />
 )
 
 export default App
 ```
 
-### Date Range
+### Date Formats
 
-Select a date range.
-
-```tsx
-import React from 'react'
-import { DatePicker } from 'asterui'
-
-const App: React.FC = () => (
-  <DatePicker range placeholder={['Start date', 'End date']} />
-)
-
-export default App
-```
-
-### Picker Types
-
-Different picker types for various granularities.
+Different display format strings.
 
 ```tsx
 import React from 'react'
@@ -59,29 +63,25 @@ import { DatePicker, Space } from 'asterui'
 
 const App: React.FC = () => (
   <Space direction="vertical" size="sm">
-    <DatePicker picker="date" placeholder="Select date" />
-    <DatePicker picker="week" placeholder="Select week" />
-    <DatePicker picker="month" placeholder="Select month" />
-    <DatePicker picker="year" placeholder="Select year" />
+    <DatePicker placeholder="MM/DD/YYYY (default)" format="MM/DD/YYYY" />
+    <DatePicker placeholder="DD/MM/YYYY" format="DD/MM/YYYY" />
+    <DatePicker placeholder="YYYY-MM-DD" format="YYYY-MM-DD" />
   </Space>
 )
 
 export default App
 ```
 
-### Disabled Dates
+### Date Range
 
-Disable specific dates (e.g., past dates).
+Select a start and end date.
 
 ```tsx
 import React from 'react'
 import { DatePicker } from 'asterui'
 
 const App: React.FC = () => (
-  <DatePicker
-    placeholder="Select future date"
-    disabledDate={(date) => date < new Date()}
-  />
+  <DatePicker.Range placeholder={['Start date', 'End date']} />
 )
 
 export default App
@@ -101,7 +101,23 @@ const App: React.FC = () => (
     <DatePicker size="sm" placeholder="Small" />
     <DatePicker size="md" placeholder="Medium" />
     <DatePicker size="lg" placeholder="Large" />
+    <DatePicker size="xl" placeholder="Extra large" />
   </Space>
+)
+
+export default App
+```
+
+### Disabled
+
+Disabled date picker.
+
+```tsx
+import React from 'react'
+import { DatePicker } from 'asterui'
+
+const App: React.FC = () => (
+  <DatePicker disabled placeholder="Disabled" />
 )
 
 export default App
@@ -109,17 +125,30 @@ export default App
 
 ## API
 
-### Date Picker
+### DatePicker
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| `format` | Display format string | `string` | `YYYY-MM-DD` |
-| `picker` | Picker type | `date' \| 'week' \| 'month' \| 'year` | `date` |
-| `showTime` | Enable time selection | `boolean` | `false` |
-| `range` | Enable date range selection | `boolean` | `false` |
-| `disabledDate` | Function to disable specific dates | `(date: Date) => boolean` | `-` |
-| `placeholder` | Input placeholder | `string` | `-` |
+| `value` | Controlled date value | `Date \| null` | - |
+| `defaultValue` | Initial date value | `Date \| null` | - |
+| `onChange` | Change handler | `(date: Date \| null) => void` | - |
+| `format` | Display format string | `string` | `'MM/DD/YYYY'` |
+| `placeholder` | Input placeholder | `string` | `'Select date'` |
 | `disabled` | Disable the picker | `boolean` | `false` |
-| `size` | Input size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
-| `data-testid` | Test ID prefix for child elements | `string` | `-` |
-| `className` | Additional CSS classes | `string` | `-` |
+| `size` | Input size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
+| `data-testid` | Test ID prefix for child elements | `string` | - |
+| `className` | Additional CSS classes | `string` | - |
+
+### DatePicker.Range
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `value` | Controlled date range value | `[Date \| null, Date \| null]` | - |
+| `defaultValue` | Initial date range value | `[Date \| null, Date \| null]` | - |
+| `onChange` | Change handler | `(range: [Date \| null, Date \| null]) => void` | - |
+| `format` | Display format string | `string` | `'MM/DD/YYYY'` |
+| `placeholder` | Input placeholder | `[string, string] \| string` | `['Start date', 'End date']` |
+| `disabled` | Disable the picker | `boolean` | `false` |
+| `size` | Input size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
+| `data-testid` | Test ID prefix for child elements | `string` | - |
+| `className` | Additional CSS classes | `string` | - |

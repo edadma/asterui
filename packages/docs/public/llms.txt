@@ -10,6 +10,7 @@ AsterUI provides 101 production-ready React components with:
 - Full TypeScript support
 - Test-friendly attributes (data-testid, data-state, ARIA roles)
 - Prop pass-through for custom attributes
+- DatePicker includes DatePicker.Range for start/end selection
 - Broad data-testid coverage across components for end-to-end testing
 
 ## Installation
@@ -74,7 +75,7 @@ npm install asterui
 - [Cascader](https://asterui.com/docs/cascader.md)
 - [Checkbox](https://asterui.com/docs/checkbox.md)
 - [ColorPicker](https://asterui.com/docs/colorpicker.md)
-- [DatePicker](https://asterui.com/docs/datepicker.md)
+- [DatePicker](https://asterui.com/docs/datepicker.md) (includes `DatePicker.Range`)
 - [FileInput](https://asterui.com/docs/fileinput.md)
 - [Filter](https://asterui.com/docs/filter.md)
 - [Form](https://asterui.com/docs/form.md)

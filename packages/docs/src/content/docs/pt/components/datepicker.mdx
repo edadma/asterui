@@ -9,6 +9,7 @@ import {
   ControlledDemo,
   DefaultValueDemo,
   FormatDemo,
+  RangeDemo,
   SizesDemo,
   DisabledDemo,
 } from '../../../../components/DatePickerDemo'
@@ -43,6 +44,10 @@ import { DatePicker } from 'asterui'
   <FormatDemo client:load slot="demo" />
 </Example>
 
+<Example title="Intervalo de Datas" description="Selecione uma data de início e fim." source={DatePickerDemoSource} fn="RangeDemo">
+  <RangeDemo client:load slot="demo" />
+</Example>
+
 <Example title="Tamanhos" description="Diferentes tamanhos de entrada." source={DatePickerDemoSource} fn="SizesDemo">
   <SizesDemo client:load slot="demo" />
 </Example>
@@ -63,7 +68,22 @@ import { DatePicker } from 'asterui'
 | `defaultValue` | Valor de data inicial | `Date \| null` | - |
 | `onChange` | Manipulador de mudança | `(date: Date \| null) => void` | - |
 | `format` | String de formato de exibição | `string` | `'MM/DD/YYYY'` |
-| `placeholder` | Placeholder do campo de entrada | `string` | `'Select date'` |
+| `placeholder` | Placeholder do campo de entrada | `string` | `'Selecionar data'` |
 | `disabled` | Desabilitar o seletor | `boolean` | `false` |
-| `size` | Tamanho do campo de entrada | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `size` | Tamanho do campo de entrada | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
+| `data-testid` | ID de teste para testes | `string` | - |
+| `className` | Classes CSS adicionais | `string` | - |
+
+### `DatePicker.Range`
+
+| Propriedade | Descrição | Tipo | Padrão |
+|----------|-------------|------|---------|
+| `value` | Valor de intervalo de datas controlado | `[Date \| null, Date \| null]` | - |
+| `defaultValue` | Valor de intervalo de datas inicial | `[Date \| null, Date \| null]` | - |
+| `onChange` | Manipulador de mudança | `(range: [Date \| null, Date \| null]) => void` | - |
+| `format` | String de formato de exibição | `string` | `'MM/DD/YYYY'` |
+| `placeholder` | Placeholders do campo de entrada | `[string, string] \| string` | `['Data de início', 'Data de fim']` |
+| `disabled` | Desabilitar o seletor | `boolean` | `false` |
+| `size` | Tamanho do campo de entrada | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
+| `data-testid` | ID de teste para testes | `string` | - |
 | `className` | Classes CSS adicionais | `string` | - |

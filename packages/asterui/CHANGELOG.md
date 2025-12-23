@@ -7,6 +7,16 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.64 (2025-12-23)
+
+### Components
+
+- Added `DatePicker.Range` for start/end date selection
+
+### Documentation
+
+- Added DatePicker.Range examples and API docs across localized docs and AI reference docs
+
 ## v0.12.63 (2025-12-23)
 
 ### Testability Improvements
@@ -20,7 +30,6 @@ All notable changes to AsterUI are documented here.
 ### Tooling
 
 - Updated Astro to 5.16.6 in docs/site packages
-
 
 ## v0.12.62 (2025-12-22)
 

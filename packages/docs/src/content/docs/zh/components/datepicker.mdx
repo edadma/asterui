@@ -9,6 +9,7 @@ import {
   ControlledDemo,
   DefaultValueDemo,
   FormatDemo,
+  RangeDemo,
   SizesDemo,
   DisabledDemo,
 } from '../../../../components/DatePickerDemo'
@@ -43,6 +44,10 @@ import { DatePicker } from 'asterui'
   <FormatDemo client:load slot="demo" />
 </Example>
 
+<Example title="日期范围" description="选择开始和结束日期。" source={DatePickerDemoSource} fn="RangeDemo">
+  <RangeDemo client:load slot="demo" />
+</Example>
+
 <Example title="尺寸" description="不同的输入框尺寸。" source={DatePickerDemoSource} fn="SizesDemo">
   <SizesDemo client:load slot="demo" />
 </Example>
@@ -63,7 +68,22 @@ import { DatePicker } from 'asterui'
 | `defaultValue` | 初始日期值 | `Date \| null` | - |
 | `onChange` | 变化处理器 | `(date: Date \| null) => void` | - |
 | `format` | 显示格式字符串 | `string` | `'MM/DD/YYYY'` |
-| `placeholder` | 输入框占位符 | `string` | `'Select date'` |
+| `placeholder` | 输入框占位符 | `string` | `'选择日期'` |
 | `disabled` | 禁用选择器 | `boolean` | `false` |
-| `size` | 输入框尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `size` | 输入框尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
+| `data-testid` | 用于测试的测试 ID | `string` | - |
+| `className` | 额外的 CSS 类名 | `string` | - |
+
+### `DatePicker.Range`
+
+| 属性 | 描述 | 类型 | 默认值 |
+|----------|-------------|------|---------|
+| `value` | 受控日期范围值 | `[Date \| null, Date \| null]` | - |
+| `defaultValue` | 初始日期范围值 | `[Date \| null, Date \| null]` | - |
+| `onChange` | 变化处理器 | `(range: [Date \| null, Date \| null]) => void` | - |
+| `format` | 显示格式字符串 | `string` | `'MM/DD/YYYY'` |
+| `placeholder` | 输入框占位符 | `[string, string] \| string` | `['开始日期', '结束日期']` |
+| `disabled` | 禁用选择器 | `boolean` | `false` |
+| `size` | 输入框尺寸 | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
+| `data-testid` | 用于测试的测试 ID | `string` | - |
 | `className` | 额外的 CSS 类名 | `string` | - |

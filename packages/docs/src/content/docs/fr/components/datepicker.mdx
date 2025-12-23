@@ -9,6 +9,7 @@ import {
   ControlledDemo,
   DefaultValueDemo,
   FormatDemo,
+  RangeDemo,
   SizesDemo,
   DisabledDemo,
 } from '../../../../components/DatePickerDemo'
@@ -43,6 +44,10 @@ import { DatePicker } from 'asterui'
   <FormatDemo client:load slot="demo" />
 </Example>
 
+<Example title="Plage de dates" description="Sélectionnez une date de début et de fin." source={DatePickerDemoSource} fn="RangeDemo">
+  <RangeDemo client:load slot="demo" />
+</Example>
+
 <Example title="Tailles" description="Différentes tailles d'entrée." source={DatePickerDemoSource} fn="SizesDemo">
   <SizesDemo client:load slot="demo" />
 </Example>
@@ -63,7 +68,22 @@ import { DatePicker } from 'asterui'
 | `defaultValue` | Valeur de date initiale | `Date \| null` | - |
 | `onChange` | Gestionnaire de changement | `(date: Date \| null) => void` | - |
 | `format` | Chaîne de format d'affichage | `string` | `'MM/DD/YYYY'` |
-| `placeholder` | Espace réservé d'entrée | `string` | `'Select date'` |
+| `placeholder` | Espace réservé d'entrée | `string` | `'Sélectionner une date'` |
 | `disabled` | Désactiver le sélecteur | `boolean` | `false` |
-| `size` | Taille d'entrée | `'xs' \| 'sm' \| 'md' \| 'lg'` | `'md'` |
+| `size` | Taille d'entrée | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
+| `data-testid` | ID de test pour les tests | `string` | - |
+| `className` | Classes CSS supplémentaires | `string` | - |
+
+### `DatePicker.Range`
+
+| Propriété | Description | Type | Défaut |
+|----------|-------------|------|---------|
+| `value` | Valeur de plage de dates contrôlée | `[Date \| null, Date \| null]` | - |
+| `defaultValue` | Valeur de plage de dates initiale | `[Date \| null, Date \| null]` | - |
+| `onChange` | Gestionnaire de changement | `(range: [Date \| null, Date \| null]) => void` | - |
+| `format` | Chaîne de format d'affichage | `string` | `'MM/DD/YYYY'` |
+| `placeholder` | Espaces réservés de l'entrée | `[string, string] \| string` | `['Date de début', 'Date de fin']` |
+| `disabled` | Désactiver le sélecteur | `boolean` | `false` |
+| `size` | Taille d'entrée | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
+| `data-testid` | ID de test pour les tests | `string` | - |
 | `className` | Classes CSS supplémentaires | `string` | - |

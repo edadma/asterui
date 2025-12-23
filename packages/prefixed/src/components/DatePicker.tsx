@@ -20,6 +20,20 @@ export interface DatePickerProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   'data-testid'?: string
 }
 
+export type DateRangeValue = [Date | null, Date | null]
+
+export interface DateRangePickerProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
+  value?: DateRangeValue
+  defaultValue?: DateRangeValue
+  onChange?: (range: DateRangeValue) => void
+  format?: string
+  placeholder?: [string, string] | string
+  disabled?: boolean
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  /** Test ID prefix for child elements */
+  'data-testid'?: string
+}
+
 const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 const MONTHS = [
   'January',
@@ -57,7 +71,32 @@ function getFirstDayOfMonth(year: number, month: number): number {
   return new Date(year, month, 1).getDay()
 }
 
-export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(function DatePicker(
+function stripTime(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate())
+}
+
+function isSameDay(a: Date, b: Date): boolean {
+  return a.getFullYear() === b.getFullYear()
+    && a.getMonth() === b.getMonth()
+    && a.getDate() === b.getDate()
+}
+
+function isBeforeDay(a: Date, b: Date): boolean {
+  return stripTime(a).getTime() < stripTime(b).getTime()
+}
+
+function isAfterDay(a: Date, b: Date): boolean {
+  return stripTime(a).getTime() > stripTime(b).getTime()
+}
+
+function formatRange(range: DateRangeValue, format: string = 'MM/DD/YYYY'): string {
+  const [start, end] = range
+  if (start && end) return `${formatDate(start, format)} - ${formatDate(end, format)}`
+  if (start) return `${formatDate(start, format)} - `
+  return ''
+}
+
+const DatePickerComponent = forwardRef<HTMLDivElement, DatePickerProps>(function DatePicker(
   {
     value,
     defaultValue,
@@ -279,3 +318,260 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(function D
     </div>
   )
 })
+
+const DateRangePicker = forwardRef<HTMLDivElement, DateRangePickerProps>(function DateRangePicker(
+  {
+    value,
+    defaultValue,
+    onChange,
+    format,
+    placeholder,
+    disabled = false,
+    size,
+    'data-testid': testId,
+    className = '',
+    ...rest
+  },
+  ref
+) {
+  const { componentSize } = useConfig()
+  const effectiveSize = size ?? componentSize ?? 'md'
+
+  const [startPlaceholder, endPlaceholder] = Array.isArray(placeholder)
+    ? placeholder
+    : [placeholder ?? 'Start date', 'End date']
+  const resolvedPlaceholder = Array.isArray(placeholder)
+    ? `${startPlaceholder} - ${endPlaceholder}`
+    : placeholder ?? 'Start date - End date'
+
+  // Helper for test IDs
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+  const [selectedRange, setSelectedRange] = useState<DateRangeValue>(
+    value || defaultValue || [null, null]
+  )
+  const [isOpen, setIsOpen] = useState(false)
+  const initialDate = selectedRange[0] ?? selectedRange[1] ?? new Date()
+  const [viewMonth, setViewMonth] = useState(initialDate.getMonth())
+  const [viewYear, setViewYear] = useState(initialDate.getFullYear())
+
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (value !== undefined) {
+      setSelectedRange(value)
+    }
+  }, [value])
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen])
+
+  const handleDateSelect = (day: number) => {
+    const newDate = new Date(viewYear, viewMonth, day)
+    let [start, end] = selectedRange
+
+    if (!start || (start && end)) {
+      start = newDate
+      end = null
+    } else if (start && !end) {
+      if (isBeforeDay(newDate, start)) {
+        end = start
+        start = newDate
+      } else {
+        end = newDate
+      }
+    }
+
+    const nextRange: DateRangeValue = [start, end]
+    setSelectedRange(nextRange)
+    onChange?.(nextRange)
+    if (start && end) {
+      setIsOpen(false)
+    }
+  }
+
+  const handlePrevMonth = () => {
+    if (viewMonth === 0) {
+      setViewMonth(11)
+      setViewYear(viewYear - 1)
+    } else {
+      setViewMonth(viewMonth - 1)
+    }
+  }
+
+  const handleNextMonth = () => {
+    if (viewMonth === 11) {
+      setViewMonth(0)
+      setViewYear(viewYear + 1)
+    } else {
+      setViewMonth(viewMonth + 1)
+    }
+  }
+
+  const daysInMonth = getDaysInMonth(viewYear, viewMonth)
+  const firstDayOfMonth = getFirstDayOfMonth(viewYear, viewMonth)
+
+  const calendarDays: (number | null)[] = []
+  for (let i = 0; i < firstDayOfMonth; i++) {
+    calendarDays.push(null)
+  }
+  for (let i = 1; i <= daysInMonth; i++) {
+    calendarDays.push(i)
+  }
+
+  const isToday = (day: number | null): boolean => {
+    if (!day) return false
+    const today = new Date()
+    return (
+      today.getDate() === day &&
+      today.getMonth() === viewMonth &&
+      today.getFullYear() === viewYear
+    )
+  }
+
+  const [rangeStart, rangeEnd] = selectedRange
+
+  return (
+    <div ref={ref || containerRef} className={`relative ${className}`} data-state={isOpen ? 'open' : 'closed'} data-testid={testId} {...rest}>
+      <Input
+        value={formatRange(selectedRange, format)}
+        placeholder={resolvedPlaceholder}
+        disabled={disabled}
+        size={effectiveSize}
+        readOnly
+        onClick={() => !disabled && setIsOpen(!isOpen)}
+        className="cursor-pointer"
+        data-testid={getTestId('input')}
+      />
+
+      {isOpen && (
+        <div className="absolute top-full left-0 mt-2 bg-base-100 border border-base-300 rounded-lg shadow-lg p-4 z-50 w-80" data-testid={getTestId('calendar')}>
+          {/* Header */}
+          <div className="flex items-center justify-between mb-4">
+            <button
+              type="button"
+              onClick={handlePrevMonth}
+              className={`${dBtn} ${dBtnGhost} ${dBtnSm} ${dBtnSquare}`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+
+            <div className="text-base font-semibold">
+              {MONTHS[viewMonth]} {viewYear}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleNextMonth}
+              className={`${dBtn} ${dBtnGhost} ${dBtnSm} ${dBtnSquare}`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Days of week */}
+          <div className="grid grid-cols-7 gap-1 mb-2">
+            {DAYS.map((day) => (
+              <div
+                key={day}
+                className="text-center text-xs font-semibold text-base-content/60 py-2"
+              >
+                {day}
+              </div>
+            ))}
+          </div>
+
+          {/* Calendar grid */}
+          <div className="grid grid-cols-7 gap-1">
+            {calendarDays.map((day, index) => {
+              const dayDate = day ? new Date(viewYear, viewMonth, day) : null
+              const isStart = !!dayDate && !!rangeStart && isSameDay(dayDate, rangeStart)
+              const isEnd = !!dayDate && !!rangeEnd && isSameDay(dayDate, rangeEnd)
+              const isInRange = !!dayDate && !!rangeStart && !!rangeEnd
+                && isAfterDay(dayDate, rangeStart)
+                && isBeforeDay(dayDate, rangeEnd)
+
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  disabled={!day}
+                  onClick={() => day && handleDateSelect(day)}
+                  className={`
+                    aspect-square flex items-center justify-center text-sm rounded-lg
+                    ${!day ? 'invisible' : 'hover:bg-base-200'}
+                    ${isInRange ? 'bg-primary/10' : ''}
+                    ${isStart || isEnd ? 'bg-primary text-primary-content hover:bg-primary/90' : ''}
+                    ${isToday(day) && !isStart && !isEnd ? 'border border-primary' : ''}
+                    ${day ? 'cursor-pointer' : ''}
+                  `}
+                >
+                  {day}
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Today button */}
+          <div className="mt-4 flex justify-end">
+            <button
+              type="button"
+              onClick={() => {
+                const today = new Date()
+                setSelectedRange([today, today])
+                setViewMonth(today.getMonth())
+                setViewYear(today.getFullYear())
+                onChange?.([today, today])
+                setIsOpen(false)
+              }}
+              className={`${dBtn} ${dBtnGhost} ${dBtnSm}`}
+            >
+              Today
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+})
+
+DatePickerComponent.displayName = 'DatePicker'
+DateRangePicker.displayName = 'DatePicker.Range'
+
+type DatePickerType = typeof DatePickerComponent & {
+  Range: typeof DateRangePicker
+}
+
+export const DatePicker = DatePickerComponent as DatePickerType
+DatePicker.Range = DateRangePicker

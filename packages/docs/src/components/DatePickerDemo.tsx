@@ -66,6 +66,19 @@ export function FormatDemo() {
   )
 }
 
+// @example-imports: { DatePicker } from 'asterui'
+export function RangeDemo() {
+  return (
+    <Demo>
+      {/* @example-return */}
+      <DatePicker.Range
+        placeholder={['Start date', 'End date']}
+      />
+      {/* @example-return-end */}
+    </Demo>
+  )
+}
+
 // @example-imports: { DatePicker, Space } from 'asterui'
 export function SizesDemo() {
   return (

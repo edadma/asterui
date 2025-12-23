@@ -9,6 +9,7 @@ import {
   ControlledDemo,
   DefaultValueDemo,
   FormatDemo,
+  RangeDemo,
   SizesDemo,
   DisabledDemo,
 } from '../../../components/DatePickerDemo'
@@ -43,6 +44,10 @@ import { DatePicker } from 'asterui'
   <FormatDemo client:load slot="demo" />
 </Example>
 
+<Example title="Date Range" description="Select a start and end date." source={DatePickerDemoSource} fn="RangeDemo">
+  <RangeDemo client:load slot="demo" />
+</Example>
+
 <Example title="Sizes" description="Different input sizes." source={DatePickerDemoSource} fn="SizesDemo">
   <SizesDemo client:load slot="demo" />
 </Example>
@@ -65,6 +70,20 @@ import { DatePicker } from 'asterui'
 | `format` | Display format string | `string` | `'MM/DD/YYYY'` |
 | `placeholder` | Input placeholder | `string` | `'Select date'` |
 | `disabled` | Disable the picker | `boolean` | `false` |
-| `size` | Input size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `size` | Input size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
+| `data-testid` | Test ID prefix for child elements | `string` | - |
+| `className` | Additional CSS classes | `string` | - |
+
+### `DatePicker.Range`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `value` | Controlled date range value | `[Date \| null, Date \| null]` | - |
+| `defaultValue` | Initial date range value | `[Date \| null, Date \| null]` | - |
+| `onChange` | Change handler | `(range: [Date \| null, Date \| null]) => void` | - |
+| `format` | Display format string | `string` | `'MM/DD/YYYY'` |
+| `placeholder` | Input placeholder | `[string, string] \| string` | `['Start date', 'End date']` |
+| `disabled` | Disable the picker | `boolean` | `false` |
+| `size` | Input size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
 | `data-testid` | Test ID prefix for child elements | `string` | - |
 | `className` | Additional CSS classes | `string` | - |
