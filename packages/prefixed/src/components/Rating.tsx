@@ -31,6 +31,7 @@ export interface RatingProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   allowClear?: boolean
   allowHalf?: boolean
   disabled?: boolean
+  'data-testid'?: string
 }
 
 export interface RatingItemProps {
@@ -40,6 +41,7 @@ export interface RatingItemProps {
   hidden?: boolean
   half?: 'first' | 'second'
   className?: string
+  'data-testid'?: string
 }
 
 interface RatingContextValue {
@@ -51,6 +53,7 @@ interface RatingContextValue {
   size?: string
   disabled?: boolean
   halfGap?: 'none' | 'xs' | 'sm' | 'md' | 'lg'
+  getTestId?: (suffix: string) => string | undefined
 }
 
 const RatingContext = createContext<RatingContextValue | null>(null)
@@ -70,6 +73,7 @@ function RatingRoot({
   allowHalf = false,
   disabled = false,
   className = '',
+  'data-testid': testId,
   ...rest
 }: RatingProps) {
   const { componentSize } = useConfig()
@@ -96,6 +100,8 @@ function RatingRoot({
     setHoverValue(hoverVal)
     onHoverChange?.(hoverVal)
   }
+
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   const sizeClasses = {
     xs: dRatingXs,
@@ -145,12 +151,13 @@ function RatingRoot({
   )
 
   return (
-    <RatingContext.Provider value={{ name, currentValue, hoverValue, onChange: handleChange, onHover: handleHover, size: effectiveSize, disabled, halfGap: allowHalf ? gap : undefined }}>
+    <RatingContext.Provider value={{ name, currentValue, hoverValue, onChange: handleChange, onHover: handleHover, size: effectiveSize, disabled, halfGap: allowHalf ? gap : undefined, getTestId }}>
       <div
         role="radiogroup"
         aria-label="Rating"
         className={classes}
         data-value={currentValue}
+        data-testid={testId}
         onMouseLeave={() => handleHover(0)}
         {...rest}
       >
@@ -160,13 +167,14 @@ function RatingRoot({
   )
 }
 
-function RatingItem({ value, mask = 'star-2', color = 'bg-warning', hidden = false, half, className = '' }: RatingItemProps) {
+function RatingItem({ value, mask = 'star-2', color = 'bg-warning', hidden = false, half, className = '', 'data-testid': testId }: RatingItemProps) {
   const context = useContext(RatingContext)
   if (!context) {
     throw new Error('Rating.Item must be used within Rating')
   }
 
-  const { name, currentValue, hoverValue, onChange, onHover, disabled, halfGap } = context
+  const { name, currentValue, hoverValue, onChange, onHover, disabled, halfGap, getTestId } = context
+  const itemTestId = testId ?? getTestId?.(`item-${value}`)
 
   const maskClasses = {
     star: dMaskStar,
@@ -205,6 +213,7 @@ function RatingItem({ value, mask = 'star-2', color = 'bg-warning', hidden = fal
         className={classes}
         aria-current={currentValue === value ? 'true' : undefined}
         aria-label={`Rating ${value}`}
+        data-testid={itemTestId}
       />
     )
   }
@@ -223,6 +232,7 @@ function RatingItem({ value, mask = 'star-2', color = 'bg-warning', hidden = fal
       onClick={() => onChange(value)}
       onMouseEnter={() => onHover(value)}
       aria-label={`Rating ${value}`}
+      data-testid={itemTestId}
     />
   )
 }

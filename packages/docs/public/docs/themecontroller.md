@@ -165,6 +165,7 @@ export default App
 | `defaultChecked` | Initially checked (dark theme) | `boolean` | `-` |
 | `onChange` | Callback when theme changes | `(theme: string) => void` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Toggle
 
@@ -176,6 +177,7 @@ export default App
 | `onChange` | Callback when theme changes | `(theme: string) => void` | `-` |
 | `size` | Toggle size | `'xs' \| 'sm' \| 'md' \| 'lg'` | `md` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Dropdown
 
@@ -185,6 +187,7 @@ export default App
 | `defaultTheme` | Initially selected theme | `string` | `-` |
 | `onChange` | Callback when theme changes | `(theme: string) => void` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ## Note
 

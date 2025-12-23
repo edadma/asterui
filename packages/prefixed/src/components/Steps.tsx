@@ -38,6 +38,7 @@ export interface StepsProps extends Omit<React.HTMLAttributes<HTMLUListElement>,
   vertical?: boolean
   /** Callback when step is clicked */
   onChange?: (current: number) => void
+  'data-testid'?: string
 }
 
 export interface StepProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>, 'color' | 'title'> {
@@ -61,6 +62,7 @@ export interface StepProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>, '
   _clickable?: boolean
   /** Internal: click handler */
   _onClick?: (index: number) => void
+  'data-testid'?: string
 }
 
 const colorClasses: Record<string, string> = {
@@ -82,6 +84,7 @@ function StepsRoot({
   vertical = false,
   onChange,
   className = '',
+  'data-testid': testId,
   ...rest
 }: StepsProps) {
   const isVertical = direction === 'vertical' || vertical
@@ -90,10 +93,12 @@ function StepsRoot({
     .filter(Boolean)
     .join(' ')
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   // Render data-driven items if provided
   if (items && items.length > 0) {
     return (
-      <ul className={classes} {...rest}>
+      <ul className={classes} data-testid={testId} {...rest}>
         {items.map((item, index) => {
           const isCompleted = current !== undefined && index < current
           const isCurrent = current !== undefined && index === current
@@ -111,6 +116,7 @@ function StepsRoot({
               _clickable={!!onChange && !item.disabled}
               _onClick={onChange}
               aria-current={isCurrent ? 'step' : undefined}
+              data-testid={getTestId(`step-${item.key ?? index}`)}
             />
           )
         })}
@@ -140,7 +146,7 @@ function StepsRoot({
       : children
 
   return (
-    <ul className={classes} {...rest}>
+    <ul className={classes} data-testid={testId} {...rest}>
       {processedChildren}
     </ul>
   )
@@ -158,6 +164,7 @@ function Step({
   _index,
   _clickable,
   _onClick,
+  'data-testid': testId,
   ...rest
 }: StepProps) {
   const classes = [dStep, color && colorClasses[color], disabled && dStepDisabled, className]
@@ -178,6 +185,7 @@ function Step({
       data-content={dataContent}
       onClick={handleClick}
       style={_clickable && !disabled ? { cursor: 'pointer' } : undefined}
+      data-testid={testId}
       {...rest}
     >
       {icon && <span className="step-icon">{icon}</span>}

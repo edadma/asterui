@@ -9,6 +9,7 @@ export interface ResultProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   icon?: React.ReactNode
   extra?: React.ReactNode
   children?: React.ReactNode
+  'data-testid'?: string
 }
 
 const defaultIcons: Record<ResultStatus, React.ReactNode> = {
@@ -91,33 +92,36 @@ export const Result: React.FC<ResultProps> = ({
   extra,
   children,
   className = '',
+  'data-testid': testId,
   ...rest
 }) => {
   const displayIcon = icon !== undefined ? icon : defaultIcons[status]
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   return (
     <div
       className={`w-full flex flex-col items-center justify-center text-center p-8 ${className}`}
       data-status={status}
+      data-testid={testId}
       {...rest}
     >
-      {displayIcon && <div className="mb-6">{displayIcon}</div>}
+      {displayIcon && <div className="mb-6" data-testid={getTestId('icon')}>{displayIcon}</div>}
 
       {title && (
-        <div className="text-2xl font-semibold mb-2 text-base-content">
+        <div className="text-2xl font-semibold mb-2 text-base-content" data-testid={getTestId('title')}>
           {title}
         </div>
       )}
 
       {subTitle && (
-        <div className="text-base text-base-content/70 mb-6 max-w-md">
+        <div className="text-base text-base-content/70 mb-6 max-w-md" data-testid={getTestId('subtitle')}>
           {subTitle}
         </div>
       )}
 
-      {children && <div className="mb-6 max-w-2xl">{children}</div>}
+      {children && <div className="mb-6 max-w-2xl" data-testid={getTestId('content')}>{children}</div>}
 
-      {extra && <div className="flex gap-2">{extra}</div>}
+      {extra && <div className="flex gap-2" data-testid={getTestId('extra')}>{extra}</div>}
     </div>
   )
 }

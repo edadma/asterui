@@ -50,6 +50,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   errorId?: string
   /** Render as unstyled input (for use inside styled wrappers) */
   unstyled?: boolean
+  'data-testid'?: string
 }
 
 // Helper to apply mask to raw value
@@ -146,6 +147,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       onKeyDown,
       disabled,
       required,
+      'data-testid': testId,
       ...props
     },
     ref
@@ -379,6 +381,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     // If we have prefix, suffix, or allowClear, wrap in a container
     const hasInternalAddons = prefix || suffix || allowClear
+    const hasWrapper = hasInternalAddons || hasExternalAddons || !!floatingLabel
+    const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+    const inputTestId = testId ? (hasWrapper ? getTestId('input') : testId) : undefined
 
     // Size class for floating label
     const floatingSizeClasses = {
@@ -410,6 +415,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         onKeyDown={mask ? handleMaskedKeyDown : onKeyDown}
         disabled={disabled}
         required={required}
+        data-testid={inputTestId}
         {...ariaProps}
         {...props}
       />
@@ -422,16 +428,26 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       }
 
       return (
-        <div className={`relative flex items-center ${extraClasses || ''}`}>
+        <div
+          className={`relative flex items-center ${extraClasses || ''}`}
+          data-testid={!hasExternalAddons && !floatingLabel ? testId : getTestId('input-wrapper')}
+        >
           {prefix && (
-            <span className="absolute left-3 flex items-center text-base-content/70 pointer-events-none z-10">
+            <span
+              className="absolute left-3 flex items-center text-base-content/70 pointer-events-none z-10"
+              data-testid={getTestId('prefix')}
+            >
               {prefix}
             </span>
           )}
           {buildInput()}
           {(suffix || showClear) && (
-            <span className="absolute right-3 flex items-center gap-1 z-10">
-              {showClear && (clearIcon || <ClearIcon onClick={handleClear} />)}
+            <span className="absolute right-3 flex items-center gap-1 z-10" data-testid={getTestId('suffix')}>
+              {showClear && (
+                <span data-testid={getTestId('clear')}>
+                  {clearIcon || <ClearIcon onClick={handleClear} />}
+                </span>
+              )}
               {suffix && <span className="text-base-content/70">{suffix}</span>}
             </span>
           )}
@@ -449,7 +465,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       ].filter(Boolean).join(' ')
 
       return (
-        <label className={floatingClasses}>
+        <label className={floatingClasses} data-testid={testId}>
           {input}
           <span>{floatingLabel}</span>
         </label>
@@ -470,10 +486,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       ].filter(Boolean).join(' ')
 
       return (
-        <label className={addonClasses}>
-          {addonBefore && <span className="text-base-content/70">{addonBefore}</span>}
+        <label className={addonClasses} data-testid={testId}>
+          {addonBefore && (
+            <span className="text-base-content/70" data-testid={getTestId('addon-before')}>
+              {addonBefore}
+            </span>
+          )}
           {input}
-          {addonAfter && <span className="text-base-content/70">{addonAfter}</span>}
+          {addonAfter && (
+            <span className="text-base-content/70" data-testid={getTestId('addon-after')}>
+              {addonAfter}
+            </span>
+          )}
         </label>
       )
     }
@@ -497,6 +521,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           onKeyDown={mask ? handleMaskedKeyDown : onKeyDown}
           disabled={disabled}
           required={required}
+          data-testid={inputTestId}
           {...ariaProps}
           {...props}
         />

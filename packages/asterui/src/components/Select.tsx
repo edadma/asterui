@@ -35,6 +35,7 @@ export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectE
   addonAfter?: React.ReactNode
   className?: string
   children?: React.ReactNode
+  'data-testid'?: string
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -50,6 +51,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       addonAfter,
       className = '',
       children,
+      'data-testid': testId,
       ...props
     },
     ref
@@ -89,6 +91,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     // When wrapped with external addons, the wrapper has the styling
     const hasExternalAddons = addonBefore || addonAfter
+    const hasWrapper = hasExternalAddons || !!floatingLabel
+    const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+    const selectTestId = testId ? (hasWrapper ? getTestId('select') : testId) : undefined
 
     const selectClasses = hasExternalAddons
       ? ['grow', 'bg-transparent', 'border-0', 'outline-none', 'focus:outline-none', className].filter(Boolean).join(' ')
@@ -104,7 +109,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     // Build the core select element
     const selectElement = (
-      <select ref={selectRef} className={selectClasses} {...props}>
+      <select ref={selectRef} className={selectClasses} data-testid={selectTestId} {...props}>
         {children}
       </select>
     )
@@ -117,8 +122,13 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       ].filter(Boolean).join(' ')
 
       return (
-        <label className={floatingClasses}>
-          <select ref={selectRef} className={`${dSelect} ${dSelectBordered} w-full`} {...props}>
+        <label className={floatingClasses} data-testid={testId}>
+          <select
+            ref={selectRef}
+            className={`${dSelect} ${dSelectBordered} w-full`}
+            data-testid={selectTestId}
+            {...props}
+          >
             {children}
           </select>
           <span>{floatingLabel}</span>
@@ -139,10 +149,18 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       ].filter(Boolean).join(' ')
 
       return (
-        <label className={addonClasses}>
-          {addonBefore && <span className="text-base-content/70">{addonBefore}</span>}
+        <label className={addonClasses} data-testid={testId}>
+          {addonBefore && (
+            <span className="text-base-content/70" data-testid={getTestId('addon-before')}>
+              {addonBefore}
+            </span>
+          )}
           {selectElement}
-          {addonAfter && <span className="text-base-content/70">{addonAfter}</span>}
+          {addonAfter && (
+            <span className="text-base-content/70" data-testid={getTestId('addon-after')}>
+              {addonAfter}
+            </span>
+          )}
         </label>
       )
     }

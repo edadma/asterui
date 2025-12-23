@@ -41,6 +41,7 @@ export interface DockProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'o
   className?: string
   /** Accessible label for the dock */
   'aria-label'?: string
+  'data-testid'?: string
 }
 
 export interface DockItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -50,10 +51,11 @@ export interface DockItemProps extends React.ButtonHTMLAttributes<HTMLButtonElem
   children: React.ReactNode
   /** Additional CSS classes */
   className?: string
+  'data-testid'?: string
 }
 
 const DockItem = forwardRef<HTMLButtonElement, DockItemProps>(
-  ({ active, children, className = '', ...props }, ref) => {
+  ({ active, children, className = '', 'data-testid': testId, ...props }, ref) => {
     const classes = [active && dDockActive, className].filter(Boolean).join(' ')
 
     return (
@@ -62,6 +64,7 @@ const DockItem = forwardRef<HTMLButtonElement, DockItemProps>(
         className={classes || undefined}
         type="button"
         aria-pressed={active}
+        data-testid={testId}
         {...props}
       >
         {children}
@@ -73,7 +76,7 @@ const DockItem = forwardRef<HTMLButtonElement, DockItemProps>(
 DockItem.displayName = 'Dock.Item'
 
 const DockRoot = forwardRef<HTMLDivElement, DockProps>(
-  ({ items, size, activeIndex, onChange, children, className = '', ...props }, ref) => {
+  ({ items, size, activeIndex, onChange, children, className = '', 'data-testid': testId, ...props }, ref) => {
     const { componentSize } = useConfig()
     const effectiveSize = size ?? componentSize ?? 'md'
 
@@ -86,11 +89,19 @@ const DockRoot = forwardRef<HTMLDivElement, DockProps>(
     }
 
     const classes = [dDock, sizeClasses[effectiveSize], className].filter(Boolean).join(' ')
+    const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
     // If items array is provided, render from config
     if (items) {
       return (
-        <div ref={ref} className={classes} role="toolbar" aria-label={props['aria-label'] || 'Dock'} {...props}>
+        <div
+          ref={ref}
+          className={classes}
+          role="toolbar"
+          aria-label={props['aria-label'] || 'Dock'}
+          data-testid={testId}
+          {...props}
+        >
           {items.map((item, index) => {
             const isActive = activeIndex !== undefined ? activeIndex === index : item.active
 
@@ -102,6 +113,7 @@ const DockRoot = forwardRef<HTMLDivElement, DockProps>(
                 disabled={item.disabled}
                 aria-pressed={isActive}
                 aria-label={item.ariaLabel || item.label}
+                data-testid={getTestId(`item-${index}`)}
                 onClick={() => {
                   item.onClick?.()
                   onChange?.(index)
@@ -118,7 +130,14 @@ const DockRoot = forwardRef<HTMLDivElement, DockProps>(
 
     // Otherwise render children
     return (
-      <div ref={ref} className={classes} role="toolbar" aria-label={props['aria-label'] || 'Dock'} {...props}>
+      <div
+        ref={ref}
+        className={classes}
+        role="toolbar"
+        aria-label={props['aria-label'] || 'Dock'}
+        data-testid={testId}
+        {...props}
+      >
         {children}
       </div>
     )

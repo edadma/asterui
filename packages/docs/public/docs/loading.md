@@ -95,3 +95,4 @@ export default App
 | `type` | Loading animation type | `spinner' \| 'dots' \| 'ring' \| 'ball' \| 'bars' \| 'infinity` | `spinner` |
 | `color` | Loading indicator color | `primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error` | `primary` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

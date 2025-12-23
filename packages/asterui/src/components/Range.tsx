@@ -29,6 +29,7 @@ export interface RangeProps {
   showValue?: boolean
   showSteps?: boolean
   className?: string
+  'data-testid'?: string
 }
 
 export const Range: React.FC<RangeProps> = ({
@@ -44,6 +45,7 @@ export const Range: React.FC<RangeProps> = ({
   showValue = false,
   showSteps = false,
   className = '',
+  'data-testid': testId,
 }) => {
   const { componentSize } = useConfig()
   const effectiveSize = size ?? componentSize ?? 'md'
@@ -79,13 +81,15 @@ export const Range: React.FC<RangeProps> = ({
   const sizeClass = sizeClasses[effectiveSize]
   const colorClass = color ? colorClasses[color] : ''
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   // Calculate steps for visual markers
   const steps = showSteps
     ? Array.from({ length: Math.floor((max - min) / step) + 1 }, (_, i) => min + i * step)
     : []
 
   return (
-    <div className={className}>
+    <div className={className} data-testid={testId}>
       <input
         type="range"
         min={min}
@@ -95,18 +99,19 @@ export const Range: React.FC<RangeProps> = ({
         onChange={handleChange}
         disabled={disabled}
         className={`${dRange} ${sizeClass} ${colorClass}`}
+        data-testid={getTestId('input')}
       />
       {showSteps && steps.length > 0 && (
-        <div className="w-full flex justify-between text-xs px-2 mt-2">
-          {steps.map((stepValue) => (
-            <span key={stepValue} className="text-base-content/60">
+        <div className="w-full flex justify-between text-xs px-2 mt-2" data-testid={getTestId('steps')}>
+          {steps.map((stepValue, index) => (
+            <span key={stepValue} className="text-base-content/60" data-testid={getTestId(`step-${index}`)}>
               |
             </span>
           ))}
         </div>
       )}
       {showValue && (
-        <div className="text-center mt-2 text-sm font-medium text-base-content">
+        <div className="text-center mt-2 text-sm font-medium text-base-content" data-testid={getTestId('value')}>
           {currentValue}
         </div>
       )}

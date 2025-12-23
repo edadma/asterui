@@ -27,6 +27,7 @@ export interface ContextMenuProps {
   disabled?: boolean
   /** Additional CSS classes for the menu */
   className?: string
+  'data-testid'?: string
 }
 
 export interface ContextMenuItemProps {
@@ -42,11 +43,13 @@ export interface ContextMenuItemProps {
   className?: string
   /** @internal */
   _key?: string
+  'data-testid'?: string
 }
 
 export interface ContextMenuDividerProps {
   /** Additional CSS classes */
   className?: string
+  'data-testid'?: string
 }
 
 export interface ContextMenuSubMenuProps {
@@ -62,11 +65,13 @@ export interface ContextMenuSubMenuProps {
   className?: string
   /** @internal */
   _key?: string
+  'data-testid'?: string
 }
 
 interface ContextMenuContextValue {
   onSelect: (key: string) => void
   onClose: () => void
+  getTestId?: (suffix: string) => string | undefined
 }
 
 interface MenuPosition {
@@ -92,8 +97,10 @@ const ContextMenuItemComponent: React.FC<ContextMenuItemProps> = ({
   danger = false,
   className = '',
   _key,
+  'data-testid': testId,
 }) => {
-  const { onSelect, onClose } = useContextMenuContext()
+  const { onSelect, onClose, getTestId } = useContextMenuContext()
+  const itemTestId = testId ?? (_key ? getTestId?.(`item-${_key}`) : undefined)
 
   const handleClick = () => {
     if (disabled || !_key) return
@@ -108,6 +115,7 @@ const ContextMenuItemComponent: React.FC<ContextMenuItemProps> = ({
         disabled={disabled}
         role="menuitem"
         aria-disabled={disabled}
+        data-testid={itemTestId}
         className={`
           flex items-center gap-2 w-full px-4 py-2 text-left text-sm
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-base-200'}
@@ -121,8 +129,8 @@ const ContextMenuItemComponent: React.FC<ContextMenuItemProps> = ({
   )
 }
 
-const ContextMenuDividerComponent: React.FC<ContextMenuDividerProps> = ({ className = '' }) => {
-  return <li className={`${dDivider} my-1 ${className}`} role="separator"></li>
+const ContextMenuDividerComponent: React.FC<ContextMenuDividerProps> = ({ className = '', 'data-testid': testId }) => {
+  return <li className={`${dDivider} my-1 ${className}`} role="separator" data-testid={testId}></li>
 }
 
 const ContextMenuSubMenuComponent: React.FC<ContextMenuSubMenuProps> = ({
@@ -132,9 +140,12 @@ const ContextMenuSubMenuComponent: React.FC<ContextMenuSubMenuProps> = ({
   children,
   className = '',
   _key: _unusedKey,
+  'data-testid': testId,
 }) => {
+  const { getTestId } = useContextMenuContext()
   const [showSubmenu, setShowSubmenu] = useState(false)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const submenuTestId = testId ?? (_unusedKey ? getTestId?.(`submenu-${_unusedKey}`) : undefined)
 
   const handleMouseEnter = () => {
     if (disabled) return
@@ -159,6 +170,7 @@ const ContextMenuSubMenuComponent: React.FC<ContextMenuSubMenuProps> = ({
         aria-haspopup="menu"
         aria-expanded={showSubmenu}
         aria-disabled={disabled}
+        data-testid={submenuTestId}
         className={`
           flex items-center gap-2 w-full px-4 py-2 text-left text-sm
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-base-200'}
@@ -176,6 +188,7 @@ const ContextMenuSubMenuComponent: React.FC<ContextMenuSubMenuProps> = ({
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           role="menu"
+          data-testid={submenuTestId ? `${submenuTestId}-menu` : undefined}
         >
           {children}
         </ul>
@@ -189,12 +202,14 @@ const MenuItem: React.FC<{
   item: ContextMenuItem
   onSelect: (key: string) => void
   onClose: () => void
-}> = ({ item, onSelect, onClose }) => {
+  getTestId?: (suffix: string) => string | undefined
+}> = ({ item, onSelect, onClose, getTestId }) => {
   const [showSubmenu, setShowSubmenu] = useState(false)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const itemTestId = getTestId?.(`item-${item.key}`)
 
   if (item.divider) {
-    return <li className={`${dDivider} my-1`} role="separator"></li>
+    return <li className={`${dDivider} my-1`} role="separator" data-testid={getTestId?.(`separator-${item.key}`)}></li>
   }
 
   const handleClick = () => {
@@ -231,6 +246,7 @@ const MenuItem: React.FC<{
         aria-haspopup={hasSubmenu ? 'menu' : undefined}
         aria-expanded={hasSubmenu ? showSubmenu : undefined}
         aria-disabled={item.disabled}
+        data-testid={itemTestId}
         className={`
           flex items-center gap-2 w-full px-4 py-2 text-left text-sm
           ${item.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-base-200'}
@@ -251,9 +267,10 @@ const MenuItem: React.FC<{
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           role="menu"
+          data-testid={itemTestId ? `${itemTestId}-menu` : undefined}
         >
           {item.children!.map((child) => (
-            <MenuItem key={child.key} item={child} onSelect={onSelect} onClose={onClose} />
+            <MenuItem key={child.key} item={child} onSelect={onSelect} onClose={onClose} getTestId={getTestId} />
           ))}
         </ul>
       )}
@@ -267,6 +284,7 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
   onSelect,
   disabled = false,
   className = '',
+  'data-testid': testId,
 }) => {
   const { getPopupContainer } = useConfig()
   const [visible, setVisible] = useState(false)
@@ -379,11 +397,18 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
   const contextValue: ContextMenuContextValue = {
     onSelect: handleSelect,
     onClose: handleClose,
+    getTestId: testId ? (suffix: string) => `${testId}-${suffix}` : undefined,
   }
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   return (
     <>
-      <div ref={triggerRef} onContextMenu={handleContextMenu} className="inline-block">
+      <div
+        ref={triggerRef}
+        onContextMenu={handleContextMenu}
+        className="inline-block"
+        data-testid={testId}
+      >
         {triggerChild}
       </div>
       {visible &&
@@ -395,10 +420,11 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
               style={{ left: position.x, top: position.y }}
               role="menu"
               aria-label="Context menu"
+              data-testid={getTestId('menu')}
             >
               {useDataDriven
                 ? items!.map((item) => (
-                    <MenuItem key={item.key} item={item} onSelect={handleSelect} onClose={handleClose} />
+                    <MenuItem key={item.key} item={item} onSelect={handleSelect} onClose={handleClose} getTestId={getTestId} />
                   ))
                 : menuChildren}
             </ul>

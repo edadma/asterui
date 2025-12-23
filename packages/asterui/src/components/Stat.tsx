@@ -14,6 +14,7 @@ const dStatActions = 'stat-actions'
 export interface StatsProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   vertical?: boolean
+  'data-testid'?: string
 }
 
 export interface StatProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
@@ -22,9 +23,10 @@ export interface StatProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 't
   desc?: React.ReactNode
   figure?: React.ReactNode
   actions?: React.ReactNode
+  'data-testid'?: string
 }
 
-function StatsRoot({ children, className = '', vertical = false, ...rest }: StatsProps) {
+function StatsRoot({ children, className = '', vertical = false, 'data-testid': testId, ...rest }: StatsProps) {
   const classes = [
     dStats,
     vertical ? dStatsVertical : dStatsHorizontal,
@@ -33,17 +35,18 @@ function StatsRoot({ children, className = '', vertical = false, ...rest }: Stat
     .filter(Boolean)
     .join(' ')
 
-  return <div className={classes} {...rest}>{children}</div>
+  return <div className={classes} data-testid={testId} {...rest}>{children}</div>
 }
 
-function StatItem({ title, value, desc, figure, actions, className = '', ...rest }: StatProps) {
+function StatItem({ title, value, desc, figure, actions, className = '', 'data-testid': testId, ...rest }: StatProps) {
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
   return (
-    <div className={`${dStat} ${className}`} {...rest}>
-      {figure && <div className={dStatFigure}>{figure}</div>}
-      {title && <div className={dStatTitle}>{title}</div>}
-      {value && <div className={dStatValue}>{value}</div>}
-      {desc && <div className={dStatDesc}>{desc}</div>}
-      {actions && <div className={dStatActions}>{actions}</div>}
+    <div className={`${dStat} ${className}`} data-testid={testId} {...rest}>
+      {figure && <div className={dStatFigure} data-testid={getTestId('figure')}>{figure}</div>}
+      {title && <div className={dStatTitle} data-testid={getTestId('title')}>{title}</div>}
+      {value && <div className={dStatValue} data-testid={getTestId('value')}>{value}</div>}
+      {desc && <div className={dStatDesc} data-testid={getTestId('desc')}>{desc}</div>}
+      {actions && <div className={dStatActions} data-testid={getTestId('actions')}>{actions}</div>}
     </div>
   )
 }

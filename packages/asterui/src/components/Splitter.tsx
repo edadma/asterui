@@ -12,6 +12,7 @@ export interface SplitterPanelProps {
   onCollapse?: (collapsed: boolean) => void
   resizable?: boolean
   className?: string
+  'data-testid'?: string
 }
 
 export interface SplitterProps {
@@ -23,6 +24,7 @@ export interface SplitterProps {
   gutterSize?: number
   minSize?: number
   className?: string
+  'data-testid'?: string
 }
 
 const Panel: React.FC<SplitterPanelProps> = ({ children }) => {
@@ -38,6 +40,7 @@ export const Splitter: React.FC<SplitterProps> & { Panel: typeof Panel } = ({
   gutterSize = 8,
   minSize = 50,
   className = '',
+  'data-testid': testId,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const panelsRef = useRef<(HTMLDivElement | null)[]>([])
@@ -353,16 +356,20 @@ export const Splitter: React.FC<SplitterProps> & { Panel: typeof Panel } = ({
     }
   }
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   return (
     <div
       ref={containerRef}
       className={`flex ${isHorizontal ? 'flex-row' : 'flex-col'} h-full w-full ${className}`}
+      data-testid={testId}
     >
       {panels.map((panel, index) => {
         const panelProps = panel.props
         const isLast = index === panels.length - 1
         const isCollapsed = collapsedStates[index]
         const canResize = panelProps.resizable !== false && !isCollapsed
+        const panelTestId = panelProps['data-testid'] ?? getTestId(`panel-${index}`)
 
         return (
           <React.Fragment key={index}>
@@ -379,6 +386,7 @@ export const Splitter: React.FC<SplitterProps> & { Panel: typeof Panel } = ({
                 overflow: isCollapsed ? 'hidden' : 'auto',
               }}
               data-collapsed={isCollapsed}
+              data-testid={panelTestId}
             >
               {panelProps.children}
             </div>
@@ -396,6 +404,7 @@ export const Splitter: React.FC<SplitterProps> & { Panel: typeof Panel } = ({
                 style={{
                   [isHorizontal ? 'width' : 'height']: `${gutterSize}px`,
                 }}
+                data-testid={getTestId(`gutter-${index}`)}
                 onMouseDown={(e) => handleMouseDown(index, e)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
               >
@@ -438,6 +447,7 @@ export const Splitter: React.FC<SplitterProps> & { Panel: typeof Panel } = ({
                             ${isHorizontal ? '' : ''}
                           `}
                           aria-label={panel1Collapsed ? 'Expand panel' : 'Collapse panel'}
+                          data-testid={getTestId(`collapse-${index}`)}
                         >
                           <svg
                             className={`w-3 h-3 text-base-content/50 hover:text-base-content transition-transform ${
@@ -462,6 +472,7 @@ export const Splitter: React.FC<SplitterProps> & { Panel: typeof Panel } = ({
                           }}
                           className="p-0.5 rounded hover:bg-base-content/20 transition-colors"
                           aria-label={panel2Collapsed ? 'Expand panel' : 'Collapse panel'}
+                          data-testid={getTestId(`collapse-${index + 1}`)}
                         >
                           <svg
                             className={`w-3 h-3 text-base-content/50 hover:text-base-content transition-transform ${

@@ -37,6 +37,7 @@ export interface MentionProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
   notFoundContent?: React.ReactNode
   filterOption?: boolean | ((input: string, option: MentionOption) => boolean)
   dropdownClassName?: string
+  'data-testid'?: string
 }
 
 export const Mention: React.FC<MentionProps> = ({
@@ -58,6 +59,7 @@ export const Mention: React.FC<MentionProps> = ({
   filterOption = true,
   className = '',
   dropdownClassName = '',
+  'data-testid': testId,
   ...rest
 }) => {
   const { componentDisabled, renderEmpty, getPopupContainer } = useConfig()
@@ -294,6 +296,8 @@ export const Mention: React.FC<MentionProps> = ({
     }
   }, [activeIndex, isOpen])
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   const dropdown = isOpen && (
     <div
       ref={dropdownRef}
@@ -303,13 +307,14 @@ export const Mention: React.FC<MentionProps> = ({
         top: dropdownPosition.top,
         left: dropdownPosition.left,
       }}
+      data-testid={getTestId('dropdown')}
     >
       {loading ? (
-        <div className="p-3 text-center text-base-content/60">
+        <div className="p-3 text-center text-base-content/60" data-testid={getTestId('loading')}>
           <span className={`${dLoading} ${dLoadingSpinner} ${dLoadingSm}`}></span>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="p-3 text-center text-base-content/60 text-sm">
+        <div className="p-3 text-center text-base-content/60 text-sm" data-testid={getTestId('empty')}>
           {effectiveNotFoundContent}
         </div>
       ) : (
@@ -319,6 +324,7 @@ export const Mention: React.FC<MentionProps> = ({
               <button
                 type="button"
                 data-active={index === activeIndex}
+                data-testid={getTestId(`option-${option.value || index}`)}
                 className={`flex items-center gap-2 ${
                   index === activeIndex ? 'active' : ''
                 } ${option.disabled ? 'disabled opacity-50 cursor-not-allowed' : ''}`}
@@ -342,7 +348,7 @@ export const Mention: React.FC<MentionProps> = ({
   )
 
   return (
-    <div className={`relative ${className}`} data-state={isOpen ? 'open' : 'closed'} {...rest}>
+    <div className={`relative ${className}`} data-state={isOpen ? 'open' : 'closed'} data-testid={testId} {...rest}>
       {/* Hidden measure element for cursor position */}
       <div
         ref={measureRef}
@@ -365,6 +371,7 @@ export const Mention: React.FC<MentionProps> = ({
         readOnly={readOnly}
         rows={typeof autoSize === 'object' ? autoSize.minRows || rows : autoSize ? 1 : rows}
         className={`${dTextarea} ${dTextareaBordered} w-full resize-none`}
+        data-testid={getTestId('textarea')}
       />
 
       {createPortal(dropdown, getPopupContainer ? getPopupContainer(document.body) : document.body)}

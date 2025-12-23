@@ -70,6 +70,7 @@ import { MonthCalendar, type CalendarEvent, type CalendarLocale } from 'asterui'
 | `onDayClick` | Gestionnaire lorsqu'une cellule de jour est cliquée | `(date: Date) => void` | - |
 | `onEventClick` | Gestionnaire lorsqu'un événement est cliqué | `(event: CalendarEvent) => void` | - |
 | `onMoreEventsClick` | Gestionnaire lorsque "+N de plus" est cliqué | `(date: Date, events: CalendarEvent[]) => void` | - |
+| `data-testid` | ID de test pour les tests | `string` | - |
 
 ### `CalendarEvent`
 
@@ -80,3 +81,4 @@ import { MonthCalendar, type CalendarEvent, type CalendarLocale } from 'asterui'
 | `color` | Couleur du point de l'événement | `string` | - |
 | `strikethrough` | Afficher l'événement barré (annulé) | `boolean` | - |
 | `style` | Styles en ligne personnalisés pour l'événement | `CSSProperties` | - |
+| `data-testid` | ID de test pour les tests | `string` | - |

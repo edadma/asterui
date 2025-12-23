@@ -69,6 +69,7 @@ import { WeekCalendar, type CalendarEvent, type CalendarLocale } from 'asterui'
 | `onDayClick` | Manejador cuando se hace clic en un encabezado de día | `(date: Date) => void` | `-` |
 | `onEventClick` | Manejador cuando se hace clic en un evento | `(event: CalendarEvent) => void` | `-` |
 | `onSelectSlot` | Manejador cuando se hace clic en una franja horaria | `(slotInfo: { start: Date; end: Date }) => void` | `-` |
+| `data-testid` | ID de prueba para pruebas | `string` | - |
 
 ### `CalendarEvent`
 
@@ -79,3 +80,4 @@ import { WeekCalendar, type CalendarEvent, type CalendarLocale } from 'asterui'
 | `color` | Color del punto del evento | `string` | `-` |
 | `strikethrough` | Mostrar evento con tachado (cancelado) | `boolean` | `-` |
 | `style` | Estilos en línea personalizados para el evento | `CSSProperties` | `-` |
+| `data-testid` | ID de prueba para pruebas | `string` | - |

@@ -268,6 +268,7 @@ const App: React.FC = () => {
 | `allowCustomValue` | Allow user to enter custom values not in options | `boolean` | `true` |
 | `notFoundContent` | Content to show when no options match | `React.ReactNode` | `No results found` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Option Type
 
@@ -275,3 +276,4 @@ const App: React.FC = () => {
 |----------|-------------|------|---------|
 | `value` | The value of the option | `string` | `-` |
 | `label` | The display text of the option | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

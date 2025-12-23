@@ -155,6 +155,7 @@ export interface MonthCalendarProps<T extends CalendarEvent = CalendarEvent>
   header?: boolean
   daySelector?: boolean
   ellipsis?: boolean
+  'data-testid'?: string
 }
 
 export const MonthCalendar = forwardRef<HTMLDivElement, MonthCalendarProps>(
@@ -172,6 +173,7 @@ export const MonthCalendar = forwardRef<HTMLDivElement, MonthCalendarProps>(
       ellipsis,
       allowPastInteraction = false,
       className = '',
+      'data-testid': testId,
       ...rest
     }: MonthCalendarProps<T>,
     ref: React.ForwardedRef<HTMLDivElement>
@@ -180,15 +182,17 @@ export const MonthCalendar = forwardRef<HTMLDivElement, MonthCalendarProps>(
 
     const year = date.getFullYear()
     const month = date.getMonth()
+    const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
     return (
       <div
         ref={ref}
         className={`flex h-full w-full flex-col bg-base-100 ${className}`}
+        data-testid={testId}
         {...rest}
       >
         {header && (
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4 flex items-center justify-between" data-testid={getTestId('header')}>
             <div>
               <h2 className="m-0 text-lg font-medium text-base-content">
                 {locale.monthsLong[month]} {year}
@@ -198,11 +202,12 @@ export const MonthCalendar = forwardRef<HTMLDivElement, MonthCalendarProps>(
         )}
 
         {/* Weekday header */}
-        <div className="grid grid-cols-7 border-b border-base-300">
+        <div className="grid grid-cols-7 border-b border-base-300" data-testid={getTestId('weekday-header')}>
           {locale.daysShort.map((day, index) => (
             <div
               key={index}
               className="py-1 text-center text-xs font-medium uppercase text-base-content/60"
+              data-testid={getTestId(`weekday-${index}`)}
             >
               {day}
             </div>
@@ -210,11 +215,12 @@ export const MonthCalendar = forwardRef<HTMLDivElement, MonthCalendarProps>(
         </div>
 
         {/* Calendar grid */}
-        <div className="grid flex-1 grid-cols-7 grid-rows-6 border-l border-base-300">
+        <div className="grid flex-1 grid-cols-7 grid-rows-6 border-l border-base-300" data-testid={getTestId('grid')}>
           {generateCalendarGrid(year, month).map((dateObj, index) => {
             const dateEvents = getEventsForDate(events as T[], dateObj.date)
             const isPast = isPastDate(dateObj.date) && !isToday(dateObj.date)
             const isSelected = daySelector && isEqual(dateObj.date, selectedDate)
+            const dateKey = `${dateObj.year}-${dateObj.month + 1}-${dateObj.day}`
 
             return (
               <div
@@ -228,6 +234,7 @@ export const MonthCalendar = forwardRef<HTMLDivElement, MonthCalendarProps>(
                   ${isPast && !allowPastInteraction ? 'cursor-not-allowed' : ''}
                   ${isSelected ? 'z-10 outline outline-2 outline-primary' : ''}
                 `}
+                data-testid={getTestId(`day-${dateKey}`)}
                 onClick={() => {
                   if (isPast && !allowPastInteraction) {
                     return
@@ -251,6 +258,7 @@ export const MonthCalendar = forwardRef<HTMLDivElement, MonthCalendarProps>(
                       ${!dateObj.isCurrentMonth ? 'text-base-content/40' : ''}
                       ${isPast && dateObj.isCurrentMonth ? 'text-base-content/40' : ''}
                     `}
+                    data-testid={getTestId(`day-number-${dateKey}`)}
                   >
                     {dateObj.day}
                   </span>
@@ -275,6 +283,7 @@ export const MonthCalendar = forwardRef<HTMLDivElement, MonthCalendarProps>(
                           ${event.strikethrough ? 'line-through' : ''}
                         `}
                         style={event.style}
+                        data-testid={getTestId(`event-${dateKey}-${eventIndex}`)}
                         onClick={(e) => {
                           e.stopPropagation()
                           if (onEventClick) {
@@ -297,6 +306,7 @@ export const MonthCalendar = forwardRef<HTMLDivElement, MonthCalendarProps>(
                   {dateEvents.length > maxEventsPerDay && (
                     <div
                       className="cursor-pointer rounded px-1 py-0.5 text-[11px] text-base-content/60 hover:bg-base-content/5"
+                      data-testid={getTestId(`more-${dateKey}`)}
                       onClick={(e) => {
                         e.stopPropagation()
                         if (onMoreEventsClick) {

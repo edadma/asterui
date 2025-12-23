@@ -38,6 +38,7 @@ export interface CommandProps extends Omit<React.HTMLAttributes<HTMLDialogElemen
   shortcut?: string[]
   placeholder?: string
   emptyMessage?: React.ReactNode
+  'data-testid'?: string
 }
 
 interface CommandContextValue {
@@ -55,6 +56,7 @@ interface CommandContextValue {
   setPage: (pageId: string) => void
   goBack: () => void
   pageStack: string[]
+  getTestId?: (suffix: string) => string | undefined
 }
 
 interface FilteredItem {
@@ -105,6 +107,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
       placeholder = 'Type a command or search...',
       emptyMessage = 'No results found.',
       className = '',
+      'data-testid': testId,
       ...rest
     },
     ref
@@ -352,6 +355,8 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
       }
     }
 
+    const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
     const contextValue: CommandContextValue = {
       searchValue,
       setSearchValue,
@@ -367,6 +372,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
       setPage,
       goBack,
       pageStack,
+      getTestId,
     }
 
     // Render data-driven items
@@ -394,7 +400,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
       return (
         <>
           {Array.from(groups.entries()).map(([groupName, groupItems]) => (
-            <div key={groupName} role="group" aria-label={groupName}>
+            <div key={groupName} role="group" aria-label={groupName} data-testid={getTestId(`group-${groupName}`)}>
               <div className="px-3 py-2 text-xs font-semibold text-base-content/60 uppercase tracking-wider">
                 {groupName}
               </div>
@@ -417,6 +423,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
                     ]
                       .filter(Boolean)
                       .join(' ')}
+                    data-testid={getTestId(`item-${item.key}`)}
                     onClick={() => !item.disabled && selectItem(item.key)}
                     onMouseEnter={() => !item.disabled && setHighlightedIndex(itemIndex)}
                   >
@@ -428,7 +435,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
             </div>
           ))}
           {ungrouped.length > 0 && (
-            <div role="group">
+            <div role="group" data-testid={getTestId('group-ungrouped')}>
               {ungrouped.map((item) => {
                 const itemIndex = globalIndex++
                 const isHighlighted = itemIndex === highlightedIndex
@@ -448,6 +455,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
                     ]
                       .filter(Boolean)
                       .join(' ')}
+                    data-testid={getTestId(`item-${item.key}`)}
                     onClick={() => !item.disabled && selectItem(item.key)}
                     onMouseEnter={() => !item.disabled && setHighlightedIndex(itemIndex)}
                   >
@@ -471,6 +479,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
         }}
         className={`${dModal} ${className}`}
         onClick={handleBackdropClick}
+        data-testid={testId}
         {...rest}
       >
         <div
@@ -478,6 +487,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
           role="dialog"
           aria-modal="true"
           aria-label="Command palette"
+          data-testid={getTestId('dialog')}
         >
           <CommandContext.Provider value={contextValue}>
             {/* Breadcrumb for nested pages */}
@@ -487,6 +497,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
                   onClick={goBack}
                   className="hover:bg-base-200 rounded p-1"
                   aria-label="Go back"
+                  data-testid={getTestId('back')}
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -531,6 +542,7 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
                       ? `${baseId}-item-${enabledItems[highlightedIndex].id}`
                       : undefined
                   }
+                  data-testid={getTestId('input')}
                 />
               </div>
             </div>
@@ -541,12 +553,15 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
               className="max-h-80 overflow-y-auto py-2"
               role="listbox"
               id={`${baseId}-listbox`}
+              data-testid={getTestId('list')}
             >
               {items ? (
                 filteredItems.length > 0 ? (
                   renderDataDrivenItems()
                 ) : (
-                  <div className="px-3 py-8 text-center text-base-content/60">{emptyMessage}</div>
+                  <div className="px-3 py-8 text-center text-base-content/60" data-testid={getTestId('empty')}>
+                    {emptyMessage}
+                  </div>
                 )
               ) : (
                 children
@@ -554,7 +569,10 @@ const CommandRoot = forwardRef<HTMLDialogElement, CommandProps>(
             </div>
 
             {/* Footer with shortcut hint */}
-            <div className="px-3 py-2 border-t border-base-content/10 flex items-center justify-between text-xs text-base-content/50">
+            <div
+              className="px-3 py-2 border-t border-base-content/10 flex items-center justify-between text-xs text-base-content/50"
+              data-testid={getTestId('footer')}
+            >
               <div className="flex items-center gap-4">
                 <span className="flex items-center gap-1">
                   <kbd className={`${dKbd} ${dKbdXs}`}>↑↓</kbd> navigate
@@ -580,10 +598,11 @@ CommandRoot.displayName = 'Command'
 interface CommandInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> {
   value?: string
   onValueChange?: (value: string) => void
+  'data-testid'?: string
 }
 
-function CommandInput({ placeholder, value, onValueChange, ...rest }: CommandInputProps) {
-  const { searchValue, setSearchValue } = useCommandContext()
+function CommandInput({ placeholder, value, onValueChange, 'data-testid': testId, ...rest }: CommandInputProps) {
+  const { searchValue, setSearchValue, getTestId } = useCommandContext()
   const controlledValue = value !== undefined ? value : searchValue
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
@@ -601,6 +620,7 @@ function CommandInput({ placeholder, value, onValueChange, ...rest }: CommandInp
       placeholder={placeholder}
       value={controlledValue}
       onChange={handleChange}
+      data-testid={testId ?? getTestId?.('input')}
       {...rest}
     />
   )
@@ -612,7 +632,7 @@ interface CommandListProps {
 }
 
 function CommandList({ children }: CommandListProps) {
-  const { baseId, currentPage } = useCommandContext()
+  const { baseId, currentPage, getTestId } = useCommandContext()
 
   // Filter children to only show items for current page
   const filteredChildren = React.Children.toArray(children).filter((child) => {
@@ -626,7 +646,7 @@ function CommandList({ children }: CommandListProps) {
   })
 
   return (
-    <div role="listbox" id={`${baseId}-listbox`} className="py-2">
+    <div role="listbox" id={`${baseId}-listbox`} className="py-2" data-testid={getTestId?.('list')}>
       {filteredChildren}
     </div>
   )
@@ -639,7 +659,7 @@ interface CommandGroupProps {
 }
 
 function CommandGroup({ heading, children }: CommandGroupProps) {
-  const { searchValue, filteredItems } = useCommandContext()
+  const { searchValue, filteredItems, getTestId } = useCommandContext()
 
   // Check if any children match the filter
   const childArray = React.Children.toArray(children)
@@ -656,7 +676,11 @@ function CommandGroup({ heading, children }: CommandGroupProps) {
   }
 
   return (
-    <div role="group" aria-label={typeof heading === 'string' ? heading : undefined}>
+    <div
+      role="group"
+      aria-label={typeof heading === 'string' ? heading : undefined}
+      data-testid={getTestId?.(`group-${typeof heading === 'string' ? heading : 'group'}`)}
+    >
       {heading && (
         <div className="px-3 py-2 text-xs font-semibold text-base-content/60 uppercase tracking-wider">
           {heading}
@@ -675,6 +699,7 @@ interface CommandItemProps {
   disabled?: boolean
   keywords?: string[]
   icon?: React.ReactNode
+  'data-testid'?: string
 }
 
 function CommandItem({
@@ -684,6 +709,7 @@ function CommandItem({
   disabled = false,
   keywords = [],
   icon,
+  'data-testid': testId,
 }: CommandItemProps) {
   const {
     registerItem,
@@ -692,6 +718,7 @@ function CommandItem({
     highlightedIndex,
     setHighlightedIndex,
     baseId,
+    getTestId,
   } = useCommandContext()
 
   const itemId = useId()
@@ -715,6 +742,7 @@ function CommandItem({
   const enabledItems = filteredItems.filter((fi) => !fi.disabled)
   const itemIndex = enabledItems.findIndex((fi) => fi.id === itemId)
   const isHighlighted = itemIndex === highlightedIndex
+  const itemTestId = testId ?? getTestId?.(`item-${itemValue || itemId}`)
 
   const handleClick = () => {
     if (!disabled && onSelect) {
@@ -730,6 +758,7 @@ function CommandItem({
       aria-disabled={disabled}
       data-command-item
       data-highlighted={isHighlighted}
+      data-testid={itemTestId}
       className={[
         'px-3 py-2 cursor-pointer flex items-center gap-3',
         isHighlighted && 'bg-primary text-primary-content',
@@ -753,13 +782,17 @@ interface CommandEmptyProps {
 }
 
 function CommandEmpty({ children = 'No results found.' }: CommandEmptyProps) {
-  const { filteredItems, searchValue } = useCommandContext()
+  const { filteredItems, searchValue, getTestId } = useCommandContext()
 
   if (filteredItems.length > 0 || !searchValue) {
     return null
   }
 
-  return <div className="px-3 py-8 text-center text-base-content/60">{children}</div>
+  return (
+    <div className="px-3 py-8 text-center text-base-content/60" data-testid={getTestId?.('empty')}>
+      {children}
+    </div>
+  )
 }
 
 // Command.Page - for nested navigation
@@ -780,7 +813,8 @@ function CommandPage({ id, children }: CommandPageProps) {
 
 // Command.Separator
 function CommandSeparator() {
-  return <div className="my-2 border-t border-base-content/10" role="separator" />
+  const { getTestId } = useCommandContext()
+  return <div className="my-2 border-t border-base-content/10" role="separator" data-testid={getTestId?.('separator')} />
 }
 
 // Export compound component

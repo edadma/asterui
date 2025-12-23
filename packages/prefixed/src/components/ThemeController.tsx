@@ -26,6 +26,7 @@ export interface ThemeControllerSwapProps {
   darkTheme?: string
   onChange?: (theme: string) => void
   className?: string
+  'data-testid'?: string
 }
 
 export interface ThemeControllerDropdownProps {
@@ -33,6 +34,7 @@ export interface ThemeControllerDropdownProps {
   defaultTheme?: string
   onChange?: (theme: string) => void
   className?: string
+  'data-testid'?: string
 }
 
 export interface ThemeControllerToggleProps {
@@ -41,6 +43,7 @@ export interface ThemeControllerToggleProps {
   onChange?: (theme: string) => void
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   className?: string
+  'data-testid'?: string
 }
 
 // Get current theme from document
@@ -58,6 +61,7 @@ function ThemeControllerSwap({
   darkTheme = 'dark',
   onChange,
   className = '',
+  'data-testid': testId,
 }: ThemeControllerSwapProps) {
   const { setTheme: contextSetTheme, isDark: contextIsDark } = useTheme()
   const setTheme = contextSetTheme ?? setThemeDirectly
@@ -89,16 +93,20 @@ function ThemeControllerSwap({
     onChange?.(theme)
   }
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   return (
-    <label className={`${dSwap} ${dSwapRotate} ${className}`}>
+    <label className={`${dSwap} ${dSwapRotate} ${className}`} data-testid={testId}>
       <input
         type="checkbox"
         checked={isDark}
         onChange={handleChange}
+        data-testid={getTestId('input')}
       />
       {/* sun icon */}
       <svg
         className={`${dSwapOff} h-8 w-8 fill-current`}
+        data-testid={getTestId('icon-light')}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -107,6 +115,7 @@ function ThemeControllerSwap({
       {/* moon icon */}
       <svg
         className={`${dSwapOn} h-8 w-8 fill-current`}
+        data-testid={getTestId('icon-dark')}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -121,6 +130,7 @@ function ThemeControllerDropdown({
   defaultTheme,
   onChange,
   className = '',
+  'data-testid': testId,
 }: ThemeControllerDropdownProps) {
   const { setTheme: contextSetTheme, resolvedTheme } = useTheme()
   const setTheme = contextSetTheme ?? setThemeDirectly
@@ -155,9 +165,11 @@ function ThemeControllerDropdown({
     onChange?.(theme)
   }
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   return (
-    <div className={`${dDropdown} ${dDropdownEnd} ${className}`}>
-      <div tabIndex={0} role="button" className={dBtn}>
+    <div className={`${dDropdown} ${dDropdownEnd} ${className}`} data-testid={testId}>
+      <div tabIndex={0} role="button" className={dBtn} data-testid={getTestId('trigger')}>
         Theme
         <svg
           width="12px"
@@ -172,6 +184,7 @@ function ThemeControllerDropdown({
       <ul
         tabIndex={0}
         className={`${dDropdownContent} bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-96 overflow-y-auto`}
+        data-testid={getTestId('menu')}
       >
         {themes.map((theme) => (
           <li key={theme}>
@@ -183,6 +196,7 @@ function ThemeControllerDropdown({
               value={theme}
               checked={selectedTheme === theme}
               onChange={() => handleChange(theme)}
+              data-testid={getTestId(`option-${theme}`)}
             />
           </li>
         ))}
@@ -205,6 +219,7 @@ function ThemeControllerToggle({
   onChange,
   size,
   className = '',
+  'data-testid': testId,
 }: ThemeControllerToggleProps) {
   const { componentSize } = useConfig()
   const { setTheme: contextSetTheme, isDark: contextIsDark } = useTheme()
@@ -245,6 +260,7 @@ function ThemeControllerToggle({
       checked={isDark}
       onChange={handleChange}
       aria-label="Toggle theme"
+      data-testid={testId}
     />
   )
 }

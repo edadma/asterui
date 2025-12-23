@@ -105,6 +105,7 @@ export default function App() {
 | showReset | Show reset button | `boolean` | `true` |
 | resetLabel | Reset button label | `React.ReactNode` | `'×'` |
 | className | Additional CSS classes | `string` | - |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### FilterOption
 
@@ -113,6 +114,7 @@ export default function App() {
 | label | Display text for the option | `string` | - |
 | value | Value of the option | `string` | - |
 | disabled | Whether the option is disabled | `boolean` | `false` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ## Accessibility
 

@@ -24,6 +24,7 @@ export interface VirtualListProps<T> {
   gap?: number
   /** Callback when scroll position changes */
   onScroll?: (scrollTop: number) => void
+  'data-testid'?: string
 }
 
 export function VirtualList<T>({
@@ -38,6 +39,7 @@ export function VirtualList<T>({
   width,
   gap = 0,
   onScroll,
+  'data-testid': testId,
 }: VirtualListProps<T>) {
   const parentRef = useRef<HTMLDivElement>(null)
   const itemHeightRef = useRef(itemHeight)
@@ -63,12 +65,15 @@ export function VirtualList<T>({
     onScroll?.(e.currentTarget.scrollTop)
   }
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   return (
     <div
       ref={parentRef}
       className={`overflow-auto ${className}`}
       style={{ height, width }}
       onScroll={handleScroll}
+      data-testid={testId}
     >
       <div
         className={innerClassName}
@@ -77,6 +82,7 @@ export function VirtualList<T>({
           width: '100%',
           position: 'relative',
         }}
+        data-testid={getTestId('inner')}
       >
         {virtualItems.map((virtualItem) => (
           <div
@@ -91,6 +97,7 @@ export function VirtualList<T>({
               height: virtualItem.size - gap,
               transform: `translateY(${virtualItem.start}px)`,
             }}
+            data-testid={getTestId(`item-${virtualItem.index}`)}
           >
             {renderItem(items[virtualItem.index], virtualItem.index)}
           </div>

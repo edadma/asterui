@@ -107,6 +107,7 @@ export default App
 | `tooltip` | Tooltip text on hover | `string` | `-` |
 | `badge` | Badge content to show | `number \| React.ReactNode` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Float Button Group
 
@@ -115,6 +116,7 @@ export default App
 | `children` | FloatButton components to group | `React.ReactNode` | `-` |
 | `trigger` | Trigger method to open the group | `click' \| 'hover` | `click` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Float Button Back Top
 
@@ -124,3 +126,4 @@ export default App
 | `onClick` | Click event handler | `() => void` | `-` |
 | `target` | Scroll target element | `() => HTMLElement \| Window` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

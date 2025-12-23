@@ -156,6 +156,7 @@ export default App
 | `onChange` | Callback when item is clicked | `(index: number) => void` | - |
 | `children` | Dock.Item children (alternative to items) | `React.ReactNode` | - |
 | `className` | Additional CSS classes | `string` | - |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### DockItemConfig
 
@@ -166,6 +167,7 @@ export default App
 | `active` | Whether item is active (when not using activeIndex) | `boolean` | `false` |
 | `disabled` | Whether item is disabled | `boolean` | `false` |
 | `onClick` | Click handler | `() => void` | - |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Dock.Item
 
@@ -174,3 +176,4 @@ export default App
 | `active` | Whether item is active | `boolean` | `false` |
 | `children` | Item content (icon and label) | `React.ReactNode` | - |
 | `className` | Additional CSS classes | `string` | - |
+| `data-testid` | Test ID for testing | `string` | - |

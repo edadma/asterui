@@ -108,6 +108,7 @@ export interface WeekCalendarProps<T extends CalendarEvent = CalendarEvent>
   startHour?: number
   /** End hour for the time grid (0-23) */
   endHour?: number
+  'data-testid'?: string
 }
 
 export const WeekCalendar = forwardRef<HTMLDivElement, WeekCalendarProps>(
@@ -124,6 +125,7 @@ export const WeekCalendar = forwardRef<HTMLDivElement, WeekCalendarProps>(
       startHour = 9,
       endHour = 17,
       className = '',
+      'data-testid': testId,
       ...rest
     }: WeekCalendarProps<T>,
     ref: React.ForwardedRef<HTMLDivElement>
@@ -150,6 +152,7 @@ export const WeekCalendar = forwardRef<HTMLDivElement, WeekCalendarProps>(
 
     const weekStart = getWeekStart(date)
     const weekDays = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i))
+    const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
     // Group events by day
     const eventsByDay = useMemo(() => {
@@ -186,25 +189,29 @@ export const WeekCalendar = forwardRef<HTMLDivElement, WeekCalendarProps>(
       <div
         ref={ref}
         className={`flex h-full flex-col overflow-hidden border-b border-base-200 bg-base-100 ${className}`}
+        data-testid={testId}
         {...rest}
       >
         {/* Header with days */}
         <div
           ref={headerRef}
           className="grid grid-cols-[80px_repeat(7,1fr)] border-b border-base-200 bg-base-100"
+          data-testid={getTestId('header')}
         >
           <div className="week-calendar-time-column" />
           {weekDays.map((day) => {
             const isPast = isPastDate(day)
             const isTodayDate = isToday(day)
+            const dayKey = formatDate(day, 'YYYY-MM-DD')
 
             return (
               <div
-                key={formatDate(day, 'YYYY-MM-DD')}
+                key={dayKey}
                 className={`
                   cursor-pointer px-2 py-0.5 text-center transition-colors hover:bg-primary/5
                   ${isPast && !allowPastInteraction ? 'cursor-not-allowed' : ''}
                 `}
+                data-testid={getTestId(`header-day-${dayKey}`)}
                 onClick={() => {
                   if (isPast && !allowPastInteraction) {
                     return
@@ -239,14 +246,19 @@ export const WeekCalendar = forwardRef<HTMLDivElement, WeekCalendarProps>(
           ref={bodyRef}
           className={fitContainer ? 'grid flex-1' : 'flex-1 overflow-y-auto'}
           style={fitContainer ? { gridTemplateRows: `repeat(${timeSlots.length}, 1fr)` } : undefined}
+          data-testid={getTestId('grid')}
         >
           {timeSlots.map((hour) => (
             <div
               key={hour}
               className={`grid grid-cols-[80px_repeat(7,1fr)] border-b border-base-200 last:border-b-0 ${fitContainer ? 'min-h-10' : 'h-20'}`}
+              data-testid={getTestId(`row-${hour}`)}
             >
               {/* Time label */}
-              <div className="flex items-start justify-end border-l border-r border-base-200 bg-base-200/50 p-2 pt-1 text-xs text-base-content/50">
+              <div
+                className="flex items-start justify-end border-l border-r border-base-200 bg-base-200/50 p-2 pt-1 text-xs text-base-content/50"
+                data-testid={getTestId(`time-${hour}`)}
+              >
                 {formatHour(hour)}
               </div>
 
@@ -265,6 +277,7 @@ export const WeekCalendar = forwardRef<HTMLDivElement, WeekCalendarProps>(
                       ${fitContainer ? '' : 'h-20'}
                       ${isPast && !allowPastInteraction ? 'cursor-not-allowed hover:cursor-not-allowed' : ''}
                     `}
+                    data-testid={getTestId(`cell-${dayStr}-${hour}`)}
                     onClick={(e) => {
                       if (isPast && !allowPastInteraction) {
                         return
@@ -295,6 +308,7 @@ export const WeekCalendar = forwardRef<HTMLDivElement, WeekCalendarProps>(
                         `}
                         style={event.style}
                         title={event.title}
+                        data-testid={getTestId(`event-${dayStr}-${hour}-${idx}`)}
                         onClick={(e) => {
                           e.stopPropagation()
                           onEventClick?.(event)

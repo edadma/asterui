@@ -18,6 +18,7 @@ export interface ChartProps {
   themed?: boolean
   /** Additional CSS classes */
   className?: string
+  'data-testid'?: string
 }
 
 // Deep merge objects
@@ -55,6 +56,7 @@ export const Chart: React.FC<ChartProps> = ({
   options = {},
   themed = true,
   className = '',
+  'data-testid': testId,
 }) => {
   const chartRef = useRef<HTMLDivElement>(null)
   const chartInstance = useRef<ApexCharts | null>(null)
@@ -178,5 +180,5 @@ export const Chart: React.FC<ChartProps> = ({
     chartInstance.current.updateOptions(opts, true, true)
   }, [type, series, width, height, options, themed, isDark, colors]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  return <div ref={chartRef} className={className} />
+  return <div ref={chartRef} className={className} data-testid={testId} />
 }

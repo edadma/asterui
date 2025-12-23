@@ -7,9 +7,10 @@ export interface ShowProps {
   below?: Breakpoint
   at?: Breakpoint | Breakpoint[]
   between?: [Breakpoint, Breakpoint]
+  'data-testid'?: string
 }
 
-export function Show({ children, above, below, at, between }: ShowProps): React.ReactElement | null {
+export function Show({ children, above, below, at, between, 'data-testid': testId }: ShowProps): React.ReactElement | null {
   const { isAbove, isBelow, isAt, isBetween } = useBreakpoint()
 
   let shouldShow = false
@@ -30,7 +31,11 @@ export function Show({ children, above, below, at, between }: ShowProps): React.
     shouldShow = true
   }
 
-  return shouldShow ? <>{children}</> : null
+  if (!shouldShow) return null
+  if (testId && React.isValidElement(children)) {
+    return React.cloneElement(children, { 'data-testid': testId } as Record<string, unknown>)
+  }
+  return <>{children}</>
 }
 
 export interface HideProps {
@@ -39,9 +44,10 @@ export interface HideProps {
   below?: Breakpoint
   at?: Breakpoint | Breakpoint[]
   between?: [Breakpoint, Breakpoint]
+  'data-testid'?: string
 }
 
-export function Hide({ children, above, below, at, between }: HideProps): React.ReactElement | null {
+export function Hide({ children, above, below, at, between, 'data-testid': testId }: HideProps): React.ReactElement | null {
   const { isAbove, isBelow, isAt, isBetween } = useBreakpoint()
 
   let shouldHide = false
@@ -60,5 +66,9 @@ export function Hide({ children, above, below, at, between }: HideProps): React.
     shouldHide = isBetween(between[0], between[1])
   }
 
-  return shouldHide ? null : <>{children}</>
+  if (shouldHide) return null
+  if (testId && React.isValidElement(children)) {
+    return React.cloneElement(children, { 'data-testid': testId } as Record<string, unknown>)
+  }
+  return <>{children}</>
 }

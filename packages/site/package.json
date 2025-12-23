@@ -17,7 +17,7 @@
         "@tailwindcss/vite": "^4.1.17",
     "@tanstack/react-virtual": "^3.13.13",
     "asterui": "workspace:*",
-    "astro": "^5.9.0",
+    "astro": "^5.16.6",
     "daisyui": "^5.5.11",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.0",

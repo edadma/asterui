@@ -194,6 +194,7 @@ export default App
 | `allowHalf` | Allow half-star selection | `boolean` | `false` |
 | `disabled` | Disabled state (non-interactive) | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Rating.Item
 
@@ -205,3 +206,4 @@ export default App
 | `hidden` | Hidden item for clearing rating | `boolean` | `false` |
 | `half` | Half-star position | `'first' \| 'second'` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

@@ -61,6 +61,7 @@ export interface FloatButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLBu
   target?: string
   /** @deprecated Use icon prop instead */
   children?: React.ReactNode
+  'data-testid'?: string
 }
 
 export interface FloatButtonGroupProps {
@@ -94,6 +95,7 @@ export interface FloatButtonGroupProps {
   className?: string
   /** Custom styles */
   style?: React.CSSProperties
+  'data-testid'?: string
 }
 
 export interface BackTopProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'> {
@@ -113,6 +115,7 @@ export interface BackTopProps extends Omit<React.ButtonHTMLAttributes<HTMLButton
   offset?: number
   /** @deprecated Use icon prop instead */
   children?: React.ReactNode
+  'data-testid'?: string
 }
 
 // Context for group
@@ -159,6 +162,7 @@ const FloatButtonBase: React.FC<FloatButtonProps & { style?: React.CSSProperties
   target,
   children,
   style,
+  'data-testid': testId,
   ...rest
 }) => {
   const groupContext = useContext(FloatButtonGroupContext)
@@ -176,6 +180,7 @@ const FloatButtonBase: React.FC<FloatButtonProps & { style?: React.CSSProperties
     .join(' ')
 
   const content = icon || children || <PlusIcon />
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   const buttonContent = (
     <>
@@ -200,12 +205,13 @@ const FloatButtonBase: React.FC<FloatButtonProps & { style?: React.CSSProperties
         className={buttonClasses}
         title={tooltip}
         onClick={onClick as any}
+        data-testid={testId}
         {...(rest as any)}
       >
         {buttonContent}
       </a>
     ) : (
-      <button className={buttonClasses} title={tooltip} onClick={onClick} {...rest}>
+      <button className={buttonClasses} title={tooltip} onClick={onClick} data-testid={testId} {...rest}>
         {buttonContent}
       </button>
     )
@@ -218,27 +224,35 @@ const FloatButtonBase: React.FC<FloatButtonProps & { style?: React.CSSProperties
       className={buttonClasses}
       style={style}
       onClick={onClick as any}
+      data-testid={testId}
       {...(rest as any)}
     >
       {buttonContent}
     </a>
   ) : (
-    <button className={buttonClasses} onClick={onClick} style={style} {...rest}>
+    <button className={buttonClasses} onClick={onClick} style={style} data-testid={testId} {...rest}>
       {buttonContent}
     </button>
   )
 
   const withBadge = badge !== undefined ? (
-    <div className={dIndicator} style={style}>
-      <span className={`${dIndicatorItem} ${dBadge} ${dBadgeSecondary}`}>
+    <div className={dIndicator} style={style} data-testid={getTestId('indicator')}>
+      <span className={`${dIndicatorItem} ${dBadge} ${dBadgeSecondary}`} data-testid={getTestId('badge')}>
         {badge}
       </span>
       {href ? (
-        <a href={href} target={target} className={buttonClasses} onClick={onClick as any} {...(rest as any)}>
+        <a
+          href={href}
+          target={target}
+          className={buttonClasses}
+          onClick={onClick as any}
+          data-testid={testId}
+          {...(rest as any)}
+        >
           {buttonContent}
         </a>
       ) : (
-        <button className={buttonClasses} onClick={onClick} {...rest}>
+        <button className={buttonClasses} onClick={onClick} data-testid={testId} {...rest}>
           {buttonContent}
         </button>
       )}
@@ -247,26 +261,45 @@ const FloatButtonBase: React.FC<FloatButtonProps & { style?: React.CSSProperties
 
   if (tooltip) {
     return (
-      <div className={`${dTooltip} ${tooltipPlacementClasses[tooltipPlacement]}`} data-tip={tooltip} style={style}>
+      <div
+        className={`${dTooltip} ${tooltipPlacementClasses[tooltipPlacement]}`}
+        data-tip={tooltip}
+        style={style}
+        data-testid={getTestId('tooltip')}
+      >
         {badge !== undefined ? (
           <div className={dIndicator}>
-            <span className={`${dIndicatorItem} ${dBadge} ${dBadgeSecondary}`}>{badge}</span>
+            <span className={`${dIndicatorItem} ${dBadge} ${dBadgeSecondary}`} data-testid={getTestId('badge')}>{badge}</span>
             {href ? (
-              <a href={href} target={target} className={buttonClasses} onClick={onClick as any} {...(rest as any)}>
+              <a
+                href={href}
+                target={target}
+                className={buttonClasses}
+                onClick={onClick as any}
+                data-testid={testId}
+                {...(rest as any)}
+              >
                 {buttonContent}
               </a>
             ) : (
-              <button className={buttonClasses} onClick={onClick} {...rest}>
+              <button className={buttonClasses} onClick={onClick} data-testid={testId} {...rest}>
                 {buttonContent}
               </button>
             )}
           </div>
         ) : href ? (
-          <a href={href} target={target} className={buttonClasses} onClick={onClick as any} {...(rest as any)}>
+          <a
+            href={href}
+            target={target}
+            className={buttonClasses}
+            onClick={onClick as any}
+            data-testid={testId}
+            {...(rest as any)}
+          >
             {buttonContent}
           </a>
         ) : (
-          <button className={buttonClasses} onClick={onClick} {...rest}>
+          <button className={buttonClasses} onClick={onClick} data-testid={testId} {...rest}>
             {buttonContent}
           </button>
         )}
@@ -318,6 +351,7 @@ const FloatButtonGroup: React.FC<FloatButtonGroupProps> = ({
   offset = 24,
   className = '',
   style: propStyle,
+  'data-testid': testId,
 }) => {
   const fabClasses = [
     dFab,
@@ -343,14 +377,17 @@ const FloatButtonGroup: React.FC<FloatButtonGroupProps> = ({
     ...propStyle,
   }
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   return (
-    <div className={fabClasses} style={containerStyle}>
+    <div className={fabClasses} style={containerStyle} data-testid={testId}>
       {/* Trigger button - shown when closed */}
       <button
         type="button"
         className={triggerButtonClasses}
         aria-label={triggerLabel}
         aria-haspopup="true"
+        data-testid={getTestId('trigger')}
       >
         {icon || <PlusIcon />}
       </button>
@@ -362,6 +399,7 @@ const FloatButtonGroup: React.FC<FloatButtonGroupProps> = ({
           className={`${triggerButtonClasses} ${dFabMainAction}`}
           onClick={onMainAction}
           aria-label={mainActionLabel}
+          data-testid={getTestId('main-action')}
         >
           {mainAction}
         </button>
@@ -373,6 +411,7 @@ const FloatButtonGroup: React.FC<FloatButtonGroupProps> = ({
           type="button"
           className={`${triggerButtonClasses} ${dFabClose}`}
           aria-label={closeLabel}
+          data-testid={getTestId('close')}
         >
           <CloseIcon />
         </button>
@@ -396,6 +435,7 @@ const BackTop: React.FC<BackTopProps> = ({
   className = '',
   children,
   style: propStyle,
+  'data-testid': testId,
   ...rest
 }) => {
   const [visible, setVisible] = useState(false)
@@ -456,6 +496,7 @@ const BackTop: React.FC<BackTopProps> = ({
       onClick={handleClick}
       style={style}
       aria-label={rest['aria-label'] || 'Back to top'}
+      data-testid={testId}
       {...rest}
     >
       {icon || children || <ArrowUpIcon />}

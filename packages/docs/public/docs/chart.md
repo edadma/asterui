@@ -244,3 +244,4 @@ export default App
 | `height` | Chart height | `number \| string` | `350` |
 | `width` | Chart width | `number \| string` | `100%` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

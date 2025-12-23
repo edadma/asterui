@@ -25,6 +25,7 @@ export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTex
   ghost?: boolean
   bordered?: boolean
   className?: string
+  'data-testid'?: string
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -35,6 +36,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       ghost = false,
       bordered = true,
       className = '',
+      'data-testid': testId,
       ...props
     },
     ref
@@ -73,7 +75,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       .filter(Boolean)
       .join(' ')
 
-    return <textarea ref={ref} className={textareaClasses} {...props} />
+    return <textarea ref={ref} className={textareaClasses} data-testid={testId} {...props} />
   }
 )
 

@@ -11,6 +11,7 @@ export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
   minHeight?: 'screen' | 'full' | 'fit' | 'min' | 'max'
   minWidth?: 'full' | 'fit' | 'min' | 'max'
   children?: React.ReactNode
+  'data-testid'?: string
 }
 
 export const Flex: React.FC<FlexProps> = ({
@@ -26,6 +27,7 @@ export const Flex: React.FC<FlexProps> = ({
   className = '',
   style,
   children,
+  'data-testid': testId,
   ...rest
 }) => {
   const isNumericGap = typeof gap === 'number'
@@ -78,7 +80,7 @@ export const Flex: React.FC<FlexProps> = ({
   }
 
   return (
-    <div className={classes} style={combinedStyle} {...rest}>
+    <div className={classes} style={combinedStyle} data-testid={testId} {...rest}>
       {children}
     </div>
   )

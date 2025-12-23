@@ -56,6 +56,7 @@ export interface AutocompleteProps extends Omit<React.HTMLAttributes<HTMLDivElem
   onOpenChange?: (open: boolean) => void
   /** Activate first option by default */
   defaultActiveFirstOption?: boolean
+  'data-testid'?: string
 }
 
 // Clear icon component
@@ -95,6 +96,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   defaultOpen = false,
   onOpenChange,
   defaultActiveFirstOption = true,
+  'data-testid': testId,
   ...rest
 }) => {
   const { componentSize } = useConfig()
@@ -297,10 +299,13 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     showClear && 'pr-10',
   ].filter(Boolean).join(' ')
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   return (
     <div
       className={`${dDropdown} ${dDropdownBottom} w-full ${isOpen && !disabled ? dDropdownOpen : ''} ${className}`}
       data-state={isOpen ? 'open' : 'closed'}
+      data-testid={testId}
       {...rest}
     >
       <div className="relative w-full">
@@ -323,9 +328,10 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           placeholder={placeholder}
           disabled={disabled}
           className={inputClasses}
+          data-testid={getTestId('input')}
         />
         {showClear && (
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 z-10">
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 z-10" data-testid={getTestId('clear')}>
             {clearIcon || <ClearIcon onClick={handleClear} />}
           </span>
         )}
@@ -339,6 +345,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           aria-label="Suggestions"
           tabIndex={-1}
           className={`${dDropdownContent} ${dMenu} bg-base-100 rounded-box z-50 w-full shadow-lg border border-base-300 max-h-60 overflow-auto flex-nowrap`}
+          data-testid={getTestId('listbox')}
         >
           {filteredOptions.length > 0 ? (
             filteredOptions.map((option, index) => (
@@ -357,13 +364,14 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
                     index === highlightedIndex && !option.disabled && 'active',
                     option.disabled && 'disabled text-base-content/40 cursor-not-allowed',
                   ].filter(Boolean).join(' ')}
+                  data-testid={getTestId(`option-${option.value || index}`)}
                 >
                   {option.label}
                 </a>
               </li>
             ))
           ) : (
-            <li className="disabled">
+            <li className="disabled" data-testid={getTestId('empty')}>
               <span className="text-base-content/60 text-center cursor-default">{notFoundContent}</span>
             </li>
           )}

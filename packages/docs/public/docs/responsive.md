@@ -162,6 +162,7 @@ export default App
 | `below` | Show/hide below this breakpoint | `Breakpoint` | `-` |
 | `at` | Show/hide at exactly this breakpoint (or array) | `Breakpoint \| Breakpoint[]` | `-` |
 | `between` | Show/hide between two breakpoints (inclusive) | `[Breakpoint, Breakpoint]` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### useBreakpoint Return Value
 
@@ -173,6 +174,7 @@ export default App
 | `isBelow(bp)` | Returns true if current breakpoint < bp | `(bp: Breakpoint) => boolean` |
 | `isAt(bp)` | Returns true if current breakpoint === bp | `(bp: Breakpoint) => boolean` |
 | `isBetween(min, max)` | Returns true if between min and max (inclusive) | `(min: Breakpoint, max: Breakpoint) => boolean` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Breakpoint Type
 

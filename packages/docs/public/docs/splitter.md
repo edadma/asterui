@@ -337,6 +337,7 @@ export default App
 | `gutterSize` | Size of the draggable gutter in pixels | `number` | `8` |
 | `minSize` | Default minimum panel size in pixels | `number` | `50` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Panel
 
@@ -353,3 +354,4 @@ export default App
 | `onCollapse` | Callback when collapse state changes | `(collapsed: boolean) => void` | `-` |
 | `resizable` | Allow panel to be resized | `boolean` | `true` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

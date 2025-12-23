@@ -110,6 +110,7 @@ import { ContextMenu } from 'asterui'
 | onSelect | Selection callback | `(key: string) => void` | - |
 | disabled | Whether the context menu is disabled | `boolean` | `false` |
 | className | Additional CSS classes | `string` | - |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### ContextMenuItem (for items prop)
 
@@ -122,6 +123,7 @@ import { ContextMenu } from 'asterui'
 | danger | Show as danger/destructive action | `boolean` | `false` |
 | divider | Render as a divider | `boolean` | `false` |
 | children | Submenu items | `ContextMenuItem[]` | - |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### ContextMenu.Item (compound pattern)
 
@@ -132,6 +134,7 @@ import { ContextMenu } from 'asterui'
 | icon | Icon to display before label | `React.ReactNode` | - |
 | disabled | Whether the item is disabled | `boolean` | `false` |
 | danger | Show as danger/destructive action | `boolean` | `false` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### ContextMenu.SubMenu (compound pattern)
 
@@ -142,6 +145,7 @@ import { ContextMenu } from 'asterui'
 | icon | Icon to display before label | `React.ReactNode` | - |
 | disabled | Whether the submenu is disabled | `boolean` | `false` |
 | children | Submenu items | `React.ReactNode` | - |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ## Accessibility
 

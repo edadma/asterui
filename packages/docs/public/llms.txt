@@ -10,6 +10,7 @@ AsterUI provides 101 production-ready React components with:
 - Full TypeScript support
 - Test-friendly attributes (data-testid, data-state, ARIA roles)
 - Prop pass-through for custom attributes
+- Broad data-testid coverage across components for end-to-end testing
 
 ## Installation
 

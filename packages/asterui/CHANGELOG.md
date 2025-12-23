@@ -7,6 +7,20 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.63 (2025-12-23)
+
+### Testability Improvements
+
+- Added `data-testid` support to additional components (Anchor, Autocomplete, Breadcrumb, Chart, Chat, Command, ContextMenu, Dock, FileInput, Filter, Flex, FloatButton, Input, Loading, Masonry, Mention, MonthCalendar, QRCode, RadialProgress, Range, Rating, Responsive, Result, Select, Splitter, Stat, Steps, TextRotate, Textarea, ThemeController, Typography, VirtualList, Watermark, WeekCalendar)
+
+### Documentation
+
+- Documented new `data-testid` props across docs, including localized translations and Chart Astro pages
+
+### Tooling
+
+- Updated Astro to 5.16.6 in docs/site packages
+
 
 ## v0.12.62 (2025-12-22)
 
@@ -1415,4 +1429,3 @@ Badge, Button, Card, Checkbox, Drawer, Dropdown, Form, Input, Loading, Menu, Nav
 
 ### Demo
 https://edadma.github.io/petalui
-

@@ -137,3 +137,4 @@ export default App
 | `bordered` | Show border | `boolean` | `false` |
 | `ghost` | Ghost style | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

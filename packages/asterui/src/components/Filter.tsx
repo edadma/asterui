@@ -35,6 +35,7 @@ export interface FilterProps {
   resetLabel?: React.ReactNode
   /** Additional CSS classes for container */
   className?: string
+  'data-testid'?: string
 }
 
 const sizeClasses: Record<string, string> = {
@@ -55,6 +56,7 @@ export const Filter: React.FC<FilterProps> = ({
   showReset = true,
   resetLabel = '×',
   className = '',
+  'data-testid': testId,
 }) => {
   const { componentSize } = useConfig()
   const effectiveSize = size ?? componentSize ?? 'md'
@@ -86,15 +88,17 @@ export const Filter: React.FC<FilterProps> = ({
 
   const buttonClasses = [dBtn, sizeClasses[effectiveSize]].filter(Boolean).join(' ')
   const resetClasses = [dBtn, dBtnSquare, sizeClasses[effectiveSize]].filter(Boolean).join(' ')
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   return (
-    <form className={`${dFilter} ${className}`.trim()} onReset={handleReset}>
+    <form className={`${dFilter} ${className}`.trim()} onReset={handleReset} data-testid={testId}>
       {showReset && (
         <input
           className={resetClasses}
           type="reset"
           value={typeof resetLabel === 'string' ? resetLabel : undefined}
           aria-label="Reset filter"
+          data-testid={getTestId('reset')}
         />
       )}
       {normalizedOptions.map((option) => (
@@ -108,6 +112,7 @@ export const Filter: React.FC<FilterProps> = ({
           checked={currentValue === option.value}
           onChange={() => handleChange(option.value)}
           disabled={option.disabled}
+          data-testid={getTestId(`option-${option.value}`)}
         />
       ))}
     </form>

@@ -152,3 +152,4 @@ export default App
 | `placeholder` | Input placeholder text | `string` | `-` |
 | `disabled` | Disable the mention input | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

@@ -22,6 +22,7 @@ export interface TextRotateProps {
   centered?: boolean
   /** Additional CSS classes */
   className?: string
+  'data-testid'?: string
 }
 
 export const TextRotate: React.FC<TextRotateProps> = ({
@@ -29,16 +30,19 @@ export const TextRotate: React.FC<TextRotateProps> = ({
   duration,
   centered = false,
   className = '',
+  'data-testid': testId,
 }) => {
   const durationClass = duration ? durationClasses[duration] : ''
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   return (
     <span
       className={`${dTextRotate} ${durationClass} ${centered ? 'justify-items-center' : ''} ${className}`.trim()}
+      data-testid={testId}
     >
       <span>
         {items.slice(0, 6).map((item, index) => (
-          <span key={index}>{item}</span>
+          <span key={index} data-testid={getTestId(`item-${index}`)}>{item}</span>
         ))}
       </span>
     </span>

@@ -13,6 +13,7 @@ export interface RadialProgressProps extends Omit<React.HTMLAttributes<HTMLDivEl
   color?: 'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'error' | 'info' | 'neutral'
   showValue?: boolean
   children?: React.ReactNode
+  'data-testid'?: string
 }
 
 const colorClasses = {
@@ -35,6 +36,7 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   children,
   className = '',
   style,
+  'data-testid': testId,
   ...rest
 }) => {
   const getClasses = () => {
@@ -75,6 +77,7 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
       aria-valuenow={value}
       aria-valuemin={0}
       aria-valuemax={100}
+      data-testid={testId}
       {...rest}
     >
       {children !== undefined ? children : showValue ? `${value}%` : null}

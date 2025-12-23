@@ -23,7 +23,7 @@
     "@tiptap/react": "^2.0.0",
     "@tiptap/starter-kit": "^2.0.0",
     "apexcharts": "^5.3.6",
-    "astro": "^5.6.1",
+    "astro": "^5.16.6",
     "lucide-astro": "^0.556.0",
     "qrcode": "^1.5.4",
     "react": "^19.0.0",

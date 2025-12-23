@@ -290,3 +290,4 @@ export default App
 | `value` | Controlled value | `string` | `-` |
 | `onChange` | Change event handler | `(e: React.ChangeEvent<HTMLSelectElement>) => void` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

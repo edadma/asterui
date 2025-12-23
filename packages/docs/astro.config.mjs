@@ -9,7 +9,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://asterui.com',
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss({ optimize: false })],
     optimizeDeps: {
       include: ['apexcharts'],
     },

@@ -199,6 +199,7 @@ export default App
 | vertical | Vertical layout (deprecated, use direction) | `boolean` | `false` |
 | onChange | Callback when step is clicked | `(current: number) => void` | - |
 | className | Additional CSS classes | `string` | - |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### StepItem (for items prop)
 
@@ -210,6 +211,7 @@ export default App
 | icon | Step icon | `React.ReactNode` | - |
 | color | Step color | `'neutral' \| 'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error'` | - |
 | disabled | Whether step is disabled | `boolean` | `false` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Steps.Step (compound pattern)
 
@@ -223,3 +225,4 @@ export default App
 | dataContent | Custom content for step indicator | `string` | - |
 | disabled | Whether step is disabled | `boolean` | `false` |
 | className | Additional CSS classes | `string` | - |
+| `data-testid` | Test ID for testing | `string` | - |

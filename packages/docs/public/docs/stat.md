@@ -208,6 +208,7 @@ export default App
 | `children` | Stat items to display | `React.ReactNode` | `-` |
 | `vertical` | Stack stats vertically | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Stat
 
@@ -219,3 +220,4 @@ export default App
 | `figure` | Icon or image figure | `React.ReactNode` | `-` |
 | `actions` | Action buttons or elements | `React.ReactNode` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

@@ -41,6 +41,7 @@ export interface WatermarkProps
   font?: WatermarkFontOptions
   /** Content to protect with the watermark */
   children?: React.ReactNode
+  'data-testid'?: string
 }
 
 type WatermarkImage = {
@@ -84,6 +85,7 @@ export const Watermark: React.FC<WatermarkProps> = ({
   rotate = -22,
   zIndex = 1000,
   font,
+  'data-testid': testId,
   ...rest
 }) => {
   const [watermark, setWatermark] = useState<WatermarkImage | null>(null)
@@ -205,10 +207,13 @@ export const Watermark: React.FC<WatermarkProps> = ({
 
   const classes = ['relative', className].filter(Boolean).join(' ')
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   return (
     <div
       className={classes}
       style={{ position: style?.position ?? 'relative', ...style }}
+      data-testid={testId}
       {...rest}
     >
       {children}
@@ -223,6 +228,7 @@ export const Watermark: React.FC<WatermarkProps> = ({
             backgroundSize: `${watermark.width}px ${watermark.height}px`,
             backgroundPosition: `${offsetX}px ${offsetY}px`,
           }}
+          data-testid={getTestId('overlay')}
         />
       )}
     </div>

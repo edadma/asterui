@@ -38,6 +38,7 @@ export interface AnchorProps {
   className?: string
   /** Anchor.Link children */
   children?: React.ReactNode
+  'data-testid'?: string
 }
 
 export interface AnchorLinkProps {
@@ -49,6 +50,7 @@ export interface AnchorLinkProps {
   children?: React.ReactNode
   /** Custom class name */
   className?: string
+  'data-testid'?: string
 }
 
 interface AnchorContextValue {
@@ -75,6 +77,7 @@ const AnchorLink: React.FC<AnchorLinkProps> = ({
   title,
   children,
   className = '',
+  'data-testid': testId,
 }) => {
   const { activeLink, direction, registerLink, unregisterLink, handleClick } = useAnchorContext()
 
@@ -100,6 +103,7 @@ const AnchorLink: React.FC<AnchorLinkProps> = ({
           }
           ${className}
         `.trim()}
+        data-testid={testId}
       >
         {title}
       </a>
@@ -127,6 +131,7 @@ const AnchorComponent: React.FC<AnchorProps> = ({
   replace = false,
   className = '',
   children,
+  'data-testid': testId,
 }) => {
   const [internalActiveLink, setInternalActiveLink] = useState('')
   const [links, setLinks] = useState<string[]>([])
@@ -282,10 +287,11 @@ const AnchorComponent: React.FC<AnchorProps> = ({
     unregisterLink,
     handleClick,
   }
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   const renderItems = (linkItems: AnchorLinkItem[]): React.ReactNode => {
     return linkItems.map((item) => (
-      <AnchorLink key={item.href} href={item.href} title={item.title}>
+      <AnchorLink key={item.href} href={item.href} title={item.title} data-testid={getTestId(`link-${item.href}`)}>
         {item.children && renderItems(item.children)}
       </AnchorLink>
     ))
@@ -300,6 +306,7 @@ const AnchorComponent: React.FC<AnchorProps> = ({
         ${className}
       `.trim()}
       style={isAffixed ? { top: affixOffsetTop } : undefined}
+      data-testid={testId}
     >
       {items ? renderItems(items) : children}
     </nav>

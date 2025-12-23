@@ -13,6 +13,7 @@ export interface MasonryProps extends React.HTMLAttributes<HTMLDivElement> {
         '2xl'?: number
       }
   gap?: number
+  'data-testid'?: string
 }
 
 // Tailwind breakpoints in pixels
@@ -65,6 +66,7 @@ export const Masonry: React.FC<MasonryProps> = ({
   gap = 16,
   className = '',
   style,
+  'data-testid': testId,
   ...rest
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -147,6 +149,8 @@ export const Masonry: React.FC<MasonryProps> = ({
       ? (containerWidth - gap * (numColumns - 1)) / numColumns
       : 0
 
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
+
   return (
     <div
       ref={containerRef}
@@ -156,6 +160,7 @@ export const Masonry: React.FC<MasonryProps> = ({
         height: containerHeight > 0 ? containerHeight : undefined,
         ...style,
       }}
+      data-testid={testId}
       {...rest}
     >
       {childArray.map((child, index) => (
@@ -171,6 +176,7 @@ export const Masonry: React.FC<MasonryProps> = ({
             width: columnWidth > 0 ? columnWidth : '100%',
             visibility: positions.length > 0 ? 'visible' : 'hidden',
           }}
+          data-testid={getTestId(`item-${index}`)}
         >
           {child}
         </div>

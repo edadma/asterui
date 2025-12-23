@@ -124,6 +124,7 @@ export default App
 |----------|-------------|------|---------|
 | `children` | Content | `React.ReactNode` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Title
 
@@ -134,6 +135,7 @@ export default App
 | `ellipsis` | Truncate with ellipsis | `boolean \| { rows?: number` | `-` |
 | `editable` | Enable inline editing | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Text
 
@@ -149,6 +151,7 @@ export default App
 | `mark` | Highlighted text | `boolean` | `false` |
 | `keyboard` | Keyboard style | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Paragraph
 
@@ -159,6 +162,7 @@ export default App
 | `size` | Text size | `'sm' \| 'base' \| 'lg' \| 'xl' \| '2xl'` | `-` |
 | `align` | Text alignment | `'left' \| 'center' \| 'right'` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Link
 
@@ -168,3 +172,4 @@ export default App
 | `size` | Text size | `'sm' \| 'base' \| 'lg' \| 'xl' \| '2xl'` | `-` |
 | `external` | Open in new tab with external icon | `boolean` | `false` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

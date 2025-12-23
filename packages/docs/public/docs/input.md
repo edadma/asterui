@@ -245,3 +245,4 @@ export default App
 | `value` | Input value | `string` | `-` |
 | `onChange` | Change event handler | `(e: React.ChangeEvent<HTMLInputElement>) => void` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

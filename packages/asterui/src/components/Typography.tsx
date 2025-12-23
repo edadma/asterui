@@ -13,6 +13,7 @@ export type TitleLevel = 1 | 2 | 3 | 4 | 5
 export interface TypographyProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   size?: TypographySize
+  'data-testid'?: string
 }
 
 export interface TitleProps extends Omit<React.HTMLAttributes<HTMLHeadingElement>, 'title'> {
@@ -20,6 +21,7 @@ export interface TitleProps extends Omit<React.HTMLAttributes<HTMLHeadingElement
   children: React.ReactNode
   copyable?: boolean
   ellipsis?: boolean
+  'data-testid'?: string
 }
 
 export interface ParagraphProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -28,6 +30,7 @@ export interface ParagraphProps extends React.HTMLAttributes<HTMLDivElement> {
   copyable?: boolean
   size?: TypographySize
   align?: 'left' | 'center' | 'right'
+  'data-testid'?: string
 }
 
 export interface TextProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -40,6 +43,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLSpanElement> {
   delete?: boolean
   type?: 'default' | 'secondary' | 'success' | 'warning' | 'error'
   copyable?: boolean
+  'data-testid'?: string
 }
 
 export interface TypographyLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -47,9 +51,10 @@ export interface TypographyLinkProps extends React.AnchorHTMLAttributes<HTMLAnch
   children: React.ReactNode
   external?: boolean
   size?: TypographySize
+  'data-testid'?: string
 }
 
-function CopyButton({ text }: { text: string }) {
+function CopyButton({ text, 'data-testid': testId }: { text: string; 'data-testid'?: string }) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
@@ -67,6 +72,7 @@ function CopyButton({ text }: { text: string }) {
       onClick={handleCopy}
       className={`${dBtn} ${dBtnGhost} ${dBtnXs} ml-2 opacity-0 group-hover:opacity-100 transition-opacity`}
       title="Copy to clipboard"
+      data-testid={testId}
     >
       {copied ? (
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -86,7 +92,7 @@ function CopyButton({ text }: { text: string }) {
   )
 }
 
-function TypographyRoot({ children, size = 'base', className = '', ...rest }: TypographyProps) {
+function TypographyRoot({ children, size = 'base', className = '', 'data-testid': testId, ...rest }: TypographyProps) {
   const sizeClasses = {
     sm: 'prose-sm text-sm',
     base: 'prose-base text-base',
@@ -106,12 +112,13 @@ function TypographyRoot({ children, size = 'base', className = '', ...rest }: Ty
     .filter(Boolean)
     .join(' ')
 
-  return <div className={classes} {...rest}>{children}</div>
+  return <div className={classes} data-testid={testId} {...rest}>{children}</div>
 }
 
-function Title({ level = 1, children, copyable, ellipsis, className = '', id, ...rest }: TitleProps) {
+function Title({ level = 1, children, copyable, ellipsis, className = '', id, 'data-testid': testId, ...rest }: TitleProps) {
   const textContent = typeof children === 'string' ? children : ''
   const generatedId = id || (textContent ? textContent.toLowerCase().replace(/\s+/g, '-') : undefined)
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   const levelClasses = {
     1: 'text-4xl font-bold mb-4',
@@ -127,23 +134,23 @@ function Title({ level = 1, children, copyable, ellipsis, className = '', id, ..
   const content = (
     <>
       {children}
-      {copyable && <CopyButton text={textContent} />}
+      {copyable && <CopyButton text={textContent} data-testid={getTestId('copy')} />}
     </>
   )
 
   switch (level) {
     case 1:
-      return <h1 id={generatedId} className={classes} {...rest}>{content}</h1>
+      return <h1 id={generatedId} className={classes} data-testid={testId} {...rest}>{content}</h1>
     case 2:
-      return <h2 id={generatedId} className={classes} {...rest}>{content}</h2>
+      return <h2 id={generatedId} className={classes} data-testid={testId} {...rest}>{content}</h2>
     case 3:
-      return <h3 id={generatedId} className={classes} {...rest}>{content}</h3>
+      return <h3 id={generatedId} className={classes} data-testid={testId} {...rest}>{content}</h3>
     case 4:
-      return <h4 id={generatedId} className={classes} {...rest}>{content}</h4>
+      return <h4 id={generatedId} className={classes} data-testid={testId} {...rest}>{content}</h4>
     case 5:
-      return <h5 id={generatedId} className={classes} {...rest}>{content}</h5>
+      return <h5 id={generatedId} className={classes} data-testid={testId} {...rest}>{content}</h5>
     default:
-      return <h1 id={generatedId} className={classes} {...rest}>{content}</h1>
+      return <h1 id={generatedId} className={classes} data-testid={testId} {...rest}>{content}</h1>
   }
 }
 
@@ -156,9 +163,10 @@ const lineClampClasses = {
   6: 'line-clamp-6',
 } as const
 
-function Paragraph({ children, ellipsis, copyable, size, align, className = '', ...rest }: ParagraphProps) {
+function Paragraph({ children, ellipsis, copyable, size, align, className = '', 'data-testid': testId, ...rest }: ParagraphProps) {
   const [expanded, setExpanded] = useState(false)
   const textContent = typeof children === 'string' ? children : ''
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   const isEllipsisObject = typeof ellipsis === 'object'
   const rows = isEllipsisObject ? ellipsis.rows || 3 : 3
@@ -184,10 +192,10 @@ function Paragraph({ children, ellipsis, copyable, size, align, className = '', 
   ].filter(Boolean).join(' ')
 
   return (
-    <div {...rest}>
-      <p className={classes}>
+    <div data-testid={testId} {...rest}>
+      <p className={classes} data-testid={getTestId('text')}>
         {children}
-        {copyable && <CopyButton text={textContent} />}
+        {copyable && <CopyButton text={textContent} data-testid={getTestId('copy')} />}
       </p>
       {expandable && ellipsis && (
         <button
@@ -217,9 +225,11 @@ function Text({
   type = 'default',
   copyable,
   className = '',
+  'data-testid': testId,
   ...rest
 }: TextProps) {
   const textContent = typeof children === 'string' ? children : ''
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   const typeClasses = {
     default: '',
@@ -260,14 +270,14 @@ function Text({
   const classes = `group inline ${typeClasses[type]} ${className}`.trim()
 
   return (
-    <span className={classes} {...rest}>
+    <span className={classes} data-testid={testId} {...rest}>
       {content}
-      {copyable && <CopyButton text={textContent} />}
+      {copyable && <CopyButton text={textContent} data-testid={getTestId('copy')} />}
     </span>
   )
 }
 
-function Link({ href = '#', children, target, external, size, className = '', ...rest }: TypographyLinkProps) {
+function Link({ href = '#', children, target, external, size, className = '', 'data-testid': testId, ...rest }: TypographyLinkProps) {
   const isExternal = external || (href && href.startsWith('http'))
   const linkTarget = target || (isExternal ? '_blank' : undefined)
   const rel = isExternal ? 'noopener noreferrer' : undefined
@@ -289,6 +299,7 @@ function Link({ href = '#', children, target, external, size, className = '', ..
       target={linkTarget}
       rel={rel}
       className={classes}
+      data-testid={testId}
       {...rest}
     >
       {children}

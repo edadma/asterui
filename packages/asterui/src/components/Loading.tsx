@@ -23,6 +23,7 @@ export interface LoadingProps extends React.HTMLAttributes<HTMLDivElement> {
   tip?: string
   /** Accessible label for the loading indicator (defaults to tip or "Loading") */
   label?: string
+  'data-testid'?: string
 }
 
 export const Loading: React.FC<LoadingProps> = ({
@@ -33,6 +34,7 @@ export const Loading: React.FC<LoadingProps> = ({
   children,
   tip,
   label,
+  'data-testid': testId,
   ...rest
 }) => {
   const { componentSize } = useConfig()
@@ -59,22 +61,24 @@ export const Loading: React.FC<LoadingProps> = ({
   const spinnerClasses = [dLoading, typeClasses[type], sizeClasses[effectiveSize], className]
     .filter(Boolean)
     .join(' ')
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   if (children) {
     return (
-      <div className="relative" aria-busy={spinning} {...rest}>
+      <div className="relative" aria-busy={spinning} data-testid={testId} {...rest}>
         {spinning && (
           <div
             className="absolute inset-0 flex flex-col items-center justify-center bg-base-100/50 backdrop-blur-sm z-10"
             role="status"
             aria-live="polite"
+            data-testid={getTestId('overlay')}
           >
-            <span className={spinnerClasses} aria-hidden="true"></span>
-            {tip && <p className="mt-2 text-sm">{tip}</p>}
+            <span className={spinnerClasses} aria-hidden="true" data-testid={getTestId('spinner')}></span>
+            {tip && <p className="mt-2 text-sm" data-testid={getTestId('tip')}>{tip}</p>}
             {!tip && <span className="sr-only">{accessibleLabel}</span>}
           </div>
         )}
-        <div className={spinning ? 'pointer-events-none' : ''} aria-hidden={spinning}>
+        <div className={spinning ? 'pointer-events-none' : ''} aria-hidden={spinning} data-testid={getTestId('content')}>
           {children}
         </div>
       </div>
@@ -90,10 +94,11 @@ export const Loading: React.FC<LoadingProps> = ({
       className="flex flex-col items-center gap-2"
       role="status"
       aria-live="polite"
+      data-testid={testId}
       {...rest}
     >
-      <span className={spinnerClasses} aria-hidden="true"></span>
-      {tip && <p className="text-sm">{tip}</p>}
+      <span className={spinnerClasses} aria-hidden="true" data-testid={getTestId('spinner')}></span>
+      {tip && <p className="text-sm" data-testid={getTestId('tip')}>{tip}</p>}
       {!tip && <span className="sr-only">{accessibleLabel}</span>}
     </div>
   )

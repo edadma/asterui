@@ -142,6 +142,7 @@ export default App
 | `footer` | Footer content (status) | `React.ReactNode` | `-` |
 | `color` | Bubble color variant | `'primary' \| 'secondary' \| 'accent' \| 'neutral' \| 'info' \| 'success' \| 'warning' \| 'error'` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ## Accessibility
 

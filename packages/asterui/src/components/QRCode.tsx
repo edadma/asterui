@@ -26,6 +26,7 @@ export interface QRCodeProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   bordered?: boolean
   status?: QRCodeStatus
   onRefresh?: () => void
+  'data-testid'?: string
 }
 
 export const QRCode: React.FC<QRCodeProps> = ({
@@ -41,6 +42,7 @@ export const QRCode: React.FC<QRCodeProps> = ({
   status = 'active',
   onRefresh,
   className = '',
+  'data-testid': testId,
   ...rest
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -102,13 +104,20 @@ export const QRCode: React.FC<QRCodeProps> = ({
   ]
     .filter(Boolean)
     .join(' ')
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   if (status === 'loading') {
     return (
-      <div className={containerClasses} style={{ width: size + (bordered ? 24 : 0), height: size + (bordered ? 24 : 0) }} data-state="loading" {...rest}>
+      <div
+        className={containerClasses}
+        style={{ width: size + (bordered ? 24 : 0), height: size + (bordered ? 24 : 0) }}
+        data-state="loading"
+        data-testid={testId}
+        {...rest}
+      >
         <div className="flex flex-col items-center justify-center gap-2">
           <span className={`${dLoading} ${dLoadingSpinner} ${dLoadingLg}`}></span>
-          <span className="text-sm text-base-content/70">Loading...</span>
+          <span className="text-sm text-base-content/70" data-testid={getTestId('loading-text')}>Loading...</span>
         </div>
       </div>
     )
@@ -116,7 +125,13 @@ export const QRCode: React.FC<QRCodeProps> = ({
 
   if (status === 'expired') {
     return (
-      <div className={containerClasses} style={{ width: size + (bordered ? 24 : 0), height: size + (bordered ? 24 : 0) }} data-state="expired" {...rest}>
+      <div
+        className={containerClasses}
+        style={{ width: size + (bordered ? 24 : 0), height: size + (bordered ? 24 : 0) }}
+        data-state="expired"
+        data-testid={testId}
+        {...rest}
+      >
         <div className="flex flex-col items-center justify-center gap-2">
           <svg className="w-12 h-12 text-base-content/30" fill="currentColor" viewBox="0 0 20 20">
             <path
@@ -125,9 +140,13 @@ export const QRCode: React.FC<QRCodeProps> = ({
               clipRule="evenodd"
             />
           </svg>
-          <span className="text-sm text-base-content/70">QR Code Expired</span>
+          <span className="text-sm text-base-content/70" data-testid={getTestId('expired-text')}>QR Code Expired</span>
           {onRefresh && (
-            <button className={`${dBtn} ${dBtnSm} ${dBtnPrimary}`} onClick={onRefresh}>
+            <button
+              className={`${dBtn} ${dBtnSm} ${dBtnPrimary}`}
+              onClick={onRefresh}
+              data-testid={getTestId('refresh')}
+            >
               Refresh
             </button>
           )}
@@ -138,18 +157,18 @@ export const QRCode: React.FC<QRCodeProps> = ({
 
   if (type === 'canvas') {
     return (
-      <div className="inline-block" data-state="active" {...rest}>
+      <div className="inline-block" data-state="active" data-testid={testId} {...rest}>
         <div className={containerClasses}>
-          <canvas ref={canvasRef} style={{ display: 'block' }} />
+          <canvas ref={canvasRef} style={{ display: 'block' }} data-testid={getTestId('canvas')} />
         </div>
       </div>
     )
   }
 
   return (
-    <div className="inline-block" data-state="active" {...rest}>
+    <div className="inline-block" data-state="active" data-testid={testId} {...rest}>
       <div className={containerClasses}>
-        <div style={{ width: size, height: size }} className="bg-base-content/5">
+        <div style={{ width: size, height: size }} className="bg-base-content/5" data-testid={getTestId('svg')}>
           <span className="text-xs text-base-content/50">SVG mode placeholder</span>
         </div>
       </div>

@@ -216,6 +216,7 @@ export default App
 | `replace` | Replace history instead of push | `boolean` | `false` |
 | `className` | Custom CSS class | `string` | `-` |
 | `children` | Anchor.Link children (alternative to items) | `React.ReactNode` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### AnchorLinkItem
 
@@ -224,6 +225,7 @@ export default App
 | `href` | Target element id (without #) | `string` | `-` |
 | `title` | Link title | `React.ReactNode` | `-` |
 | `children` | Nested link items | `AnchorLinkItem[]` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Anchor.Link
 
@@ -233,3 +235,4 @@ export default App
 | `title` | Link title | `React.ReactNode` | `-` |
 | `children` | Nested Anchor.Link components | `React.ReactNode` | `-` |
 | `className` | Custom CSS class | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

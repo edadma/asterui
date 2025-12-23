@@ -26,6 +26,7 @@ export interface ChatProps extends React.HTMLAttributes<HTMLDivElement> {
   header?: React.ReactNode
   footer?: React.ReactNode
   color?: 'primary' | 'secondary' | 'accent' | 'neutral' | 'info' | 'success' | 'warning' | 'error'
+  'data-testid'?: string
 }
 
 export const Chat: React.FC<ChatProps> = ({
@@ -37,10 +38,12 @@ export const Chat: React.FC<ChatProps> = ({
   footer,
   color,
   className = '',
+  'data-testid': testId,
   ...rest
 }) => {
   const headerId = useId()
   const positionClass = position === 'start' ? dChatStart : dChatEnd
+  const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
   const colorClasses: Record<string, string> = {
     primary: dChatBubblePrimary,
@@ -62,18 +65,19 @@ export const Chat: React.FC<ChatProps> = ({
     <article
       className={`${dChat} ${positionClass} ${className}`}
       aria-labelledby={header ? headerId : undefined}
+      data-testid={testId}
       {...rest}
     >
       {avatar && (
-        <div className={`${dChatImage} ${dAvatar}`}>
+        <div className={`${dChatImage} ${dAvatar}`} data-testid={getTestId('avatar')}>
           <div className="w-10 rounded-full">
             <img alt={avatarAlt} src={avatar} />
           </div>
         </div>
       )}
-      {header && <div id={headerId} className={dChatHeader}>{header}</div>}
-      <div className={bubbleClasses.join(' ')}>{message}</div>
-      {footer && <div className={dChatFooter}>{footer}</div>}
+      {header && <div id={headerId} className={dChatHeader} data-testid={getTestId('header')}>{header}</div>}
+      <div className={bubbleClasses.join(' ')} data-testid={getTestId('bubble')}>{message}</div>
+      {footer && <div className={dChatFooter} data-testid={getTestId('footer')}>{footer}</div>}
     </article>
   )
 }

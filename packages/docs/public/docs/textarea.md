@@ -169,3 +169,4 @@ export default App
 | `placeholder` | Placeholder text | `string` | `-` |
 | `rows` | Number of visible text rows | `number` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

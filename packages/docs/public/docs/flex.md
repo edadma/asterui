@@ -267,3 +267,4 @@ export default App
 | `minHeight` | Minimum height | `'screen' \| 'full' \| 'fit' \| 'min' \| 'max'` | `-` |
 | `minWidth` | Minimum width | `'full' \| 'fit' \| 'min' \| 'max'` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |

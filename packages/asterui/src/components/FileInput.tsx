@@ -24,10 +24,11 @@ export interface FileInputProps extends Omit<React.InputHTMLAttributes<HTMLInput
   ghost?: boolean
   bordered?: boolean
   className?: string
+  'data-testid'?: string
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ size, color, ghost = false, bordered = true, className = '', ...props }, ref) => {
+  ({ size, color, ghost = false, bordered = true, className = '', 'data-testid': testId, ...props }, ref) => {
     const { componentSize } = useConfig()
     const effectiveSize = size ?? componentSize ?? 'md'
 
@@ -63,7 +64,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       .filter(Boolean)
       .join(' ')
 
-    return <input ref={ref} type="file" className={fileInputClasses} {...props} />
+    return <input ref={ref} type="file" className={fileInputClasses} data-testid={testId} {...props} />
   }
 )
 

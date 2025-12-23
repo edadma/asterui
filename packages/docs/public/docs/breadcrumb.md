@@ -121,6 +121,7 @@ export default App
 | `items` | Breadcrumb items data (data-driven pattern) | `BreadcrumbItemType[]` | `-` |
 | `separator` | Custom separator between items | `React.ReactNode` | `"/"` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### BreadcrumbItemType (for items prop)
 
@@ -130,6 +131,7 @@ export default App
 | `href` | Link URL | `string` | `-` |
 | `onClick` | Click handler | `() => void` | `-` |
 | `className` | Custom CSS class | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
 
 ### Breadcrumb.Item (compound pattern)
 
@@ -140,3 +142,4 @@ export default App
 | `onClick` | Click handler (makes item clickable) | `() => void` | `-` |
 | `icon` | Icon to display before the label | `React.ReactNode` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
+| `data-testid` | Test ID for testing | `string` | - |
