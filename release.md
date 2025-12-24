@@ -35,6 +35,12 @@ Ensure there are no TypeScript or build errors.
 
 Edit `packages/asterui/CHANGELOG.md` and add an entry for the new version with a summary of changes.
 
+### 4b. Sync Changelog to Docs
+
+```bash
+cp packages/asterui/CHANGELOG.md packages/docs/src/content/docs/changelog.md
+```
+
 ### 4a. Update Docs (if components changed)
 
 If components were added/removed:
