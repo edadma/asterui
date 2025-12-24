@@ -7,6 +7,18 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.66 (2025-12-24)
+
+### Components
+
+- Added `AspectRatio` component for consistent media and layout sizing
+- Improved `Image` fallback handling to retry fallback sources cleanly
+
+### Documentation
+
+- Renamed the docs sidebar section from Blocks to Templates and regrouped Reference sections
+- Added AspectRatio docs and examples, plus updated Image demos to use local assets
+
 ## v0.12.65 (2025-12-23)
 
 ### Components
