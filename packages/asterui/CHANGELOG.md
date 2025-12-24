@@ -7,6 +7,12 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.67 (2025-12-24)
+
+### Bug Fixes
+
+- Fixed Image rendering when navigating back to pages with cached images
+
 ## v0.12.66 (2025-12-24)
 
 ### Components
