@@ -7,6 +7,18 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.72 (2025-12-25)
+
+### Components
+
+- Added `DateOfBirth.required()` helper for Form validation
+- Added DOB-level blur handling to avoid premature validation while switching fields
+- Added submit-attempt tracking in Form rule helpers
+
+### Documentation
+
+- Updated DateOfBirth Form example to use the required helper
+
 ## v0.12.71 (2025-12-25)
 
 ### Components

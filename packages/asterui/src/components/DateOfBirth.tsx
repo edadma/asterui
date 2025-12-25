@@ -5,6 +5,7 @@ import { Flex } from './Flex'
 import { InputNumber } from './InputNumber'
 import { Select } from './Select'
 import { Space } from './Space'
+import type { FormItemProps, FormRuleInput } from './Form'
 
 export type DateOfBirthOrder = 'mdy' | 'dmy' | 'ymd'
 export type DateOfBirthMonthStyle = 'select' | 'grid'
@@ -38,6 +39,36 @@ export interface DateOfBirthProps extends Omit<React.HTMLAttributes<HTMLDivEleme
 
 const DEFAULT_MONTHS = Array.from({ length: 12 }, (_, index) => String(index + 1))
 
+export interface DateOfBirthRequiredOptions {
+  message?: string
+}
+
+export type DateOfBirthRequiredProps = Pick<FormItemProps, 'rules' | 'validateTrigger'>
+
+export function dateOfBirthRequired(options: DateOfBirthRequiredOptions = {}): DateOfBirthRequiredProps {
+  const message = options.message ?? 'Please select a complete date of birth.'
+
+  const rules: FormRuleInput[] = [({ isSubmitAttempted }) => ({
+    validate: (value: DateOfBirthValue | undefined) => {
+      const dob = value ?? {}
+      const hasAny = !!(dob.month || dob.day || dob.year)
+      if (!hasAny && !isSubmitAttempted()) {
+        return true
+      }
+      return dob.month && dob.day && dob.year ? true : message
+    },
+  })]
+
+  return {
+    validateTrigger: ['onBlur', 'onSubmit'],
+    rules,
+  }
+}
+
+type DateOfBirthComponent = React.FC<DateOfBirthProps> & {
+  required: (options?: DateOfBirthRequiredOptions) => DateOfBirthRequiredProps
+}
+
 function getMonthLabels(locale: string, format: 'long' | 'short') {
   const formatter = new Intl.DateTimeFormat(locale, { month: format })
   return DEFAULT_MONTHS.map((value, index) => ({
@@ -68,7 +99,7 @@ function validateAge(value: DateOfBirthValue, minAge?: number, maxAge?: number) 
   return true
 }
 
-export const DateOfBirth: React.FC<DateOfBirthProps> = ({
+export const DateOfBirth: DateOfBirthComponent = ({
   value,
   defaultValue,
   onChange,
@@ -85,6 +116,8 @@ export const DateOfBirth: React.FC<DateOfBirthProps> = ({
   size,
   className = '',
   'data-testid': testId,
+  onBlur,
+  onFocus,
   ...rest
 }) => {
   const { locale, componentSize } = useConfig()
@@ -242,8 +275,25 @@ export const DateOfBirth: React.FC<DateOfBirthProps> = ({
 
   const showAgeWarning = currentValue.year && currentValue.month && currentValue.day && !validateAge(currentValue, minAge, maxAge)
 
+  const handleBlur = (event: React.FocusEvent<HTMLDivElement>) => {
+    const currentTarget = event.currentTarget
+    const next = event.relatedTarget as Node | null
+    if (next && currentTarget.contains(next)) return
+    requestAnimationFrame(() => {
+      const active = document.activeElement
+      if (active && currentTarget.contains(active)) return
+      onBlur?.(event)
+    })
+  }
+
   return (
-    <div className={className} data-testid={testId} {...rest}>
+    <div
+      className={className}
+      data-testid={testId}
+      onBlur={handleBlur}
+      onFocus={onFocus}
+      {...rest}
+    >
       {monthStyle === 'grid' ? (
         <Space direction="vertical" size="sm">
           {renderMonth()}
@@ -273,5 +323,7 @@ export const DateOfBirth: React.FC<DateOfBirthProps> = ({
     </div>
   )
 }
+
+DateOfBirth.required = dateOfBirthRequired
 
 DateOfBirth.displayName = 'DateOfBirth'

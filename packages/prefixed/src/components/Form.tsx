@@ -78,6 +78,8 @@ export interface FormRule {
 export interface FormRuleMethods {
   getFieldValue: (name: string) => any
   getFieldsValue: () => any
+  isSubmitted: () => boolean
+  isSubmitAttempted: () => boolean
 }
 
 /** A rule can be an object or a function that returns a rule object */
@@ -165,6 +167,7 @@ function FormRoot<TFieldValues extends FieldValues = FieldValues>({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    ;(form as any).__submitAttempted = true
     // Trigger validation
     const isValid = await form.trigger()
 
@@ -199,6 +202,7 @@ function FormRoot<TFieldValues extends FieldValues = FieldValues>({
   const handleReset = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     form.reset(initialValues as any)
+    ;(form as any).__submitAttempted = false
   }
 
   return (
@@ -324,6 +328,8 @@ function FormItem({
   const formMethods: FormRuleMethods = {
     getFieldValue: (name: string) => validatorFormRef.current.getValues(name as any),
     getFieldsValue: () => validatorFormRef.current.getValues(),
+    isSubmitted: () => validatorFormRef.current.formState.isSubmitted,
+    isSubmitAttempted: () => !!(validatorFormRef.current as any).__submitAttempted,
   }
 
   // Resolve function rules to rule objects

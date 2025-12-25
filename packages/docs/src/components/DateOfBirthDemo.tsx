@@ -121,13 +121,7 @@ export function FormDemo() {
           >
             <Form.Item
               name="dob"
-              rules={[{
-                validate: (value) => (
-                  value?.month && value?.day && value?.year
-                    ? true
-                    : 'Please select a complete date of birth.'
-                ),
-              }]}
+              {...DateOfBirth.required()}
             >
               <DateOfBirth />
             </Form.Item>

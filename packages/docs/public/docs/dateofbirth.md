@@ -110,16 +110,7 @@ const App: React.FC = () => {
 
   return (
     <Form form={form} onFinish={handleFinish}>
-      <Form.Item
-        name="dob"
-        rules={[{
-          validate: (value) => (
-            value?.month && value?.day && value?.year
-              ? true
-              : 'Please select a complete date of birth.'
-          ),
-        }]}
-      >
+      <Form.Item name="dob" {...DateOfBirth.required()}>
         <DateOfBirth />
       </Form.Item>
       <Button htmlType="submit">Submit</Button>
