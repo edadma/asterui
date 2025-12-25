@@ -41,9 +41,15 @@ html.component-page .content-panel,
 
 /* Masonry examples layout */
 .examples {
-  columns: 2;
+  columns: 1;
   column-gap: 1.5rem;
   margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .examples {
+    columns: 2;
+  }
 }
 
 /* Component preview styling */
