@@ -502,12 +502,13 @@ function FormItem({
             originalOnChange?.(e)
           }
         } else {
-          childProps.value = value || ''
+          childProps.value = value ?? ''
           childProps.onChange = (eventOrValue: any) => {
             // Handle components that pass value directly (e.g., Range, Rating)
             // vs components that pass event object (e.g., Input, Select)
             if (eventOrValue && eventOrValue.target !== undefined) {
-              onChange(eventOrValue.target.value)
+              const nextValue = eventOrValue.target.value ?? eventOrValue.currentTarget?.value
+              onChange(nextValue ?? eventOrValue)
             } else {
               onChange(eventOrValue)
             }

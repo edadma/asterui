@@ -78,7 +78,8 @@ function App() {
       />
 
       <div className="p-6">
-        <Space size="lg" className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto w-full">
+          <Space direction="vertical" size="lg" align="stretch" className="w-full">
           <div className="text-center">
             <h1 className="text-5xl font-bold">Job Application</h1>
             <p className="text-lg mt-4">
@@ -86,10 +87,10 @@ function App() {
             </p>
           </div>
 
-          <Card className="shadow-xl">
+          <Card className="shadow-xl max-w-3xl mx-auto w-full">
             <Form<JobApplicationForm> form={form} onFinish={handleSubmit}>
               {/* Personal Information */}
-              <Space>
+              <Space direction="vertical">
                 <h2 className="text-2xl font-bold border-b pb-2">Personal Information</h2>
 
                 <Row gutter={16}>
@@ -140,14 +141,14 @@ function App() {
                         },
                       }}
                     >
-                      <Input placeholder="+1 (555) 123-4567" />
+                      <Input mask="+# (###) ###-####" placeholder="+1 (555) 123-4567" />
                     </Form.Item>
                   </Col>
                 </Row>
               </Space>
 
               {/* Work Experience */}
-              <Space className="mt-8">
+              <Space direction="vertical" className="mt-8">
                 <h2 className="text-2xl font-bold border-b pb-2">Work Experience</h2>
 
                 <Form.List name="workExperience">
@@ -184,14 +185,18 @@ function App() {
               </Space>
 
               {/* Education */}
-              <Space className="mt-8">
+              <Space direction="vertical" className="mt-8">
                 <h2 className="text-2xl font-bold border-b pb-2">Education</h2>
 
                 <Form.List name="education">
                   {(fields, { add, remove }) => (
                     <>
                       {fields.map((field: any, index) => (
-                        <Space key={field.id} className="border border-base-300 rounded-lg p-4">
+                        <Space
+                          key={field.id}
+                          direction="vertical"
+                          className="border border-base-300 rounded-lg p-4"
+                        >
                           <div className="flex justify-between items-center">
                             <h3 className="font-semibold">Education {index + 1}</h3>
                             {fields.length > 1 && (
@@ -275,7 +280,7 @@ function App() {
               </Space>
 
               {/* Skills */}
-              <Space className="mt-8">
+              <Space direction="vertical" className="mt-8">
                 <h2 className="text-2xl font-bold border-b pb-2">Skills</h2>
                 <p className="text-sm text-base-content/70">Select all that apply</p>
 
@@ -310,14 +315,18 @@ function App() {
               </Space>
 
               {/* References */}
-              <Space className="mt-8">
+              <Space direction="vertical" className="mt-8">
                 <h2 className="text-2xl font-bold border-b pb-2">References (Optional)</h2>
 
                 <Form.List name="references">
                   {(fields, { add, remove }) => (
                     <>
                       {fields.map((field: any, index) => (
-                        <Space key={field.id} className="border border-base-300 rounded-lg p-4">
+                        <Space
+                          key={field.id}
+                          direction="vertical"
+                          className="border border-base-300 rounded-lg p-4"
+                        >
                           <div className="flex justify-between items-center">
                             <h3 className="font-semibold">Reference {index + 1}</h3>
                             <Button size="sm" onClick={() => remove(index)} color="error">
@@ -412,14 +421,15 @@ function App() {
           </Card>
 
           {submittedData && (
-            <Card className="shadow-xl" title="Application Submitted Successfully">
+            <Card className="shadow-xl max-w-3xl mx-auto w-full" title="Application Submitted Successfully">
               <p className="mb-4">Thank you for your application! Here's what you submitted:</p>
               <pre className="text-sm overflow-auto bg-base-200 p-4 rounded">
                 {JSON.stringify(submittedData, null, 2)}
               </pre>
             </Card>
           )}
-        </Space>
+          </Space>
+        </div>
       </div>
     </>
   )
@@ -432,7 +442,7 @@ function WorkExperienceField({ field, index, remove, canRemove, form }: any) {
   })
 
   return (
-    <Space className="border border-base-300 rounded-lg p-4">
+    <Space direction="vertical" className="border border-base-300 rounded-lg p-4">
       <div className="flex justify-between items-center">
         <h3 className="font-semibold">Work Experience {index + 1}</h3>
         {canRemove && (
