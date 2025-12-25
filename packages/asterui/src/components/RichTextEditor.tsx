@@ -33,7 +33,7 @@ const BoldIcon = ({ size }: { size: number }) => (
 
 const ItalicIcon = ({ size }: { size: number }) => (
   <svg {...iconProps(size)}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M5.248 20.248h4.5m4.5 0h4.5m-7.5-16.5h4.5m4.5 0h4.5M9.748 3.748l-4.5 16.5" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M10 4h8M6 20h8M12 4l-4 16" />
   </svg>
 )
 
