@@ -4,6 +4,8 @@
 
 Supports both compound pattern and data-driven `items` prop.
 
+**Simplified API:** When using a Button or any interactive element as the only child (or with `items` prop), you can omit the `Dropdown.Trigger` wrapper. The element will automatically be treated as the trigger.
+
 ## Examples
 
 ### Basic Dropdown
@@ -157,6 +159,64 @@ const App: React.FC = () => (
 export default App
 ```
 
+### Compact Button with Dropdown
+
+Combine a button with a dropdown using Join for a compact split-button appearance. The Button is automatically treated as the trigger without needing Dropdown.Trigger wrapper. Use `trigger={['hover']}` to open on hover like Ant Design.
+
+```tsx
+import React from 'react'
+import { Dropdown, Button, Join } from 'asterui'
+import type { DropdownMenuItemType } from 'asterui'
+import { UserIcon } from '@aster-ui/icons'
+
+const App: React.FC = () => {
+  const items: DropdownMenuItemType[] = [
+    { key: 'profile', label: 'Profile' },
+    { key: 'settings', label: 'Settings' },
+    { type: 'divider' },
+    { key: 'logout', label: 'Sign out', danger: true },
+  ]
+
+  return (
+    <Join>
+      <Button color="primary">Actions</Button>
+      <Dropdown items={items} position="bottom" align="end">
+        <Button color="primary" icon={<UserIcon />} />
+      </Dropdown>
+    </Join>
+  )
+}
+
+export default App
+```
+
+### Compact Icon Dropdown
+
+Icon-only dropdown button joined with another button using the simplified API (no Dropdown.Trigger wrapper needed). Opens on hover for quick access.
+
+```tsx
+import React from 'react'
+import { Dropdown, Button, Join } from 'asterui'
+import { EllipsisVerticalIcon } from '@aster-ui/icons'
+
+const App: React.FC = () => (
+  <Join>
+    <Button>Save</Button>
+    <Dropdown position="bottom" align="end">
+      <Button icon={<EllipsisVerticalIcon />} />
+      <Dropdown.Menu>
+        <Dropdown.Item>Save and Close</Dropdown.Item>
+        <Dropdown.Item>Save as Draft</Dropdown.Item>
+        <Dropdown.Divider />
+        <Dropdown.Item>Discard</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  </Join>
+)
+
+export default App
+```
+
 ### Position
 
 Dropdown menu can be positioned in different directions.
@@ -252,7 +312,7 @@ export default App
 |----------|-------------|------|---------|
 | `children` | Trigger element and dropdown content (compound pattern) | `React.ReactNode` | - |
 | `items` | Menu items (data-driven pattern) | `DropdownMenuItemType[]` | - |
-| `trigger` | Trigger mode(s) for dropdown | `('click' \| 'hover' \| 'contextMenu')[]` | `['click']` |
+| `trigger` | Trigger mode(s) for dropdown | `('click' \| 'hover' \| 'contextMenu')[]` | `['hover']` |
 | `position` | Dropdown menu position | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` |
 | `align` | Dropdown menu alignment | `'start' \| 'center' \| 'end'` | `'start'` |
 | `open` | Controlled open state | `boolean` | - |

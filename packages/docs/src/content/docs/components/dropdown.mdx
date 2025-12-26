@@ -15,6 +15,8 @@ import {
   AlignDemo,
   ContextMenuDemo,
   SubmenuDemo,
+  CompactButtonDemo,
+  CompactIconDemo,
 } from '../../../components/DropdownDemo'
 import DropdownDemoSource from '../../../components/DropdownDemo.tsx?raw'
 import Example from '../../../components/Example.astro'
@@ -71,6 +73,14 @@ import { Dropdown } from 'asterui'
   <SubmenuDemo client:load slot="demo" />
 </Example>
 
+<Example title="Compact Button with Dropdown" description="Combine a button with a dropdown using Join for a compact split-button appearance. The Button is automatically treated as the trigger without needing Dropdown.Trigger wrapper. Opens on hover like Ant Design." source={DropdownDemoSource} fn="CompactButtonDemo">
+  <CompactButtonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Compact Icon Dropdown" description="Icon-only dropdown button joined with another button using the simplified API (no Dropdown.Trigger wrapper needed). Opens on hover for quick access." source={DropdownDemoSource} fn="CompactIconDemo">
+  <CompactIconDemo client:load slot="demo" />
+</Example>
+
 </div>
 
 ## API
@@ -81,7 +91,7 @@ import { Dropdown } from 'asterui'
 |----------|-------------|------|---------|
 | `children` | Trigger element and dropdown content (compound pattern) | `React.ReactNode` | - |
 | `items` | Menu items (data-driven pattern) | `DropdownMenuItemType[]` | - |
-| `trigger` | Trigger mode(s) for dropdown | `('click' \| 'hover' \| 'contextMenu')[]` | `['click']` |
+| `trigger` | Trigger mode(s) for dropdown | `('click' \| 'hover' \| 'contextMenu')[]` | `['hover']` |
 | `position` | Dropdown menu position | `'top' \| 'bottom' \| 'left' \| 'right'` | `'bottom'` |
 | `align` | Dropdown menu alignment | `'start' \| 'center' \| 'end'` | `'start'` |
 | `open` | Controlled open state | `boolean` | - |

@@ -1,5 +1,5 @@
-import { Dropdown, Button, Space, Typography } from '@aster-ui/prefixed'
-import { PencilIcon, DocumentDuplicateIcon, TrashIcon, FolderIcon, Cog6ToothIcon } from '@aster-ui/icons-prefixed'
+import { Dropdown, Button, Space, Typography, Join } from '@aster-ui/prefixed'
+import { PencilIcon, DocumentDuplicateIcon, TrashIcon, FolderIcon, Cog6ToothIcon, UserIcon, EllipsisVerticalIcon } from '@aster-ui/icons-prefixed'
 import { Demo } from './Demo'
 
 // @example-imports: { Dropdown, Button } from 'asterui'
@@ -288,6 +288,55 @@ export function SubmenuDemo() {
           <Dropdown.Item danger>Delete</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
+      {/* @example-return-end */}
+    </Demo>
+  )
+}
+
+// @example-imports: { Dropdown, Button, Join } from 'asterui'
+// @example-imports: { UserIcon } from '@aster-ui/icons'
+export function CompactButtonDemo() {
+  // @example-include
+  const items = [
+    { key: 'profile', label: 'Profile' },
+    { key: 'settings', label: 'Settings' },
+    { type: 'divider' as const },
+    { key: 'logout', label: 'Sign out', danger: true },
+  ]
+  // @example-include-end
+
+  return (
+    <Demo>
+      {/* @example-return */}
+      <Join>
+        <Button color="primary">Actions</Button>
+        <Dropdown items={items} position="bottom" align="end">
+          <Button color="primary" icon={<UserIcon />} />
+        </Dropdown>
+      </Join>
+      {/* @example-return-end */}
+    </Demo>
+  )
+}
+
+// @example-imports: { Dropdown, Button, Join } from 'asterui'
+// @example-imports: { EllipsisVerticalIcon } from '@aster-ui/icons'
+export function CompactIconDemo() {
+  return (
+    <Demo>
+      {/* @example-return */}
+      <Join>
+        <Button>Save</Button>
+        <Dropdown position="bottom" align="end">
+          <Button icon={<EllipsisVerticalIcon />} />
+          <Dropdown.Menu>
+            <Dropdown.Item>Save and Close</Dropdown.Item>
+            <Dropdown.Item>Save as Draft</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item>Discard</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Join>
       {/* @example-return-end */}
     </Demo>
   )

@@ -15,6 +15,8 @@ import {
   AlignDemo,
   ContextMenuDemo,
   SubmenuDemo,
+  CompactButtonDemo,
+  CompactIconDemo,
 } from '../../../../components/DropdownDemo'
 import DropdownDemoSource from '../../../../components/DropdownDemo.tsx?raw'
 import Example from '../../../../components/Example.astro'
@@ -69,6 +71,14 @@ import { Dropdown } from 'asterui'
 
 <Example title="Com Submenu" description="Submenus aninhados para opções hierárquicas." source={DropdownDemoSource} fn="SubmenuDemo">
   <SubmenuDemo client:load slot="demo" />
+</Example>
+
+<Example title="Botão Compacto com Dropdown" description="Combine um botão com um menu dropdown usando Join para uma aparência compacta de botão dividido. O botão é automaticamente tratado como acionador sem precisar do wrapper Dropdown.Trigger. Abre ao passar o mouse como Ant Design." source={DropdownDemoSource} fn="CompactButtonDemo">
+  <CompactButtonDemo client:load slot="demo" />
+</Example>
+
+<Example title="Dropdown de Ícone Compacto" description="Botão dropdown apenas com ícone unido a outro botão usando a API simplificada (não precisa de wrapper Dropdown.Trigger). Abre ao passar o mouse para acesso rápido." source={DropdownDemoSource} fn="CompactIconDemo">
+  <CompactIconDemo client:load slot="demo" />
 </Example>
 
 </div>

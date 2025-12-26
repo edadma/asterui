@@ -140,7 +140,7 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownProps>(function Dropdown
   {
     children,
     items,
-    trigger = ['click'],
+    trigger = ['hover'],
     position = 'bottom',
     align = 'start',
     open: controlledOpen,
@@ -284,17 +284,6 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownProps>(function Dropdown
 
   const showArrow = typeof arrow === 'boolean' ? arrow : !!arrow
 
-  const dropdownClasses = [
-    dDropdown,
-    positionClasses[position],
-    alignClasses[align],
-    triggers.includes('hover') && dDropdownHover,
-    isOpen && dDropdownOpen,
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ')
-
   // Render items from data-driven prop
   const renderItems = () => {
     if (!items) return null
@@ -346,16 +335,69 @@ const DropdownRoot = forwardRef<HTMLDivElement, DropdownProps>(function Dropdown
     )
   ) : null
 
-  const content = items ? (
-    <>
-      {React.Children.toArray(children).find(
-        (child) => React.isValidElement(child) && child.type === DropdownTrigger
-      )}
-      {popupRender ? popupRender(menuContent) : menuContent}
-    </>
-  ) : (
-    children
+  // Auto-detect trigger pattern
+  const childArray = React.Children.toArray(children)
+  const hasTrigger = childArray.some(
+    (child) => React.isValidElement(child) && child.type === DropdownTrigger
   )
+  const hasMenu = childArray.some(
+    (child) => React.isValidElement(child) && child.type === DropdownMenu
+  )
+
+  let content: React.ReactNode
+  let isAutoTrigger = false
+
+  if (items) {
+    // Data-driven pattern with items prop
+    const triggerChild = childArray.find(
+      (child) => React.isValidElement(child) && child.type === DropdownTrigger
+    )
+
+    // If no explicit Trigger, treat first child as trigger
+    if (!triggerChild && childArray[0] && React.isValidElement(childArray[0])) {
+      isAutoTrigger = true
+      content = (
+        <>
+          <DropdownTrigger className={className}>{childArray[0]}</DropdownTrigger>
+          {popupRender ? popupRender(menuContent) : menuContent}
+        </>
+      )
+    } else {
+      content = (
+        <>
+          {triggerChild}
+          {popupRender ? popupRender(menuContent) : menuContent}
+        </>
+      )
+    }
+  } else if (!hasTrigger && !hasMenu && childArray.length >= 2) {
+    // Auto-pattern: first child is trigger, second child is menu
+    const [triggerChild, menuChild, ...rest] = childArray
+    isAutoTrigger = true
+    content = (
+      <>
+        {triggerChild && React.isValidElement(triggerChild) && (
+          <DropdownTrigger className={className}>{triggerChild}</DropdownTrigger>
+        )}
+        {menuChild}
+        {rest}
+      </>
+    )
+  } else {
+    // Standard compound pattern or other cases
+    content = children
+  }
+
+  const dropdownClasses = [
+    dDropdown,
+    positionClasses[position],
+    alignClasses[align],
+    triggers.includes('hover') && dDropdownHover,
+    isOpen && dDropdownOpen,
+    !isAutoTrigger && className,
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   return (
     <DropdownContext.Provider
@@ -608,7 +650,7 @@ function DropdownItem({
         role="menuitem"
         tabIndex={disabled ? -1 : 0}
         aria-disabled={disabled || undefined}
-        className={danger ? 'text-error' : ''}
+        className={`whitespace-nowrap ${danger ? 'text-error' : ''}`}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
@@ -724,6 +766,7 @@ function DropdownSubMenu({
           aria-haspopup="menu"
           aria-expanded={isSubOpen}
           aria-controls={subMenuId}
+          className="whitespace-nowrap"
           onKeyDown={handleSummaryKeyDown}
         >
           {icon && <span className="mr-2 inline-flex items-center">{icon}</span>}
