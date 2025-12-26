@@ -161,7 +161,7 @@ export default App
 
 ### Compact Button with Dropdown
 
-Combine a button with a dropdown using Join for a compact split-button appearance. The Button is automatically treated as the trigger without needing Dropdown.Trigger wrapper. Use `trigger={['hover']}` to open on hover like Ant Design.
+Combine a button with a dropdown using Join for a compact split-button appearance. The Button is automatically treated as the trigger without needing Dropdown.Trigger wrapper. Opens on hover automatically.
 
 ```tsx
 import React from 'react'

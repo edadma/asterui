@@ -7,6 +7,14 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.73 (2025-12-25)
+
+### Documentation
+
+- Removed external UI library mentions from user-facing documentation
+- Updated Dropdown documentation across all languages (English, French, Spanish, Portuguese, Chinese)
+- Updated changelog to remove library references
+
 ## v0.12.72 (2025-12-25)
 
 ### Components
@@ -539,7 +547,7 @@ Complete rewrite of the Carousel component with full functionality:
 
 ## v0.12.28 (2025-12-12)
 
-Rebuild Collapse component with Ant Design API
+Rebuild Collapse component with improved API
 
 - Add items prop for array-based panel configuration
 - Add accordion, activeKey, defaultActiveKey props  
@@ -555,7 +563,7 @@ Rebuild Collapse component with Ant Design API
 ## Fixes
 
 ### Descriptions
-- Add `items` prop for array-based configuration (Ant Design v5.8.0+ pattern)
+- Add `items` prop for array-based configuration
 - Fix transparent background on value fields (add `bg-base-100`)
 - Add `extra` prop for top-right action area
 - Add ref forwarding
@@ -1125,7 +1133,7 @@ Form.Item now supports array-based validation rules for cleaner, more readable v
 
 ## New Features
 
-- **Button href support**: Button component now accepts `href` and `target` props. When `href` is provided, the button renders as an anchor element for proper link semantics (following the Ant Design pattern).
+- **Button href support**: Button component now accepts `href` and `target` props. When `href` is provided, the button renders as an anchor element for proper link semantics.
 
 ## Other Changes
 
@@ -1309,7 +1317,7 @@ Users now need to install `react-hook-form` as a peer dependency. With npm 7+, t
 ### InputNumber Improvements
 - **Block Prop**: Added `block` prop (defaults to `true`) for explicit width control
   - `block={true}`: Full-width (w-full) - ideal for form layouts
-  - `block={false}`: Inline width (inline-block) - similar to Ant Design default
+  - `block={false}`: Inline width (inline-block) - suitable for inline use
 - **Form Integration**: InputNumber now properly fills container width in grid layouts
 
 ## Changes
@@ -1435,7 +1443,7 @@ View the live demo at: https://edadma.github.io/petalui
 - New API: `<Checkbox>Label text</Checkbox>`
 - Added `Checkbox.Group` for managing multiple checkboxes
 - Options prop to auto-generate checkboxes from array
-- Cleaner, more intuitive API matching Ant Design pattern
+- Cleaner, more intuitive API
 
 ### Example
 
@@ -1504,7 +1512,7 @@ View live examples: https://edadma.github.io/petalui
 - No layout shift when validation errors appear/disappear
 
 ### Component Improvements
-- **Button**: Added `htmlType` prop for submit/button/reset (follows Ant Design pattern)
+- **Button**: Added `htmlType` prop for submit/button/reset
 - **Input**: Added `w-full` by default for proper form layout
 - **Menu**: Refactored to composite pattern (Menu.Item, Menu.Title)
 - **Dropdown**: Refactored to composite pattern (Dropdown.Trigger, Dropdown.Menu, Dropdown.Item)
