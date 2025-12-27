@@ -7,6 +7,21 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.76 (2025-12-27)
+
+### Components
+
+- **Dropdown**: Replaced `position` and `align` props with single `placement` prop for Ant Design alignment
+- **Dropdown**: Changed `items` prop to `menu` prop with structure `{ items: DropdownMenuItemType[], onClick?: (info) => void }`
+- **Dropdown**: Added `autoAdjustOverflow` prop (default: `true`) to automatically adjust dropdown placement when off screen
+- **Dropdown**: Updated default trigger from `['click']` to `['hover']`
+
+### Documentation
+
+- Updated Dropdown documentation across all 5 languages (English, French, Chinese, Spanish, Portuguese)
+- Updated all Dropdown demo examples to use new API (`menu` and `placement` props)
+- Updated AI-readable Dropdown documentation
+
 ## v0.12.75 (2025-12-27)
 
 ### Components
