@@ -134,23 +134,37 @@ import { Button } from 'asterui'
 
 | Propriété | Description | Type | Défaut |
 |----------|-------------|------|---------|
+| `type` | Sucre syntaxique pour définir variant et color ensemble. Remplacé par les props variant & color explicites | `'primary' \| 'default' \| 'dashed' \| 'link' \| 'text'` | - |
 | `color` | Couleur du bouton | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | - |
-| `variant` | Variante de style du bouton | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link'` | - |
+| `variant` | Variante de style du bouton | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link' \| 'text'` | - |
 | `size` | Taille du bouton | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | `active` | État visuel actif/appuyé | `boolean` | `false` |
 | `loading` | Afficher le spinner de chargement et désactiver le bouton | `boolean` | `false` |
 | `shape` | Forme du bouton | `'square' \| 'circle' \| 'wide' \| 'block' \| 'round'` | - |
+| `block` | Rendre le bouton pleine largeur | `boolean` | `false` |
+| `ghost` | Rendre l'arrière-plan transparent et inverser le texte et les couleurs de bordure | `boolean` | `false` |
 | `icon` | Élément icône à afficher | `ReactNode` | - |
-| `iconPosition` | Position de l'icône | `'start' \| 'end'` | `'start'` |
+| `iconPlacement` | Position de l'icône | `'start' \| 'end'` | `'start'` |
 | `danger` | Applique le style erreur/danger (raccourci pour color="error") | `boolean` | `false` |
 | `pressed` | État appuyé du bouton bascule (définit aria-pressed) | `boolean` | - |
 | `noAnimation` | Désactiver l'animation au clic | `boolean` | `false` |
 | `disabled` | État désactivé | `boolean` | `false` |
+| `aria-label` | Étiquette accessible pour les boutons avec icône uniquement | `string` | - |
 | `href` | URL vers laquelle naviguer (s'affiche comme élément ancre) | `string` | - |
 | `target` | Où ouvrir l'URL liée (lorsque href est défini) | `string` | - |
 | `htmlType` | Type de bouton HTML (uniquement lorsque href n'est pas défini) | `'button' \| 'submit' \| 'reset'` | `'button'` |
 | `className` | Classes CSS supplémentaires | `string` | - |
 | `children` | Contenu du bouton | `ReactNode` | - |
+| `data-testid` | ID de test pour les tests | `string` | - |
+
+### Attributs de données
+
+Le composant Button expose les attributs de données suivants pour les tests et l'inspection d'état :
+
+- `data-state-loading`: Présent lorsque le bouton est en état de chargement
+- `data-state-disabled`: Présent lorsque le bouton est désactivé
+- `data-state-active`: Présent lorsque le bouton est en état actif
+- `data-state-pressed`: Présent lorsque le bouton est en état appuyé (boutons bascule)
 
 ## Accessibilité
 
@@ -158,5 +172,6 @@ import { Button } from 'asterui'
 - S'affiche comme élément `<a>` lorsque `href` est fourni pour une sémantique de lien appropriée
 - L'état de chargement définit `aria-busy="true"` et désactive le bouton
 - Les boutons bascule utilisent `aria-pressed` pour la prise en charge des lecteurs d'écran
+- Les boutons avec icône uniquement doivent utiliser `aria-label` pour la prise en charge des lecteurs d'écran
 - L'état désactivé est correctement communiqué aux technologies d'assistance
 - Les états de focus sont visibles pour la navigation au clavier

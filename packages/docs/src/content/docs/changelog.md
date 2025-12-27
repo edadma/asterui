@@ -7,6 +7,23 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.75 (2025-12-27)
+
+### Components
+
+- **Button**: Added `type` prop for syntactic sugar API alignment (`'primary' | 'default' | 'dashed' | 'link' | 'text'`)
+- **Button**: Added `block` boolean prop as alternative to `shape="block"`
+- **Button**: Added `ghost` boolean prop as alternative to `variant="ghost"`
+- **Button**: Added `variant="text"` for text-only buttons
+- **Button**: Added `aria-label` prop for icon-only button accessibility
+- **Button**: Added data-state attributes for testing (`data-state-loading`, `data-state-disabled`, `data-state-active`, `data-state-pressed`)
+
+### Documentation
+
+- Updated Button documentation across all 5 languages (English, French, Chinese, Spanish, Portuguese)
+- Fixed XMarkIcon size mismatch in AI-readable documentation
+- Added data attributes section to Button API documentation
+
 ## v0.12.74 (2025-12-26)
 
 ### Components

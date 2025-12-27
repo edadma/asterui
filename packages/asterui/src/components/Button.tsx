@@ -31,10 +31,12 @@ const dLoading = 'loading'
 const dLoadingSpinner = 'loading-spinner'
 
 type BaseButtonProps = {
+  /** Syntactic sugar for setting variant and color together. Will be overridden by explicit variant & color props. */
+  type?: 'primary' | 'default' | 'dashed' | 'link' | 'text'
   /** Button color */
   color?: 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'error' | 'neutral'
   /** Button style variant */
-  variant?: 'solid' | 'outline' | 'dash' | 'soft' | 'ghost' | 'link'
+  variant?: 'solid' | 'outline' | 'dash' | 'soft' | 'ghost' | 'link' | 'text'
   /** Button size */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   /** Active/pressed visual state */
@@ -43,6 +45,10 @@ type BaseButtonProps = {
   loading?: boolean
   /** Button shape */
   shape?: 'square' | 'circle' | 'wide' | 'block' | 'round'
+  /** Make the button full width */
+  block?: boolean
+  /** Make background transparent and invert text and border colors */
+  ghost?: boolean
   /** Disable click animation */
   noAnimation?: boolean
   /** Icon element to display */
@@ -55,6 +61,8 @@ type BaseButtonProps = {
   danger?: boolean
   /** Toggle button pressed state (sets aria-pressed) */
   pressed?: boolean
+  /** Accessible label for icon-only buttons */
+  'aria-label'?: string
   /** Test ID for testing */
   'data-testid'?: string
 }
@@ -79,12 +87,15 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
   (
     {
       children,
+      type,
       color,
       variant,
       size,
       active = false,
       loading = false,
       shape,
+      block = false,
+      ghost = false,
       noAnimation = false,
       icon,
       iconPlacement,
@@ -92,6 +103,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       danger = false,
       pressed,
       className = '',
+      'aria-label': ariaLabel,
       'data-testid': testId,
       ...props
     },
@@ -99,10 +111,38 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
   ) => {
     const { componentSize } = useConfig()
     const effectiveSize = size ?? componentSize ?? 'md'
+
+    // Apply type prop (syntactic sugar) - explicit variant/color takes precedence
+    let derivedVariant = variant
+    let derivedColor = color
+    if (type && !variant && !color) {
+      switch (type) {
+        case 'primary':
+          derivedVariant = 'solid'
+          derivedColor = 'primary'
+          break
+        case 'default':
+          derivedVariant = 'outline'
+          break
+        case 'dashed':
+          derivedVariant = 'dash'
+          break
+        case 'link':
+          derivedVariant = 'link'
+          break
+        case 'text':
+          derivedVariant = 'text'
+          break
+      }
+    }
+
     // danger prop is a shorthand for color="error"
-    const effectiveColor = danger ? 'error' : color
+    const effectiveColor = danger ? 'error' : derivedColor
+    const effectiveVariant = ghost && !derivedVariant ? 'ghost' : derivedVariant
     // iconPlacement takes precedence over deprecated iconPosition
     const effectiveIconPlacement = iconPlacement ?? iconPosition ?? 'start'
+    // block prop is a shorthand for shape="block"
+    const effectiveShape = block && !shape ? 'block' : shape
 
     const colorClasses = {
       primary: dBtnPrimary,
@@ -122,6 +162,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       soft: dBtnSoft,
       ghost: dBtnGhost,
       link: dBtnLink,
+      text: dBtnGhost, // text variant uses ghost styling
     }
 
     const sizeClasses = {
@@ -143,10 +184,10 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
     const classes = [
       dBtn,
       effectiveColor && colorClasses[effectiveColor],
-      variant && variantClasses[variant],
+      effectiveVariant && variantClasses[effectiveVariant],
       sizeClasses[effectiveSize],
       active && dBtnActive,
-      shape && shapeClasses[shape],
+      effectiveShape && shapeClasses[effectiveShape],
       noAnimation && 'no-animation',
       className,
     ]
@@ -215,10 +256,15 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
           aria-disabled={isDisabled || undefined}
           aria-busy={loading || undefined}
           aria-pressed={pressed}
+          aria-label={ariaLabel}
           tabIndex={isDisabled ? -1 : 0}
           onKeyDown={handleKeyDown}
           onClick={handleClick}
           data-testid={testId}
+          data-state-loading={loading || undefined}
+          data-state-disabled={isDisabled || undefined}
+          data-state-active={active || undefined}
+          data-state-pressed={pressed}
           {...anchorProps}
         >
           {content}
@@ -228,6 +274,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
 
     const { htmlType, ...buttonProps } = props as Omit<ButtonAsButton, keyof BaseButtonProps>
     const buttonType: 'button' | 'submit' | 'reset' = htmlType ?? 'button'
+    const isDisabled = loading || buttonProps.disabled
     return (
       <button
         ref={ref as React.Ref<HTMLButtonElement>}
@@ -235,8 +282,13 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         className={classes}
         aria-busy={loading || undefined}
         aria-pressed={pressed}
-        disabled={loading || buttonProps.disabled}
+        aria-label={ariaLabel}
+        disabled={isDisabled}
         data-testid={testId}
+        data-state-loading={loading || undefined}
+        data-state-disabled={isDisabled || undefined}
+        data-state-active={active || undefined}
+        data-state-pressed={pressed}
         {...buttonProps}
       >
         {content}

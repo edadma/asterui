@@ -180,10 +180,10 @@ import { XMarkIcon } from '@aster-ui/icons'
 const App: React.FC = () => (
   <Space direction="horizontal" wrap size="sm" align="center">
     <Button color="primary" shape="square">
-      <XMarkIcon size="lg" />
+      <XMarkIcon />
     </Button>
     <Button color="primary" shape="circle">
-      <XMarkIcon size="lg" />
+      <XMarkIcon />
     </Button>
   </Space>
 )
@@ -463,20 +463,34 @@ export default App
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
+| `type` | Syntactic sugar for setting variant and color together. Overridden by explicit variant & color props | `'primary' \| 'default' \| 'dashed' \| 'link' \| 'text'` | `-` |
 | `color` | Button color | `'primary' \| 'secondary' \| 'accent' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | `-` |
-| `variant` | Button style variant | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link'` | `-` |
+| `variant` | Button style variant | `'solid' \| 'outline' \| 'dash' \| 'soft' \| 'ghost' \| 'link' \| 'text'` | `-` |
 | `size` | Button size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
 | `active` | Active/pressed visual state | `boolean` | `false` |
 | `loading` | Show loading spinner and disable button | `boolean` | `false` |
 | `shape` | Button shape | `'square' \| 'circle' \| 'wide' \| 'block' \| 'round'` | `-` |
+| `block` | Make the button full width | `boolean` | `false` |
+| `ghost` | Make background transparent and invert text and border colors | `boolean` | `false` |
 | `icon` | Icon element to display | `ReactNode` | `-` |
-| `iconPosition` | Position of the icon | `'start' \| 'end'` | `'start'` |
+| `iconPlacement` | Position of the icon | `'start' \| 'end'` | `'start'` |
 | `danger` | Applies error/danger styling (shorthand for color="error") | `boolean` | `false` |
 | `pressed` | Toggle button pressed state (sets aria-pressed) | `boolean` | `-` |
 | `noAnimation` | Disable click animation | `boolean` | `false` |
 | `disabled` | Disabled state | `boolean` | `false` |
+| `aria-label` | Accessible label for icon-only buttons | `string` | `-` |
 | `className` | Additional CSS classes | `string` | `-` |
 | `children` | Button content | `ReactNode` | `-` |
 | `href` | URL to navigate to (renders as anchor element) | `string` | `-` |
 | `target` | Where to open the linked URL (when href is set) | `string` | `-` |
 | `htmlType` | HTML button type (only when href is not set) | `'button' \| 'submit' \| 'reset'` | `'button'` |
+| `data-testid` | Test ID for testing | `string` | `-` |
+
+### Data Attributes
+
+The Button component exposes the following data attributes for testing and state inspection:
+
+- `data-state-loading`: Present when button is in loading state
+- `data-state-disabled`: Present when button is disabled
+- `data-state-active`: Present when button is in active state
+- `data-state-pressed`: Present when button is in pressed state (toggle buttons)
