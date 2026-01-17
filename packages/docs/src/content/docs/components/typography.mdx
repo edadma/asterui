@@ -96,3 +96,19 @@ const { Title, Paragraph, Text, Link } = Typography
 - Proper heading hierarchy maintained
 - Links have accessible labels
 - Copy and edit actions are keyboard accessible
+
+## Testing
+
+The Typography component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs when using `copyable`:
+
+```tsx
+<Typography.Paragraph data-testid="api-key" copyable>
+  sk-1234567890
+</Typography.Paragraph>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Text container | `api-key` |
+| Text content | `api-key-text` |
+| Copy button | `api-key-copy` |

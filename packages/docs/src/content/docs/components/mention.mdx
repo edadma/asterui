@@ -66,3 +66,19 @@ import { Mention } from 'asterui'
 - ARIA attributes for screen readers to announce suggestions
 - Focus management when dropdown opens and closes
 - Clear visual indicators for selected and focused items
+
+## Testing
+
+The Mention component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Mention data-testid="comment" options={users} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `comment` |
+| Textarea | `comment-textarea` |
+| Dropdown | `comment-dropdown` |
+| Loading state | `comment-loading` |
+| Empty state | `comment-empty` |

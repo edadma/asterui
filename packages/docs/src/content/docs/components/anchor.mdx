@@ -75,3 +75,15 @@ import { Anchor } from 'asterui'
 - Links are keyboard accessible
 - Active state is visually indicated
 - Smooth scrolling respects user motion preferences
+
+## Testing
+
+The Anchor component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<Anchor data-testid="page-nav" items={items} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `page-nav` |

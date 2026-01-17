@@ -93,3 +93,17 @@ import { Select } from 'asterui'
 - Keyboard navigation with arrow keys and Enter
 - Works with standard form labels
 - Disabled state is properly communicated
+
+## Testing
+
+The Select component supports the `data-testid` prop for e2e testing. When using addons, child elements receive suffixed test IDs:
+
+```tsx
+<Select data-testid="country" options={countries} addonBefore="Region" />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Select element | `country-select` |
+| Addon before | `country-addon-before` |
+| Addon after | `country-addon-after` |

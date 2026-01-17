@@ -82,3 +82,19 @@ import { Upload } from 'asterui'
 - Drag and drop zone has keyboard support
 - Upload progress is announced to screen readers
 - Remove buttons are keyboard accessible
+
+## Testing
+
+The Upload component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Upload data-testid="avatar-upload">
+  <Button>Upload</Button>
+</Upload>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `avatar-upload` |
+| File input | `avatar-upload-input` |
+| Dropzone | `avatar-upload-dropzone` |

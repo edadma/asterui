@@ -80,3 +80,20 @@ import { Result } from 'asterui'
 - Semantic heading structure for title and subtitle
 - Action buttons are keyboard accessible
 - Color is not the only indicator of status
+
+## Testing
+
+The Result component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Result data-testid="payment-result" status="success" title="Payment Complete" />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `payment-result` |
+| Icon | `payment-result-icon` |
+| Title | `payment-result-title` |
+| Subtitle | `payment-result-subtitle` |
+| Content | `payment-result-content` |
+| Extra | `payment-result-extra` |

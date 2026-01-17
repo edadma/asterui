@@ -208,6 +208,18 @@ export default defineConfig({
                   },
                 },
                 {
+                  label: 'Testing',
+                  slug: 'components/testing',
+                  translations: {
+                    es: 'Pruebas',
+                    pt: 'Testes',
+                    'pt-BR': 'Testes',
+                    zh: '测试',
+                    'zh-CN': '测试',
+                    fr: 'Tests',
+                  },
+                },
+                {
                   label: 'Actions',
                   translations: {
                     es: 'Acciones',

@@ -113,3 +113,17 @@ import { Tabs } from 'asterui'
 - Use `activeKey` for controlled tabs, `defaultActiveKey` for uncontrolled
 - Use `items` prop for data-driven tabs, `Tabs.Panel` for compound pattern
 - Use `position="bottom"` to place tabs below content
+
+## Testing
+
+The Tabs component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Tabs data-testid="settings-tabs" items={items} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `settings-tabs` |
+| Tab list | `settings-tabs-tablist` |
+| Tab panel | `settings-tabs-tabpanel` |

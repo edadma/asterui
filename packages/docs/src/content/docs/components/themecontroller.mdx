@@ -105,3 +105,20 @@ import { ThemeController } from 'asterui'
 - Dropdown uses radio inputs with aria-label for each theme option
 - Theme changes are immediately visible across all components
 - All variants are keyboard accessible
+
+## Testing
+
+The ThemeController component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<ThemeController data-testid="theme-switch" variant="dropdown" />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `theme-switch` |
+| Input (toggle/swap) | `theme-switch-input` |
+| Trigger (dropdown) | `theme-switch-trigger` |
+| Menu (dropdown) | `theme-switch-menu` |
+| Light icon | `theme-switch-icon-light` |
+| Dark icon | `theme-switch-icon-dark` |

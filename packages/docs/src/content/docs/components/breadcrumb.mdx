@@ -86,3 +86,18 @@ import { Breadcrumb } from 'asterui'
 - Omit href/onClick on the last item to show current location
 - Use max-width classes to enable horizontal scrolling
 - Add icons using the icon prop on Breadcrumb.Item
+
+## Testing
+
+The Breadcrumb component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<Breadcrumb data-testid="nav-breadcrumb">
+  <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+  <Breadcrumb.Item>Current</Breadcrumb.Item>
+</Breadcrumb>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `nav-breadcrumb` |

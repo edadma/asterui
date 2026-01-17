@@ -90,3 +90,17 @@ import { Dock } from 'asterui'
 - Supports keyboard navigation
 - Active state is visually indicated
 - For iOS safe area support, add `viewport-fit=cover` to your viewport meta tag
+
+## Testing
+
+The Dock component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<Dock data-testid="main-dock">
+  <Dock.Item icon={<HomeIcon />}>Home</Dock.Item>
+</Dock>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `main-dock` |

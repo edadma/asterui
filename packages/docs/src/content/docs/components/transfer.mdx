@@ -78,3 +78,19 @@ import { Transfer } from 'asterui'
 - Keyboard navigation between items
 - Transfer buttons are keyboard accessible
 - Disabled items are properly announced
+
+## Testing
+
+The Transfer component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Transfer data-testid="permissions" dataSource={items} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `permissions` |
+| Source panel | `permissions-source` |
+| Target panel | `permissions-target` |
+| Move left button | `permissions-move-left` |
+| Move right button | `permissions-move-right` |

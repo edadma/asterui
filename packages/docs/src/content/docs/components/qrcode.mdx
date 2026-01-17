@@ -101,3 +101,20 @@ import { QRCode } from 'asterui/qrcode'
 - QR codes include `role="img"` with descriptive label
 - Loading and expired states are announced to screen readers
 - Refresh button is keyboard accessible
+
+## Testing
+
+The QRCode component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<QRCode data-testid="share-qr" value="https://example.com" />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `share-qr` |
+| Canvas | `share-qr-canvas` |
+| SVG | `share-qr-svg` |
+| Refresh button | `share-qr-refresh` |
+| Loading text | `share-qr-loading-text` |
+| Expired text | `share-qr-expired-text` |

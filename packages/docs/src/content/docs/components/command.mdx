@@ -124,3 +124,21 @@ For more control, use compound components:
 - `Enter` - Select highlighted item
 - `Escape` - Close palette (or go back on nested page)
 - `Backspace` - Go back to previous page (when search is empty)
+
+## Testing
+
+The Command component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Command data-testid="cmd" open={isOpen} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Dialog | `cmd-dialog` |
+| Input | `cmd-input` |
+| List | `cmd-list` |
+| Empty state | `cmd-empty` |
+| Footer | `cmd-footer` |
+| Back button | `cmd-back` |
+| Ungrouped items | `cmd-group-ungrouped` |

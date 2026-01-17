@@ -90,3 +90,23 @@ import { Drawer } from 'asterui'
 | `push` | Nested drawer push behavior | `boolean \| { distance: number }` | `{ distance: 180 }` |
 | `zIndex` | z-index of drawer | `number` | `1000` |
 | `className` | CSS class for drawer panel | `string` | - |
+
+## Testing
+
+The Drawer component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Drawer data-testid="settings" title="Settings" open={isOpen}>
+  Content here
+</Drawer>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Panel | `settings-panel` |
+| Header | `settings-header` |
+| Body | `settings-body` |
+| Footer | `settings-footer` |
+| Close button | `settings-close` |
+| Mask | `settings-mask` |
+| Skeleton | `settings-skeleton` |

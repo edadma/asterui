@@ -147,3 +147,19 @@ import { Autocomplete } from 'asterui'
 - Use `status="error"` to set `aria-invalid` automatically
 - Disabled options use `aria-disabled`
 - Clear button has `aria-label` for screen readers
+
+## Testing
+
+The Autocomplete component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Autocomplete data-testid="search" options={options} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `search` |
+| Input | `search-input` |
+| Listbox | `search-listbox` |
+| Clear button | `search-clear` |
+| Empty state | `search-empty` |

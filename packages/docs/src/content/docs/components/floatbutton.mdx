@@ -114,3 +114,23 @@ import { FloatButton } from 'asterui'
 - Focus states are clearly visible for keyboard navigation
 - Group expansion is keyboard accessible
 - BackTop button appears/disappears based on scroll position
+
+## Testing
+
+The FloatButton component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<FloatButton.Group data-testid="actions" trigger="click">
+  <FloatButton icon={<PlusIcon />} />
+</FloatButton.Group>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `actions` |
+| Trigger button | `actions-trigger` |
+| Main action | `actions-main-action` |
+| Close icon | `actions-close` |
+| Badge | `actions-badge` |
+| Tooltip | `actions-tooltip` |
+| Indicator | `actions-indicator` |

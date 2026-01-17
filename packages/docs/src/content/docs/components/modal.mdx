@@ -123,3 +123,23 @@ import { Modal } from 'asterui'
 - Pressing Escape closes the modal
 - Focus is restored to the trigger element when closed
 - Uses `aria-labelledby` and `aria-describedby` for screen readers
+
+## Testing
+
+The Modal component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Modal data-testid="confirm" title="Confirm" open={isOpen}>
+  Are you sure?
+</Modal>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Modal container | `confirm` |
+| Title | `confirm-title` |
+| Content | `confirm-content` |
+| Backdrop | `confirm-backdrop` |
+| Close button | `confirm-close-button` |
+| OK button | `confirm-ok-button` |
+| Cancel button | `confirm-cancel-button` |

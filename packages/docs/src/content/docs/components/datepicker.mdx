@@ -94,3 +94,17 @@ import { DatePicker } from 'asterui'
 | `size` | Input size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `componentSize` |
 | `data-testid` | Test ID prefix for child elements | `string` | - |
 | `className` | Additional CSS classes | `string` | - |
+
+## Testing
+
+The DatePicker component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<DatePicker data-testid="birth-date" />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `birth-date` |
+| Input | `birth-date-input` |
+| Calendar popup | `birth-date-calendar` |

@@ -63,3 +63,18 @@ import { Watermark } from 'asterui'
 - Watermark is purely decorative and does not interfere with assistive technologies
 - All interactive elements beneath the watermark remain fully accessible to keyboard and screen reader users
 - Semi-transparent rendering ensures underlying content remains visible and readable
+
+## Testing
+
+The Watermark component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<Watermark data-testid="doc-watermark" content="Confidential">
+  <Content />
+</Watermark>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `doc-watermark` |
+| Overlay | `doc-watermark-overlay` |

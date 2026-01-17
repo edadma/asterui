@@ -99,3 +99,18 @@ import { Range } from 'asterui'
 - Value is announced by screen readers as percentage
 - Keyboard navigation with arrow keys supported
 - Works with `showValue` for visual value display
+
+## Testing
+
+The Range component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Range data-testid="volume" showValue showSteps />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `volume` |
+| Input | `volume-input` |
+| Value display | `volume-value` |
+| Steps container | `volume-steps` |

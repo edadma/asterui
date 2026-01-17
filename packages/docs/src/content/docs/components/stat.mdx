@@ -87,3 +87,20 @@ import { Stats } from 'asterui'
 - Values can include ARIA labels for context
 - Figures have appropriate alt text when using images
 - Action buttons are keyboard accessible
+
+## Testing
+
+The Stat component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Stat data-testid="revenue" title="Revenue" value="$1,234" />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `revenue` |
+| Title | `revenue-title` |
+| Value | `revenue-value` |
+| Description | `revenue-desc` |
+| Figure | `revenue-figure` |
+| Actions | `revenue-actions` |

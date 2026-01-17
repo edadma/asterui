@@ -60,3 +60,21 @@ import { Loading } from 'asterui'
 - Uses `aria-label` to describe loading state
 - Animation can be paused by users who prefer reduced motion
 - Ensure loading indicators are paired with text for screen readers when possible
+
+## Testing
+
+The Loading component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Loading data-testid="page-loader" spinning tip="Loading...">
+  <Content />
+</Loading>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `page-loader` |
+| Spinner | `page-loader-spinner` |
+| Tip text | `page-loader-tip` |
+| Overlay | `page-loader-overlay` |
+| Content wrapper | `page-loader-content` |

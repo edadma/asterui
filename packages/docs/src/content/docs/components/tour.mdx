@@ -89,3 +89,27 @@ import { Tour } from 'asterui'
 - Escape key closes the tour
 - Step indicators are keyboard accessible
 - Focus is trapped within the tour when open
+
+## Testing
+
+The Tour component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Tour data-testid="onboarding" steps={steps} open={isOpen} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Mask | `onboarding-mask` |
+| Popover | `onboarding-popover` |
+| Header | `onboarding-header` |
+| Content | `onboarding-content` |
+| Cover | `onboarding-cover` |
+| Footer | `onboarding-footer` |
+| Close button | `onboarding-close` |
+| Previous button | `onboarding-prev` |
+| Next button | `onboarding-next` |
+| Skip button | `onboarding-skip` |
+| Indicators | `onboarding-indicators` |
+| Arrow | `onboarding-arrow` |
+| Blocker | `onboarding-blocker` |

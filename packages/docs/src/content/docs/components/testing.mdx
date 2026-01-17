@@ -1,0 +1,158 @@
+---
+title: Testing
+description: E2E testing support with data-testid attributes
+---
+
+import { Tabs, TabItem, Aside } from '@astrojs/starlight/components';
+
+All AsterUI components support the `data-testid` prop for end-to-end testing with tools like Playwright, Cypress, or Testing Library.
+
+## Basic Usage
+
+Pass a `data-testid` prop to any component:
+
+```tsx
+import { Button, Input, Modal } from 'asterui'
+
+function LoginForm() {
+  return (
+    <form>
+      <Input data-testid="email-input" placeholder="Email" />
+      <Input data-testid="password-input" type="password" placeholder="Password" />
+      <Button data-testid="submit-btn" color="primary">
+        Sign In
+      </Button>
+    </form>
+  )
+}
+```
+
+## Selecting Elements
+
+<Tabs>
+  <TabItem label="Playwright">
+    ```ts
+    // Click the submit button
+    await page.getByTestId('submit-btn').click()
+
+    // Fill the email input
+    await page.getByTestId('email-input').fill('user@example.com')
+
+    // Assert element is visible
+    await expect(page.getByTestId('submit-btn')).toBeVisible()
+    ```
+  </TabItem>
+  <TabItem label="Cypress">
+    ```ts
+    // Click the submit button
+    cy.get('[data-testid="submit-btn"]').click()
+
+    // Fill the email input
+    cy.get('[data-testid="email-input"]').type('user@example.com')
+
+    // Assert element is visible
+    cy.get('[data-testid="submit-btn"]').should('be.visible')
+    ```
+  </TabItem>
+  <TabItem label="Testing Library">
+    ```tsx
+    import { render, screen } from '@testing-library/react'
+
+    // Find by test ID
+    const button = screen.getByTestId('submit-btn')
+    const input = screen.getByTestId('email-input')
+
+    // Assert element is in document
+    expect(button).toBeInTheDocument()
+    ```
+  </TabItem>
+</Tabs>
+
+## Complex Components
+
+Components with multiple interactive elements use a suffix pattern for nested test IDs. When you pass `data-testid="my-id"`, child elements receive IDs like `my-id-suffix`.
+
+### Input
+
+```tsx
+<Input data-testid="search" prefix={<SearchIcon />} allowClear />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Wrapper | `search` |
+| Input field | `search-input` |
+| Prefix area | `search-prefix` |
+| Suffix area | `search-suffix` |
+| Clear button | `search-clear` |
+
+### Modal
+
+```tsx
+<Modal data-testid="confirm-modal" title="Confirm" open={isOpen}>
+  Are you sure?
+</Modal>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Modal container | `confirm-modal` |
+| Title | `confirm-modal-title` |
+| Content | `confirm-modal-content` |
+| Backdrop | `confirm-modal-backdrop` |
+
+### Select
+
+```tsx
+<Select data-testid="country-select" options={countries} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `country-select` |
+| Trigger | `country-select-trigger` |
+| Dropdown | `country-select-dropdown` |
+| Option (by value) | `country-select-option-{value}` |
+
+
+## Data State Attributes
+
+Many components also expose `data-state` attributes that reflect their current state, useful for assertions:
+
+```tsx
+// Button states
+<Button loading />        // data-state-loading="true"
+<Button disabled />       // data-state-disabled="true"
+<Button active />         // data-state-active="true"
+
+// Toggle state
+<Toggle checked />        // data-state="checked"
+<Toggle />                // data-state="unchecked"
+
+// Tooltip/Popover state
+<Tooltip open />          // data-state="open"
+<Tooltip />               // data-state="closed"
+```
+
+Example assertions:
+
+<Tabs>
+  <TabItem label="Playwright">
+    ```ts
+    // Assert button is loading
+    await expect(page.getByTestId('submit-btn')).toHaveAttribute('data-state-loading', 'true')
+
+    // Assert toggle is checked
+    await expect(page.getByTestId('dark-mode')).toHaveAttribute('data-state', 'checked')
+    ```
+  </TabItem>
+  <TabItem label="Cypress">
+    ```ts
+    // Assert button is loading
+    cy.get('[data-testid="submit-btn"]').should('have.attr', 'data-state-loading', 'true')
+
+    // Assert toggle is checked
+    cy.get('[data-testid="dark-mode"]').should('have.attr', 'data-state', 'checked')
+    ```
+  </TabItem>
+</Tabs>

@@ -69,3 +69,19 @@ import { Chat } from 'asterui'
 - Use meaningful alt text for avatar images
 - Message content is readable by screen readers
 - Position classes help convey conversation flow
+
+## Testing
+
+The Chat component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Chat.Bubble data-testid="msg-1" message="Hello!">
+```
+
+| Element | Test ID |
+|---------|---------|
+| Bubble container | `msg-1` |
+| Avatar | `msg-1-avatar` |
+| Bubble | `msg-1-bubble` |
+| Header | `msg-1-header` |
+| Footer | `msg-1-footer` |

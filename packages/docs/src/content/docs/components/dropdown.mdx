@@ -136,3 +136,18 @@ import { Dropdown } from 'asterui'
 - Proper ARIA attributes for screen readers
 - Focus management when opening and closing the menu
 - Click outside to close behavior
+
+## Testing
+
+The Dropdown component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<Dropdown data-testid="actions">
+  <Dropdown.Item>Edit</Dropdown.Item>
+</Dropdown>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `actions` |
+| Menu | `actions-menu` |

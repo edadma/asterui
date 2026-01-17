@@ -88,3 +88,18 @@ import { InputNumber } from 'asterui'
 - Disabled state is properly announced to screen readers
 - Focus states are clearly visible for keyboard navigation
 - Arrow keys can be used to increment/decrement values
+
+## Testing
+
+The InputNumber component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<InputNumber data-testid="quantity" />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `quantity` |
+| Input | `quantity-input` |
+| Increment button | `quantity-increment` |
+| Decrement button | `quantity-decrement` |

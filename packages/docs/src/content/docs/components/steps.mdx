@@ -111,3 +111,15 @@ Usage Tips:
 - Steps before `current` are automatically marked as completed
 - Use `onChange` to enable clicking on steps for navigation
 - Use responsive classes for mobile-friendly layouts
+
+## Testing
+
+The Steps component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<Steps data-testid="checkout-steps" current={1} items={steps} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `checkout-steps` |

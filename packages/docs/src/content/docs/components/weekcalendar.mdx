@@ -81,3 +81,17 @@ import { WeekCalendar, type CalendarEvent, type CalendarLocale } from 'asterui'
 | `strikethrough` | Show event with strikethrough (cancelled) | `boolean` | `-` |
 | `style` | Custom inline styles for the event | `CSSProperties` | `-` |
 | `data-testid` | Test ID for testing | `string` | - |
+
+## Testing
+
+The WeekCalendar component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<WeekCalendar data-testid="schedule" events={events} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `schedule` |
+| Header | `schedule-header` |
+| Grid | `schedule-grid` |

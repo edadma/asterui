@@ -81,3 +81,16 @@ import { VirtualList } from 'asterui/virtuallist'
 - Memoize your `renderItem` function if it's expensive
 - Increase `overscan` if you see flickering during fast scrolling
 - Keep item components simple - avoid heavy computations in render
+
+## Testing
+
+The VirtualList component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<VirtualList data-testid="user-list" items={users} renderItem={renderUser} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `user-list` |
+| Inner scroll area | `user-list-inner` |

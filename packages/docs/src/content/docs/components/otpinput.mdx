@@ -91,3 +91,15 @@ import { OTPInput } from 'asterui'
 - Supports keyboard navigation with arrow keys
 - Backspace moves focus to previous input
 - Supports pasting full OTP codes
+
+## Testing
+
+The OTPInput component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<OTPInput data-testid="verification-code" length={6} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `verification-code` |

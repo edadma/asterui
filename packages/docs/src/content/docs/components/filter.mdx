@@ -75,3 +75,16 @@ import { Filter } from 'asterui'
 - Options use `aria-label` for accessible names
 - Reset button has `aria-label="Reset filter"`
 - Supports keyboard navigation with Tab and Space/Enter
+
+## Testing
+
+The Filter component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<Filter data-testid="status-filter" options={options} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `status-filter` |
+| Reset button | `status-filter-reset` |

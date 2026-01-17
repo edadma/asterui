@@ -120,3 +120,15 @@ import { Rating } from 'asterui'
 - Keyboard navigation between rating options
 - Hover preview shows visual feedback before selection
 - Disabled state prevents interaction while displaying value
+
+## Testing
+
+The Rating component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<Rating data-testid="product-rating" value={4} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `product-rating` |

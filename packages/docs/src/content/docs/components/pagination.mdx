@@ -97,3 +97,23 @@ import { Pagination } from 'asterui'
 - Current page is marked with `aria-current="page"`
 - Disabled buttons have proper `aria-disabled` state
 - Quick jumper input has accessible label
+
+## Testing
+
+The Pagination component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Pagination data-testid="pages" total={100} current={1} />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `pages` |
+| Controls | `pages-controls` |
+| Previous button | `pages-prev` |
+| Next button | `pages-next` |
+| First button | `pages-first` |
+| Last button | `pages-last` |
+| Total display | `pages-total` |
+| Size changer | `pages-size-changer` |
+| Jumper input | `pages-jumper` |

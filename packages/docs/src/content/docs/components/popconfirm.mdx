@@ -90,3 +90,21 @@ import { Popconfirm } from 'asterui'
 - Escape key closes the popconfirm
 - Buttons are keyboard accessible
 - Loading state is communicated via `aria-busy`
+
+## Testing
+
+The Popconfirm component supports the `data-testid` prop for e2e testing. Child elements receive suffixed test IDs:
+
+```tsx
+<Popconfirm data-testid="delete" title="Delete?" onConfirm={handleDelete}>
+  <Button>Delete</Button>
+</Popconfirm>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Popup | `delete-popup` |
+| Title | `delete-title` |
+| Description | `delete-description` |
+| OK button | `delete-ok-button` |
+| Cancel button | `delete-cancel-button` |

@@ -107,3 +107,18 @@ import { ContextMenu } from 'asterui'
 - Menu closes when clicking outside
 - Menu items are keyboard navigable
 - Disabled items are properly announced
+
+## Testing
+
+The ContextMenu component supports the `data-testid` prop for e2e testing:
+
+```tsx
+<ContextMenu data-testid="file-menu">
+  <ContextMenu.Item>Open</ContextMenu.Item>
+</ContextMenu>
+```
+
+| Element | Test ID |
+|---------|---------|
+| Container | `file-menu` |
+| Menu | `file-menu-menu` |

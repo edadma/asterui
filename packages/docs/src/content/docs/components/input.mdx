@@ -125,3 +125,22 @@ import { Input } from 'asterui'
 - Use `status="error"` to set `aria-invalid` automatically
 - Use `errorId` to link input to error message via `aria-describedby`
 - Focus states are clearly visible for keyboard navigation
+
+## Testing
+
+The Input component supports the `data-testid` prop for e2e testing. When using prefix, suffix, addons, or allowClear, child elements receive suffixed test IDs:
+
+```tsx
+<Input data-testid="search" prefix={<SearchIcon />} allowClear />
+```
+
+| Element | Test ID |
+|---------|---------|
+| Wrapper | `search` |
+| Input field | `search-input` |
+| Input wrapper | `search-input-wrapper` |
+| Prefix area | `search-prefix` |
+| Suffix area | `search-suffix` |
+| Clear button | `search-clear` |
+| Addon before | `search-addon-before` |
+| Addon after | `search-addon-after` |
