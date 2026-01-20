@@ -411,6 +411,7 @@ export default defineConfig({
                     { label: 'Kbd', slug: 'components/kbd' },
                     { label: 'Mask', slug: 'components/mask' },
                     { label: 'Phone', slug: 'components/phone' },
+                    { label: 'Terminal', slug: 'components/terminal' },
                     { label: 'TextRotate', slug: 'components/textrotate' },
                     { label: 'ThemeController', slug: 'components/themecontroller' },
                     { label: 'Tour', slug: 'components/tour' },

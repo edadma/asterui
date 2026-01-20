@@ -19,6 +19,7 @@ export default defineConfig({
         qrcode: resolve(__dirname, 'src/qrcode.ts'),
         virtuallist: resolve(__dirname, 'src/virtuallist.ts'),
         editor: resolve(__dirname, 'src/editor.ts'),
+        terminal: resolve(__dirname, 'src/terminal.ts'),
       },
       formats: ['es'],
     },
@@ -40,6 +41,8 @@ export default defineConfig({
         '@aster-ui/icons',
         '@aster-ui/icons/solid',
         '@aster-ui/icons/outline',
+        '@xterm/xterm',
+        '@xterm/addon-fit',
       ],
       output: {
         preserveModules: true,

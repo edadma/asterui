@@ -26,6 +26,8 @@
     "astro": "^5.16.6",
     "lucide-astro": "^0.556.0",
     "qrcode": "^1.5.4",
+    "@xterm/xterm": "^5.5.0",
+    "@xterm/addon-fit": "^0.10.0",
     "react": "^19.0.0",
     "react-image-crop": "^11.0.10",
     "react-dom": "^19.0.0",

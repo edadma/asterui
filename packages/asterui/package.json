@@ -34,6 +34,10 @@
     "./editor": {
       "import": "./dist/editor.js",
       "types": "./dist/editor.d.ts"
+    },
+    "./terminal": {
+      "import": "./dist/terminal.js",
+      "types": "./dist/terminal.d.ts"
     }
   },
   "files": [
@@ -49,6 +53,8 @@
     "react-hook-form": "^7.0.0"
   },
   "peerDependencies": {
+    "@xterm/xterm": "^5.0.0",
+    "@xterm/addon-fit": "^0.10.0",
     "@tanstack/react-virtual": "^3.0.0",
     "@tiptap/extension-link": "^2.0.0",
     "@tiptap/extension-placeholder": "^2.0.0",
@@ -61,6 +67,12 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "peerDependenciesMeta": {
+    "@xterm/xterm": {
+      "optional": true
+    },
+    "@xterm/addon-fit": {
+      "optional": true
+    },
     "@tanstack/react-virtual": {
       "optional": true
     },
@@ -89,6 +101,8 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-virtual": "^3.13.13",
+    "@xterm/xterm": "^5.5.0",
+    "@xterm/addon-fit": "^0.10.0",
     "@tiptap/extension-link": "^2.11.5",
     "@tiptap/extension-placeholder": "^2.11.5",
     "@tiptap/extension-underline": "^2.11.5",

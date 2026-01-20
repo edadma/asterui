@@ -1,0 +1,145 @@
+---
+title: Terminal
+description: Theme-aware terminal emulator component powered by xterm.js.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  CommandDemo,
+  RefDemo,
+  CustomOptionsDemo,
+  ColorOutputDemo,
+} from '../../../components/TerminalDemo'
+import TerminalDemoSource from '../../../components/TerminalDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
+
+A theme-aware terminal emulator component powered by xterm.js. Colors automatically adapt to light/dark themes using DaisyUI color tokens.
+
+## Installation
+
+This component requires `@xterm/xterm` and `@xterm/addon-fit` as peer dependencies:
+
+```bash
+npm install @xterm/xterm @xterm/addon-fit
+```
+
+## Import
+
+```tsx
+import { Terminal } from 'asterui/terminal'
+```
+
+## Examples
+
+<div class="examples">
+
+<Example title="Readline Mode" description="Built-in line editing with arrow keys and command history." source={TerminalDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Command Handler" description="Use onLine callback to handle commands in readline mode." source={TerminalDemoSource} fn="CommandDemo">
+  <CommandDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Ref Methods" description="Control the terminal programmatically via ref." source={TerminalDemoSource} fn="RefDemo">
+  <RefDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Custom Options" description="Pass xterm.js options for customization." source={TerminalDemoSource} fn="CustomOptionsDemo">
+  <CustomOptionsDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="ANSI Colors" description="Terminal supports ANSI escape codes for colored output." source={TerminalDemoSource} fn="ColorOutputDemo">
+  <ColorOutputDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `Terminal`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `readline` | Enable readline mode with line editing and history | `boolean` | `false` |
+| `prompt` | Prompt string for readline mode (supports ANSI colors) | `string` | `'$ '` |
+| `onLine` | Callback when user submits a line in readline mode | `(line: string) => void` | - |
+| `onData` | Callback for raw input (not used in readline mode) | `(data: string) => void` | - |
+| `onReady` | Callback when terminal is initialized | `(terminal: XTerm) => void` | - |
+| `options` | xterm.js options (theme is auto-applied) | `ITerminalOptions` | - |
+| `className` | Additional CSS classes | `string` | - |
+| `style` | Container style | `React.CSSProperties` | - |
+| `data-testid` | Test ID for testing | `string` | - |
+
+### `TerminalRef`
+
+Access via `useRef<TerminalRef>()`:
+
+| Property | Description | Type |
+|----------|-------------|------|
+| `terminal` | The underlying xterm.js Terminal instance | `XTerm \| null` |
+| `write` | Write data to the terminal | `(data: string) => void` |
+| `writeln` | Write a line to the terminal (with newline) | `(data: string) => void` |
+| `clear` | Clear the terminal | `() => void` |
+| `focus` | Focus the terminal | `() => void` |
+| `fit` | Fit the terminal to its container | `() => void` |
+| `history` | Command history array (readline mode) | `string[]` |
+| `clearHistory` | Clear command history | `() => void` |
+
+## Readline Mode
+
+When `readline` is enabled, the terminal provides:
+
+- **Left/Right arrows**: Move cursor within the current line
+- **Up/Down arrows**: Navigate command history
+- **Backspace**: Delete character before cursor
+- **Ctrl+C**: Cancel current input
+- **Enter**: Submit line (triggers `onLine` callback)
+
+## Theme Integration
+
+The Terminal component automatically uses DaisyUI theme colors:
+
+- **Background/Foreground**: Uses `base-100` and `base-content`
+- **Cursor**: Uses `primary` color
+- **ANSI Colors**: Maps to `error`, `success`, `warning`, `info`, `secondary`, `accent`
+
+When the theme changes (light/dark), the terminal colors update automatically.
+
+## WebSocket Example
+
+```tsx
+import { Terminal, type TerminalRef } from 'asterui/terminal'
+import { useRef, useEffect } from 'react'
+
+function WebSocketTerminal({ url }: { url: string }) {
+  const terminalRef = useRef<TerminalRef>(null)
+  const wsRef = useRef<WebSocket | null>(null)
+
+  useEffect(() => {
+    const ws = new WebSocket(url)
+    wsRef.current = ws
+
+    ws.onmessage = (event) => {
+      terminalRef.current?.write(event.data)
+    }
+
+    return () => ws.close()
+  }, [url])
+
+  return (
+    <Terminal
+      ref={terminalRef}
+      onData={(data) => wsRef.current?.send(data)}
+      style={{ height: 400 }}
+    />
+  )
+}
+```
+
+## Accessibility
+
+- Terminal is keyboard accessible and focusable
+- Supports screen reader announcements for terminal output
+- High contrast themes work automatically via DaisyUI theme integration
