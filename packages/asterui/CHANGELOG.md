@@ -7,6 +7,26 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.80 (2025-01-21)
+
+### Components
+
+- **CodeEditor**: New optional component for syntax-highlighted code editing built on CodeMirror
+  - Supports 12 languages: JavaScript, TypeScript, JSX, TSX, Python, HTML, CSS, JSON, Markdown, SQL, XML, plaintext
+  - Features: line numbers, code folding, bracket matching, auto-closing brackets, autocompletion, active line highlighting
+  - Size variants (xs/sm/md/lg/xl), read-only mode, controlled value support
+  - DaisyUI theme integration
+  - Custom CodeMirror extensions via `extensions` prop
+  - Import: `import { CodeEditor } from 'asterui/codeeditor'`
+
+- **Terminal**: New optional component for terminal emulation built on xterm.js
+  - Import: `import { Terminal } from 'asterui/terminal'`
+
+### Documentation
+
+- Added CodeEditor documentation page with 10 interactive examples
+- Added CodeEditor to Data Entry category in sidebar
+
 ## v0.12.79 (2025-12-28)
 
 ### Internal

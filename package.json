@@ -6,6 +6,7 @@
   "scripts": {
     "build": "pnpm -r build",
     "dev": "pnpm --filter docs dev",
+    "preview": "pnpm --filter docs build && pnpm --filter docs preview",
     "test": "pnpm -r test",
     "publish": "pnpm --filter asterui publish --access public",
     "publish:create": "pnpm --filter create-asterui publish --access public",

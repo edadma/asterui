@@ -14,7 +14,7 @@ export default defineConfig({
       include: ['apexcharts'],
     },
     ssr: {
-      external: ['apexcharts', 'qrcode', '@tiptap/react', '@tiptap/starter-kit', '@tanstack/react-virtual'],
+      external: ['apexcharts', 'qrcode', '@tiptap/react', '@tiptap/starter-kit', '@tanstack/react-virtual', '@codemirror/autocomplete', '@codemirror/commands', '@codemirror/lang-css', '@codemirror/lang-html', '@codemirror/lang-javascript', '@codemirror/lang-json', '@codemirror/lang-markdown', '@codemirror/lang-python', '@codemirror/lang-sql', '@codemirror/lang-xml', '@codemirror/language', '@codemirror/lint', '@codemirror/search', '@codemirror/state', '@codemirror/view'],
     },
   },
   markdown: {
@@ -291,6 +291,7 @@ export default defineConfig({
                     { label: 'Autocomplete', slug: 'components/autocomplete' },
                     { label: 'Cascader', slug: 'components/cascader' },
                     { label: 'Checkbox', slug: 'components/checkbox' },
+                    { label: 'CodeEditor', slug: 'components/codeeditor' },
                     { label: 'ColorPicker', slug: 'components/colorpicker' },
                     { label: 'DatePicker', slug: 'components/datepicker' },
                     { label: 'DateOfBirth', slug: 'components/dateofbirth' },

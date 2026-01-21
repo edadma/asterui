@@ -1,0 +1,125 @@
+---
+title: CodeEditor
+description: A theme-aware code editor built on CodeMirror for syntax-highlighted code editing with language support.
+tableOfContents: false
+---
+
+import {
+  BasicDemo,
+  ControlledDemo,
+  LanguagesDemo,
+  NoLineNumbersDemo,
+  ReadOnlyDemo,
+  SizesDemo,
+  MaxHeightDemo,
+  BorderlessDemo,
+  MinimalDemo,
+  EditorInstanceDemo,
+} from '../../../components/CodeEditorDemo'
+import CodeEditorDemoSource from '../../../components/CodeEditorDemo.tsx?raw'
+import Example from '../../../components/Example.astro'
+
+A theme-aware code editor built on CodeMirror for syntax-highlighted code editing with multiple language support.
+
+## Installation
+
+This component requires `@codemirror` packages as peer dependencies:
+
+```bash
+npm install @codemirror/autocomplete @codemirror/commands @codemirror/language @codemirror/lint @codemirror/search @codemirror/state @codemirror/view @codemirror/lang-javascript @codemirror/lang-python @codemirror/lang-html @codemirror/lang-css @codemirror/lang-json @codemirror/lang-markdown @codemirror/lang-sql @codemirror/lang-xml
+```
+
+## Import
+
+```tsx
+import { CodeEditor } from 'asterui/codeeditor'
+```
+
+## Examples
+
+<div class="examples">
+
+<Example title="Basic Editor" description="Simple code editor with JavaScript syntax highlighting." source={CodeEditorDemoSource} fn="BasicDemo">
+  <BasicDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Controlled Editor" description="Editor with controlled value showing code output." source={CodeEditorDemoSource} fn="ControlledDemo">
+  <ControlledDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Multiple Languages" description="Switch between different programming languages." source={CodeEditorDemoSource} fn="LanguagesDemo">
+  <LanguagesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="No Line Numbers" description="Editor without line number gutter." source={CodeEditorDemoSource} fn="NoLineNumbersDemo">
+  <NoLineNumbersDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Read-Only Mode" description="Display code without allowing edits." source={CodeEditorDemoSource} fn="ReadOnlyDemo">
+  <ReadOnlyDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Sizes" description="Different text size variants." source={CodeEditorDemoSource} fn="SizesDemo">
+  <SizesDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Max Height with Scrolling" description="Editor with fixed max height that scrolls." source={CodeEditorDemoSource} fn="MaxHeightDemo">
+  <MaxHeightDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Borderless" description="Editor without border, useful inside cards." source={CodeEditorDemoSource} fn="BorderlessDemo">
+  <BorderlessDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Minimal Editor" description="Editor with minimal features enabled." source={CodeEditorDemoSource} fn="MinimalDemo">
+  <MinimalDemo client:only="react" slot="demo" />
+</Example>
+
+<Example title="Editor Instance Access" description="Access the CodeMirror view instance for advanced features." source={CodeEditorDemoSource} fn="EditorInstanceDemo">
+  <EditorInstanceDemo client:only="react" slot="demo" />
+</Example>
+
+</div>
+
+## API
+
+### `CodeEditor`
+
+| Property | Description | Type | Default |
+|----------|-------------|------|---------|
+| `value` | Code content (controlled) | `string` | `''` |
+| `onChange` | Callback when content changes | `(value: string) => void` | - |
+| `language` | Programming language for syntax highlighting | `CodeEditorLanguage` | `'plaintext'` |
+| `placeholder` | Placeholder text when empty | `string` | - |
+| `readOnly` | Make editor read-only | `boolean` | `false` |
+| `autoFocus` | Auto focus on mount | `boolean` | `false` |
+| `lineNumbers` | Show line numbers | `boolean` | `true` |
+| `foldGutter` | Enable code folding | `boolean` | `true` |
+| `highlightActiveLine` | Highlight active line | `boolean` | `true` |
+| `bracketMatching` | Enable bracket matching | `boolean` | `true` |
+| `closeBrackets` | Enable auto-closing brackets | `boolean` | `true` |
+| `autocompletion` | Enable autocompletion | `boolean` | `true` |
+| `indentWithTab` | Allow tab key for indentation | `boolean` | `true` |
+| `minHeight` | Minimum height of editor | `string \| number` | `200` |
+| `maxHeight` | Maximum height (enables scrolling) | `string \| number` | - |
+| `size` | Text size variant | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
+| `bordered` | Show border around editor | `boolean` | `true` |
+| `extensions` | Additional CodeMirror extensions | `Extension[]` | `[]` |
+| `onEditorReady` | Callback with CodeMirror view instance | `(view: EditorView) => void` | - |
+
+### `CodeEditorLanguage`
+
+| Value | Description |
+|-------|-------------|
+| `javascript` | JavaScript |
+| `typescript` | TypeScript |
+| `jsx` | JavaScript with JSX |
+| `tsx` | TypeScript with JSX |
+| `python` | Python |
+| `html` | HTML |
+| `css` | CSS |
+| `json` | JSON |
+| `markdown` | Markdown |
+| `sql` | SQL |
+| `xml` | XML |
+| `plaintext` | Plain text (no highlighting) |

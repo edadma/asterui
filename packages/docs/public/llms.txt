@@ -4,7 +4,7 @@
 
 ## Overview
 
-AsterUI provides 103 production-ready React components with:
+AsterUI provides 105 production-ready React components with:
 - Familiar, intuitive API patterns (Form.Item, Table columns, etc.)
 - DaisyUI v5 styling and theming
 - Full TypeScript support
@@ -75,6 +75,7 @@ npm install asterui
 - [Autocomplete](https://asterui.com/docs/autocomplete.md)
 - [Cascader](https://asterui.com/docs/cascader.md)
 - [Checkbox](https://asterui.com/docs/checkbox.md)
+- [CodeEditor](https://asterui.com/docs/codeeditor.md)
 - [ColorPicker](https://asterui.com/docs/colorpicker.md)
 - [DateOfBirth](https://asterui.com/docs/dateofbirth.md)
 - [DatePicker](https://asterui.com/docs/datepicker.md) (includes `DatePicker.Range`)
@@ -141,6 +142,7 @@ npm install asterui
 - [Browser](https://asterui.com/docs/browser.md)
 - [Code](https://asterui.com/docs/code.md)
 - [Phone](https://asterui.com/docs/phone.md)
+- [Terminal](https://asterui.com/docs/terminal.md)
 - [Window](https://asterui.com/docs/window.md)
 
 ### Hooks

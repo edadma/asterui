@@ -138,7 +138,7 @@ export default function App() {
 
 ## Components
 
-103 components including forms, data display, navigation, feedback, and layout. See the full list at [asterui.com/components](https://asterui.com/components).
+105 components including forms, data display, navigation, feedback, and layout. See the full list at [asterui.com/components](https://asterui.com/components).
 
 ## Optional Components
 
@@ -156,13 +156,17 @@ import { QRCode } from 'asterui/qrcode'
 # For VirtualList component
 npm install @tanstack/react-virtual
 import { VirtualList } from 'asterui/virtuallist'
+
+# For CodeEditor component
+npm install @codemirror/autocomplete @codemirror/commands @codemirror/language @codemirror/lint @codemirror/search @codemirror/state @codemirror/view @codemirror/lang-javascript @codemirror/lang-python @codemirror/lang-html @codemirror/lang-css @codemirror/lang-json @codemirror/lang-markdown @codemirror/lang-sql @codemirror/lang-xml
+import { CodeEditor } from 'asterui/codeeditor'
 ```
 
 ## Development
 
 This is a pnpm monorepo with the following packages:
 
-- `packages/asterui` - The component library (103 components)
+- `packages/asterui` - The component library (105 components)
 - `packages/create-asterui` - Project scaffolding CLI
 - `packages/docs` - Documentation website (asterui.com)
 - `packages/examples` - Example apps for testing components
