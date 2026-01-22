@@ -258,9 +258,10 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
     let fitAddon: FitAddonType | null = null
     let resizeObserver: ResizeObserver | null = null
     let initialized = false
+    let disposed = false
 
     const initTerminal = () => {
-      if (initialized || !container) return
+      if (initialized || disposed || !container) return
 
       // Check container has dimensions before opening
       const rect = container.getBoundingClientRect()
@@ -301,7 +302,7 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
     // Use ResizeObserver to wait for container to have dimensions
     resizeObserver = new ResizeObserver((entries) => {
       const entry = entries[0]
-      if (!entry) return
+      if (!entry || disposed) return
 
       if (!initialized) {
         initTerminal()
@@ -315,6 +316,7 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
     requestAnimationFrame(initTerminal)
 
     return () => {
+      disposed = true
       resizeObserver?.disconnect()
       terminal?.dispose()
       terminalRef.current = null

@@ -7,6 +7,12 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.82 (2025-01-21)
+
+### Bug Fixes
+
+- **Terminal**: Fixed double terminal rendering in React StrictMode
+
 ## v0.12.81 (2025-01-21)
 
 ### Bug Fixes
