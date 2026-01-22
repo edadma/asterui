@@ -7,6 +7,17 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.81 (2025-01-21)
+
+### Bug Fixes
+
+- **Terminal**: Fixed initialization error when container has no dimensions (e.g., in flexbox/splitter layouts)
+- **Terminal**: Fixed ESM/CJS import compatibility for xterm packages across different bundlers
+
+### Documentation
+
+- Added Terminal preview images for component overview page
+
 ## v0.12.80 (2025-01-21)
 
 ### Components

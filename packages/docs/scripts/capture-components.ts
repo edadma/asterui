@@ -83,7 +83,7 @@ const COMPONENTS = [
   'container', 'divider', 'flex', 'footer', 'grid', 'hero', 'join',
   'layout', 'masonry', 'responsive', 'space', 'splitter',
   'affix', 'browser', 'code', 'configprovider', 'kbd', 'mask', 'phone',
-  'textrotate', 'themecontroller', 'tour', 'typography', 'watermark', 'window',
+  'terminal', 'textrotate', 'themecontroller', 'tour', 'typography', 'watermark', 'window',
 ]
 
 async function getComponentElement(page: any, slug: string) {

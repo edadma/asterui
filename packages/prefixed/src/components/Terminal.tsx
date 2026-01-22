@@ -1,12 +1,17 @@
 import React, { useEffect, useRef, useImperativeHandle, forwardRef } from 'react'
-import XTermPkg from '@xterm/xterm'
-import FitAddonPkg from '@xterm/addon-fit'
+import * as XTermPkg from '@xterm/xterm'
+import * as FitAddonPkg from '@xterm/addon-fit'
 import type { Terminal as XTermType, ITerminalOptions, ITerminalInitOnlyOptions } from '@xterm/xterm'
 import type { FitAddon as FitAddonType } from '@xterm/addon-fit'
 import { useTheme } from '../hooks/useTheme'
 
-const XTerm = XTermPkg.Terminal ?? (XTermPkg as unknown as { Terminal: typeof XTermPkg.Terminal }).Terminal
-const FitAddon = FitAddonPkg.FitAddon ?? (FitAddonPkg as unknown as { FitAddon: typeof FitAddonPkg.FitAddon }).FitAddon
+// Handle both ESM and CJS module formats
+const XTerm = (XTermPkg as { Terminal?: typeof XTermType }).Terminal
+  ?? (XTermPkg as { default?: { Terminal: typeof XTermType } }).default?.Terminal
+  ?? (XTermPkg as unknown as typeof XTermType)
+const FitAddon = (FitAddonPkg as { FitAddon?: typeof FitAddonType }).FitAddon
+  ?? (FitAddonPkg as { default?: { FitAddon: typeof FitAddonType } }).default?.FitAddon
+  ?? (FitAddonPkg as unknown as typeof FitAddonType)
 
 // Inject xterm.css once (inlined for reliability across bundlers)
 let cssInjected = false
@@ -248,43 +253,70 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
 
     injectXtermCSS()
 
-    const terminal = new XTerm({
-      theme: getTheme(),
-      cursorBlink: true,
-      fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
-      fontSize: 14,
-      ...options,
-    })
-    const fitAddon = new FitAddon()
+    const container = containerRef.current
+    let terminal: XTermType | null = null
+    let fitAddon: FitAddonType | null = null
+    let resizeObserver: ResizeObserver | null = null
+    let initialized = false
 
-    terminal.loadAddon(fitAddon)
-    terminal.open(containerRef.current)
-    fitAddon.fit()
+    const initTerminal = () => {
+      if (initialized || !container) return
 
-    terminalRef.current = terminal
-    fitAddonRef.current = fitAddon
+      // Check container has dimensions before opening
+      const rect = container.getBoundingClientRect()
+      if (rect.width === 0 || rect.height === 0) return
 
-    if (readline) {
-      terminal.onData(handleReadlineData)
-    } else if (onData) {
-      terminal.onData(onData)
-    }
+      initialized = true
 
-    onReady?.(terminal)
+      terminal = new XTerm({
+        theme: getTheme(),
+        cursorBlink: true,
+        fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
+        fontSize: 14,
+        ...options,
+      })
+      fitAddon = new FitAddon()
 
-    // Write initial prompt after onReady so welcome messages appear first
-    if (readline) {
-      terminal.write(prompt)
-    }
-
-    const resizeObserver = new ResizeObserver(() => {
+      terminal.loadAddon(fitAddon)
+      terminal.open(container)
       fitAddon.fit()
+
+      terminalRef.current = terminal
+      fitAddonRef.current = fitAddon
+
+      if (readline) {
+        terminal.onData(handleReadlineData)
+      } else if (onData) {
+        terminal.onData(onData)
+      }
+
+      onReady?.(terminal)
+
+      // Write initial prompt after onReady so welcome messages appear first
+      if (readline) {
+        terminal.write(prompt)
+      }
+    }
+
+    // Use ResizeObserver to wait for container to have dimensions
+    resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0]
+      if (!entry) return
+
+      if (!initialized) {
+        initTerminal()
+      } else if (fitAddon) {
+        fitAddon.fit()
+      }
     })
-    resizeObserver.observe(containerRef.current)
+    resizeObserver.observe(container)
+
+    // Also try immediately in case container already has dimensions
+    requestAnimationFrame(initTerminal)
 
     return () => {
-      resizeObserver.disconnect()
-      terminal.dispose()
+      resizeObserver?.disconnect()
+      terminal?.dispose()
       terminalRef.current = null
       fitAddonRef.current = null
     }
