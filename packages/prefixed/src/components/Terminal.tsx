@@ -55,6 +55,8 @@ export interface TerminalProps {
   prompt?: string
   /** Callback when user submits a line in readline mode */
   onLine?: (line: string) => void
+  /** Convert LF to CRLF for proper newline handling (default: true) */
+  convertEol?: boolean
   /** xterm.js options (theme is auto-applied unless you override it) */
   options?: ITerminalOptions & ITerminalInitOnlyOptions
   /** Additional CSS classes for the container */
@@ -70,6 +72,7 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
   readline = false,
   prompt = '$ ',
   onLine,
+  convertEol = true,
   options = {},
   className = '',
   style,
@@ -272,6 +275,7 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
       terminal = new XTerm({
         theme: getTheme(),
         cursorBlink: true,
+        convertEol,
         fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
         fontSize: 14,
         ...options,

@@ -7,6 +7,12 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.83 (2025-01-23)
+
+### Features
+
+- **Terminal**: Added `convertEol` prop (default: `true`) to convert LF to CRLF for proper newline handling in output
+
 ## v0.12.82 (2025-01-21)
 
 ### Bug Fixes
