@@ -7,6 +7,12 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.84 (2026-01-30)
+
+### Bug Fixes
+
+- **Terminal**: Removed Terminal export from main entry point - now only available via `asterui/terminal` to make @xterm/xterm peer dependency truly optional
+
 ## v0.12.83 (2025-01-23)
 
 ### Features
