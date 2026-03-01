@@ -64,7 +64,7 @@ import { Terminal } from 'asterui/terminal'
 |----------|-------------|------|---------|
 | `readline` | Enable readline mode with line editing and history | `boolean` | `false` |
 | `prompt` | Prompt string for readline mode (supports ANSI colors) | `string` | `'$ '` |
-| `onLine` | Callback when user submits a line in readline mode | `(line: string) => void` | - |
+| `onLine` | Callback when user submits a line in readline mode. Return a Promise to defer the next prompt. | `(line: string) => void \| Promise<void>` | - |
 | `onData` | Callback for raw input (not used in readline mode) | `(data: string) => void` | - |
 | `onReady` | Callback when terminal is initialized | `(terminal: XTerm) => void` | - |
 | `options` | xterm.js options (theme is auto-applied) | `ITerminalOptions` | - |

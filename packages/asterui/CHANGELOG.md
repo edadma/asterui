@@ -7,6 +7,12 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.85 (2026-02-28)
+
+### Features
+
+- **Terminal**: `onLine` callback now supports async handlers (`Promise<void>` return type). When a Promise is returned, the next prompt is deferred until it resolves.
+
 ## v0.12.83 (2025-01-23)
 
 ### Features

@@ -53,8 +53,8 @@ export interface TerminalProps {
   readline?: boolean
   /** Prompt string for readline mode (supports ANSI colors) */
   prompt?: string
-  /** Callback when user submits a line in readline mode */
-  onLine?: (line: string) => void
+  /** Callback when user submits a line in readline mode. Return a Promise to defer the next prompt. */
+  onLine?: (line: string) => void | Promise<void>
   /** Convert LF to CRLF for proper newline handling (default: true) */
   convertEol?: boolean
   /** xterm.js options (theme is auto-applied unless you override it) */
@@ -226,8 +226,12 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
       s.cursor = 0
       s.historyIndex = -1
       s.savedBuffer = ''
-      onLine?.(line)
-      term.write(prompt)
+      const result = onLine?.(line)
+      if (result && typeof (result as any).then === 'function') {
+        (result as any).then(() => term.write(prompt))
+      } else {
+        term.write(prompt)
+      }
     } else if (data === '\x7f' || data === '\b') {
       // Backspace
       if (s.cursor > 0) {
