@@ -7,6 +7,12 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.86 (2026-02-28)
+
+### Bug Fixes
+
+- **CodeEditor**: Fixed scrolling when content exceeds visible area — editor now properly fills its container height and scrolls via CodeMirror's built-in scroller.
+
 ## v0.12.85 (2026-02-28)
 
 ### Features
