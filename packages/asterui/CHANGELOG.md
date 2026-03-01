@@ -13,6 +13,12 @@ All notable changes to AsterUI are documented here.
 
 - **Terminal**: `onLine` callback now supports async handlers (`Promise<void>` return type). When a Promise is returned, the next prompt is deferred until it resolves.
 
+## v0.12.84 (2026-01-30)
+
+### Bug Fixes
+
+- **Terminal**: Removed Terminal export from main entry point - now only available via `asterui/terminal` to make @xterm/xterm peer dependency truly optional
+
 ## v0.12.83 (2025-01-23)
 
 ### Features

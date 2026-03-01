@@ -44,3 +44,6 @@ coverage/
 .tmp/
 
 qa.md
+
+# Generated files
+packages/docs/src/content/docs/changelog.md

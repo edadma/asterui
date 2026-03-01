@@ -3,9 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
+    "sync-changelog": "cp ../asterui/CHANGELOG.md src/content/docs/changelog.md",
+    "dev": "npm run sync-changelog && astro dev",
+    "start": "npm run sync-changelog && astro dev",
+    "build": "npm run sync-changelog && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
