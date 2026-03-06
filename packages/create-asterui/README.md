@@ -16,22 +16,25 @@ yarn create asterui
 
 ```bash
 npm create asterui my-app
-npm create asterui my-app --js
-npm create asterui my-app --themes business
+npm create asterui my-app -y
 npm create asterui my-app --js --themes all --pm pnpm
-npm create asterui my-app --optional editor
+npm create asterui my-app --icons lucide-react
+npm create asterui my-app --optional chart,editor
 ```
 
 ### Options
 
 ```
---js              Use JavaScript instead of TypeScript
---ts              Use TypeScript (default)
---prefixed        Use @aster-ui/prefixed with d- prefix for daisyUI
---themes <preset> Theme preset: light-dark, business, all
---pm <manager>    Package manager: npm, pnpm, yarn
---optional <deps> Optional deps: chart,editor,qrcode,virtuallist
--h, --help        Show help message
+-y, --yes            Accept defaults for unprovided options (non-interactive)
+--js                 Use JavaScript instead of TypeScript
+--ts                 Use TypeScript (default)
+--prefixed           Use @aster-ui/prefixed with d- prefix for daisyUI
+--themes <preset>    Theme preset: light-dark, business, all
+--pm <manager>       Package manager: npm, pnpm, yarn
+--icons <library>    Icon library: @aster-ui/icons, lucide-react, react-icons,
+                     @phosphor-icons/react, @heroicons/react, none
+--optional <deps>    Optional deps: chart,editor,qrcode,virtuallist
+-h, --help           Show help message
 ```
 
 ## What it does

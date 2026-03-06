@@ -377,7 +377,7 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
       >
         <div
           ref={containerRef}
-          className="h-full [&_.cm-editor]:outline-none [&_.cm-editor]:h-full"
+          className="h-full [&_.cm-editor]:outline-none [&_.cm-editor]:h-full [&_.cm-editor]:!overflow-hidden [&_.cm-scroller]:!overflow-auto"
           style={{
             minHeight: minHeightStyle,
             maxHeight: maxHeightStyle,
