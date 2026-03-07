@@ -31,14 +31,7 @@ export default function App() {
           <Form.Item
             name="password"
             label="Password"
-            rules={[
-              { required: true },
-              { min: 8, message: 'Password must be at least 8 characters' },
-              { pattern: /[A-Z]/, message: 'Must contain an uppercase letter' },
-              { pattern: /[a-z]/, message: 'Must contain a lowercase letter' },
-              { pattern: /[0-9]/, message: 'Must contain a number' },
-              { pattern: /[!@#$%^&*.?]/, message: 'Must contain a special character' },
-            ]}
+            rules={[{ required: true }]}
           >
             <Input className="w-full" type="password" placeholder="Enter your password" />
           </Form.Item>
