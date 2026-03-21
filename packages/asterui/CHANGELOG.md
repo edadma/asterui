@@ -7,6 +7,13 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.89 (2026-03-21)
+
+### Bug Fixes
+
+- **useTheme**: Replaced canvas-based `colorToHex` with DOM-based approach using a persistent hidden element and `getComputedStyle`. Eliminates 10 canvas create/draw/read operations per theme change.
+- **useTheme**: Colors are now computed asynchronously in `useEffect` after CSS has applied, not synchronously during render via Proxy. Removed Proxy entirely.
+
 ## v0.12.88 (2026-03-21)
 
 ### Bug Fixes
