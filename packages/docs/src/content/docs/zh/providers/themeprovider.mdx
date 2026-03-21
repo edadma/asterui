@@ -112,7 +112,8 @@ function ThemeSelector() {
 | `resolvedTheme` | `string \| undefined` | 解析 `'system'` 后实际应用的主题。 |
 | `isDark` | `boolean` | 深色模式是否激活。 |
 | `setTheme` | `(theme: string) => void` | 更改主题的函数。 |
-| `colors` | `ThemeColors` | 计算后的主题颜色（十六进制值）。 |
+| `toggleTheme` | `() => void` | 在浅色和深色主题之间切换。 |
+| `colors` | `ThemeColors` | 计算后的主题颜色（十六进制值）。惰性计算 — 仅在访问时计算。 |
 | `systemTheme` | `'light' \| 'dark' \| undefined` | 检测到的系统偏好设置。 |
 
 查看 [useTheme](/zh/hooks/usetheme) 获取完整的 hook 文档，包括独立使用方法和 ThemeColors。
@@ -124,7 +125,7 @@ function ThemeSelector() {
 - **跨标签页同步**：主题更改在浏览器标签页之间同步
 - **支持所有 DaisyUI 主题**：与所有 30+ 内置主题兼容
 - **响应式更新**：当主题或系统偏好更改时自动更新
-- **Canvas 支持**：通过 `colors` 属性为 canvas/WebGL 上下文提供十六进制颜色值
+- **Canvas 支持**：通过 `colors` 属性为 canvas/WebGL 上下文提供十六进制颜色值（惰性计算 — 不访问则无开销）
 
 ## 无障碍
 

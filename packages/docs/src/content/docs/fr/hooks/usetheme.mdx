@@ -93,7 +93,8 @@ Voir [ThemeProvider](/fr/providers/themeprovider) pour les props du fournisseur 
 | `resolvedTheme` | `string \| undefined` | Le thème appliqué après résolution de `'system'`. Uniquement avec ThemeProvider. |
 | `isDark` | `boolean` | `true` si le mode sombre est actif. |
 | `setTheme` | `(theme: string) => void \| undefined` | Fonction pour changer le thème. Uniquement avec ThemeProvider. |
-| `colors` | `ThemeColors` | Couleurs du thème calculées en valeurs hex. |
+| `toggleTheme` | `() => void \| undefined` | Basculer entre le thème clair et sombre. Uniquement avec ThemeProvider. |
+| `colors` | `ThemeColors` | Couleurs du thème calculées en valeurs hex. Lazy — calculées uniquement lors de l'accès. |
 | `systemTheme` | `'light' \| 'dark' \| undefined` | La préférence système. Uniquement avec ThemeProvider. |
 
 ### ThemeColors

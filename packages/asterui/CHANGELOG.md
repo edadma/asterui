@@ -7,6 +7,18 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.88 (2026-03-21)
+
+### Bug Fixes
+
+- **ThemeProvider**: Rewrote to eliminate ~4 second startup delay. No longer computes theme colors eagerly — just sets `data-theme` on `<html>` and provides context.
+- **useTheme**: Theme colors (`colors` property) are now lazy — only computed via canvas when accessed. Components that only need `isDark` or `setTheme` pay no cost for color computation.
+
+### Features
+
+- **ThemeProvider**: Added `toggleTheme()` to context for convenient light/dark switching.
+- **useTheme**: Added `toggleTheme` to return value (available when using ThemeProvider).
+
 ## v0.12.87 (2026-03-21)
 
 ### Bug Fixes

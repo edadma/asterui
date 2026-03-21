@@ -93,7 +93,8 @@ function CanvasComponent() {
 | `resolvedTheme` | `string \| undefined` | 解析 `'system'` 后实际应用的主题。仅在使用 ThemeProvider 时可用。 |
 | `isDark` | `boolean` | 深色模式是否激活。 |
 | `setTheme` | `(theme: string) => void \| undefined` | 更改主题的函数。仅在使用 ThemeProvider 时可用。 |
-| `colors` | `ThemeColors` | 计算后的主题颜色（十六进制值）。 |
+| `toggleTheme` | `() => void \| undefined` | 在浅色和深色主题之间切换。仅在使用 ThemeProvider 时可用。 |
+| `colors` | `ThemeColors` | 计算后的主题颜色（十六进制值）。惰性计算 — 仅在访问时计算。 |
 | `systemTheme` | `'light' \| 'dark' \| undefined` | 系统偏好设置。仅在使用 ThemeProvider 时可用。 |
 
 ### ThemeColors

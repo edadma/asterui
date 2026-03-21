@@ -112,7 +112,8 @@ For custom themes, provide an `isDarkTheme` function:
 | `resolvedTheme` | `string \| undefined` | The actual applied theme after resolving `'system'`. |
 | `isDark` | `boolean` | `true` if dark mode is active. |
 | `setTheme` | `(theme: string) => void` | Function to change theme. |
-| `colors` | `ThemeColors` | Computed theme colors as hex values. |
+| `toggleTheme` | `() => void` | Toggle between light and dark theme. |
+| `colors` | `ThemeColors` | Computed theme colors as hex values. Lazy — only computed when accessed. |
 | `systemTheme` | `'light' \| 'dark' \| undefined` | The detected system preference. |
 
 See [useTheme](/hooks/usetheme) for complete hook documentation including standalone usage and ThemeColors.
@@ -124,7 +125,7 @@ See [useTheme](/hooks/usetheme) for complete hook documentation including standa
 - **Cross-Tab Sync**: Theme changes sync across browser tabs via storage events
 - **Any DaisyUI Theme**: Works with all 30+ built-in DaisyUI themes
 - **Reactive Updates**: Automatically updates when theme or system preference changes
-- **Canvas Support**: Provides hex colors for canvas/WebGL contexts via `colors` property
+- **Canvas Support**: Provides hex colors for canvas/WebGL contexts via `colors` property (lazy — no cost unless accessed)
 
 ## Accessibility
 

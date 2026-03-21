@@ -42,62 +42,13 @@ export interface ThemeContextValue {
   isDark: boolean
   /** Set the theme */
   setTheme: (theme: string) => void
-  /** Computed theme colors as hex values (for canvas/non-CSS contexts) */
-  colors: ThemeColors
+  /** Toggle between light and dark */
+  toggleTheme: () => void
   /** The system preference ("light" or "dark") */
   systemTheme: 'light' | 'dark'
 }
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined)
-
-// Convert any CSS color to hex
-function colorToHex(color: string): string {
-  if (typeof document === 'undefined') return '#000000'
-  const canvas = document.createElement('canvas')
-  canvas.width = canvas.height = 1
-  const ctx = canvas.getContext('2d')
-  if (!ctx) return '#000000'
-  ctx.fillStyle = color
-  ctx.fillRect(0, 0, 1, 1)
-  const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data
-  return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`
-}
-
-function getThemeColors(): ThemeColors {
-  if (typeof document === 'undefined') {
-    return {
-      background: '#ffffff',
-      foreground: '#000000',
-      primary: '#6366f1',
-      primaryContent: '#ffffff',
-      secondary: '#f000b8',
-      accent: '#37cdbe',
-      info: '#3abff8',
-      success: '#36d399',
-      warning: '#fbbd23',
-      error: '#f87272',
-    }
-  }
-
-  const style = getComputedStyle(document.documentElement)
-  const getColor = (varName: string, fallback: string): string => {
-    const value = style.getPropertyValue(varName).trim()
-    return value ? colorToHex(value) : fallback
-  }
-
-  return {
-    background: getColor('--color-base-100', '#ffffff'),
-    foreground: getColor('--color-base-content', '#000000'),
-    primary: getColor('--color-primary', '#6366f1'),
-    primaryContent: getColor('--color-primary-content', '#ffffff'),
-    secondary: getColor('--color-secondary', '#f000b8'),
-    accent: getColor('--color-accent', '#37cdbe'),
-    info: getColor('--color-info', '#3abff8'),
-    success: getColor('--color-success', '#36d399'),
-    warning: getColor('--color-warning', '#fbbd23'),
-    error: getColor('--color-error', '#f87272'),
-  }
-}
 
 function getSystemTheme(): 'light' | 'dark' {
   if (typeof window === 'undefined') return 'light'
@@ -130,16 +81,12 @@ export function ThemeProvider({
   darkTheme = 'dark',
   isDarkTheme,
 }: ThemeProviderProps) {
-  // Initialize theme from storage or default
-  const [theme, setThemeState] = useState<string>(() => {
-    const stored = getStoredTheme(storageKey)
-    return stored || defaultTheme
-  })
-
-  // Track system preference
   const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>(getSystemTheme)
 
-  // Resolve the actual theme
+  const [theme, setThemeState] = useState<string>(() => {
+    return getStoredTheme(storageKey) || defaultTheme
+  })
+
   const resolvedTheme = useMemo(() => {
     if (theme === 'system') {
       return systemTheme === 'dark' ? darkTheme : lightTheme
@@ -147,69 +94,58 @@ export function ThemeProvider({
     return theme
   }, [theme, systemTheme, lightTheme, darkTheme])
 
-  // Determine if dark
   const isDark = useMemo(() => {
     if (isDarkTheme) return isDarkTheme(resolvedTheme)
     return DARK_THEMES.has(resolvedTheme)
   }, [resolvedTheme, isDarkTheme])
 
-  // Track colors (updated after theme applies)
-  const [colors, setColors] = useState<ThemeColors>(getThemeColors)
-
-  // Set theme function
-  const setTheme = useCallback((newTheme: string) => {
-    setThemeState(newTheme)
-    storeTheme(storageKey, newTheme)
-  }, [storageKey])
-
-  // Apply theme to document
+  // Set data-theme on <html>
   useEffect(() => {
     if (typeof document === 'undefined') return
     document.documentElement.setAttribute('data-theme', resolvedTheme)
-
-    // Double RAF ensures CSS has fully recalculated after attribute change
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setColors(getThemeColors())
-      })
-    })
   }, [resolvedTheme])
 
   // Listen for system preference changes
   useEffect(() => {
     if (typeof window === 'undefined') return
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    const handleChange = (e: MediaQueryListEvent) => {
-      setSystemTheme(e.matches ? 'dark' : 'light')
-    }
-
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
+    const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    const handler = (e: MediaQueryListEvent) => setSystemTheme(e.matches ? 'dark' : 'light')
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
   }, [])
 
   // Listen for storage changes (cross-tab sync)
   useEffect(() => {
     if (!storageKey || typeof window === 'undefined') return
-
-    const handleStorage = (e: StorageEvent) => {
+    const handler = (e: StorageEvent) => {
       if (e.key === storageKey && e.newValue) {
         setThemeState(e.newValue)
       }
     }
-
-    window.addEventListener('storage', handleStorage)
-    return () => window.removeEventListener('storage', handleStorage)
+    window.addEventListener('storage', handler)
+    return () => window.removeEventListener('storage', handler)
   }, [storageKey])
 
+  const setTheme = useCallback((t: string) => {
+    setThemeState(t)
+    storeTheme(storageKey, t)
+  }, [storageKey])
+
+  const toggleTheme = useCallback(() => {
+    setThemeState((current) => {
+      const resolved = current === 'system'
+        ? (systemTheme === 'dark' ? darkTheme : lightTheme)
+        : current
+      const currentIsDark = isDarkTheme ? isDarkTheme(resolved) : DARK_THEMES.has(resolved)
+      const next = currentIsDark ? lightTheme : darkTheme
+      storeTheme(storageKey, next)
+      return next
+    })
+  }, [systemTheme, lightTheme, darkTheme, isDarkTheme, storageKey])
+
   const value = useMemo<ThemeContextValue>(() => ({
-    theme,
-    resolvedTheme,
-    isDark,
-    setTheme,
-    colors,
-    systemTheme,
-  }), [theme, resolvedTheme, isDark, setTheme, colors, systemTheme])
+    theme, resolvedTheme, isDark, setTheme, toggleTheme, systemTheme,
+  }), [theme, resolvedTheme, isDark, setTheme, toggleTheme, systemTheme])
 
   return (
     <ThemeContext.Provider value={value}>

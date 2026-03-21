@@ -18,13 +18,15 @@ export interface UseThemeReturn {
   isDark: boolean
   /** Set the theme. Only available with ThemeProvider. */
   setTheme: ((theme: string) => void) | undefined
-  /** Computed theme colors as hex values */
+  /** Toggle between light and dark. Only available with ThemeProvider. */
+  toggleTheme: (() => void) | undefined
+  /** Computed theme colors as hex values. Lazy — only computed when accessed. */
   colors: ThemeColors
   /** The system preference. Only available with ThemeProvider. */
   systemTheme: 'light' | 'dark' | undefined
 }
 
-// Convert any CSS color to hex
+// Convert any CSS color to hex via canvas
 function colorToHex(color: string): string {
   if (typeof document === 'undefined') return '#000000'
   const canvas = document.createElement('canvas')
@@ -84,6 +86,32 @@ function getCurrentTheme(): string | null {
 }
 
 /**
+ * Create a lazy colors object that only computes hex values when accessed.
+ * Returns a new object each time so referential identity tracks the dep key.
+ */
+function createLazyColors(depKey: unknown): ThemeColors {
+  let cached: ThemeColors | null = null
+  // depKey is used only to invalidate the closure identity
+  void depKey
+  return new Proxy({} as ThemeColors, {
+    get(_target, prop: string) {
+      if (!cached) cached = getThemeColors()
+      return cached[prop as keyof ThemeColors]
+    },
+    ownKeys() {
+      if (!cached) cached = getThemeColors()
+      return Object.keys(cached)
+    },
+    getOwnPropertyDescriptor(_target, prop) {
+      if (!cached) cached = getThemeColors()
+      if (prop in cached) {
+        return { configurable: true, enumerable: true, value: cached[prop as keyof ThemeColors] }
+      }
+    },
+  })
+}
+
+/**
  * Hook to detect current theme and get computed colors.
  *
  * When used within a ThemeProvider, returns full theme control including
@@ -93,11 +121,13 @@ function getCurrentTheme(): string | null {
  * to isDark and colors based on the current data-theme attribute and
  * system preference.
  *
+ * Colors are lazy — only computed (via canvas) when you access them.
+ * Components that only need isDark/setTheme pay no cost for color computation.
+ *
  * @example
  * // With ThemeProvider (full control)
  * const { theme, setTheme, resolvedTheme, isDark, colors } = useTheme()
  * setTheme('dark')
- * setTheme('system')
  *
  * @example
  * // Without ThemeProvider (read-only)
@@ -107,22 +137,22 @@ function getCurrentTheme(): string | null {
 export function useTheme(): UseThemeReturn {
   const hasProvider = useHasThemeProvider()
 
-  // If we have a provider, use its context
   if (hasProvider) {
-    // This is safe because hasProvider is stable after initial render
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const context = useThemeContext()
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const lazyColors = useMemo(() => createLazyColors(context.resolvedTheme), [context.resolvedTheme])
     return {
       theme: context.theme,
       resolvedTheme: context.resolvedTheme,
       isDark: context.isDark,
       setTheme: context.setTheme,
-      colors: context.colors,
+      toggleTheme: context.toggleTheme,
+      colors: lazyColors,
       systemTheme: context.systemTheme,
     }
   }
 
-  // Standalone mode - no provider
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return useThemeStandalone()
 }
@@ -131,9 +161,9 @@ export function useTheme(): UseThemeReturn {
  * Standalone theme detection (no ThemeProvider)
  */
 function useThemeStandalone(): UseThemeReturn {
-  const [state, setState] = useState<{ isDark: boolean; colors: ThemeColors }>(() => ({
+  const [state, setState] = useState<{ isDark: boolean; themeKey: string | null }>(() => ({
     isDark: false,
-    colors: getThemeColors(),
+    themeKey: getCurrentTheme(),
   }))
 
   useEffect(() => {
@@ -141,7 +171,6 @@ function useThemeStandalone(): UseThemeReturn {
       const currentTheme = getCurrentTheme()
       const systemTheme = getSystemTheme()
 
-      // Determine if dark based on data-theme or system preference
       let isDark = false
       if (currentTheme) {
         isDark = DARK_THEMES.has(currentTheme)
@@ -149,27 +178,17 @@ function useThemeStandalone(): UseThemeReturn {
         isDark = systemTheme === 'dark'
       }
 
-      // Double RAF ensures CSS has fully recalculated
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setState({
-            isDark,
-            colors: getThemeColors(),
-          })
-        })
-      })
+      setState({ isDark, themeKey: currentTheme })
     }
 
     updateTheme()
 
-    // Watch for theme changes via attribute mutation
     const observer = new MutationObserver(updateTheme)
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['data-theme', 'class']
     })
 
-    // Watch for system preference changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     mediaQuery.addEventListener('change', updateTheme)
 
@@ -179,14 +198,18 @@ function useThemeStandalone(): UseThemeReturn {
     }
   }, [])
 
-  return useMemo(() => ({
-    theme: undefined,
-    resolvedTheme: undefined,
-    isDark: state.isDark,
-    setTheme: undefined,
-    colors: state.colors,
-    systemTheme: undefined,
-  }), [state.isDark, state.colors])
+  return useMemo(() => {
+    const lazyColors = createLazyColors(state.themeKey)
+    return {
+      theme: undefined,
+      resolvedTheme: undefined,
+      isDark: state.isDark,
+      setTheme: undefined,
+      toggleTheme: undefined,
+      colors: lazyColors,
+      systemTheme: undefined,
+    }
+  }, [state.isDark, state.themeKey])
 }
 
 export default useTheme
