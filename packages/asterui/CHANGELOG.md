@@ -7,6 +7,19 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.87 (2026-03-21)
+
+### Bug Fixes
+
+- **ContextMenu**: Removed `inline-block` wrapper div that broke flex/block layout on trigger elements. Now uses `cloneElement` to attach the context menu handler directly to the trigger child.
+- **ContextMenu**: Divider now uses `<hr>` instead of DaisyUI `divider` class which had excessive padding.
+- **Terminal**: Cursor color now defaults to foreground (`base-content`) instead of primary color.
+- **Terminal**: User `options.theme` is now deep-merged with the auto-generated theme instead of replacing it, allowing individual color overrides without losing other theme colors.
+
+### Features
+
+- **ContextMenu**: `items` prop now accepts a function `(e: React.MouseEvent) => ContextMenuItem[]` for dynamic menu items based on the click event.
+
 ## v0.12.86 (2026-02-28)
 
 ### Bug Fixes

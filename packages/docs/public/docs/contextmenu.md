@@ -106,7 +106,7 @@ import { ContextMenu } from 'asterui'
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
 | children | Trigger element (first child) and menu items (compound pattern) | `React.ReactNode` | - |
-| items | Menu items (data-driven pattern) | `ContextMenuItem[]` | - |
+| items | Menu items (static array or function for dynamic items) | `ContextMenuItem[] \| ((e: React.MouseEvent) => ContextMenuItem[])` | - |
 | onSelect | Selection callback | `(key: string) => void` | - |
 | disabled | Whether the context menu is disabled | `boolean` | `false` |
 | className | Additional CSS classes | `string` | - |

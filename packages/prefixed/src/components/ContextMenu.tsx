@@ -4,23 +4,23 @@ import { useConfig } from '../providers/ConfigProvider'
 
 // DaisyUI classes
 const dMenu = 'd-menu'
-const dDivider = 'd-divider'
 
 export interface ContextMenuItem {
   key: string
-  label: React.ReactNode
+  label?: React.ReactNode
   icon?: React.ReactNode
   disabled?: boolean
   danger?: boolean
   divider?: boolean
   children?: ContextMenuItem[]
+  'data-testid'?: string
 }
 
 export interface ContextMenuProps {
-  /** Element that triggers the context menu on right-click */
+  /** Element that triggers the context menu on right-click (first child) */
   children: React.ReactNode
-  /** Menu items (data-driven pattern) */
-  items?: ContextMenuItem[]
+  /** Menu items (data-driven pattern). Can be a static array or a function that receives the mouse event for dynamic items. */
+  items?: ContextMenuItem[] | ((e: React.MouseEvent) => ContextMenuItem[])
   /** Callback when an item is selected */
   onSelect?: (key: string) => void
   /** Whether the context menu is disabled */
@@ -130,7 +130,7 @@ const ContextMenuItemComponent: React.FC<ContextMenuItemProps> = ({
 }
 
 const ContextMenuDividerComponent: React.FC<ContextMenuDividerProps> = ({ className = '', 'data-testid': testId }) => {
-  return <li className={`${dDivider} my-1 ${className}`} role="separator" data-testid={testId}></li>
+  return <hr className={`border-base-300 my-1 ${className}`} role="separator" data-testid={testId} />
 }
 
 const ContextMenuSubMenuComponent: React.FC<ContextMenuSubMenuProps> = ({
@@ -139,13 +139,13 @@ const ContextMenuSubMenuComponent: React.FC<ContextMenuSubMenuProps> = ({
   disabled = false,
   children,
   className = '',
-  _key: _unusedKey,
+  _key,
   'data-testid': testId,
 }) => {
   const { getTestId } = useContextMenuContext()
   const [showSubmenu, setShowSubmenu] = useState(false)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const submenuTestId = testId ?? (_unusedKey ? getTestId?.(`submenu-${_unusedKey}`) : undefined)
+  const submenuTestId = testId ?? (_key ? getTestId?.(`submenu-${_key}`) : undefined)
 
   const handleMouseEnter = () => {
     if (disabled) return
@@ -206,10 +206,10 @@ const MenuItem: React.FC<{
 }> = ({ item, onSelect, onClose, getTestId }) => {
   const [showSubmenu, setShowSubmenu] = useState(false)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const itemTestId = getTestId?.(`item-${item.key}`)
+  const itemTestId = item['data-testid'] ?? getTestId?.(`item-${item.key}`)
 
   if (item.divider) {
-    return <li className={`${dDivider} my-1`} role="separator" data-testid={getTestId?.(`separator-${item.key}`)}></li>
+    return <hr className="border-base-300 my-1" role="separator" data-testid={getTestId?.(`separator-${item.key}`)} />
   }
 
   const handleClick = () => {
@@ -289,8 +289,8 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
   const { getPopupContainer } = useConfig()
   const [visible, setVisible] = useState(false)
   const [position, setPosition] = useState<MenuPosition>({ x: 0, y: 0 })
+  const [resolvedItems, setResolvedItems] = useState<ContextMenuItem[] | undefined>(undefined)
   const menuRef = useRef<HTMLUListElement>(null)
-  const triggerRef = useRef<HTMLDivElement>(null)
 
   const handleContextMenu = useCallback(
     (e: React.MouseEvent) => {
@@ -298,15 +298,15 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
       e.preventDefault()
       e.stopPropagation()
 
-      // Calculate position, ensuring menu stays within viewport
-      let x = e.clientX
-      let y = e.clientY
-
-      // We'll adjust after render when we know menu dimensions
-      setPosition({ x, y })
+      setPosition({ x: e.clientX, y: e.clientY })
+      if (typeof items === 'function') {
+        setResolvedItems(items(e))
+      } else {
+        setResolvedItems(items)
+      }
       setVisible(true)
     },
-    [disabled]
+    [disabled, items]
   )
 
   const handleClose = useCallback(() => {
@@ -387,12 +387,11 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
     })
   }
 
-  // Determine if using data-driven or compound pattern
-  // Find menu content children (not the trigger element)
+  // Separate trigger (first child) from menu content children
   const childArray = React.Children.toArray(children)
-  const triggerChild = childArray[0]
+  const trigger = childArray[0]
   const menuChildren = cloneChildrenWithKeys(childArray.slice(1))
-  const useDataDriven = items && items.length > 0
+  const hasDataItems = resolvedItems && resolvedItems.length > 0
 
   const contextValue: ContextMenuContextValue = {
     onSelect: handleSelect,
@@ -401,16 +400,20 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
   }
   const getTestId = (suffix: string) => (testId ? `${testId}-${suffix}` : undefined)
 
+  // Attach onContextMenu directly to trigger via cloneElement — no wrapper div
+  const triggerWithHandler = React.isValidElement(trigger)
+    ? React.cloneElement(trigger as React.ReactElement<any>, {
+        onContextMenu: (e: React.MouseEvent) => {
+          const existing = (trigger as React.ReactElement<any>).props.onContextMenu
+          if (existing) existing(e)
+          handleContextMenu(e)
+        },
+      })
+    : trigger
+
   return (
     <>
-      <div
-        ref={triggerRef}
-        onContextMenu={handleContextMenu}
-        className="inline-block"
-        data-testid={testId}
-      >
-        {triggerChild}
-      </div>
+      {triggerWithHandler}
       {visible &&
         createPortal(
           <ContextMenuContext.Provider value={contextValue}>
@@ -422,8 +425,8 @@ const ContextMenuRoot: React.FC<ContextMenuProps> = ({
               aria-label="Context menu"
               data-testid={getTestId('menu')}
             >
-              {useDataDriven
-                ? items!.map((item) => (
+              {hasDataItems
+                ? resolvedItems.map((item) => (
                     <MenuItem key={item.key} item={item} onSelect={handleSelect} onClose={handleClose} getTestId={getTestId} />
                   ))
                 : menuChildren}

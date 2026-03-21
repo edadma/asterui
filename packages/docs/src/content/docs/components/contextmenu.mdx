@@ -10,6 +10,7 @@ import {
   IconsDemo,
   DividersDemo,
   SubmenuDemo,
+  DynamicItemsDemo,
   DisabledDemo,
 } from '../../../components/ContextMenuDemo'
 import ContextMenuDemoSource from '../../../components/ContextMenuDemo.tsx?raw'
@@ -47,6 +48,10 @@ import { ContextMenu } from 'asterui'
   <SubmenuDemo client:load slot="demo" />
 </Example>
 
+<Example title="Dynamic Items" description="Use a function for items to generate menu items based on the click event." source={ContextMenuDemoSource} fn="DynamicItemsDemo">
+  <DynamicItemsDemo client:load slot="demo" />
+</Example>
+
 <Example title="Disabled Items" description="Some menu items can be disabled." source={ContextMenuDemoSource} fn="DisabledDemo">
   <DisabledDemo client:load slot="demo" />
 </Example>
@@ -60,7 +65,7 @@ import { ContextMenu } from 'asterui'
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
 | `children` | Element that triggers the context menu on right-click | `React.ReactNode` | - |
-| `items` | Menu items | `ContextMenuItem[]` | - |
+| `items` | Menu items (static array or function for dynamic items) | `ContextMenuItem[] \| ((e: React.MouseEvent) => ContextMenuItem[])` | - |
 | `onSelect` | Callback when an item is selected | `(key: string) => void` | - |
 | `disabled` | Whether the context menu is disabled | `boolean` | `false` |
 | `className` | Additional CSS classes for the menu | `string` | - |

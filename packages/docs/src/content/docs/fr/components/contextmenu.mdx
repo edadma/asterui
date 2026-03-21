@@ -60,7 +60,7 @@ import { ContextMenu } from 'asterui'
 | Propriété | Description | Type | Défaut |
 |----------|-------------|------|---------|
 | `children` | Élément qui déclenche le menu contextuel au clic droit | `React.ReactNode` | - |
-| `items` | Éléments de menu | `ContextMenuItem[]` | - |
+| `items` | Éléments de menu (tableau statique ou fonction pour éléments dynamiques) | `ContextMenuItem[] \| ((e: React.MouseEvent) => ContextMenuItem[])` | - |
 | `onSelect` | Callback lorsqu'un élément est sélectionné | `(key: string) => void` | - |
 | `disabled` | Si le menu contextuel est désactivé | `boolean` | `false` |
 | `className` | Classes CSS supplémentaires pour le menu | `string` | - |

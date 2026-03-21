@@ -142,7 +142,7 @@ npm install asterui
 - [Browser](https://asterui.com/docs/browser.md)
 - [Code](https://asterui.com/docs/code.md)
 - [Phone](https://asterui.com/docs/phone.md)
-- [Terminal](https://asterui.com/docs/terminal.md)
+- [Terminal](https://asterui.com/docs/terminal.md) (import from `asterui/terminal`)
 - [Window](https://asterui.com/docs/window.md)
 
 ### Hooks

@@ -60,7 +60,7 @@ import { ContextMenu } from 'asterui'
 | 属性 | 描述 | 类型 | 默认值 |
 |----------|-------------|------|---------|
 | `children` | 右键点击时触发上下文菜单的元素 | `React.ReactNode` | - |
-| `items` | 菜单项 | `ContextMenuItem[]` | - |
+| `items` | 菜单项（静态数组或用于动态项的函数） | `ContextMenuItem[] \| ((e: React.MouseEvent) => ContextMenuItem[])` | - |
 | `onSelect` | 选择项时的回调函数 | `(key: string) => void` | - |
 | `disabled` | 上下文菜单是否被禁用 | `boolean` | `false` |
 | `className` | 菜单的额外 CSS 类名 | `string` | - |

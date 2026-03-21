@@ -67,7 +67,7 @@ import { Terminal } from 'asterui/terminal'
 | `onLine` | Callback when user submits a line in readline mode. Return a Promise to defer the next prompt. | `(line: string) => void \| Promise<void>` | - |
 | `onData` | Callback for raw input (not used in readline mode) | `(data: string) => void` | - |
 | `onReady` | Callback when terminal is initialized | `(terminal: XTerm) => void` | - |
-| `options` | xterm.js options (theme is auto-applied) | `ITerminalOptions` | - |
+| `options` | xterm.js options (theme is auto-generated and merged with any user theme overrides) | `ITerminalOptions` | - |
 | `className` | Additional CSS classes | `string` | - |
 | `style` | Container style | `React.CSSProperties` | - |
 | `data-testid` | Test ID for testing | `string` | - |
@@ -102,7 +102,7 @@ When `readline` is enabled, the terminal provides:
 The Terminal component automatically uses DaisyUI theme colors:
 
 - **Background/Foreground**: Uses `base-100` and `base-content`
-- **Cursor**: Uses `primary` color
+- **Cursor**: Uses `foreground` color (base-content)
 - **ANSI Colors**: Maps to `error`, `success`, `warning`, `info`, `secondary`, `accent`
 
 When the theme changes (light/dark), the terminal colors update automatically.

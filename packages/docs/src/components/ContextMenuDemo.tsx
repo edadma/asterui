@@ -127,6 +127,34 @@ export function SubmenuDemo() {
 }
 
 // @example-imports: { ContextMenu, notification } from 'asterui'
+export function DynamicItemsDemo() {
+  return (
+    <Demo>
+      {/* @example-return */}
+      <ContextMenu
+        items={(e) => {
+          const target = (e.target as HTMLElement).textContent || ''
+          return [
+            { key: 'info', label: `Clicked on: "${target}"` , disabled: true },
+            { key: 'divider', divider: true },
+            { key: 'copy', label: 'Copy' },
+            { key: 'inspect', label: 'Inspect' },
+          ]
+        }}
+        onSelect={(key) => notification.info({ message: `Selected: ${key}` })}
+      >
+        <div className="flex gap-2">
+          <div className="p-4 bg-base-200 rounded-lg cursor-context-menu">Item A</div>
+          <div className="p-4 bg-base-200 rounded-lg cursor-context-menu">Item B</div>
+          <div className="p-4 bg-base-200 rounded-lg cursor-context-menu">Item C</div>
+        </div>
+      </ContextMenu>
+      {/* @example-return-end */}
+    </Demo>
+  )
+}
+
+// @example-imports: { ContextMenu, notification } from 'asterui'
 export function DisabledDemo() {
   // @example-include
   const items = [

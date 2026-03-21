@@ -60,7 +60,7 @@ import { ContextMenu } from 'asterui'
 | Propriedade | Descrição | Tipo | Padrão |
 |----------|-------------|------|---------|
 | `children` | Elemento que aciona o menu de contexto ao clicar com o botão direito | `React.ReactNode` | - |
-| `items` | Itens do menu | `ContextMenuItem[]` | - |
+| `items` | Itens do menu (array estático ou função para itens dinâmicos) | `ContextMenuItem[] \| ((e: React.MouseEvent) => ContextMenuItem[])` | - |
 | `onSelect` | Callback quando um item é selecionado | `(key: string) => void` | - |
 | `disabled` | Se o menu de contexto está desabilitado | `boolean` | `false` |
 | `className` | Classes CSS adicionais para o menu | `string` | - |

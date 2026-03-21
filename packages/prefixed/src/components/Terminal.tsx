@@ -96,7 +96,7 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
   const getTheme = () => ({
     background: colors.background,
     foreground: colors.foreground,
-    cursor: colors.primary,
+    cursor: colors.foreground,
     cursorAccent: colors.background,
     selectionBackground: colors.primary + '40',
     selectionForeground: colors.foreground,
@@ -276,13 +276,14 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
 
       initialized = true
 
+      const { theme: userTheme, ...restOptions } = options
       terminal = new XTerm({
-        theme: getTheme(),
+        theme: { ...getTheme(), ...userTheme },
         cursorBlink: true,
         convertEol,
         fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
         fontSize: 14,
-        ...options,
+        ...restOptions,
       })
       fitAddon = new FitAddon()
 
@@ -335,7 +336,7 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
   // Update theme when colors change
   useEffect(() => {
     if (!terminalRef.current) return
-    terminalRef.current.options.theme = getTheme()
+    terminalRef.current.options.theme = { ...getTheme(), ...options.theme }
   }, [isDark, colors]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
