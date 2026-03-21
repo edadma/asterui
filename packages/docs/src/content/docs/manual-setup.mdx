@@ -59,10 +59,10 @@ Before you begin, make sure you have:
    ```css title="src/index.css"
    @import "tailwindcss";
    @plugin "daisyui";
-   @source "../node_modules/asterui";
+   @source "../node_modules/asterui/dist";
    ```
 
-   The `@source` directive tells Tailwind to scan AsterUI for classes.
+   The `@source` directive tells Tailwind to scan AsterUI's compiled output for class names. The path must point to `asterui/dist` (where the components live) and is **relative to the CSS file**, not the project root. For example, if your CSS file is at `src/index.css`, then `../node_modules/asterui/dist` resolves correctly. If it's nested deeper (e.g., `src/styles/index.css`), adjust the path accordingly (e.g., `../../node_modules/asterui/dist`).
 
 4. **Install AsterUI**
 
