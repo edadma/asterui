@@ -1,4 +1,3 @@
-import { useEffect, useState, useMemo, useRef } from 'react'
 import { useHasThemeProvider, useThemeContext, type ThemeColors } from '../providers/ThemeProvider'
 
 export type { ThemeColors }
@@ -12,34 +11,66 @@ const DARK_THEMES = new Set([
 export interface UseThemeReturn {
   /** The theme setting (what user selected). Only available with ThemeProvider. */
   theme: string | undefined
-  /** The actual applied theme. Only available with ThemeProvider. */
-  resolvedTheme: string | undefined
   /** Whether dark mode is active */
   isDark: boolean
   /** Set the theme. Only available with ThemeProvider. */
   setTheme: ((theme: string) => void) | undefined
   /** Toggle between light and dark. Only available with ThemeProvider. */
   toggleTheme: (() => void) | undefined
-  /** Computed theme colors as hex values. Computed asynchronously after theme changes. */
-  colors: ThemeColors
   /** The system preference. Only available with ThemeProvider. */
   systemTheme: 'light' | 'dark' | undefined
 }
 
-const SSR_COLORS: ThemeColors = {
-  background: '#ffffff',
-  foreground: '#000000',
-  primary: '#6366f1',
-  primaryContent: '#ffffff',
-  secondary: '#f000b8',
-  accent: '#37cdbe',
-  info: '#3abff8',
-  success: '#36d399',
-  warning: '#fbbd23',
-  error: '#f87272',
+/**
+ * Hook to detect and control the current theme.
+ *
+ * When used within a ThemeProvider, returns full theme control.
+ * When used standalone, provides read-only isDark based on data-theme or system preference.
+ *
+ * Does NOT compute colors — use getThemeColors() where you need hex values.
+ *
+ * @example
+ * const { isDark, setTheme, toggleTheme } = useTheme()
+ */
+export function useTheme(): UseThemeReturn {
+  const hasProvider = useHasThemeProvider()
+
+  if (hasProvider) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const context = useThemeContext()
+    return {
+      theme: context.theme,
+      isDark: context.isDark,
+      setTheme: context.setTheme,
+      toggleTheme: context.toggleTheme,
+      systemTheme: context.systemTheme,
+    }
+  }
+
+  // Fallback when used outside ThemeProvider — read from DOM
+  const theme = typeof document !== 'undefined'
+    ? document.documentElement.getAttribute('data-theme') ?? undefined
+    : undefined
+  const systemDark = typeof window !== 'undefined'
+    && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const isDark = theme ? DARK_THEMES.has(theme) : systemDark
+
+  return {
+    theme,
+    isDark,
+    setTheme: (t: string) => document.documentElement.setAttribute('data-theme', t),
+    toggleTheme: () => {
+      const current = document.documentElement.getAttribute('data-theme')
+      const currentIsDark = current ? DARK_THEMES.has(current) : systemDark
+      document.documentElement.setAttribute('data-theme', currentIsDark ? 'light' : 'dark')
+    },
+    systemTheme: (systemDark ? 'dark' : 'light') as 'light' | 'dark',
+  }
 }
 
-// Persistent hidden element for DOM-based color conversion
+// --- Color utilities (for components that need hex values) ---
+
+/** Persistent hidden element for DOM-based color conversion */
 let colorProbe: HTMLSpanElement | null = null
 
 function getColorProbe(): HTMLSpanElement {
@@ -61,15 +92,32 @@ function colorToHex(color: string): string {
   const probe = getColorProbe()
   probe.style.color = color
   const computed = getComputedStyle(probe).color
-  // getComputedStyle returns rgb(r, g, b) or rgba(r, g, b, a)
   const match = computed.match(/\d+/g)
   if (!match) return '#000000'
   const [r, g, b] = match.map(Number)
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`
 }
 
-function computeThemeColors(): ThemeColors {
-  if (typeof document === 'undefined') return SSR_COLORS
+/**
+ * Compute current DaisyUI theme colors as hex values.
+ * Call this on demand when you need hex colors (e.g., for canvas, xterm).
+ * Not reactive — call it inside useEffect after theme changes.
+ */
+export function getThemeColors(): ThemeColors {
+  if (typeof document === 'undefined') {
+    return {
+      background: '#ffffff',
+      foreground: '#000000',
+      primary: '#6366f1',
+      primaryContent: '#ffffff',
+      secondary: '#f000b8',
+      accent: '#37cdbe',
+      info: '#3abff8',
+      success: '#36d399',
+      warning: '#fbbd23',
+      error: '#f87272',
+    }
+  }
 
   const style = getComputedStyle(document.documentElement)
   const getColor = (varName: string, fallback: string): string => {
@@ -89,133 +137,6 @@ function computeThemeColors(): ThemeColors {
     warning: getColor('--color-warning', '#fbbd23'),
     error: getColor('--color-error', '#f87272'),
   }
-}
-
-function getSystemTheme(): 'light' | 'dark' {
-  if (typeof window === 'undefined') return 'light'
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-}
-
-function getCurrentTheme(): string | null {
-  if (typeof document === 'undefined') return null
-  return document.documentElement.getAttribute('data-theme')
-}
-
-/**
- * Hook to detect current theme and get computed colors.
- *
- * When used within a ThemeProvider, returns full theme control including
- * setTheme, theme selection, and resolved theme.
- *
- * When used standalone (without ThemeProvider), provides read-only access
- * to isDark and colors based on the current data-theme attribute and
- * system preference.
- *
- * Colors are computed asynchronously after mount and theme changes,
- * using DOM-based color conversion (no canvas).
- *
- * @example
- * // With ThemeProvider (full control)
- * const { theme, setTheme, resolvedTheme, isDark, colors } = useTheme()
- * setTheme('dark')
- *
- * @example
- * // Without ThemeProvider (read-only)
- * const { isDark, colors } = useTheme()
- * // colors.primary, colors.foreground, etc.
- */
-export function useTheme(): UseThemeReturn {
-  const hasProvider = useHasThemeProvider()
-
-  if (hasProvider) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    return useThemeWithProvider()
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useThemeStandalone()
-}
-
-/**
- * Theme hook when ThemeProvider is present.
- */
-function useThemeWithProvider(): UseThemeReturn {
-  const context = useThemeContext()
-  const [colors, setColors] = useState<ThemeColors>(SSR_COLORS)
-  const mountedRef = useRef(false)
-
-  useEffect(() => {
-    // On mount and when theme changes, compute colors after CSS has applied
-    requestAnimationFrame(() => {
-      setColors(computeThemeColors())
-    })
-    mountedRef.current = true
-  }, [context.resolvedTheme])
-
-  return useMemo(() => ({
-    theme: context.theme,
-    resolvedTheme: context.resolvedTheme,
-    isDark: context.isDark,
-    setTheme: context.setTheme,
-    toggleTheme: context.toggleTheme,
-    colors,
-    systemTheme: context.systemTheme,
-  }), [context.theme, context.resolvedTheme, context.isDark, context.setTheme, context.toggleTheme, colors, context.systemTheme])
-}
-
-/**
- * Standalone theme detection (no ThemeProvider)
- */
-function useThemeStandalone(): UseThemeReturn {
-  const [isDark, setIsDark] = useState(false)
-  const [colors, setColors] = useState<ThemeColors>(SSR_COLORS)
-
-  useEffect(() => {
-    const updateTheme = () => {
-      const currentTheme = getCurrentTheme()
-      const systemTheme = getSystemTheme()
-
-      let dark = false
-      if (currentTheme) {
-        dark = DARK_THEMES.has(currentTheme)
-      } else {
-        dark = systemTheme === 'dark'
-      }
-
-      setIsDark(dark)
-
-      // Compute colors after CSS has applied
-      requestAnimationFrame(() => {
-        setColors(computeThemeColors())
-      })
-    }
-
-    updateTheme()
-
-    const observer = new MutationObserver(updateTheme)
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-theme', 'class']
-    })
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    mediaQuery.addEventListener('change', updateTheme)
-
-    return () => {
-      observer.disconnect()
-      mediaQuery.removeEventListener('change', updateTheme)
-    }
-  }, [])
-
-  return useMemo(() => ({
-    theme: undefined,
-    resolvedTheme: undefined,
-    isDark,
-    setTheme: undefined,
-    toggleTheme: undefined,
-    colors,
-    systemTheme: undefined,
-  }), [isDark, colors])
 }
 
 export default useTheme

@@ -397,5 +397,5 @@ export type { UseKeyPressOptions } from './hooks/useKeyPress'
 export { useWindowSize } from './hooks/useWindowSize'
 export type { WindowSize } from './hooks/useWindowSize'
 
-export { useTheme } from './hooks/useTheme'
+export { useTheme, getThemeColors } from './hooks/useTheme'
 export type { UseThemeReturn, ThemeColors } from './hooks/useTheme'

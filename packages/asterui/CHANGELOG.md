@@ -7,6 +7,22 @@ description: All notable changes to AsterUI
 
 All notable changes to AsterUI are documented here.
 
+## v0.12.90 (2026-03-21)
+
+### Bug Fixes
+
+- **ThemeProvider**: Simplified to match roamer's working implementation — just sets `data-theme`, provides context, no color computation.
+- **useTheme**: Removed `colors` from return value. Colors are no longer computed by the hook — components that need hex values call `getThemeColors()` directly.
+- **useTheme**: Removed Proxy, canvas, and requestAnimationFrame. The hook is now pure theme state with zero side effects.
+
+### Features
+
+- **getThemeColors()**: New exported utility function that computes DaisyUI theme colors as hex values on demand. Uses DOM-based color conversion (hidden element + getComputedStyle) instead of canvas.
+
+### Breaking Changes
+
+- **useTheme**: `colors` and `resolvedTheme` properties removed from return value. Use `getThemeColors()` for colors and `theme` instead of `resolvedTheme`.
+
 ## v0.12.89 (2026-03-21)
 
 ### Bug Fixes

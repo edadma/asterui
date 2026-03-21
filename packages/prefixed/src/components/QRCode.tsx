@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import QRCodeLib from 'qrcode'
-import { useTheme } from '../hooks/useTheme'
+import { getThemeColors } from '../hooks/useTheme'
 
 // DaisyUI classes
 const dLoading = 'd-loading'
@@ -46,9 +46,8 @@ export const QRCode: React.FC<QRCodeProps> = ({
   ...rest
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const { colors } = useTheme()
-
   // Theme-aware default colors from DaisyUI CSS variables
+  const colors = getThemeColors()
   const effectiveColor = color ?? colors.foreground
   const effectiveBgColor = bgColor ?? colors.background
 

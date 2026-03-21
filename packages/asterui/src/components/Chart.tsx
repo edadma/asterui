@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import ApexCharts from 'apexcharts'
 import type { ApexOptions } from 'apexcharts'
-import { useTheme } from '../hooks/useTheme'
+import { useTheme, getThemeColors } from '../hooks/useTheme'
 
 export interface ChartProps {
   /** Chart type */
@@ -60,10 +60,11 @@ export const Chart: React.FC<ChartProps> = ({
 }) => {
   const chartRef = useRef<HTMLDivElement>(null)
   const chartInstance = useRef<ApexCharts | null>(null)
-  const { isDark, colors } = useTheme()
+  const { isDark } = useTheme()
 
   // Build theme-aware chart options
   const getThemedOptions = (): Partial<ApexOptions> => {
+    const colors = getThemeColors()
     const chartColors = [
       colors.primary,
       colors.secondary,
@@ -178,7 +179,7 @@ export const Chart: React.FC<ChartProps> = ({
 
     const opts = buildOptions()
     chartInstance.current.updateOptions(opts, true, true)
-  }, [type, series, width, height, options, themed, isDark, colors]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [type, series, width, height, options, themed, isDark]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return <div ref={chartRef} className={className} data-testid={testId} />
 }

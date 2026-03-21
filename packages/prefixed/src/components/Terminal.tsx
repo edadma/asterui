@@ -3,7 +3,7 @@ import * as XTermPkg from '@xterm/xterm'
 import * as FitAddonPkg from '@xterm/addon-fit'
 import type { Terminal as XTermType, ITerminalOptions, ITerminalInitOnlyOptions } from '@xterm/xterm'
 import type { FitAddon as FitAddonType } from '@xterm/addon-fit'
-import { useTheme } from '../hooks/useTheme'
+import { useTheme, getThemeColors } from '../hooks/useTheme'
 
 // Handle both ESM and CJS module formats
 const XTerm = (XTermPkg as { Terminal?: typeof XTermType }).Terminal
@@ -81,7 +81,7 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
   const containerRef = useRef<HTMLDivElement>(null)
   const terminalRef = useRef<XTermType | null>(null)
   const fitAddonRef = useRef<FitAddonType | null>(null)
-  const { isDark, colors } = useTheme()
+  const { isDark } = useTheme()
 
   // Readline state
   const readlineState = useRef({
@@ -92,31 +92,34 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
     savedBuffer: '',
   })
 
-  // Build theme from DaisyUI colors
-  const getTheme = () => ({
-    background: colors.background,
-    foreground: colors.foreground,
-    cursor: colors.foreground,
-    cursorAccent: colors.background,
-    selectionBackground: colors.primary + '40',
-    selectionForeground: colors.foreground,
-    black: isDark ? '#000000' : '#2e3436',
-    red: colors.error,
-    green: colors.success,
-    yellow: colors.warning,
-    blue: colors.info,
-    magenta: colors.secondary,
-    cyan: colors.accent,
-    white: isDark ? '#d3d7cf' : '#eeeeec',
-    brightBlack: '#555753',
-    brightRed: colors.error,
-    brightGreen: colors.success,
-    brightYellow: colors.warning,
-    brightBlue: colors.info,
-    brightMagenta: colors.secondary,
-    brightCyan: colors.accent,
-    brightWhite: isDark ? '#eeeeec' : '#ffffff',
-  })
+  // Build theme from DaisyUI colors (computed on demand)
+  const getTheme = () => {
+    const colors = getThemeColors()
+    return {
+      background: colors.background,
+      foreground: colors.foreground,
+      cursor: colors.foreground,
+      cursorAccent: colors.background,
+      selectionBackground: colors.primary + '40',
+      selectionForeground: colors.foreground,
+      black: isDark ? '#000000' : '#2e3436',
+      red: colors.error,
+      green: colors.success,
+      yellow: colors.warning,
+      blue: colors.info,
+      magenta: colors.secondary,
+      cyan: colors.accent,
+      white: isDark ? '#d3d7cf' : '#eeeeec',
+      brightBlack: '#555753',
+      brightRed: colors.error,
+      brightGreen: colors.success,
+      brightYellow: colors.warning,
+      brightBlue: colors.info,
+      brightMagenta: colors.secondary,
+      brightCyan: colors.accent,
+      brightWhite: isDark ? '#eeeeec' : '#ffffff',
+    }
+  }
 
   useImperativeHandle(ref, () => ({
     terminal: terminalRef.current,
@@ -337,7 +340,7 @@ export const Terminal = forwardRef<TerminalRef, TerminalProps>(({
   useEffect(() => {
     if (!terminalRef.current) return
     terminalRef.current.options.theme = { ...getTheme(), ...options.theme }
-  }, [isDark, colors]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isDark]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div

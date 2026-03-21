@@ -132,7 +132,7 @@ function ThemeControllerDropdown({
   className = '',
   'data-testid': testId,
 }: ThemeControllerDropdownProps) {
-  const { setTheme: contextSetTheme, resolvedTheme } = useTheme()
+  const { setTheme: contextSetTheme, theme: resolvedTheme } = useTheme()
   const setTheme = contextSetTheme ?? setThemeDirectly
   const radioName = useId()
 

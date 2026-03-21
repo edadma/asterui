@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { useTheme } from '../hooks/useTheme'
+import { getThemeColors } from '../hooks/useTheme'
 
 export type WatermarkGap = [number, number]
 export type WatermarkOffset = [number, number]
@@ -94,7 +94,7 @@ export const Watermark: React.FC<WatermarkProps> = ({
   const gapY = gap?.[1] ?? 120
   const offsetX = offset?.[0] ?? gapX / 2
   const offsetY = offset?.[1] ?? gapY / 2
-  const { colors } = useTheme()
+  const colors = getThemeColors()
   const textLines = useMemo(
     () =>
       typeof content === 'string'

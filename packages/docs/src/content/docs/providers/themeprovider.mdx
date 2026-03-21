@@ -108,12 +108,10 @@ For custom themes, provide an `isDarkTheme` function:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `theme` | `string \| undefined` | The selected theme (e.g., `'system'`, `'light'`, `'dark'`). |
-| `resolvedTheme` | `string \| undefined` | The actual applied theme after resolving `'system'`. |
+| `theme` | `string \| undefined` | The current theme. |
 | `isDark` | `boolean` | `true` if dark mode is active. |
 | `setTheme` | `(theme: string) => void` | Function to change theme. |
 | `toggleTheme` | `() => void` | Toggle between light and dark theme. |
-| `colors` | `ThemeColors` | Computed theme colors as hex values. Lazy — only computed when accessed. |
 | `systemTheme` | `'light' \| 'dark' \| undefined` | The detected system preference. |
 
 See [useTheme](/hooks/usetheme) for complete hook documentation including standalone usage and ThemeColors.

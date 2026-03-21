@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react'
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react'
 
 // Common dark themes in DaisyUI
 const DARK_THEMES = new Set([
@@ -12,12 +12,6 @@ export interface ThemeProviderProps {
   defaultTheme?: string
   /** localStorage key for persisting theme. Set to false to disable persistence. */
   storageKey?: string | false
-  /** Light theme to use when system preference is light */
-  lightTheme?: string
-  /** Dark theme to use when system preference is dark */
-  darkTheme?: string
-  /** Custom function to determine if a theme is dark */
-  isDarkTheme?: (theme: string) => boolean
 }
 
 export interface ThemeColors {
@@ -34,11 +28,9 @@ export interface ThemeColors {
 }
 
 export interface ThemeContextValue {
-  /** The theme setting (what user selected: "system", "light", "dark", etc.) */
-  theme: string
-  /** The actual applied theme after resolving "system" */
-  resolvedTheme: string
-  /** Whether the resolved theme is dark */
+  /** The theme setting (what user selected) */
+  theme: string | undefined
+  /** Whether the current theme is dark */
   isDark: boolean
   /** Set the theme */
   setTheme: (theme: string) => void
@@ -48,62 +40,38 @@ export interface ThemeContextValue {
   systemTheme: 'light' | 'dark'
 }
 
-const ThemeContext = createContext<ThemeContextValue | undefined>(undefined)
-
-function getSystemTheme(): 'light' | 'dark' {
-  if (typeof window === 'undefined') return 'light'
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-}
-
-function getStoredTheme(key: string | false): string | null {
-  if (!key || typeof window === 'undefined') return null
-  try {
-    return localStorage.getItem(key)
-  } catch {
-    return null
-  }
-}
-
-function storeTheme(key: string | false, theme: string): void {
-  if (!key || typeof window === 'undefined') return
-  try {
-    localStorage.setItem(key, theme)
-  } catch {
-    // Ignore storage errors
-  }
-}
+const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
+  defaultTheme,
   storageKey = 'asterui-theme',
-  lightTheme = 'light',
-  darkTheme = 'dark',
-  isDarkTheme,
 }: ThemeProviderProps) {
-  const [systemTheme, setSystemTheme] = useState<'light' | 'dark'>(getSystemTheme)
+  const [systemTheme, setSystemTheme] = useState<'dark' | 'light'>(() =>
+    typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark' : 'light'
+  )
 
-  const [theme, setThemeState] = useState<string>(() => {
-    return getStoredTheme(storageKey) || defaultTheme
+  const [theme, setThemeState] = useState<string | undefined>(() => {
+    if (storageKey && typeof window !== 'undefined') {
+      try {
+        const stored = localStorage.getItem(storageKey)
+        if (stored) return stored
+      } catch { /* ignore */ }
+    }
+    return defaultTheme ?? systemTheme
   })
 
-  const resolvedTheme = useMemo(() => {
-    if (theme === 'system') {
-      return systemTheme === 'dark' ? darkTheme : lightTheme
-    }
-    return theme
-  }, [theme, systemTheme, lightTheme, darkTheme])
-
-  const isDark = useMemo(() => {
-    if (isDarkTheme) return isDarkTheme(resolvedTheme)
-    return DARK_THEMES.has(resolvedTheme)
-  }, [resolvedTheme, isDarkTheme])
+  const isDark = theme ? DARK_THEMES.has(theme) : systemTheme === 'dark'
 
   // Set data-theme on <html>
   useEffect(() => {
-    if (typeof document === 'undefined') return
-    document.documentElement.setAttribute('data-theme', resolvedTheme)
-  }, [resolvedTheme])
+    if (theme) {
+      document.documentElement.setAttribute('data-theme', theme)
+    } else {
+      document.documentElement.removeAttribute('data-theme')
+    }
+  }, [theme])
 
   // Listen for system preference changes
   useEffect(() => {
@@ -114,13 +82,11 @@ export function ThemeProvider({
     return () => mq.removeEventListener('change', handler)
   }, [])
 
-  // Listen for storage changes (cross-tab sync)
+  // Cross-tab sync
   useEffect(() => {
     if (!storageKey || typeof window === 'undefined') return
     const handler = (e: StorageEvent) => {
-      if (e.key === storageKey && e.newValue) {
-        setThemeState(e.newValue)
-      }
+      if (e.key === storageKey && e.newValue) setThemeState(e.newValue)
     }
     window.addEventListener('storage', handler)
     return () => window.removeEventListener('storage', handler)
@@ -128,24 +94,25 @@ export function ThemeProvider({
 
   const setTheme = useCallback((t: string) => {
     setThemeState(t)
-    storeTheme(storageKey, t)
+    if (storageKey) {
+      try { localStorage.setItem(storageKey, t) } catch { /* ignore */ }
+    }
   }, [storageKey])
 
   const toggleTheme = useCallback(() => {
     setThemeState((current) => {
-      const resolved = current === 'system'
-        ? (systemTheme === 'dark' ? darkTheme : lightTheme)
-        : current
-      const currentIsDark = isDarkTheme ? isDarkTheme(resolved) : DARK_THEMES.has(resolved)
-      const next = currentIsDark ? lightTheme : darkTheme
-      storeTheme(storageKey, next)
+      const currentIsDark = current ? DARK_THEMES.has(current) : systemTheme === 'dark'
+      const next = currentIsDark ? 'light' : 'dark'
+      if (storageKey) {
+        try { localStorage.setItem(storageKey, next) } catch { /* ignore */ }
+      }
       return next
     })
-  }, [systemTheme, lightTheme, darkTheme, isDarkTheme, storageKey])
+  }, [systemTheme, storageKey])
 
-  const value = useMemo<ThemeContextValue>(() => ({
-    theme, resolvedTheme, isDark, setTheme, toggleTheme, systemTheme,
-  }), [theme, resolvedTheme, isDark, setTheme, toggleTheme, systemTheme])
+  const value = useMemo(() => ({
+    theme, isDark, setTheme, toggleTheme, systemTheme,
+  }), [theme, isDark, setTheme, toggleTheme, systemTheme])
 
   return (
     <ThemeContext.Provider value={value}>
@@ -156,19 +123,19 @@ export function ThemeProvider({
 
 /**
  * Hook to access theme context.
- * Must be used within a ThemeProvider.
+ * Works with or without ThemeProvider.
  */
 export function useThemeContext(): ThemeContextValue {
-  const context = useContext(ThemeContext)
-  if (!context) {
+  const ctx = useContext(ThemeContext)
+  if (!ctx) {
     throw new Error('useThemeContext must be used within a ThemeProvider')
   }
-  return context
+  return ctx
 }
 
 /**
  * Check if ThemeProvider is present in the tree.
  */
 export function useHasThemeProvider(): boolean {
-  return useContext(ThemeContext) !== undefined
+  return useContext(ThemeContext) !== null
 }
